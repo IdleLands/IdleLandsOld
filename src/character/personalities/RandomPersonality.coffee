@@ -1,0 +1,2 @@
+
+Personality = require "../Personality"
