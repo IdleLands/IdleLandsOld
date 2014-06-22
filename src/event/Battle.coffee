@@ -1,0 +1,4 @@
+
+class BattleGroup
+
+class Battle
