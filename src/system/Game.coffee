@@ -4,6 +4,7 @@ PlayerManager = require "./PlayerManager"
 EventHandler = require "./EventHandler"
 MonsterManager = require "./MonsterManager"
 MessageCreator = require "./MessageCreator"
+Constants = require "./Constants"
 
 console.log "Rebooted IdleLands"
 
@@ -18,7 +19,7 @@ class Game
 
   registerBroadcastHandler: (@broadcastHandler, @broadcastContext) ->
     console.log "Registered broadcast handler."
-    @broadcast MessageCreator.generateMessage "Initializing the Lands that Idle."
+    @broadcast MessageCreator.generateMessage "Initializing the Lands that Idle (#{Constants.gameName})."
 
   broadcast: (message) ->
     return if not message

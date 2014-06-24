@@ -5,12 +5,11 @@ Player = require "../character/Player"
 RestrictedNumber = require "restricted-number"
 Q = require "q"
 MessageCreator = require "./MessageCreator"
+Constants = require "./Constants"
 
 class PlayerManager
 
   players: []
-
-  salt: "IdleGame"
 
   constructor: (@game) ->
     @db = new Datastore { filename: "data/players.ildb", autoload: true }
@@ -32,7 +31,7 @@ class PlayerManager
 
       @players = _.uniq @players
 
-      @game.broadcast MessageCreator.generateMessage "#{player.name} has joined!"
+      @game.broadcast MessageCreator.generateMessage "#{player.name} has joined #{Constants.gameName}!"
 
   removePlayer: (identifier) ->
 
@@ -40,7 +39,7 @@ class PlayerManager
 
     @players = _.filter @players, (player) -> !player.identifier is identifier
 
-    @game.broadcast MessageCreator.generateMessage "#{name} has left!"
+    @game.broadcast MessageCreator.generateMessage "#{name} has left #{Constants.gameName}!"
 
   registerPlayer: (options, middleware, callback) ->
 
@@ -64,10 +63,6 @@ class PlayerManager
 
   registerLoadAllPlayersHandler: (@playerLoadHandler) ->
     console.log "Registered AllPlayerLoad handler."
-    identifierArray = @playerLoadHandler()
-
-    _.forEach identifierArray, (identifier) ->
-      console.log "#{identifier} being added"
 
   migratePlayer: (player) ->
     return if not player
