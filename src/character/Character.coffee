@@ -1,5 +1,4 @@
 
-ko = require "knockout"
 RestrictedNumber = require "restricted-number"
 
 ###
@@ -10,23 +9,39 @@ RestrictedNumber = require "restricted-number"
   Random
   Magical
   Physical
+
+  Personality traits should be stackable
+###
+
+###
+  @health
+  @mana
+  @speed
+  @magic
+  @power
+  @luck
+  @consti
+
+  @emotional
+  @spiritual
+  @physical
+  @magical
+
 ###
 
 class Character
 
-  @level      = 0
+  constructor: (options) ->
+    [@name, @identifier] = [options.name, options.identifier]
+    @hp = new RestrictedNumber 0, 20, 20
+    @mp = new RestrictedNumber 0, 0, 0
+    @special = new RestrictedNumber 0, 0, 0
+    @level = new RestrictedNumber 0, 100, 0
 
-  @health     = ko.computed () ->
-  @mana       = ko.computed () ->
-  @speed      = ko.computed () ->
-  @magic      = ko.computed () ->
-  @power      = ko.computed () ->
-  @luck       = ko.computed () ->
-  @consti     = ko.computed () ->
+  moveAction: ->
 
-  @emotional  = ko.computed () ->
-  @spiritual  = ko.computed () ->
-  @physical   = ko.computed () ->
-  @magical    = ko.computed () ->
+  decisionAction: ->
 
-exports.Character = Character
+  combatAction: ->
+
+module.exports = exports = Character

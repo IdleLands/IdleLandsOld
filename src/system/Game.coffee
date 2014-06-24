@@ -1,12 +1,32 @@
 
+
 PlayerManager = require "./PlayerManager"
+EventHandler = require "./EventHandler"
+MonsterManager = require "./MonsterManager"
+MessageCreator = require "./MessageCreator"
+
+console.log "Rebooted IdleLands"
 
 class Game
 
+  #Constants either go here, or in a Constants class
+
   constructor: () ->
-    @playerManager = new PlayerManager()
+    @playerManager = new PlayerManager @
+    @monsterManager = new MonsterManager()
+    @eventHandler = new EventHandler()
 
-  nextAction: ->
+  registerBroadcastHandler: (@broadcastHandler, @broadcastContext) ->
+    console.log "Registered broadcast handler."
+    @broadcast MessageCreator.generateMessage "Initializing the Lands that Idle."
 
+  broadcast: (message) ->
+    return if not message
+    if @broadcastHandler
+      (@broadcastHandler.bind @broadcastContext, message)()
+    else
+      console.error "No broadcast handler registered. Cannot send: #{message}"
+
+  nextAction: (identifier) ->
 
 module.exports = exports = Game

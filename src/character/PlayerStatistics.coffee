@@ -20,4 +20,5 @@ class PlayerStatistics
   monsterskilled
   hasPhilstone
   hasWingshoes
+  classChanges
 ###

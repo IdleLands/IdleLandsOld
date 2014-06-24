@@ -24,7 +24,10 @@
     "knockout": "^3.1.0",
     "lodash": "^2.4.1",
     "nedb": "^0.10.5",
+    "node-watch": "^0.3.4",
     "q": "^1.0.1",
-    "restricted-number": "0.0.3"
+    "restricted-number": "0.0.3",
+    "underscore": "^1.6.0",
+    "watch": "^0.10.0"
   }
 }

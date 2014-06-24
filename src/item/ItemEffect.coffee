@@ -1,0 +1,1 @@
+#this is for weapon effects like glowing, double strike, other things like that. special weapons get properties like this, and maybe some random ones too
