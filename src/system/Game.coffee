@@ -5,6 +5,7 @@ EventHandler = require "./EventHandler"
 MonsterManager = require "./MonsterManager"
 MessageCreator = require "./MessageCreator"
 Constants = require "./Constants"
+World = require "../map/World"
 
 console.log "Rebooted IdleLands"
 
@@ -16,6 +17,7 @@ class Game
     @playerManager = new PlayerManager @
     @monsterManager = new MonsterManager()
     @eventHandler = new EventHandler()
+    @world = new World()
 
   registerBroadcastHandler: (@broadcastHandler, @broadcastContext) ->
     console.log "Registered broadcast handler."
@@ -29,5 +31,6 @@ class Game
       console.error "No broadcast handler registered. Cannot send: #{message}"
 
   nextAction: (identifier) ->
+    @playerManager.playerTakeTurn identifier
 
 module.exports = exports = Game

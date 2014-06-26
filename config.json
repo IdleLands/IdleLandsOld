@@ -1,0 +1,4 @@
+{
+    "storage": "mongo",
+    "storageURL": "localhost:27017"
+}

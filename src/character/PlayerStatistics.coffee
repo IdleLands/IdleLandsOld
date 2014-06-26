@@ -21,4 +21,5 @@ class PlayerStatistics
   hasPhilstone
   hasWingshoes
   classChanges
+  stepsTaken
 ###

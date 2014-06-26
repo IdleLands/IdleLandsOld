@@ -1,5 +1,5 @@
 
-Datastore = require "nedb"
+Datastore = require "./DatabaseWrapper"
 _ = require "underscore"
 Player = require "../character/Player"
 RestrictedNumber = require "restricted-number"
@@ -10,9 +10,10 @@ Constants = require "./Constants"
 class PlayerManager
 
   players: []
+  playerHash: {}
 
   constructor: (@game) ->
-    @db = new Datastore { filename: "data/players.ildb", autoload: true }
+    @db = new Datastore "players"
     @db.ensureIndex { fieldName: 'identifier', unique: true }
     @db.ensureIndex { fieldName: 'name', unique: true }
 
@@ -28,6 +29,7 @@ class PlayerManager
     @retrievePlayer identifier, (player) =>
       return if not player
       @players.push player
+      @playerHash[identifier] = player
 
       @players = _.uniq @players
 
@@ -38,28 +40,38 @@ class PlayerManager
     name = (_.findWhere @players, {identifier, identifier}).name
 
     @players = _.filter @players, (player) -> !player.identifier is identifier
+    delete playerHash[identifier]
 
     @game.broadcast MessageCreator.generateMessage "#{name} has left #{Constants.gameName}!"
 
   registerPlayer: (options, middleware, callback) ->
 
     playerObject = new Player options
+    playerObject.playerManager = @
+    playerObject.initialize()
+    playerObject.playerManager = null
 
-    @db.insert playerObject, (iErr) =>
+    @db.insert playerObject, (iErr, doc) =>
       if iErr
         console.error "Player creation error: #{iErr}"
         callback iErr
         return
 
       playerObject.playerManager = @
+      @playerHash[options.identifier] = playerObject
       @players.push playerObject
 
       callback { success: true, name: options.name }
 
   savePlayer: (player) ->
     player.playerManager = null
-    @db.update { identifier: player.identifier }, player, (e) ->
+    @db.update { identifier: player.identifier }, player, (e) =>
       console.error "Save error: #{e}" if e
+      player.playerManager = @
+
+  playerTakeTurn: (identifier) ->
+    return if not identifier or not (identifier of @playerHash)
+    @playerHash[identifier].takeTurn()
 
   registerLoadAllPlayersHandler: (@playerLoadHandler) ->
     console.log "Registered AllPlayerLoad handler."
@@ -71,14 +83,14 @@ class PlayerManager
       return if not obj
       obj.__proto__ = RestrictedNumber.prototype
 
+    _.forEach ['hp', 'mp', 'special', 'level', 'xp'], (item) ->
+      player[item] = loadRN player[item]
+
     player.gold = 0 if not player.gold
-    player.hp = loadRN player.hp
-    player.mp = loadRN player.mp
-    player.special = loadRN player.special
-    player.level = loadRN player.level
 
     player.__proto__ = Player.prototype
     player.playerManager = @
+    player.isBusy = false
     player
 
 module.exports = exports = PlayerManager
