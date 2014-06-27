@@ -29,7 +29,7 @@
                 {
                  "gid":12,
                  "height":0,
-                 "name":"Thief",
+                 "name":"Cleric",
                  "properties":
                     {
 
@@ -501,6 +501,20 @@
                  "width":0,
                  "x":1168,
                  "y":1264
+                }, 
+                {
+                 "gid":13,
+                 "height":0,
+                 "name":"Generalist",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Trainer",
+                 "visible":true,
+                 "width":0,
+                 "x":160,
+                 "y":240
                 }],
          "opacity":1,
          "type":"objectgroup",

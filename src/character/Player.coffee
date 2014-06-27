@@ -25,7 +25,7 @@ class Player extends Character
 
   handleTile: (tile) ->
     if tile.object?.type is "Trainer"
-      @playerManager.game.broadcast MessageCreator.genericMessage "#{name} has met with the #{tile.object.name} trainer!"
+      @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} has met with the #{tile.object.name} trainer!"
 
   moveAction: ->
     randomDir = -> chance.integer({min: 1, max: 9})
@@ -83,6 +83,6 @@ class Player extends Character
     @xp.toMinimum()
 
   levelUpXpCalc: (level) ->
-    Math.floor 500 + (500 * Math.pow level, 1.67)
+    Math.floor 100 + (400 * Math.pow level, 1.67)
 
 module.exports = exports = Player

@@ -7,7 +7,7 @@ MessageCreator = require "./MessageCreator"
 Constants = require "./Constants"
 World = require "../map/World"
 
-console.log "Rebooted IdleLands"
+console.log "Rebooted IdleLands."
 
 class Game
 

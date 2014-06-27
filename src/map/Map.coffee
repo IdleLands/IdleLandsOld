@@ -1,7 +1,4 @@
 
-#Entering a town will port you to the middle of the town to prevent spammy messages
-
-Region = require "./Region"
 _ = require "underscore"
 
 class Map
@@ -27,9 +24,6 @@ class Map
 
   blockers: [16, 17, 3]
   interactables: [1, 2, 12, 13, 14, 15, 18]
-
-  regions: {} #Tiled can do this, so maybe just load those
-  dungeons: {} #sequence of regions, probably
 
   constructor: (map) ->
     path = "../../assets/map/#{map}.json"
