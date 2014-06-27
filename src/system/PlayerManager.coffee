@@ -20,6 +20,8 @@ class PlayerManager
   retrievePlayer: (identifier, callback) ->
     @db.findOne {identifier: identifier}, (e, player) =>
       return if not player
+
+      @game.broadcast MessageCreator.generateMessage "#{player.name} has joined #{Constants.gameName}!"
       player = @migratePlayer player
       player.playerManager = @
       callback player
@@ -33,8 +35,6 @@ class PlayerManager
 
       @players = _.uniq @players
 
-      @game.broadcast MessageCreator.generateMessage "#{player.name} has joined #{Constants.gameName}!"
-
   removePlayer: (identifier) ->
 
     name = (_.findWhere @players, {identifier, identifier}).name
@@ -46,6 +46,7 @@ class PlayerManager
 
   registerPlayer: (options, middleware, callback) ->
 
+    @game.broadcast MessageCreator.genericMessage "Welcome #{options.name} to Idletopia!"
     playerObject = new Player options
     playerObject.playerManager = @
     playerObject.initialize()
@@ -82,6 +83,10 @@ class PlayerManager
     loadRN = (obj) ->
       return if not obj
       obj.__proto__ = RestrictedNumber.prototype
+      obj
+
+    loadProfession = (professionName) ->
+      new (require "../character/classes/#{professionName}")()
 
     _.forEach ['hp', 'mp', 'special', 'level', 'xp'], (item) ->
       player[item] = loadRN player[item]
@@ -91,6 +96,13 @@ class PlayerManager
     player.__proto__ = Player.prototype
     player.playerManager = @
     player.isBusy = false
+
+    if not player.professionName
+      player.changeProfession "Generalist"
+    else
+      player.profession = loadProfession player.professionName
+      player.profession.load player
+
     player
 
 module.exports = exports = PlayerManager

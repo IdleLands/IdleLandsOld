@@ -4,6 +4,8 @@
   killed
   attack
   attacked
+  thump
+  thumped
   miss
   missed
   heal
@@ -32,24 +34,26 @@
   OOC
 
   walk
+  hitWall
+
   fall
+  teleport
   ascend
   descend
   yesno
   enterArea
   exitArea
-  swim
-  fly
-  onFire
-  onIce
-  onSwamp
-  onGrass
-  onPath
-  onForest
+  fly???
+  onWater #
+  onFire #
+  onIce #
+  onSwamp #
+  onGrass #
+  onPath #
+  onForest #
   atDoor
   doorOpened
   doorClosed
   doorLocked
-  hitWall
   didntMove
 ###

@@ -1,7 +1,8 @@
 
 RestrictedNumber = require "restricted-number"
+{EventEmitter} = require 'events'
 
-class Character
+class Character extends EventEmitter
 
   constructor: (options) ->
     [@name, @identifier] = [options.name, options.identifier]
@@ -9,6 +10,8 @@ class Character
     @mp = new RestrictedNumber 0, 0, 0
     @special = new RestrictedNumber 0, 0, 0
     @level = new RestrictedNumber 0, 100, 0
+
+    @
 
   num2dir: (dir,x,y) ->
     switch dir
