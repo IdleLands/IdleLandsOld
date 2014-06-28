@@ -28,4 +28,14 @@ class API
   @nextAction: (identifier) ->
     @gameInstance.nextAction identifier
 
+  @add =
+    yesno: (question, y, n) =>
+      @gameInstance.componentDatabase.insertYesNo question, y, n
+
+  @find: (query, callback) ->
+    @gameInstance.componentDatabase.findEvent query, callback
+
+  @remove: (id, callback) ->
+    @gameInstance.componentDatabase.removeEvent id, callback
+
 module.exports = exports = API

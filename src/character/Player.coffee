@@ -2,6 +2,7 @@
 Character = require "./Character"
 RestrictedNumber = require "restricted-number"
 MessageCreator = require "../system/MessageCreator"
+Constants = require "../system/Constants"
 _ = require "underscore"
 Chance = require "chance"
 chance = new Chance()
@@ -25,7 +26,11 @@ class Player extends Character
 
   handleTile: (tile) ->
     if tile.object?.type is "Trainer"
-      @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} has met with the #{tile.object.name} trainer!"
+      className = tile.object.name
+      message = "#{@name} has met with the #{className} trainer!"
+      if player.professionName is className
+        message += " Alas, #{@name} is already a #{className}!"
+      @playerManager.game.broadcast MessageCreator.genericMessage message
 
   moveAction: ->
     randomDir = -> chance.integer({min: 1, max: 9})
@@ -48,6 +53,7 @@ class Player extends Character
     else
       @lastDir = null
       @ignoreDir = dir
+
       @emit 'hitWall'
 
     @handleTile tile
@@ -61,8 +67,12 @@ class Player extends Character
 
   decisionAction: ->
 
+  possiblyDoEvent: ->
+    @playerManager.game.eventHandler.doEvent Constants.pickRandomEvent(),@ if chance.bool {probability: 25}
+
   takeTurn: ->
     @moveAction()
+    @possiblyDoEvent()
     @save()
 
   save: ->

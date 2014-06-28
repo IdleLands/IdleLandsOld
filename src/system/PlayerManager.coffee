@@ -46,7 +46,7 @@ class PlayerManager
 
   registerPlayer: (options, middleware, callback) ->
 
-    @game.broadcast MessageCreator.genericMessage "Welcome #{options.name} to Idletopia!"
+    @game.broadcast MessageCreator.genericMessage "Welcome #{options.name} to #{Constants.gameName}!"
     playerObject = new Player options
     playerObject.playerManager = @
     playerObject.initialize()

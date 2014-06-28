@@ -70,7 +70,7 @@ class DatabaseWrapper
 
   findForEach: (terms, callback) =>
     if databaseEngine is 'mongo'
-      Q.when @databaseReady, () =>
+      Q.when @databaseReady, =>
         @db.find(terms).stream().on 'data', (data) -> callback null, data
     else
       @db.find terms, (e, docs) ->

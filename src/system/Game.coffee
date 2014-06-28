@@ -4,6 +4,7 @@ PlayerManager = require "./PlayerManager"
 EventHandler = require "./EventHandler"
 MonsterManager = require "./MonsterManager"
 MessageCreator = require "./MessageCreator"
+ComponentDatabase = require "./ComponentDatabase"
 Constants = require "./Constants"
 World = require "../map/World"
 
@@ -16,11 +17,12 @@ class Game
   constructor: () ->
     @playerManager = new PlayerManager @
     @monsterManager = new MonsterManager()
-    @eventHandler = new EventHandler()
+    @eventHandler = new EventHandler @
+    @componentDatabase = new ComponentDatabase @
     @world = new World()
 
   registerBroadcastHandler: (@broadcastHandler, @broadcastContext) ->
-    console.log "Registered broadcast handler."
+    console.info "Registered broadcast handler."
     @broadcast MessageCreator.generateMessage "Initializing the Lands that Idle (#{Constants.gameName})."
 
   broadcast: (message) ->
