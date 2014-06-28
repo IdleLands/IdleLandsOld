@@ -9,7 +9,6 @@ chance = new Chance()
 
 class Player extends Character
 
-  gold: 0
   isBusy: false
 
   constructor: (player) ->
@@ -18,18 +17,28 @@ class Player extends Character
   initialize: ->
     if not @xp
       @xp = new RestrictedNumber 0, (@levelUpXpCalc 0), 0
+      @gold = new RestrictedNumber 0, 9999999999, 0
       @levelUp()
       @x = 10
       @y = 10
-      @map = 'norkos'
+      @map = 'Norkos'
       @changeProfession "Generalist"
 
   handleTile: (tile) ->
     if tile.object?.type is "Trainer"
+      return if @isBusy
+      @isBusy = true
       className = tile.object.name
       message = "#{@name} has met with the #{className} trainer!"
-      if player.professionName is className
+      if @professionName is className
         message += " Alas, #{@name} is already a #{className}!"
+        @isBusy = false
+      else
+        @playerManager.game.eventHandler.doYesNo {}, @, (result) =>
+          @isBusy = false
+          return if not result
+          @changeProfession className
+
       @playerManager.game.broadcast MessageCreator.genericMessage message
 
   moveAction: ->
@@ -37,7 +46,7 @@ class Player extends Character
     dir = randomDir()
     dir = randomDir() while dir is @ignoreDir
 
-    dir = if chance.bool({likelihood: 75}) then @lastDir else dir
+    dir = if chance.bool {likelihood: 75} then @lastDir else dir
     newLoc = @num2dir dir, @x, @y
 
     tile = @playerManager.game.world.maps[@map].getTile newLoc.x,newLoc.y
@@ -65,10 +74,18 @@ class Player extends Character
     @profession.load @
     @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} is now a #{to}!"
 
+  calculateYesPercent: ->
+    50
+
+  getGender: ->
+    "male"
+
   decisionAction: ->
 
   possiblyDoEvent: ->
-    @playerManager.game.eventHandler.doEvent Constants.pickRandomEvent(),@ if chance.bool {probability: 25}
+    event = Constants.pickRandomEvent @
+    return if not event
+    @playerManager.game.eventHandler.doEvent event, @, ->
 
   takeTurn: ->
     @moveAction()
@@ -79,6 +96,9 @@ class Player extends Character
     return if not @playerManager
     @playerManager.savePlayer @
 
+  gainGold: (gold) ->
+    @gold.add gold
+
   gainXp: (xp) ->
     @xp.set 0 if _.isNaN @xp.__current
     @xp.add xp
@@ -87,6 +107,7 @@ class Player extends Character
       @levelUp()
 
   levelUp: ->
+    return if not @playerManager
     @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} has attained level #{@level.getValue()}!"
     @level.add 1
     @xp.maximum = @levelUpXpCalc @level.getValue()

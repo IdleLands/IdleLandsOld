@@ -5,45 +5,66 @@ chance = new Chance()
 
 class Constants
   @gameName = "Idletopia"
-  @eventRates =
+  @eventRates = [
 
-    yesno:
-      min: 15
-      max: 100
-
-    findItem:
+      type: "yesno"
+      min: 1
+      max: 1000
+    ,
+      type: "findItem"
       min: 1
       max: 100
-    blessItem:
+    ,
+      type: "blessItem"
       min: 1
       max: 100
-    forsakeItem:
+    ,
+      type: "forsakeItem"
       min: 1
       max: 100
+    ,
+      type: "blessXp"
+      min: 1
+      max: 3000
+    ,
+      type: "forsakeXp"
+      min: 1
+      max: 3000
+    ,
+      type: "blessGold"
+      min: 1
+      max: 2000
+    ,
+      type: "forsakeGold"
+      min: 1
+      max: 2000
+    ,
+      type: "party"
+      min: 1
+      max: 100
+    ,
+      type: "battle"
+      min: 1
+      max: 100
+  ]
 
+  @eventEffects =
     blessXp:
-      min: 1
-      max: 100
+      percent: 10
+      amount: 100
     forsakeXp:
-      min: 1
-      max: 100
-
+      percent: -10
+      amount: -100
     blessGold:
-      min: 1
-      max: 100
+      amount: 1000
     forsakeGold:
-      min: 1
-      max: 100
+      amount: 1000
 
-    party:
-      min: 1
-      max: 100
-
-    battle:
-      min: 1
-      max: 100
-
-  @pickRandomEvent = ->
-    "yesno"
+  @pickRandomEvent = (player) ->
+    eventMod = 0
+    event = @eventRates[chance.integer {min: 0, max: @eventRates.length-1}]
+    prob = chance.integer {min: 0, max: event.max}
+    return event.type if prob <= (event.min+eventMod)
+    return null
 
 module.exports = exports = Constants

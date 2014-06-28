@@ -29,6 +29,8 @@ class DatabaseWrapper
 
           @db = DatabaseWrapper::databaseConnection.collection "#{@label}"
 
+          (@db.ensureIndex @index, ->) if @index
+
           _isReady.resolve @db
       else
         @db = DatabaseWrapper::databaseConnection.collection "#{@label}"
@@ -44,10 +46,11 @@ class DatabaseWrapper
       @db.insert data, callback
 
   remove: (query, options, callback) =>
-    if databaseEngine is 'mongo'
-      @db.remove query, {w:0}
-    else
-      @db.remove query, options, callback
+    Q.when @databaseReady, =>
+      if databaseEngine is 'mongo'
+        @db.remove query, {w:0}
+      else
+        @db.remove query, options, callback
 
   findOne: (query, callback) =>
     Q.when @databaseReady, () =>
@@ -62,11 +65,12 @@ class DatabaseWrapper
       @db.update query, update, options, callback
 
   find: (terms, callback) =>
-    if databaseEngine is 'mongo'
-      @db.find terms, (e, docs) ->
-        docs.toArray callback
-    else
-      @db.find terms, callback
+    Q.when @databaseReady, =>
+      if databaseEngine is 'mongo'
+        @db.find terms, (e, docs) ->
+          docs.toArray callback
+      else
+        @db.find terms, callback
 
   findForEach: (terms, callback) =>
     if databaseEngine is 'mongo'
@@ -102,7 +106,7 @@ class DatabaseWrapper
     callback ?= ->
     rimraf @db.filename, callback
 
-  constructor: (@label) ->
+  constructor: (@label, @index) ->
     @load()
 
 module.exports = exports = DatabaseWrapper

@@ -80,18 +80,19 @@ class PlayerManager
   migratePlayer: (player) ->
     return if not player
 
+    player.gold = (new RestrictedNumber 0, 9999999999, 0) if not player.gold or not player.gold?.maximum
+
     loadRN = (obj) ->
       return if not obj
+      obj.__current = 0 if _.isNaN obj.current
       obj.__proto__ = RestrictedNumber.prototype
       obj
 
     loadProfession = (professionName) ->
       new (require "../character/classes/#{professionName}")()
 
-    _.forEach ['hp', 'mp', 'special', 'level', 'xp'], (item) ->
+    _.forEach ['hp', 'mp', 'special', 'level', 'xp', 'gold'], (item) ->
       player[item] = loadRN player[item]
-
-    player.gold = 0 if not player.gold
 
     player.__proto__ = Player.prototype
     player.playerManager = @
@@ -104,5 +105,8 @@ class PlayerManager
       player.profession.load player
 
     player
+
+  getPlayerByName: (playerName) ->
+    _.findWhere @players, {name: playerName}
 
 module.exports = exports = PlayerManager

@@ -5,9 +5,7 @@ ObjectID = require("mongodb").ObjectID
 class ComponentDatabase
 
   constructor: (@game) ->
-    @eventsDb = new Datastore "events"
-    @eventsDb.ensureIndex
-      random: '2dsphere'
+    @eventsDb = new Datastore "events", {random: '2dsphere'}
 
   insertYesNo: (question, y, n) ->
     @eventsDb.insert
@@ -15,6 +13,13 @@ class ComponentDatabase
       question: question
       y: y
       n: n
+      random: [Math.random(), 0]
+    , ->
+
+  insertStatic: (type, remark) ->
+    @eventsDb.insert
+      type: type
+      remark: remark
       random: [Math.random(), 0]
     , ->
 

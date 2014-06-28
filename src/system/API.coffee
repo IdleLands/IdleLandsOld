@@ -31,11 +31,28 @@ class API
   @add =
     yesno: (question, y, n) =>
       @gameInstance.componentDatabase.insertYesNo question, y, n
+    static: (eventType, remark) =>
+      @gameInstance.componentDatabase.insertStatic eventType, remark
 
   @find: (query, callback) ->
     @gameInstance.componentDatabase.findEvent query, callback
 
   @remove: (id, callback) ->
     @gameInstance.componentDatabase.removeEvent id, callback
+
+  @teleport =
+    singleLocation: (playerName, location) =>
+      player = @gameInstance.playerManager.getPlayerByName playerName
+      @gameInstance.gmCommands.teleportLocation player, location
+
+    single: (playerName, map, x, y) =>
+      player = @gameInstance.playerManager.getPlayerByName playerName
+      @gameInstance.gmCommands.teleport player, map, x, y
+
+    massLocation: (location) =>
+      @gameInstance.gmCommands.massTeleportLocation location
+
+    mass: (map, x, y) =>
+      @gameInstance.gmCommands.massTeleport map, x, y
 
 module.exports = exports = API

@@ -1,9 +1,9 @@
 
 Class = require "./Class"
 
-class Fighter extends Class
+class Cleric extends Class
 
   load: (player) ->
     super player
 
-module.exports = exports = Fighter
+module.exports = exports = Cleric

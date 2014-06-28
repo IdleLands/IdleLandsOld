@@ -2,6 +2,7 @@
 class MessageCreator
 
   genericMessage = (message) ->
+    return if not message
     [{type: 'generic', message: message}]
 
   @generateMessage: (message) ->

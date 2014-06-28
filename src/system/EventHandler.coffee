@@ -1,11 +1,72 @@
+Chance = require "chance"
+chance = new Chance()
 
+MessageCreator = require "./MessageCreator"
+Constants = require "./Constants"
 
 class EventHandler
 
   constructor: (@game) ->
 
-  doEvent: (eventType, player) ->
-    @game.componentDatabase.getRandomEvent eventType, (e, event) ->
-      console.log event,e
+  doEvent: (eventType, player, callback) ->
+    @game.componentDatabase.getRandomEvent eventType, (e, event) =>
+      return if not event
+      switch eventType
+        when 'yesno'
+          @doYesNo event, player, callback
+        when 'blessXp', 'forsakeXp'
+          @doXp event, player, callback
+        when 'blessGold', 'forsakeGold'
+          @doGold event, player, callback
+
+  doYesNo: (event, player, callback) ->
+    if chance.bool {likelihood: player.calculateYesPercent()}
+      (@game.broadcast MessageCreator.genericMessage @doStringReplace event.y, player) if event.y
+      callback true
+    else
+      (@game.broadcast MessageCreator.genericMessage @doStringReplace event.n, player) if event.n
+      callback false
+
+  doXp: (event, player, callback) ->
+    boost = 0
+
+    if (chance.bool {likelihood: player.calculateYesPercent() })
+      boost = Constants.eventEffects[event.type].amount
+    else
+      boost = Math.floor player.xp.maximum / Constants.eventEffects[event.type].percent
+
+    extra =
+      xp: Math.abs boost
+
+    player.gainXp boost
+
+    @game.broadcast MessageCreator.genericMessage @doStringReplace event.remark, player, extra
+    callback()
+
+  doGold: (event, player, callback) ->
+    boost = Constants.eventEffects[event.type].amount
+
+    extra =
+      gold: Math.abs boost
+
+    player.gainGold boost
+
+    @game.broadcast MessageCreator.genericMessage @doStringReplace event.remark, player, extra
+    callback()
+
+  doStringReplace: (string, player, extra) ->
+    gender = player.getGender()
+    string
+      .split('%player').join player.name
+      .split('%hisher').join @getGenderPronoun gender, '%hisher'
+      .split('%xp').join extra?.xp
+      .split('%gold').join extra?.gold
+
+  getGenderPronoun: (gender, replace) ->
+    switch replace
+      when '%hisher'
+        if gender is 'male' then 'his'
+        else if gender is 'female' then 'hers'
+        else 'theirs'
 
 module.exports = exports = EventHandler
