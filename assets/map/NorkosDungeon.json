@@ -29,12 +29,12 @@
                 {
                  "gid":1,
                  "height":0,
-                 "name":"",
+                 "name":"ToNorkosDungeon2",
                  "properties":
                     {
 
                     },
-                 "type":"",
+                 "type":"Teleport",
                  "visible":true,
                  "width":0,
                  "x":176,

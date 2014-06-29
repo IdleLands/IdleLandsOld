@@ -16,3 +16,33 @@
 
   hidden stat: luck
 ###
+
+class Equipment
+
+  constructor: (options) ->
+    @name = options.name
+
+    @str = options.str
+    @dex = options.dex
+    @int = options.int
+    @con = options.con
+    @wis = options.wis
+    @agi = options.agi
+
+    @luck = options.luck
+    @sentimentality = options.sentimentality
+    @piety = options.piety
+
+    @ice = options.ice
+    @fire = options.fire
+    @water = options.water
+    @earth = options.earth
+    @thunder = options.thunder
+
+    @icePercent = options.icePercent
+    @firePercent = options.firePercent
+    @waterPercent = options.waterPercent
+    @earthPercent = options.earthPercent
+    @thunderPercent = options.thunderPercent
+
+module.exports = exports = Equipment

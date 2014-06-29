@@ -29,8 +29,6 @@ class Character extends EventEmitter
 
   moveAction: ->
 
-  decisionAction: ->
-
   combatAction: ->
 
 module.exports = exports = Character

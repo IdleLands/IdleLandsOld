@@ -108,7 +108,7 @@
                     {
 
                     },
-                 "type":"StairsDown",
+                 "type":"Teleport",
                  "visible":true,
                  "width":0,
                  "x":704,
@@ -122,7 +122,7 @@
                     {
 
                     },
-                 "type":"StairsUp",
+                 "type":"Teleport",
                  "visible":true,
                  "width":0,
                  "x":704,
@@ -243,12 +243,12 @@
                 {
                  "gid":2,
                  "height":0,
-                 "name":"Door",
+                 "name":"ToSecret",
                  "properties":
                     {
 
                     },
-                 "type":"Door",
+                 "type":"Teleport",
                  "visible":true,
                  "width":0,
                  "x":944,
@@ -500,7 +500,7 @@
                     {
 
                     },
-                 "type":"StairsDown",
+                 "type":"Teleport",
                  "visible":true,
                  "width":0,
                  "x":1168,

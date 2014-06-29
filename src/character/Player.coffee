@@ -3,6 +3,7 @@ Character = require "./Character"
 RestrictedNumber = require "restricted-number"
 MessageCreator = require "../system/MessageCreator"
 Constants = require "../system/Constants"
+Equipment = require "../item/Equipment"
 _ = require "underscore"
 Chance = require "chance"
 chance = new Chance()
@@ -23,6 +24,21 @@ class Player extends Character
       @y = 10
       @map = 'Norkos'
       @changeProfession "Generalist"
+      @generateBaseEquipment()
+
+  generateBaseEquipment: ->
+    @equipment = [
+      new Equipment {slot: "Body",    class: "Newbie", name: "Tattered Shirt"}
+      new Equipment {slot: "Feet",    class: "Newbie", name: "Cardboard Shoes"}
+      new Equipment {slot: "Finger",  class: "Newbie", name: "Twisted Wire"}
+      new Equipment {slot: "Hands",   class: "Newbie", name: "Pixelated Gloves"}
+      new Equipment {slot: "Head",    class: "Newbie", name: "Miniature Top Hat"}
+      new Equipment {slot: "Legs",    class: "Newbie", name: "A Leaf"}
+      new Equipment {slot: "Neck",    class: "Newbie", name: "Old Brooch"}
+      new Equipment {slot: "MainHand",class: "Newbie", name: "Empty and Broken Ale Bottle"}
+      new Equipment {slot: "OffHand", class: "Newbie", name: "Chunk of Rust"}
+      new Equipment {slot: "Charm",   class: "Newbie", name: "Ancient Bracelet"}
+    ]
 
   handleTrainerOnTile: (tile) ->
     return if @isBusy
@@ -105,8 +121,6 @@ class Player extends Character
   getGender: ->
     "male"
 
-  decisionAction: ->
-
   possiblyDoEvent: ->
     event = Constants.pickRandomEvent @
     return if not event
@@ -135,6 +149,8 @@ class Player extends Character
     return if not @playerManager
     @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} has attained level #{@level.getValue()}!"
     @level.add 1
+    @hp.maximum += 10
+    @mp.maximum += 5
     @xp.maximum = @levelUpXpCalc @level.getValue()
     @xp.toMinimum()
 

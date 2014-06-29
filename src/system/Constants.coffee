@@ -17,27 +17,27 @@ class Constants
     ,
       type: "blessItem"
       min: 1
-      max: 100
+      max: 1500
     ,
       type: "forsakeItem"
-      min: 1
-      max: 100
+      min: 50
+      max: 1250
     ,
       type: "blessXp"
       min: 1
-      max: 3000
+      max: 500
     ,
       type: "forsakeXp"
       min: 1
-      max: 3000
+      max: 1000
     ,
       type: "blessGold"
       min: 1
-      max: 2000
+      max: 750
     ,
       type: "forsakeGold"
       min: 1
-      max: 2000
+      max: 1000
     ,
       type: "party"
       min: 1
@@ -59,6 +59,12 @@ class Constants
       amount: 1000
     forsakeGold:
       amount: 1000
+    blessItem:
+      amount: 1
+      percent: 5
+    forsakeItem:
+      amount: -1
+      percent: -5
 
   @pickRandomEvent = (player) ->
     eventMod = 0

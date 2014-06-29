@@ -2,6 +2,7 @@
 Datastore = require "./DatabaseWrapper"
 _ = require "underscore"
 Player = require "../character/Player"
+Equipment = require "../item/Equipment"
 RestrictedNumber = require "restricted-number"
 Q = require "q"
 MessageCreator = require "./MessageCreator"
@@ -91,12 +92,21 @@ class PlayerManager
     loadProfession = (professionName) ->
       new (require "../character/classes/#{professionName}")()
 
+    loadEquipment = (equipment) ->
+      _.forEach equipment, (item) ->
+        item.__proto__ = Equipment.prototype
+
     _.forEach ['hp', 'mp', 'special', 'level', 'xp', 'gold'], (item) ->
       player[item] = loadRN player[item]
 
     player.__proto__ = Player.prototype
     player.playerManager = @
     player.isBusy = false
+
+    if not player.equipment
+      player.generateBaseEquipment()
+    else
+      player.equipment = loadEquipment player.equipment
 
     if not player.professionName
       player.changeProfession "Generalist"
