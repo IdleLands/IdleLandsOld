@@ -16,10 +16,6 @@
   fled
   turn-start
   turn-end
-  xp-gain
-  xp-loss
-  level-up
-  level-down
   skill-use
   skill-used
   battle-start
@@ -33,14 +29,17 @@
 
   OOC
 
-  walk
-  hitWall
+  level-up #
+  level-down
 
-  fall
-  teleport
-  ascend
-  descend
-  yesno
+  walk #
+  hitWall #
+
+  fall (damage an item) #
+  teleport #
+  ascend #
+  descend #
+  yesno #
   enterArea
   exitArea
   fly???
@@ -55,5 +54,4 @@
   doorOpened
   doorClosed
   doorLocked
-  didntMove
 ###

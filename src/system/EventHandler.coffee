@@ -24,6 +24,7 @@ class EventHandler
           @doItem event, player, callback
 
   doYesNo: (event, player, callback) ->
+    player.emit "yesno"
     if chance.bool {likelihood: player.calculateYesPercent()}
       (@game.broadcast MessageCreator.genericMessage @doStringReplace event.y, player) if event.y
       callback true

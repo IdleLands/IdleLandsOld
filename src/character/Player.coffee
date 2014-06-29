@@ -75,6 +75,8 @@ class Player extends Character
       when "ascend" then message = "#{@name} has ascended to #{dest.destName}."
       when "descend" then message = "#{@name} has descended to #{dest.destName}."
 
+    @emit dest.movementType
+
     @playerManager.game.broadcast MessageCreator.genericMessage message
 
   handleTile: (tile) ->
@@ -139,6 +141,11 @@ class Player extends Character
     @gold.add gold
 
   gainXp: (xp) ->
+    if xp > 0
+      @emit "gainXp"
+    else
+      @emit "loseXp"
+
     @xp.set 0 if _.isNaN @xp.__current
     @xp.add xp
 
@@ -153,6 +160,7 @@ class Player extends Character
     @mp.maximum += 5
     @xp.maximum = @levelUpXpCalc @level.getValue()
     @xp.toMinimum()
+    @emit "levelUp"
 
   levelUpXpCalc: (level) ->
     Math.floor 100 + (400 * Math.pow level, 1.67)
