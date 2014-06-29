@@ -20,7 +20,7 @@ class Constants
       max: 1500
     ,
       type: "forsakeItem"
-      min: 50
+      min: 1
       max: 1250
     ,
       type: "blessXp"

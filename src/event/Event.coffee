@@ -1,29 +1,39 @@
 
 ###
-  kill
-  killed
-  attack
-  attacked
-  thump
-  thumped
-  miss
-  missed
-  heal
-  healed
-  damage
-  damaged
-  flee
-  fled
-  turn-start
-  turn-end
-  skill-use
-  skill-used
+  kill /
+  killed /
+  attack / (skilltype is physical, or is normal attack)
+  attacked /
+  thump / (skilltype is physical, or is normal attack)
+  thumped /
+  miss /
+  missed /
+  heal / (hp is restored)
+  healed /
+  energize / (mp is restored)
+  energized /
+  drain / (hp is stolen; not necessarily restored)
+  drained /
+  osmose / (mp is stolen; not necessarily restored)
+  osmosed /
+  damage / (any form of hp damage is taken)
+  damaged /
+  vitiate / (any form of mp damage is taken)
+  vitiated /
+  flee /
+  fled /
+  turn-start /
+  turn-end /
+  skill-use / (any skill is used)
+  skill-used /
+  magic-use / (a magic skill is used)
+  magic-used /
+  physical-skill-use / (a physical skill is used)
+  physical-skill-used /
   battle-start
   battle-end
-  round-start
-  round-end
-  turn-start
-  turn-end
+  round-start /
+  round-end /
   party-win
   party-loss
 
