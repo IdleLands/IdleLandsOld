@@ -3,7 +3,7 @@ _ = require "underscore"
 
 class World
 
-  mapsArray: ['Norkos']
+  mapsArray: ['Norkos', 'NorkosDungeon']
   maps: {}
 
   constructor: ->

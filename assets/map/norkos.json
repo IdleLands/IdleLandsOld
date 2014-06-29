@@ -88,9 +88,13 @@
                  "name":"NorkosDungeonEntrance",
                  "properties":
                     {
-
+                     "destName":"Norkos Dungeon -1",
+                     "map":"NorkosDungeon",
+                     "movementType":"descend",
+                     "x":"30",
+                     "y":"1"
                     },
-                 "type":"StairsDown",
+                 "type":"Teleport",
                  "visible":true,
                  "width":0,
                  "x":384,

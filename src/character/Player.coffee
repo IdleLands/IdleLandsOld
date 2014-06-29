@@ -24,22 +24,47 @@ class Player extends Character
       @map = 'Norkos'
       @changeProfession "Generalist"
 
-  handleTile: (tile) ->
-    if tile.object?.type is "Trainer"
-      return if @isBusy
-      @isBusy = true
-      className = tile.object.name
-      message = "#{@name} has met with the #{className} trainer!"
-      if @professionName is className
-        message += " Alas, #{@name} is already a #{className}!"
+  handleTrainerOnTile: (tile) ->
+    return if @isBusy
+    @isBusy = true
+    className = tile.object.name
+    message = "#{@name} has met with the #{className} trainer!"
+    if @professionName is className
+      message += " Alas, #{@name} is already a #{className}!"
+      @isBusy = false
+    else
+      @playerManager.game.eventHandler.doYesNo {}, @, (result) =>
         @isBusy = false
-      else
-        @playerManager.game.eventHandler.doYesNo {}, @, (result) =>
-          @isBusy = false
-          return if not result
-          @changeProfession className
+        return if not result
+        @changeProfession className
 
-      @playerManager.game.broadcast MessageCreator.genericMessage message
+    @playerManager.game.broadcast MessageCreator.genericMessage message
+
+  handleTeleport: (tile) ->
+    dest = tile.object.properties
+    dest.x = parseInt dest.x
+    dest.y = parseInt dest.y
+
+    if not dest.map
+      console.error "ERROR. No dest.map at #{@x},#{@y} in #{@map}"
+      return
+
+    @map = dest.map
+    @x = dest.x
+    @y = dest.y
+
+    message = ""
+
+    switch dest.movementType
+      when "ascend" then message = "#{@name} has ascended to #{dest.destName}."
+      when "descend" then message = "#{@name} has descended to #{dest.destName}."
+
+    @playerManager.game.broadcast MessageCreator.genericMessage message
+
+  handleTile: (tile) ->
+    switch tile.object?.type
+      when "Trainer" then @handleTrainerOnTile tile
+      when "Teleport" then @handleTeleport tile
 
   moveAction: ->
     randomDir = -> chance.integer({min: 1, max: 9})
