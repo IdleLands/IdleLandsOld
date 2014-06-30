@@ -16,7 +16,7 @@
   drained /
   osmose / (mp is stolen; not necessarily restored)
   osmosed /
-  damage / (any form of hp damage is taken)
+  damage / (any form of hp damage is taken - type will be spiritual, emotional, physical, or magical)
   damaged /
   vitiate / (any form of mp damage is taken)
   vitiated /

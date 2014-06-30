@@ -32,11 +32,11 @@ class Constants
       max: 1000
     ,
       type: "blessGold"
-      min: 1
+      min: 500
       max: 750
     ,
       type: "forsakeGold"
-      min: 1
+      min: 999
       max: 1000
     ,
       type: "party"
@@ -55,10 +55,10 @@ class Constants
     forsakeXp:
       percent: -10
       amount: -100
-    blessGold:
-      amount: 1000
+    blessGold: #got this much money? no problem, you don't need more.. probably :D
+      amount: [1, 60, 100, 400, 1000, 3000, 7000, 10000, 25000, 50000, 65000, 85000, 100000]
     forsakeGold:
-      amount: 1000
+      amount: [-1, -60, -100, -400, -1000, -3000, -7000, -10000, -25000, -50000, -65000, -85000, -100000]
     blessItem:
       amount: 1
       percent: 5
@@ -68,7 +68,7 @@ class Constants
 
   @pickRandomEvent = (player) ->
     eventMod = 0
-    event = @eventRates[chance.integer {min: 0, max: @eventRates.length-1}]
+    event = _.sample @eventRates
     prob = chance.integer {min: 0, max: event.max}
     return event.type if prob <= (event.min+eventMod)
     return null

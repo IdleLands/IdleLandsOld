@@ -51,10 +51,26 @@ class EventHandler
     callback()
 
   doGold: (event, player, callback) ->
-    boost = Constants.eventEffects[event.type].amount
+    goldTiers = Constants.eventEffects[event.type].amount
+    curGold = player.gold.getValue()
+
+    boost = 0
+    console.log 'test'
+    for i in [0...goldTiers.length]
+      if curGold < Math.abs goldTiers[i]
+        highVal = if not goldTiers[i-1] then 100 else goldTiers[i-1]
+        lowVal = if not goldTiers[i] then 1 else goldTiers[i]
+        min = Math.min highVal, lowVal, 0
+        max = Math.max highVal, lowVal
+        boost = chance.integer {min: min, max: max}
+        break
+
+    return if not boost
 
     extra =
       gold: Math.abs boost
+
+    return if player.gold.getValue() is 0
 
     player.gainGold boost
 
