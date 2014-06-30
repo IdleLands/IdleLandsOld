@@ -80,6 +80,8 @@ class EventHandler
     start = val
     end = val+boost
 
+    return if start is end
+
     item[stat] = end
 
     string = @doStringReplace event.remark, player, extra
@@ -103,6 +105,8 @@ class EventHandler
         item: item.name
 
       @game.broadcast MessageCreator.genericMessage @doStringReplace event.remark, player, extra
+
+    callback()
 
   doStringReplace: (string, player, extra = null) ->
     gender = player.getGender()
