@@ -28,16 +28,16 @@ class Player extends Character
 
   generateBaseEquipment: ->
     @equipment = [
-      new Equipment {slot: "Body",    class: "Newbie", name: "Tattered Shirt"}
-      new Equipment {slot: "Feet",    class: "Newbie", name: "Cardboard Shoes"}
-      new Equipment {slot: "Finger",  class: "Newbie", name: "Twisted Wire"}
-      new Equipment {slot: "Hands",   class: "Newbie", name: "Pixelated Gloves"}
-      new Equipment {slot: "Head",    class: "Newbie", name: "Miniature Top Hat"}
-      new Equipment {slot: "Legs",    class: "Newbie", name: "A Leaf"}
-      new Equipment {slot: "Neck",    class: "Newbie", name: "Old Brooch"}
-      new Equipment {slot: "MainHand",class: "Newbie", name: "Empty and Broken Ale Bottle"}
-      new Equipment {slot: "OffHand", class: "Newbie", name: "Chunk of Rust"}
-      new Equipment {slot: "Charm",   class: "Newbie", name: "Ancient Bracelet"}
+      new Equipment {type: "body",    class: "Newbie", name: "Tattered Shirt"}
+      new Equipment {type: "feet",    class: "Newbie", name: "Cardboard Shoes"}
+      new Equipment {type: "finger",  class: "Newbie", name: "Twisted Wire"}
+      new Equipment {type: "hands",   class: "Newbie", name: "Pixelated Gloves"}
+      new Equipment {type: "head",    class: "Newbie", name: "Miniature Top Hat"}
+      new Equipment {type: "legs",    class: "Newbie", name: "A Leaf"}
+      new Equipment {type: "neck",    class: "Newbie", name: "Old Brooch"}
+      new Equipment {type: "mainhand",class: "Newbie", name: "Empty and Broken Ale Bottle"}
+      new Equipment {type: "offhand", class: "Newbie", name: "Chunk of Rust"}
+      new Equipment {type: "charm",   class: "Newbie", name: "Ancient Bracelet"}
     ]
 
   handleTrainerOnTile: (tile) ->

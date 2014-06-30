@@ -12,7 +12,7 @@ class Constants
       max: 1000
     ,
       type: "findItem"
-      min: 1
+      min: 50
       max: 100
     ,
       type: "blessItem"

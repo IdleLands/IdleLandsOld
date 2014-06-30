@@ -1,5 +1,6 @@
 
 _ = require "underscore"
+Equipment = require "../item/Equipment"
 Chance = require "chance"
 chance = new Chance()
 
@@ -33,6 +34,9 @@ class EquipmentGenerator
 
     (itemProperties.push _.sample itemList['suffix']) if chance.integer({min: 0, max: 14}) is 1
 
-    makeItem itemProperties
+    newItem = makeItem itemProperties
+    newItem.type = type
+
+    new Equipment newItem
 
 module.exports = exports = EquipmentGenerator

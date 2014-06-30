@@ -22,6 +22,8 @@ class EventHandler
           @doGold event, player, callback
         when 'blessItem', 'forsakeItem'
           @doItem event, player, callback
+        when 'findItem'
+          @doFindItem event, player, callback
 
   doYesNo: (event, player, callback) ->
     player.emit "yesno"
@@ -85,6 +87,22 @@ class EventHandler
 
     @game.broadcast MessageCreator.genericMessage string
     callback()
+
+  doFindItem: (event, player, callback) ->
+    item = @game.equipmentGenerator.generateItem()
+    myItem = _.findWhere player.equipment, {type: item.type}
+    return if not myItem
+    score = item.score()
+    myScore = myItem.score()
+
+    if score > myScore
+      player.equipment = _.without player.equipment, myItem
+      player.equipment.push item
+
+      extra =
+        item: item.name
+
+      @game.broadcast MessageCreator.genericMessage @doStringReplace event.remark, player, extra
 
   doStringReplace: (string, player, extra = null) ->
     gender = player.getGender()

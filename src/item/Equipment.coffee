@@ -21,30 +21,35 @@ class Equipment
 
   constructor: (options) ->
     @name = options.name
+    @type = options.type
+    @itemClass = options.class
+    console.error "ERROR in equipment constructor, name=#{@name}, type=#{@type}" if not @name or not @type
 
-    @str = options.str
-    @dex = options.dex
-    @int = options.int
-    @con = options.con
-    @wis = options.wis
-    @agi = options.agi
+    @str = options.str or 0
+    @dex = options.dex or 0
+    @int = options.int or 0
+    @con = options.con or 0
+    @wis = options.wis or 0
+    @agi = options.agi or 0
 
-    @luck = options.luck
-    @sentimentality = options.sentimentality
-    @piety = options.piety
+    @luck = options.luck or 0
+    @sentimentality = options.sentimentality or 0
+    @piety = options.piety or 0
 
-    @ice = options.ice
-    @fire = options.fire
-    @water = options.water
-    @earth = options.earth
-    @thunder = options.thunder
+    @ice = options.ice or 0
+    @fire = options.fire or 0
+    @water = options.water or 0
+    @earth = options.earth or 0
+    @thunder = options.thunder or 0
 
-    @icePercent = options.icePercent
-    @firePercent = options.firePercent
-    @waterPercent = options.waterPercent
-    @earthPercent = options.earthPercent
-    @thunderPercent = options.thunderPercent
+    @icePercent = options.icePercent or 0
+    @firePercent = options.firePercent or 0
+    @waterPercent = options.waterPercent or 0
+    @earthPercent = options.earthPercent or 0
+    @thunderPercent = options.thunderPercent or 0
 
+    #TODO base score on personality and class
   score: () ->
+    @str + @dex + @con + @int + @wis + @agi
 
 module.exports = exports = Equipment
