@@ -33,6 +33,8 @@ class API
       @gameInstance.componentDatabase.insertYesNo question, y, n
     static: (eventType, remark) =>
       @gameInstance.componentDatabase.insertStatic eventType, remark
+    item: (item, duplicateCallback) =>
+      @gameInstance.componentDatabase.insertItem item, duplicateCallback
 
   @find: (query, callback) ->
     @gameInstance.componentDatabase.findEvent query, callback

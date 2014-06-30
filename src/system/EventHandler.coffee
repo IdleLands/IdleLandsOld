@@ -60,8 +60,8 @@ class EventHandler
     callback()
 
   doItem: (event, player, callback) ->
-    item = (_.shuffle player.equipment)[0]
-    stat = (_.shuffle (_.reject (_.keys item), (key) -> key is "name"))[0]
+    item = (_.sample player.equipment)
+    stat = (_.sample (_.reject (_.keys item), (key) -> key is "name"))
 
     val = item[stat] ? 0
 

@@ -5,6 +5,7 @@ EventHandler = require "./EventHandler"
 MonsterManager = require "./MonsterManager"
 MessageCreator = require "./MessageCreator"
 ComponentDatabase = require "./ComponentDatabase"
+EquipmentGenerator = require "./EquipmentGenerator"
 Constants = require "./Constants"
 GMCommands = require "./GMCommands"
 World = require "../map/World"
@@ -19,6 +20,7 @@ class Game
     @playerManager = new PlayerManager @
     @monsterManager = new MonsterManager()
     @eventHandler = new EventHandler @
+    @equipmentGenerator = new EquipmentGenerator @
     @componentDatabase = new ComponentDatabase @
     @gmCommands = new GMCommands @
     @world = new World()

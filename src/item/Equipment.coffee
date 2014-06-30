@@ -45,4 +45,6 @@ class Equipment
     @earthPercent = options.earthPercent
     @thunderPercent = options.thunderPercent
 
+  score: () ->
+
 module.exports = exports = Equipment

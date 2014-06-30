@@ -26,8 +26,8 @@
   turn-end /
   skill-use / (any skill is used)
   skill-used /
-  magic-use / (a magic skill is used)
-  magic-used /
+  magic-skill-use / (a magic skill is used)
+  magic-skill-used /
   physical-skill-use / (a physical skill is used)
   physical-skill-used /
   battle-start
