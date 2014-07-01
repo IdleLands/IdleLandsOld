@@ -1,2 +1,0 @@
-
-Personality = require "../Personality"

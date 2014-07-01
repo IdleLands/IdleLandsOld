@@ -6,27 +6,34 @@ class API
   #getGender for a player
   #get Coins for a player (coins are special currency, not like the in-game gold)
 
-  @registerPlayer: (options, middleware, callback) ->
-    @gameInstance.playerManager.registerPlayer options, middleware, callback
+  @register =
+    player: (options, middleware, callback) =>
+      @gameInstance.playerManager.registerPlayer options, middleware, callback
 
-  @addManyPlayers: (identifiers) ->
-    identifiers.forEach (identifier) =>
-      @addPlayer identifier
+    broadcastHandler: (handler, context) =>
+      @gameInstance.registerBroadcastHandler handler, context
 
-  @addPlayer: (identifier) ->
-    @gameInstance.playerManager.addPlayer identifier
+    playerLoadHandler: (handler) =>
+      @gameInstance.playerManager.registerLoadAllPlayersHandler handler
 
-  @removePlayer: (identifier) ->
-    @gameInstance.playerManager.removePlayer identifier
+  @game =
+    nextAction: (identifier) =>
+      @gameInstance.nextAction identifier
 
-  @registerBroadcastHandler: (handler, context) ->
-    @gameInstance.registerBroadcastHandler handler, context
+    teleport:
+      singleLocation: (playerName, location) =>
+        player = @gameInstance.playerManager.getPlayerByName playerName
+        @gameInstance.gmCommands.teleportLocation player, location
 
-  @registerPlayerLoadHandler: (handler) ->
-    @gameInstance.playerManager.registerLoadAllPlayersHandler handler
+      single: (playerName, map, x, y) =>
+        player = @gameInstance.playerManager.getPlayerByName playerName
+        @gameInstance.gmCommands.teleport player, map, x, y
 
-  @nextAction: (identifier) ->
-    @gameInstance.nextAction identifier
+      massLocation: (location) =>
+        @gameInstance.gmCommands.massTeleportLocation location
+
+      mass: (map, x, y) =>
+        @gameInstance.gmCommands.massTeleport map, x, y
 
   @add =
     yesno: (question, y, n) =>
@@ -35,26 +42,21 @@ class API
       @gameInstance.componentDatabase.insertStatic eventType, remark
     item: (item, duplicateCallback) =>
       @gameInstance.componentDatabase.insertItem item, duplicateCallback
+    player: (identifier) =>
+      @gameInstance.playerManager.addPlayer identifier
+    personality: (identifier, personality) =>
+      @gameInstance.playerManager.playerHash[identifier]?.addPersonality personality
 
-  @find: (query, callback) ->
-    @gameInstance.componentDatabase.findEvent query, callback
+  @find =
+    static: (query, callback) =>
+      @gameInstance.componentDatabase.findEvent query, callback
 
-  @remove: (id, callback) ->
-    @gameInstance.componentDatabase.removeEvent id, callback
-
-  @teleport =
-    singleLocation: (playerName, location) =>
-      player = @gameInstance.playerManager.getPlayerByName playerName
-      @gameInstance.gmCommands.teleportLocation player, location
-
-    single: (playerName, map, x, y) =>
-      player = @gameInstance.playerManager.getPlayerByName playerName
-      @gameInstance.gmCommands.teleport player, map, x, y
-
-    massLocation: (location) =>
-      @gameInstance.gmCommands.massTeleportLocation location
-
-    mass: (map, x, y) =>
-      @gameInstance.gmCommands.massTeleport map, x, y
+  @remove =
+    static: (id, callback) =>
+      @gameInstance.componentDatabase.removeEvent id, callback
+    player: (identifier) =>
+      @gameInstance.playerManager.removePlayer identifier
+    personality: (identifier, personality) =>
+      @gameInstance.playerManager.playerHash[identifier]?.removePersonality personality
 
 module.exports = exports = API

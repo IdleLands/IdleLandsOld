@@ -12,8 +12,8 @@ class Constants
       max: 1000
     ,
       type: "findItem"
-      min: 50
-      max: 100
+      min: 1
+      max: 300
     ,
       type: "blessItem"
       min: 1
@@ -21,22 +21,22 @@ class Constants
     ,
       type: "forsakeItem"
       min: 1
-      max: 1250
+      max: 1750
     ,
       type: "blessXp"
       min: 1
-      max: 500
+      max: 650
     ,
       type: "forsakeXp"
       min: 1
       max: 1000
     ,
       type: "blessGold"
-      min: 500
+      min: 1
       max: 750
     ,
       type: "forsakeGold"
-      min: 999
+      min: 1
       max: 1000
     ,
       type: "party"

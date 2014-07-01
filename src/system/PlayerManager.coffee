@@ -28,7 +28,7 @@ class PlayerManager
       callback player
 
   addPlayer: (identifier) ->
-    return if _.findWhere @players, {identifier, identifier}
+    return if _.findWhere @players, {identifier: identifier}
     @retrievePlayer identifier, (player) =>
       return if not player
       @players.push player

@@ -5,6 +5,7 @@ MessageCreator = require "../system/MessageCreator"
 Constants = require "../system/Constants"
 Equipment = require "../item/Equipment"
 _ = require "underscore"
+fs = require "fs"
 Chance = require "chance"
 chance = new Chance()
 
@@ -123,10 +124,23 @@ class Player extends Character
   getGender: ->
     "male"
 
+  addPersonality: (newPersonality) ->
+    return false if (not fs.existsSync __dirname+"/personalities/#{newPersonality}Personality.coffee")
+
+    if not @personalities
+      @personalities = []
+
+    @personalities.push newPersonality
+
+    @personalities = _.uniq @personalities
+
+  removePersonality: (oldPersonality) ->
+    @personalities = _.without @personalities, oldPersonality
+
   possiblyDoEvent: ->
     event = Constants.pickRandomEvent @
     return if not event
-    @playerManager.game.eventHandler.doEvent event, @, ->
+    @playerManager.game.eventHandler.doEvent event, @, ->{} #god damned code collapse
 
   takeTurn: ->
     @moveAction()
