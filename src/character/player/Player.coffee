@@ -119,24 +119,42 @@ class Player extends Character
     @profession.load @
     @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} is now a #{to}!"
 
+  personalityReduce: (appFunctionName, args = [], defaultValue = 0) ->
+    args = [args] if not _.isArray args
+    array = []
+      .concat if not _.isEmpty @profession then @profession else []
+      .concat @personalities ? []
+    _.reduce array, (combined, iter) ->
+      console.log iter
+      combined + iter[appFunctionName].apply iter, args
+    , defaultValue
+
+
   calculateYesPercent: ->
-    50
+    val = 50 + @personalityReduce 'calculateYesPercentBonus'
+    val
 
   getGender: ->
     "male"
 
+  rebuildPersonalityList: ->
+    @personalities = _.map @personalityStrings, (personality) ->
+      Personality::createPersonality personality
+
   addPersonality: (newPersonality) ->
-    return false if not Personality::doesPersonalityExist newPersonality
+    return no if not Personality::doesPersonalityExist newPersonality
 
-    if not @personalities
-      @personalities = []
+    @personalityStrings.push newPersonality
 
-    @personalities.push newPersonality
+    @personalities.push Personality::createPersonality newPersonality
 
     @personalities = _.uniq @personalities
+    yes
 
   removePersonality: (oldPersonality) ->
-    @personalities = _.without @personalities, oldPersonality
+    @personalityStrings = _.without @personalityStrings, oldPersonality
+    @rebuildPersonalityList()
+    yes
 
   possiblyDoEvent: ->
     event = Constants.pickRandomEvent @

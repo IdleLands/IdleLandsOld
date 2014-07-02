@@ -4,7 +4,7 @@ personalities = requireDir "../personalities"
 
 class Personality
 
-  personalities: personalities
+  constructor: ->
 
   calculateYesPercentBonus: -> 0
 
@@ -12,13 +12,13 @@ class Personality
 
   partyFormationProbabilityBonus: (potentialGroup) -> 0
 
-  shouldReplaceItem: (item) -> null
+  itemReplacementRangeBonus: (item) -> Math.floor item.score()*0.25
 
   calculateAdditionalGoldGainedFromItem: (item) -> 0
 
   calculateBonusStepsToTakeThisTurn: -> 0
 
-  calculateDamageTakenFromAttack: (attack) ->
+  calculateDamageTakenFromAttack: (attack) -> 0
 
   ###
   https://docs.google.com/document/d/1t6PaUgnWODi9SujRd_sewnVVWvVm6zLAssIYIivui4s/edit
@@ -28,6 +28,9 @@ class Personality
   ###
 
 Personality::doesPersonalityExist = (personality) ->
-  personality+"Personality" of @personalities
+  personality of personalities
+
+Personality::createPersonality = (personality) ->
+  new personalities[personality]
 
 module.exports = exports = Personality

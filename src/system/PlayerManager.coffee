@@ -2,6 +2,7 @@
 Datastore = require "./DatabaseWrapper"
 _ = require "underscore"
 Player = require "../character/player/Player"
+Personality = require "../character/base/Personality"
 Equipment = require "../item/Equipment"
 RestrictedNumber = require "restricted-number"
 Q = require "q"
@@ -113,6 +114,14 @@ class PlayerManager
     else
       player.profession = loadProfession player.professionName
       player.profession.load player
+
+    if not player.personalities
+      player.personalityStrings = []
+      player.personalities = []
+    else
+      player.rebuildPersonalityList()
+
+    console.log player.personalities, player.personalityStrings
 
     player
 

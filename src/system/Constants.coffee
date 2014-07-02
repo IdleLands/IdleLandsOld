@@ -8,7 +8,7 @@ class Constants
   @eventRates = [
 
       type: "yesno"
-      min: 1
+      min: 1000
       max: 1000
     ,
       type: "findItem"
@@ -38,14 +38,15 @@ class Constants
       type: "forsakeGold"
       min: 1
       max: 1000
-    ,
-      type: "party"
-      min: 1
-      max: 100
-    ,
-      type: "battle"
-      min: 1
-      max: 100
+    #,
+    #  type: "party"
+    #  min: 1
+    #  max: 100
+    #,
+    #  type: "battle"
+    #  min: 1
+    #  max: 100
+    #
   ]
 
   @eventEffects =
@@ -71,6 +72,6 @@ class Constants
     event = _.sample @eventRates
     prob = chance.integer {min: 0, max: event.max}
     return event.type if prob <= (event.min+eventMod)
-    return null
+    null
 
 module.exports = exports = Constants
