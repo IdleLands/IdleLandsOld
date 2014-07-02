@@ -1,5 +1,10 @@
 
+requireDir = require "require-dir"
+personalities = requireDir "../personalities"
+
 class Personality
+
+  personalities: personalities
 
   calculateYesPercentBonus: -> 0
 
@@ -21,5 +26,8 @@ class Personality
   each class should bestow a personality trait on the user while in that class
   mage - passive +mp, etc
   ###
+
+Personality::doesPersonalityExist = (personality) ->
+  personality+"Personality" of @personalities
 
 module.exports = exports = Personality

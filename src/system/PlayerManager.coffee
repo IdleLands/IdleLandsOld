@@ -1,7 +1,7 @@
 
 Datastore = require "./DatabaseWrapper"
 _ = require "underscore"
-Player = require "../character/Player"
+Player = require "../character/player/Player"
 Equipment = require "../item/Equipment"
 RestrictedNumber = require "restricted-number"
 Q = require "q"

@@ -1,11 +1,12 @@
 
-Character = require "./Character"
+Character = require "./../base/Character"
 RestrictedNumber = require "restricted-number"
-MessageCreator = require "../system/MessageCreator"
-Constants = require "../system/Constants"
-Equipment = require "../item/Equipment"
+MessageCreator = require "../../system/MessageCreator"
+Constants = require "../../system/Constants"
+Equipment = require "../../item/Equipment"
 _ = require "underscore"
-fs = require "fs"
+Personality = require "../base/Personality"
+
 Chance = require "chance"
 chance = new Chance()
 
@@ -125,7 +126,7 @@ class Player extends Character
     "male"
 
   addPersonality: (newPersonality) ->
-    return false if (not fs.existsSync __dirname+"/personalities/#{newPersonality}Personality.coffee")
+    return false if not Personality::doesPersonalityExist newPersonality
 
     if not @personalities
       @personalities = []

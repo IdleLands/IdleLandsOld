@@ -1,5 +1,5 @@
 
-Personality = require "Personality"
+Personality = require "../base/Personality"
 
 class NoSirPersonality extends Personality
 

@@ -28,6 +28,7 @@
     "nedb": "^0.10.5",
     "node-watch": "^0.3.4",
     "q": "^1.0.1",
+    "require-dir": "^0.1.0",
     "restricted-number": "0.0.3",
     "rimraf": "^2.2.8",
     "underscore": "^1.6.0",

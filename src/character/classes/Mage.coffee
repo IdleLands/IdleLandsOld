@@ -1,5 +1,5 @@
 
-Class = require "./Class"
+Class = require "./../base/Class"
 
 class Mage extends Class
 
