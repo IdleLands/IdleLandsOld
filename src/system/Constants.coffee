@@ -8,7 +8,7 @@ class Constants
   @eventRates = [
 
       type: "yesno"
-      min: 1000
+      min: 1
       max: 1000
     ,
       type: "findItem"
