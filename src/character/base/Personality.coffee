@@ -10,7 +10,7 @@ class Personality
 
   calculateItemScoreBonus: (item) -> 0
 
-  partyFormationProbabilityBonus: (potentialGroup) -> 0
+  partyLeaveProbabilityBonus: -> 0
 
   itemReplacementRangeBonus: (item) -> Math.floor item.score()*0.25
 

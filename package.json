@@ -32,6 +32,7 @@
     "restricted-number": "0.0.3",
     "rimraf": "^2.2.8",
     "underscore": "^1.6.0",
+    "underscore.string": "^2.3.3",
     "watch": "^0.10.0"
   }
 }

@@ -21,7 +21,7 @@ class PlayerManager
 
   retrievePlayer: (identifier, callback) ->
     @db.findOne {identifier: identifier}, (e, player) =>
-      return if not player
+      return if not player or _.findWhere @players, {identifier: identifier}
 
       @game.broadcast MessageCreator.generateMessage "#{player.name} has joined #{Constants.gameName}!"
       player = @migratePlayer player
@@ -39,10 +39,10 @@ class PlayerManager
 
   removePlayer: (identifier) ->
 
-    name = (_.findWhere @players, {identifier, identifier}).name
+    name = (_.findWhere @players, {identifier, identifier})?.name
 
     @players = _.filter @players, (player) -> !player.identifier is identifier
-    delete playerHash[identifier]
+    delete @playerHash[identifier]
 
     @game.broadcast MessageCreator.generateMessage "#{name} has left #{Constants.gameName}!"
 
@@ -67,10 +67,9 @@ class PlayerManager
       callback { success: true, name: options.name }
 
   savePlayer: (player) ->
-    player.playerManager = null
-    @db.update { identifier: player.identifier }, player, (e) =>
+    savePlayer = _.omit player, 'playerManager', 'party', 'personalities'
+    @db.update { identifier: player.identifier }, savePlayer, (e) ->
       console.error "Save error: #{e}" if e
-      player.playerManager = @
 
   playerTakeTurn: (identifier) ->
     return if not identifier or not (identifier of @playerHash)
@@ -115,13 +114,11 @@ class PlayerManager
       player.profession = loadProfession player.professionName
       player.profession.load player
 
-    if not player.personalities
+    if not player.personalityStrings
       player.personalityStrings = []
       player.personalities = []
     else
       player.rebuildPersonalityList()
-
-    console.log player.personalities, player.personalityStrings
 
     player
 

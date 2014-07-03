@@ -2,9 +2,12 @@ Chance = require "chance"
 chance = new Chance()
 
 _ = require "underscore"
+_.str = require "underscore.string"
 
 MessageCreator = require "./MessageCreator"
 Constants = require "./Constants"
+
+Party = require "../event/Party"
 
 class EventHandler
 
@@ -24,6 +27,8 @@ class EventHandler
           @doItem event, player, callback
         when 'findItem'
           @doFindItem event, player, callback
+        when 'party'
+          @doParty event, player, callback
 
   doYesNo: (event, player, callback) ->
     player.emit "yesno"
@@ -55,7 +60,6 @@ class EventHandler
     curGold = player.gold.getValue()
 
     boost = 0
-    console.log 'test'
     for i in [0...goldTiers.length]
       if curGold < Math.abs goldTiers[i]
         highVal = if not goldTiers[i-1] then 100 else goldTiers[i-1]
@@ -124,6 +128,26 @@ class EventHandler
 
     callback()
 
+  doParty: (event, player, callback) ->
+    return if player.party
+    players = _.without @game.playerManager.players, player
+
+    partyAdditionSize = Math.min (players.length / 2), chance.integer {min: 1, max: Constants.defaults.maxPartySize}
+    newPartyPlayers = _.sample (_.reject players, (player) -> player.party), partyAdditionSize
+
+    return if newPartyPlayers.length is 0
+
+    partyPlayers = [player].concat newPartyPlayers
+
+    new Party partyPlayers
+
+    extra =
+      party: _.str.toSentence _.pluck newPartyPlayers, 'name'
+
+    @game.broadcast MessageCreator.genericMessage @doStringReplace event.remark, player, extra
+
+    callback()
+
   doStringReplace: (string, player, extra = null) ->
     gender = player.getGender()
     string
@@ -135,6 +159,7 @@ class EventHandler
       .split('%item').join extra?.item
       .split('%xp').join extra?.xp
       .split('%gold').join extra?.gold
+      .split('%party').join extra?.party
 
   getGenderPronoun: (gender, replace) ->
     switch replace

@@ -113,57 +113,35 @@ class Player extends Character
     @handleTile tile
 
   changeProfession: (to) ->
-    professionProto = require "./classes/#{to}"
+    professionProto = require "../classes/#{to}"
     @profession = new professionProto()
     @professionName = professionProto.name
     @profession.load @
     @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} is now a #{to}!"
 
-  personalityReduce: (appFunctionName, args = [], defaultValue = 0) ->
-    args = [args] if not _.isArray args
-    array = []
-      .concat if not _.isEmpty @profession then @profession else []
-      .concat @personalities ? []
-    _.reduce array, (combined, iter) ->
-      console.log iter
-      combined + iter[appFunctionName].apply iter, args
-    , defaultValue
-
-
   calculateYesPercent: ->
-    val = 50 + @personalityReduce 'calculateYesPercentBonus'
-    val
+    Math.min 100, (Math.max 0, Constants.defaults.player.defaultYesPercent + @personalityReduce 'calculateYesPercentBonus')
+
+  calculatePartyLeavePercent: ->
+    Math.min 100, (Math.max 0, Constants.defaults.player.defaultPartyLeavePercent + @personalityReduce 'partyLeaveProbabilityBonus')
 
   getGender: ->
     "male"
-
-  rebuildPersonalityList: ->
-    @personalities = _.map @personalityStrings, (personality) ->
-      Personality::createPersonality personality
-
-  addPersonality: (newPersonality) ->
-    return no if not Personality::doesPersonalityExist newPersonality
-
-    @personalityStrings.push newPersonality
-
-    @personalities.push Personality::createPersonality newPersonality
-
-    @personalities = _.uniq @personalities
-    yes
-
-  removePersonality: (oldPersonality) ->
-    @personalityStrings = _.without @personalityStrings, oldPersonality
-    @rebuildPersonalityList()
-    yes
 
   possiblyDoEvent: ->
     event = Constants.pickRandomEvent @
     return if not event
     @playerManager.game.eventHandler.doEvent event, @, ->{} #god damned code collapse
 
+  possiblyLeaveParty: ->
+    return if not @party
+    return if not chance.bool {likelihood: @calculatePartyLeavePercent()}
+    @party.playerLeave @
+
   takeTurn: ->
     @moveAction()
     @possiblyDoEvent()
+    @possiblyLeaveParty()
     @save()
 
   save: ->

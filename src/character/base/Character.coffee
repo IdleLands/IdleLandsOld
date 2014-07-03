@@ -1,6 +1,8 @@
 
 RestrictedNumber = require "restricted-number"
 {EventEmitter} = require 'events'
+_ = require "underscore"
+Personality = require "./Personality"
 
 class Character extends EventEmitter
 
@@ -30,5 +32,39 @@ class Character extends EventEmitter
   moveAction: ->
 
   combatAction: ->
+
+  personalityReduce: (appFunctionName, args = [], defaultValue = 0) ->
+    args = [args] if not _.isArray args
+    array = []
+    .concat @profession ? []
+    .concat @personalities ? []
+
+    _.reduce array, (combined, iter) ->
+      applied = iter?[appFunctionName]?.apply iter, args
+      combined + if applied then applied else defaultValue
+    , defaultValue
+
+  rebuildPersonalityList: ->
+    @personalities = _.map @personalityStrings, (personality) ->
+      Personality::createPersonality personality
+
+  addPersonality: (newPersonality) ->
+    return no if not Personality::doesPersonalityExist newPersonality
+
+    if not @personalityStrings
+      @personalityStrings = []
+      @personalities = []
+
+    @personalityStrings.push newPersonality
+
+    @personalities.push Personality::createPersonality newPersonality
+
+    @personalities = _.uniq @personalities
+    yes
+
+  removePersonality: (oldPersonality) ->
+    @personalityStrings = _.without @personalityStrings, oldPersonality
+    @rebuildPersonalityList()
+    yes
 
 module.exports = exports = Character

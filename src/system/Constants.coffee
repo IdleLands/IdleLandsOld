@@ -38,10 +38,10 @@ class Constants
       type: "forsakeGold"
       min: 1
       max: 1000
-    #,
-    #  type: "party"
-    #  min: 1
-    #  max: 100
+    ,
+      type: "party"
+      min: 1
+      max: 750
     #,
     #  type: "battle"
     #  min: 1
@@ -66,6 +66,13 @@ class Constants
     forsakeItem:
       amount: -1
       percent: -5
+
+  @defaults =
+    maxPartySize: 3
+
+    player:
+      defaultYesPercent: 50
+      defaultPartyLeavePercent: 1
 
   @pickRandomEvent = (player) ->
     eventMod = 0
