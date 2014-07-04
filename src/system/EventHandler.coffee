@@ -139,10 +139,11 @@ class EventHandler
 
     partyPlayers = [player].concat newPartyPlayers
 
-    new Party partyPlayers
+    newParty = new Party partyPlayers
 
     extra =
       party: _.str.toSentence _.pluck newPartyPlayers, 'name'
+      partyName: newParty.name
 
     @game.broadcast MessageCreator.genericMessage @doStringReplace event.remark, player, extra
 
@@ -159,6 +160,7 @@ class EventHandler
       .split('%item').join extra?.item
       .split('%xp').join extra?.xp
       .split('%gold').join extra?.gold
+      .split('%partyName').join extra?.partyName
       .split('%party').join extra?.party
 
   getGenderPronoun: (gender, replace) ->

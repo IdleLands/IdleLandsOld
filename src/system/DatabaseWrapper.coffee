@@ -85,7 +85,6 @@ class DatabaseWrapper
     Q.when @databaseReady, =>
       @db.ensureIndex data, callback
 
-  # TODO: remove this when nedb adds sorting which should be soon
   # Sorts documents by given properties to compare.
   # Each property in the object should either be
   # 1 for ascending or -1 for descending order.

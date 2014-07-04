@@ -48,7 +48,6 @@ class Equipment
     @earthPercent = options.earthPercent or 0
     @thunderPercent = options.thunderPercent or 0
 
-    #TODO base score on personality and class
   score: () ->
     @str + @dex + @con + @int + @wis + @agi
 

@@ -130,8 +130,6 @@ module.exports = (Module) ->
 
 			@on "join", (bot, channel, sender) =>
 				if bot.config.nick is sender
-					#TODO +m the channel
-					#TODO set topic
 					@buildUserList() if not @users.length
 					return
 

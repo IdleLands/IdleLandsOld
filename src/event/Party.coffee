@@ -2,9 +2,18 @@
 _ = require "underscore"
 MessageCreator = require "../system/MessageCreator"
 
+partyNames = [
+  "Raging Wombats"
+  "Wacky Narwhals"
+  "Crazy Meerkats"
+  "Band of Bros"
+  "Singularity"
+  "Fighting Foxes"
+]
+
 class Party
-  #TODO random party names because wynaut
   constructor: (@players) ->
+    @name = _.sample partyNames
     @setPlayersParty()
 
   setPlayersParty: ->
@@ -13,10 +22,11 @@ class Party
 
   playerLeave: (player) ->
     @players = _.without @players, player
-    if @players.length is 0
-      player.playerManager.game.broadcast MessageCreator.genericMessage "#{player.name} has disbanded the party."
+    if @players.length <= 1
+      @disband()
+      player.playerManager.game.broadcast MessageCreator.genericMessage "#{player.name} has disbanded #{@name}."
     else
-      player.playerManager.game.broadcast MessageCreator.genericMessage "#{player.name} has left the party."
+      player.playerManager.game.broadcast MessageCreator.genericMessage "#{player.name} has left #{@name}."
 
     delete player.party
 
