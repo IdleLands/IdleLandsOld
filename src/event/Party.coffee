@@ -12,9 +12,20 @@ partyNames = [
 ]
 
 class Party
-  constructor: (@players) ->
-    @name = _.sample partyNames
+  constructor: (@game, @players) ->
+    @name = @pickPartyName()
+    return if not @name
+    @addGlobally()
     @setPlayersParty()
+
+  pickPartyName: ->
+    _.sample _.difference partyNames, _.pluck @game.parties, 'name'
+
+  addGlobally: ->
+    if not @game.parties
+      @game.parties = []
+
+    @game.parties.push @
 
   setPlayersParty: ->
     _.forEach @players, (player) =>
@@ -31,6 +42,7 @@ class Party
     delete player.party
 
   disband: ->
+    @game.parties = _.without @game.parties, @
     _.forEach @players, (player) ->
       delete player.party
 

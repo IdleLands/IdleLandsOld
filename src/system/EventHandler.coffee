@@ -139,7 +139,8 @@ class EventHandler
 
     partyPlayers = [player].concat newPartyPlayers
 
-    newParty = new Party partyPlayers
+    newParty = new Party @game, partyPlayers
+    return if not newParty.name
 
     extra =
       party: _.str.toSentence _.pluck newPartyPlayers, 'name'
