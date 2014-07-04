@@ -8,7 +8,11 @@ ComponentDatabase = require "./ComponentDatabase"
 EquipmentGenerator = require "./EquipmentGenerator"
 Constants = require "./Constants"
 GMCommands = require "./GMCommands"
+Party = require "../event/Party"
 World = require "../map/World"
+
+_ = require "underscore"
+chance = (new require "Chance")()
 
 console.log "Rebooted IdleLands."
 
@@ -35,6 +39,18 @@ class Game
       (@broadcastHandler.bind @broadcastContext, message)()
     else
       console.error "No broadcast handler registered. Cannot send: #{message}"
+
+  createParty: (player) ->
+    players = _.without @playerManager.players, player
+
+    partyAdditionSize = Math.min (players.length / 2), chance.integer {min: 1, max: Constants.defaults.maxPartySize}
+    newPartyPlayers = _.sample (_.reject players, (player) -> player.party), partyAdditionSize
+
+    return if newPartyPlayers.length is 0
+
+    partyPlayers = [player].concat newPartyPlayers
+
+    new Party @, partyPlayers
 
   teleport: (player, map, x, y, text) ->
     player.map = map

@@ -130,17 +130,10 @@ class EventHandler
 
   doParty: (event, player, callback) ->
     return if player.party
-    players = _.without @game.playerManager.players, player
-
-    partyAdditionSize = Math.min (players.length / 2), chance.integer {min: 1, max: Constants.defaults.maxPartySize}
-    newPartyPlayers = _.sample (_.reject players, (player) -> player.party), partyAdditionSize
-
-    return if newPartyPlayers.length is 0
-
-    partyPlayers = [player].concat newPartyPlayers
-
-    newParty = new Party @game, partyPlayers
+    newParty = @game.createParty player
     return if not newParty.name
+
+    newPartyPlayers = _.without newParty.players, player
 
     extra =
       party: _.str.toSentence _.pluck newPartyPlayers, 'name'
