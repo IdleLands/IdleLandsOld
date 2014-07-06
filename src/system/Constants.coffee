@@ -44,7 +44,7 @@ class Constants
       max: 750
     ,
       type: "battle"
-      min: 0
+      min: 50
       max: 100
 
   ]

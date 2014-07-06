@@ -54,7 +54,7 @@ class Game
 
     new Party @, partyPlayers
 
-  startBattle: (parties = []) ->
+  startBattle: (parties = [], event = null) ->
     return if @inBattle
     return if parties.length < 2 and @parties.length < 2 and @playerManager.players.length < 2
 
@@ -67,6 +67,9 @@ class Game
       potentialParties = _.sample @parties, 2
       return if potentialParties.length < 2
       parties = potentialParties
+
+    if event
+      @broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.remark, event.player
 
     @inBattle = true
     new Battle @,parties

@@ -85,7 +85,7 @@ class Character extends EventEmitter
         Math.max 10, @self.calc.stats.apply @self, [['dex','str','agi','wis','con', 'int']]
 
       hit: ->
-        (@self.calc.stats.apply @self, [['dex', 'agi', 'con']]) / 3
+        (@self.calc.stats.apply @self, [['dex', 'agi', 'con']]) / 6
 
       beatHit: ->
         Math.max 10, @self.calc.stats.apply @self, [['str', 'dex']]

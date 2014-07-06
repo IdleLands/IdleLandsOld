@@ -35,10 +35,10 @@ class EventHandler
   doYesNo: (event, player, callback) ->
     player.emit "yesno"
     if chance.bool {likelihood: player.calculateYesPercent()}
-      (@game.broadcast MessageCreator.genericMessage @doStringReplace event.y, player) if event.y
+      (@game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.y, player) if event.y
       callback true
     else
-      (@game.broadcast MessageCreator.genericMessage @doStringReplace event.n, player) if event.n
+      (@game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.n, player) if event.n
       callback false
 
   doXp: (event, player, callback) ->
@@ -54,7 +54,7 @@ class EventHandler
 
     player.gainXp boost
 
-    @game.broadcast MessageCreator.genericMessage @doStringReplace event.remark, player, extra
+    @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.remark, player, extra
     callback()
 
   doGold: (event, player, callback) ->
@@ -80,7 +80,7 @@ class EventHandler
 
     player.gainGold boost
 
-    @game.broadcast MessageCreator.genericMessage @doStringReplace event.remark, player, extra
+    @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.remark, player, extra
     callback()
 
   doItem: (event, player, callback) ->
@@ -106,7 +106,7 @@ class EventHandler
 
     item[stat] = end
 
-    string = @doStringReplace event.remark, player, extra
+    string = MessageCreator.doStringReplace event.remark, player, extra
     string += " [#{stat} #{start} -> #{end}]"
 
     @game.broadcast MessageCreator.genericMessage string
@@ -128,12 +128,12 @@ class EventHandler
 
       totalString = event.remark+" [#{item.score()}]"
 
-      @game.broadcast MessageCreator.genericMessage @doStringReplace totalString, player, extra
+      @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace totalString, player, extra
 
     callback()
 
   doParty: (event, player, callback) ->
-    return if player.party
+    return if player.party or @game.inBattle
     newParty = @game.createParty player
     return if not newParty?.name
 
@@ -143,47 +143,14 @@ class EventHandler
       party: _.str.toSentence _.pluck newPartyPlayers, 'name'
       partyName: newParty.name
 
-    @game.broadcast MessageCreator.genericMessage @doStringReplace event.remark, player, extra
+    @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.remark, player, extra
 
     callback()
 
   doBattle: (event, player, callback) ->
-    @game.startBattle()
+    event.player = player
+    @game.startBattle [], event
 
-  doStringReplace: (string, player, extra = null) ->
-    gender = player.getGender()
-    string
-      .split('%player').join player.name
-      .split('%hisher').join @getGenderPronoun gender, '%hisher'
-      .split('%himher').join @getGenderPronoun gender, '%himher'
-      .split('%hishers').join @getGenderPronoun gender, '%hishers'
-      .split('%she').join @getGenderPronoun gender, '%she'
-      .split('%item').join extra?.item
-      .split('%xp').join extra?.xp
-      .split('%gold').join extra?.gold
-      .split('%partyName').join extra?.partyName
-      .split('%party').join extra?.party
-
-  getGenderPronoun: (gender, replace) ->
-    switch replace
-      when '%hisher'
-        if gender is 'male' then 'his'
-        else if gender is 'female' then 'her'
-        else 'their'
-
-      when '%hishers'
-        if gender is 'male' then 'his'
-        else if gender is 'female' then 'hers'
-        else 'theirs'
-
-      when '%himher'
-        if gender is 'male' then 'him'
-        else if gender is 'female' then 'her'
-        else 'theirs'
-
-      when '%she'
-        if gender is 'male' then 'he'
-        else if gender is 'female' then 'she'
-        else 'it'
+    callback()
 
 module.exports = exports = EventHandler
