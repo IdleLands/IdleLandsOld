@@ -1,0 +1,1 @@
+%player found a shiny rock and sold it for %gold gold!

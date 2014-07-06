@@ -1,0 +1,1 @@
+%player found a shiny rock and attempted to sell it, but got chased out of the store and billed for damages amounting to %gold gold.

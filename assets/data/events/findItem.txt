@@ -1,0 +1,1 @@
+%player stumbled across %item!

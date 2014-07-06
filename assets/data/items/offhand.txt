@@ -1,0 +1,5 @@
+"wooden board" con=1
+"girdle" str=1 con=2
+"armlet" str=3 con=4
+"buckler" str=5 con=5
+"tower shield" con=10 str=2

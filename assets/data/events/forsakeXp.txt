@@ -1,0 +1,1 @@
+%player fell into a hole and lost %xpxp!
