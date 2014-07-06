@@ -1,0 +1,6 @@
+"invisible leaf"
+"stockings" agi=1
+"panties" agi=2 con=1
+"pantaloons" con=3 agi=1
+"censor leaf" con=3 agi=4
+"pants" con=7 agi=3

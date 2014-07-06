@@ -12,7 +12,7 @@ class Constants
       max: 1000
     ,
       type: "findItem"
-      min: 1
+      min: 300
       max: 300
     ,
       type: "blessItem"
@@ -42,11 +42,11 @@ class Constants
       type: "party"
       min: 600
       max: 750
-    #,
-    #  type: "battle"
-    #  min: 1
-    #  max: 100
-    #
+    ,
+      type: "battle"
+      min: 0
+      max: 100
+
   ]
 
   @eventEffects =

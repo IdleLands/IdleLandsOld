@@ -1,0 +1,8 @@
+"bit" int=1
+"ice cream cone" str=1
+"arrow" str=5
+"byte" int=8
+"rusty spoon" str=10
+"pillow" int=10
+"pancake" str=15 int=5
+"dragonslayer" str=30 silver=1

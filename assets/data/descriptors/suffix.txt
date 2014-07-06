@@ -1,0 +1,81 @@
+"ill iguana" str=-5 wis=10
+"bear" str=15 int=-5
+"viper" str=5 dex=10
+"pig" con=18 agi=-3
+"jester" int=10 agi=5
+"fish" agi=15
+"barbarian" str=25 int=-7
+"sly fish" agi=25 str=-7
+"dog" wis=10 con=10
+"hunter" agi=10 dex=10
+"amazon" str=10 wis=10
+"snake" agi=15 dex=10
+"artist" wis=20 agi=5
+"wonderful fish" agi=20 wis=5
+"undertaker" str=40 dex=-15
+"insect" agi=40 str=-10
+"lover" wis=30
+"fighter" str=30
+"kraken" str=5
+"fabulous fish" agi=30 wis=10
+"dragon" strPercent=4 agiPercent=3
+"unicorn" intPercent=3 agiPercent=4
+"pixie" wisPercent=3 intPercent=3
+"pie" wis=42
+"cake" dex=42
+"red-eyed programmer" int=55 agi=-10
+"ornate otaku" con=55 agi=-10
+"radioactive rabbit" agi=60 con=-20
+"archmagi" int=50
+"barius" str=100 int=-50
+"marrus" int=100 str=-50
+"silly snake" agi=40 dex=20
+"St. Galli" wis=60
+"goofy gopher" con=30 wis=30
+"slippery seal" wis=60
+"ornery ocelot" str=50 agi=30
+"Beast" str=80
+"damned insanity" luck=-20 str=150
+"doom" str=100
+"wonder" int=100
+"gory giraffe" str=200 con=-100
+"bustling badger" agi=100
+"diaphanous drake" strPercent=7 intPercent=-2
+"furious fawn" str=20 agi=90
+"moon" intPercent=5 agiPercent=2
+"sun" strPercent=5 dexPercent=2
+"stars" wisPercent=5 conPercent=2
+"karmic koala" luck=120
+"lucid lynx" str=10 agi=100
+"corrupt" str=100 int=50 con=-30
+"pure" wis=70 str=40
+"hallowed" str=100 int=30
+"malicious meerkat" str=30 agi=40 dex=30
+"never-narwhal" strPercent=4 intPercent=4
+"welsh warthog" con=100 str=20
+"white knight" str=50 con=100
+"black knight" str=100 con=50
+"spirit" con=100 int=50
+"duplicating dog" wis=70 con=70
+"helpful hedgehog" wis=120 agi=10
+"herping heron" luck=-40 wis=220
+"derping deer" luck=-40 agi=220
+"interpid iguana" con=200 agi=-20
+"daring duck" str=50 wis=150
+"derpig" conPercent=8 agiPercent=-2
+"horny hornet" str=100 agi=110
+"jumping jackalope" int=110 agi=100
+"gelatinous jabberwocky" strPercent=5 intPercent=5
+"snorting squirrel" agi=250
+"castrated cat" agi=-300 str=-50
+"vicious viking" str=350 int=-100
+"wightful werewolf" strPercent=6 agiPercent=2
+"machine" int=150 str=150
+"angel" str=70 int=200 luck=50
+"demon" str=120 int=200 luck=-50
+"explosive thing" str=400
+"KayArr" int=400
+"phoenix" strPercent=6 intPercent=6 agiPercent=6
+"deity" intPercent=10 conPercent=20
+"Creator" intPercent=10 strPercent=10 dexPercent=10 conPercent=10 wisPercent=10 agiPercent=10
+"Idleness" luck=600

@@ -67,7 +67,7 @@ class PlayerManager
       callback { success: true, name: options.name }
 
   savePlayer: (player) ->
-    savePlayer = _.omit player, 'playerManager', 'party', 'personalities'
+    savePlayer = _.omit player, 'playerManager', 'party', 'personalities', 'calc'
     @db.update { identifier: player.identifier }, savePlayer, (e) ->
       console.error "Save error: #{e}" if e
 
@@ -100,8 +100,10 @@ class PlayerManager
       player[item] = loadRN player[item]
 
     player.__proto__ = Player.prototype
+
     player.playerManager = @
     player.isBusy = false
+    player.loadCalc()
 
     if not player.equipment
       player.generateBaseEquipment()

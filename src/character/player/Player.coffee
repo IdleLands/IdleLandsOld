@@ -176,4 +176,7 @@ class Player extends Character
   levelUpXpCalc: (level) ->
     Math.floor 100 + (400 * Math.pow level, 1.67)
 
+  itemFindRange: ->
+    @level.getValue() * 25
+
 module.exports = exports = Player

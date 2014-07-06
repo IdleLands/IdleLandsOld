@@ -9,6 +9,7 @@ EquipmentGenerator = require "./EquipmentGenerator"
 Constants = require "./Constants"
 GMCommands = require "./GMCommands"
 Party = require "../event/Party"
+Battle = require "../event/Battle"
 World = require "../map/World"
 
 _ = require "underscore"
@@ -21,6 +22,7 @@ class Game
   #Constants either go here, or in a Constants class
 
   constructor: () ->
+    @parties = []
     @playerManager = new PlayerManager @
     @monsterManager = new MonsterManager()
     @eventHandler = new EventHandler @
@@ -51,6 +53,23 @@ class Game
     partyPlayers = [player].concat newPartyPlayers
 
     new Party @, partyPlayers
+
+  startBattle: (parties = []) ->
+    return if @inBattle
+    return if parties.length < 2 and @parties.length < 2 and @playerManager.players.length < 2
+
+    if parties.length is 0 and @parties.length < 2 and chance.bool {likelihood: 50}
+      potentialPlayers = _.sample (_.reject @playerManager.players, (player) -> player.party), 2
+      return if potentialPlayers.length < 2
+      parties = [ (new Party @, potentialPlayers[0]), (new Party @, potentialPlayers[1])]
+
+    else
+      potentialParties = _.sample @parties, 2
+      return if potentialParties.length < 2
+      parties = potentialParties
+
+    @inBattle = true
+    new Battle @,parties
 
   teleport: (player, map, x, y, text) ->
     player.map = map

@@ -1,0 +1,7 @@
+"pin" int=1
+"bracelet" int=1 wis=1
+"armband" wis=3 int=2
+"earring" int=8
+"trinket" wis=5 int=5
+"plume" wis=10
+"teleporter" agi=10 int=20 dodge=1

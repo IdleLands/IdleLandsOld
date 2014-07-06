@@ -46,6 +46,8 @@ class API
       @gameInstance.playerManager.addPlayer identifier
     personality: (identifier, personality) =>
       @gameInstance.playerManager.playerHash[identifier]?.addPersonality personality
+    allData: =>
+      @gameInstance.componentDatabase.importAllData()
 
   @find =
     static: (query, callback) =>

@@ -13,8 +13,9 @@ partyNames = [
 
 class Party
   constructor: (@game, @players) ->
+    @players = [@players] if not _.isArray @players
     @name = @pickPartyName()
-    return if not @name
+    return if not @name or not @players
     @addGlobally()
     @setPlayersParty()
 
@@ -45,7 +46,5 @@ class Party
     @game.parties = _.without @game.parties, @
     _.forEach @players, (player) ->
       delete player.party
-
-    delete @
 
 module.exports = exports = Party

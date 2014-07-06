@@ -12,6 +12,8 @@ class Character extends EventEmitter
     @mp = new RestrictedNumber 0, 0, 0
     @special = new RestrictedNumber 0, 0, 0
     @level = new RestrictedNumber 0, 100, 0
+    @equipment = []
+    @loadCalc()
 
     @
 
@@ -66,5 +68,29 @@ class Character extends EventEmitter
     @personalityStrings = _.without @personalityStrings, oldPersonality
     @rebuildPersonalityList()
     yes
+
+  loadCalc: ->
+    @calc =
+      self: @
+      stat: (stat) =>
+        _.reduce @equipment, ((prev, item) -> prev+item[stat]), 0
+
+      stats: (stats) =>
+        _.reduce stats, ((prev, stat) => prev+@calc.stat stat), 0
+
+      dodge: ->
+        @self.calc.stat.apply @self, ['agi']
+
+      beatDodge: ->
+        Math.max 10, @self.calc.stats.apply @self, [['dex','str','agi','wis','con', 'int']]
+
+      hit: ->
+        (@self.calc.stats.apply @self, [['dex', 'agi', 'con']]) / 3
+
+      beatHit: ->
+        Math.max 10, @self.calc.stats.apply @self, [['str', 'dex']]
+
+      damage: ->
+        Math.max 10, @self.calc.stats.apply @self, [['str']]
 
 module.exports = exports = Character

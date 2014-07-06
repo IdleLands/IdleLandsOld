@@ -29,6 +29,8 @@ class EventHandler
           @doFindItem event, player, callback
         when 'party'
           @doParty event, player, callback
+        when 'battle'
+          @doBattle event, player, callback
 
   doYesNo: (event, player, callback) ->
     player.emit "yesno"
@@ -117,21 +119,23 @@ class EventHandler
     score = item.score()
     myScore = myItem.score()
 
-    if score > myScore
+    if score > myScore and score < player.itemFindRange()
       player.equipment = _.without player.equipment, myItem
       player.equipment.push item
 
       extra =
         item: item.name
 
-      @game.broadcast MessageCreator.genericMessage @doStringReplace event.remark, player, extra
+      totalString = event.remark+" [#{item.score()}]"
+
+      @game.broadcast MessageCreator.genericMessage @doStringReplace totalString, player, extra
 
     callback()
 
   doParty: (event, player, callback) ->
     return if player.party
     newParty = @game.createParty player
-    return if not newParty.name
+    return if not newParty?.name
 
     newPartyPlayers = _.without newParty.players, player
 
@@ -142,6 +146,9 @@ class EventHandler
     @game.broadcast MessageCreator.genericMessage @doStringReplace event.remark, player, extra
 
     callback()
+
+  doBattle: (event, player, callback) ->
+    @game.startBattle()
 
   doStringReplace: (string, player, extra = null) ->
     gender = player.getGender()
