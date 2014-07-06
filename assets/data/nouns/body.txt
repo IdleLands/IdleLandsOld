@@ -1,6 +1,0 @@
-"toga" agi=1
-"tunic" agi=1 con=1
-"robe" agi=3 con=2
-"vest" con=8 agi=2
-"garb" agi=8 con=2
-"paladinmail" con=30 defense=1

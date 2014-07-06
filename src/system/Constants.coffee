@@ -7,10 +7,10 @@ class Constants
   @gameName = "Idletopia"
   @eventRates = [
 
-      type: "yesno"
-      min: 1
-      max: 1000
-    ,
+    #  type: "yesno"
+    #  min: 0 #turned off until I know what they're good for
+    #  max: 1000
+    #,
       type: "findItem"
       min: 300
       max: 300

@@ -1,7 +1,0 @@
-"hat" con=1
-"barette" con=2
-"sombrero" con=3 agi=2
-"mask" con=5
-"helm" con=5
-"glasses" con=8 wis=2
-"aiming goggles" con=30 crit=1

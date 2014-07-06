@@ -1,5 +1,0 @@
-"mittens" dex=1
-"gloves" str=3
-"bracers" dex=3 str=1
-"gauntlets" str=6 dex=3
-"armlets" dex=8 str=2

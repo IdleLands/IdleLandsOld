@@ -21,7 +21,7 @@ class ComponentDatabase
       console.log "error: string still using % format: #{str}"
       return
     [name, parameters] = [str.split("\"")[1], str.split("\"")[2].trim()]
-    console.log "n ",name, " p ",parameters
+
     parameters = _.map (parameters.split ' '), (item) ->
       arr = item.split '='
       retval = {}
@@ -34,17 +34,26 @@ class ComponentDatabase
     @insertItem parameters, ->
 
   importAllData: ->
-    #@eventsDb.remove {}, {}, ->
+    @eventsDb.remove {}, {}, ->
     @itemsDb.remove {}, {}, ->
 
-    stream = readdirp {root: "#{__dirname}/../../assets/data", fileFilter: "*.txt"}
-    stream
+    itemstream = readdirp {root: "#{__dirname}/../../assets/data/items", fileFilter: "*.txt"}
+    itemstream
     .on "warn", (e) -> console.log "importAllData warning: #{e}"
     .on "error", (e) -> console.log "importAllData error: #{e}"
     .on "data", (entry) =>
       type = entry.name.split(".")[0]
       fs.readFile entry.fullPath, {}, (e, data) =>
         _.each data.toString().split("\n"), (line) => @parseItemString line, type
+
+    eventstream = readdirp {root: "#{__dirname}/../../assets/data/events", fileFilter: "*.txt"}
+    eventstream
+    .on "warn", (e) -> console.log "importAllData warning: #{e}"
+    .on "error", (e) -> console.log "importAllData error: #{e}"
+    .on "data", (entry) =>
+      type = entry.name.split(".")[0]
+      fs.readFile entry.fullPath, {}, (e, data) =>
+        _.each data.toString().split("\n"), (line) => @insertStatic line, type
 
   insertYesNo: (question, y, n) ->
     @eventsDb.insert
@@ -63,7 +72,6 @@ class ComponentDatabase
     , ->
 
   insertItem: (object, duplicateCallback) ->
-    console.log 'attempting to insert',object
     copy = _.extend {}, object
     delete copy.name
     query = [ copy, {name: object.name} ]

@@ -1,5 +1,0 @@
-"chain" wis=1
-"brooch" wis=2
-"amulet" wis=3
-"necklace" wis=4
-"huggable monkey" wis=10

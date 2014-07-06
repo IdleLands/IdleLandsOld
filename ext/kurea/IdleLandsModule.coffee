@@ -31,6 +31,8 @@ module.exports = (Module) ->
 
     addServerChannel: (bot, server, channel) =>
       @serverBots[server] = bot
+      bot.activateFloodProtection()
+      bot.floodProtectionDelay = 1800
 
       if server of @serverChannels
         @serverChannels[server].push channel
@@ -263,7 +265,7 @@ module.exports = (Module) ->
 
       @addRoute "idle-add all-data", "idle.game.owner", (origin, route) =>
         @IdleWrapper.api.add.allData()
-        @reply origin, "Re-initializing all modifier data from disk."
+        @reply origin, "Re-initializing all modifier/event data from disk."
 
     destroy: ->
       clearInterval @interval
