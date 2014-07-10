@@ -10,8 +10,8 @@ class ComponentDatabase
   itemStats: {}
 
   constructor: (@game) ->
-    @eventsDb = new Datastore "events", {random: '2dsphere'}
-    @itemsDb = new Datastore "items", {random: '2dsphere'}
+    @eventsDb = new Datastore "events", (db) -> db.ensureIndex {random: '2dsphere'}, ->
+    @itemsDb = new Datastore "items", (db) -> db.ensureIndex {random: '2dsphere'}, ->
 
     @loadItems()
 
@@ -53,7 +53,7 @@ class ComponentDatabase
     .on "data", (entry) =>
       type = entry.name.split(".")[0]
       fs.readFile entry.fullPath, {}, (e, data) =>
-        _.each data.toString().split("\n"), (line) => @insertStatic line, type
+        _.each data.toString().split("\n"), (line) => @insertStatic type, line
 
   insertYesNo: (question, y, n) ->
     @eventsDb.insert

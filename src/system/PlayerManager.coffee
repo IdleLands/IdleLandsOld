@@ -15,13 +15,15 @@ class PlayerManager
   playerHash: {}
 
   constructor: (@game) ->
-    @db = new Datastore "players"
-    @db.ensureIndex { fieldName: 'identifier', unique: true }
-    @db.ensureIndex { fieldName: 'name', unique: true }
+    @db = new Datastore "players", (db) ->
+      db.ensureIndex { identifier: 1 }, { unique: true }, ->
+      db.ensureIndex { name: 1 }, { unique: true }, ->
 
   retrievePlayer: (identifier, callback) ->
     @db.findOne {identifier: identifier}, (e, player) =>
-      return if not player or _.findWhere @players, {identifier: identifier}
+      if not player or _.findWhere @players, {identifier: identifier}
+        callback?()
+        return
 
       @game.broadcast MessageCreator.generateMessage "#{player.name} has joined #{Constants.gameName}!"
       player = @migratePlayer player
@@ -48,27 +50,29 @@ class PlayerManager
 
   registerPlayer: (options, middleware, callback) ->
 
-    @game.broadcast MessageCreator.genericMessage "Welcome #{options.name} to #{Constants.gameName}!"
     playerObject = new Player options
     playerObject.playerManager = @
     playerObject.initialize()
-    playerObject.playerManager = null
+    saveObj = @buildPlayerSaveObject playerObject
 
-    @db.insert playerObject, (iErr, doc) =>
+    @db.insert saveObj, (iErr) =>
       if iErr
         console.error "Player creation error: #{iErr}"
         callback iErr
         return
 
-      playerObject.playerManager = @
+      @game.broadcast MessageCreator.genericMessage "Welcome #{options.name} to #{Constants.gameName}!"
       @playerHash[options.identifier] = playerObject
       @players.push playerObject
 
       callback { success: true, name: options.name }
 
+  buildPlayerSaveObject: (player) ->
+    _.omit player, 'playerManager', 'party', 'personalities', 'calc'
+
   savePlayer: (player) ->
-    savePlayer = _.omit player, 'playerManager', 'party', 'personalities', 'calc'
-    @db.update { identifier: player.identifier }, savePlayer, (e) ->
+    savePlayer = @buildPlayerSaveObject player
+    @db.update { identifier: player.identifier }, savePlayer, {upsert: true}, (e) ->
       console.error "Save error: #{e}" if e
 
   playerTakeTurn: (identifier) ->
@@ -121,7 +125,6 @@ class PlayerManager
       player.personalities = []
     else
       player.rebuildPersonalityList()
-
     player
 
   getPlayerByName: (playerName) ->

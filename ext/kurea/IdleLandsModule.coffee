@@ -8,6 +8,7 @@ watch = require "node-watch"
 idlePath = __dirname + "/../../src"
 
 module.exports = (Module) ->
+
   class IdleModule extends Module
     shortName: "IdleLands"
     helpText:
@@ -20,9 +21,10 @@ module.exports = (Module) ->
     userIdentsList: []
     userIdents: {}
 
-    loadIdle: (stopIfLoaded) ->
+    topic: "Welcome to Idletopia! Got feedback? Send it to /r/idle_lands or privmsg it to seiyria. Offtopic chat: ##idlebot (if you need seiyria, pm him to come in)"
 
-      @buildUserList() if not @users.length
+    loadIdle: (stopIfLoaded) ->
+      @buildUserList()
       if not (stopIfLoaded and @idleLoaded)
         @idleLoaded = true
         @IdleWrapper.load()
@@ -30,9 +32,7 @@ module.exports = (Module) ->
         @IdleWrapper.api.register.playerLoadHandler @getAllUsers
 
     addServerChannel: (bot, server, channel) =>
-      @serverBots[server] = bot
-      bot.activateFloodProtection()
-      bot.floodProtectionDelay = 1800
+      IdleModule::serverBots[server] = bot if not IdleModule::serverBots[server]
 
       if server of @serverChannels
         @serverChannels[server].push channel
@@ -50,7 +50,7 @@ module.exports = (Module) ->
     broadcast: (message) ->
       for server, channels of @serverChannels
         for channel in channels
-          @serverBots[server].say channel, message
+          IdleModule::serverBots[server]?.say channel, message
 
     sendMessageToAll: (messageArray) ->
       messageArray = [messageArray] if !_.isArray messageArray
@@ -69,7 +69,7 @@ module.exports = (Module) ->
 
     addUser: (ident) ->
       return if not ident
-      #console.log "[client] adding #{ident}"
+
       @userIdentsList.push ident
       @userIdentsList = _.uniq @userIdentsList
 
@@ -78,63 +78,70 @@ module.exports = (Module) ->
     removeUser: (ident) ->
       return if not ident
       @userIdentsList = _.without @userIdentsList, ident
-      #console.log "[client] removing #{ident}"
 
       @IdleWrapper.api.remove.player ident
 
-    buildUserList: () =>
-      #TODO this is called a lot of times on load for some reason
+    buildUserList: ->
       #TODO flatten this so it's less indented
       for server, channels of @serverChannels
         for channel in channels
-          bot = @serverBots[server]
+          bot = IdleModule::serverBots[server]
           if bot.conn.chans[channel]
             chanUsers = bot.getUsers channel
             chanUsers = _.forEach chanUsers, (user) =>
-              bot.userManager.getUsername {user: user, bot: bot}, (e, username) =>
+              #whois changes the prototype such that it breaks for subsequent calls even if the server changes
+              #so we're doing nick-based auth for now
+              bot.userManager.getUsername user, (e, username) =>
+                username = user if (not username) and bot.config.auth is "nick"
                 ident = @generateIdent server, username
                 @addUser ident
+
+    loadOldChannels: ->
+      Q.when @db.databaseReady, (db) =>
+        db.find {active: true}, (e, docs) =>
+          console.error e if e
+
+          docs.each (e, doc) =>
+            return if not doc
+            bot = BotManager.botHash[doc.server]
+            @addServerChannel bot, doc.server, doc.channel
+
+    beginGameLoop: ->
+      @interval = setInterval =>
+        @IdleWrapper.api.game.nextAction _.sample @userIdentsList
+      , 1000
+
+    watchIdleFiles: ->
+      loadFunction = _.debounce (=>@loadIdle()), 100
+      watch idlePath, {}, () =>
+        files = finder.from(idlePath).findFiles("*.coffee");
+
+        _.forEach files, (file) ->
+          delete require.cache[file]
+
+        loadFunction()
+
+    initialize: ->
+      @loadIdle()
+      @loadOldChannels()
+      @beginGameLoop()
+      @watchIdleFiles()
 
     constructor: (moduleManager) ->
       super moduleManager
 
       @IdleWrapper = require("../../src/system/ExternalWrapper")()
-      @loadIdle()
-
       @db = @newDatabase 'channels'
 
-      randomFromArray = (array) ->
-        array[Math.floor Math.random() * array.length]
-
-      pickRandomPlayer = () =>
-        randomFromArray @userIdentsList
-
-      do () =>
-        Q.when @db.databaseReady, (db) =>
-          @db.find {active: true}, (e, docs) =>
-            _.forEach docs, (doc) =>
-              bot = BotManager.botHash[doc.server]
-              @addServerChannel bot, doc.server, doc.channel
-            @loadIdle true
-
-      do () =>
-        @interval = setInterval =>
-          @IdleWrapper.api.game.nextAction pickRandomPlayer()
-        , 1000
-
-      do () =>
-        loadFunction = _.debounce (=>@loadIdle()), 100
-        watch idlePath, {}, () =>
-          files = finder.from(idlePath).findFiles("*.coffee");
-
-          _.forEach files, (file) ->
-            delete require.cache[file]
-
-          loadFunction()
+      @initialize()
 
       @on "join", (bot, channel, sender) =>
         if bot.config.nick is sender
-          @buildUserList() if not @users.length
+          @buildUserList()
+          setTimeout =>
+            bot.send 'TOPIC', channel, @topic
+            bot.send 'MODE', channel, '+m'
+          , 2000
           return
 
         bot.userManager.getUsername {user: sender, bot: bot}, (e, username) =>
@@ -160,21 +167,19 @@ module.exports = (Module) ->
         [channel, server] = [origin.channel, origin.bot.config.server]
         @db.update { channel: channel, server: server },
           { channel: channel, server: server, active: true },
-          { upsert: true }
+          { upsert: true }, ->
 
         @addServerChannel origin.bot, server, channel
-
-        @reply origin, "Idletopia will exist in this channel."
+        @broadcast "#{origin.bot.config.server}##{origin.channel} has joined the Idletopia network!"
 
       @addRoute "idle-stop", "idle.game.stop", (origin, route) =>
         [channel, server] = [origin.channel, origin.bot.config.server]
         @db.update { channel: channel, server: server },
           { channel: channel, server: server, active: false },
-          { upsert: true }
+          { upsert: true }, ->
 
+        @broadcast "#{origin.bot.config.server}##{origin.channel} has left the Idletopia network!"
         @removeServerChannel origin.bot, server, channel
-
-        @reply origin, "Idletopia will vanish from this channel."
 
       @addRoute "idle-register :name", (origin, route) =>
         [bot, name] = [origin.bot, route.params.name]
@@ -264,11 +269,19 @@ module.exports = (Module) ->
             @reply origin, "Successfully updated your personality settings."
 
       @addRoute "idle-add all-data", "idle.game.owner", (origin, route) =>
+        @reply origin, "Re-initializing all modifier/event/etc data from disk."
         @IdleWrapper.api.add.allData()
-        @reply origin, "Re-initializing all modifier/event data from disk."
+
+      @addRoute "idle-broadcast :message", (origin, route) =>
+        @broadcast route.params.message
+
+      #@on "notice", (bot, sender, channel, message) =>
+        #return if not sender or sender in ['InfoServ','*','AUTH']
+        #console.log "notice from #{sender}|#{channel} on #{bot.config.server}: #{message}"
 
     destroy: ->
       clearInterval @interval
+      delete @db
       super()
 
   IdleModule

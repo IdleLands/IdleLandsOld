@@ -40,13 +40,12 @@ class Constants
       max: 1000
     ,
       type: "party"
-      min: 600
+      min: 1
       max: 750
     ,
       type: "battle"
-      min: 50
+      min: 100
       max: 100
-
   ]
 
   @eventEffects =

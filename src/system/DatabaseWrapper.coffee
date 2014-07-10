@@ -29,7 +29,7 @@ class DatabaseWrapper
 
           @db = DatabaseWrapper::databaseConnection.collection "#{@label}"
 
-          (@db.ensureIndex @index, ->) if @index
+          @indexCallback?(@db)
 
           _isReady.resolve @db
       else
@@ -105,7 +105,7 @@ class DatabaseWrapper
     callback ?= ->
     rimraf @db.filename, callback
 
-  constructor: (@label, @index) ->
+  constructor: (@label, @indexCallback) ->
     @load()
 
 module.exports = exports = DatabaseWrapper

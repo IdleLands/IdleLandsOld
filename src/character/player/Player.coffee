@@ -21,11 +21,11 @@ class Player extends Character
     if not @xp
       @xp = new RestrictedNumber 0, (@levelUpXpCalc 0), 0
       @gold = new RestrictedNumber 0, 9999999999, 0
-      @levelUp()
       @x = 10
       @y = 10
       @map = 'Norkos'
-      @changeProfession "Generalist"
+      @changeProfession "Generalist", yes
+      @levelUp yes
       @generateBaseEquipment()
 
   generateBaseEquipment: ->
@@ -112,12 +112,12 @@ class Player extends Character
 
     @handleTile tile
 
-  changeProfession: (to) ->
+  changeProfession: (to, suppress = no) ->
     professionProto = require "../classes/#{to}"
     @profession = new professionProto()
     @professionName = professionProto.name
     @profession.load @
-    @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} is now a #{to}!"
+    @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} is now a #{to}!" if not suppress
 
   calculateYesPercent: ->
     Math.min 100, (Math.max 0, Constants.defaults.player.defaultYesPercent + @personalityReduce 'calculateYesPercentBonus')
@@ -163,12 +163,10 @@ class Player extends Character
     if @xp.atMax()
       @levelUp()
 
-  levelUp: ->
+  levelUp: (suppress = no) ->
     return if not @playerManager
-    @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} has attained level #{@level.getValue()}!"
+    @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} has attained level #{@level.getValue()}!" if not suppress
     @level.add 1
-    @hp.maximum += 10
-    @mp.maximum += 5
     @xp.maximum = @levelUpXpCalc @level.getValue()
     @xp.toMinimum()
     @emit "levelUp"

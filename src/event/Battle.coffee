@@ -3,7 +3,7 @@ MessageCreator = require "../system/MessageCreator"
 
 _ = require "underscore"
 chance = (new require "Chance")()
-
+# fix numbers & emit events & more stat calculations like hp / mp
 class Battle
   constructor: (@game, @parties) ->
     @startBattle()
@@ -17,6 +17,11 @@ class Battle
     @calculateTurnOrder()
 
     _.each @turnOrder, (player) ->
+
+      player.hp.maximum = player.calc.hp()
+      player.mp.maximum = player.calc.mp()
+      player.special.maximum = player.calc.special()
+
       player.hp.toMaximum()
       player.mp.toMaximum()
       player.special.toMaximum()
@@ -24,7 +29,7 @@ class Battle
   calculateTurnOrder: ->
     playerList = _.reduce @parties, ((prev, party) -> prev.concat party.players), []
     @turnOrder = _.sortBy playerList, (player) -> player.calc.stat 'agi'
-    .reverse()
+                  .reverse()
 
   getRelevantStats: (player) ->
     stats =
@@ -53,7 +58,6 @@ class Battle
       @stringifyStats @getRelevantStats player
 
   playersAlive: ->
-    #alivePlayers = _.reduce @turnOrder, ((count, player) -> count+(not player.hp.atMin())), 0
     parties = _.uniq _.pluck @turnOrder, 'party'
     aliveParties = _.reduce parties, (alive, party) ->
       currentAlive = _.reduce party.players, (count, player) ->
@@ -67,12 +71,6 @@ class Battle
   beginTakingTurns: ->
     while @playersAlive()
       @turnPosition = @turnPosition or 0
-      @turnPosition++
-
-      #if @turnPosition is @turnOrder.length
-        #console.log 'endround'
-
-      @turnPosition = 0 if @turnPosition is @turnOrder.length
 
       if @turnPosition is 0
         @game.broadcast MessageCreator.genericMessage "A new combat round has started. Current status: #{@getAllPlayerStatStrings().join ', '}"
@@ -80,10 +78,15 @@ class Battle
       player = @turnOrder[@turnPosition]
       @takeTurn player
 
+      @turnPosition++
+      if @turnPosition is @turnOrder.length
+        #end round
+        @turnPosition = 0
+
   takeTurn: (player) ->
     return if player.hp.atMin()
 
-    if chance.bool {likelihood: 100}
+    if chance.bool {likelihood: player.calc.physicalAttackChance()}
       @doPhysicalAttack player
     else
       console.log 'magic'
@@ -95,7 +98,9 @@ class Battle
 
     message = "#{player.name} is attacking #{target.name}"
 
-    dodgeChance = chance.integer {min: (-target.calc.dodge()), max: (player.calc.beatDodge())}
+    [dodgeMin, dodgeMax] = [-target.calc.dodge(), player.calc.beatDodge()]
+
+    dodgeChance = chance.integer {min: dodgeMin, max: dodgeMax}
 
     #TODO maybe add a dodge percent so both conditions have to pass
     #dodge percent would only involve the target and it would probably be a 1-100 roll
@@ -103,14 +108,16 @@ class Battle
     sendBattleMessage = (message, player) =>
       @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace message, player
 
-    if dodgeChance < 0
+    if dodgeChance <= 0
       message += ", but #{target.name} dodged!"
       sendBattleMessage message, target
       return
 
-    hitChance = chance.integer {min: (-target.calc.hit()), max: (player.calc.beatHit())}
+    [hitMin, hitMax] = [-target.calc.hit(), player.calc.beatHit()]
 
-    if hitChance < 0
+    hitChance = chance.integer {min: hitMin, max: hitMax}
+
+    if hitChance <= 0
       deflectItem = _.sample target.equipment
       message += ", but #{target.name} deflected it with %hisher #{deflectItem.name}!"
       sendBattleMessage message, target
@@ -130,11 +137,24 @@ class Battle
     sendBattleMessage message, player
 
   endBattle: ->
-    winningParty = _.sample(_.filter @turnOrder, (player) -> not player.hp.atMin()).party
+    randomWinningPlayer = _.sample(_.filter @turnOrder, (player) -> not player.hp.atMin())
+    if not randomWinningPlayer
+      @game.broadcast MessageCreator.genericMessage "Everyone died! The battle was a tie! You get nothing!"
+      @cleanUp()
+      return
+
+    winningParty = randomWinningPlayer.party
     winnerName = if winningParty.players.size > 1 then winningParty.name else winningParty.players[0].name
 
     @game.broadcast MessageCreator.genericMessage "The battle was won by #{winnerName}."
     #divvy some bonus XP and such, as well as taking XP away from people who suck
+
+    @cleanUp()
+
+  cleanUp: ->
+
+    _.each @parties, (party) ->
+      party.disband()
 
     @game.inBattle = false
 
