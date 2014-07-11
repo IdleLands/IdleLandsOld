@@ -17,19 +17,19 @@ class Constants
     ,
       type: "blessItem"
       min: 1
-      max: 1500
+      max: 500
     ,
       type: "forsakeItem"
       min: 1
-      max: 1750
+      max: 750
     ,
       type: "blessXp"
       min: 1
-      max: 650
+      max: 350
     ,
       type: "forsakeXp"
       min: 1
-      max: 1000
+      max: 750
     ,
       type: "blessGold"
       min: 1
@@ -74,8 +74,8 @@ class Constants
       defaultPartyLeavePercent: 1
 
   @pickRandomEvent = (player) ->
-    eventMod = 0
     event = _.sample @eventRates
+    eventMod = player.personalityReduce 'eventModifier', [event], 0
     prob = chance.integer {min: 0, max: event.max}
     return event.type if prob <= (event.min+eventMod)
     null

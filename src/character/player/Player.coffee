@@ -175,6 +175,6 @@ class Player extends Character
     Math.floor 100 + (400 * Math.pow level, 1.67)
 
   itemFindRange: ->
-    @level.getValue() * 25
+    @level.getValue() * 15
 
 module.exports = exports = Player

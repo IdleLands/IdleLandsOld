@@ -1,9 +1,6 @@
 
-###
-  if nameless lands classes are implemented, make higher tier classes descendants of a base class
-###
-
 Personality = require "./Personality"
+_ = require "underscore"
 
 class Class extends Personality
 
@@ -26,8 +23,21 @@ class Class extends Personality
   mp: (player) ->
     @baseMp + (@baseMpPerLevel*player.level.getValue()) + (@baseMpPerInt*player.calc.stat 'int')
 
-  combatEndXpGain: (player, party) ->
-    @baseXpGainPerCombat + _.reduce (_.pluck party, 'level'), ((prevVal, level) => prevVal + (level * @baseXpPerOpponentLevel)), 0
+  ###
+    deadVariables contains:
+      deadPlayers
+      numDead
+      deadPlayerTotalXp
+      deadPlayerAverageXp
+  ###
+
+  combatEndXpGain: (player, deadVariables) ->
+    @baseXpGainPerCombat + _.reduce (_.pluck (_.pluck deadVariables.deadPlayers, 'level'), '__current'),
+      ((prevVal, level) => prevVal + (level * @baseXpPerOpponentLevel))
+    , 0
+
+  eventModifier: (event) ->
+    event.min
 
   load: (player) ->
     player.on 'walk', ->

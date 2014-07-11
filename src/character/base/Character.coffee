@@ -114,9 +114,9 @@ class Character extends EventEmitter
         baseValue = 0
         @self.personalityReduce 'special', [@self, baseValue], baseValue
 
-      combatEndXpGain: (party) ->
+      combatEndXpGain: (oppParty) ->
         baseValue = 0
-        @self.personalityReduce 'combatEndXpGain', [@self, party, baseValue], baseValue
+        @self.personalityReduce 'combatEndXpGain', [@self, oppParty, baseValue], baseValue
 
       combatEndXpLoss: ->
         baseValue = Math.floor self.xp.maximum / 10

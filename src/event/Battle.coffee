@@ -3,7 +3,12 @@ MessageCreator = require "../system/MessageCreator"
 
 _ = require "underscore"
 chance = (new require "Chance")()
-# fix numbers & emit events & more stat calculations like hp / mp
+
+# TODO
+# TODO
+# TODO
+# emit events & more stat calculations like hp / mp
+
 class Battle
   constructor: (@game, @parties) ->
     @startBattle()
@@ -48,7 +53,7 @@ class Battle
       string += " [ "
       string += "HP #{stats.hp.getValue()}/#{stats.hp.maximum} " if stats.hp
       string += "MP #{stats.mp.getValue()}/#{stats.mp.maximum} " if stats.mp
-      string += "SP #{stats.sp.getValue()}/#{stats.sp.maximum} " if stats.sp
+      string += "SP #{stats.special.getValue()}/#{stats.special.maximum} " if stats.special
       string += "]"
 
     string
@@ -143,16 +148,27 @@ class Battle
       @cleanUp()
       return
 
-    winningParty = randomWinningPlayer.party
-    winnerName = if winningParty.players.size > 1 then winningParty.name else winningParty.players[0].name
+    @winningParty = randomWinningPlayer.party
+    winnerName = if @winningParty.players.size > 1 then @winningParty.name else @winningParty.players[0].name
 
     @game.broadcast MessageCreator.genericMessage "The battle was won by #{winnerName}."
-    #divvy some bonus XP and such, as well as taking XP away from people who suck
 
+    @divvyXp()
     @cleanUp()
 
-  cleanUp: ->
+  divvyXp: ->
+    deadVariables = {}
+    deadVariables.deadPlayers = _.filter @turnOrder, (player) -> player.hp.atMin() and (player.party isnt @winningParty)
+    deadVariables.numDead = deadVariables.deadPlayers.length
+    deadVariables.deadPlayerTotalXp = _.reduce deadVariables.deadPlayers, ((prev, player) -> prev + player.xp.maximum), 0
+    deadVariables.deadPlayerAverageXP = deadVariables.deadPlayerTotalXp / deadVariables.numDead
 
+    _.each @winningParty.players, (player) =>
+      xpGain = player.personalityReduce 'combatEndXpGain', [player, deadVariables], 0
+      @game.broadcast MessageCreator.genericMessage "#{player.name} gained #{xpGain}xp!"
+      player.gainXp xpGain
+
+  cleanUp: ->
     _.each @parties, (party) ->
       party.disband()
 
