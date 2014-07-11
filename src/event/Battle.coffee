@@ -2,6 +2,7 @@
 MessageCreator = require "../system/MessageCreator"
 
 _ = require "underscore"
+_.str = require "underscore.string"
 chance = (new require "Chance")()
 
 # TODO
@@ -162,11 +163,22 @@ class Battle
     deadVariables.numDead = deadVariables.deadPlayers.length
     deadVariables.deadPlayerTotalXp = _.reduce deadVariables.deadPlayers, ((prev, player) -> prev + player.xp.maximum), 0
     deadVariables.deadPlayerAverageXP = deadVariables.deadPlayerTotalXp / deadVariables.numDead
+    deadVariables.winningParty = @winningParty
 
+    winMessages = []
+    loseMessages = []
     _.each @winningParty.players, (player) =>
       xpGain = player.personalityReduce 'combatEndXpGain', [player, deadVariables], 0
-      @game.broadcast MessageCreator.genericMessage "#{player.name} gained #{xpGain}xp!"
+      winMessages.push "#{player.name} gained #{xpGain}xp"
       player.gainXp xpGain
+
+    _.each deadVariables.deadPlayers, (player) =>
+      xpLoss = player.personalityReduce 'combatEndXpLoss', [player, deadVariables], 0
+      loseMessages.push "#{player.name} lost #{xpLoss}xp"
+      player.gainXp -xpLoss
+
+    @game.broadcast MessageCreator.genericMessage (_.str.toSentence winMessages)+"!"
+    @game.broadcast MessageCreator.genericMessage (_.str.toSentence loseMessages)+"!"
 
   cleanUp: ->
     _.each @parties, (party) ->

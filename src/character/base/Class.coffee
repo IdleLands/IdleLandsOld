@@ -15,7 +15,10 @@ class Class extends Personality
   baseMpPerInt: 0
 
   baseXpGainPerCombat: 100
-  baseXpPerOpponentLevel: 50
+  baseXpGainPerOpponentLevel: 50
+
+  baseXpLossPerCombat: 10
+  baseXpLossPerOpponentLevel: 5
 
   hp: (player) ->
     @baseHp + (@baseHpPerLevel*player.level.getValue()) + (@baseHpPerCon*player.calc.stat 'con')
@@ -33,7 +36,12 @@ class Class extends Personality
 
   combatEndXpGain: (player, deadVariables) ->
     @baseXpGainPerCombat + _.reduce (_.pluck (_.pluck deadVariables.deadPlayers, 'level'), '__current'),
-      ((prevVal, level) => prevVal + (level * @baseXpPerOpponentLevel))
+      ((prevVal, level) => prevVal + (level * @baseXpGainPerOpponentLevel))
+    , 0
+
+  combatEndXpLoss: (player, deadVariables) ->
+    @baseXpLossPerCombat + _.reduce (_.pluck (_.pluck deadVariables.winningParty.players, 'level'), '__current'),
+      ((prevVal, level) => prevVal + (level * @baseXpLossPerOpponentLevel))
     , 0
 
   eventModifier: (event) ->
