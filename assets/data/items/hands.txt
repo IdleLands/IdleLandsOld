@@ -3,3 +3,20 @@
 "bracers" dex=3 str=1
 "gauntlets" str=6 dex=3
 "armlets" dex=8 str=2
+"chainmail gloves" dex=5 str=7
+"scalemail gloves" dex=12 str=12
+"dragonscale gloves" str=20 dex=12
+"blacksmith gloves" str=30 dex=15
+"tempered gloves" dex=60 str=20
+"spiked knuckles" str=62 dex=62
+"crimson gloves" str=150 dex=6
+"Roll of Quarters" str=125 dex=75
+"Glover" dex=200 str=50
+"How-Do-You-Type-With-These Boxing Gloves" str=300
+"Real Steel" str=100 dex=156
+"Scyther" str=212 dex=123
+"Knife-Fists" str=300 dex=156
+"Pixelated Gloves" dex=350 str=100
+"My Little Painbringers" str=200 dex=311
+"Godhand" str=400 dex=200
+"Hands of Fate" str=500 dex=500 power

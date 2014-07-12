@@ -1,5 +1,49 @@
 "socks and sandals" agi=1 dex=1 wis=-20
 "socks" agi=1
+"sneakers" agi=3
 "sandals" dex=1
 "high-heels" dex=5
 "duct-tape shoes" agi=3 dex=2
+"golf shoes" dex=3 agi=2
+"flip flops" dex=5
+"boots" dex=10 agi=5
+"geta" agi=10 dex=8
+"greaves" dex=10 agi=10
+"hovershoes" agi=20 dex=11
+"anchors" dex=25 agi=6
+"cement shoes" dex=30
+"jetboots" agi=30 dex=10
+"mermaid tail" dex=30 agi=10
+"fuzzy boots" dex=30 agi=20 wis=10
+"long fall boots" dex=30 agi=20 con=1
+"long jump boots" dex=30 agi=20
+"steel-toed boots" dex=40 agi=10 con=20
+"spiked boots" dex=30 agi=35
+"sticky stuff" dex=70
+"cleats" agi=50 dex=30
+"iron boots" dex=70 agi=20
+"spring shoes" agi=99
+"rollerskates" agi=80 dex=20
+"bear paws" dex=80 agi=40
+"snow shoes" dex=120 agi=30
+"diamond boots" dex=50 agi=50 con=67
+"foot binding" agi=120 dex=57
+"boots made for walking" dex=100 agi=95
+"combat boots" dex=150 agi=50 str=50
+"armored boots" dex=150 agi=50 con=50
+"Mom's Heels" dex=150 agi=100 wis=50
+"Uggs" agi=100 dex=176 luck=-10
+"Grabbin' 'n Slowin' Ghosts" agi=150 dex=150
+"Rocket Rocket Rocket Skates" agi=300 dex=25
+"Flippity Floppies" dex=250 agi=100
+"Rocket Shoes" agi=200 dex=150
+"Hover Boots" agi=150 dex=250
+"Expensive Cardboard Shoes" agi=250 dex=200
+"Stilettos" dex=400 agi=100
+"Hoverskates" agi=375 dex=150
+"Two Ton Bricks" agi=100 dex=450
+"Red Hot Kicks" agi=500 str=55
+"Mario Boots" agi=400 dex=200
+"Silver Surfboard" agi=333 dex=300
+"Advanced Knee Replacement" dex=450 agi=200
+"Continuity Shoes" dex=500 agi=500 glowing

@@ -1,5 +1,34 @@
+"stoma" con=-30
 "chain" wis=1
 "brooch" wis=2
-"amulet" wis=3
-"necklace" wis=4
+"amulet" wis=2 dex=1
+"necklace" wis=2 int=2
+"pendant" wis=3 int=3
 "huggable monkey" wis=10
+"medal" wis=4 con=5
+"pushpin" wis=2 str=5
+"collar" wis=9
+"choker" wis=5 agi=5
+"bowtie" wis=5 int=5
+"torc" agi=10 wis=2
+"eye" wis=15
+"heart" con=10 wis=10
+"barcode" wis=3 agi=19
+"necktie" wis=13 agi=10
+"orb" int=15 wis=10
+"locket" wis=25 int=10 sentimentality=5
+"beads" wis=30 str=20
+"scarf" wis=30 agi=47
+"ascot" agi=150 int=90
+"fake beard" str=162 wis=100
+"Amethyst Necklace" int=250 wis=200
+"Windsor Knot" wis=200 agi=300
+"Antique Brooch" wis=550
+"Aesculapius Eye" dex=450 wis=200
+"Arihman's Heart" con=350 wis=350
+"Fated Orb" int=450 wis=400
+"Noose of Ascension" agi=450 wis=400
+"Steel-Spiked Collar" str=450 wis=400
+"Expensive Headphones" dex=450 wis=400
+"Steel Gorget" con=450 wis=400
+"Impossibility Cloak" wis=500 con=100 int=100 str=100 dex=100 agi=100 dodge
