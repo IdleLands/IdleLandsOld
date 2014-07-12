@@ -141,7 +141,7 @@ class Battle
     message += ", and hit with %hisher #{weapon.name} for #{damage} HP damage"
 
     @emitEvents "attack", "attacked", player, target
-    @takeHpFrom player, damage, "physical"
+    @takeHpFrom player, target, damage, "physical"
 
     if target.hp.atMin()
       message += " -- a fatal blow!"
@@ -201,9 +201,9 @@ class Battle
 
     @game.inBattle = false
 
-  takeHpFrom: (player, damage, type) ->
-    player.hp.sub damage
-    @emitEvents "damage", "damaged", player, target, type: type, damage: damage
+  takeHpFrom: (attacker, defender, damage, type) ->
+    defender.hp.sub damage
+    @emitEvents "damage", "damaged", attacker, defender, type: type, damage: damage
 
   emitEventToAll: (event, data) ->
     _.forEach @turnOrder, (player) ->
