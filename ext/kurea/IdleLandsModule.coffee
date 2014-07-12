@@ -16,6 +16,7 @@ module.exports = (Module) ->
 
     serverBots: {}
     serverChannels: {}
+    currentlyInChannels: []
 
     users: []
     userIdentsList: []
@@ -47,10 +48,13 @@ module.exports = (Module) ->
     getAllUsers: =>
       @userIdentsList
 
+    hashServerChannel: (server, channel) ->
+      "#{server}/#{channel}"
+
     broadcast: (message) ->
       for server, channels of @serverChannels
         for channel in channels
-          IdleModule::serverBots[server]?.say channel, message
+          IdleModule::serverBots[server]?.say channel, message if (@hashServerChannel server, channel) in @currentlyInChannels
 
     sendMessageToAll: (messageArray) ->
       messageArray = [messageArray] if !_.isArray messageArray
@@ -82,7 +86,6 @@ module.exports = (Module) ->
       @IdleWrapper.api.remove.player ident
 
     buildUserList: ->
-      #TODO flatten this so it's less indented
       for server, channels of @serverChannels
         for channel in channels
           bot = IdleModule::serverBots[server]
@@ -140,6 +143,7 @@ module.exports = (Module) ->
           setTimeout =>
             bot.send 'TOPIC', channel, @topic
             bot.send 'MODE', channel, '+m'
+            @currentlyInChannels.push @hashServerChannel bot.config.server, channel
             @buildUserList()
           , 1000
           return
