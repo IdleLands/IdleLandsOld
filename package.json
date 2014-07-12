@@ -22,7 +22,6 @@
     "grunt": "^0.4.5",
     "grunt-coffeelint": "0.0.10",
     "grunt-contrib-watch": "^0.6.1",
-    "knockout": "^3.1.0",
     "lodash": "^2.4.1",
     "mongodb": "^1.4.7",
     "nedb": "^0.10.5",
@@ -34,6 +33,7 @@
     "rimraf": "^2.2.8",
     "underscore": "^1.6.0",
     "underscore.string": "^2.3.3",
-    "watch": "^0.10.0"
+    "watch": "^0.10.0",
+    "fs-finder": "~1.8.0"
   }
 }

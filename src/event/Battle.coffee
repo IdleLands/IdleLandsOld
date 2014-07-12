@@ -3,7 +3,7 @@ MessageCreator = require "../system/MessageCreator"
 
 _ = require "underscore"
 _.str = require "underscore.string"
-chance = (new require "Chance")()
+chance = (new require "chance")()
 
 # TODO
 # TODO
