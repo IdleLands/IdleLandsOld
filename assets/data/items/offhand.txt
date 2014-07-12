@@ -1,5 +1,42 @@
 "wooden board" con=1
 "girdle" str=1 con=2
+"shield" con=5
+"targe" con=4 str=2
 "armlet" str=3 con=4
 "buckler" str=5 con=5
-"tower shield" con=10 str=2
+"ward" str=5 con=6
+"round shield" con=12 str=2
+"tower shield" con=5 defense
+"kite shield" con=20
+"bulwark" str=15 con=12
+"lunchbox" con=15 str=10
+"wing" con=17 agi=20 dodge
+"escutcheon" str=20 con=11
+"aegis" con=37 aegis
+"keyboard" con=30 int=10
+"magic bubble" con=25 str=20 water=20
+"shieldkind" con=31 str=20
+"clock" con=35 agi=20
+"turtle shell" con=59 defense
+"iron ingot" con=43 str=20
+"mirror shield" str=30 con=42
+"barrier birds" str=58 str=20
+"tribal shield" str=50 con=40
+"riot shield" str=20 con=104
+"car door" str=30 con=105
+"magic orb shield" str=103 int=40
+"cube of meat" con=100 str=50
+"phalanx shield" con=113 str=60
+"spiked targe" str=153 con=50
+"pavise" con=175 str=50 defense
+"large dragon's scale" str=200 con=50 fire=200
+"Shield of Five Elements" con=150 str=150 fire=50 water=50 thunder=50 ice=50 earth=50
+"Companion Cube" con=280 wis=100 sentimentality=200
+"Reinforced Chunk of Rust" con=100 str=350
+"Summoned Swords" str=400 con=70 offense
+"Hero's Shield" con=450 str=200 defense
+"iMac" str=666
+"Holy Arms" con=777 piety=400
+"Hoplon Guard" con=600 str=200 aegis
+"Smashing Board" con=300 str=400
+"Shield of Life" con=500 str=500 defense
