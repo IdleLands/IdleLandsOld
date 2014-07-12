@@ -5,11 +5,6 @@ _ = require "underscore"
 _.str = require "underscore.string"
 chance = (new require "chance")()
 
-# TODO
-# TODO
-# TODO
-# emit events & more stat calculations like hp / mp
-
 class Battle
   constructor: (@game, @parties) ->
     @startBattle()
@@ -75,18 +70,22 @@ class Battle
     1 < aliveParties.length
 
   beginTakingTurns: ->
+    @emitEventToAll "battle.start", @turnOrder
     while @playersAlive()
       @turnPosition = @turnPosition or 0
 
       if @turnPosition is 0
         @game.broadcast MessageCreator.genericMessage "A new combat round has started. Current status: #{@getAllPlayerStatStrings().join ', '}"
+        @emitEventToAll "round.start", @turnOrder
 
+      @emitEventToAll "turn.start", player
       player = @turnOrder[@turnPosition]
       @takeTurn player
+      @emitEventToAll "turn.end", player
 
       @turnPosition++
       if @turnPosition is @turnOrder.length
-        #end round
+        @emitEventToAll "round.end", @turnOrder
         @turnPosition = 0
 
   takeTurn: (player) ->
@@ -108,41 +107,52 @@ class Battle
 
     dodgeChance = chance.integer {min: dodgeMin, max: dodgeMax}
 
-    #TODO maybe add a dodge percent so both conditions have to pass
-    #dodge percent would only involve the target and it would probably be a 1-100 roll
-
     sendBattleMessage = (message, player) =>
       @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace message, player
 
     if dodgeChance <= 0
       message += ", but #{target.name} dodged!"
       sendBattleMessage message, target
+      @emitEvents "dodge", "dodged", target, player
       return
 
     [hitMin, hitMax] = [-target.calc.hit(), player.calc.beatHit()]
 
     hitChance = chance.integer {min: hitMin, max: hitMax}
 
-    if hitChance <= 0
+    if hitChance is 0
+      message += ", but #{player.name} missed!"
+      sendBattleMessage message, target
+      @emitEvents "miss", "missed", player, target
+      return
+
+    if hitChance < 0
       deflectItem = _.sample target.equipment
       message += ", but #{target.name} deflected it with %hisher #{deflectItem.name}!"
       sendBattleMessage message, target
+      @emitEvents "deflect", "deflected", target, player
       return
+
+    @emitEvents "target", "targeted", player, target
 
     damage = chance.integer {min: 1, max: player.calc.damage()}
 
     weapon = _.findWhere player.equipment, {type: "mainhand"}
     message += ", and hit with %hisher #{weapon.name} for #{damage} HP damage"
-    target.hp.sub damage
+
+    @emitEvents "attack", "attacked", player, target
+    @takeHpFrom player, damage, "physical"
 
     if target.hp.atMin()
       message += " -- a fatal blow!"
+      @emitEvents "kill", "killed", player, target
     else
       message += "!"
 
     sendBattleMessage message, player
 
   endBattle: ->
+    @emitEventToAll "battle.end", @turnOrder
     randomWinningPlayer = _.sample(_.filter @turnOrder, (player) -> not player.hp.atMin())
     if not randomWinningPlayer
       @game.broadcast MessageCreator.genericMessage "Everyone died! The battle was a tie! You get nothing!"
@@ -151,6 +161,11 @@ class Battle
 
     @winningParty = randomWinningPlayer.party
     winnerName = if @winningParty.players.size > 1 then @winningParty.name else @winningParty.players[0].name
+
+    @losingPlayers  = _.intersection @turnOrder, @winningParty.players
+
+    @emitEventsTo "party.loss", @losingPlayers
+    @emitEventsTo "party.win", @winningParty.players
 
     @game.broadcast MessageCreator.genericMessage "The battle was won by #{winnerName}."
 
@@ -167,12 +182,12 @@ class Battle
 
     winMessages = []
     loseMessages = []
-    _.each @winningParty.players, (player) =>
+    _.each @winningParty.players, (player) ->
       xpGain = player.personalityReduce 'combatEndXpGain', [player, deadVariables], 0
       winMessages.push "#{player.name} gained #{xpGain}xp"
       player.gainXp xpGain
 
-    _.each deadVariables.deadPlayers, (player) =>
+    _.each deadVariables.deadPlayers, (player) ->
       xpLoss = player.personalityReduce 'combatEndXpLoss', [player, deadVariables], 0
       loseMessages.push "#{player.name} lost #{xpLoss}xp"
       player.gainXp -xpLoss
@@ -185,5 +200,32 @@ class Battle
       party.disband()
 
     @game.inBattle = false
+
+  takeHpFrom: (player, damage, type) ->
+    player.hp.sub damage
+    @emitEvents "damage", "damaged", player, target, type: type, damage: damage
+
+  emitEventToAll: (event, data) ->
+    _.forEach @turnOrder, (player) ->
+      player.emit event, data
+
+  emitEventsTo: (event, to, data) ->
+    _.forEach to, (player) ->
+      player.emit event, data
+
+  emitEvents: (attackerEvent, defenderEvent, attacker, defender, extra = {}) ->
+    attacker.emit attackerEvent, defender, extra
+    _.forEach (_.without attacker.party.players, attacker), (partyMate) ->
+      partyMate.emit "ally.#{attackerEvent}", attacker, defender, extra
+
+    _.forEach (_.intersection @turnOrder, attacker.party.players), (foe) ->
+      foe.emit "enemy.#{attackerEvent}", attacker, defender, extra
+
+    defender.emit defenderEvent, attacker, extra
+    _.forEach (_.without defender.party.players, defender), (partyMate) ->
+      partyMate.emit "ally.#{defenderEvent}", defender, attacker, extra
+
+    _.forEach (_.intersection @turnOrder, defender.party.players), (foe) ->
+      foe.emit "enemy.#{defenderEvent}", attacker, defender, extra
 
 module.exports = exports = Battle

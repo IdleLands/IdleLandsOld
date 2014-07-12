@@ -40,7 +40,7 @@ class Constants
       max: 1000
     ,
       type: "party"
-      min: 1
+      min: 600
       max: 750
     ,
       type: "battle"

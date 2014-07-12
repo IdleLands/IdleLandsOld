@@ -137,11 +137,11 @@ module.exports = (Module) ->
 
       @on "join", (bot, channel, sender) =>
         if bot.config.nick is sender
-          @buildUserList()
           setTimeout =>
             bot.send 'TOPIC', channel, @topic
             bot.send 'MODE', channel, '+m'
-          , 2000
+            @buildUserList()
+          , 1000
           return
 
         bot.userManager.getUsername {user: sender, bot: bot}, (e, username) =>
@@ -276,8 +276,8 @@ module.exports = (Module) ->
         @broadcast route.params.message
 
       #@on "notice", (bot, sender, channel, message) =>
-        #return if not sender or sender in ['InfoServ','*','AUTH']
-        #console.log "notice from #{sender}|#{channel} on #{bot.config.server}: #{message}"
+      #  return if not sender or sender in ['InfoServ','*','AUTH']
+      #  console.log "notice from #{sender}|#{channel} on #{bot.config.server}: #{message}"
 
     destroy: ->
       clearInterval @interval

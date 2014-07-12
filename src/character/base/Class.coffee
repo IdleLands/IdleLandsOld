@@ -51,4 +51,13 @@ class Class extends Personality
     player.on 'walk', ->
       player.gainXp 1
 
+    player.on 'attack', (defender, extra) ->
+      console.log "[attack] attacking #{defender.name}"
+
+    player.on 'ally.attack', (attacker, defender, extra) ->
+      console.log "[ally.attack] #{attacker.name} attacking #{defender.name}"
+
+    player.on 'enemy.attack', (attacker, defender, extra) ->
+      console.log "[enemy.attack] #{attacker.name} attacking #{defender.name}"
+
 module.exports = exports = Class

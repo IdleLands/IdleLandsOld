@@ -72,6 +72,7 @@ class Character extends EventEmitter
   loadCalc: ->
     @calc =
       self: @
+      base: {}
       stat: (stat) =>
         _.reduce @equipment, ((prev, item) -> prev+item[stat]), 0
 
@@ -79,47 +80,47 @@ class Character extends EventEmitter
         _.reduce stats, ((prev, stat) => prev+@calc.stat stat), 0
 
       dodge: ->
-        baseValue = @self.calc.stat.apply @self, ['agi']
-        @self.personalityReduce 'dodge', [@self, baseValue], baseValue
+        @base.dodge = @self.calc.stat.apply @self, ['agi']
+        @self.personalityReduce 'dodge', [@self, @base.dodge], @base.dodge
 
       beatDodge: ->
-        baseValue = Math.max 10, @self.calc.stats.apply @self, [['dex','str','agi','wis','con', 'int']]
-        @self.personalityReduce 'beatDodge', [@self, baseValue], baseValue
+        @base.beatDodge = Math.max 10, @self.calc.stats.apply @self, [['dex','str','agi','wis','con', 'int']]
+        @self.personalityReduce 'beatDodge', [@self, @base.beatDodge], @base.beatDodge
 
       hit: ->
-        baseValue = (@self.calc.stats.apply @self, [['dex', 'agi', 'con']]) / 6
-        @self.personalityReduce 'hit', [@self, baseValue], baseValue
+        @base.hit = (@self.calc.stats.apply @self, [['dex', 'agi', 'con']]) / 6
+        @self.personalityReduce 'hit', [@self, @base.hit], @base.hit
 
       beatHit: ->
-        baseValue = Math.max 10, @self.calc.stats.apply @self, [['str', 'dex']]
-        @self.personalityReduce 'beatHit', [@self, baseValue], baseValue
+        @base.beatHit = Math.max 10, @self.calc.stats.apply @self, [['str', 'dex']]
+        @self.personalityReduce 'beatHit', [@self, @base.beatHit], @base.beatHit
 
       damage: ->
-        baseValue = Math.max 10, @self.calc.stats.apply @self, [['str']]
-        @self.personalityReduce 'damage', [@self, baseValue], baseValue
+        @base.damage = Math.max 10, @self.calc.stats.apply @self, [['str']]
+        @self.personalityReduce 'damage', [@self, @base.damage], @base.damage
 
       physicalAttackChance: ->
-        baseValue = 100
-        @self.personalityReduce 'physicalAttackChance', [@self, baseValue], baseValue
+        @base.physicalAttackChance = 100
+        @self.personalityReduce 'physicalAttackChance', [@self, @base.physicalAttackChance], @base.physicalAttackChance
 
       hp: ->
-        baseValue = 0
-        @self.personalityReduce 'hp', [@self, baseValue], baseValue
+        @base.hp = 0
+        @self.personalityReduce 'hp', [@self, @base.hp], @base.hp
 
       mp: ->
-        baseValue = 0
-        @self.personalityReduce 'mp', [@self, baseValue], baseValue
+        @base.mp = 0
+        @self.personalityReduce 'mp', [@self, @base.mp], @base.mp
 
       special: ->
-        baseValue = 0
-        @self.personalityReduce 'special', [@self, baseValue], baseValue
+        @base.special = 0
+        @self.personalityReduce 'special', [@self, @base.special], @base.special
 
       combatEndXpGain: (oppParty) ->
-        baseValue = 0
-        @self.personalityReduce 'combatEndXpGain', [@self, oppParty, baseValue], baseValue
+        @base.combatEndXpGain = 0
+        @self.personalityReduce 'combatEndXpGain', [@self, oppParty, @base.combatEndXpGain], @base.combatEndXpGain
 
       combatEndXpLoss: ->
-        baseValue = Math.floor self.xp.maximum / 10
-        @self.personalityReduce 'combatEndXpLoss', [@self, baseValue], baseValue
+        @base.combatEndXpLoss = Math.floor self.xp.maximum / 10
+        @self.personalityReduce 'combatEndXpLoss', [@self, @base.combatEndXpLoss], @base.combatEndXpLoss
 
 module.exports = exports = Character
