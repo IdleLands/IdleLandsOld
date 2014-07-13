@@ -110,7 +110,6 @@ class Character extends EventEmitter
         @base.combatEndXpLoss = Math.floor self.xp.maximum / 10
         @self.personalityReduce 'combatEndXpLoss', [@self, @base.combatEndXpLoss], @base.combatEndXpLoss
 
-
 Character::num2dir = (dir,x,y) ->
   switch dir
     when 1 then return {x: x-1, y: y-1}
