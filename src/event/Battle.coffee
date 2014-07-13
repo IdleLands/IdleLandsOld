@@ -158,12 +158,9 @@ class Battle
 
     sendBattleMessage message, player
 
-  doMagicalAttack: (player, spellClass, target = null) ->
-    target = _.sample _.reject @turnOrder, ((target) -> ((player.party is target.party) or target.hp.atMin())) if not target
-    return if not target
-
+  doMagicalAttack: (player, spellClass) ->
     spell = @game.spellManager.modifySpell new spellClass @game, player
-    spell.affect target
+    spell.prepareCast()
 
   endBattle: ->
     @emitEventToAll "battle.end", @turnOrder

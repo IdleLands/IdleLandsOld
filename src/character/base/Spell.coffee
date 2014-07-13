@@ -10,6 +10,19 @@ class Spell
 
   calcDuration: (player) -> 0
 
+  prepareCast: ->
+    targets = @determineTargets()
+    @affect targets
+
+  determineTargets: ->
+    @targetEnemy()
+
+  targetFriendly: (includeDead = no) ->
+    _.sample _.reject @baseTargets, ((target) => ((@caster.party isnt target.party) or (target.hp.atMin() and includeDead)))
+
+  targetEnemy: (includeDead = no)->
+    _.sample _.reject @baseTargets, ((target) => ((@caster.party is target.party) or (target.hp.atMin() and includeDead)))
+
   affect: (affected = []) ->
     @affected = [affected] if affected and not _.isArray affected
     _.each @affected, (player) =>

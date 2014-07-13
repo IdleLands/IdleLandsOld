@@ -88,7 +88,7 @@ class Character extends EventEmitter
         @self.personalityReduce 'damage', [@self, @base.damage], @base.damage
 
       physicalAttackChance: ->
-        @base.physicalAttackChance = 50
+        @base.physicalAttackChance = 75
         @self.personalityReduce 'physicalAttackChance', [@self, @base.physicalAttackChance], @base.physicalAttackChance
 
       hp: ->
@@ -112,7 +112,8 @@ class Character extends EventEmitter
         @self.personalityReduce 'combatEndXpLoss', [@self, @base.combatEndXpLoss], @base.combatEndXpLoss
 
       itemFindRangeMultiplier: ->
-        @base.itemFindRangeMultiplier = Constants.default.player.defaultItemFindModifier
+        console.log Constants.defaults
+        @base.itemFindRangeMultiplier = Constants.defaults.player.defaultItemFindModifier
         @self.personalityReduce 'itemFindRangeMultipler', [@self, @base.itemFindRangeMultiplier], @base.itemFindRangeMultiplier
 
 Character::num2dir = (dir,x,y) ->

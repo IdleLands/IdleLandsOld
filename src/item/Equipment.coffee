@@ -49,6 +49,9 @@ class Equipment
     @thunderPercent = options.thunderPercent or 0
 
   score: () ->
-    @str + @dex + @con + @int + @wis + @agi
+    @str + @dex + @con + @int + @wis + @agi +
+    (@luck*3) +
+    @ice + @fire + @water + @earth + @thunder +
+    @icePercent*10 + @firePercent*10 + @waterPercent*10 + @earthPercent*10 + @thunderPercent*10
 
 module.exports = exports = Equipment
