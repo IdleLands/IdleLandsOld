@@ -1,0 +1,51 @@
+"hat" con=1
+"barette" agi=2
+"sombrero" con=2 agi=2
+"beret" agi=2
+"mask" int=2
+"helm" con=2
+"coif" wis=3
+"cap" con=4
+"skullcap" con=2 int=2
+"aventail" con=9
+"corsage" wis=7 con=3
+"glasses" int=7 con=4
+"diadem" con=5 int=7
+"flowerpot" wis=13
+"halo" int=5 dex=10
+"devil horns" str=10 con=6
+"coronet" dex=5 con=5
+"horned cap" str=20 con=10
+"aiming goggles" dex=30 crit
+"fishbowl" dex=33
+"cornuthaum" int=35
+"mitre" wis=40
+"cowl" agi=42
+"rose" int=45
+"pile of hats" dex=25 agi=25
+"pile of helms" dex=25 con=25
+"cardboard box" agi=50 dex=10
+"saucer" wis=35 dex=30
+"paper hat" agi=50 wis=20
+"tinfoil hat" wis=67 int=20
+"hipster hat" int=20 con=60
+"earbuds" int=101
+"skull" str=155 dex=10
+"umbrella hat" con=100 dex=76
+"cute animal" wis=90 con=100
+"monocle" int=110 wis=100
+"Fedora" dex=150 con=100
+"Jungle Rose" int=100 str=200
+"Dunce Cap" con=400 int=-50
+"Top Hat" int=450
+"Metal Box" con=600
+"Fusion Earring" int=300 dex=330
+"Flying Saucer" int=650
+"Powdered Wig" con=380 agi=300
+"Ye Olde Helm" con=750
+"Viking Helmet" str=400 con=400
+"Chap's Monocle" int=400 con=400
+"Aerodynamic Haircut" agi=840 con=400
+"Superscouter 9001" dex=400 con=400
+"Holy Mitre" wis=400 con=400
+"Antiverse Circlet" str=100 int=100 dex=100 con=500 agi=100 wis=100 deadeye

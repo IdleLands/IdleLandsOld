@@ -1,0 +1,215 @@
+"destroyed" str=-40 con=-20 int=-20
+"obliterated" con=-50
+"papier-mache" str=-30
+"rotten-to-the-bone" con=-20 int=-10
+"abysmal" con=-30
+"cowardly" agi=20 str=-70
+"worthless" con=-5 str=-5 int=-5 dex=-5 wis=-5 agi=-5
+"tarnished" agi=-5 wis=-5
+"rusted" agi=-20 con=5
+"accursed" luck=-20 wis=-5 con=-5
+"inferior" str=-5 int=-5
+"unlucky" luck=-20
+"drunken" dex=-20
+"broken" con=-15
+"sadistic" str=20 wis=-30
+"crushed" con=-10 str=-10
+"weak" str=-10 int=-10
+"oversized" dex=-5 agi=-5
+"boring" str=-5 int=-5
+"model" con=-10
+"tiny" str=-10 con=-10 int=10 agi=10
+"miniature" str=-30 con=-30 int=30 agi=30
+"microscopic" strPercent=-5 agiPercent=5
+"haunted" int=20 luck=-20
+"replica" con=-5
+"uncool" agi=-5
+"regifted" wis=-5
+"lost" con=-15 int=15
+"confused" wis=-15 str=15
+"tattered" con=-2
+"ordinary"
+"vanilla"
+"basic" dex=1 agi=1
+"slippery" agi=3
+"discolored" dex=3
+"secret" wis=3
+"ghostly" agi=2 int=2
+"miserly" wis=-2 str=4
+"gloomy" int=-2 str=4
+"vaporous" str=-10 agi=14
+"happy" wis=5
+"glass" str=-5 agi=5
+"colorless" dex=5 int=-5
+"bodily" con=4 dex=3
+"great" str=5 int=4
+"simple" int=-5 wis=10
+"wooden" str=-7 agi=12
+"white" wis=5
+"blue" int=5
+"black" con=5
+"yellow" dex=5
+"red" str=5
+"orange" str=3 dex=3
+"gray" wis=3 con=3
+"green" agi=5
+"cyan" agi=3 int=3
+"navy" int=3 con=3
+"indigo" str=3 int=5
+"purple" str=5 int=3
+"calming" agi=-5 con=15
+"lucky" luck=10
+"osmotic" wis=10
+"pointy" dex=10
+"cursed" str=30 int=30 con=-50
+"pacifying" int=-5 con=15
+"mellowing" str=-5 con=15
+"winged" agi=10
+"fuschia" str=8 int=4
+"neutron-ish" str=12 int=1
+"goldenrod" dex=10 str=3
+"metallic" con=10 wis=3
+"smooth" dex=10 agi=5
+"unjust" str=15
+"just" con=15
+"free" wis=15
+"ancient" con=-20 int=35
+"copper" dex=8 con=7
+"marble" con=15
+"aluminum" agi=20 str=-5
+"lagom" con=7 dex=8
+"swiss" con=15 wis=5
+"spined" str=20
+"quilted" wis=25 str=-5
+"enormous" dex=-10 con=30
+"immovable" dex=-10 con=30
+"monstrous" agi=-15 con=35
+"gigantic" agi=-15 con=35
+"doomed" con=-30 str=50
+"speedy" agi=20
+"steadfast" wis=10 str=10
+"keen" dex=20
+"fortuitous" luck=25
+"reinforced steel" con=20 str=10
+"blessed" wis=27
+"streamlined" agi=20 dex=10
+"savage" str=30
+"inscribed" wis=20 int=10
+"scoped" dex=30
+"light" agi=40 con=-10
+"homemade" str=-10 wis=40
+"holy" int=33 wis=17
+"dark" dex=10 str=40
+"charismatic" luck=50
+"bright" dex=10 wis=40
+"airbrushed" agi=35 dex=15
+"eco-friendly" wis=30 int=30
+"cool" agi=50 dex=20
+"cunning" int=42 dex=34
+"crazed" wis=-30 str=100
+"insane" wis=-30 int=100
+"flexible" dex=70 con=10
+"aerodynamic" agi=70 wis=10
+"sagely" wis=50 int=30
+"crystal" con=100
+"elven" int=60 dex=40
+"dwarven" wis=60 con=40
+"orcish" str=100 int=-20
+"courageous" agi=70 dex=30
+"cunning" wis=30 int=70
+"brawny" str=80 con=20
+"trollmade" dex=100
+"artificial" con=130 str=-30
+"portable" agi=110
+"keen" dex=110
+"rugged" str=100 con=10
+"essential" con=100 int=10
+"crystalline" con=90 str=20
+"rainbow" str=20 int=20 con=20 dex=20 agi=20 wis=20
+"demonic" str=120
+"blasphemous" int=120
+"divine" wis=120
+"saintly" int=120
+"gold" wis=120
+"rocket-propelled" agi=120
+"imperial" wis=90 int=30
+"platinum" dex=100 wis=20
+"knightly" wis=100 con=30
+"lordly" wis=100 int=40
+"floating" agi=90 wis=50
+"painful" str=150
+"automatic" dex=130 wis=20
+"fantasmic" int=130 wis=30
+"wondrous" int=100 agi=60
+"dangerous" str=200 dex=-50
+"crucial" dex=50 agi=100
+"deadly" str=200 luck=-50
+"living" dex=100 con=100
+"queenly" wis=150 str=100
+"kingly" wis=150 dex=100
+"worldly" con=150 dex=100
+"heavenly" wis=150 agi=100
+"mystical" wis=100 dex=100
+"screaming" agi=150 str=50
+"spiritual" agi=150 int=50
+"omniscient" wis=200
+"otherworldly" dex=150 wis=50
+"kryptonite" wis=100 dex=100
+"celestial" int=200
+"ancestral" wis=150 con=50
+"eternal" con=250 agi=-50
+"meteoric" str=150 agi=100
+"seeking" dex=200 agi=50
+"prismatic" int=150 agi=100
+"glittering" agi=250
+"illuminated" int=250
+"scintillating" str=250
+"perfected" dex=250
+"pure" con=100 wis=200
+"hellish" str=200 agi=100
+"astronomic" wis=200 con=100
+"love-colored" int=300 wis=-50
+"luminous" dex=300
+"physics-defying" agi=200 int=100
+"incandescent" con=200 dex=100
+"shiny" luck=100 dex=150
+"solar" str=125 wis=125
+"lunar" int=125 wis=125
+"sapphire" con=180 int=140
+"emerald" con=180 agi=140
+"topaz" con=180 dex=140
+"ruby" con=180 str=140
+"onyx" con=320
+"legendary" str=200 int=150
+"transcendent" wis=250 agi=100
+"undulating" agi=100 wis=250
+"invisible" agi=150 str=100
+"luminescent" int=250 dex=50
+"timeless" agi=100 con=200
+"ageless" wis=-100 str=400
+"spaceless" wis=-100 int=400
+"diamond" con=250 wis=100
+"heroic" str=200 dex=100
+"adamantine" con=370
+"mithril" agi=300 con=70
+"enchanted" int=200 dex=200
+"bullet" agi=300 dex=100
+"destined" str=400
+"fated" int=400
+"ominous" str=500 dex=-100
+"universal" int=100 str=100 dex=100 agi=100
+"godly" str=70 int=70 agi=70 con=70 dex=70 wis=71
+"unmatched" agi=300 str=200
+"sunstone" str=300 con=100
+"moonstone" int=300 con=100
+"runestone" dex=150 con=250
+"godstone" strPercent=5 intPercent=5
+"strong" strPercent=10
+"intellectual" intPercent=10
+"wise" wisPercent=10
+"dextrous" dexPercent=10
+"agile" agiPercent=10
+"constitutional" conPercent=10
+"final" strPercent=10 intPercent=10 wisPercent=10 dexPercent=10 agiPercent=10 conPercent=10
+"chaotic" strPercent=10 intPercent=-10 agiPercent=10 conPercent=-10 dexPercent=10 wisPercent=-10
+"cosmic" luck=200 intPercent=10

@@ -1,0 +1,18 @@
+%player cleaned the dirt off of %hisher %item!
+%player cleaned off %hisher %item in a nearby puddle.
+%player brushed the dust off of %hisher %item.
+An enchantress approaches %player and enchants %hisher %item, making it glow pretty colors.
+%player cleaned the rust off of %hisher %item.
+%player dips %hisher %item into a glowing fountain, and, in turn, %item begins to glow.
+While strolling around, %player encounters a fiery-hot forge, and proceeds to reinforce %hisher %item.
+Thinking %hisher %item is looking a bit tarnished, %player tries %hisher best to repair it.
+A demon approaches and possesses %player's %item, to aid %player on %hisher quest.
+The God of Rampage and Brawling, Ishkalorht, has decided to give %player an advantage by powering up %hisher %item.
+%player's %item was exposed to spontaneous and strong gamma radiation, and is now glowing a bright shade of green.
+%player uses a soul gem to enchant %hisher %item at an enchantment table.
+%player took %item in for repairs, and it came out looking even better than before!
+%player used what magic %she knows to enchant %hisher %item with extra power!
+%player was fighting FOEs, when %she suddenly figured out how to use %hisher %item better!
+%player decided to enforce %hisher %item a bit with another material to make it a little stronger.
+%player added a magic gem to %hisher %item, which in turn strengthens %item!
+%player took %item to the Great Fairy Fountain, where the Great Fairy enhanced %item to make it better!

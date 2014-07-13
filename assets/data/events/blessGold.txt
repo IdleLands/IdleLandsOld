@@ -1,0 +1,26 @@
+%player found a shiny rock and sold it for %gold gold!
+%player found a gold mine containing %gold bits of gold!
+%player found a pot of gold at the end of the rainbow, and it contained %gold gold pieces!
+%player sneezed on a rock, and cleaning it off revealed a golden lustre. It sold for %gold gold!
+%player went spelunking in a cave, and found a room full of ancient artifacts. %player also found %gold gold!
+%player won the lottery and gained %gold gold, after taxes of course.
+%player discovered what no alchemist could in many years: how to turn a bit of lead into %gold bits of gold.
+%player found some kind of high-technologic device, which %she proceeds to bash against a rock and then loots %gold bits of gold from inside.
+A friend of %player gives %himher %gold bits of gold, saying something about a 'debt'... Well, that doesn't happen too often.
+The Goddess of Riches, Kirierath, causes it to rain gold down at %player only, and %she proceeds to pick up as much as %gold bits of gold.
+%player finds a gold ingot with a lemon peel wrapped around it, and it was worth %gold gold!
+%player tripped into a lake, and discovered someone's secret stash of %gold gold.
+%player was rewarded %gold gold after having performed a generic fetch quest.
+%player made %gold gold selling snake oil.
+%player got a welfare check for %gold gold!
+%player found a wallet containing %gold gold while walking around. %she decided to keep the money after thinking about it briefly.
+%player wrote %hisher thoughts into a book, and ended up selling it for %gold gold!
+%player recieved %gold from a charity to help adventurers in need!
+%player was picking %hisher ears, when suddenly %gold gold coins fell out right into %hisher hands!
+%player pawned off some things %she didn't nead for %gold gold!
+%player got a %gold reward for slaying a monster!
+%player looted a dungeon for %gold gold. %she also managed to make it out of the dungeon safely.
+%player accidentally caught a criminal as the criminal was running through the streets. The city ended up paying %player %gold gold for catching the criminal!
+%player went and gathered various herbs and fruits, and sold them off for %gold gold!
+%player decided to play a man in chess for money, and ended up netting %gold gold from winning!
+%player managed to catch the Gold Fairie, who dropped %gold gold into %hisher hands before flying away!
