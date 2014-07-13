@@ -73,6 +73,7 @@ class Constants
     player:
       defaultYesPercent: 50
       defaultPartyLeavePercent: 1
+      defaultItemFindModifier: 10
 
   @pickRandomEvent = (player) ->
     event = _.sample @eventRates

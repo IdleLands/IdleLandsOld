@@ -3,6 +3,7 @@ RestrictedNumber = require "restricted-number"
 {EventEmitter} = require 'events'
 _ = require "underscore"
 Personality = require "./Personality"
+Constants = require "../../system/Constants"
 
 class Character extends EventEmitter
 
@@ -109,6 +110,10 @@ class Character extends EventEmitter
       combatEndXpLoss: ->
         @base.combatEndXpLoss = Math.floor self.xp.maximum / 10
         @self.personalityReduce 'combatEndXpLoss', [@self, @base.combatEndXpLoss], @base.combatEndXpLoss
+
+      itemFindRangeMultiplier: ->
+        @base.itemFindRangeMultiplier = Constants.default.player.defaultItemFindModifier
+        @self.personalityReduce 'itemFindRangeMultipler', [@self, @base.itemFindRangeMultiplier], @base.itemFindRangeMultiplier
 
 Character::num2dir = (dir,x,y) ->
   switch dir

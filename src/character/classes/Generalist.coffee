@@ -5,11 +5,11 @@ class Generalist extends Class
 
   baseHp: 10
   baseHpPerLevel: 15
-  baseHpPerCon: 5
+  baseHpPerCon: 4
 
   baseMp: 5
   baseMpPerLevel: 2
-  baseMpPerInt: 3
+  baseMpPerInt: 2
 
   baseXpGainPerCombat: 120
   baseXpGainPerOpponentLevel: 60

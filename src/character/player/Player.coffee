@@ -153,9 +153,9 @@ class Player extends Character
 
   gainXp: (xp) ->
     if xp > 0
-      @emit "gainXp"
+      @emit "xp.gain", xp
     else
-      @emit "loseXp"
+      @emit "xp.lose", xp
 
     @xp.set 0 if _.isNaN @xp.__current
     @xp.add xp
@@ -175,6 +175,6 @@ class Player extends Character
     Math.floor 100 + (400 * Math.pow level, 1.67)
 
   itemFindRange: ->
-    @level.getValue() * 15
+    @level.getValue() *
 
 module.exports = exports = Player
