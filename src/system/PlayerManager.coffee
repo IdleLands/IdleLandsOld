@@ -68,7 +68,7 @@ class PlayerManager
       callback { success: true, name: options.name }
 
   buildPlayerSaveObject: (player) ->
-    _.omit player, 'playerManager', 'party', 'personalities', 'calc'
+    _.omit player, 'playerManager', 'party', 'personalities', 'calc', 'spellsAffectedBy'
 
   savePlayer: (player) ->
     savePlayer = @buildPlayerSaveObject player
@@ -125,6 +125,9 @@ class PlayerManager
       player.personalities = []
     else
       player.rebuildPersonalityList()
+
+    player.spellsAffectedBy = []
+
     player
 
   getPlayerByName: (playerName) ->

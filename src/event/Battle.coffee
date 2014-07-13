@@ -197,6 +197,10 @@ class Battle
 
   cleanUp: ->
     _.each @parties, (party) ->
+
+      _.each party.players, (player) ->
+        player.spellsAffectedBy = []
+
       party.disband()
 
     @game.inBattle = false
@@ -214,14 +218,14 @@ class Battle
       player.emit event, data
 
   emitEvents: (attackerEvent, defenderEvent, attacker, defender, extra = {}) ->
-    attacker.emit attackerEvent, defender, extra
+    attacker.emit "self.#{attackerEvent}", defender, extra
     _.forEach (_.without attacker.party.players, attacker), (partyMate) ->
       partyMate.emit "ally.#{attackerEvent}", attacker, defender, extra
 
     _.forEach (_.intersection @turnOrder, attacker.party.players), (foe) ->
       foe.emit "enemy.#{attackerEvent}", attacker, defender, extra
 
-    defender.emit defenderEvent, attacker, extra
+    defender.emit "self.#{defenderEvent}", attacker, extra
     _.forEach (_.without defender.party.players, defender), (partyMate) ->
       partyMate.emit "ally.#{defenderEvent}", defender, attacker, extra
 

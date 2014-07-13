@@ -117,7 +117,7 @@ module.exports = (Module) ->
     watchIdleFiles: ->
       loadFunction = _.debounce (=>@loadIdle()), 100
       watch idlePath, {}, () =>
-        files = finder.from(idlePath).findFiles("*.coffee");
+        files = finder.from(idlePath).findFiles("*.coffee")
 
         _.forEach files, (file) ->
           delete require.cache[file]

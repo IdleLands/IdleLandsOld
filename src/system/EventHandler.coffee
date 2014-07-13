@@ -85,7 +85,7 @@ class EventHandler
 
   doItem: (event, player, callback) ->
     item = (_.sample player.equipment)
-    stat = (_.sample (_.reject (_.keys item), (key) -> key is "name"))
+    stat = (_.sample (_.reject (_.keys item), (key) -> key in ["name", "type", "itemClass"]))
 
     val = item[stat] ? 0
 

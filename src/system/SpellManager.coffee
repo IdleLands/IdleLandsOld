@@ -18,3 +18,8 @@
   cold, chilled, frozen, arctic, glacial
   dirty, pebbled, rocky, boulder, avalanche
 ###
+
+class SpellManager
+  constructor: (@game) ->
+
+module.exports = exports = SpellManager
