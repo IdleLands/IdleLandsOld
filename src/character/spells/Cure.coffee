@@ -12,16 +12,14 @@ class Cure extends Spell
     "Cleric": 1
 
   determineTargets: ->
-    console.log "test1"
     @targetFriendly()
 
   calcDamage: ->
     chance.integer min: 1, max: Math.max 1,((@caster.calc.stat 'wis')/10)
 
   cast: (player) ->
-    console.log "Test2"
     damage = @calcDamage()
-    message = "#{@caster.name} cast #{@name} at #{player.name} and healed #{damage} HP damage!"
+    message = "#{@caster.name} cast #{@name} at #{player.name} and healed #{damage} HP!"
     @caster.party.currentBattle.takeHp @caster, player, -damage, Spell::Type.magical, message
 
   constructor: (@game, @caster) ->

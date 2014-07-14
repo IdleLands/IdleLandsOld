@@ -112,7 +112,6 @@ class Character extends EventEmitter
         @self.personalityReduce 'combatEndXpLoss', [@self, @base.combatEndXpLoss], @base.combatEndXpLoss
 
       itemFindRangeMultiplier: ->
-        console.log Constants.defaults
         @base.itemFindRangeMultiplier = Constants.defaults.player.defaultItemFindModifier
         @self.personalityReduce 'itemFindRangeMultipler', [@self, @base.itemFindRangeMultiplier], @base.itemFindRangeMultiplier
 
