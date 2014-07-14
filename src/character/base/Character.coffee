@@ -62,7 +62,8 @@ class Character extends EventEmitter
       self: @
       base: {}
       stat: (stat) =>
-        _.reduce @equipment, ((prev, item) -> prev+item[stat]), 0
+        @base[stat] = _.reduce @equipment, ((prev, item) -> prev+item[stat]), 0
+        @self.personalityReduce stat, [@self, @base[stat]], @base[stat]
 
       stats: (stats) =>
         _.reduce stats, ((prev, stat) => prev+@calc.stat stat), 0
@@ -114,6 +115,10 @@ class Character extends EventEmitter
       itemFindRangeMultiplier: ->
         @base.itemFindRangeMultiplier = Constants.defaults.player.defaultItemFindModifier
         @self.personalityReduce 'itemFindRangeMultipler', [@self, @base.itemFindRangeMultiplier], @base.itemFindRangeMultiplier
+
+      itemScore: (item) ->
+        baseValue = item.score()
+        @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue
 
 Character::num2dir = (dir,x,y) ->
   switch dir

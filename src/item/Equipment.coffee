@@ -48,7 +48,7 @@ class Equipment
     @earthPercent = options.earthPercent or 0
     @thunderPercent = options.thunderPercent or 0
 
-  score: () ->
+  score: ->
     @str + @dex + @con + @int + @wis + @agi +
     (@luck*3) +
     @ice + @fire + @water + @earth + @thunder +
