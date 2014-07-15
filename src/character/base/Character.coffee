@@ -62,12 +62,6 @@ class Character extends EventEmitter
       base: {}
       self: @
       stat: (stat) ->
-        #if @ instanceof Character
-        #console.log typeof @, @ instanceof Character, _.keys @
-        #  @calc.base[stat] = _.reduce @equipment, ((prev, item) -> prev+item[stat]), 0
-        #  @personalityReduce stat, [@, @calc.base[stat]], @calc.base[stat]
-
-        #else
         @base[stat] = _.reduce @self.equipment, ((prev, item) -> prev+item[stat]), 0
         @self.personalityReduce stat, [@self, @base[stat]], @base[stat]
 

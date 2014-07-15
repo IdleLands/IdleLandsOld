@@ -18,7 +18,7 @@ class SweepingGeneralization extends Spell
     targets = player.party.players
     _.each targets, (target) =>
       message = "#{@caster.name} cast #{@name} and #{target.name} took #{damage} HP damage!"
-      @caster.party.currentBattle.takeHp @caster, target, damage, @element, message
+      @caster.party.currentBattle.takeHp @caster, target, damage, @determineType(), message
 
   constructor: (@game, @caster) ->
     super @game, @caster

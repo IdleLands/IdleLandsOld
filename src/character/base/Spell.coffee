@@ -31,8 +31,20 @@ class Spell
       else
         player.spellsAffectedBy.push @
 
-        _.each @bindings, (event) =>
-          player.on event, @bindings[event]
+        eventList = _.keys _.omit @bindings, 'doSpellCast'
+        @turns *= eventList.length
+        _.each eventList, (event) =>
+          me = @
+          newFunc = ->
+            me.decrementTurns player
+            me.bindings[event].apply me, [arguments...] #wat
+          player.on event, newFunc
+
+        (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
+
+  decrementTurns: (player) ->
+    if @turns-- <= 0
+      @unaffect player
 
   unaffect: (player) ->
     player.spellsAffectedBy = _.without player.spellsAffectedBy, @
@@ -51,12 +63,13 @@ Spell::Element =
   thunder: 8
   earth: 16
 
-  normal: 32
-  energy: 64
-  heal: 128
+  energy: 32
+  heal: 64
+  buff: 128
 
-Spell::Type =
-  magical: "magical"
-  physical: "physical"
+  normal: 256
+
+Spell::determineType = ->
+  if @element & @Element.normal then "physical" else "magical"
 
 module.exports = exports = Spell

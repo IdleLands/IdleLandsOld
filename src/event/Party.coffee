@@ -20,7 +20,7 @@ class Party
     @setPlayersParty()
 
   getPartyName: ->
-    if @players.size > 1 then @name else @players[0].name
+    if @players.length > 1 then @name else @players[0].name
 
   pickPartyName: ->
     _.sample _.difference partyNames, _.pluck @game.parties, 'name'

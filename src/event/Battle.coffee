@@ -226,7 +226,7 @@ class Battle
 
   takeStatFrom: (attacker, defender, damage, type, damageType = "hp", message = null) ->
     defender[damageType]?.sub damage
-    @emitEvents "damage", "damaged", attacker, defender, type: if type > 0 then "magical" else "physical", damage: damage
+    @emitEvents "damage", "damaged", attacker, defender, type: type, damage: damage
     @game.broadcast MessageCreator.genericMessage message if message and typeof message is "string"
 
   emitEventToAll: (event, data) ->
