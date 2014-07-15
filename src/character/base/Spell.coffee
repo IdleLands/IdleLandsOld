@@ -33,7 +33,7 @@ class Spell
         oldSpell = _.findWhere player.spellsAffectedBy, name: @name
         if oldSpell and @stack is "duration"
           oldSpell.turns = oldSpell.calcDuration player
-          
+
         else
           player.spellsAffectedBy.push @
 

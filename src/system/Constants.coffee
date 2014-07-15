@@ -3,77 +3,13 @@ _ = require "underscore"
 Chance = require "chance"
 chance = new Chance()
 
+config = (require "../../config.json").gameConstants
+
 class Constants
-  @gameName = "Idletopia"
-  @eventRates = [
-
-    #  type: "yesno"
-    #  min: 0 #turned off until I know what they're good for
-    #  max: 1000
-    #,
-      type: "findItem"
-      min: 1
-      max: 5
-    ,
-      type: "blessItem"
-      min: 1
-      max: 100
-    ,
-      type: "forsakeItem"
-      min: 1
-      max: 300
-    ,
-      type: "blessXp"
-      min: 1
-      max: 150
-    ,
-      type: "forsakeXp"
-      min: 1
-      max: 450
-    ,
-      type: "blessGold"
-      min: 1
-      max: 200
-    ,
-      type: "forsakeGold"
-      min: 1
-      max: 600
-    ,
-      type: "party"
-      min: 1
-      max: 75
-    ,
-      type: "battle"
-      min: 1
-      max: 375
-  ]
-
-  @eventEffects =
-    blessXp:
-      percent: 10
-      amount: 100
-    forsakeXp:
-      percent: -10
-      amount: -100
-    blessGold: #got this much money? no problem, you don't need more.. probably :D
-      amount: [1, 60, 100, 400, 1000, 3000, 7000, 10000, 25000, 50000, 65000, 85000, 100000]
-    forsakeGold:
-      amount: [-1, -60, -100, -400, -1000, -3000, -7000, -10000, -25000, -50000, -65000, -85000, -100000]
-    blessItem:
-      amount: 1
-      percent: 5
-    forsakeItem:
-      amount: -1
-      percent: -5
-
-  @defaults =
-    maxPartySize: 3
-    spellModifyPercent: 1
-
-    player:
-      defaultYesPercent: 50
-      defaultPartyLeavePercent: 0.5
-      defaultItemFindModifier: 10
+  @gameName = config.gameName
+  @eventRates = config.eventRates
+  @eventEffects = config.eventEffects
+  @defaults = config.defaults
 
   @pickRandomEvent = (player) ->
     event = _.sample @eventRates
