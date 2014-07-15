@@ -2,15 +2,6 @@
 _ = require "underscore"
 MessageCreator = require "../system/MessageCreator"
 
-partyNames = [
-  "Raging Wombats"
-  "Wacky Narwhals"
-  "Crazy Meerkats"
-  "Band of Bros"
-  "Singularity"
-  "Fighting Foxes"
-]
-
 class Party
   constructor: (@game, @players) ->
     @players = [@players] if not _.isArray @players
@@ -23,7 +14,8 @@ class Party
     if @players.length > 1 then @name else @players[0].name
 
   pickPartyName: ->
-    _.sample _.difference partyNames, _.pluck @game.parties, 'name'
+    return "The Null Party" if not Party::partyNames
+    _.sample _.difference Party::partyNames, _.pluck @game.parties, 'name'
 
   addGlobally: ->
     if not @game.parties

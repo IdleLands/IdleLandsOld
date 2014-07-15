@@ -4,6 +4,7 @@ ObjectID = require("mongodb").ObjectID
 _ = require "underscore"
 readdirp = require "readdirp"
 fs = require "fs"
+Party = require "../event/Party"
 
 class ComponentDatabase
 
@@ -12,8 +13,16 @@ class ComponentDatabase
   constructor: (@game) ->
     @eventsDb = new Datastore "events", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @itemsDb = new Datastore "items", (db) -> db.ensureIndex {random: '2dsphere'}, ->
+    @stringsDb = new Datastore "strings", (db) -> db.ensureIndex {random: '2dsphere'}, ->
 
     @loadItems()
+    @loadPartyNames()
+
+  loadPartyNames: ->
+    @stringsDb.find
+      type: "party"
+    , (e, docs) ->
+      Party::partyNames = _.pluck docs, 'data'
 
   parseItemString: (str, type) ->
     return if not str.trim()
@@ -54,6 +63,22 @@ class ComponentDatabase
       type = entry.name.split(".")[0]
       fs.readFile entry.fullPath, {}, (e, data) =>
         _.each data.toString().split("\n"), (line) => @insertStatic type, line
+
+    eventstream = readdirp {root: "#{__dirname}/../../assets/data/strings", fileFilter: "*.txt"}
+    eventstream
+    .on "warn", (e) -> console.log "importAllData warning: #{e}"
+    .on "error", (e) -> console.log "importAllData error: #{e}"
+    .on "data", (entry) =>
+      type = entry.name.split(".")[0]
+      fs.readFile entry.fullPath, {}, (e, data) =>
+        _.each data.toString().split("\n"), (line) => @insertString type, line
+
+  insertString: (type, string) ->
+    @stringsDb.insert
+      type: type
+      data: string
+      random: [Math.random(), 0]
+    , ->
 
   insertYesNo: (question, y, n) ->
     @eventsDb.insert
@@ -100,7 +125,6 @@ class ComponentDatabase
       @itemStats[copy.type] = []
 
     @itemStats[copy.type].push copy
-
 
   getRandomEvent: (type, callback) ->
     @eventsDb.findOne

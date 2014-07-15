@@ -136,8 +136,6 @@ module.exports = (Module) ->
       @IdleWrapper = require("../../src/system/ExternalWrapper")()
       @db = @newDatabase 'channels'
 
-      @initialize()
-
       @on "join", (bot, channel, sender) =>
         if bot.config.nick is sender
           setTimeout =>
@@ -167,7 +165,7 @@ module.exports = (Module) ->
         @userIdents[@generateIdent bot.config.server, newNick] = @userIdents[@generateIdent bot.config.server, oldNick]
         delete @userIdents[@generateIdent bot.config.server, oldNick]
 
-      @addRoute "idle-start", "idle.game.start", (origin, route) =>
+      @addRoute "idle-start", "idle.game.start", (origin) =>
         [channel, server] = [origin.channel, origin.bot.config.server]
         @db.update { channel: channel, server: server },
           { channel: channel, server: server, active: true },
@@ -276,8 +274,10 @@ module.exports = (Module) ->
         @reply origin, "Re-initializing all modifier/event/etc data from disk."
         @IdleWrapper.api.add.allData()
 
-      @addRoute "idle-broadcast :message", (origin, route) =>
+      @addRoute "idle-broadcast :message", "idle.game.owner", (origin, route) =>
         @broadcast route.params.message
+
+      @initialize()
 
       #@on "notice", (bot, sender, channel, message) =>
       #  return if not sender or sender in ['InfoServ','*','AUTH']
