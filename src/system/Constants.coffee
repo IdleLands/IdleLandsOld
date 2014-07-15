@@ -12,40 +12,40 @@ class Constants
     #  max: 1000
     #,
       type: "findItem"
-      min: 300
-      max: 300
+      min: 1
+      max: 5
     ,
       type: "blessItem"
       min: 1
-      max: 500
+      max: 100
     ,
       type: "forsakeItem"
       min: 1
-      max: 750
+      max: 300
     ,
       type: "blessXp"
       min: 1
-      max: 350
+      max: 150
     ,
       type: "forsakeXp"
       min: 1
-      max: 750
+      max: 450
     ,
       type: "blessGold"
       min: 1
-      max: 750
+      max: 200
     ,
       type: "forsakeGold"
       min: 1
-      max: 1000
+      max: 600
     ,
       type: "party"
-      min: 600
-      max: 750
+      min: 1
+      max: 75
     ,
       type: "battle"
-      min: 100
-      max: 100
+      min: 1
+      max: 375
   ]
 
   @eventEffects =
@@ -72,7 +72,7 @@ class Constants
 
     player:
       defaultYesPercent: 50
-      defaultPartyLeavePercent: 1
+      defaultPartyLeavePercent: 0.5
       defaultItemFindModifier: 10
 
   @pickRandomEvent = (player) ->

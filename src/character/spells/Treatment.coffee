@@ -19,6 +19,10 @@ class Treatment extends Spell
   calcDamage: (player) ->
     Math.floor (player.hp.maximum * 0.15)
 
+  cast: (player) ->
+    message = "#{@caster.name} began treating #{player.name}'s wounds with #{@treatment}!"
+    @game.broadcast MessageCreator.genericMessage message
+
   tick: (player) ->
     restored = @calcDamage player
     message = "#{@caster.name}'s #{@name} restored #{restored} HP for #{player.name}!"
@@ -28,5 +32,6 @@ class Treatment extends Spell
     super @game, @caster
     @bindings =
       "self.turn.end": @tick
+      doSpellCast: @cast
 
 module.exports = exports = Treatment
