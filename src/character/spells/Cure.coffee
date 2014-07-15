@@ -20,7 +20,7 @@ class Cure extends Spell
   cast: (player) ->
     damage = @calcDamage()
     message = "#{@caster.name} cast #{@name} at #{player.name} and healed #{damage} HP!"
-    @caster.party.currentBattle.takeHp @caster, player, -damage, Spell::Type.magical, message
+    @caster.party.currentBattle.takeHp @caster, player, -damage, @element, message
 
   constructor: (@game, @caster) ->
     super @game, @caster

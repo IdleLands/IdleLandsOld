@@ -6,7 +6,7 @@ class Treatment extends Spell
   @element = Treatment::element = Spell::Element.heal
   @cost = Treatment::cost = 1000
   @restrictions =
-    "Generalist": 101
+    "Generalist": 3
 
     #HoT
 
