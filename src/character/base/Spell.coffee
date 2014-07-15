@@ -6,6 +6,7 @@ class Spell
   @restrictions = {}
   @stat = "mp"
   @cost = 0
+  stack: "duration"
   bindings: doSpellCast: ->
 
   calcDuration: (player) -> 0
@@ -29,16 +30,22 @@ class Spell
       turns = @calcDuration player
       if turns is 0 then @bindings.doSpellCast.apply @, [player]
       else
-        player.spellsAffectedBy.push @
+        oldSpell = _.findWhere player.spellsAffectedBy, name: @name
+        if oldSpell and @stack is "duration"
+          oldSpell.turns = oldSpell.calcDuration player
+          
+        else
+          player.spellsAffectedBy.push @
 
-        eventList = _.keys _.omit @bindings, 'doSpellCast'
-        @turns *= eventList.length
-        _.each eventList, (event) =>
-          me = @
-          newFunc = ->
-            me.decrementTurns player
-            me.bindings[event].apply me, [arguments...] #wat
-          player.on event, newFunc
+          eventList = _.keys _.omit @bindings, 'doSpellCast'
+          #this would normalize turns / event, but eh, not necessary atm?
+          #@turns *= eventList.length
+          _.each eventList, (event) =>
+            me = @
+            newFunc = ->
+              me.decrementTurns player
+              me.bindings[event].apply me, [arguments...] #wat
+            player.on event, newFunc
 
         (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
 
