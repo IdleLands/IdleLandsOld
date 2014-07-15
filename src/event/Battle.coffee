@@ -19,6 +19,7 @@ class Battle
   setupParties: ->
     _.each @parties, (party) =>
       party.currentBattle = @
+
   initializePlayers: ->
     @calculateTurnOrder()
 

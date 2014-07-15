@@ -116,8 +116,8 @@ class EventHandler
     item = @game.equipmentGenerator.generateItem()
     myItem = _.findWhere player.equipment, {type: item.type}
     return if not myItem
-    score = player.score item
-    myScore = player.score item
+    score = player.calc.itemScore item
+    myScore = player.calc.itemScore item
 
     if score > myScore and score < player.itemFindRange()
       player.equipment = _.without player.equipment, myItem

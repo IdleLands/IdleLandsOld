@@ -59,33 +59,39 @@ class Character extends EventEmitter
 
   loadCalc: ->
     @calc =
-      self: @
       base: {}
-      stat: (stat) =>
-        @base[stat] = _.reduce @equipment, ((prev, item) -> prev+item[stat]), 0
+      self: @
+      stat: (stat) ->
+        #if @ instanceof Character
+        #console.log typeof @, @ instanceof Character, _.keys @
+        #  @calc.base[stat] = _.reduce @equipment, ((prev, item) -> prev+item[stat]), 0
+        #  @personalityReduce stat, [@, @calc.base[stat]], @calc.base[stat]
+
+        #else
+        @base[stat] = _.reduce @self.equipment, ((prev, item) -> prev+item[stat]), 0
         @self.personalityReduce stat, [@self, @base[stat]], @base[stat]
 
-      stats: (stats) =>
-        _.reduce stats, ((prev, stat) => prev+@calc.stat stat), 0
+      stats: (stats) ->
+        _.reduce stats, ((prev, stat) => prev+@stat stat), 0
 
       dodge: ->
-        @base.dodge = @self.calc.stat.apply @self, ['agi']
+        @base.dodge = @self.calc.stat ['agi']
         @self.personalityReduce 'dodge', [@self, @base.dodge], @base.dodge
 
       beatDodge: ->
-        @base.beatDodge = Math.max 10, @self.calc.stats.apply @self, [['dex','str','agi','wis','con', 'int']]
+        @base.beatDodge = Math.max 10, @self.calc.stats [['dex','str','agi','wis','con', 'int']]
         @self.personalityReduce 'beatDodge', [@self, @base.beatDodge], @base.beatDodge
 
       hit: ->
-        @base.hit = (@self.calc.stats.apply @self, [['dex', 'agi', 'con']]) / 6
+        @base.hit = (@self.calc.stats [['dex', 'agi', 'con']]) / 6
         @self.personalityReduce 'hit', [@self, @base.hit], @base.hit
 
       beatHit: ->
-        @base.beatHit = Math.max 10, @self.calc.stats.apply @self, [['str', 'dex']]
+        @base.beatHit = Math.max 10, @self.calc.stats [['str', 'dex']]
         @self.personalityReduce 'beatHit', [@self, @base.beatHit], @base.beatHit
 
       damage: ->
-        @base.damage = Math.max 10, @self.calc.stats.apply @self, [['str']]
+        @base.damage = Math.max 10, @self.calc.stats [['str']]
         @self.personalityReduce 'damage', [@self, @base.damage], @base.damage
 
       physicalAttackChance: ->
