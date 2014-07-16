@@ -46,7 +46,8 @@
 %player "sold" an organ on the black market. %player lost %xpxp along with the organ.
 %player was crushed by a falling bookshelf. The librarian fined %player %xpxp for disrupting the peace.
 %player got hit by a mac truck and is now limping along the highway. The damages to %hisher leg cost %xpxp to mend.
-%player was taken in by the Stillstanders for questioning. In the end, %heshe got extorted %xpxp.
+%player was taken in by the Stillstanders for questioning. In the end, %she got extorted %xpxp.
 %player had %hisher xp stolen by the Goddess of Time, Ulrya. She was merciful and only stole %xpxp, however.
 %player had %hisher leg set on fire by a box of cheerios. %xpxp was burned up in the process.
 While %player was frozen after an encounter with a floating eye, a warhorse stumbled upon %himher and kicked %himher to death!
+%player rolled snake eyes, and then %hisher eyes turned into snakes, causing %himher to lose %xpxp. (s.s)
