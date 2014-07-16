@@ -130,6 +130,14 @@ module.exports = (Module) ->
       @beginGameLoop()
       @watchIdleFiles()
 
+    isInChannel: (bot, nick) ->
+      isIn = no
+      for channel in @serverChannels[bot.config.server]
+        chanUsers = bot.getUsers channel
+        isIn = true if _.contains chanUsers, nick
+
+      isIn
+
     constructor: (moduleManager) ->
       super moduleManager
 
@@ -158,12 +166,19 @@ module.exports = (Module) ->
           @userIdents[@generateIdent bot.config.server, sender] = ident
 
       @on "quit", (bot, sender) =>
-        @removeUser @generateIdent bot.config.server, @userIdents[@generateIdent bot.config.server, sender]
-        delete @userIdents[@generateIdent bot.config.server, sender]
+        if bot.config.auth is "nickserv"
+          @removeUser @generateIdent bot.config.server, @userIdents[@generateIdent bot.config.server, sender]
+          delete @userIdents[@generateIdent bot.config.server, sender]
+        else if bot.config.auth is "nick"
+          @removeUser @generateIdent bot.config.server, sender
 
       @on "nick", (bot, oldNick, newNick) =>
-        @userIdents[@generateIdent bot.config.server, newNick] = @userIdents[@generateIdent bot.config.server, oldNick]
-        delete @userIdents[@generateIdent bot.config.server, oldNick]
+        if bot.config.auth is "nickserv"
+          @userIdents[@generateIdent bot.config.server, newNick] = @userIdents[@generateIdent bot.config.server, oldNick]
+          delete @userIdents[@generateIdent bot.config.server, oldNick]
+        else if bot.config.auth is "nick"
+          @removeUser @generateIdent bot.config.server, oldNick
+          @addUser @generateIdent bot.config.server, newNick
 
       @addRoute "idle-start", "idle.game.start", (origin) =>
         [channel, server] = [origin.channel, origin.bot.config.server]
@@ -189,6 +204,10 @@ module.exports = (Module) ->
         bot.userManager.getUsername origin, (e, username) =>
           if not username
             @reply origin, "You must be logged in to services play this game!"
+            return
+
+          if not @isInChannel bot, username
+            @reply origin, "You must be in the channel to actually play, duh!"
             return
 
           identifier = @generateIdent origin.bot.config.server, username
