@@ -7,7 +7,7 @@ chance = new (require "chance")()
 class Treatment extends Spell
   name: "treatment"
   @element = Treatment::element = Spell::Element.heal & Spell::Element.buff
-  @cost = Treatment::cost = 100
+  @cost = Treatment::cost = 225
   @restrictions =
     "Generalist": 7
 
