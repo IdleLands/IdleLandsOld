@@ -80,7 +80,7 @@ module.exports = (Module) ->
       @IdleWrapper.api.add.player ident
 
     removeUser: (ident) ->
-      return if not ident
+      return if not ident or not _.contains @userIdentsList, ident
       @userIdentsList = _.without @userIdentsList, ident
 
       @IdleWrapper.api.remove.player ident
