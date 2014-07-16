@@ -3,9 +3,6 @@ class API
 
   @gameInstance: null
 
-  #getGender for a player
-  #get Coins for a player (coins are special currency, not like the in-game gold)
-
   @register =
     player: (options, middleware, callback) =>
       @gameInstance.playerManager.registerPlayer options, middleware, callback

@@ -9,7 +9,7 @@ class Cure extends Spell
   @element = Cure::element = Spell::Element.heal
   @cost = Cure::cost = 50
   @restrictions =
-    "Cleric": 1
+    "Cleric": 5
 
   determineTargets: ->
     @targetFriendly()

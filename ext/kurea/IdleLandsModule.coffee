@@ -3,8 +3,8 @@ _ = require "underscore"
 Q = require "q"
 
 finder = require "fs-finder"
-
 watch = require "node-watch"
+
 idlePath = __dirname + "/../../src"
 
 module.exports = (Module) ->
@@ -232,28 +232,28 @@ module.exports = (Module) ->
         [map, x, y] = [route.params.map, route.params.x, route.params.y]
         x = parseInt x
         y = parseInt y
-        @IdleWrapper.api.game.teleport.mass map, x, y,
+        @IdleWrapper.api.game.teleport.mass map, x, y
 
-          @addRoute "idle-add item :itemOrDescType \":name\" *", "idle.game.gm", (origin, route) =>
-            [type, name, parameters] = [route.params.itemOrDescType, route.params.name, route.splats[0]]
+      @addRoute "idle-add item :itemOrDescType \":name\" *", "idle.game.gm", (origin, route) =>
+        [type, name, parameters] = [route.params.itemOrDescType, route.params.name, route.splats[0]]
 
-            if type not in ['prefix', 'suffix', 'prefix-special',
-                            'body', 'charm', 'feet', 'finger', 'hands', 'head', 'legs', 'neck', 'offhand', 'mainhand']
-              @reply origin, "#{type} isn't a valid type."
-              return
+        if type not in ['prefix', 'suffix', 'prefix-special',
+                        'body', 'charm', 'feet', 'finger', 'hands', 'head', 'legs', 'neck', 'offhand', 'mainhand']
+          @reply origin, "#{type} isn't a valid type."
+          return
 
-            parameters = _.map (parameters.split ' '), (item) ->
-              arr = item.split '='
-              retval = {}
-              retval[arr[0]] = (parseInt arr[1]) ? null
-              retval
-            .reduce (cur, prev) ->
-              _.extend prev, cur
-            , { name: name, type: type }
+        parameters = _.map (parameters.split ' '), (item) ->
+          arr = item.split '='
+          retval = {}
+          retval[arr[0]] = (parseInt arr[1]) ? null
+          retval
+        .reduce (cur, prev) ->
+          _.extend prev, cur
+        , { name: name, type: type }
 
-            @IdleWrapper.api.add.item parameters, (error) =>
-              @reply origin, "You cannot have a duplicate name (#{error.name})." if error.name
-              @reply origin, "It doesn't make sense to have the same stats twice." if error.stats
+        @IdleWrapper.api.add.item parameters, (error) =>
+          @reply origin, "You cannot have a duplicate name (#{error.name})." if error.name
+          @reply origin, "It doesn't make sense to have the same stats twice." if error.stats
 
       @addRoute "idle-personality :action(remove|add) :personality", (origin, route) =>
         [bot, action, personality] = [origin.bot, route.params.action, route.params.personality]

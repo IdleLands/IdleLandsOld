@@ -7,9 +7,9 @@ chance = new (require "chance")()
 class Treatment extends Spell
   name: "treatment"
   @element = Treatment::element = Spell::Element.heal & Spell::Element.buff
-  @cost = Treatment::cost = 1
+  @cost = Treatment::cost = 5
   @restrictions =
-    "Generalist": 3
+    "Generalist": 1
 
   calcDuration: -> 3
 
@@ -20,7 +20,7 @@ class Treatment extends Spell
     Math.floor (player.hp.maximum * 0.15)
 
   cast: (player) ->
-    message = "#{@caster.name} began treating #{player.name}'s wounds with #{@treatment}!"
+    message = "#{@caster.name} began treating #{player.name}'s wounds with #{@name}!"
     @game.broadcast MessageCreator.genericMessage message
 
   tick: (player) ->

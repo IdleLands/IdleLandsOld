@@ -56,8 +56,8 @@ class PlayerManager
 
     @db.insert saveObj, (iErr) =>
       if iErr
-        console.error "Player creation error: #{iErr}"
-        callback iErr
+        console.error "Player creation error: #{iErr}" if callback?
+        callback?(iErr)
         return
 
       @game.broadcast MessageCreator.genericMessage "Welcome #{options.name} to #{Constants.gameName}!"

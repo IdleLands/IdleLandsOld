@@ -8,6 +8,7 @@ class Spell
   @cost = 0
   stack: "duration"
   bindings: doSpellCast: ->
+  modifiedBindings: {}
 
   calcDuration: (player) -> 0
 
@@ -40,11 +41,15 @@ class Spell
           eventList = _.keys _.omit @bindings, 'doSpellCast'
           #this would normalize turns / event, but eh, not necessary atm?
           #@turns *= eventList.length
+          @turns = @calcDuration player
+          me = @
           _.each eventList, (event) =>
-            me = @
+            return if @modifiedBindings[event]
             newFunc = ->
-              me.decrementTurns player
               me.bindings[event].apply me, [arguments...] #wat
+              me.decrementTurns player
+
+            @modifiedBindings[event] = newFunc
             player.on event, newFunc
 
         (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
@@ -55,8 +60,8 @@ class Spell
 
   unaffect: (player) ->
     player.spellsAffectedBy = _.without player.spellsAffectedBy, @
-    _.each (_.keys @bindings), (event) =>
-      player.removeListener event, @bindings[event]
+    _.each (_.keys @modifiedBindings), (event) =>
+      player.removeListener event, @modifiedBindings[event]
 
   constructor: (@game, @caster) ->
     @baseTargets = @caster.party.currentBattle.turnOrder
