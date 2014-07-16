@@ -29,3 +29,4 @@ A miniature samurai ninja robot velociraptor with psychic powers stole %gold gol
 %player was fined %gold gold for assaulting innocent adventurers!
 %player had to pay %gold gold of 'debt' to the Stillstanders, an organized crime organization who organize organized crime.
 %player had their clothing stolen, so %she had to pay %gold gold for new clothes!
+%player didn't expect the Spanish Inquisition, and got inquisitioned for %gold gold!
