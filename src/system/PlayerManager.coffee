@@ -41,6 +41,7 @@ class PlayerManager
   removePlayer: (identifier) ->
 
     name = (_.findWhere @players, {identifier, identifier})?.name
+    return if not name
 
     @players = _.filter @players, (player) -> !player.identifier is identifier
     delete @playerHash[identifier]
