@@ -23,3 +23,4 @@
 %player took a left at Albuquerque, and managed to mine up %xpxp underground.
 %player decided to relax for a bit. %player found some insight in their relaxation, gaining %xpxp as they pondered.
 %player was given a crystal of pure experience, worth %xpxp!
+%player expected the unexpected, and got rewarded with %xpxp!
