@@ -22,7 +22,7 @@ module.exports = (Module) ->
     userIdentsList: []
     userIdents: {}
 
-    topic: "Welcome to Idletopia! Got feedback? Send it to /r/idle_lands or privmsg it to seiyria. Offtopic chat: ##idlebot (if you need seiyria, pm him to come in). Issue tracker: https://github.com/seiyria/IdleLands/issues"
+    topic: "Welcome to Idletopia! /msg IdleMaster !idle-register <your character name> | Got feedback? Send it to /r/idle_lands or privmsg it to seiyria. Offtopic chat: ##idlebot (if you need seiyria, pm him to come in). Issue tracker: https://github.com/seiyria/IdleLands/issues"
 
     loadIdle: (stopIfLoaded) ->
       @buildUserList()
