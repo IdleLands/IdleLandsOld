@@ -65,7 +65,7 @@ class PlayerManager
       @playerHash[options.identifier] = playerObject
       @players.push playerObject
 
-      callback { success: true, name: options.name }
+      callback?({ success: true, name: options.name })
 
   buildPlayerSaveObject: (player) ->
     _.omit player, 'playerManager', 'party', 'personalities', 'calc', 'spellsAffectedBy'
