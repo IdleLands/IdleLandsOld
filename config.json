@@ -77,7 +77,7 @@
         "defaults": {
             "player": {
                 "defaultYesPercent": 50,
-                "defaultPartyLeavePercent": 0.5,
+                "defaultPartyLeavePercent": 0.1,
                 "defaultItemFindModifier": 10
             }
         }
