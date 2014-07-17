@@ -22,11 +22,11 @@ As %player was going around stealing cheese wheels from various shops, a guard a
 A miniature samurai ninja robot velociraptor with psychic powers stole %gold gold from %player while %she wasn't looking.
 %player spends %gold bits of gold on snake oil.
 %player had to spend %gold gold tending to injuries %she got while fighting monsters.
-%player was pounced on by a group of hooligans, so %she had to throw %gold gold coins at them to distract them enough so that %she could get away!
+%player was pounced on by a group of hooligans, so %she had to throw %gold gold coins at them to distract them for long enough that %she could get away!
 %player got pickpocketed of %gold gold without noticing!
 %player had %gold gold stolen from the Gold Fairie! Someone catch that fairie!
 %player took someone out for dinner. It ended up costing %gold gold, but at least %she had a good time!
 %player was fined %gold gold for assaulting innocent adventurers!
 %player had to pay %gold gold of 'debt' to the Stillstanders, an organized crime organization who organize organized crime.
-%player had their clothing stolen, so %she had to pay %gold gold for new clothes!
+%player had %hisher clothing stolen, so %she had to pay %gold gold for new clothes!
 %player didn't expect the Spanish Inquisition, and got inquisitioned for %gold gold!
