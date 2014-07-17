@@ -58,7 +58,6 @@ IdleWrapper = require(idlePath+"/system/ExternalWrapper")()
 ## API call functions ##
 loadIdle = ->
   IdleWrapper.load()
-  IdleWrapper.api.add.allData()
   IdleWrapper.api.register.broadcastHandler broadcastHandler, null
   do loadAllPlayers
 
@@ -71,8 +70,14 @@ loadAllPlayers = ->
     IdleWrapper.api.add.player playerHash
 
 gameLoop = ->
+  doActionPerMember = (arr, action) ->
+    for i in [0...arr.length]
+      setTimeout (player, i) ->
+        action player
+      , DELAY_INTERVAL/arr.length*i, item
+
   interval = setInterval =>
-    IdleWrapper.api.game.nextAction _.sample hashes
+    doActionPerMember hashes, IdleWrapper.api.game.nextAction
   , DELAY_INTERVAL
 ## ## ## ## ## ## ## ##
 

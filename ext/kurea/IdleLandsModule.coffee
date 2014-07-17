@@ -110,9 +110,17 @@ module.exports = (Module) ->
             @addServerChannel bot, doc.server, doc.channel
 
     beginGameLoop: ->
+      DELAY_INTERVAL = 1000
+
+      doActionPerMember = (arr, action) ->
+        for i in [0...arr.length]
+          setTimeout (player, i) ->
+            action player
+          , DELAY_INTERVAL/arr.length*i, arr[i]
+
       @interval = setInterval =>
-        @IdleWrapper.api.game.nextAction _.sample @userIdentsList
-      , 1000
+        doActionPerMember @userIdentsList, @IdleWrapper.api.game.nextAction
+      , DELAY_INTERVAL
 
     watchIdleFiles: ->
       loadFunction = _.debounce (=>@loadIdle()), 100
