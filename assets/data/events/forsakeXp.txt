@@ -1,19 +1,19 @@
 %player fell into a hole and lost %xpxp!
-%player has been struck by lightning, causing %xpxp to fall out.
+%player was struck by lightning, causing %xpxp to fall out.
 %player choked on a wooden nickel, coughing it up along with %xpxp.
-%player has been mauled by a bear, the bear stealing %xpxp afterwards.
-%player has been eaten by a grue. %player had to pay a %xpxp fee for respawning!
+%player was mauled by a bear, the bear stealing %xpxp afterwards.
+%player was eaten by a grue. %player had to pay a %xpxp fee to respawn!
 %player was shot in the leg, causing %xpxp to pour out of the wound.
-%player has eaten a wooden nickel, %hisher poor dieting habits causing %player to lose %xpxp.
-%player saw a really bright light, and went stumbling around in a forest for hours, getting %xpxp stolen by pixies.
-%player had a piano fall on %hisher head. %player was knocked out for long enough to make them lose %xpxp.
+%player ate a wooden nickel, %hisher poor dieting habits causing %player to lose %xpxp.
+%player saw a really bright light, and went stumbling around in a forest for hours, getting %xpxp stolen from %himher by pixies.
+%player had a piano fall on %hisher head. %player was knocked out for long enough to make %himher lose %xpxp.
 %player had acid poured on %himher by an old lady. The acid also dissolved %xpxp!
 %player got hit with a flying card, square between the eyes, and was knocked to the ground. %xpxp fell out of %hisher pocket when %player fell!
 %player was attacked by a giant waffle iron falling from the sky, crushing %himher, turning %himher into a waffle. Somebody ate %himher as a waffle, making %player lose %xpxp.
-%player was vomited on by an adorable little kitty. %player began to question life, which caused them to lose %xpxp.
-%player stepped on a landmine. %player payed a %xpxp toll to respawn.
-%player fell into a nearby river. %xpxp fell into the river out of %player while they were in the water.
-%player got %hisher skull crushed by a falling chandelier. %player had to pay the hospital %xpxp to make him all better again.
+%player was vomited on by an adorable little kitty. %player began to question %hisher existence, which caused %himher to lose %xpxp.
+%player stepped on a landmine. %player paid a %xpxp toll to respawn.
+%player fell into a nearby river. %xpxp fell into the river out of %player while %she was in the water.
+%player got %hisher skull crushed by a falling chandelier. %player had to pay the hospital %xpxp to make %himher all better again.
 %player made a wooden bridge collapse beneath %himher. %player had to pay %xpxp for the damages to the bridge.
 %player is suddenly struck by a strong burst of pure energy. The energy turned out to be negative xp energy, causing %player to lose %xpxp!
 %player was bitten in the leg by a rabid wolf. %player bled %xpxp out of the wound.
@@ -22,32 +22,32 @@
 %player suddenly sees a beast appear in front of %himher, blast %himher with an immense amount of energy, then teleport away. %player lost %xpxp recovering from the injuries.
 %player was crushed by a falling tower. %player had to spend a lot of time recovering, making %himher lose %xpxp.
 %player finds a heavy bag on the ground, and upon trying to open it, is chomped on by a strong set of razor-sharp teeth. %player had to expend %xpxp carrying the bag into a location far from the public.
-%player got run over by a herd of elephants. When dusting themself off, %player lost %xpxp flaking off.
+%player got run over by a herd of elephants. While dusting %himherself off, %player lost %xpxp flaking off.
 %player got run over by a mac truck. The owner of the truck sued %player for %xpxp.
-%player sneezed uncontrollably, %xpxp rocketing out of %hisher nostrils, and ended up bashing %hisher head into the wall.
+%player sneezed uncontrollably, %xpxp rocketing out of %hisher nostrils as %she ended up bashing %hisher head into the wall.
 %player got distracted by TVTropes, losing %xpxp to distraction.
-%player found the missing link between %himher and the ground. This reunion costed %player %xpxp.
+%player found the missing link between %himher and the ground. This reunion costed %himher %xpxp.
 %player ran in circles around a tree, exhausting %player of %xpxp.
 %player stepped in a large pile of monkey poo. The monkeys sued %player for %xpxp over the damages done to their feces.
 %player threw an apple at a tree, and had it richochet back and hit %himher in the face.
-%player was cursed by Oyashiro-sama. %player had to spend %xpxp to save themself.
+%player was cursed by Oyashiro-sama. %player had to spend %xpxp to save %himherself.
 %player was pushed into a burning river by an old lady and a monkey. %player paid the hospital %xpxp to fix the injuries.
-%player woke up without %hisher pants on. %player realized they'd also lost %xpxp.
+%player woke up without %hisher pants on. %player realized %she'd also lost %xpxp.
 %player was carried away, off into the distance, by a rabid pack of bats. %player lost %xpxp walking aaaa~ll the way home.
-%player was given a magical rod by a fairy, and not the kind of fairy with wings. At the same time, a real fairy stp;e %xpxp from %player.
+%player was given a magical rod by a fairy, and not the kind of fairy with wings. At the same time, a real fairy stole %xpxp from %player.
 %player should have taken that left turn at Albuquerque. %player ended up losing %xpxp by needing to backtrack.
 %player picked %hisher nose and some pink squishy ooze fell out. That ooze turned out to be %xpxp seeping out.
-%player skipped through a field of poppies and became addicted to heroin. %player had to spend %xpxp breaking their addiction.
+%player skipped through a field of poppies and became addicted to heroin. %player had to spend %xpxp breaking %hisher addiction.
 %player "donates" blood to an entire village of vampires. The vampires all sucked %xpxp from %himher!
 %player practiced cake making, and failed so greatly that it managed to explode all over the nearby tree. %player spent %xp in cleaning up the huge mess.
 %player got a ticket for peeing on a tree. The ticket cost %xpxp.
 %player found a magikarp! Unfortunately, it splashed its way back into the water. Silly magikarp. Too bad it also stole %xpxp from %player.
-%player tried to divide by zero, and caused a nearby city to sink into the ground. %player had to pay %xpxp in damages.
-%player "sold" an organ on the black market. %player lost %xpxp along with the organ.
+%player tried to divide by zero, and caused a nearby city to sink into the ground. %she had to pay %xpxp in damages.
+%player "sold" an organ on the black market. %she lost %xpxp along with the organ.
 %player was crushed by a falling bookshelf. The librarian fined %player %xpxp for disrupting the peace.
-%player got hit by a mac truck and is now limping along the highway. The damages to %hisher leg cost %xpxp to mend.
+%player got hit by a mac truck and is now limping along the highway. The damages to %hisher leg costed %himher %xpxp to mend.
 %player was taken in by the Stillstanders for questioning. In the end, %she got extorted %xpxp.
 %player had %hisher xp stolen by the Goddess of Time, Ulrya. She was merciful and only stole %xpxp, however.
 %player had %hisher leg set on fire by a box of cheerios. %xpxp was burned up in the process.
-While %player was frozen after an encounter with a floating eye, a warhorse stumbled upon %himher and kicked %himher to death!
+While %player was frozen after an encounter with a floating eye, a warhorse stumbled upon %himher and kicked %himher to death! %she had to pay %xpxp to respawn.
 %player rolled snake eyes, and then %hisher eyes turned into snakes, causing %himher to lose %xpxp. (s.s)

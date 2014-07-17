@@ -58,6 +58,7 @@ IdleWrapper = require(idlePath+"/system/ExternalWrapper")()
 ## API call functions ##
 loadIdle = ->
   IdleWrapper.load()
+  IdleWrapper.api.add.allData()
   IdleWrapper.api.register.broadcastHandler broadcastHandler, null
   do loadAllPlayers
 
