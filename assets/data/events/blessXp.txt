@@ -12,7 +12,7 @@
 %player found a golden nugget, but when %player appraised it it turned out to be a capsule for %xpxp.
 %player came across a shiny object. Upon further inspection, it turned out to be %xpxp!
 %player finds a heavy bag on the ground, and upon opening it, discovers the %xpxp contained inside!
-%player recieves a high five from a deity who descends from the heavens, leaving %xpxp in shimmering residue on %hisher hand!
+%player receives a high five from a deity who descends from the heavens, leaving %xpxp in shimmering residue on %hisher hand!
 %player flung poo back at those nasty monkeys, the crowd cheering and showering %player in %xpxp!
 %player found the fourth chaos emerald! But it was a fake, so %player crushed it into %xpxp.
 %player practices in cake decoration, and succeeds in proportions greater than cheesecake! %player won a cake-decorating contest with %hisher cake, earning %himher %xpxp as a reward!
