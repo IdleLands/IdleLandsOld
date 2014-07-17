@@ -110,7 +110,7 @@ module.exports = (Module) ->
             @addServerChannel bot, doc.server, doc.channel
 
     beginGameLoop: ->
-      DELAY_INTERVAL = 1000
+      DELAY_INTERVAL = 10000
 
       doActionPerMember = (arr, action) ->
         for i in [0...arr.length]
