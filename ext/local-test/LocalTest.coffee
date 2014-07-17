@@ -74,7 +74,7 @@ gameLoop = ->
     for i in [0...arr.length]
       setTimeout (player, i) ->
         action player
-      , DELAY_INTERVAL/arr.length*i, item
+      , DELAY_INTERVAL/arr.length*i, arr[i]
 
   interval = setInterval =>
     doActionPerMember hashes, IdleWrapper.api.game.nextAction
