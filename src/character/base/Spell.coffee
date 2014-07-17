@@ -27,21 +27,26 @@ class Spell
 
   affect: (affected = []) ->
     @affected = [affected] if affected and not _.isArray affected
+    battleInstance = @caster.party.currentBattle
     _.each @affected, (player) =>
       turns = @calcDuration player
+      battleInstance.emitEvents "skill.use", "skill.used", @caster, player, skill: @
+      battleInstance.emitEvents "skill.#{@determineType()}.use", "skill.#{@determineType()}.used", @caster, player, skill: @
       if turns is 0 then @bindings.doSpellCast.apply @, [player]
       else
         oldSpell = _.findWhere player.spellsAffectedBy, name: @name
         if oldSpell and @stack is "duration"
           oldSpell.turns = oldSpell.calcDuration player
+          battleInstance.emitEvents "skill.duration.refresh", "skill.duration.refreshed", @caster, player, skill: oldSpell, turns: oldSpell.turns
 
         else
           player.spellsAffectedBy.push @
+          @turns = @calcDuration player
+          battleInstance.emitEvents "skill.duration.begin", "skill.duration.beginAt", @caster, player, skill: @, turns: @turns
 
           eventList = _.keys _.omit @bindings, 'doSpellCast'
           #this would normalize turns / event, but eh, not necessary atm?
           #@turns *= eventList.length
-          @turns = @calcDuration player
           me = @
           _.each eventList, (event) =>
             return if @modifiedBindings[event]
@@ -59,6 +64,8 @@ class Spell
       @unaffect player
 
   unaffect: (player) ->
+    battleInstance = @caster.party.currentBattle
+    battleInstance.emitEvents "skill.duration.end", "skill.duration.endAt", @caster, player, skill: @
     player.spellsAffectedBy = _.without player.spellsAffectedBy, @
     _.each (_.keys @modifiedBindings), (event) =>
       player.removeListener event, @modifiedBindings[event]
