@@ -32,9 +32,20 @@ class Equipment
     @wis = options.wis or 0
     @agi = options.agi or 0
 
+    @strPercent = options.strPercent or 0
+    @dexPercent = options.dexPercent or 0
+    @intPercent = options.intPercent or 0
+    @conPercent = options.conPercent or 0
+    @wisPercent = options.wisPercent or 0
+    @agiPercent = options.agiPercent or 0
+
     @luck = options.luck or 0
     @sentimentality = options.sentimentality or 0
     @piety = options.piety or 0
+
+    @luckPercent = options.luckPercent or 0
+    @sentimentalityPercent = options.sentimentalityPercent or 0
+    @pietyPercent = options.pietyPercent or 0
 
     @ice = options.ice or 0
     @fire = options.fire or 0
