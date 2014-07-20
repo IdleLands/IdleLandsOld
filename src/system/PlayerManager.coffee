@@ -24,7 +24,7 @@ class PlayerManager
         callback?()
         return
 
-      @game.broadcast MessageCreator.generateMessage "#{player.name} has joined #{Constants.gameName}!"
+      @game.broadcast MessageCreator.generateMessage "#{player.name}, the level #{player.level.__current} #{player.professionName}, has joined #{Constants.gameName}!"
       player = @migratePlayer player
       player.playerManager = @
       callback player

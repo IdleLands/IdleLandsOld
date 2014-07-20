@@ -92,7 +92,7 @@ class EventHandler
 
     boost = 0
 
-    if (chance.bool {likelihood: player.eventFumble()})
+    if (chance.bool {likelihood: player.calc.eventFumble()})
       boost = Constants.eventEffects[event.type].amount
     else
       boost = Math.floor Math.abs(val) / Constants.eventEffects[event.type].percent
@@ -102,7 +102,6 @@ class EventHandler
 
     start = val
     end = val+boost
-    console.log start, end, boost, event.type
 
     return if start is end
 

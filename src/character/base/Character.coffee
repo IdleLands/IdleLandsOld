@@ -122,7 +122,7 @@ class Character extends EventEmitter
 
       eventFumble: (item) ->
         @base.eventFumble = 25
-        @self.personalityReduce 'eventFumble', [@self, item, baseValue], baseValue
+        @self.personalityReduce 'eventFumble', [@self, item, @base.eventFumble], @base.eventFumble
 
 Character::num2dir = (dir,x,y) ->
   switch dir
