@@ -120,9 +120,13 @@ class Character extends EventEmitter
         baseValue = item.score()
         @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue
 
-      eventFumble: (item) ->
+      eventFumble: ->
         @base.eventFumble = 25
-        @self.personalityReduce 'eventFumble', [@self, item, @base.eventFumble], @base.eventFumble
+        @self.personalityReduce 'eventFumble', [@self, @base.eventFumble], @base.eventFumble
+
+      skillCrit: (spell) ->
+        @base.skillCrit = 1
+        @self.personalityReduce 'skillCrit', [@self, spell, @base.skillCrit], @base.skillCrit
 
 Character::num2dir = (dir,x,y) ->
   switch dir

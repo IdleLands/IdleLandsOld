@@ -11,7 +11,7 @@ class Treatment extends Spell
   @restrictions =
     "Generalist": 7
 
-  calcDuration: -> 3
+  calcDuration: -> super.calcDuration()+3
 
   determineTargets: ->
     @targetFriendly()

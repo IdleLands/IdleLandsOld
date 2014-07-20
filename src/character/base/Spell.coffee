@@ -9,8 +9,13 @@ class Spell
   stack: "duration"
   bindings: doSpellCast: ->
   modifiedBindings: {}
+  bonusElementRanking: 0
 
-  calcDuration: (player) -> 0
+  bonusElement: Spell::Element.none
+
+  calcDuration: (player) -> @bonusElementRanking
+
+  calcEleBonus: -> @elementalBonus
 
   prepareCast: ->
     targets = @determineTargets()
@@ -75,6 +80,7 @@ class Spell
     @caster.mp.sub @cost
 
 Spell::Element =
+  none: 0
   # circ-shift these left to get strengths, and right to get weaknesses (truncated @ 16)
   ice: 1
   fire: 2

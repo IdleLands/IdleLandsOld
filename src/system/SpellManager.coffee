@@ -1,28 +1,9 @@
-###
-  spells have a base but can critically be modified
 
-  so if you critically cast a fireball, you could get...
-  glowing fireball
-  glacial fireball
-  crappy fireball
-
-  ..etc
-
-  spell elements:
-
-  plain, normal, ordinary, obvious, conspicuous
-
-  fire, water, thunder, ice, earth
-
-  warm, embered, flaming, blazing, supernova
-  moist, wet, soaked, tidal, monsoon
-  static, shocking, jolting, bolting, storming
-  cold, chilled, frozen, arctic, glacial
-  dirty, pebbled, rocky, boulder, avalanche
-###
 _ = require "underscore"
 requireDir = require "require-dir"
 spells = requireDir "../character/spells"
+Spell = require "../character/base/Spell"
+chance = new (require "chance")()
 
 class SpellManager
   constructor: (@game) ->
@@ -41,7 +22,38 @@ SpellManager::getSpellsAvailableFor = (player) ->
 
 SpellManager::spells = []
 
+SpellManager::spellMods =
+  'ice': ['cold', 'chilled', 'frozen', 'arctic', 'glacial']
+  'fire': ['warm', 'embering', 'flaming', 'blazing', 'supernova-ing']
+  'water': ['moist', 'wet', 'soaked', 'tidal', 'monsoon-y']
+  'thunder': ['static', 'shocking', 'jolting', 'bolting', 'storming']
+  'earth': ['dirty', 'pebbly', 'rocky', 'boulder-y', 'avalanche-y']
+
+  'energy': ['weak', 'able', 'powerful', 'oh-so-magical', 'godly']
+  'heal': ['mending', 'alleviating', 'healing', 'blessing', 'restoring']
+  'buff': ['abrupt', 'short', 'medium', 'long', 'eternal']
+
+  'normal': ['plain', 'normal', 'ordinary', 'obvious', 'conspicious']
+
 # Constants.spellModifyPercent
-SpellManager::modifySpell = (spell) -> spell
+SpellManager::modifySpell = (spell) ->
+  doMod = chance.bool likelihood: spell.caster.calc.skillCrit spell
+  return spell if not doMod
+
+  probs = [100, 50, 20, 5, 1]
+
+  element = _.sample _.keys SpellManager::spellMods
+  strength = 0
+  newName = spell.name
+  for prob in [(probs.length-1)..0]
+    if chance.bool {likelihood: probs[prob]}
+      strength = prob
+      newName = "#{SpellManager::spellMods[element][prob]} #{spell.name}"
+
+  spell.name = newName
+  spell.element &= Spell::Element[element]
+  spell.bonusElement = Spell::Element[element]
+  spell.bonusElementRanking = strength
+  spell
 
 module.exports = exports = SpellManager
