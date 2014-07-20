@@ -11,7 +11,7 @@ class Spell
   modifiedBindings: {}
   bonusElementRanking: 0
 
-  bonusElement: Spell::Element.none
+  bonusElement: 0 #Spell::Element.none
 
   calcDuration: (player) -> @bonusElementRanking
 

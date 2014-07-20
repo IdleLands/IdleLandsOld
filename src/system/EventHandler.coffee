@@ -35,6 +35,8 @@ class EventHandler
           @doBattle event, player, callback
         when 'enchant'
           @doEnchant event, player, callback
+        when 'flipStat'
+          @doFlipStat event, player, callback
 
   doYesNo: (event, player, callback) ->
     player.emit "yesno"
@@ -190,6 +192,30 @@ class EventHandler
 
     string = MessageCreator.doStringReplace event.remark, player, extra
     string += " [#{stat} = #{boost} | +#{item.enchantLevel} -> +#{++item.enchantLevel}]"
+
+    player.emit "event.enchant", item, item.enchantLevel
+
+    @game.broadcast MessageCreator.genericMessage string
+    callback()
+
+  doFlipStat: (event, player, callback) ->
+    item = (_.sample player.equipment)
+    stat = (_.sample (_.reject (_.keys item), (key) -> key in ["name", "type", "itemClass", "enchantLevel"] or item[key] is 0))
+
+    val = item[stat] ? 0
+
+    extra =
+      item: item.getName()
+
+    start = val
+    end = -val
+
+    item[stat] = end
+
+    string = MessageCreator.doStringReplace event.remark, player, extra
+    string += " [#{stat} #{start} -> #{end}]"
+
+    player.emit "event.#{event.type}", item, stat
 
     @game.broadcast MessageCreator.genericMessage string
     callback()
