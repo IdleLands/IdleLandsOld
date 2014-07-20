@@ -9,7 +9,7 @@ class BoarStrength extends Spell
   @restrictions =
     "Cleric": 4
 
-  calcDuration: -> super.calcDuration()+3
+  calcDuration: -> super()+3
 
   determineTargets: ->
     @targetFriendly()

@@ -78,7 +78,8 @@ class EventHandler
       if curGold < Math.abs goldTiers[i]
         highVal = if not goldTiers[i-1] then 100 else goldTiers[i-1]
         lowVal = if not goldTiers[i] then 1 else goldTiers[i]
-        min = Math.min highVal, lowVal, 0
+
+        min = Math.min highVal, lowVal
         max = Math.max highVal, lowVal
         boost = chance.integer {min: min, max: max}
         break
