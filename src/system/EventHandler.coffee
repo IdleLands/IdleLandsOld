@@ -54,11 +54,14 @@ class EventHandler
 
     extra =
       xp: Math.abs boost
-      xpp: (boost/player.xp.maximum)*100
+      xpr: boost
+      xpp: +((boost/player.xp.maximum)*100).toFixed 3
 
     player.gainXp boost
 
-    @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.remark, player, extra
+    message = event.remark + " [%xprxp, ~%xpp%]"
+
+    @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace message, player, extra
     callback()
 
   doGold: (event, player, callback) ->

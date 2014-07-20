@@ -52,8 +52,9 @@ class MessageCreator
       .split('%She').join _.str.capitalize getGenderPronoun gender, '%she'
 
       .split('%item').join extra?.item
-      .split('%xp').join extra?.xp
       .split('%xpp').join extra?.xpp
+      .split('%xpr').join extra?.xpr
+      .split('%xp').join extra?.xp
       .split('%gold').join extra?.gold
       .split('%partyName').join extra?.partyName
       .split('%party').join extra?.party
