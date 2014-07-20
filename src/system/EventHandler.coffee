@@ -128,7 +128,7 @@ class EventHandler
       extra =
         item: item.name
 
-      totalString = "#{event.remark} [#{item.score()}]"
+      totalString = "#{event.remark} [#{myScore} -> #{score} | +#{score-myScore}]"
 
       @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace totalString, player, extra
 
