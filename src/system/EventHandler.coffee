@@ -82,12 +82,13 @@ class EventHandler
 
     extra =
       gold: Math.abs boost
-
-    return if player.gold.getValue() is 0
+      goldr: boost
 
     player.gainGold boost
 
-    @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.remark, player, extra
+    message = event.remark + " [%goldr gold]"
+
+    @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace message, player, extra
     callback()
 
   doItem: (event, player, callback) ->

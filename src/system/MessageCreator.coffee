@@ -55,6 +55,7 @@ class MessageCreator
       .split('%xpp').join extra?.xpp
       .split('%xpr').join extra?.xpr
       .split('%xp').join extra?.xp
+      .split('%goldr').join extra?.goldr
       .split('%gold').join extra?.gold
       .split('%partyName').join extra?.partyName
       .split('%party').join extra?.party
