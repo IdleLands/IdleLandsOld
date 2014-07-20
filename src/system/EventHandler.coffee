@@ -123,7 +123,7 @@ class EventHandler
     score = player.calc.itemScore item
     myScore = player.calc.itemScore myItem
 
-    if score >= myScore and score < player.itemFindRange()
+    if score >= myScore and item.score() < player.itemFindRange()
       player.equipment = _.without player.equipment, myItem
       player.equipment.push item
 
