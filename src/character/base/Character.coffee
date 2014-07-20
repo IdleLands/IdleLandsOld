@@ -94,11 +94,11 @@ class Character extends EventEmitter
 
       hp: ->
         @base.hp = 0
-        @self.personalityReduce 'hp', [@self, @base.hp], @base.hp
+        (@self.personalityReduce 'hp', [@self, @base.hp], @base.hp) or 1
 
       mp: ->
         @base.mp = 0
-        @self.personalityReduce 'mp', [@self, @base.mp], @base.mp
+        (@self.personalityReduce 'mp', [@self, @base.mp], @base.mp) or 0
 
       special: ->
         @base.special = 0
