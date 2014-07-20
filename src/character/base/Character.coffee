@@ -127,6 +127,10 @@ class Character extends EventEmitter
       skillCrit: (spell) ->
         @base.skillCrit = 1
         @self.personalityReduce 'skillCrit', [@self, spell, @base.skillCrit], @base.skillCrit
+        
+      itemSellMultiplier: (item) ->
+        @base.itemSellMultiplier = 0.05
+        @self.personalityReduce 'itemSellMultiplier', [@self, item, @base.itemSellMultiplier], @base.itemSellMultiplier
 
 Character::num2dir = (dir,x,y) ->
   switch dir

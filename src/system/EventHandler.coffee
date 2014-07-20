@@ -138,6 +138,11 @@ class EventHandler
 
       @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace totalString, player, extra
 
+    else
+      multiplier = player.calc.itemSellMultiplier item
+      value = Math.floor item.score() * multiplier
+      player.gold.add value
+
     callback()
 
   doParty: (event, player, callback) ->
