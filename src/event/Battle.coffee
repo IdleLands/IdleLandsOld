@@ -136,7 +136,7 @@ class Battle
 
     if hitChance < 0
       deflectItem = _.sample target.equipment
-      message += ", but #{target.name} deflected it with %hisher #{deflectItem.name}!"
+      message += ", but #{target.name} deflected it with %hisher #{deflectItem.getName()}!"
       sendBattleMessage message, target
       @emitEvents "deflect", "deflected", target, player
       return
@@ -146,7 +146,7 @@ class Battle
     damage = chance.integer {min: 1, max: player.calc.damage()}
 
     weapon = _.findWhere player.equipment, {type: "mainhand"}
-    message += ", and hit with %hisher #{weapon.name} for #{damage} HP damage"
+    message += ", and hit with %hisher #{weapon.getName()} for #{damage} HP damage"
 
     @emitEvents "attack", "attacked", player, target
     @takeStatFrom player, target, damage, "physical", "hp"

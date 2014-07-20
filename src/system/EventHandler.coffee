@@ -87,7 +87,7 @@ class EventHandler
 
   doItem: (event, player, callback) ->
     item = (_.sample player.equipment)
-    stat = (_.sample (_.reject (_.keys item), (key) -> key in ["name", "type", "itemClass"] or item[key] is 0))
+    stat = (_.sample (_.reject (_.keys item), (key) -> key in ["name", "type", "itemClass", "enchantLevel"] or item[key] is 0))
 
     val = item[stat] ? 0
 
@@ -99,7 +99,7 @@ class EventHandler
       boost = Math.floor Math.abs(val) / Constants.eventEffects[event.type].percent
 
     extra =
-      item: item.name
+      item: item.getName()
 
     start = val
     end = val+boost
@@ -126,7 +126,7 @@ class EventHandler
       player.equipment.push item
 
       extra =
-        item: item.name
+        item: item.getName()
 
       totalString = "#{event.remark} [#{myScore} -> #{score} | +#{score-myScore}]"
 
