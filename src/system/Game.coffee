@@ -47,7 +47,8 @@ class Game
   createParty: (player) ->
     players = _.without @playerManager.players, player
 
-    partyAdditionSize = Math.min (players.length / 2), chance.integer {min: 1, max: Constants.defaults.maxPartySize}
+    console.log Constants.defaults.maxPartySize
+    partyAdditionSize = Math.min (players.length / 2), chance.integer({min: 1, max: Constants.defaults.maxPartySize})
     newPartyPlayers = _.sample (_.reject players, (player) -> player.party), partyAdditionSize
 
     return if newPartyPlayers.length is 0

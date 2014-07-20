@@ -22,6 +22,7 @@ class ComponentDatabase
     @stringsDb.find
       type: "party"
     , (e, docs) ->
+      console.log e if e
       Party::partyNames = _.pluck docs, 'data'
 
   parseItemString: (str, type) ->

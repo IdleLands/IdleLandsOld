@@ -20,6 +20,7 @@ class PlayerManager
 
   retrievePlayer: (identifier, callback) ->
     @db.findOne {identifier: identifier}, (e, player) =>
+      console.error e if e
       if not player or _.findWhere @players, {identifier: identifier}
         callback?()
         return
