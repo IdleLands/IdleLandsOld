@@ -3,7 +3,7 @@ Idle Lands
 
 An incremental game (read: idling) where you do nothing while your character fights to be the best in the realm. 
 
-It can be run with a backend of IRC, or a console, or really just about anything you plug into it. I'm sure it'd be pretty cool if you hooked it up to a MeteorJS backend! Currently, I use it as a module for my IRC bot, [Kurea](https://github.com/kellyirc/kurea) -- nothing special.
+It can be run with a backend of IRC, or a console, or really just about anything you plug into it. I'm sure it'd be pretty cool if you hooked it up to a MeteorJS backend (I did this for the [http://kurea.link/idle](web view))! Currently, I use it as a module for my IRC bot, [Kurea](https://github.com/kellyirc/kurea) -- nothing special.
 
 Developing
 ==========
@@ -21,10 +21,8 @@ Then do:
 ```
 git clone https://github.com/seiyria/IdleLands.git
 npm install
-npm test
+npm start
 ```
-
-Yes, unfortunately I hijacked `npm test` to test this in local mode. Eventually when there are unit tests those will be run via `grunt test`.
 
 While writing code, make sure it passes `coffeelint` -- the easy shortcut for this is `grunt dev`.
 

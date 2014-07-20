@@ -4,7 +4,7 @@
   "description": "IdleLands =========",
   "main": "index.js",
   "scripts": {
-    "test": "coffee ext/local-test/LocalTest.coffee"
+    "start": "coffee ext/local-test/LocalTest.coffee"
   },
   "repository": {
     "type": "git",
