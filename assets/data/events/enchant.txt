@@ -1,0 +1,1 @@
+%player stumbled across a wishing well, threw %item in, and it got enchanted!

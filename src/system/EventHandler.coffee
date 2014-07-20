@@ -32,6 +32,8 @@ class EventHandler
           @doParty event, player, callback
         when 'battle'
           @doBattle event, player, callback
+        when 'enchant'
+          @doEnchant event, player, callback
 
   doYesNo: (event, player, callback) ->
     player.emit "yesno"
@@ -153,6 +155,25 @@ class EventHandler
     event.player = player
     @game.startBattle [], event
 
+    callback()
+
+  doEnchant: (event, player, callback) ->
+    item = _.sample _.reject player.equipment, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel
+    stat = (_.sample (_.reject (_.keys item), (key) -> key in ["name", "type", "itemClass", "enchantLevel"] or item[key] isnt 0))
+
+    boost = 10
+
+    extra =
+      item: item.getName()
+
+    item[stat] += boost
+
+    item.enchantLevel = 0 if not item.enchantLevel or _.isNaN item.enchantLevel
+
+    string = MessageCreator.doStringReplace event.remark, player, extra
+    string += " [#{stat} = #{boost} | +#{item.enchantLevel} -> +#{++item.enchantLevel}]"
+
+    @game.broadcast MessageCreator.genericMessage string
     callback()
 
 module.exports = exports = EventHandler

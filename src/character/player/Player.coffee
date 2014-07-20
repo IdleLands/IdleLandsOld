@@ -135,6 +135,7 @@ class Player extends Character
 
   possiblyLeaveParty: ->
     return if not @party
+    return if @party.currentBattle
     return if not chance.bool {likelihood: @calculatePartyLeavePercent()}
     @party.playerLeave @
 
