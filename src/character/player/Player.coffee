@@ -150,6 +150,11 @@ class Player extends Character
     @playerManager.savePlayer @
 
   gainGold: (gold) ->
+    if gold > 0
+      @emit "gold.gain", gold
+    else
+      @emit "gold.lose", gold
+
     @gold.add gold
 
   gainXp: (xp) ->

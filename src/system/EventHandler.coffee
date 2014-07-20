@@ -17,6 +17,7 @@ class EventHandler
     @game.componentDatabase.getRandomEvent eventType, (e, event) =>
       console.error e if e
       return if not event
+      player.emit "event", event
       switch eventType
         when 'yesno'
           @doYesNo event, player, callback
@@ -59,6 +60,8 @@ class EventHandler
 
     player.gainXp boost
 
+    player.emit "event.#{event.type}", extra
+
     message = event.remark + " [%xprxp, ~%xpp%]"
 
     @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace message, player, extra
@@ -85,6 +88,8 @@ class EventHandler
       goldr: boost
 
     player.gainGold boost
+
+    player.emit "event.#{event.type}", extra
 
     message = event.remark + " [%goldr gold]"
 
@@ -117,6 +122,8 @@ class EventHandler
     string = MessageCreator.doStringReplace event.remark, player, extra
     string += " [#{stat} #{start} -> #{end}]"
 
+    player.emit "event.#{event.type}", item, boost
+
     @game.broadcast MessageCreator.genericMessage string
     callback()
 
@@ -135,6 +142,7 @@ class EventHandler
         item: item.getName()
 
       totalString = "#{event.remark} [#{myScore} -> #{score} | +#{score-myScore}]"
+      player.emit "event.findItem", item
 
       @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace totalString, player, extra
 
@@ -142,6 +150,7 @@ class EventHandler
       multiplier = player.calc.itemSellMultiplier item
       value = Math.floor item.score() * multiplier
       player.gold.add value
+      player.emit "event.sellItem", item, value
 
     callback()
 

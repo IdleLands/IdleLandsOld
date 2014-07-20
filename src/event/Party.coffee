@@ -25,10 +25,12 @@ class Party
 
   setPlayersParty: ->
     _.forEach @players, (player) =>
+      player.emit "party.join"
       player.party = @
 
   playerLeave: (player) ->
     @players = _.without @players, player
+    player.emit "party.leave"
     if @players.length <= 1
       @disband()
       player.playerManager.game.broadcast MessageCreator.genericMessage "#{player.name} has disbanded #{@name}."
@@ -40,6 +42,7 @@ class Party
   disband: ->
     @game.parties = _.without @game.parties, @
     _.forEach @players, (player) ->
+      player.emit "party.leave"
       delete player.party
 
 module.exports = exports = Party
