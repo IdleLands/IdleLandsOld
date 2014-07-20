@@ -20,11 +20,36 @@ class Class extends Personality
   baseXpLossPerCombat: 10
   baseXpLossPerOpponentLevel: 5
 
+  baseConPerLevel: 0
+  baseDexPerLevel: 0
+  baseAgiPerLevel: 0
+  baseStrPerLevel: 0
+  baseIntPerLevel: 0
+  baseWisPerLevel: 0
+
   hp: (player) ->
     @baseHp + (@baseHpPerLevel*player.level.getValue()) + (@baseHpPerCon*player.calc.stat 'con')
 
   mp: (player) ->
     @baseMp + (@baseMpPerLevel*player.level.getValue()) + (@baseMpPerInt*player.calc.stat 'int')
+
+  con: (player) ->
+    @baseConPerLevel*player.level.getValue()
+
+  dex: (player) ->
+    @baseDexPerLevel*player.level.getValue()
+
+  agi: (player) ->
+    @baseAgiPerLevel*player.level.getValue()
+
+  str: (player) ->
+    @baseStrPerLevel*player.level.getValue()
+
+  int: (player) ->
+    @baseIntPerLevel*player.level.getValue()
+
+  wis: (player) ->
+    @baseWisPerLevel*player.level.getValue()
 
   ###
     deadVariables contains:
