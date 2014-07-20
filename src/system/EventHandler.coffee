@@ -51,6 +51,7 @@ class EventHandler
 
     extra =
       xp: Math.abs boost
+      xpp: (boost/player.xp.maximum)*100
 
     player.gainXp boost
 

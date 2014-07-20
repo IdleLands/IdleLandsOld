@@ -1,4 +1,7 @@
 
+_ = {}
+_.str = require "underscore.string"
+
 class MessageCreator
 
   genericMessage = (message) ->
@@ -40,8 +43,15 @@ class MessageCreator
       .split('%himher').join getGenderPronoun gender, '%himher'
       .split('%hishers').join getGenderPronoun gender, '%hishers'
       .split('%she').join getGenderPronoun gender, '%she'
+
+      .split('%Hisher').join _.str.capitalize getGenderPronoun gender, '%hisher'
+      .split('%Himher').join _.str.capitalize getGenderPronoun gender, '%himher'
+      .split('%Hishers').join _.str.capitalize getGenderPronoun gender, '%hishers'
+      .split('%She').join _.str.capitalize getGenderPronoun gender, '%she'
+
       .split('%item').join extra?.item
       .split('%xp').join extra?.xp
+      .split('%xpp').join extra?.xpp
       .split('%gold').join extra?.gold
       .split('%partyName').join extra?.partyName
       .split('%party').join extra?.party
