@@ -35,6 +35,8 @@ class MessageCreator
 
   @genericMessage: genericMessage
 
+  #more types: combat, health, mana, special, announcement, event.gold, event.item, event.xp
+
   @doStringReplace: (string, player, extra = null) ->
     gender = player.getGender()
     string
@@ -55,7 +57,5 @@ class MessageCreator
       .split('%gold').join extra?.gold
       .split('%partyName').join extra?.partyName
       .split('%party').join extra?.party
-
-  #more types: combat, health, mana, special, announcement, event.gold, event.item, event.xp
 
 module.exports = exports = MessageCreator
