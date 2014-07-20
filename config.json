@@ -7,27 +7,27 @@
             {
                 "type": "findItem",
                 "min": 1,
-                "max": 20
+                "max": 50
             },
             {
                 "type": "blessItem",
                 "min": 1,
-                "max": 245
+                "max": 335
             },
             {
                 "type": "forsakeItem",
                 "min": 1,
-                "max": 445
+                "max": 950
             },
             {
                 "type": "blessXp",
                 "min": 1,
-                "max": 185
+                "max": 350
             },
             {
                 "type": "forsakeXp",
                 "min": 1,
-                "max": 435
+                "max": 800
             },
             {
                 "type": "blessGold",
@@ -42,12 +42,12 @@
             {
                 "type": "party",
                 "min": 1,
-                "max": 135
+                "max": 225
             },
             {
                 "type": "battle",
                 "min": 1,
-                "max": 345
+                "max": 550
             }
         ],
         "eventEffects": {
@@ -75,6 +75,9 @@
             }
         },
         "defaults": {
+            "game": {
+                "maxPartyMembers": 3
+            },
             "player": {
                 "defaultYesPercent": 50,
                 "defaultPartyLeavePercent": 0.1,
