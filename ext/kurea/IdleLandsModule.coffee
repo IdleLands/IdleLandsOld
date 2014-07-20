@@ -209,6 +209,10 @@ module.exports = (Module) ->
       @addRoute "idle-register :name", (origin, route) =>
         [bot, name] = [origin.bot, route.params.name]
 
+        if name.length > 20
+          @reply origin, "You have to keep your name under 20 characters!"
+          return
+
         bot.userManager.getUsername origin, (e, username) =>
           if not username
             @reply origin, "You must be logged in to services play this game!"
