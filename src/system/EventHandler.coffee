@@ -48,6 +48,9 @@ class EventHandler
       callback false
 
   doXp: (event, player, callback) ->
+    if not event.remark
+      console.error "XP EVENT FAILURE", event
+      return
     boost = 0
 
     if (chance.bool {likelihood: player.calculateYesPercent()})
