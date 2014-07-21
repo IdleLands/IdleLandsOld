@@ -174,10 +174,10 @@ class Battle
     @winningParty = randomWinningPlayer.party
     winnerName = @winningParty.getPartyName()
 
-    @losingPlayers  = _.intersection @turnOrder, @winningParty.players
+    @losingPlayers  = _.difference @turnOrder, @winningParty.players
 
     @emitEventsTo "party.lose", @losingPlayers
-    @emitEventsTo "party.win", @winningParty.players
+    @emitEventsTo "party.win",  @winningParty.players
 
     @game.broadcast MessageCreator.genericMessage "The battle was won by #{winnerName}."
 
@@ -186,7 +186,7 @@ class Battle
 
   divvyXp: ->
     deadVariables = {}
-    deadVariables.deadPlayers = _.filter @turnOrder, (player) -> player.hp.atMin() and (player.party isnt @winningParty)
+    deadVariables.deadPlayers = @losingPlayers
     deadVariables.numDead = deadVariables.deadPlayers.length
     deadVariables.deadPlayerTotalXp = _.reduce deadVariables.deadPlayers, ((prev, player) -> prev + player.xp.maximum), 0
     deadVariables.deadPlayerAverageXP = deadVariables.deadPlayerTotalXp / deadVariables.numDead
