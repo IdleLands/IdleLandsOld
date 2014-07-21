@@ -57,7 +57,7 @@
             {
                 "type": "battle",
                 "min": 1,
-                "max": 450
+                "max": 250
             }
         ],
         "eventEffects": {
@@ -86,9 +86,9 @@
         },
         "defaults": {
             "game": {
-                "maxPartyMembers": 3,
+                "maxPartyMembers": 5,
                 "maxEnchantLevel": 10,
-                "maxPartyScorePercentDifference": 0.75
+                "maxPartyScorePercentDifference": 0.65
             },
             "player": {
                 "defaultYesPercent": 50,
