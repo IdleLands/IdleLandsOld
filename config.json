@@ -12,7 +12,7 @@
             {
                 "type": "enchant",
                 "min": 1,
-                "max": 600
+                "max": 800
             },
             {
                 "type": "flipStat",
