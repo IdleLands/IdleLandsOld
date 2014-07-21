@@ -82,8 +82,6 @@ class Game
       @broadcast MessageCreator.genericMessage "#{parties[0].getName()} passed by #{parties[1].getName()}, smiling and waving."
       return
 
-    console.log "PARTY SCORE", party1score, party2score
-
     if event
       @broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.remark, event.player
 

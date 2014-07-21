@@ -22,32 +22,32 @@
             {
                 "type": "blessItem",
                 "min": 1,
-                "max": 335
+                "max": 235
             },
             {
                 "type": "forsakeItem",
                 "min": 1,
-                "max": 950
+                "max": 750
             },
             {
                 "type": "blessXp",
                 "min": 1,
-                "max": 350
+                "max": 185
             },
             {
                 "type": "forsakeXp",
                 "min": 1,
-                "max": 800
+                "max": 625
             },
             {
                 "type": "blessGold",
                 "min": 1,
-                "max": 400
+                "max": 365
             },
             {
                 "type": "forsakeGold",
                 "min": 1,
-                "max": 900
+                "max": 800
             },
             {
                 "type": "party",
@@ -57,7 +57,7 @@
             {
                 "type": "battle",
                 "min": 1,
-                "max": 550
+                "max": 450
             }
         ],
         "eventEffects": {

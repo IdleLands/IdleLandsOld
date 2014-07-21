@@ -12,7 +12,7 @@ class EnergyMissile extends Spell
     "Mage": 1
 
   calcDamage: ->
-    chance.integer min: 1, max: Math.max 1,(@caster.calc.stat 'int')/10
+    chance.integer min: 1, max: Math.max 1,(@caster.calc.stat 'int')/4
 
   cast: (player) ->
     damage = @calcDamage()
