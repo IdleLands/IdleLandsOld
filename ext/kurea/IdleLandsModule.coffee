@@ -206,7 +206,7 @@ module.exports = (Module) ->
         @broadcast "#{origin.bot.config.server}/#{origin.channel} has left the Idletopia network!"
         @removeServerChannel origin.bot, server, channel
 
-      @addRoute "idle-register :name", (origin, route) =>
+      registerCommand = (origin, route) =>
         [bot, name] = [origin.bot, route.params.name]
 
         if name.length > 20
@@ -230,6 +230,9 @@ module.exports = (Module) ->
           , null, (status) =>
             if not status.success
               @reply origin, "You're already registered a character to that ident!"
+
+      @addRoute "idle-register :name", registerCommand
+      @addRoute "register :name", registerCommand
 
       @addRoute "idle-add event yesno \":question\" \":affirm\" \":deny\"", "idle.game.gm", (origin, route) =>
         [question, affirm, deny] = [route.params.question, route.params.affirm, route.params.deny]
