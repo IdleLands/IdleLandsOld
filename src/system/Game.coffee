@@ -70,6 +70,20 @@ class Game
       return if potentialParties.length < 2
       parties = potentialParties
 
+    party1score = parties[0].score()
+    party2score = parties[1].score()
+
+    minScore = Math.min party1score, party2score
+    maxScore = Math.max party1score, party2Score
+
+    maxPercDiff = Constants.defaults.game.maxPartyScorePercentDifference
+
+    if minScore < maxScore*maxPercDiff
+      @broadcast MessageCreator.genericMessage "#{parties[0].getName()} passed by #{parties[1].getName()}, smiling and waving."
+      return
+
+    console.log "PARTY SCORE", party1score, party2score
+
     if event
       @broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.remark, event.player
 

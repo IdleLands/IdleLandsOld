@@ -69,11 +69,13 @@ class Spell
       @unaffect player
 
   unaffect: (player) ->
-    battleInstance = @caster.party.currentBattle
-    battleInstance.emitEvents "skill.duration.end", "skill.duration.endAt", @caster, player, skill: @
+    battleInstance = @caster.party?.currentBattle
     player.spellsAffectedBy = _.without player.spellsAffectedBy, @
     _.each (_.keys @modifiedBindings), (event) =>
       player.removeListener event, @modifiedBindings[event]
+
+    return if not battleInstance
+    battleInstance.emitEvents "skill.duration.end", "skill.duration.endAt", @caster, player, skill: @
 
   constructor: (@game, @caster) ->
     @baseTargets = @caster.party.currentBattle.turnOrder
