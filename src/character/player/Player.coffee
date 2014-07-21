@@ -171,8 +171,8 @@ class Player extends Character
 
   levelUp: (suppress = no) ->
     return if not @playerManager
-    @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} has attained level #{@level.getValue()}!" if not suppress
     @level.add 1
+    @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} has attained level #{@level.getValue()}!" if not suppress
     @xp.maximum = @levelUpXpCalc @level.getValue()
     @xp.toMinimum()
     @emit "level.up"
