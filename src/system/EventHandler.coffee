@@ -105,6 +105,7 @@ class EventHandler
   doItem: (event, player, callback) ->
     item = (_.sample player.equipment)
     stat = (_.sample (_.reject (_.keys item), (key) -> key in ["name", "type", "itemClass", "enchantLevel"] or item[key] is 0))
+    return if not stat
 
     val = item[stat] ? 0
 
