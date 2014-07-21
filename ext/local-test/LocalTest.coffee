@@ -1,5 +1,4 @@
 
-
 finder = require "fs-finder"
 watch = require "node-watch"
 _ = require "underscore"
@@ -55,6 +54,9 @@ broadcastHandler = (messageArray) ->
 interval = null
 IdleWrapper = require(idlePath+"/system/ExternalWrapper")()
 
+getWrapper = ->
+  return IdleWrapper
+
 ## API call functions ##
 loadIdle = ->
   IdleWrapper.load()
@@ -76,10 +78,41 @@ gameLoop = ->
       setTimeout (player, i) ->
         action player
       , DELAY_INTERVAL/arr.length*i, arr[i]
-
+	  
   interval = setInterval =>
     doActionPerMember hashes, IdleWrapper.api.game.nextAction
   , DELAY_INTERVAL
+  
+interactiveSession = ->
+  readline = require('readline')
+
+  cli = readline.createInterface process.stdin, process.stdout, null
+  
+  cli.on 'line', (line) ->
+    clearInterval(interval)
+    cli.setPrompt "halt: c to continue> "
+    
+    if (line) == ""
+      cli.prompt()
+    else if (line) == "c"
+      do gameLoop
+    else
+      try
+        cmd = line.split(" ", 1)
+        argsPtr = line.indexOf(" ")
+        if (argsPtr != -1)
+          args = line.substring(argsPtr + 1);
+          broadcast "Evaluating [#{cmd}(#{args})]"
+          result = eval.call(cmd[0], args)
+        else
+          broadcast "Evaluating [#{cmd}]"
+          result = eval(cmd[0])
+        broadcast result
+      catch error
+        broadcast error
+      
+      cli.prompt()
+  
 ## ## ## ## ## ## ## ##
 
 ## other functions ##
@@ -101,3 +134,4 @@ do registerAllPlayers
 do loadAllPlayers
 do watchIdleFiles
 do gameLoop
+do interactiveSession
