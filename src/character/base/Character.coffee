@@ -132,6 +132,10 @@ class Character extends EventEmitter
         @base.itemSellMultiplier = 0.05
         @self.personalityReduce 'itemSellMultiplier', [@self, item, @base.itemSellMultiplier], @base.itemSellMultiplier
 
+      partyScore: ->
+        baseValue = _.reduce @self.equipment, ((prev, item) => prev + @self.calc.itemScore item), 0
+        @self.personalityReduce 'partyScore', [@self, baseValue], baseValue
+
 Character::num2dir = (dir,x,y) ->
   switch dir
     when 1 then return {x: x-1, y: y-1}
