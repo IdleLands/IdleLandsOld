@@ -74,12 +74,12 @@ class Game
     party2score = parties[1].score()
 
     minScore = Math.min party1score, party2score
-    maxScore = Math.max party1score, party2Score
+    maxScore = Math.max party1score, party2score
 
     maxPercDiff = Constants.defaults.game.maxPartyScorePercentDifference
 
     if minScore < maxScore*maxPercDiff
-      @broadcast MessageCreator.genericMessage "#{parties[0].getName()} passed by #{parties[1].getName()}, smiling and waving."
+      @broadcast MessageCreator.genericMessage "#{parties[0].getPartyName()} passed by #{parties[1].getPartyName()}, smiling and waving."
       return
 
     if event
