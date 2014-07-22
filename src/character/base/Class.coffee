@@ -74,6 +74,6 @@ class Class extends Personality
 
   load: (player) ->
     player.on 'walk', ->
-      player.gainXp 1
+      player.gainXp 10
 
 module.exports = exports = Class
