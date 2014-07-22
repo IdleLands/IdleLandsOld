@@ -73,6 +73,9 @@ class EventHandler
     callback()
 
   doGold: (event, player, callback) ->
+    if not event.remark
+      console.error "GOLD EVENT FAILURE", event
+      return
     goldTiers = Constants.eventEffects[event.type].amount
     curGold = player.gold.getValue()
 
