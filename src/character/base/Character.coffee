@@ -77,11 +77,11 @@ class Character extends EventEmitter
         @self.personalityReduce 'beatDodge', [@self, @base.beatDodge], @base.beatDodge
 
       hit: ->
-        @base.hit = (@self.calc.stats [['dex', 'agi', 'con']]) / 6
+        @base.hit = (@self.calc.stats [['dex', 'agi', 'con']]) / 3
         @self.personalityReduce 'hit', [@self, @base.hit], @base.hit
 
       beatHit: ->
-        @base.beatHit = Math.max 10, @self.calc.stats [['str', 'dex']]
+        @base.beatHit = Math.max 10, (@self.calc.stats [['str', 'dex']]) / 2
         @self.personalityReduce 'beatHit', [@self, @base.beatHit], @base.beatHit
 
       damage: ->
