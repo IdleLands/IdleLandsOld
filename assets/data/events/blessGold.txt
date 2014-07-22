@@ -17,7 +17,7 @@ The Goddess of Riches, Kirierath, causes it to rain gold down at %player only, a
 %player wrote %hisher thoughts into a book, and ended up selling it for %gold gold!
 %player recieved %gold from a charity to help adventurers in need!
 %player was picking %hisher ears, when suddenly %gold gold coins fell out right into %hisher hands!
-%player pawned off some things %she didn't nead for %gold gold!
+%player pawned off some things %she didn't need for %gold gold!
 %player got a %gold reward for slaying a monster!
 %player looted a dungeon for %gold gold. %she also managed to make it out of the dungeon safely.
 %player accidentally caught a criminal as the criminal was running through the streets. The city ended up paying %player %gold gold for catching the criminal!
