@@ -24,3 +24,4 @@
 %player decided to relax for a bit. %player found some insight during %hisher relaxation, gaining %xpxp as %she pondered.
 %player was given a crystal of pure experience, worth %xpxp!
 %player expected the unexpected, and got rewarded with %xpxp!
+%player meets a trickster who shows %himher some moves. Somehow, %she manages to survive those wicked moves.
