@@ -75,7 +75,7 @@ class Game
 
     minScore = Math.min party1score, party2score
     maxScore = Math.max party1score, party2score
-fsudo
+
     maxPercDiff = Constants.defaults.game.maxPartyScorePercentDifference
 
     if minScore < maxScore*maxPercDiff
