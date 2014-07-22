@@ -63,7 +63,7 @@ class Character extends EventEmitter
       self: @
       stat: (stat) ->
         @base[stat] = _.reduce @self.equipment, ((prev, item) -> prev+item[stat]), 0
-        @self.personalityReduce stat, [@self, @base[stat]], @base[stat]
+        Math.max 0, @self.personalityReduce stat, [@self, @base[stat]], @base[stat]
 
       stats: (stats) ->
         _.reduce stats, ((prev, stat) => prev+@stat stat), 0
