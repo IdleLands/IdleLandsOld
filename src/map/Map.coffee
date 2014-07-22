@@ -54,4 +54,9 @@ class Map
       object: _.findWhere @map.layers[2].objects, {x: @tileWidth*x, y: @tileHeight*(y+1)}
     }
 
+  getFirstTile: (predicate) ->
+    {
+    object: _.findWhere @map.layers[2].objects, predicate
+    }
+
 module.exports = exports = Map
