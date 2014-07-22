@@ -50,13 +50,15 @@ class Player extends Character
     if @professionName is className
       message += " Alas, #{@name} is already a #{className}!"
       @isBusy = false
-    else
+    @playerManager.game.broadcast MessageCreator.genericMessage message
+
+    if @professionName isnt className
       @playerManager.game.eventHandler.doYesNo {}, @, (result) =>
         @isBusy = false
         return if not result
         @changeProfession className
 
-    @playerManager.game.broadcast MessageCreator.genericMessage message
+
 
   handleTeleport: (tile) ->
     dest = tile.object.properties
