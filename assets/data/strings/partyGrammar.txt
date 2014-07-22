@@ -1,0 +1,8 @@
+%article% %adjective% %noun%
+%article% %adjective% %noun% %preposition% %noun%
+%adjective% %noun%
+%adjective% %noun% %preposition% %noun%
+%adjective% %noun% %preposition% %article% %noun%
+%noun%
+%noun% %conjunction% %noun%
+%noun% %preposition% %noun%

@@ -17,8 +17,29 @@ class Party
     if @players.length > 1 then @name else @players[0].name
 
   pickPartyName: ->
-    return "The Null Party" if not Party::partyNames
-    _.sample _.difference Party::partyNames, _.pluck @game.parties, 'name'
+    return "The Null Party" if not Party::partyGrammar?
+    format = _.sample Party::partyGrammar
+    return "The Null Party" if not format?
+    arr =  format.split(" ")
+    (_.reduce arr, (sentence, word) ->
+      repl = null
+      switch (word.trim())
+        when '%noun%'
+          repl = _.sample Party::nouns
+        when '%preposition%'
+          repl = _.sample Party::prepositions
+        when '%article%'
+          repl = _.sample Party::articles
+        when '%adjective%'
+          repl = _.sample Party::adjectives
+        when '%conjunction%'
+          repl = _.sample Party::conjunctions
+        else
+          repl = word.trim()
+      sentence.push(repl.trim())
+      return sentence
+    ,[]).join(" ")
+
 
   addGlobally: ->
     if not @game.parties

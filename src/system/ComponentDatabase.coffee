@@ -16,7 +16,36 @@ class ComponentDatabase
     @stringsDb = new Datastore "strings", (db) -> db.ensureIndex {random: '2dsphere'}, ->
 
     @loadItems()
+    @loadGrammar()
     @loadPartyNames()
+
+  loadGrammar: ->
+    console.log "Loading grammar files..."
+    @stringsDb.find
+      type: "nouns"
+    , (e, docs) ->
+      console.log e if e
+      Party::nouns = _.pluck docs, 'data'
+    @stringsDb.find
+      type: "prepositions"
+    , (e, docs) ->
+      console.log e if e
+      Party::prepositions = _.pluck docs, 'data'
+    @stringsDb.find
+      type: "adjectives"
+    , (e, docs) ->
+      console.log e if e
+      Party::adjectives = _.pluck docs, 'data'
+    @stringsDb.find
+      type: "articles"
+    , (e, docs) ->
+      console.log e if e
+      Party::articles = _.pluck docs, 'data'
+    @stringsDb.find
+      type: "conjunctions"
+    , (e, docs) ->
+      console.log e if e
+      Party::conjunctions = _.pluck docs, 'data'
 
   loadPartyNames: ->
     @stringsDb.find
@@ -24,6 +53,11 @@ class ComponentDatabase
     , (e, docs) ->
       console.log e if e
       Party::partyNames = _.pluck docs, 'data'
+    @stringsDb.find
+      type: "partyGrammar"
+    , (e, docs) ->
+      console.log e if e
+      Party::partyGrammar = _.pluck docs, 'data'
 
   parseItemString: (str, type) ->
     return if not str.trim()
@@ -46,6 +80,7 @@ class ComponentDatabase
   importAllData: ->
     @eventsDb.remove {}, {}, ->
     @itemsDb.remove {}, {}, ->
+    @stringsDb.remove {}, {}, ->
 
     itemstream = readdirp {root: "#{__dirname}/../../assets/data/items", fileFilter: "*.txt"}
     itemstream
@@ -65,8 +100,8 @@ class ComponentDatabase
       fs.readFile entry.fullPath, {}, (e, data) =>
         _.each data.toString().split("\n"), (line) => @insertStatic type, line
 
-    eventstream = readdirp {root: "#{__dirname}/../../assets/data/strings", fileFilter: "*.txt"}
-    eventstream
+    stringstream = readdirp {root: "#{__dirname}/../../assets/data/strings", fileFilter: "*.txt"}
+    stringstream
     .on "warn", (e) -> console.log "importAllData warning: #{e}"
     .on "error", (e) -> console.log "importAllData error: #{e}"
     .on "data", (entry) =>
