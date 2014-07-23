@@ -87,8 +87,8 @@ interactiveSession = ->
   readline = require('readline')
 
   cli = readline.createInterface process.stdin, process.stdout, null
+  variables = {}
 
-  lastCommand = null
   cli.on 'line', (line) ->
     clearInterval(interval)
     cli.setPrompt "halt: c to continue> "
@@ -99,18 +99,23 @@ interactiveSession = ->
       do gameLoop
     else
       try
-        line = line.replace("%lc%", lastCommand)
-        cmd = line.split(" ", 1)
-        argsPtr = line.indexOf(" ")
-        if (argsPtr != -1)
-          args = line.substring(argsPtr + 1);
-          broadcast "Evaluating [#{cmd}(#{args})]"
-          result = eval.call(cmd[0], args)
-        else
-          broadcast "Evaluating [#{cmd}]"
-          result = eval(cmd[0])
+      # Replace variables with values from hash
+        _.each Object.keys(variables), (variable) ->
+          regex = new RegExp "%#{variable}%", 'g'
+          line = line.replace regex, variables[variable]
+
+        # Match if user tried to assign a variable
+        line.match /%(\w*)%=(.*)/
+
+        # Assign variables to hash table
+        if RegExp.$1 and RegExp.$2
+          variables[RegExp.$1] = RegExp.$2
+          line = RegExp.$2
+
+        broadcast "Evaluating [#{line}]"
+        result = eval(line)
         broadcast result
-        lastCommand = cmd[0] if result?
+        variables['lc'] = line if result?
       catch error
         broadcast error
       
