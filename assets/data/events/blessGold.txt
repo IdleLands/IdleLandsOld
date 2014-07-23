@@ -24,3 +24,4 @@ The Goddess of Riches, Kirierath, causes it to rain gold down at %player only, a
 %player went and gathered various herbs and fruits, and sold them off for %gold gold!
 %player decided to play a man in chess for money, and ended up netting %gold gold from winning!
 %player managed to catch the Gold Fairie, who dropped %gold gold into %hisher hands before flying away!
+%player was given an experienced axe from the axe-fairy.  %player used the experienced axe to cut down a Golden Tree, using the woodsmelter to convert it into %gold gold.
