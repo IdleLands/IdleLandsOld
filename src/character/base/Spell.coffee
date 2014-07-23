@@ -7,7 +7,10 @@ class Spell
   @stat = "mp"
   @cost = 0
   stack: "duration"
-  bindings: doSpellCast: ->
+  bindings:
+    doSpellCast: ->
+    doSpellUncast: ->
+
   modifiedBindings: {}
   bonusElementRanking: 0
 
@@ -22,22 +25,29 @@ class Spell
     @affect targets
 
   determineTargets: ->
-    @targetEnemy()
+    do @targetEnemy
 
-  targetFriendly: (includeDead = no) ->
-    _.sample _.reject @baseTargets, ((target) => ((@caster.party isnt target.party) or (target.hp.atMin() and includeDead)))
+  targetFriendlies: (includeDead = no) ->
+    _.reject @baseTargets, ((target) => ((@caster.party isnt target.party) or (target.hp.atMin() and includeDead)))
 
-  targetEnemy: (includeDead = no)->
-    _.sample _.reject @baseTargets, ((target) => ((@caster.party is target.party) or (target.hp.atMin() and includeDead)))
+  targetFriendly: (includeDead = no, num = 1) ->
+    _.sample (@targetFriendlies includeDead), num
+
+  targetEnemies: (includeDead = no) ->
+    _.reject @baseTargets, ((target) => ((@caster.party is target.party) or (target.hp.atMin() and includeDead)))
+
+  targetEnemy: (includeDead = no, num = 1)->
+    _.sample (@targetEnemies includeDead), num
 
   affect: (affected = []) ->
-    @affected = [affected] if affected and not _.isArray affected
+    @affected = if affected and not _.isArray affected then [affected] else affected
     battleInstance = @caster.party.currentBattle
     _.each @affected, (player) =>
       turns = @calcDuration player
       battleInstance.emitEvents "skill.use", "skill.used", @caster, player, skill: @
       battleInstance.emitEvents "skill.#{@determineType()}.use", "skill.#{@determineType()}.used", @caster, player, skill: @
-      if turns is 0 then @bindings.doSpellCast.apply @, [player]
+      if turns is 0
+        (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
       else
         oldSpell = _.findWhere player.spellsAffectedBy, name: @name
         if oldSpell and @stack is "duration"
@@ -71,6 +81,7 @@ class Spell
   unaffect: (player) ->
     battleInstance = @caster.party?.currentBattle
     player.spellsAffectedBy = _.without player.spellsAffectedBy, @
+    (@bindings.doSpellUncast.apply @, [player]) if 'doSpellUncast' of @bindings
     _.each (_.keys @modifiedBindings), (event) =>
       player.removeListener event, @modifiedBindings[event]
 

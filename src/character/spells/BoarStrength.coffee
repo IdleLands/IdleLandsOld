@@ -21,10 +21,15 @@ class BoarStrength extends Spell
     message = "#{@caster.name} infused #{player.name} with #{@name}!"
     @game.broadcast MessageCreator.genericMessage message
 
+  uncast: (player) ->
+    message = "#{player.name} no longer has #{@name}."
+    @game.broadcast MessageCreator.genericMessage message
+
   constructor: (@game, @caster) ->
     super @game, @caster
     @bindings =
       doSpellCast: @cast
+      doSpellUncast: @uncast
       "self.turn.end": ->
 
 module.exports = exports = BoarStrength

@@ -36,7 +36,7 @@ class Party
           repl = _.sample Party::conjunctions
         else
           repl = word.trim()
-      sentence.push(repl.trim())
+      sentence.push(repl?.trim())
       return sentence
     ,[]).join(" ")
 

@@ -23,6 +23,10 @@ class Treatment extends Spell
     message = "#{@caster.name} began treating #{player.name}'s wounds with #{@name}!"
     @game.broadcast MessageCreator.genericMessage message
 
+  uncast: (player) ->
+    message = "#{@caster.name} is no longer treating #{player.name} with #{@name}."
+    @game.broadcast MessageCreator.genericMessage message
+
   tick: (player) ->
     restored = @calcDamage player
     message = "#{@caster.name}'s #{@name} restored #{restored} HP for #{player.name}!"
@@ -33,5 +37,6 @@ class Treatment extends Spell
     @bindings =
       "self.turn.end": @tick
       doSpellCast: @cast
+      doSpellUncast: @uncast
 
 module.exports = exports = Treatment

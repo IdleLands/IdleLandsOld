@@ -1,5 +1,6 @@
 
 Spell = require "../base/Spell"
+MessageCreator = require "../../system/MessageCreator"
 chance = new (require "chance")()
 _ = {}
 _.str = require "underscore.string"
@@ -11,9 +12,9 @@ class Ice extends Spell
   @restrictions =
     "Mage": 4
 
-  cantAct: -> 1
+  cantAct: -> if chance.bool({likelihood:25}) then 1 else 0
 
-  cantActMessages: -> "%player is frozen solid"
+  cantActMessages: -> "%player is currently frostbitten"
 
   calcDuration: -> super()+1
 
@@ -25,10 +26,15 @@ class Ice extends Spell
     message = "#{@caster.name} cast #{@name} at #{player.name} for #{damage} HP damage!"
     @caster.party.currentBattle.takeHp @caster, player, damage, @determineType(), message
 
+  uncast: (player) ->
+    message = "#{player.name} is no longer frostbitten by #{@name}."
+    @game.broadcast MessageCreator.genericMessage message
+
   constructor: (@game, @caster) ->
     super @game, @caster
     @bindings =
       doSpellCast: @cast
+      doSpellUncast: @uncast
       "self.turn.end": ->
 
 module.exports = exports = Ice
