@@ -4,6 +4,10 @@
 %player has found a dead grue, which spontaneously decomposed into %xpxp which %player promptly absorbed.
 %player began to faintly glow, as %she gained %xpxp from the heavens.
 %player felt a sudden surge of xp. To be exact, %xpxp!
+%player took %hisher daily vitamins, along with the daily recommended 2 liters of water, gaining %xpxp.
+%player caught the biggest fish at the fishery, and was rewarded with a whopping %xpxp.
+%player went on temporary leave, and returned to the news of a plague which %heshe had just avoided.*Whew*! Relief is worth about: %xpxp.
+%player tries busking with %hisher trusty lute in the street. No one offers them any currency, but they feel %xpxp fuller! 
 %player finally got that check in the mail, finding a package containing %xpxp solid xp!
 %player returned a stray faerie to the forest. The faerie queen then rewarded %player with %xpxp!
 %player poured acid on that mean old lady, then proceeded to steal %xpxp from her while she was busy dissolving.
