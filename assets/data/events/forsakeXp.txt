@@ -5,6 +5,7 @@
 %player was eaten by a grue. %player had to pay a %xpxp fee to respawn!
 %player was shot in the leg, causing %xpxp to pour out of the wound.
 %player ate a wooden nickel, %hisher poor dieting habits causing %player to lose %xpxp.
+%player found a chest! Inside this chest is another chest. This chest meta is too overwhelming for %himher to understand, and causes %himher to lose %xpxp.
 %player saw a really bright light, and went stumbling around in a forest for hours, getting %xpxp stolen from %himher by pixies.
 %player had a piano fall on %hisher head. %player was knocked out for long enough to make %himher lose %xpxp.
 %player had acid poured on %himher by an old lady. The acid also dissolved %xpxp!
