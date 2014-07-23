@@ -110,6 +110,7 @@ class ComponentDatabase
         _.each data.toString().split("\n"), (line) => @insertString type, line
 
   insertString: (type, string) ->
+    return if not string
     @stringsDb.insert
       type: type
       data: string
@@ -126,6 +127,7 @@ class ComponentDatabase
     , ->
 
   insertStatic: (type, remark) ->
+    return if not remark
     @eventsDb.insert
       type: type
       remark: remark
