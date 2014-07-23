@@ -96,6 +96,10 @@ class Battle
 
   takeTurn: (player) ->
     return if player.hp.atMin()
+    if player.calc.cantAct() > 0
+      affectingCauses = player.calc.cantActMessages()
+      @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace "#{_.str.toSentence affectingCauses}!", player
+      return
 
     availableSpells = @game.spellManager.getSpellsAvailableFor player
     spellChosen = _.sample availableSpells

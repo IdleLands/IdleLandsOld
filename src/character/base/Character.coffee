@@ -31,7 +31,11 @@ class Character extends EventEmitter
 
     _.reduce array, (combined, iter) ->
       applied = iter?[appFunctionName]?.apply iter, args
-      combined + if applied then applied else 0
+      if _.isArray combined
+        combined.push applied if applied
+      else
+        combined += if applied then applied else 0
+      combined
     , baseValue
 
   rebuildPersonalityList: ->
@@ -135,6 +139,14 @@ class Character extends EventEmitter
       partyScore: ->
         baseValue = _.reduce @self.equipment, ((prev, item) => prev + @self.calc.itemScore item), 0
         @self.personalityReduce 'partyScore', [@self, baseValue], baseValue
+
+      cantAct: ->
+        baseValue = 0
+        @self.personalityReduce 'cantAct', [@self, baseValue], baseValue
+
+      cantActMessages: ->
+        baseValue = []
+        @self.personalityReduce 'cantActMessages', [@self, baseValue], baseValue
 
 Character::num2dir = (dir,x,y) ->
   switch dir

@@ -11,7 +11,7 @@ class SweepingGeneralization extends Spell
     "Generalist": 1
 
   calcDamage: ->
-    chance.integer min: 1, max: Math.max 1,((@caster.calc.stats ['str', 'dex'])/4)
+    chance.integer min: 1, max: Math.max ((@caster.calc.stats ['str', 'dex'])/4),((@caster.calc.stats ['str', 'dex'])/2)
 
   cast: (player) ->
     damage = @calcDamage()

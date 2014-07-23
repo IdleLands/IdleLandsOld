@@ -4,15 +4,21 @@ chance = new (require "chance")()
 _ = {}
 _.str = require "underscore.string"
 
-class EnergyMissile extends Spell
-  name: "energy missile"
-  @element = EnergyMissile::element = Spell::Element.energy
-  @cost = EnergyMissile::cost = 50
+class Ice extends Spell
+  name: "ice"
+  @element = Ice::element = Spell::Element.ice
+  @cost = Ice::cost = 100
   @restrictions =
-    "Mage": 1
+    "Mage": 4
+
+  cantAct: -> 1
+
+  cantActMessages: -> "%player is frozen solid"
+
+  calcDuration: -> super()+1
 
   calcDamage: ->
-    chance.integer min: 1, max: Math.max (@caster.calc.stat 'int')/4,(@caster.calc.stat 'int')
+    chance.integer min: 1, max: Math.max (@caster.calc.stat 'int')/6,(@caster.calc.stat 'int')/4
 
   cast: (player) ->
     damage = @calcDamage()
@@ -23,5 +29,6 @@ class EnergyMissile extends Spell
     super @game, @caster
     @bindings =
       doSpellCast: @cast
+      "self.turn.end": ->
 
-module.exports = exports = EnergyMissile
+module.exports = exports = Ice
