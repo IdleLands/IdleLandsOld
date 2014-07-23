@@ -1,4 +1,4 @@
 %player stumbled across a wishing well, threw %item in, and it became enchanted!
 %player befriended a local enchantress. Because of this, she enchanted %hisher %item at no cost.
 %player had a vision in which %heshe realized %hisher alter ego lived inside %hisher %item, and that it was enchanted!
-%player read something about an enchanting ritual in a book and buries %hisher %item on a field. Suddenly, Thunder strucks the place and after digging it out, %player sees that %hisher %item got enchanted!
+%player read something about an enchanting ritual in a book and buries %hisher %item on a field. Suddenly, thunder strucks the place and after digging it out, %player sees that %hisher %item got enchanted!
