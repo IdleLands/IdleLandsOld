@@ -24,6 +24,9 @@ npm install
 npm start
 ```
 
+##Important##
+Do you need to pause the environment or run an API command? Easy: hit enter. The game will pause, and you can hit enter to resume the game.
+
 While writing code, make sure it passes `coffeelint` -- the easy shortcut for this is `grunt dev`.
 
 Adding Content
