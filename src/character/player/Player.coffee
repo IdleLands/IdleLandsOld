@@ -50,12 +50,15 @@ class Player extends Character
     if @professionName is className
       message += " Alas, #{@name} is already a #{className}!"
       @isBusy = false
+      @emit "trainer.ignore"
+      
     @playerManager.game.broadcast MessageCreator.genericMessage message
 
     if @professionName isnt className
       @playerManager.game.eventHandler.doYesNo {}, @, (result) =>
         @isBusy = false
         return if not result
+        @emit "trainer.speak"
         @changeProfession className
 
 
@@ -115,11 +118,13 @@ class Player extends Character
     @handleTile tile
 
   changeProfession: (to, suppress = no) ->
+    oldProfessionName = @professionName
     professionProto = require "../classes/#{to}"
     @profession = new professionProto()
     @professionName = professionProto.name
     @profession.load @
     @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} is now a #{to}!" if not suppress
+    @emit "profession.change", oldProfessionName, @professionName
 
     @recalculateStats()
 
