@@ -100,12 +100,13 @@ Spell::Element =
   water: 4
   thunder: 8
   earth: 16
-
   energy: 32
   heal: 64
   buff: 128
+  divine: 256
+  dark: 512
 
-  normal: 256
+  normal: 1028
 
 Spell::determineType = ->
   if @element & @Element.normal then "physical" else "magical"
