@@ -50,14 +50,17 @@ class Player extends Character
     if @professionName is className
       message += " Alas, #{@name} is already a #{className}!"
       @isBusy = false
-      @emit "trainer.ignore", className
+      @emit "trainer.isAlready", className
       
     @playerManager.game.broadcast MessageCreator.genericMessage message
 
     if @professionName isnt className
       @playerManager.game.eventHandler.doYesNo {}, @, (result) =>
         @isBusy = false
-        return if not result
+        if not result
+          @emit "trainer.ignore", className
+          return
+          
         @emit "trainer.speak", className
         @changeProfession className
 
