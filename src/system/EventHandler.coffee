@@ -21,7 +21,7 @@ class EventHandler
   doEvent: (eventType, player, callback = ->) ->
     @game.componentDatabase.getRandomEvent eventType, (e, event) =>
       console.error e if e
-      return if not event
+      return if not event or not player
       player.emit "event", event
       switch eventType
         when 'yesno'
