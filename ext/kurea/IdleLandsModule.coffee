@@ -209,6 +209,8 @@ module.exports = (Module) ->
       registerCommand = (origin, route) =>
         [bot, name] = [origin.bot, route.params.name]
 
+        name = name.trim()
+
         if name.length > 20
           @reply origin, "You have to keep your name under 20 characters!"
           return
