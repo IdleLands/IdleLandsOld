@@ -3,13 +3,15 @@ While stumbling around, %player finds a Pokeball with %item inside.
 %player opens a chest and finds %item in it.
 %player got %item as a reward for performing a generic fetch quest.
 %player digs around in a skag pile and finds %item... Nice.
-%player went dumpster diving and found a %item!
+%player went dumpster diving and found %item!
 %player found %item while %she was raiding a dungeon.
-A giant present suddenly drops from the sky, which %player opens up to find a %item inside!
-%player was given a %item by a shady magician.
-%player found a %item from an enemy corpse that was lying around.
-%player was donated a %item to help %himher with %hisher quest!
-%player was bestowed a %item after saving a member of royalty from certain death.
+A giant present suddenly drops from the sky, which %player opens up to find %item inside!
+%player was given %item by a shady magician.
+%player found %item from an enemy corpse that was lying around.
+%player was donated %item to help %himher with %hisher quest!
+%player was bestowed %item after saving a member of royalty from certain death.
 The God of Items, Shashkajze, caused a golden, shimmering %item to appear in front of %player.
-%player broke the seal on a magic crystal, which turned out to contain a %item!
+%player broke the seal on a magic crystal, which turned out to contain %item!
 %player saw a strange shooting star fly down to hit the ground nearby, which %she went to the impact crater to find a glowing-hot %item in the middle of it.
+%player opens a crate and finds %item in it.  It's like Christmas!
+%player parts a curtain and picks up something saying, "We've got %item over here!"
