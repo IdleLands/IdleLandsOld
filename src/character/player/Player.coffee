@@ -191,7 +191,7 @@ class Player extends Character
     @recalculateStats()
 
   levelUpXpCalc: (level) ->
-    Math.floor 100 + (400 * Math.pow level, 1.67)
+    Math.floor 100 + (400 * Math.pow level, 1.71)
 
   itemFindRange: ->
     (@level.getValue()+1) * @calc.itemFindRangeMultiplier()
