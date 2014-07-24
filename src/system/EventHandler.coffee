@@ -38,6 +38,8 @@ class EventHandler
         when 'flipStat'
           @doFlipStat event, player, callback
 
+      player.recalculateStats()
+
   doYesNo: (event, player, callback) ->
     player.emit "yesno"
     if chance.bool {likelihood: player.calculateYesPercent()}

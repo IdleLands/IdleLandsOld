@@ -226,7 +226,11 @@ class Battle
     @takeStatFrom attacker, defender, damage, type, "mp", message
 
   takeStatFrom: (attacker, defender, damage, type, damageType = "hp", message = null) ->
+
+    damage -= defender.calc.damageTaken attacker, damage, type, damageType
+
     defender[damageType]?.sub damage
+
     if damageType is "hp"
       if damage < 0
         @emitEvents "heal", "healed", attacker, defender, type: type, damage: damage

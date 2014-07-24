@@ -121,6 +121,8 @@ class Player extends Character
     @profession.load @
     @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} is now a #{to}!" if not suppress
 
+    @recalculateStats()
+
   calculateYesPercent: ->
     Math.min 100, (Math.max 0, Constants.defaults.player.defaultYesPercent + @personalityReduce 'calculateYesPercentBonus')
 
@@ -178,6 +180,7 @@ class Player extends Character
     @xp.maximum = @levelUpXpCalc @level.getValue()
     @xp.toMinimum()
     @emit "level.up"
+    @recalculateStats()
 
   levelUpXpCalc: (level) ->
     Math.floor 100 + (400 * Math.pow level, 1.67)

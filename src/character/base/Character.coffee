@@ -140,6 +140,10 @@ class Character extends EventEmitter
         baseValue = _.reduce @self.equipment, ((prev, item) => prev + @self.calc.itemScore item), 0
         @self.personalityReduce 'partyScore', [@self, baseValue], baseValue
 
+      damageTaken: (attacker, damage, skillType, reductionType) ->
+        baseValue = 0
+        @self.personalityReduce 'damageTaken', [@self, attacker, damage, skillType, reductionType], baseValue
+
       cantAct: ->
         baseValue = 0
         @self.personalityReduce 'cantAct', [@self, baseValue], baseValue
