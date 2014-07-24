@@ -25,11 +25,39 @@ npm start
 ```
 
 ##Important##
-Do you need to pause the environment or run an API command? Easy: hit enter. The game will pause, and you can hit enter to resume the game.
-
 While writing code, make sure it passes `coffeelint` -- the easy shortcut for this is `grunt dev`.
+
 
 Adding Content
 ==============
 
 Want to add content such as Classes, Personalities, Spells, or anything like that? Check out the [wiki](https://github.com/seiyria/IdleLands/wiki) for all of the existing documentation on events and functions available.
+
+#Debugging#
+
+While running LocalTest.coffee, you may press [ENTER] to enter an interactive session. This will pause the execution and allow you to execute code. By calling *getWrapper()*, you will be able to access the IdleGameWrapper object.
+
+###Examples###
+####Change a player's gold####
+```
+ %pm%=getWrapper().api.gameInstance.playerManager
+ %pm%.players[0].gold = 100
+```
+####Generate a party name####
+```
+getWrapper().api.gameInstance.playerManager.players[0].party.pickPartyName()
+> Many Brave Peasants
+%lc%  (Special variable, returns the last command you entered)
+> Omnipotent Fear Near Darkness
+```
+
+####Force a battle to start####
+```
+%gi%=getWrapper().api.gameInstance
+%pm%=%gi%.playerManager
+%gi%.createParty(%pm%.players[0])
+%gi%.createParty(%pm%.players[1])
+%gi%.startBattle(%gi%.parties[0],%gi%.parties[1])
+c
+> A battle is raging...
+```
