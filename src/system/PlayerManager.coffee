@@ -140,6 +140,7 @@ class PlayerManager
 
   beginWatchingPlayerStatistics: (player) ->
     player.onAny ->
+      @event = @event.split(".").join " "
       player.statistics[@event] = 0 if not @event of player.statistics or _.isNaN player.statistics[@event]
       player.statistics[@event]++
 
