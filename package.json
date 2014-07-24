@@ -34,6 +34,7 @@
     "underscore": "^1.6.0",
     "underscore.string": "^2.3.3",
     "watch": "^0.10.0",
-    "fs-finder": "~1.8.0"
+    "fs-finder": "~1.8.0",
+    "eventemitter2": "~0.4.14"
   }
 }

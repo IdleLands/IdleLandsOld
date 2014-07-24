@@ -1,11 +1,11 @@
 
 RestrictedNumber = require "restricted-number"
-{EventEmitter} = require 'events'
+EventEmitter2 = require("eventemitter2").EventEmitter2
 _ = require "underscore"
 Personality = require "./Personality"
 Constants = require "../../system/Constants"
 
-class Character extends EventEmitter
+class Character extends EventEmitter2
 
   constructor: (options) ->
     [@name, @identifier] = [options.name, options.identifier]

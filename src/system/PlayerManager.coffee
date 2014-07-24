@@ -129,9 +129,18 @@ class PlayerManager
 
     player.spellsAffectedBy = []
 
+    player.statistics = {} if not player.statistics
+
+    @beginWatchingPlayerStatistics player
+
     player
 
   getPlayerByName: (playerName) ->
     _.findWhere @players, {name: playerName}
+
+  beginWatchingPlayerStatistics: (player) ->
+    player.onAny ->
+      player.statistics[@event] = 0 if not @event of player.statistics or _.isNaN player.statistics[@event]
+      player.statistics[@event]++
 
 module.exports = exports = PlayerManager
