@@ -1,6 +1,5 @@
 
 Spell = require "../base/Spell"
-MessageCreator = require "../../system/MessageCreator"
 chance = new (require "chance")()
 _ = {}
 _.str = require "underscore.string"
@@ -26,9 +25,13 @@ class Ice extends Spell
     message = "#{@caster.name} cast #{@name} at #{player.name} for #{damage} HP damage!"
     @caster.party.currentBattle.takeHp @caster, player, damage, @determineType(), message
 
+  tick: (player) ->
+    message = "#{player.name} is still suffering from #{@name}."
+    @broadcastBuffMessage message
+
   uncast: (player) ->
-    message = "#{player.name} is no longer frostbitten by #{@name}."
-    @game.broadcast MessageCreator.genericMessage message
+    message = "#{player.name} is no longer suffering from #{@name}."
+    @broadcastBuffMessage message
 
   constructor: (@game, @caster) ->
     super @game, @caster

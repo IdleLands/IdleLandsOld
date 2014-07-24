@@ -1,6 +1,5 @@
 
 Spell = require "../base/Spell"
-MessageCreator = require "../../system/MessageCreator"
 
 class DoubleTap extends Spell
   name: "double tap"
@@ -10,10 +9,10 @@ class DoubleTap extends Spell
     "Fighter": 1
 
   cast: (player) ->
-    @game.broadcast MessageCreator.genericMessage "#{@caster.name} is going double-tap crazy on #{player.name}!"
+    @broadcast "#{@caster.name} is going double-tap crazy on #{player.name}!"
     @caster.party.currentBattle.doPhysicalAttack @caster, player
     if player.hp.atMin()
-      @game.broadcast MessageCreator.genericMessage "#{@caster.name} needs not hit #{player.name} again!"
+      @broadcast "#{@caster.name} needs not hit #{player.name} again!"
       return
 
     @caster.party.currentBattle.doPhysicalAttack @caster, player

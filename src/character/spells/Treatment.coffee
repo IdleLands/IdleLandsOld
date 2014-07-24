@@ -1,7 +1,6 @@
 
 Spell = require "../base/Spell"
 
-MessageCreator = require "../../system/MessageCreator"
 chance = new (require "chance")()
 
 class Treatment extends Spell
@@ -21,16 +20,17 @@ class Treatment extends Spell
 
   cast: (player) ->
     message = "#{@caster.name} began treating #{player.name}'s wounds with #{@name}!"
-    @game.broadcast MessageCreator.genericMessage message
+    @broadcastBuffMessage message
 
   uncast: (player) ->
     message = "#{@caster.name} is no longer treating #{player.name} with #{@name}."
-    @game.broadcast MessageCreator.genericMessage message
+    @broadcast message
 
   tick: (player) ->
     restored = @calcDamage player
     message = "#{@caster.name}'s #{@name} restored #{restored} HP for #{player.name}!"
-    @caster.party.currentBattle.takeHp @caster, player, -restored, @determineType(), message
+    @caster.party.currentBattle.takeHp @caster, player, -restored, @determineType()
+    @broadcastBuffMessage message
 
   constructor: (@game, @caster) ->
     super @game, @caster

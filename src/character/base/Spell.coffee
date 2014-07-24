@@ -1,5 +1,6 @@
 
 _ = require "underscore"
+MessageCreator = require "../../system/MessageCreator"
 
 class Spell
   name: "THIS SPELL HAS NO NAME"
@@ -59,7 +60,7 @@ class Spell
           @turns = @calcDuration player
           battleInstance.emitEvents "skill.duration.begin", "skill.duration.beginAt", @caster, player, skill: @, turns: @turns
 
-          eventList = _.keys _.omit @bindings, 'doSpellCast'
+          eventList = _.keys _.omit @bindings, 'doSpellCast', 'doSpellUncast'
           #this would normalize turns / event, but eh, not necessary atm?
           #@turns *= eventList.length
           me = @
@@ -87,6 +88,12 @@ class Spell
 
     return if not battleInstance
     battleInstance.emitEvents "skill.duration.end", "skill.duration.endAt", @caster, player, skill: @
+
+  broadcastBuffMessage: (message) ->
+    @game.broadcast MessageCreator.genericMessage message
+
+  broadcast: (message) ->
+    @game.broadcast MessageCreator.genericMessage message
 
   constructor: (@game, @caster) ->
     @baseTargets = @caster.party.currentBattle.turnOrder

@@ -1,6 +1,5 @@
 
 Spell = require "../base/Spell"
-MessageCreator = require "../../system/MessageCreator"
 
 class BoarStrength extends Spell
   name: "boar strength"
@@ -19,17 +18,21 @@ class BoarStrength extends Spell
 
   cast: (player) ->
     message = "#{@caster.name} infused #{player.name} with #{@name}!"
-    @game.broadcast MessageCreator.genericMessage message
+    @broadcastBuffMessage message
+
+  tick: (player) ->
+    message = "#{@caster.name}'s #{@name} on #{player.name} is fading slowly!"
+    @broadcastBuffMessage message
 
   uncast: (player) ->
     message = "#{player.name} no longer has #{@name}."
-    @game.broadcast MessageCreator.genericMessage message
+    @broadcast message
 
   constructor: (@game, @caster) ->
     super @game, @caster
     @bindings =
       doSpellCast: @cast
       doSpellUncast: @uncast
-      "self.turn.end": ->
+      "self.turn.end": @tick
 
 module.exports = exports = BoarStrength
