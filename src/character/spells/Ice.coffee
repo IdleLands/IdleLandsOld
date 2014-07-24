@@ -19,7 +19,7 @@ class Ice extends Spell
   calcDuration: -> super()+1
 
   calcDamage: ->
-    chance.integer min: 1, max: Math.max (@caster.calc.stat 'int')/6,(@caster.calc.stat 'int')/4
+    chance.integer min: (@caster.calc.stat 'int')/6, max: Math.max ((@caster.calc.stat 'int')/6)+1,(@caster.calc.stat 'int')/4
 
   cast: (player) ->
     damage = @calcDamage()
