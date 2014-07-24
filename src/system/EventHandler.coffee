@@ -13,7 +13,12 @@ class EventHandler
 
   constructor: (@game) ->
 
-  doEvent: (eventType, player, callback) ->
+  doEventForPlayer: (playerName, callback, eventType = Constants.pickRandomEventType()) ->
+    player = @game.playerManager.getPlayerByName playerName
+
+    @doEvent eventType, player, callback
+
+  doEvent: (eventType, player, callback = ->) ->
     @game.componentDatabase.getRandomEvent eventType, (e, event) =>
       console.error e if e
       return if not event
@@ -189,6 +194,8 @@ class EventHandler
 
   doEnchant: (event, player, callback) ->
     item = _.sample _.reject player.equipment, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel
+
+    return if not item
     stat = (_.sample (_.reject (_.keys item), (key) -> key in ["name", "type", "itemClass", "enchantLevel"] or item[key] isnt 0))
 
     boost = 10

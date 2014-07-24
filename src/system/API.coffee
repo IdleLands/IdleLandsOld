@@ -32,6 +32,9 @@ class API
       mass: (map, x, y) =>
         @gameInstance.gmCommands.massTeleport map, x, y
 
+    doEvent: (player, eventType, callback) =>
+      @gameInstance.eventHandler.doEventForPlayer player, callback, eventType
+
   @add =
     yesno: (question, y, n) =>
       @gameInstance.componentDatabase.insertYesNo question, y, n

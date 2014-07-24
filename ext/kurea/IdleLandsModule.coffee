@@ -234,6 +234,10 @@ module.exports = (Module) ->
       @addRoute "idle-register :name", registerCommand
       @addRoute "register :name", registerCommand
 
+      @addRoute "idle-event :player :event?", "idle.game.gm", (origin, route) =>
+        [player, event] = [route.params.player, route.params.event]
+        @IdleWrapper.api.game.doEvent player, event, => @reply origin, "Your event is done."
+
       @addRoute "idle-add event yesno \":question\" \":affirm\" \":deny\"", "idle.game.gm", (origin, route) =>
         [question, affirm, deny] = [route.params.question, route.params.affirm, route.params.deny]
         @IdleWrapper.api.add.yesno question, affirm, deny

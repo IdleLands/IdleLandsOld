@@ -11,8 +11,11 @@ class Constants
   @eventEffects = config.eventEffects
   @defaults = config.defaults
 
+  @pickRandomEventType = ->
+    _.sample @eventRates
+
   @pickRandomEvent = (player) ->
-    event = _.sample @eventRates
+    event = @pickRandomEventType()
     eventMod = player.personalityReduce 'eventModifier', [event], 0
     prob = chance.integer {min: 0, max: event.max}
     return event.type if prob <= (event.min+eventMod)
