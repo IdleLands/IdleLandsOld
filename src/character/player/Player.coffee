@@ -185,4 +185,9 @@ class Player extends Character
   itemFindRange: ->
     (@level.getValue()+1) * @calc.itemFindRangeMultiplier()
 
+  recalculateStats: ->
+    @hp.maximum = @calc.hp()
+    @mp.maximum = @calc.mp()
+    @special.maximum = @calc.special()
+
 module.exports = exports = Player

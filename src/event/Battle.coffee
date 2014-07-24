@@ -24,10 +24,7 @@ class Battle
     @calculateTurnOrder()
 
     _.each @turnOrder, (player) ->
-
-      player.hp.maximum = player.calc.hp()
-      player.mp.maximum = player.calc.mp()
-      player.special.maximum = player.calc.special()
+      player.recalculateStats()
 
       player.hp.toMaximum()
       player.mp.toMaximum()
