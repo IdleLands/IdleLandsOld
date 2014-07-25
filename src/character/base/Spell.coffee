@@ -5,9 +5,9 @@ MessageCreator = require "../../system/MessageCreator"
 class Spell
   name: "THIS SPELL HAS NO NAME"
   @restrictions = {}
-  @stat = "mp"
-  @oper = "sub"
-  @cost = 0
+  stat: @stat = "mp"
+  oper: @oper = "sub"
+  cost: @cost = 0
   stack: "duration"
   bindings:
     doSpellCast: ->
