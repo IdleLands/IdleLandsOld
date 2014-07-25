@@ -58,18 +58,62 @@ class Game
 
   startBattle: (parties = [], event = null) ->
     return if @inBattle
-    return if parties.length < 2 and @parties.length < 2 and @playerManager.players.length < 2
+    return if parties.length < 2 and @playerManager.players.length < 2
 
-    if parties.length is 0 and @parties.length < 2 and chance.bool {likelihood: 50}
-      potentialPlayers = _.sample (_.reject @playerManager.players, (player) -> player.party), 2
-      return if potentialPlayers.length < 2
-      parties = [ (new Party @, potentialPlayers[0]), (new Party @, potentialPlayers[1])]
+    if parties.length is 0
+      # Calculate number of teams involved
+      # TODO: Randomize number of teams
+      numberOfTeams = 2
+      return if numberOfTeams > @playerManager.players.length
 
+      # Calculate how many players will participate in the battle
+      # TODO: Skew chances so that smaller teams are chosen more often
+      maxParticipants = chance.integer({min: numberOfTeams, max: @playerManager.players.length})
+
+      # Determine pool of eligible candidates
+      soloPlayers = _.reject @playerManager.players, (player) -> player.party
+      candidates = @parties.concat soloPlayers
+      return if numberOfTeams > candidates.length
+
+      # Choose randomly the participants for this battle
+      # TODO: Skip parties that would bring us over the decided max participants
+      participants = []
+      candidates = _.shuffle candidates
+      while candidates.length > 0 and participants.length < maxParticipants
+        participants.push candidates.pop()
+
+      # Split evenly (discriminate on score) the participants into parties
+      groups = []
+      for i in [0...numberOfTeams]
+        groups[i] = []
+        groups[i].score = () -> _.reduce this, ((sum, current) -> sum += current.score()), 0
+
+      # TODO: Support multiple parties
+      participants = _.sortBy participants, (c) -> c.score()
+      while participants.length > 0
+        if groups[0].score() < groups[1].score()
+          groups[0].push participants.pop()
+        else
+          groups[1].push participants.pop()
+
+      # Merge groups
+      collapseGroup = (group) ->
+        masterParty = _.sample _.filter group, (party) -> party instanceof Party
+        if masterParty
+          otherParties = _.sample _.filter group, (party) -> party instanceof Party and party is not masterParty
+          _.each otherParties, (party) -> masterParty.recruit(party.disband())
+          masterParty
+        else
+          new Party @, group
+
+      for i in [0...numberOfTeams]
+        parties[i] = collapseGroup(groups[i])
     else
       potentialParties = _.sample @parties, 2
       return if potentialParties.length < 2
       parties = potentialParties
 
+    # TODO: Support multiple parties
     party1score = parties[0].score()
     party2score = parties[1].score()
 
