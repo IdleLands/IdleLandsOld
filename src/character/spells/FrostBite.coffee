@@ -4,10 +4,10 @@ chance = new (require "chance")()
 _ = {}
 _.str = require "underscore.string"
 
-class Ice extends Spell
-  name: "ice"
-  @element = Ice::element = Spell::Element.ice
-  @cost = Ice::cost = 100
+class FrostBite extends Spell
+  name: "frostbite"
+  @element = FrostBite::element = Spell::Element.ice
+  @cost = FrostBite::cost = 100
   @restrictions =
     "Mage": 4
 
@@ -41,4 +41,4 @@ class Ice extends Spell
       doSpellUncast: @uncast
       "self.turn.end": @tick
 
-module.exports = exports = Ice
+module.exports = exports = FrostBite
