@@ -140,6 +140,9 @@ class Player extends Character
   getGender: ->
     "male"
 
+  score: ->
+    @calc.partyScore()
+
   possiblyDoEvent: ->
     event = Constants.pickRandomEvent @
     return if not event
