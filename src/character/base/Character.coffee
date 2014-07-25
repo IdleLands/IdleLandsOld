@@ -66,8 +66,17 @@ class Character extends EventEmitter2
       base: {}
       self: @
       stat: (stat) ->
+        pct = "#{stat}Percent"
         @base[stat] = _.reduce @self.equipment, ((prev, item) -> prev+item[stat]), 0
-        Math.max 0, @self.personalityReduce stat, [@self, @base[stat]], @base[stat]
+        @base[pct] = _.reduce @self.equipment, ((prev, item) -> prev+(item[pct] or 0)), 0
+
+        baseVal = Math.max 0, @self.personalityReduce stat, [@self, @base[stat]], @base[stat]
+        percent = Math.max 0, @self.personalityReduce pct, [@self, @base[pct]], @base[pct]
+
+        newValue = Math.floor baseVal/percent
+        newValue = if _.isFinite newValue then newValue else 0
+
+        baseVal+newValue
 
       stats: (stats) ->
         _.reduce stats, ((prev, stat) => prev+@stat stat), 0
@@ -77,11 +86,11 @@ class Character extends EventEmitter2
         @self.personalityReduce 'dodge', [@self, @base.dodge], @base.dodge
 
       beatDodge: ->
-        @base.beatDodge = Math.max 10, @self.calc.stats ['dex','str','agi','wis','con', 'int']
+        @base.beatDodge = Math.max 10, @self.calc.stats ['dex','str','agi','wis','con','int']
         @self.personalityReduce 'beatDodge', [@self, @base.beatDodge], @base.beatDodge
 
       hit: ->
-        @base.hit = (@self.calc.stats ['dex', 'agi', 'con']) / 3
+        @base.hit = (@self.calc.stats ['dex', 'agi', 'con']) / 6
         @self.personalityReduce 'hit', [@self, @base.hit], @base.hit
 
       beatHit: ->
