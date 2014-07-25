@@ -65,12 +65,9 @@ class Spell
           me = @
           @modifiedBindings = {}
           _.each eventList, (event) =>
-            #console.log "ATTEMPTING TO BIND #{@name} to #{event} - #{@modifiedBindings[event]}"
             return if @modifiedBindings[event]
-            #console.log "DEFINITELY TO BIND #{@name} to #{event}"
             newFunc = ->
-              #console.log "INNER"
-              me.bindings[event].apply me, arguments #wat
+              me.bindings[event].apply me, arguments
               me.decrementTurns player
 
             @modifiedBindings[event] = newFunc

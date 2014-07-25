@@ -27,7 +27,6 @@ class Ice extends Spell
     @broadcastBuffMessage message
 
   tick: (player) ->
-    #console.log "ICE HAS TICKED"
     message = "#{player.name} is still suffering from #{@name}."
     @broadcastBuffMessage message
 
