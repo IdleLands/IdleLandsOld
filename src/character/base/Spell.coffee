@@ -6,6 +6,7 @@ class Spell
   name: "THIS SPELL HAS NO NAME"
   @restrictions = {}
   @stat = "mp"
+  @oper = "sub"
   @cost = 0
   stack: "duration"
   bindings:
@@ -97,7 +98,7 @@ class Spell
 
   constructor: (@game, @caster) ->
     @baseTargets = @caster.party.currentBattle.turnOrder
-    @caster.mp.sub @cost
+    @caster[@stat][@oper] @cost
 
 Spell::Element =
   none: 0
