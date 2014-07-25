@@ -23,21 +23,23 @@ class Ice extends Spell
   cast: (player) ->
     damage = @calcDamage()
     message = "#{@caster.name} cast #{@name} at #{player.name} for #{damage} HP damage!"
-    @caster.party.currentBattle.takeHp @caster, player, damage, @determineType(), message
+    @caster.party.currentBattle.takeHp @caster, player, damage, @determineType()
+    @broadcastBuffMessage message
 
   tick: (player) ->
+    #console.log "ICE HAS TICKED"
     message = "#{player.name} is still suffering from #{@name}."
     @broadcastBuffMessage message
 
   uncast: (player) ->
     message = "#{player.name} is no longer suffering from #{@name}."
-    @broadcastBuffMessage message
+    @broadcast message
 
   constructor: (@game, @caster) ->
     super @game, @caster
     @bindings =
       doSpellCast: @cast
       doSpellUncast: @uncast
-      "self.turn.end": ->
+      "self.turn.end": @tick
 
 module.exports = exports = Ice

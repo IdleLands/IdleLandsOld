@@ -12,7 +12,6 @@ class Spell
     doSpellCast: ->
     doSpellUncast: ->
 
-  modifiedBindings: {}
   bonusElementRanking: 0
 
   bonusElement: 0 #Spell::Element.none
@@ -56,18 +55,22 @@ class Spell
           battleInstance.emitEvents "skill.duration.refresh", "skill.duration.refreshed", @caster, player, skill: oldSpell, turns: oldSpell.turns
 
         else
-          player.spellsAffectedBy.push @
-          @turns = @calcDuration player
+          player?.spellsAffectedBy.push @ # got an error here once
+          @turns = turns
           battleInstance.emitEvents "skill.duration.begin", "skill.duration.beginAt", @caster, player, skill: @, turns: @turns
 
           eventList = _.keys _.omit @bindings, 'doSpellCast', 'doSpellUncast'
           #this would normalize turns / event, but eh, not necessary atm?
           #@turns *= eventList.length
           me = @
+          @modifiedBindings = {}
           _.each eventList, (event) =>
+            #console.log "ATTEMPTING TO BIND #{@name} to #{event} - #{@modifiedBindings[event]}"
             return if @modifiedBindings[event]
+            #console.log "DEFINITELY TO BIND #{@name} to #{event}"
             newFunc = ->
-              me.bindings[event].apply me, [arguments...] #wat
+              #console.log "INNER"
+              me.bindings[event].apply me, arguments #wat
               me.decrementTurns player
 
             @modifiedBindings[event] = newFunc
@@ -90,7 +93,7 @@ class Spell
     battleInstance.emitEvents "skill.duration.end", "skill.duration.endAt", @caster, player, skill: @
 
   broadcastBuffMessage: (message) ->
-    @game.broadcast MessageCreator.genericMessage message
+    @game.broadcast MessageCreator.genericMessage message+" [#{@turns} turns]" if @turns > 0
 
   broadcast: (message) ->
     @game.broadcast MessageCreator.genericMessage message
