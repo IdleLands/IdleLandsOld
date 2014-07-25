@@ -73,23 +73,23 @@ class Character extends EventEmitter2
         _.reduce stats, ((prev, stat) => prev+@stat stat), 0
 
       dodge: ->
-        @base.dodge = @self.calc.stat ['agi']
+        @base.dodge = @self.calc.stat 'agi'
         @self.personalityReduce 'dodge', [@self, @base.dodge], @base.dodge
 
       beatDodge: ->
-        @base.beatDodge = Math.max 10, @self.calc.stats [['dex','str','agi','wis','con', 'int']]
+        @base.beatDodge = Math.max 10, @self.calc.stats ['dex','str','agi','wis','con', 'int']
         @self.personalityReduce 'beatDodge', [@self, @base.beatDodge], @base.beatDodge
 
       hit: ->
-        @base.hit = (@self.calc.stats [['dex', 'agi', 'con']]) / 3
+        @base.hit = (@self.calc.stats ['dex', 'agi', 'con']) / 3
         @self.personalityReduce 'hit', [@self, @base.hit], @base.hit
 
       beatHit: ->
-        @base.beatHit = Math.max 10, (@self.calc.stats [['str', 'dex']]) / 2
+        @base.beatHit = Math.max 10, (@self.calc.stats ['str', 'dex']) / 2
         @self.personalityReduce 'beatHit', [@self, @base.beatHit], @base.beatHit
 
       damage: ->
-        @base.damage = Math.max 10, @self.calc.stats [['str']]
+        @base.damage = Math.max 10, @self.calc.stats ['str']
         @self.personalityReduce 'damage', [@self, @base.damage], @base.damage
 
       physicalAttackChance: ->
