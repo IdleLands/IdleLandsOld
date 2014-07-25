@@ -15,6 +15,7 @@ class EventHandler
 
   doEventForPlayer: (playerName, callback, eventType = Constants.pickRandomEventType()) ->
     player = @game.playerManager.getPlayerByName playerName
+    return if not player
 
     @doEvent eventType, player, callback
 
