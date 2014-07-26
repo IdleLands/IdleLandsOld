@@ -25,7 +25,6 @@ class Treatment extends Spell
     @broadcast message
 
   tick: (player) ->
-    console.log "TREATMENT #{player.name} #{@caster.name}"
     restored = @calcDamage player
     message = "#{@caster.name}'s #{@name} restored #{restored} HP for #{player.name}!"
     @caster.party?.currentBattle?.takeHp @caster, player, -restored, @determineType()
