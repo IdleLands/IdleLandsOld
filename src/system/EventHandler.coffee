@@ -154,7 +154,7 @@ class EventHandler
     realScore = item.score()
     myRealScore = myItem.score()
 
-    if score >= myScore and item.score() < player.itemFindRange()
+    if score >= myScore and realScore < player.itemFindRange()
       player.equipment = _.without player.equipment, myItem
       player.equipment.push item
 
