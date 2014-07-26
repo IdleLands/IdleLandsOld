@@ -4,7 +4,7 @@ Spell = require "../base/Spell"
 class Thunderstrike extends Spell
   name: "thunderstrike"
   @element = Thunderstrike::element = Spell::Element.thunder
-  @cost = Thunderstrike::cost = 1
+  @cost = Thunderstrike::cost = 150
   @restrictions =
     "Mage": 7
 
