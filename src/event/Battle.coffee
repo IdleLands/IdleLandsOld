@@ -195,18 +195,33 @@ class Battle
 
     winMessages = []
     loseMessages = []
+
+    # winning player xp distribution
     _.each @winningParty.players, (player) ->
       xpGain = player.personalityReduce 'combatEndXpGain', [player, deadVariables], 0
       winMessages.push "#{player.name} gained #{xpGain}xp"
+
+    @game.broadcast MessageCreator.genericMessage (_.str.toSentence winMessages)+"!"
+
+    _.each @winningParty.players, (player) ->
+      xpGain = player.personalityReduce 'combatEndXpGain', [player, deadVariables], 0
       player.gainXp xpGain
+
+    # end winning
+
+    #losing player xp distribution
 
     _.each deadVariables.deadPlayers, (player) ->
       xpLoss = player.personalityReduce 'combatEndXpLoss', [player, deadVariables], 0
       loseMessages.push "#{player.name} lost #{xpLoss}xp"
+
+    @game.broadcast MessageCreator.genericMessage (_.str.toSentence loseMessages)+"!"
+
+    _.each deadVariables.deadPlayers, (player) ->
+      xpLoss = player.personalityReduce 'combatEndXpLoss', [player, deadVariables], 0
       player.gainXp -xpLoss
 
-    @game.broadcast MessageCreator.genericMessage (_.str.toSentence winMessages)+"!"
-    @game.broadcast MessageCreator.genericMessage (_.str.toSentence loseMessages)+"!"
+    # end losing
 
   cleanUp: ->
     _.each @parties, (party) ->
