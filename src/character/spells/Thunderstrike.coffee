@@ -20,9 +20,10 @@ class Thunderstrike extends Spell
     @broadcast message
 
   uncast: (player) ->
+    console.log "THUNDER #{player.name} #{@caster.name}"
     damage = @calcDamage()
     message = "#{player.name} was struck by #{@caster.name}'s #{@name} for #{damage} HP damage!"
-    @caster.party.currentBattle.takeHp @caster, player, damage, @determineType(), message
+    @caster.party?.currentBattle?.takeHp @caster, player, damage, @determineType(), message
 
   tick: (player) ->
     message = "Storm clouds brew above #{player.name}..."

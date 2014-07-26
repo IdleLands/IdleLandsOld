@@ -41,7 +41,6 @@ class Party
       return sentence
     ,[]).join(" ").trim()
 
-
   addGlobally: ->
     if not @game.parties
       @game.parties = []
@@ -52,10 +51,12 @@ class Party
     _.forEach @players, (player) =>
       player.emit "party.join"
       player.party = @
+      player.partyName = if @players.length > 1 then @name else ''
 
   playerLeave: (player) ->
     @players = _.without @players, player
     player.emit "party.leave"
+    player.partyName = ''
     if @players.length <= 1
       @disband()
       player.playerManager.game.broadcast MessageCreator.genericMessage "#{player.name} has disbanded #{@name}."
