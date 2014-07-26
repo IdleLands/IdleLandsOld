@@ -67,7 +67,7 @@ class Spell
 
         else
           player?.spellsAffectedBy.push @ # got an error here once
-          @turns = turns
+          @baseTurns = @turns = turns
           battleInstance.emitEvents "skill.duration.begin", "skill.duration.beginAt", @caster, player, skill: @, turns: @turns
 
           eventList = _.keys _.omit @bindings, 'doSpellCast', 'doSpellUncast'

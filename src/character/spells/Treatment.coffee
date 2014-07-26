@@ -1,8 +1,6 @@
 
 Spell = require "../base/Spell"
 
-chance = new (require "chance")()
-
 class Treatment extends Spell
   name: "treatment"
   @element = Treatment::element = Spell::Element.heal & Spell::Element.buff

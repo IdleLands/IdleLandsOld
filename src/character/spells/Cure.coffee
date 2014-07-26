@@ -1,8 +1,5 @@
 
 Spell = require "../base/Spell"
-chance = new (require "chance")()
-_ = {}
-_.str = require "underscore.string"
 
 class Cure extends Spell
   name: "cure"
@@ -15,7 +12,7 @@ class Cure extends Spell
     @targetFriendly()
 
   calcDamage: ->
-    chance.integer min: ((@caster.calc.stat 'wis')/4), max: Math.max (((@caster.calc.stat 'wis')/4)+1),(@caster.calc.stat 'wis')
+    @chance.integer min: ((@caster.calc.stat 'wis')/4), max: Math.max (((@caster.calc.stat 'wis')/4)+1),(@caster.calc.stat 'wis')
 
   cast: (player) ->
     damage = @calcDamage()
