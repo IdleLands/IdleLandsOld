@@ -21,7 +21,7 @@ class Thunderstrike extends Spell
 
   uncast: (player) ->
     damage = @calcDamage()
-    message = "#{player.name} was struck by #{@name} for #{damage} HP damage!"
+    message = "#{player.name} was struck by #{@caster.name}'s #{@name} for #{damage} HP damage!"
     @caster.party.currentBattle.takeHp @caster, player, damage, @determineType(), message
 
   tick: (player) ->
