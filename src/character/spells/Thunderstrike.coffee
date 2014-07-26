@@ -1,6 +1,5 @@
 
 Spell = require "../base/Spell"
-chance = new (require "chance")()
 _ = {}
 _.str = require "underscore.string"
 
@@ -16,7 +15,7 @@ class Thunderstrike extends Spell
   calcDuration: -> super()+(chance.integer min: 1, max: 3)
 
   calcDamage: ->
-    chance.integer min: (@caster.calc.stat 'int')*0.25*@turns, max: Math.max ((@caster.calc.stat 'int')*0.25*@turns)+1,(@caster.calc.stat 'int')+0.3*(@turns-1)
+    @chance.integer min: (@caster.calc.stat 'int')*0.25*@turns, max: Math.max ((@caster.calc.stat 'int')*0.25*@turns)+1,(@caster.calc.stat 'int')+0.3*(@turns-1)
 
   cast: (player) ->
     damage = @calcDamage()

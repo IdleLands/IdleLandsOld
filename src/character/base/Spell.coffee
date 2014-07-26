@@ -29,13 +29,23 @@ class Spell
     do @targetEnemy
 
   targetFriendlies: (includeDead = no) ->
-    _.reject @baseTargets, ((target) => ((@caster.party isnt target.party) or (target.hp.atMin() and includeDead)))
+    _.chain @baseTargets
+    .reject (target) ->
+      target.hp.atMin() and not includeDead
+    .reject (target) =>
+      @caster.party isnt target.party
+    .value()
 
   targetFriendly: (includeDead = no, num = 1) ->
     _.sample (@targetFriendlies includeDead), num
 
   targetEnemies: (includeDead = no) ->
-    _.reject @baseTargets, ((target) => ((@caster.party is target.party) or (target.hp.atMin() and includeDead)))
+    _.chain @baseTargets
+    .reject (target) ->
+      target.hp.atMin() and not includeDead
+    .reject (target) =>
+      @caster.party is target.party
+    .value()
 
   targetEnemy: (includeDead = no, num = 1)->
     _.sample (@targetEnemies includeDead), num
@@ -99,6 +109,7 @@ class Spell
   constructor: (@game, @caster) ->
     @baseTargets = @caster.party.currentBattle.turnOrder
     @caster[@stat][@oper] @cost
+    @chance = new (require "chance")()
 
     console.error "ERROR NO CASTER FOR #{@name}" if not @caster
 
