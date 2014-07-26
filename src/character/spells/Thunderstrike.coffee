@@ -1,7 +1,5 @@
 
 Spell = require "../base/Spell"
-_ = {}
-_.str = require "underscore.string"
 
 class Thunderstrike extends Spell
   name: "thunderstrike"
