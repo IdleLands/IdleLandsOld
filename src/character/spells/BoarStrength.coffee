@@ -13,8 +13,7 @@ class BoarStrength extends Spell
   determineTargets: ->
     @targetFriendly()
 
-  str: (player, baseStr) ->
-    baseStr*0.25
+  strPercent: -> 25
 
   cast: (player) ->
     message = "#{@caster.name} infused #{player.name} with #{@name}!"

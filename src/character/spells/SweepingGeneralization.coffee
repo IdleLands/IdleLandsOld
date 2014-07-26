@@ -13,12 +13,15 @@ class SweepingGeneralization extends Spell
   calcDamage: ->
     chance.integer min: ((@caster.calc.stats ['str', 'dex'])/4), max: Math.max ((@caster.calc.stats ['str', 'dex'])/4)+1,((@caster.calc.stats ['str', 'dex'])/2)
 
+  determineTargets: ->
+    @targetEnemies()
+
   cast: (player) ->
     damage = @calcDamage()
-    targets = player.party.players
-    _.each targets, (target) =>
-      message = "#{@caster.name} cast #{@name} and #{target.name} took #{damage} HP damage!"
-      @caster.party.currentBattle.takeHp @caster, target, damage, @determineType(), message
+    #targets = player.party.players
+    #_.each targets, (target) =>
+    message = "#{@caster.name} cast #{@name} and #{player.name} took #{damage} HP damage!"
+    @caster.party.currentBattle.takeHp @caster, player, damage, @determineType(), message
 
   constructor: (@game, @caster) ->
     super @game, @caster

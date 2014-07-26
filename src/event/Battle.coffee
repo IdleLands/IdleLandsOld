@@ -255,7 +255,9 @@ class Battle
       else
         @emitEvents "damage", "damaged", attacker, defender, type: type, damage: damage
 
-      defender.spellsAffectedBy = [] if defender.hp.atMin()
+      if defender.hp.atMin()
+        defender.spellsAffectedBy = []
+        message = "#{message} [FATAL]" if message
 
     else if damageType is "mp"
       if damage < 0
