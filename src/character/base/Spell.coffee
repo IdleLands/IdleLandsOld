@@ -100,6 +100,8 @@ class Spell
     @baseTargets = @caster.party.currentBattle.turnOrder
     @caster[@stat][@oper] @cost
 
+    console.error "ERROR NO CASTER FOR #{@name}" if not @caster
+
 Spell::Element =
   none: 0
   # circ-shift these left to get strengths, and right to get weaknesses (truncated @ 16)
