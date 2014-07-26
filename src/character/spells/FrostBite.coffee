@@ -8,7 +8,7 @@ class FrostBite extends Spell
   @restrictions =
     "Mage": 4
 
-  cantAct: -> if chance.bool({likelihood:25}) then 1 else 0
+  cantAct: -> if @chance.bool({likelihood:25}) then 1 else 0
 
   cantActMessages: -> "%player is currently frostbitten"
 
