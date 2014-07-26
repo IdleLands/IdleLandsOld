@@ -42,8 +42,8 @@ class API
       @gameInstance.componentDatabase.insertStatic eventType, remark
     item: (item, duplicateCallback) =>
       @gameInstance.componentDatabase.insertItem item, duplicateCallback
-    player: (identifier) =>
-      @gameInstance.playerManager.addPlayer identifier
+    player: (identifier, suppress) =>
+      @gameInstance.playerManager.addPlayer identifier, suppress
     personality: (identifier, personality) =>
       @gameInstance.playerManager.playerHash[identifier]?.addPersonality personality
     allData: =>

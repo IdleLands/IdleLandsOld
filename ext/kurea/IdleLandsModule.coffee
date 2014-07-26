@@ -71,13 +71,13 @@ module.exports = (Module) ->
       return null if not username
       "#{server}##{username}"
 
-    addUser: (ident) ->
+    addUser: (ident, suppress) ->
       return if not ident
 
       @userIdentsList.push ident
       @userIdentsList = _.uniq @userIdentsList
 
-      @IdleWrapper.api.add.player ident
+      @IdleWrapper.api.add.player ident, suppress
 
     removeUser: (ident) ->
       return if not ident or not _.contains @userIdentsList, ident
@@ -97,7 +97,7 @@ module.exports = (Module) ->
               bot.userManager.getUsername user, (e, username) =>
                 username = user if (not username) and bot.config.auth is "nick"
                 ident = @generateIdent server, username
-                @addUser ident
+                @addUser ident, yes
 
     loadOldChannels: ->
       Q.when @db.databaseReady, (db) =>
