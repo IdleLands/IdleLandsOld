@@ -15,11 +15,11 @@ class Fighter extends Class
   baseDexPerLevel: 2
   baseAgiPerLevel: 2
   baseStrPerLevel: 3
-  baseIntPerLevel: 1
+  baseIntPerLevel: 2
   baseWisPerLevel: 1
 
   itemScore: (player, item) ->
-    item.str*3 + item.con*2 + item.dex - item.agi - item.int*2 - item.wis*3
+    item.str*3 + item.con*2 + item.dex - item.agi - item.wis*3
 
   minDamage: (player) ->
     player.calc.damage()*0.50

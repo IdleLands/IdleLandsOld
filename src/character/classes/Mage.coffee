@@ -19,7 +19,7 @@ class Mage extends Class
   baseWisPerLevel: 2
 
   itemScore: (player, item) ->
-    item.int*3 - item.str - item.dex - item.con
+    item.int*3 + item.con - item.str - item.dex
 
   physicalAttackChance: -> -25
 
