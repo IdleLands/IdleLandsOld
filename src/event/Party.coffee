@@ -1,5 +1,6 @@
 
 _ = require "underscore"
+_.str = require "underscore.string"
 MessageCreator = require "../system/MessageCreator"
 
 class Party
@@ -8,7 +9,7 @@ class Party
     @name = @pickPartyName()
     return if not @name or not @players
     @addGlobally()
-    @recruit(@players)
+    @setPlayersParty()
 
   score: ->
     _.reduce @players, ((prev, player) -> prev + player.calc.partyScore()), 0
@@ -21,7 +22,7 @@ class Party
     format = _.sample Party::partyGrammar
     return "The Null Party" if not format?
     arr =  format.split(" ")
-    (_.reduce arr, (sentence, word) ->
+    _.str.clean (_.reduce arr, (sentence, word) ->
       repl = null
       switch (word.trim())
         when '%noun%'
@@ -38,7 +39,8 @@ class Party
           repl = word.trim()
       sentence.push(repl?.trim())
       return sentence
-    ,[]).join(" ")
+    ,[]).join(" ").trim()
+
 
   addGlobally: ->
     if not @game.parties
@@ -46,8 +48,8 @@ class Party
 
     @game.parties.push @
 
-  recruit: (players) ->
-    _.forEach players, (player) =>
+  setPlayersParty: ->
+    _.forEach @players, (player) =>
       player.emit "party.join"
       player.party = @
 
@@ -67,6 +69,5 @@ class Party
     _.forEach @players, (player) ->
       player.emit "party.leave"
       delete player.party
-    @players
 
 module.exports = exports = Party
