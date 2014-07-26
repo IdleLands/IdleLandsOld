@@ -16,7 +16,7 @@ class Treatment extends Spell
     @targetFriendly()
 
   calcDamage: (player) ->
-    Math.floor (player.hp.maximum * 0.15)
+    Math.floor (player.hp.maximum * 0.07)
 
   cast: (player) ->
     message = "#{@caster.name} began treating #{player.name}'s wounds with #{@name}!"
