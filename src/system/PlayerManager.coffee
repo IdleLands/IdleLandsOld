@@ -144,7 +144,39 @@ class PlayerManager
     _.findWhere @players, {name: playerName}
 
   beginWatchingPlayerStatistics: (player) ->
+
+    maxStat = (stat, val) ->
+      val = Math.abs val
+      player.statistics[stat] = 0 if not stat of player.statistics or _.isNaN player.statistics[stat]
+      player.statistics[stat] = Math.max val, player.statistics[stat]
+
+    addStat = (stat, val, intermediate) ->
+      player.statistics[intermediate] = {} if intermediate and not (intermediate of player.statistics)
+      root = if intermediate then player.statistics[intermediate] else player.statistics
+      val = Math.abs val
+      root[stat] = 0 if not (stat of root) or _.isNaN root[stat]
+      root[stat] += val
+
     player.onAny ->
+
+      switch @event
+        when "self.heal"
+          maxStat "max heal", arguments[1].damage
+          addStat "total heals", arguments[1].damage
+
+        when "self.healed"
+          addStat "heal received", arguments[1].damage
+
+        when "self.damage"
+          maxStat "max damage", arguments[1].damage
+          addStat "total damage", arguments[1].damage
+
+        when "self.damaged"
+          addStat "damage received", arguments[1].damage
+
+        when "self.kill"
+          addStat arguments[0].name, 1, "kills"
+
       @event = @event.split(".").join " "
       player.statistics[@event] = 0 if not @event of player.statistics or _.isNaN player.statistics[@event]
       player.statistics[@event]++
