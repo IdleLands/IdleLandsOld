@@ -54,7 +54,7 @@ class Spell
     @affected = if affected and not _.isArray affected then [affected] else affected
     battleInstance = @caster.party.currentBattle
     _.each @affected, (player) =>
-      turns = @calcDuration player
+      @baseTurns = @turns = turns = @calcDuration player
       battleInstance.emitEvents "skill.use", "skill.used", @caster, player, skill: @
       battleInstance.emitEvents "skill.#{@determineType()}.use", "skill.#{@determineType()}.used", @caster, player, skill: @
       if turns is 0
@@ -67,7 +67,6 @@ class Spell
 
         else
           player?.spellsAffectedBy.push @ # got an error here once
-          @baseTurns = @turns = turns
           battleInstance.emitEvents "skill.duration.begin", "skill.duration.beginAt", @caster, player, skill: @, turns: @turns
 
           eventList = _.keys _.omit @bindings, 'doSpellCast', 'doSpellUncast'
@@ -84,6 +83,7 @@ class Spell
             @modifiedBindings[event] = newFunc
             player.on event, newFunc
 
+        if not
         (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
 
   decrementTurns: (player) ->
