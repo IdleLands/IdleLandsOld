@@ -18,10 +18,13 @@ class PlayerManager
       db.ensureIndex { identifier: 1 }, { unique: true }, ->
       db.ensureIndex { name: 1 }, { unique: true }, ->
 
+  banPlayer: (identifer, callback) ->
+    @db.update {identifier: identifier}, {banned: true}, {}, callback
+
   retrievePlayer: (identifier, callback) ->
     @db.findOne {identifier: identifier}, (e, player) =>
       console.error e if e
-      if not player or _.findWhere @players, {identifier: identifier}
+      if not player or player.banned or _.findWhere @players, {identifier: identifier}
         callback?()
         return
 
@@ -128,6 +131,8 @@ class PlayerManager
       player.rebuildPersonalityList()
 
     player.spellsAffectedBy = []
+
+    player.lastLogin = new Date()
 
     player.statistics = {} if not player.statistics
 

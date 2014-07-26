@@ -60,7 +60,6 @@ getWrapper = ->
 ## API call functions ##
 loadIdle = ->
   IdleWrapper.load()
-  IdleWrapper.api.add.allData()
   IdleWrapper.api.register.broadcastHandler broadcastHandler, null
   do loadAllPlayers
 
@@ -143,3 +142,4 @@ do loadAllPlayers
 do watchIdleFiles
 do gameLoop
 do interactiveSession
+do IdleWrapper.api.add.allData

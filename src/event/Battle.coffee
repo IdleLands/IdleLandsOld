@@ -8,6 +8,7 @@ chance = (new require "chance")()
 
 class Battle
   constructor: (@game, @parties) ->
+    return if @parties.length < 2
     @startBattle()
     @endBattle()
 

@@ -53,6 +53,10 @@ class API
     static: (query, callback) =>
       @gameInstance.componentDatabase.findEvent query, callback
 
+  @ban =
+    player: (identifier, callback) =>
+      @gameInstance.playerManager.banPlayer identifier, callback
+
   @remove =
     static: (id, callback) =>
       @gameInstance.componentDatabase.removeEvent id, callback
