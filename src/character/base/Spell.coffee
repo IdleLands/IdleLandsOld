@@ -83,7 +83,6 @@ class Spell
             @modifiedBindings[event] = newFunc
             player.on event, newFunc
 
-        if not
         (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
 
   decrementTurns: (player) ->
@@ -125,8 +124,9 @@ Spell::Element =
   energy: 32
   heal: 64
   buff: 128
+  debuff: 256
 
-  normal: 256
+  normal: 512
 
 Spell::determineType = ->
   if @element & @Element.normal then "physical" else "magical"

@@ -151,6 +151,8 @@ class EventHandler
     return if not myItem
     score = player.calc.itemScore item
     myScore = player.calc.itemScore myItem
+    realScore = item.score()
+    myRealScore = myItem.score()
 
     if score >= myScore and item.score() < player.itemFindRange()
       player.equipment = _.without player.equipment, myItem
@@ -159,7 +161,7 @@ class EventHandler
       extra =
         item: item.getName()
 
-      totalString = "#{event.remark} [#{myScore} -> #{score} | +#{score-myScore}]"
+      totalString = "#{event.remark} [perceived: #{myScore} -> #{score} | real: #{myRealScore} -> #{myScore} | +#{score-myScore}]"
       player.emit "event.findItem", item
 
       @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace totalString, player, extra

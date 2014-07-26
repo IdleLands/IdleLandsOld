@@ -26,6 +26,7 @@ class Class extends Personality
   baseStrPerLevel: 0
   baseIntPerLevel: 0
   baseWisPerLevel: 0
+  baseLuckPerLevel: 0
 
   hp: (player) ->
     @baseHp + (@baseHpPerLevel*player.level.getValue()) + (@baseHpPerCon*player.calc.stat 'con')
@@ -50,6 +51,9 @@ class Class extends Personality
 
   wis: (player) ->
     @baseWisPerLevel*player.level.getValue()
+
+  baseLuckPerLevel: (player) ->
+    @baseLuckPerLevel*player.level.getValue()
 
   ###
     deadVariables contains:

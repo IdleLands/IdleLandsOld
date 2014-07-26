@@ -27,6 +27,8 @@ class Battle
     _.each @turnOrder, (player) ->
       player.recalculateStats()
 
+      player.spellsAffectedBy = []
+
       player.hp.toMaximum()
       player.mp.toMaximum()
       player.special.toMaximum()
@@ -145,7 +147,7 @@ class Battle
 
     @emitEvents "target", "targeted", player, target
 
-    damage = chance.integer {min: 1, max: player.calc.damage()}
+    damage = chance.integer {min: player.calc.minDamage(), max: player.calc.damage()}
 
     weapon = _.findWhere player.equipment, {type: "mainhand"}
     message += ", and hit with %hisher #{weapon.getName()} for #{damage} HP damage"

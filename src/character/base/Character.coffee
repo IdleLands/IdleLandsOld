@@ -101,6 +101,10 @@ class Character extends EventEmitter2
         @base.damage = Math.max 10, @self.calc.stats ['str']
         @self.personalityReduce 'damage', [@self, @base.damage], @base.damage
 
+      minDamage: ->
+        @base.minDamage = 1
+        @self.personalityReduce 'minDamage', [@self, @base.minDamage], @base.minDamage
+
       physicalAttackChance: ->
         @base.physicalAttackChance = 75
         @self.personalityReduce 'physicalAttackChance', [@self, @base.physicalAttackChance], @base.physicalAttackChance

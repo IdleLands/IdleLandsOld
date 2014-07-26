@@ -3,7 +3,7 @@ Class = require "./../base/Class"
 
 class Generalist extends Class
 
-  baseHp: 10
+  baseHp: 50
   baseHpPerLevel: 15
   baseHpPerCon: 4
 
@@ -11,11 +11,21 @@ class Generalist extends Class
   baseMpPerLevel: 2
   baseMpPerInt: 2
 
+  baseConPerLevel: 2
+  baseDexPerLevel: 2
+  baseAgiPerLevel: 2
+  baseStrPerLevel: 2
+  baseIntPerLevel: 2
+  baseWisPerLevel: 2
+
   baseXpGainPerCombat: 120
   baseXpGainPerOpponentLevel: 60
 
   baseXpLossPerCombat: 8
   baseXpLossPerOpponentLevel: 3
+
+  minDamage: (player) ->
+    player.calc.damage()*0.35
 
   load: (player) ->
     super player
