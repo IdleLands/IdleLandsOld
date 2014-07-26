@@ -161,7 +161,7 @@ class EventHandler
       extra =
         item: item.getName()
 
-      totalString = "#{event.remark} [perceived: #{myScore} -> #{score} | real: #{myRealScore} -> #{myScore} | +#{score-myScore}]"
+      totalString = "#{event.remark} [perceived: #{myScore} -> #{score} | real: #{myRealScore} -> #{realScore} | +#{score-myScore}]"
       player.emit "event.findItem", item
 
       @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace totalString, player, extra
