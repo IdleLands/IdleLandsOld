@@ -199,7 +199,8 @@ class Battle
     # winning player xp distribution
     _.each @winningParty.players, (player) ->
       xpGain = player.personalityReduce 'combatEndXpGain', [player, deadVariables], 0
-      winMessages.push "#{player.name} gained #{xpGain}xp"
+      pct = +((xpGain/player.xp.maximum)*100).toFixed 3
+      winMessages.push "#{player.name} gained #{xpGain}xp [#{pct}%]"
 
     @game.broadcast MessageCreator.genericMessage (_.str.toSentence winMessages)+"!"
 
@@ -213,7 +214,8 @@ class Battle
 
     _.each deadVariables.deadPlayers, (player) ->
       xpLoss = player.personalityReduce 'combatEndXpLoss', [player, deadVariables], 0
-      loseMessages.push "#{player.name} lost #{xpLoss}xp"
+      pct = +((xpLoss/player.xp.maximum)*100).toFixed 3
+      loseMessages.push "#{player.name} lost #{xpLoss}xp [#{pct}%]"
 
     @game.broadcast MessageCreator.genericMessage (_.str.toSentence loseMessages)+"!"
 
