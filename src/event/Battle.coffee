@@ -80,22 +80,22 @@ class Battle
     1 < aliveParties.length
 
   beginTakingTurns: ->
-    @emitEventToAll "combat.battle.start", @turnOrder
+    @emitEventToAll "battle.start", @turnOrder
     while @playersAlive()
       @turnPosition = @turnPosition or 0
 
       if @turnPosition is 0
         @game.broadcast MessageCreator.genericMessage "A new combat round has started. Current status: #{@getAllStatStrings().join ' VS '}"
-        @emitEventToAll "combat.round.start", @turnOrder
+        @emitEventToAll "round.start", @turnOrder
 
-      @emitEventToAll "combat.turn.start", player
+      @emitEventToAll "turn.start", player
       player = @turnOrder[@turnPosition]
       @takeTurn player
-      @emitEventToAll "combat.turn.end", player
+      @emitEventToAll "turn.end", player
 
       @turnPosition++
       if @turnPosition is @turnOrder.length
-        @emitEventToAll "combat.round.end", @turnOrder
+        @emitEventToAll "round.end", @turnOrder
         @turnPosition = 0
 
   takeTurn: (player) ->
@@ -172,7 +172,7 @@ class Battle
     spell.prepareCast()
 
   endBattle: ->
-    @emitEventToAll "combat.battle.end", @turnOrder
+    @emitEventToAll "battle.end", @turnOrder
     randomWinningPlayer = _.sample(_.filter @turnOrder, (player) -> not player.hp.atMin())
     if not randomWinningPlayer
       @game.broadcast MessageCreator.genericMessage "Everyone died! The battle was a tie! You get nothing!"
@@ -184,8 +184,8 @@ class Battle
 
     @losingPlayers  = _.difference @turnOrder, @winningParty.players
 
-    @emitEventsTo "combat.party.lose", @losingPlayers
-    @emitEventsTo "combat.party.win",  @winningParty.players
+    @emitEventsTo "party.lose", @losingPlayers
+    @emitEventsTo "party.win",  @winningParty.players
 
     @game.broadcast MessageCreator.genericMessage "The battle was won by #{winnerName}."
 
@@ -286,7 +286,7 @@ class Battle
 
   emitEventsTo: (event, to, data) ->
     _.forEach to, (player) ->
-      player.emit event, data
+      player.emit "combat.#{event}", data
 
   emitEvents: (attackerEvent, defenderEvent, attacker, defender, extra = {}) ->
     attacker.emit "combat.self.#{attackerEvent}", defender, extra
