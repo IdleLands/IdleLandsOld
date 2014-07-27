@@ -44,6 +44,6 @@
 "Two Ton Bricks" agi=100 dex=450
 "Red Hot Kicks" agi=500 str=55
 "Mario Boots" agi=400 dex=200
-"Silver Surfboard" agi=333 dex=300
-"Advanced Knee Replacement" dex=450 agi=200
+"Silver Surfboard" agi=533 dex=200
+"Advanced Knee Replacement" dex=650 agi=200
 "Continuity Shoes" dex=500 agi=500 glowing

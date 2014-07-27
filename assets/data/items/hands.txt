@@ -18,5 +18,5 @@
 "Knife-Fists" str=300 dex=156
 "Pixelated Gloves" dex=350 str=100
 "My Little Painbringers" str=200 dex=311
-"Godhand" str=400 dex=200
+"Godhand" dex=400 str=200
 "Hands of Fate" str=500 dex=500 power

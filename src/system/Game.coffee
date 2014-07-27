@@ -24,12 +24,12 @@ class Game
 
   constructor: () ->
     @parties = []
+    @componentDatabase = new ComponentDatabase @
     @playerManager = new PlayerManager @
     @monsterManager = new MonsterManager()
     @spellManager = new SpellManager @
     @eventHandler = new EventHandler @
     @equipmentGenerator = new EquipmentGenerator @
-    @componentDatabase = new ComponentDatabase @
     @gmCommands = new GMCommands @
     @world = new World()
 
@@ -68,7 +68,8 @@ class Game
 
       # Calculate how many players will participate in the battle
       # TODO: Skew chances so that smaller teams are chosen more often
-      maxParticipants = chance.integer({min: numberOfTeams, max: @playerManager.players.length})
+      maxParticipants = Constants.defaults.game.maxPartyMembers * numberOfTeams
+      numParticipants = chance.integer({min: numberOfTeams, max: maxParticipants})
 
       # Determine pool of eligible candidates
       soloPlayers = _.reject @playerManager.players, (player) -> player.party
@@ -79,7 +80,7 @@ class Game
       # TODO: Skip parties that would bring us over the decided max participants
       participants = []
       candidates = _.shuffle candidates
-      while candidates.length > 0 and participants.length < maxParticipants
+      while candidates.length > 0 and participants.length < numParticipants
         participants.push candidates.pop()
 
       # Split evenly (discriminate on score) the participants into parties

@@ -60,9 +60,13 @@ class Battle
 
     string
 
-  getAllPlayerStatStrings: ->
-    _.map @turnOrder, (player) =>
+  getAllPlayersInPartyStatStrings: (party) ->
+    _.map party.players, (player) =>
       @stringifyStats @getRelevantStats player
+
+  getAllStatStrings: ->
+    _.map @parties, (party) =>
+      "#{(@getAllPlayersInPartyStatStrings party).join ', '}"
 
   playersAlive: ->
     parties = _.uniq _.pluck @turnOrder, 'party'
@@ -81,7 +85,7 @@ class Battle
       @turnPosition = @turnPosition or 0
 
       if @turnPosition is 0
-        @game.broadcast MessageCreator.genericMessage "A new combat round has started. Current status: #{@getAllPlayerStatStrings().join ', '}"
+        @game.broadcast MessageCreator.genericMessage "A new combat round has started. Current status: #{@getAllStatStrings().join ' VS '}"
         @emitEventToAll "combat.round.start", @turnOrder
 
       @emitEventToAll "combat.turn.start", player
