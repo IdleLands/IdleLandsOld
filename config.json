@@ -57,7 +57,7 @@
             {
                 "type": "battle",
                 "min": 1,
-                "max": 175
+                "max": 275
             }
         ],
         "eventEffects": {
