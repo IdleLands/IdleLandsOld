@@ -1,12 +1,15 @@
-"destroyed" str=-40 con=-20 int=-20
+"destroyed" str=-40 con=-20
+"unacceptable" dex=-30 int=-20
 "obliterated" con=-50
 "papier-mache" str=-30
 "rotten-to-the-bone" con=-20 int=-10
-"abysmal" con=-30
+"blind" dex=-30
+"abysmal" agi=-30 int=-20
 "cowardly" agi=20 str=-70
 "worthless" con=-5 str=-5 int=-5 dex=-5 wis=-5 agi=-5
 "tarnished" agi=-5 wis=-5
 "rusted" agi=-20 con=5
+"ignorant" dex=-10 wis=-10
 "accursed" luck=-20 wis=-5 con=-5
 "inferior" str=-5 int=-5
 "unlucky" luck=-20
@@ -18,18 +21,21 @@
 "oversized" dex=-5 agi=-5
 "boring" str=-5 int=-5
 "model" con=-10
+"obvious" dex=-7 int=-3
 "tiny" str=-10 con=-10 int=10 agi=10
 "miniature" str=-30 con=-30 int=30 agi=30
 "microscopic" strPercent=-5 agiPercent=5
 "haunted" int=20 luck=-20
 "replica" con=-5
 "uncool" agi=-5
+"gross" dex=-3 wis=-2
 "regifted" wis=-5
 "lost" con=-15 int=15
 "confused" wis=-15 str=15
 "tattered" con=-2
 "ordinary"
 "vanilla"
+"wary" int=2
 "basic" dex=1 agi=1
 "slippery" agi=3
 "discolored" dex=3
@@ -38,6 +44,7 @@
 "miserly" wis=-2 str=4
 "gloomy" int=-2 str=4
 "vaporous" str=-10 agi=14
+"silky" agi=4
 "happy" wis=5
 "glass" str=-5 agi=5
 "colorless" dex=5 int=-5
@@ -50,6 +57,7 @@
 "black" con=5
 "yellow" dex=5
 "red" str=5
+"hardened" con=7
 "orange" str=3 dex=3
 "gray" wis=3 con=3
 "green" agi=5
@@ -59,6 +67,7 @@
 "purple" str=5 int=3
 "calming" agi=-5 con=15
 "lucky" luck=10
+"ergonomic" int=10
 "osmotic" wis=10
 "pointy" dex=10
 "cursed" str=30 int=30 con=-50
@@ -68,6 +77,7 @@
 "fuschia" str=8 int=4
 "neutron-ish" str=12 int=1
 "goldenrod" dex=10 str=3
+"sequined" int=11
 "metallic" con=10 wis=3
 "smooth" dex=10 agi=5
 "unjust" str=15
@@ -76,6 +86,7 @@
 "ancient" con=-20 int=35
 "copper" dex=8 con=7
 "marble" con=15
+"fitted" int=8 agi=7
 "aluminum" agi=20 str=-5
 "lagom" con=7 dex=8
 "swiss" con=15 wis=5
@@ -87,6 +98,7 @@
 "gigantic" agi=-15 con=35
 "doomed" con=-30 str=50
 "speedy" agi=20
+"magical" int=20
 "steadfast" wis=10 str=10
 "keen" dex=20
 "fortuitous" luck=25
@@ -109,6 +121,7 @@
 "crazed" wis=-30 str=100
 "insane" wis=-30 int=100
 "flexible" dex=70 con=10
+"flashy" int=60 dex=20
 "aerodynamic" agi=70 wis=10
 "sagely" wis=50 int=30
 "crystal" con=100
@@ -161,9 +174,9 @@
 "meteoric" str=150 agi=100
 "seeking" dex=200 agi=50
 "prismatic" int=150 agi=100
-"glittering" agi=250
+"glittering" agi=230 int=20
 "illuminated" int=250
-"scintillating" str=250
+"scintillating" dex=250
 "perfected" dex=250
 "pure" con=100 wis=200
 "hellish" str=200 agi=100
@@ -183,10 +196,10 @@
 "legendary" str=200 int=150
 "transcendent" wis=250 agi=100
 "undulating" agi=100 wis=250
-"invisible" agi=150 str=100
+"invisible" agi=150 dex=100
 "luminescent" int=250 dex=50
 "timeless" agi=100 con=200
-"ageless" wis=-100 str=400
+"ageless" wis=-100 wis=400
 "spaceless" wis=-100 int=400
 "diamond" con=250 wis=100
 "heroic" str=200 dex=100
@@ -194,14 +207,14 @@
 "mithril" agi=300 con=70
 "enchanted" int=200 dex=200
 "bullet" agi=300 dex=100
-"destined" str=400
+"destined" wis=400
 "fated" int=400
 "ominous" str=500 dex=-100
 "universal" int=100 str=100 dex=100 agi=100
 "godly" str=70 int=70 agi=70 con=70 dex=70 wis=71
-"unmatched" agi=300 str=200
+"unmatched" agi=300 dex=200
 "sunstone" str=300 con=100
-"moonstone" int=300 con=100
+"moonstone" wis=150 con=250
 "runestone" dex=150 con=250
 "godstone" strPercent=5 intPercent=5
 "strong" strPercent=10
