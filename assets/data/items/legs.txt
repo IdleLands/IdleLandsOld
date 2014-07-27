@@ -21,7 +21,7 @@
 "leather leggings" agi=60 con=50
 "gold leggings" agi=40 con=80
 "iron leggings" agi=45 con=90
-"diamond leggings" agi=80 con=120
+"diamond leggings" agi=20 con=180
 "kneesocks" agi=245
 "Victoria's Panties" agi=300 wis=50
 "Granny's Pantaloons" agi=300 wis=75
@@ -30,7 +30,7 @@
 "Black Bar" agi=400 con=100
 "Untouchable Pants" con=315 agi=300
 "Bunny Pajamas" agi=675
-"Hoverchair" agi=715
-"Panzer Tank Treads" con=750 agi=100
+"Hoverchair" con=500 agi=215
+"Panzer Tank Treads" con=850
 "Full Monty" agi=400 con=400
 "Greaves of Null and All" agi=500 con=500 pietyPercent=50
