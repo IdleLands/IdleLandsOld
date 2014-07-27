@@ -1,9 +1,9 @@
 Spell = require "../base/Spell"
 
-class Berserk extends Spell
-  name: "berserk"
-  @element = Berserk::element = Spell::Element.buff
-  @cost = Berserk::cost = 300
+class Testosterone extends Spell
+  name: "testosterone"
+  @element = Testosterone::element = Spell::Element.buff
+  @cost = Testosterone::cost = 300
   @restrictions =
     "Fighter": 4
 
@@ -33,4 +33,4 @@ class Berserk extends Spell
       doSpellUncast: @uncast
       "combat.self.turn.end": @tick
 
-module.exports = exports = Berserk
+module.exports = exports = Testosterone
