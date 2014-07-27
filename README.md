@@ -12,9 +12,9 @@ Want to help develop Idle Lands? Great! Testing is super easy, as you can do it 
 
 Here are the prerequisites:
 
+* MongoDB, Git, and npm
 * coffee-script (npm install -g coffee-script)
 * grunt (npm install -g grunt-cli)
-* MongoDB
 
 Then do:
 
