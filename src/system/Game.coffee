@@ -24,12 +24,12 @@ class Game
 
   constructor: () ->
     @parties = []
+    @componentDatabase = new ComponentDatabase @
     @playerManager = new PlayerManager @
     @monsterManager = new MonsterManager()
     @spellManager = new SpellManager @
     @eventHandler = new EventHandler @
     @equipmentGenerator = new EquipmentGenerator @
-    @componentDatabase = new ComponentDatabase @
     @gmCommands = new GMCommands @
     @world = new World()
 
