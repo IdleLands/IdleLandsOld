@@ -8,6 +8,7 @@ Constants = require "../../system/Constants"
 class Character extends EventEmitter2
 
   constructor: (options) ->
+
     [@name, @identifier] = [options.name, options.identifier]
     @hp = new RestrictedNumber 0, 20, 20
     @mp = new RestrictedNumber 0, 0, 0
@@ -42,8 +43,8 @@ class Character extends EventEmitter2
     _.each @personalities, (personality) =>
       personality.unbind @
 
-    @personalities = _.map @personalityStrings, (personality) ->
-      Personality::createPersonality personality
+    @personalities = _.map @personalityStrings, (personality) =>
+      Personality::createPersonality personality, @
 
   addPersonality: (newPersonality) ->
     return no if not Personality::doesPersonalityExist newPersonality

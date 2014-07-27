@@ -14,7 +14,7 @@ Personality::getPersonality = (personality) ->
 Personality::doesPersonalityExist = (personality) ->
   personality of personalities
 
-Personality::createPersonality = (personality) ->
-  new personalities[personality]
+Personality::createPersonality = (personality, forWho) ->
+  new personalities[personality] forWho
 
 module.exports = exports = Personality

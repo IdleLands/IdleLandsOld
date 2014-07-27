@@ -77,7 +77,7 @@ class Class extends Personality
     event.min
 
   load: (player) ->
-    player.on 'walk', ->
+    player.on "explore.walk", ->
       player.gainXp 10
 
 module.exports = exports = Class

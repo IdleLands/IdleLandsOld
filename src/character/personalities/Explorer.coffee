@@ -4,11 +4,13 @@ Personality = require "../base/Personality"
 class Explorer extends Personality
 
   constructor: (player) ->
-    @xpListener = (player)
-    player.on 'walk', ->
+    @xpListener = (player) ->
       player.gainXp 5
 
+    player.on 'explore.*', @xpListener
+
   unbind: (player) ->
+    player.off 'explore.*', @xpListener
 
   intPercent: -> -10
   conPercent: -> -10
@@ -18,6 +20,6 @@ class Explorer extends Personality
   agiPercent: -> -10
 
   @canUse = (player) ->
-    player.statistics["walk"] > 100000
+    player.statistics["explore walk"] > 100000
 
 module.exports = exports = Explorer

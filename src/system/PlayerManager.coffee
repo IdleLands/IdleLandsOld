@@ -136,6 +136,9 @@ class PlayerManager
 
     player.statistics = {} if not player.statistics
 
+    player.setMaxListeners 100
+    player.wildcard = yes
+
     @beginWatchingPlayerStatistics player
 
     player
@@ -163,22 +166,22 @@ class PlayerManager
     player.onAny ->
 
       switch @event
-        when "self.heal"
-          maxStat "max heal", arguments[1].damage
-          addStat "total heals", arguments[1].damage
+        when "combat.self.heal"
+          maxStat "calculated max heal given", arguments[1].damage
+          addStat "calculated total heals given", arguments[1].damage
 
-        when "self.healed"
-          addStat "heal received", arguments[1].damage
+        when "combat.self.healed"
+          addStat "calculated heal received", arguments[1].damage
 
-        when "self.damage"
-          maxStat "max damage", arguments[1].damage
-          addStat "total damage", arguments[1].damage
+        when "combat.self.damage"
+          maxStat "calculated max damage given", arguments[1].damage
+          addStat "calculated total damage given", arguments[1].damage
 
-        when "self.damaged"
-          addStat "damage received", arguments[1].damage
+        when "combat.self.damaged"
+          addStat "calculated damage received", arguments[1].damage
 
-        when "self.kill"
-          addStat arguments[0].name, 1, "kills"
+        when "combat.self.kill"
+          addStat arguments[0].name, 1, "calculated kills"
 
       @event = @event.split(".").join " "
       player.statistics[@event] = 0 if not @event of player.statistics or _.isNaN player.statistics[@event]

@@ -68,7 +68,7 @@ class Party
   disband: ->
     @game.parties = _.without @game.parties, @
     _.forEach @players, (player) ->
-      player.emit "party.leave"
+      player.emit "player.party.leave"
       delete player.party
 
 module.exports = exports = Party
