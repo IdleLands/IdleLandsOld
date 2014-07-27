@@ -184,7 +184,7 @@ class PlayerManager
           addStat arguments[0].name, 1, "calculated kills"
 
       @event = @event.split(".").join " "
-      player.statistics[@event] = 0 if not @event of player.statistics or _.isNaN player.statistics[@event]
+      player.statistics[@event] = 1 if not @event of player.statistics or _.isNaN player.statistics[@event]
       player.statistics[@event]++
 
 module.exports = exports = PlayerManager
