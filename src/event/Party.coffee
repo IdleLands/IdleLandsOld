@@ -9,7 +9,7 @@ class Party
     @name = @pickPartyName()
     return if not @name or not @players
     @addGlobally()
-    @setPlayersParty()
+    @recruit(@players)
 
   score: ->
     _.reduce @players, ((prev, player) -> prev + player.calc.partyScore()), 0
@@ -47,8 +47,8 @@ class Party
 
     @game.parties.push @
 
-  setPlayersParty: ->
-    _.forEach @players, (player) =>
+  recruit: (players)->
+    _.forEach players, (player) =>
       player.emit "party.join"
       player.party = @
       player.partyName = if @players.length > 1 then @name else ''
