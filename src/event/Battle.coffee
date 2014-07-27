@@ -52,10 +52,14 @@ class Battle
     string = stats.name
 
     if stats.hp or stats.mp or stats.special
-      string += " [ "
-      string += "HP #{stats.hp.getValue()}/#{stats.hp.maximum} " if stats.hp
-      string += "MP #{stats.mp.getValue()}/#{stats.mp.maximum} " if stats.mp
-      string += "SP #{stats.special.getValue()}/#{stats.special.maximum} " if stats.special
+
+      if stats.hp.atMin()
+        string += "[DEAD"
+      else
+        string += " [ "
+        string += "HP #{stats.hp.getValue()}/#{stats.hp.maximum} " if stats.hp
+        string += "MP #{stats.mp.getValue()}/#{stats.mp.maximum} " if stats.mp
+        string += "SP #{stats.special.getValue()}/#{stats.special.maximum} " if stats.special
       string += "]"
 
     string
