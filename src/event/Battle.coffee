@@ -55,7 +55,7 @@ class Battle
       string += " ["
 
       statCollection = []
-      if stats.hp?.getValue() is 0
+      if stats.hp?.atMin()
         statCollection.push "DEAD"
       else
         statCollection.push "HP #{stats.hp.getValue()}/#{stats.hp.maximum}" if stats.hp
