@@ -5,7 +5,6 @@
 "defensive" defense=1
 "deadeye" deadeye=1
 "vorpal" crit=1
-"annihilating" crit=1 offense=1
 "dancing" dodge=1
 "glowing" glowing=1
-"orichalcum" piety=5
+"annihilating" crit=1 offense=1 prone=1 stun=1 power=1 silver=1

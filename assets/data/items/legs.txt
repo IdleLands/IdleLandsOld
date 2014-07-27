@@ -34,3 +34,5 @@
 "Panzer Tank Treads" con=850
 "Full Monty" agi=400 con=400
 "Greaves of Null and All" agi=500 con=500 pietyPercent=50
+"Gloomy Greaves of the Idling Gods" con=1500 agi=1500 str=1500
+"The Biggest Fishnets You Ever Dun Seen" agi=1500 con=1500 int=-200 wis=-100 dex=7000

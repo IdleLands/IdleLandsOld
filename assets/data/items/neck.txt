@@ -37,3 +37,5 @@
 "Expensive Headphones" dex=450 wis=400
 "Steel Gorget" con=450 wis=400
 "Impossibility Cloak" wis=500 con=100 int=100 str=100 dex=100 agi=100 dodge
+"Transcendent Torc of the Idling Gods" wis=2000 int=2000
+"Visible Light" wis=5000 int=5000

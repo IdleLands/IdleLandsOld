@@ -47,3 +47,5 @@
 "Silver Surfboard" agi=533 dex=200
 "Advanced Knee Replacement" dex=650 agi=200
 "Continuity Shoes" dex=500 agi=500 glowing
+"Fastidious Feet of the Idling Gods" agi=2500 dex=2500
+"Time Travel Boots" agi=7500 dex=2500

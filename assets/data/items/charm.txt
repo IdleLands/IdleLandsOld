@@ -47,3 +47,5 @@
 "Faithful Pet Wolf" int=300 wis=450
 "Mask de Smith" wis=400 int=377
 "Magnitude Pocketwatch" int=500 wis=500 sentimentalityPercent=20
+"Cosmic Charm of the Idling Gods" int=2500 dex=2500
+"Black Hole" int=1500 dex=1500 con=1500 wis=1500 str=1500 agi=1500

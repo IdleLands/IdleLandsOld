@@ -279,3 +279,5 @@
 "Turbo Jet Engine" str=900 dodge
 "Blade of Infinity" str=1000 offense vorpal
 "Staff of Infinity" int=1000 offense sentimentalityPercent=25
+"Wingsaber, Whirling Blade of the Idling Gods" str=5000
+"Godly Imagination" str=5000 int=5000

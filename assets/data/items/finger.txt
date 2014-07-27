@@ -22,3 +22,5 @@
 "Wolverine" str=300 int=150 wis=150
 "Black Hole" int=400 wis=350
 "Ring of Death and Life" int=500 wis=500 crit
+"Rebellious Ring of the Idling Gods" int=1500 wis=1500 con=1000 dex=1000
+"Earth-sized Diamond" str=12000 agi=-1000 dex=-1000

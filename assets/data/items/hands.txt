@@ -20,3 +20,5 @@
 "My Little Painbringers" str=200 dex=311
 "Godhand" dex=400 str=200
 "Hands of Fate" str=500 dex=500 power
+"Glowing Gauntlets of the Idling Gods" str=1500 con=1500 dex=1000
+"Infinitely Expanding Fractal Gloves" int=-1000 con=3000 str=3000 dex=3000

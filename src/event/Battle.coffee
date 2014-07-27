@@ -54,7 +54,7 @@ class Battle
     if stats.hp or stats.mp or stats.special
 
       if stats.hp.atMin()
-        string += "[DEAD"
+        string += " [DEAD"
       else
         string += " [ "
         string += "HP #{stats.hp.getValue()}/#{stats.hp.maximum} " if stats.hp
@@ -286,7 +286,7 @@ class Battle
       else if data instanceof Player and player.party isnt data.party
         player.emit "combat.enemy.#{event}", data
       else
-        player.emit event, data
+        player.emit "combat.#{event}", data
 
   emitEventsTo: (event, to, data) ->
     _.forEach to, (player) ->

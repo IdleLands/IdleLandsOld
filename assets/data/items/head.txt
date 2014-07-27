@@ -51,3 +51,5 @@
 "Superscouter 9001" dex=400 con=400
 "Holy Mitre" wis=400 con=400
 "Antiverse Circlet" str=100 int=100 dex=100 con=500 agi=100 wis=100 deadeye
+"Feathered Fez of the Idling Gods" int=-100 con=2000 str=500 wis=-100 agi=700
+"Pile Of Hats That Reaches to the Moon" wis=10000

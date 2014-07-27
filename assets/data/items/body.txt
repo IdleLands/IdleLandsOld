@@ -1,6 +1,9 @@
+"birthday suit"
+"lace" con=-1
 "toga" agi=1
+"flannel" con=2
 "tunic" agi=1 con=1
-"cloak" 4
+"cloak" con=4 agi=1
 "robe" agi=3 con=2
 "pelt" agi=5 con=2
 "coat" con=4 agi=4
@@ -15,13 +18,18 @@
 "brigandine" con=20 agi=7
 "paladinmail" con=30 defense
 "cuirass" con=20 agi=10
+"burlap" con=10 dex=10 wis=10
+"canvas" agi=10 str=10 int=10
 "byrnie" con=15 agi=17
 "banded mail" con=20 agi=12
 "ring mail" agi=25 con=7
-"chainmail" agi=20 con=16
+"chain mail" agi=20 con=16
+"scale mail" con=20 agi=21 dex=2
+"splint mail" dex=10 con=13 agi=20
 "breastplate" con=28 agi=10
-"platemail" con=32 agi=7
+"plate mail" con=32 agi=7
 "hauberk" agi=25 con=15
+"marcrame" dex=10 con=15 agi=7
 "haubergeon" agi=27 con=15
 "fullplate" con=35 agi=10
 "riot armor" con=25 agi=25
@@ -31,9 +39,13 @@
 "squishy squish" con=80 agi=15 wis=20
 "lifesaver" con=50 wis=80
 "combat vest" con=100 agi=30
+"mithril mail" con=150
+"diamond mail" con=200
 "holy garb" agi=120 con=30
 "dragonscale armor" con=100 agi=100 str=30
 "invisible armor" con=150 agi=50
+"ABS" con=300
+"Kevlar" con=200 dex=50 agi=50
 "Viking Armor" con=175 agi=75
 "Pokemon Pelt" agi=201 con=151
 "Invisibility Cloak" agi=300 con=100
@@ -43,4 +55,7 @@
 "Sentinel Armor" con=550 agi=100
 "Mazinger Z" con=350 agi=350
 "Bill Cosby's Sweater" agi=500 con=300 wis=50
-"Armor of Dawn and Twilight" con=500 agi=500 defense
+"Armor of Dawn and Twilight" con=500 agi=500 defense=1
+"Plasma Mail" int=100 con=450 dex=50 str=50 agi=100 offense=1
+"Avaracious Armor of the Idling Gods", dex=2500 con=2500 str=100 wis=100 agi=700 defense=1
+"Velociraptor" str=5000 dex=2000 con=3000
