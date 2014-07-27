@@ -39,11 +39,17 @@ class Character extends EventEmitter2
     , baseValue
 
   rebuildPersonalityList: ->
+    _.each @personalities, (personality) =>
+      personality.unbind @
+
     @personalities = _.map @personalityStrings, (personality) ->
       Personality::createPersonality personality
 
   addPersonality: (newPersonality) ->
     return no if not Personality::doesPersonalityExist newPersonality
+
+    potentialPersonality = Personality::getPersonality newPersonality
+    return no if not 'canUse' of potentialPersonality or not potentialPersonality.canUse @
 
     if not @personalityStrings
       @personalityStrings = []
@@ -51,9 +57,10 @@ class Character extends EventEmitter2
 
     @personalityStrings.push newPersonality
 
-    @personalities.push Personality::createPersonality newPersonality
+    @personalities.push new potentialPersonality @
 
     @personalities = _.uniq @personalities
+    @personalityStrings = _.uniq @personalityStrings
     yes
 
   removePersonality: (oldPersonality) ->

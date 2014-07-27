@@ -52,7 +52,7 @@ class Class extends Personality
   wis: (player) ->
     @baseWisPerLevel*player.level.getValue()
 
-  baseLuckPerLevel: (player) ->
+  luck: (player) ->
     @baseLuckPerLevel*player.level.getValue()
 
   ###

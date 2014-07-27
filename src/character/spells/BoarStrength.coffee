@@ -32,6 +32,6 @@ class BoarStrength extends Spell
     @bindings =
       doSpellCast: @cast
       doSpellUncast: @uncast
-      "self.turn.end": @tick
+      "combat.self.turn.end": @tick
 
 module.exports = exports = BoarStrength

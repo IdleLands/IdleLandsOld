@@ -143,6 +143,9 @@ class PlayerManager
   getPlayerByName: (playerName) ->
     _.findWhere @players, {name: playerName}
 
+  getPlayerById: (playerId) ->
+    _.findWhere @players, {identifier: playerId}
+
   beginWatchingPlayerStatistics: (player) ->
 
     maxStat = (stat, val) ->

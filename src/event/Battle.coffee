@@ -76,22 +76,22 @@ class Battle
     1 < aliveParties.length
 
   beginTakingTurns: ->
-    @emitEventToAll "battle.start", @turnOrder
+    @emitEventToAll "combat.battle.start", @turnOrder
     while @playersAlive()
       @turnPosition = @turnPosition or 0
 
       if @turnPosition is 0
         @game.broadcast MessageCreator.genericMessage "A new combat round has started. Current status: #{@getAllPlayerStatStrings().join ', '}"
-        @emitEventToAll "round.start", @turnOrder
+        @emitEventToAll "combat.round.start", @turnOrder
 
-      @emitEventToAll "turn.start", player
+      @emitEventToAll "combat.turn.start", player
       player = @turnOrder[@turnPosition]
       @takeTurn player
-      @emitEventToAll "turn.end", player
+      @emitEventToAll "combat.turn.end", player
 
       @turnPosition++
       if @turnPosition is @turnOrder.length
-        @emitEventToAll "round.end", @turnOrder
+        @emitEventToAll "combat.round.end", @turnOrder
         @turnPosition = 0
 
   takeTurn: (player) ->
@@ -168,7 +168,7 @@ class Battle
     spell.prepareCast()
 
   endBattle: ->
-    @emitEventToAll "battle.end", @turnOrder
+    @emitEventToAll "combat.battle.end", @turnOrder
     randomWinningPlayer = _.sample(_.filter @turnOrder, (player) -> not player.hp.atMin())
     if not randomWinningPlayer
       @game.broadcast MessageCreator.genericMessage "Everyone died! The battle was a tie! You get nothing!"
@@ -180,8 +180,8 @@ class Battle
 
     @losingPlayers  = _.difference @turnOrder, @winningParty.players
 
-    @emitEventsTo "party.lose", @losingPlayers
-    @emitEventsTo "party.win",  @winningParty.players
+    @emitEventsTo "combat.party.lose", @losingPlayers
+    @emitEventsTo "combat.party.win",  @winningParty.players
 
     @game.broadcast MessageCreator.genericMessage "The battle was won by #{winnerName}."
 
@@ -272,11 +272,11 @@ class Battle
   emitEventToAll: (event, data) ->
     _.forEach @turnOrder, (player) ->
       if player is data
-        player.emit "self.#{event}", data
+        player.emit "combat.self.#{event}", data
       else if data instanceof Player and player.party is data.party
-        player.emit "ally.#{event}", data
+        player.emit "combat.ally.#{event}", data
       else if data instanceof Player and player.party isnt data.party
-        player.emit "enemy.#{event}", data
+        player.emit "combat.enemy.#{event}", data
       else
         player.emit event, data
 
@@ -285,18 +285,18 @@ class Battle
       player.emit event, data
 
   emitEvents: (attackerEvent, defenderEvent, attacker, defender, extra = {}) ->
-    attacker.emit "self.#{attackerEvent}", defender, extra
+    attacker.emit "combat.self.#{attackerEvent}", defender, extra
     _.forEach (_.without attacker.party.players, attacker), (partyMate) ->
-      partyMate.emit "ally.#{attackerEvent}", attacker, defender, extra
+      partyMate.emit "combat.ally.#{attackerEvent}", attacker, defender, extra
 
     _.forEach (_.intersection @turnOrder, attacker.party.players), (foe) ->
-      foe.emit "enemy.#{attackerEvent}", attacker, defender, extra
+      foe.emit "combat.enemy.#{attackerEvent}", attacker, defender, extra
 
-    defender.emit "self.#{defenderEvent}", attacker, extra
+    defender.emit "combat.self.#{defenderEvent}", attacker, extra
     _.forEach (_.without defender.party.players, defender), (partyMate) ->
-      partyMate.emit "ally.#{defenderEvent}", defender, attacker, extra
+      partyMate.emit "combat.ally.#{defenderEvent}", defender, attacker, extra
 
     _.forEach (_.intersection @turnOrder, defender.party.players), (foe) ->
-      foe.emit "enemy.#{defenderEvent}", attacker, defender, extra
+      foe.emit "combat.enemy.#{defenderEvent}", attacker, defender, extra
 
 module.exports = exports = Battle

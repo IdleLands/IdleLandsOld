@@ -33,7 +33,7 @@ class Treatment extends Spell
   constructor: (@game, @caster) ->
     super @game, @caster
     @bindings =
-      "self.turn.end": @tick
+      "combat.self.turn.end": @tick
       doSpellCast: @cast
       doSpellUncast: @uncast
 

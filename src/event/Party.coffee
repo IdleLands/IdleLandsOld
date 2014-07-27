@@ -49,13 +49,13 @@ class Party
 
   setPlayersParty: ->
     _.forEach @players, (player) =>
-      player.emit "party.join"
+      player.emit "player.party.join", player, @
       player.party = @
       player.partyName = if @players.length > 1 then @name else ''
 
   playerLeave: (player) ->
     @players = _.without @players, player
-    player.emit "party.leave"
+    player.emit "player.party.leave", player, @
     player.partyName = ''
     if @players.length <= 1
       @disband()

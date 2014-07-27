@@ -50,7 +50,7 @@ class Player extends Character
     if @professionName is className
       message += " Alas, #{@name} is already a #{className}!"
       @isBusy = false
-      @emit "trainer.isAlready", className
+      @emit "player.trainer.isAlready", @, className
       
     @playerManager.game.broadcast MessageCreator.genericMessage message
 
@@ -58,10 +58,10 @@ class Player extends Character
       @playerManager.game.eventHandler.doYesNo {}, @, (result) =>
         @isBusy = false
         if not result
-          @emit "trainer.ignore", className
+          @emit "player.trainer.ignore", @, className
           return
           
-        @emit "trainer.speak", className
+        @emit "player.trainer.speak", @, className
         @changeProfession className
 
 
@@ -85,7 +85,7 @@ class Player extends Character
       when "ascend" then message = "#{@name} has ascended to #{dest.destName}."
       when "descend" then message = "#{@name} has descended to #{dest.destName}."
 
-    @emit dest.movementType
+    @emit "explore.transfer.#{dest.movementType}", @
 
     @playerManager.game.broadcast MessageCreator.genericMessage message
 
@@ -109,14 +109,14 @@ class Player extends Character
       @lastDir = dir
       @ignoreDir = null
 
-      @emit 'walk'
-      @emit "on.#{tile.terrain}"
+      @emit 'explore.walk', @
+      @emit "explore.walk.#{tile.terrain}".toLowerCase(), @ # on.water instead of on.Water for consistency
 
     else
       @lastDir = null
       @ignoreDir = dir
 
-      @emit 'hit.wall'
+      @emit 'explore.hit.wall', @
 
     @handleTile tile
 
@@ -127,7 +127,7 @@ class Player extends Character
     @professionName = professionProto.name
     @profession.load @
     @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} is now a #{to}!" if not suppress
-    @emit "profession.change", oldProfessionName, @professionName
+    @emit "player.profession.change", @, oldProfessionName, @professionName
 
     @recalculateStats()
 
@@ -166,17 +166,17 @@ class Player extends Character
 
   gainGold: (gold) ->
     if gold > 0
-      @emit "gold.gain", gold
+      @emit "player.gold.gain", @, gold
     else
-      @emit "gold.lose", gold
+      @emit "player.gold.lose", @, gold
 
     @gold.add gold
 
   gainXp: (xp) ->
     if xp > 0
-      @emit "xp.gain", xp
+      @emit "player.xp.gain", @, xp
     else
-      @emit "xp.lose", xp
+      @emit "player.xp.lose", @, xp
 
     @xp.set 0 if _.isNaN @xp.__current
     @xp.add xp
@@ -190,7 +190,7 @@ class Player extends Character
     @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} has attained level #{@level.getValue()}!" if not suppress
     @xp.maximum = @levelUpXpCalc @level.getValue()
     @xp.toMinimum()
-    @emit "level.up"
+    @emit "player.level.up", @
     @recalculateStats()
 
   levelUpXpCalc: (level) ->

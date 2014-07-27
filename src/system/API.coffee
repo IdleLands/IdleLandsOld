@@ -45,7 +45,7 @@ class API
     player: (identifier, suppress) =>
       @gameInstance.playerManager.addPlayer identifier, suppress
     personality: (identifier, personality) =>
-      @gameInstance.playerManager.playerHash[identifier]?.addPersonality personality
+      @gameInstance.playerManager.getPlayerById(identifier)?.addPersonality personality
     allData: =>
       @gameInstance.componentDatabase.importAllData()
 

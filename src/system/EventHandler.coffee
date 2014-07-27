@@ -47,7 +47,7 @@ class EventHandler
       player.recalculateStats()
 
   doYesNo: (event, player, callback) ->
-    player.emit "yesno"
+    #player.emit "yesno"
     if chance.bool {likelihood: player.calculateYesPercent()}
       (@game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.y, player) if event.y
       callback true
@@ -73,7 +73,7 @@ class EventHandler
 
     player.gainXp boost
 
-    player.emit "event.#{event.type}", extra
+    player.emit "event.#{event.type}", player, extra
 
     message = event.remark + " [%xprxp, ~%xpp%]"
 
@@ -106,7 +106,7 @@ class EventHandler
 
     player.gainGold boost
 
-    player.emit "event.#{event.type}", extra
+    player.emit "event.#{event.type}", player, extra
 
     message = event.remark + " [%goldr gold]"
 
@@ -140,7 +140,7 @@ class EventHandler
     string = MessageCreator.doStringReplace event.remark, player, extra
     string += " [#{stat} #{start} -> #{end}]"
 
-    player.emit "event.#{event.type}", item, boost
+    player.emit "event.#{event.type}", player, item, boost
 
     @game.broadcast MessageCreator.genericMessage string
     callback()
@@ -162,7 +162,7 @@ class EventHandler
         item: item.getName()
 
       totalString = "#{event.remark} [perceived: #{myScore} -> #{score} | real: #{myRealScore} -> #{realScore} | +#{score-myScore}]"
-      player.emit "event.findItem", item
+      player.emit "event.findItem", player, item
 
       @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace totalString, player, extra
 
@@ -170,7 +170,7 @@ class EventHandler
       multiplier = player.calc.itemSellMultiplier item
       value = Math.floor item.score() * multiplier
       player.gold.add value
-      player.emit "event.sellItem", item, value
+      player.emit "event.sellItem", player, item, value
 
     callback()
 
@@ -213,7 +213,7 @@ class EventHandler
     string = MessageCreator.doStringReplace event.remark, player, extra
     string += " [#{stat} = #{boost} | +#{item.enchantLevel} -> +#{++item.enchantLevel}]"
 
-    player.emit "event.enchant", item, item.enchantLevel
+    player.emit "event.enchant", player, item, item.enchantLevel
 
     @game.broadcast MessageCreator.genericMessage string
     callback()
@@ -237,7 +237,7 @@ class EventHandler
     string = MessageCreator.doStringReplace event.remark, player, extra
     string += " [#{stat} #{start} -> #{end}]"
 
-    player.emit "event.#{event.type}", item, stat
+    player.emit "event.#{event.type}", player, item, stat
 
     @game.broadcast MessageCreator.genericMessage string
     callback()

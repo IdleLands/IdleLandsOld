@@ -4,28 +4,12 @@ personalities = requireDir "../personalities"
 
 class Personality
 
-  constructor: ->
+  constructor: (player) ->
 
-  calculateYesPercentBonus: -> 0
+  unbind: (player) ->
 
-  calculateItemScoreBonus: (item) -> 0
-
-  partyLeaveProbabilityBonus: -> 0
-
-  itemReplacementRangeBonus: (item) -> Math.floor item.score()*0.25
-
-  calculateAdditionalGoldGainedFromItem: (item) -> 0
-
-  calculateBonusStepsToTakeThisTurn: -> 0
-
-  calculateDamageTakenFromAttack: (attack) -> 0
-
-  ###
-  https://docs.google.com/document/d/1t6PaUgnWODi9SujRd_sewnVVWvVm6zLAssIYIivui4s/edit
-
-  each class should bestow a personality trait on the user while in that class
-  mage - passive +mp, etc
-  ###
+Personality::getPersonality = (personality) ->
+  personalities[personality]
 
 Personality::doesPersonalityExist = (personality) ->
   personality of personalities
