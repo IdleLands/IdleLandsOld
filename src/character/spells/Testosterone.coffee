@@ -10,8 +10,8 @@ class Testosterone extends Spell
   calcDuration: -> super()+2
 
   determineTargets: ->
-    @targetFriendly()
-
+    @caster
+    
   strPercent: -> 35
 
   cast: (player) ->
