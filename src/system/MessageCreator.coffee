@@ -41,16 +41,16 @@ class MessageCreator
     gender = player.getGender()
     string
       .split('%player').join player.name
+      .split('%hishers').join getGenderPronoun gender, '%hishers'
       .split('%hisher').join getGenderPronoun gender, '%hisher'
       .split('%himher').join getGenderPronoun gender, '%himher'
-      .split('%hishers').join getGenderPronoun gender, '%hishers'
       .split('%she').join getGenderPronoun gender, '%she'
       .split('%heshe').join getGenderPronoun gender, '%she'
 
 
+      .split('%Hishers').join _.str.capitalize getGenderPronoun gender, '%hishers'
       .split('%Hisher').join _.str.capitalize getGenderPronoun gender, '%hisher'
       .split('%Himher').join _.str.capitalize getGenderPronoun gender, '%himher'
-      .split('%Hishers').join _.str.capitalize getGenderPronoun gender, '%hishers'
       .split('%She').join _.str.capitalize getGenderPronoun gender, '%she'
       .split('%Heshe').join _.str.capitalize getGenderPronoun gender, '%she'
 
