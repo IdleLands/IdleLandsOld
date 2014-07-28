@@ -66,6 +66,7 @@ class Spell
           battleInstance.emitEvents "skill.duration.refresh", "skill.duration.refreshed", @caster, player, skill: oldSpell, turns: oldSpell.turns
 
         else
+          player?.spellsAffectedBy = [] if not player?.spellsAffectedBy
           player?.spellsAffectedBy.push @ # got an error here once
           battleInstance.emitEvents "skill.duration.begin", "skill.duration.beginAt", @caster, player, skill: @, turns: @turns
 

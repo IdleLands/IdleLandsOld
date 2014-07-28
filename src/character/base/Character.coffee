@@ -23,6 +23,14 @@ class Character extends EventEmitter2
 
   combatAction: ->
 
+  clearAffectingSpells: ->
+    return if not @spellsAffectedBy
+
+    _.each @spellsAffectedBy, (spell) =>
+      spell.unaffect @
+
+    @spellsAffectedBy = []
+
   personalityReduce: (appFunctionName, args = [], baseValue = 0) ->
     args = [args] if not _.isArray args
     array = []

@@ -27,7 +27,7 @@ class Battle
     _.each @turnOrder, (player) ->
       player.recalculateStats()
 
-      player.spellsAffectedBy = []
+      player.clearAffectingSpells()
 
       player.hp.toMaximum()
       player.mp.toMaximum()
@@ -240,7 +240,7 @@ class Battle
     _.each @parties, (party) ->
 
       _.each party.players, (player) ->
-        player.spellsAffectedBy = []
+        player.clearAffectingSpells()
 
       delete party.currentBattle
       party.disband()
@@ -266,7 +266,7 @@ class Battle
         @emitEvents "damage", "damaged", attacker, defender, type: type, damage: damage
 
       if defender.hp.atMin()
-        defender.spellsAffectedBy = []
+        defender.clearAffectingSpells()
         message = "#{message} [FATAL]" if message
 
     else if damageType is "mp"
