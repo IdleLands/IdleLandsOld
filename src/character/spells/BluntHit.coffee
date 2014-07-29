@@ -18,7 +18,6 @@ class BluntHit extends Spell
     @chance.integer min: (@caster.calc.stat 'str')/6, max: Math.max ((@caster.calc.stat 'str')/6)+1,(@caster.calc.stat 'str')/4
 
   cast: (player) ->
-    console.log "STUN TIEM"
     damage = @calcDamage()
     message = "#{@caster.name} used #{@name} on #{player.name} and dealt #{damage} HP damage!"
     @caster.party.currentBattle.takeHp @caster, player, damage, @determineType()

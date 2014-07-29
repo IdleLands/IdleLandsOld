@@ -39,6 +39,9 @@ class Spell
   targetFriendly: (includeDead = no, num = 1) ->
     _.sample (@targetFriendlies includeDead), num
 
+  targetParty: ->
+    @caster.party.players
+
   targetEnemies: (includeDead = no) ->
     _.chain @baseTargets
     .reject (target) ->
@@ -47,7 +50,7 @@ class Spell
       @caster.party is target.party
     .value()
 
-  targetEnemy: (includeDead = no, num = 1)->
+  targetEnemy: (includeDead = no, num = 1) ->
     _.sample (@targetEnemies includeDead), num
 
   affect: (affected = []) ->
@@ -108,7 +111,9 @@ class Spell
 
   constructor: (@game, @caster) ->
     @baseTargets = @caster.party.currentBattle.turnOrder
-    @caster[@stat][@oper] @cost
+
+    @cost = @cost.bind null, @caster if _.isFunction @cost
+    @caster[@stat][@oper] _.result @, 'cost'
     @chance = new (require "chance")()
 
     console.error "ERROR NO CASTER FOR #{@name}" if not @caster
