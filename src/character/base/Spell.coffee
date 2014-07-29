@@ -101,10 +101,10 @@ class Spell
     battleInstance.emitEvents "skill.duration.end", "skill.duration.endAt", @caster, player, skill: @
 
   broadcastBuffMessage: (message) ->
-    @game.broadcast MessageCreator.genericMessage message+" [#{@turns} turns]" if @turns > 0 and @turns isnt @baseTurns
+    @game.broadcast MessageCreator.genericMessage message+" [#{@turns} turns]" if @turns > 0 and @turns isnt @baseTurns and not @suppressed
 
   broadcast: (message) ->
-    @game.broadcast MessageCreator.genericMessage message
+    @game.broadcast MessageCreator.genericMessage message if not @suppressed
 
   constructor: (@game, @caster) ->
     @baseTargets = @caster.party.currentBattle.turnOrder

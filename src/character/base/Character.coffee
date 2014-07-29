@@ -27,6 +27,7 @@ class Character extends EventEmitter2
     return if not @spellsAffectedBy
 
     _.each @spellsAffectedBy, (spell) =>
+      spell.suppressed = yes
       spell.unaffect @
 
     @spellsAffectedBy = []
