@@ -33,7 +33,7 @@ class PlayerManager
       callback player
 
   addPlayer: (identifier, suppress = no) ->
-    return if _.findWhere @players, {identifier: identifier}
+    return if _.findWhere @players, {identifier: identifier} or identifier of @playerHash
     @retrievePlayer identifier, (player) =>
       return if not player
       @players.push player
