@@ -35,6 +35,7 @@ class EquipmentGenerator
     (itemProperties.push _.sample itemList['suffix']) if chance.integer({min: 0, max: 14}) is 1
 
     newItem = makeItem itemProperties
+    newItem.class = "Normal"
     newItem.type = type
 
     new Equipment newItem
