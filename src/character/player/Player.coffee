@@ -64,8 +64,6 @@ class Player extends Character
         @emit "player.trainer.speak", @, className
         @changeProfession className
 
-
-
   handleTeleport: (tile) ->
     dest = tile.object.properties
     dest.x = parseInt dest.x

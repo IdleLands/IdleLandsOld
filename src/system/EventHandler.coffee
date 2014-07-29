@@ -78,7 +78,7 @@ class EventHandler
     player.gainXp boost
 
     player.emit "event.#{event.type}", player, extra
-    
+
     callback()
 
   doGold: (event, player, callback) ->

@@ -15,9 +15,12 @@ class SpellManager
 SpellManager::getSpellsAvailableFor = (player) ->
   _.filter @spells, (spell) ->
     realSpell = spells[spell]
+
+    realSpell.cost = realSpell.cost.bind null, player if _.isFunction realSpell.cost
+
     player.professionName of realSpell.restrictions and
       player.level.getValue() >= realSpell.restrictions[player.professionName] and
-      player[realSpell.stat].getValue() >= realSpell.cost
+      player[realSpell.stat].getValue() >= _.result realSpell, 'cost'
   .map (spell) -> spells[spell]
 
 SpellManager::spells = []
