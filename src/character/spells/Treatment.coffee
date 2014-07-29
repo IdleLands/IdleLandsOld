@@ -18,7 +18,7 @@ class Treatment extends Spell
 
   cast: (player) ->
     message = "#{@caster.name} began treating #{player.name}'s wounds with #{@name}!"
-    @broadcastBuffMessage message
+    @broadcast message
 
   uncast: (player) ->
     message = "#{@caster.name} is no longer treating #{player.name} with #{@name}."

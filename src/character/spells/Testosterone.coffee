@@ -16,7 +16,7 @@ class Testosterone extends Spell
 
   cast: (player) ->
     message = "#{@caster.name} infused #{player.name} with #{@name}!"
-    @broadcastBuffMessage message
+    @broadcast message
 
   tick: (player) ->
     message = "#{@caster.name}'s #{@name} on #{player.name} is fading slowly!"
