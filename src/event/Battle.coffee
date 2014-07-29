@@ -29,9 +29,12 @@ class Battle
 
       player.clearAffectingSpells()
 
+      # somehow, I got NaN MP once, so this is to prevent misc. mistakes
+      player.hp.__current = 0
+      player.mp.__current = 0
+
       player.hp.toMaximum()
       player.mp.toMaximum()
-      player.special.toMaximum()
 
   calculateTurnOrder: ->
     playerList = _.reduce @parties, ((prev, party) -> prev.concat party.players), []

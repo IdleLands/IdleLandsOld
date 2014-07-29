@@ -87,7 +87,7 @@ class Spell
         (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
 
   decrementTurns: (player) ->
-    if @turns-- <= 0
+    if --@turns <= 0
       @unaffect player
 
   unaffect: (player) ->
@@ -128,6 +128,8 @@ Spell::Element =
   debuff: 256
 
   normal: 512
+
+Spell::Element.holy = Spell::Element.ice & Spell::Element.fire & Spell::Element.water & Spell::Element.thunder & Spell::Element.earth
 
 Spell::determineType = ->
   if @element & @Element.normal then "physical" else "magical"
