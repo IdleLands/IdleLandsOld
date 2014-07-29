@@ -41,7 +41,7 @@ While running LocalTest.coffee, you may press [ENTER] to enter an interactive se
 ####Change a player's gold####
 ```
  %pm%=getWrapper().api.gameInstance.playerManager
- %pm%.players[0].gold = 100
+ %pm%.players[0].addGold1\(100)
 ```
 ####Generate a party name####
 ```
@@ -60,4 +60,10 @@ getWrapper().api.gameInstance.playerManager.players[0].party.pickPartyName()
 %gi%.startBattle(%gi%.parties[0],%gi%.parties[1])
 c
 > A battle is raging...
+```
+
+####Cause any event to happen####
+```
+getWrapper().api.game.doEvent('Danret', 'enchant')
+getWrapper().api.game.doEvent('Danret', 'blessItem')
 ```
