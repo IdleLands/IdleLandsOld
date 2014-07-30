@@ -13,7 +13,7 @@ The Goddess of Riches, Kirierath, causes it to rain gold down at %player only, a
 %player was rewarded %gold gold after having performed a generic fetch quest.
 %player made %gold gold selling snake oil.
 %player got a welfare check for %gold gold!
-%player found a wallet containing %gold gold while walking around. %she decided to keep the money after thinking about it briefly.
+%player found a wallet containing %gold gold while walking around. %She decided to keep the money after thinking about it briefly.
 %player wrote %hisher thoughts into a book, and ended up selling it for %gold gold!
 %player received %gold from a charity to help adventurers in need!
 %player was picking %hisher ears, when suddenly %gold gold coins fell out right into %hisher hands!
@@ -26,3 +26,4 @@ The Goddess of Riches, Kirierath, causes it to rain gold down at %player only, a
 %player managed to catch the Gold Fairie, who dropped %gold gold into %hisher hands before flying away!
 %player was given an experienced axe from the axe-fairy.  %player used the experienced axe to cut down a Golden Tree, using the woodsmelter to convert it into %gold gold.
 %player won second prize in a beauty contest and collected %gold gold!
+%player found a wallet lying on the ground.  %She picked it up, saw that it contained %gold gold!  After a few shifty glances around ensuring no one spotted %himher, %she dumped the wallet into %hisher own gold stash then tossed the now empty wallet aside.
