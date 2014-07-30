@@ -2,7 +2,7 @@
 %player was mugged by a rogue, and lost %gold gold.
 %player stumbled across a pyrite mine, and invested %gold gold in it, only to watch it fail miserably..
 %player bets %gold gold at a gambling table, only to lose it. Unfortunately, %she did not realize the dealer had loaded dice.
-%player decided to make an angel statue out of %gold bits of gold, for %she were interested in statue craftery. However, as we all know, angel statues are utterly useless, and thus the gold was wasted.
+%player decided to make an angel statue out of %gold bits of gold, for %she was interested in statue sculpting. However, as we all know, angel statues are utterly useless, and thus the gold was wasted.
 %player bought meat from a local bum of the village since %she was only willing to pay %gold gold for meat, and consequently contracted diarrhea.
 %player donated %gold bits of gold for charity, which helped fund a playground for poor children in the lands of Idliathla. It was a good thing, in the end.
 A friend of %player borrows %gold bits of gold from %himher. Don't expect said friend to ever return it, %player...
@@ -19,7 +19,7 @@ As %player was going around stealing cheese wheels from various shops, a guard a
 %player died. Score: -%gold (and that's just how much gold you lost!)
 %player spent %gold gold playing farmville, cityville, castleville, townville, kitchenville, and shitville.
 %player notices the Steam summer sale and spends %gold gold on obscure indie games you probably never have heard of.
-A miniature samurai ninja robot velociraptor with psychic powers stole %gold gold from %player while %she wasn't looking.
+A miniature samurai ninja zombie pirate robot velociraptor with psychic powers stole %gold gold from %player while %she wasn't looking.
 %player spends %gold bits of gold on snake oil.
 %player had to spend %gold gold tending to injuries %she got while fighting monsters.
 %player was pounced on by a group of hooligans, so %she had to throw %gold gold coins at them to distract them for long enough that %she could get away!
@@ -30,3 +30,5 @@ A miniature samurai ninja robot velociraptor with psychic powers stole %gold gol
 %player had to pay %gold gold of 'debt' to the Stillstanders, an organized crime organization who organize organized crime.
 %player had %hisher clothing stolen, so %she had to pay %gold gold for new clothes!
 %player didn't expect the Spanish Inquisition, and got inquisitioned for %gold gold!
+%player landed on the "Go To Jail" tile.  %She passed GO! but didn't collect %gold gold.  Instead, %she paid %gold in bail gold to get away from the scary looks sent %hisher way by that damned dog.
+%player sailed the Seven Seals and all %she got was this stupid typo.  And %she lost %gold gold in poorly-planned, rum-fueled, failed piracy endeavors.
