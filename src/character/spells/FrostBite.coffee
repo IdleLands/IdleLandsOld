@@ -21,7 +21,7 @@ class FrostBite extends Spell
     damage = @calcDamage()
     message = "#{@caster.name} cast #{@name} at #{player.name} for #{damage} HP damage!"
     @caster.party.currentBattle.takeHp @caster, player, damage, @determineType()
-    @broadcastBuffMessage message
+    @broadcast message
 
   tick: (player) ->
     message = "#{player.name} is still suffering from #{@name}."
