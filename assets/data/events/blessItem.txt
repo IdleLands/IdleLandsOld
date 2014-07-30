@@ -16,3 +16,4 @@ The God of Rampage and Brawling, Ishkalorht, has decided to give %player an adva
 %player decided to enforce %hisher %item a bit with another material to make it a little stronger.
 %player added a magic gem to %hisher %item, which in turn strengthens %item!
 %player took %hisher %item to the Great Fairy Fountain, where the Great Fairy enhanced %hisher %item to make it better!
+%player finally figured out which end of %hisher %item was the business end, and is now wielding it with more proficiency!
