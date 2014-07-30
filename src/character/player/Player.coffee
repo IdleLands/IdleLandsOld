@@ -92,6 +92,9 @@ class Player extends Character
       when "Trainer" then @handleTrainerOnTile tile
       when "Teleport" then @handleTeleport tile
 
+    if tile.object?.forceEvent
+      @playerManager.game.eventHandler.doEventForPlayer @name, tile.object.forceEvent
+
   moveAction: ->
     randomDir = -> chance.integer({min: 1, max: 9})
     dir = randomDir()
@@ -108,7 +111,7 @@ class Player extends Character
       @ignoreDir = null
 
       @emit 'explore.walk', @
-      @emit "explore.walk.#{tile.terrain}".toLowerCase(), @ # on.water instead of on.Water for consistency
+      @emit "explore.walk.#{tile.terrain}".toLowerCase(), @
 
     else
       @lastDir = null
