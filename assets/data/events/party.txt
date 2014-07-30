@@ -10,3 +10,4 @@ A group of unknown figures suddenly appears from afar. Leading with %player, and
 Although they all hate eachother, their common goal has brought %player and %party together in a party called "%partyName."
 %player was just hanging out with %party, but someone ended up mistaking them for a party, so they were registered as a party called "%partyName."
 %player brought the food and drinks, %party brought music, entertainment, and put up flyers for party at "%partyName's" house.  Everybody's invited!
+%player shanghaied %party into joining the most foul-smelling, basest, rudest party of scalliwags called "%partyName."%

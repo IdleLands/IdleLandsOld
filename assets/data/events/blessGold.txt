@@ -19,11 +19,13 @@ The Goddess of Riches, Kirierath, causes it to rain gold down at %player only, a
 %player was picking %hisher ears, when suddenly %gold gold coins fell out right into %hisher hands!
 %player pawned off some things %she didn't need for %gold gold!
 %player got a %gold reward for slaying a monster!
-%player looted a dungeon for %gold gold. %she also managed to make it out of the dungeon safely.
+%player looted a dungeon for %gold gold. %She also managed to make it out of the dungeon safely.
 %player accidentally caught a criminal as the criminal was running through the streets. The city ended up paying %player %gold gold for catching the criminal!
 %player went and gathered various herbs and fruits, and sold them off for %gold gold!
 %player decided to play a man in chess for money, and ended up netting %gold gold from winning!
 %player managed to catch the Gold Fairie, who dropped %gold gold into %hisher hands before flying away!
 %player was given an experienced axe from the axe-fairy.  %player used the experienced axe to cut down a Golden Tree, using the woodsmelter to convert it into %gold gold.
 %player won second prize in a beauty contest and collected %gold gold!
-%player found a wallet lying on the ground.  %She picked it up, saw that it contained %gold gold!  After a few shifty glances around ensuring no one spotted %himher, %she dumped the wallet into %hisher own gold stash then tossed the now empty wallet aside.
+%player found a baby with candy lying on the ground.  %She picked it up, saw that the baby's candy was actually %gold gold!  After a few shifty glances around ensuring no one spotted %himher, %she dumped the "candy" into %hisher own gold stash then tossed the baby aside.
+%player's Great Aunt Myrtle just kicked the bucket, leaving %himher %gold gold in her will.  %player didn't even know %she had a Great Aunt Myrtle.
+%player fell on some hard times, and decided to sell a tooth to the tooth faerie for %gold gold.
