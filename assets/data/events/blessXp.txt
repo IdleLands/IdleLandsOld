@@ -29,3 +29,4 @@
 %player was given a crystal of pure experience, worth %xpxp!
 %player expected the unexpected, and got rewarded with %xpxp!
 %player meets a trickster who shows %himher some moves. Somehow, %she manages to survive those wicked moves.
+%player was smelling kinda funky, so %she took a shower.  After drying off, %she discovered %xpxp lying about in %hisher clothes!
