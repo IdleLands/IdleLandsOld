@@ -4,7 +4,7 @@ Spell = require "../base/Spell"
 class CureGroup extends Spell
   name: "cure group"
   @element = CureGroup::element = Spell::Element.heal
-  @cost = CureGroup::cost = (caster) -> caster.party.players.length * 50
+  @cost = CureGroup::cost = (caster) -> if caster.party then caster.party.players.length * 50 else 50
 
   @restrictions =
     "Cleric": 15
