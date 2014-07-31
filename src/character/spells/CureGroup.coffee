@@ -10,7 +10,7 @@ class CureGroup extends Spell
     "Cleric": 15
 
   determineTargets: ->
-    @targetParty()
+    @targetFriendlies()
 
   calcDamage: ->
     @chance.integer min: ((@caster.calc.stat 'wis')/5), max: Math.max (((@caster.calc.stat 'wis')/5)+1),(@caster.calc.stat 'wis')/1.5
