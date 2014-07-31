@@ -17,7 +17,7 @@ class Constants
   @pickRandomEvent = (player) ->
     event = @pickRandomEventType()
     eventMod = player.personalityReduce 'eventModifier', [event], 0
-    prob = chance.integer {min: 0, max: event.max}
+    prob = (chance.integer {min: 0, max: event.max})+(player.calc.stat 'luck')
     return event.type if prob <= (event.min+eventMod)
     null
 

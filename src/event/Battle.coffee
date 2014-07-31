@@ -143,13 +143,13 @@ class Battle
 
     hitChance = chance.integer {min: hitMin, max: hitMax}
 
-    if hitChance is 0
+    if -(target.calc.stat 'luck') <= hitChance <= 0
       message += ", but #{player.name} missed!"
       sendBattleMessage message, target
       @emitEvents "miss", "missed", player, target
       return
 
-    if hitChance < 0
+    if hitChance < -(target.calc.stat 'luck')
       deflectItem = _.sample target.equipment
       message += ", but #{target.name} deflected it with %hisher #{deflectItem.getName()}!"
       sendBattleMessage message, target
@@ -158,10 +158,16 @@ class Battle
 
     @emitEvents "target", "targeted", player, target
 
-    damage = chance.integer {min: player.calc.minDamage(), max: player.calc.damage()}
+    maxDamage = player.calc.damage()
+    damage = chance.integer {min: player.calc.minDamage(), max: maxDamage}
+
+    critRoll = chance.integer {min: 1, max: 10000}
+
+    if critRoll <= (player.calc.stat 'luck')+1
+      damage = maxDamage
 
     weapon = _.findWhere player.equipment, {type: "mainhand"}
-    message += ", and hit with %hisher #{weapon.getName()} for #{damage} HP damage"
+    message += ", and #{if damage is maxDamage then "CRITICALLY " else ""}hit with %hisher #{weapon.getName()} for #{damage} HP damage"
 
     @emitEvents "attack", "attacked", player, target
     @takeStatFrom player, target, damage, "physical", "hp"

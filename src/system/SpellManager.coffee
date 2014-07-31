@@ -40,7 +40,7 @@ SpellManager::spellMods =
 
 # Constants.spellModifyPercent
 SpellManager::modifySpell = (spell) ->
-  doMod = chance.bool likelihood: spell.caster.calc.skillCrit spell
+  doMod = chance.bool likelihood: Math.min 100, (spell.caster.calc.skillCrit spell)+(spell.caster.calc.stat 'luck')
   return spell if not doMod
 
   probs = [100, 50, 20, 5, 1]
