@@ -108,10 +108,10 @@
                     {
                      "destName":"Norkos Dungeon -3",
                      "fromName":"Norkos",
-                     "map":"NorkosDungeon",
+                     "map":"Norkos Dungeon -3",
                      "movementType":"fall",
                      "x":"41",
-                     "y":"45"
+                     "y":"1"
                     },
                  "type":"Teleport",
                  "visible":true,
@@ -126,7 +126,7 @@
                  "properties":
                     {
                      "destName":"Norkos +1",
-                     "map":"Norkos+1",
+                     "map":"Norkos +1",
                      "movementType":"ascend",
                      "x":"1",
                      "y":"1"
@@ -522,7 +522,7 @@
                  "properties":
                     {
                      "destName":"Norkos Dungeon -1",
-                     "map":"NorkosDungeon",
+                     "map":"Norkos Dungeon -1",
                      "movementType":"descend",
                      "x":"30",
                      "y":"1"
@@ -540,7 +540,7 @@
                  "properties":
                     {
                      "destName":"Norkos +1",
-                     "map":"Norkos+1",
+                     "map":"Norkos +1",
                      "movementType":"ascend",
                      "x":"6",
                      "y":"11"
