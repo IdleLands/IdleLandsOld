@@ -102,7 +102,9 @@ class Game
         masterParty = _.sample _.filter group, (party) -> party instanceof Party
         if masterParty
           otherParties = _.sample _.filter group, (party) -> party instanceof Party and party isnt masterParty
-          _.each otherParties, (party) -> masterParty.recruit party.disband()
+          _.each otherParties, (party) -> 
+            members = party.disband()
+            masterParty.recruit members
           masterParty
         else
           new Party @, group
