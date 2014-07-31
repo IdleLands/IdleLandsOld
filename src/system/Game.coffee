@@ -101,8 +101,8 @@ class Game
       collapseGroup = (group) ->
         masterParty = _.sample _.filter group, (party) -> party instanceof Party
         if masterParty
-          otherParties = _.sample _.filter group, (party) -> party instanceof Party and party is not masterParty
-          _.each otherParties, (party) -> masterParty.recruit(party.disband())
+          otherParties = _.sample _.filter group, (party) -> party instanceof Party and party isnt masterParty
+          _.each otherParties, (party) -> masterParty.recruit party.disband()
           masterParty
         else
           new Party @, group
@@ -120,6 +120,11 @@ class Game
 
     minScore = Math.min party1score, party2score
     maxScore = Math.max party1score, party2score
+
+    playerLists = _.map parties, (party) -> _.map party.players, (player) -> player.name
+    if (_.intersection playerLists...).length > 1
+      console.error "ERROR: BATTLE FORMATION BLOCKED DUE TO ONE PLAYER BEING ON BOTH SIDES"
+      return
 
     maxPercDiff = Constants.defaults.game.maxPartyScorePercentDifference
 
