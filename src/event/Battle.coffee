@@ -165,6 +165,7 @@ class Battle
 
     if critRoll <= (player.calc.stat 'luck')+1
       damage = maxDamage
+      @emitEvents "critical", "criticalled", player, target, damage: damage
 
     weapon = _.findWhere player.equipment, {type: "mainhand"}
     message += ", and #{if damage is maxDamage then "CRITICALLY " else ""}hit with %hisher #{weapon.getName()} for #{damage} HP damage"
