@@ -39,6 +39,7 @@ class MessageCreator
 
   @doStringReplace: (string, player, extra = null) ->
     gender = player.getGender()
+    string = _.str.clean string
     string
       .split('%player').join player.name
       .split('%hishers').join getGenderPronoun gender, '%hishers'
