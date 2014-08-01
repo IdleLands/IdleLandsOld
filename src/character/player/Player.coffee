@@ -79,9 +79,12 @@ class Player extends Character
 
     message = ""
 
+    dest.destName = dest.map if not dest.destName
+
     switch dest.movementType
       when "ascend" then message = "#{@name} has ascended to #{dest.destName}."
       when "descend" then message = "#{@name} has descended to #{dest.destName}."
+      when "fall" then message = "#{@name} has fallen from #{dest.fromName} to #{dest.destName}!"
 
     @emit "explore.transfer.#{dest.movementType}", @
 

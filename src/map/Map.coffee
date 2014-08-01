@@ -25,8 +25,7 @@ class Map
   blockers: [16, 17, 3]
   interactables: [1, 2, 12, 13, 14, 15, 18]
 
-  constructor: (map) ->
-    path = "../../assets/map/#{map}.json"
+  constructor: (path) ->
     @map = require path
 
     @tileHeight = @map.tileheight
