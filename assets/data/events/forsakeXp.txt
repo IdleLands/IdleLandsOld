@@ -58,3 +58,4 @@ While %player was frozen after an encounter with a floating eye, a warhorse stum
 Someone tied %player's shoelaces together.  %player took a spill and the stars %she saw was actually a little bundle of %xpxp leaving %himher.
 %player got a bit tipsy and decided to test the old myth about urinating on an electrified fence.  Suffice to say, it didn't go very well: %she lost %xpxp in the process.
 %player went to anti-college and received a diploma worth -%xpxp!
+%player pulled the Never Ever Lever and lost %xpxp in the ensuing dragon attack!
