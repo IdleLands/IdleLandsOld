@@ -493,7 +493,10 @@
                  "name":"PaladinTrainerStairs",
                  "properties":
                     {
-
+                     "map":"Bard Island -1",
+                     "movementType":"descend",
+                     "x":"38",
+                     "y":"1"
                     },
                  "type":"Teleport",
                  "visible":true,
@@ -567,7 +570,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/img\/tiles.png",
+         "image":"..\/..\/img\/tiles.png",
          "imageheight":32,
          "imagewidth":144,
          "margin":0,
