@@ -45,24 +45,6 @@
                  "y":224
                 }, 
                 {
-                 "gid":1,
-                 "height":0,
-                 "name":"ToNorkos3",
-                 "properties":
-                    {
-                     "destName":"Norkos Dungeon -3",
-                     "map":"NorkosDungeon",
-                     "movementType":"descend",
-                     "x":"2",
-                     "y":"47"
-                    },
-                 "type":"Teleport",
-                 "visible":true,
-                 "width":0,
-                 "x":16,
-                 "y":288
-                }, 
-                {
                  "gid":2,
                  "height":0,
                  "name":"ToNorkosDungeon2",
