@@ -18,8 +18,11 @@ class PlayerManager
       db.ensureIndex { identifier: 1 }, { unique: true }, ->
       db.ensureIndex { name: 1 }, { unique: true }, ->
 
-  banPlayer: (identifer, callback) ->
-    @db.update {identifier: identifier}, {banned: true}, {}, callback
+  banPlayer: (name, callback) ->
+    @db.update {name: name}, {banned: true}, {}, callback
+
+  unbanPlayer: (name, callback) ->
+    @db.update {name: name}, {banned: false}, {}, callback
 
   retrievePlayer: (identifier, callback) ->
     @db.findOne {identifier: identifier}, (e, player) =>

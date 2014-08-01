@@ -254,6 +254,14 @@ module.exports = (Module) ->
 
         @IdleWrapper.api.add.static eventType, question
 
+      @addRoute "idle-ban :playerName", "idle.game.gm", (origin, route) =>
+        [name] = [route.params.playerName]
+        @IdleWrapper.api.game.banPlayer name
+
+      @addRoute "idle-unban :playerName", "idle.game.gm", (origin, route) =>
+        [name] = [route.params.playerName]
+        @IdleWrapper.api.game.unbanPlayer name
+
       @addRoute "idle-teleportloc :playerName :location", "idle.game.gm", (origin, route) =>
         [name, location] = [route.params.playerName, route.params.location]
         @IdleWrapper.api.game.teleport.singleLocation name, location

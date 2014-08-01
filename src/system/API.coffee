@@ -32,6 +32,12 @@ class API
       mass: (map, x, y) =>
         @gameInstance.gmCommands.massTeleport map, x, y
 
+    banPlayer: (name, callback) =>
+      @gameInstance.playerManager.banPlayer name, callback
+
+    unbanPlayer: (name, callback) =>
+      @gameInstance.playerManager.unbanPlayer name, callback
+
     doEvent: (player, eventType, callback) =>
       @gameInstance.eventHandler.doEventForPlayer player, callback, eventType
 
@@ -52,10 +58,6 @@ class API
   @find =
     static: (query, callback) =>
       @gameInstance.componentDatabase.findEvent query, callback
-
-  @ban =
-    player: (identifier, callback) =>
-      @gameInstance.playerManager.banPlayer identifier, callback
 
   @remove =
     static: (id, callback) =>

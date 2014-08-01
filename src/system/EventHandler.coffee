@@ -71,7 +71,7 @@ class EventHandler
       steps = Math.floor player.level.getValue() / step
 
       percent = min + steps + chance.floating {min: -flux, max: flux, fixed: 3}
-            
+
       boost = Math.floor player.xp.maximum / percent
 
     extra =
