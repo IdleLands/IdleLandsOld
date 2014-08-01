@@ -1,8 +1,5 @@
 
 Spell = require "../base/Spell"
-chance = new (require "chance")()
-_ = {}
-_.str = require "underscore.string"
 
 class TripleFire extends Spell
   name: "triple fire"
@@ -17,7 +14,7 @@ class TripleFire extends Spell
   calcDamage: ->
     minDmg = (@caster.calc.stat 'int')*0.4
     maxDmg = (@caster.calc.stat 'int')*0.8
-    chance.integer min: minDmg, max: Math.max (minDmg)+1,maxDmg
+    @chance.integer min: minDmg, max: Math.max (minDmg)+1,maxDmg
 
   cast: (player) ->
     damage = @calcDamage()

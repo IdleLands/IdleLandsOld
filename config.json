@@ -62,12 +62,16 @@
         ],
         "eventEffects": {
             "blessXp": {
-                "percent": 10,
-                "amount": 100
+                "fail": 1,
+                "flux": 1.5,
+                "minPercent": 5,
+                "maxPercent": 25
             },
             "forsakeXp": {
-                "percent": -10,
-                "amount": -100
+                "fail": -1,
+                "flux": 1.5,
+                "minPercent": -5,
+                "maxPercent": -25
             },
             "blessGold": {
                 "amount": [1, 60, 100, 400, 1000, 3000, 7000, 10000, 25000, 50000, 65000, 85000, 100000]
