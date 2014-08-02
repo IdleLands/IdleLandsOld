@@ -60,24 +60,28 @@ class EventHandler
       console.error "XP EVENT FAILURE", event
       return
     boost = 0
+    percent = 0
 
     if (chance.bool {likelihood: player.calculateYesPercent()})
-      boost = Math.floor player.xp.maximum * (Constants.eventEffects[event.type].fail/100)
+      percent = Constants.eventEffects[event.type].fail
+      boost = Math.floor player.xp.maximum * (percent/100)
     else
       min = Constants.eventEffects[event.type].minPercent
       max = Constants.eventEffects[event.type].maxPercent
       flux = Constants.eventEffects[event.type].flux
       step = player.level.maximum / (max - min)
-      steps = Math.floor (player.level.getValue() / step)
+      steps = Math.floor ((player.level.maximum - player.level.getValue()) / step)
 
-      percent = min + steps + chance.floating {min: -flux, max: flux, fixed: 3}
+      fluxed = chance.floating {min: -flux, max: flux, fixed: 3}
+
+      percent = min + steps + fluxed
 
       boost = Math.floor player.xp.maximum / percent
-      
+
     extra =
       xp: Math.abs boost
       xpr: boost
-      xpp: +((boost/player.xp.maximum)*100).toFixed 3
+      xpp: +(percent).toFixed 3
 
     message = event.remark + " [%xprxp, ~%xpp%]"
 
