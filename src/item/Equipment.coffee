@@ -17,6 +17,8 @@
   hidden stat: luck
 ###
 
+_ = require "underscore"
+
 class Equipment
 
   constructor: (options) ->
@@ -60,6 +62,9 @@ class Equipment
     @thunderPercent = options.thunderPercent or 0
 
     @enchantLevel = options.enchantLevel or 0
+
+    _.each ['silver','power','deadeye','prone','offense','defense','crit','dodge','glowing'], (prop) =>
+      @[prop] = true if prop of options
 
   score: ->
     @str + @dex + @con + @int + @wis + @agi +
