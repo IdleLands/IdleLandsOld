@@ -62,13 +62,13 @@ class EventHandler
     boost = 0
 
     if (chance.bool {likelihood: player.calculateYesPercent()})
-      boost = player.xp.maximum / Constants.eventEffects[event.type].fail
+      boost = Math.floor player.xp.maximum * (Constants.eventEffects[event.type].fail/100)
     else
       min = Constants.eventEffects[event.type].minPercent
       max = Constants.eventEffects[event.type].maxPercent
       flux = Constants.eventEffects[event.type].flux
       step = player.level.maximum / (min - max)
-      steps = Math.floor player.level.getValue() / step
+      steps = Math.floor (player.level.getValue() / step)
 
       percent = min + steps + chance.floating {min: -flux, max: flux, fixed: 3}
 
