@@ -125,7 +125,7 @@ class Player extends Character
     @handleTile tile
 
   changeProfession: (to, suppress = no) ->
-    @profession?.unload @
+    @profession?.unload? @
     oldProfessionName = @professionName
     professionProto = require "../classes/#{to}"
     @profession = new professionProto()
