@@ -33,6 +33,8 @@ class Battle
       player.hp.__current = 0
       player.mp.__current = 0
 
+      player.fled = false
+
       player.hp.toMaximum()
       player.mp.toMaximum()
 
@@ -51,13 +53,17 @@ class Battle
 
     stats
 
-  stringifyStats: (stats) ->
+  stringifyStats: (player, stats) ->
     string = stats.name
 
     if stats.hp or stats.mp or stats.special
 
       if stats.hp.atMin()
         string += " [DEAD"
+
+      else if player.fled
+        string += " [FLED"
+
       else
         string += " [ "
         string += "HP #{stats.hp.getValue()}/#{stats.hp.maximum} " if stats.hp
@@ -69,7 +75,7 @@ class Battle
 
   getAllPlayersInPartyStatStrings: (party) ->
     _.map party.players, (player) =>
-      @stringifyStats @getRelevantStats player
+      @stringifyStats player, @getRelevantStats player
 
   getAllStatStrings: ->
     _.map @parties, (party) =>
@@ -79,7 +85,7 @@ class Battle
     parties = _.uniq _.pluck @turnOrder, 'party'
     aliveParties = _.reduce parties, (alive, party) ->
       currentAlive = _.reduce party.players, (count, player) ->
-        count+(not player.hp.atMin())
+        count+((not player.hp.atMin()) and (not player.fled))
       , 0
       alive.concat if currentAlive>0 then [party.name] else []
     , []
@@ -106,10 +112,16 @@ class Battle
         @turnPosition = 0
 
   takeTurn: (player) ->
-    return if player.hp.atMin()
+    return if player.hp.atMin() or player.fled
     if player.calc.cantAct() > 0
       affectingCauses = player.calc.cantActMessages()
       @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace "#{_.str.toSentence affectingCauses}!", player
+      return
+
+    if chance.bool {likelihood: player.calc.fleePercent()}
+      @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace "#{player.name} has fled from combat!", player
+      player.fled = true
+      @emitEventToAll "flee"
       return
 
     availableSpells = @game.spellManager.getSpellsAvailableFor player
@@ -121,7 +133,7 @@ class Battle
       @doMagicalAttack player, spellChosen
 
   doPhysicalAttack: (player, target = null) ->
-    target = _.sample _.reject @turnOrder, ((target) -> ((player.party is target.party) or target.hp.atMin())) if not target
+    target = _.sample _.reject @turnOrder, ((target) -> ((player.party is target.party) or target.hp.atMin() or target.fled)) if not target
     return if not target
 
     message = "#{player.name} is attacking #{target.name}"
@@ -165,7 +177,6 @@ class Battle
 
     if critRoll <= (player.calc.stat 'luck')+1
       damage = maxDamage
-      @emitEvents "critical", "criticalled", player, target, damage: damage
 
     weapon = _.findWhere player.equipment, {type: "mainhand"}
     message += ", and #{if damage is maxDamage then "CRITICALLY " else ""}hit with %hisher #{weapon.getName()} for #{damage} HP damage"
@@ -187,7 +198,7 @@ class Battle
 
   endBattle: ->
     @emitEventToAll "battle.end", @turnOrder
-    randomWinningPlayer = _.sample(_.filter @turnOrder, (player) -> not player.hp.atMin())
+    randomWinningPlayer = _.sample(_.filter @turnOrder, (player) -> (not player.hp.atMin()) and (not player.fled))
     if not randomWinningPlayer
       @game.broadcast MessageCreator.genericMessage "Everyone died! The battle was a tie! You get nothing!"
       @cleanUp()
@@ -196,7 +207,8 @@ class Battle
     @winningParty = randomWinningPlayer.party
     winnerName = @winningParty.getPartyName()
 
-    @losingPlayers  = _.difference @turnOrder, @winningParty.players
+    @losingPlayers  = _.reject (_.difference @turnOrder, @winningParty.players), (player) -> player.fled
+    @winningParty.players = _.reject @winningParty.players, (player) -> player.fled
 
     @emitEventsTo "party.lose", @losingPlayers
     @emitEventsTo "party.win",  @winningParty.players
@@ -223,7 +235,7 @@ class Battle
       pct = +((xpGain/player.xp.maximum)*100).toFixed 3
       winMessages.push "#{player.name} gained #{xpGain}xp [#{pct}%]"
 
-    @game.broadcast MessageCreator.genericMessage (_.str.toSentence winMessages)+"!"
+    @game.broadcast MessageCreator.genericMessage (_.str.toSentence winMessages)+"!" if winMessages.length > 0
 
     _.each @winningParty.players, (player) ->
       xpGain = player.personalityReduce 'combatEndXpGain', [player, deadVariables], 0
@@ -238,7 +250,7 @@ class Battle
       pct = +((xpLoss/player.xp.maximum)*100).toFixed 3
       loseMessages.push "#{player.name} lost #{xpLoss}xp [#{pct}%]"
 
-    @game.broadcast MessageCreator.genericMessage (_.str.toSentence loseMessages)+"!"
+    @game.broadcast MessageCreator.genericMessage (_.str.toSentence loseMessages)+"!" if loseMessages.length > 0
 
     _.each deadVariables.deadPlayers, (player) ->
       xpLoss = player.personalityReduce 'combatEndXpLoss', [player, deadVariables], 0

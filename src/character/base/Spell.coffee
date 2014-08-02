@@ -28,27 +28,31 @@ class Spell
   determineTargets: ->
     do @targetEnemy
 
-  targetFriendlies: (includeDead = no) ->
+  targetFriendlies: (includeDead = no, onlyDead = no) ->
     _.chain @baseTargets
     .reject (target) ->
-      target.hp.atMin() and not includeDead
+      target.fled
+    .reject (target) ->
+      target.hp.atMin() and (not includeDead or onlyDead)
     .reject (target) =>
       @caster.party isnt target.party
     .value()
 
-  targetFriendly: (includeDead = no, num = 1) ->
-    _.sample (@targetFriendlies includeDead), num
+  targetFriendly: (includeDead = no, num = 1, onlyDead = no) ->
+    _.sample (@targetFriendlies includeDead, onlyDead), num
 
-  targetEnemies: (includeDead = no) ->
+  targetEnemies: (includeDead = no, onlyDead = no) ->
     _.chain @baseTargets
     .reject (target) ->
-      target.hp.atMin() and not includeDead
+      target.fled
+    .reject (target) ->
+      target.hp.atMin() and (not includeDead or onlyDead)
     .reject (target) =>
       @caster.party is target.party
     .value()
 
-  targetEnemy: (includeDead = no, num = 1) ->
-    _.sample (@targetEnemies includeDead), num
+  targetEnemy: (includeDead = no, num = 1, onlyDead = no) ->
+    _.sample (@targetEnemies includeDead, onlyDead), num
 
   affect: (affected = []) ->
     @affected = if affected and not _.isArray affected then [affected] else affected

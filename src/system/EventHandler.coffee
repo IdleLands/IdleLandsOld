@@ -67,13 +67,13 @@ class EventHandler
       min = Constants.eventEffects[event.type].minPercent
       max = Constants.eventEffects[event.type].maxPercent
       flux = Constants.eventEffects[event.type].flux
-      step = player.level.maximum / (min - max)
+      step = player.level.maximum / (max - min)
       steps = Math.floor (player.level.getValue() / step)
 
       percent = min + steps + chance.floating {min: -flux, max: flux, fixed: 3}
 
       boost = Math.floor player.xp.maximum / percent
-
+      
     extra =
       xp: Math.abs boost
       xpr: boost

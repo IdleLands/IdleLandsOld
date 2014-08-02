@@ -182,6 +182,10 @@ class Character extends EventEmitter2
         baseValue = []
         @self.personalityReduce 'cantActMessages', [@self, baseValue], baseValue
 
+      fleePercent: ->
+        @base.fleePercent = 0.1
+        @self.personalityReduce 'fleePercent', [@self, @base.fleePercent], @base.fleePercent
+
 Character::num2dir = (dir,x,y) ->
   switch dir
     when 1 then return {x: x-1, y: y-1}
