@@ -11,10 +11,10 @@
 "leggings" agi=14 con=3
 "chaps" con=15 agi=5
 "chausses" con=16 agi=8
-"assless chaps" agi=30 con=-5
+"assless chaps" agi=30 con=-5 luck=-1
 "leather pants" agi=20 con=19
 "ponyskin" agi=30 con=18
-"potato sack" con=46 agi=10
+"potato sack" con=46 agi=10 luck=1
 "beaver" con=37 agi=37
 "jeans" agi=30 con=53
 "cargo pants" agi=50 con=40
@@ -22,13 +22,14 @@
 "gold leggings" agi=40 con=80
 "iron leggings" agi=45 con=90
 "diamond leggings" agi=20 con=180
+"lucky leggings" luck=30
 "kneesocks" agi=245
 "Victoria's Panties" agi=300 wis=50
 "Granny's Pantaloons" agi=300 wis=75
 "Plated Pants" con=400 agi=25
 "Venus Flytrap" con=150 agi=200
 "Black Bar" agi=400 con=100
-"Untouchable Pants" con=315 agi=300
+"Untouchable Pants" con=315 agi=300 luck=35
 "Bunny Pajamas" agi=675
 "Hoverchair" con=500 agi=215
 "Panzer Tank Treads" con=850

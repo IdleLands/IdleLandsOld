@@ -12,52 +12,52 @@
             {
                 "type": "enchant",
                 "min": 1,
-                "max": 1500
+                "max": 5500
             },
             {
                 "type": "flipStat",
                 "min": 1,
-                "max": 4500
+                "max": 15000
             },
             {
                 "type": "blessItem",
                 "min": 1,
-                "max": 205
+                "max": 1250
             },
             {
                 "type": "forsakeItem",
                 "min": 1,
-                "max": 645
+                "max": 1650
             },
             {
                 "type": "blessXp",
                 "min": 1,
-                "max": 145
+                "max": 1365
             },
             {
                 "type": "forsakeXp",
                 "min": 1,
-                "max": 565
+                "max": 1855
             },
             {
                 "type": "blessGold",
                 "min": 1,
-                "max": 315
+                "max": 1475
             },
             {
                 "type": "forsakeGold",
                 "min": 1,
-                "max": 750
+                "max": 2050
             },
             {
                 "type": "party",
                 "min": 1,
-                "max": 100
+                "max": 600
             },
             {
                 "type": "battle",
                 "min": 1,
-                "max": 175
+                "max": 475
             }
         ],
         "eventEffects": {

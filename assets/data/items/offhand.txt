@@ -6,7 +6,7 @@
 "buckler" str=5 con=5
 "ward" str=5 con=6
 "pie plate" dex=5 con=-3 agi=4
-"garbage can lid" dex=5 con=1 str=2
+"garbage can lid" dex=5 con=1 str=2 luck=1
 "round shield" con=12 str=2
 "tower shield" con=5 defense
 "kite shield" con=20
@@ -18,7 +18,7 @@
 "aegis" con=37 aegis
 "fender" con=20 dex=20 str=5
 "keyboard" con=30 int=10
-"magic bubble" con=25 str=20 water=20
+"magic bubble" con=25 str=20 water=20 luck=1
 "shieldkind" con=31 str=20
 "clock" con=35 agi=20
 "carapace" con=34 dex=10 agi=-5
@@ -29,7 +29,7 @@
 "tribal shield" str=50 con=40
 "riot shield" str=20 con=104
 "car door" str=30 con=105
-"magic orb shield" str=103 int=40
+"magic orb shield" str=103 int=40 luck=5
 "cube of meat" con=100 str=50
 "phalanx shield" con=113 str=60
 "spiked targe" str=153 con=50
@@ -37,14 +37,14 @@
 "pavise" con=175 str=50 defense
 "large dragon's scale" str=200 con=50 fire=200
 "baroque shield" str=100 con=100 dex=100
-"Magnetic Field" str=-30 con=50 dex=50 wis=50 thunder=100
+"Magnetic Field" str=-30 con=50 dex=50 wis=50 thunder=100 luck=10
 "Shield of Five Elements" con=150 str=150 fire=50 water=50 thunder=50 ice=50 earth=50
-"Companion Cube" con=280 wis=100 sentimentality=200 int=10
+"Companion Cube" con=280 wis=100 sentimentality=200 int=10 luck=15
 "Reinforced Chunk of Rust" con=100 str=350
 "Summoned Swords" str=400 con=70 offense
 "The Propugner" str=200 dex=200 con=400 defense
 "Hero's Shield" con=450 str=200 defense
-"iMac" str=666
+"iMac" str=666 luck=-10
 "Holy Arms" con=777 piety=400
 "Hoplon Guard" con=600 str=200 aegis
 "Smashing Board" con=300 str=400

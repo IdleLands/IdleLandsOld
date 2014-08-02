@@ -8,19 +8,19 @@
 "tape" wis=25 int=6
 "knuckleduster" wis=20 str=25
 "uncut nails" int=40 wis=10
-"fingerblades" int=30 str=30
-"miniature world" wis=50 int=60
+"fingerblades" int=30 str=30 luck=1
+"miniature world" wis=50 int=60 luck=3
 "fingerpuppet" wis=100 int=65
 "painted nails" wis=200 int=150
 "Egregiously Long Nails" wis=175 int=100 dex=-25
 "Blood of the Victims" int=275
-"Ring of Slow Digestion" wis=300 int=50
+"Ring of Slow Digestion" wis=300 int=50 luck=5
 "Family Jewels" wis=207 int=207
 "Thickly Twisted Wire" int=250 wis=200
 "Magnetic Gloves" int=300 wis=200
 "Midas Touch" int=300 wis=300
 "Wolverine" str=300 int=150 wis=150
 "Black Hole" int=400 wis=350
-"Ring of Death and Life" int=500 wis=500 crit
+"Ring of Death and Life" int=500 wis=500 crit luck=15
 "Rebellious Ring of the Idling Gods" int=1500 wis=1500 con=1000 dex=1000
 "Earth-sized Diamond" str=12000 agi=-1000 dex=-1000

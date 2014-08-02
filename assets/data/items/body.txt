@@ -1,5 +1,5 @@
 "birthday suit"
-"lace" con=-1
+"lace" con=-1 luck=1
 "toga" agi=1
 "flannel" con=2
 "tunic" agi=1 con=1
@@ -20,21 +20,22 @@
 "cuirass" con=20 agi=10
 "burlap" con=10 dex=10 wis=10
 "canvas" agi=10 str=10 int=10
-"byrnie" con=15 agi=17
+"byrnie" con=15 agi=17 luck=2
 "banded mail" con=20 agi=12
 "ring mail" agi=25 con=7
 "chain mail" agi=20 con=16
 "scale mail" con=20 agi=21 dex=2
 "splint mail" dex=10 con=13 agi=20
+"luck mail" luck=15
 "breastplate" con=28 agi=10
 "plate mail" con=32 agi=7
 "hauberk" agi=25 con=15
 "marcrame" dex=10 con=15 agi=7
 "haubergeon" agi=27 con=15
-"fullplate" con=35 agi=10
+"fullplate" con=35 agi=10 luck=3
 "riot armor" con=25 agi=25
 "scale mail" agi=30 con=30
-"dragonscale mail" agi=50 con=30
+"dragonscale mail" agi=50 con=30 luck=5
 "tempered chestplate" con=70 agi=15
 "squishy squish" con=80 agi=15 wis=20
 "lifesaver" con=50 wis=80

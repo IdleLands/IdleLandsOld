@@ -10,10 +10,10 @@
 "aventail" con=9
 "corsage" wis=7 con=3
 "glasses" int=7 con=4
-"diadem" con=5 int=7
+"diadem" con=5 int=7 luck=2
 "flowerpot" wis=13
-"halo" wis=5 dex=10
-"devil horns" str=10 con=6
+"halo" wis=5 dex=10 luck=3
+"devil horns" str=10 con=6 luck=-3
 "coronet" dex=5 con=5
 "horned cap" str=20 con=10
 "aiming goggles" dex=30 crit
@@ -23,7 +23,7 @@
 "cowl" agi=42
 "rose" dex=45
 "pile of hats" dex=25 agi=25
-"pile of helms" dex=25 con=25
+"pile of helms" dex=25 con=25 luck=5
 "cardboard box" agi=50 dex=10
 "saucer" wis=35 dex=30
 "paper hat" agi=50 wis=20
@@ -34,21 +34,21 @@
 "umbrella hat" con=100 dex=76
 "cute animal" wis=90 con=100
 "monocle" int=110 wis=100
-"Fedora" agi=150 con=100
+"Fedora" agi=150 con=100 luck=-10
 "Jungle Rose" int=100 str=200
 "Dunce Cap" con=400 int=-50
 "Top Hat" int=450
 "Vice-Versa" str=400 con=100
 "Metal Box" con=600
 "Headwings" agi=430 con=200
-"Fusion Earring" dex=330 con=300
+"Fusion Earring" dex=330 con=300 luck=10
 "Flying Saucer" int=650
 "Powdered Wig" con=380 wis=300
 "Ye Olde Helm" con=750
 "Viking Helmet" str=400 con=400
 "Chap's Monocle" int=400 con=400
 "Aerodynamic Haircut" agi=840 con=400
-"Superscouter 9001" dex=400 con=400
+"Superscouter 9001" dex=400 con=400 luck=15
 "Holy Mitre" wis=400 con=400
 "Antiverse Circlet" str=100 int=100 dex=100 con=500 agi=100 wis=100 deadeye
 "Feathered Fez of the Idling Gods" int=-100 con=2000 str=500 wis=-100 agi=700

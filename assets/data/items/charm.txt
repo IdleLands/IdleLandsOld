@@ -1,15 +1,15 @@
 "pin" int=1
 "bracelet" int=1 wis=1
 "armband" wis=3 int=2
-"bauble" wis=7
+"bauble" wis=7 luck=1
 "earring" int=8
 "trinket" wis=5 int=5
 "plume" wis=10
-"teleporter" agi=10 int=20 dodge
+"teleporter" agi=10 int=20 dodge luck=3
 "talisman" int=10
 "plume" wis=10 int=3
 "pixane" int=10 wis=5
-"juju" int=30 wis=-7
+"juju" int=30 wis=-7 luck=-5
 "credit card" int=15 wis=10
 "skeleton key" wis=18 int=10
 "luckstone" int=16 wis=16 luck=10
@@ -18,17 +18,17 @@
 "wooden stake" int=25 wis=15 silver
 "cross" int=20 wis=20 silver
 "candle" int=35 wis=10
-"bead" wis=50
+"bead" wis=50 luck=5
 "magnifying glass" wis=60
 "quill" int=60
 "scroll" int=35 wis=35
 "hoverpet" wis=50 int=40
-"sextant" int=69 wis=18
+"sextant" int=69 wis=18 luck=7
 "dollar" wis=50 int=50
 "sun stone" wis=80 int=20
 "blessed mess" wis=100 int=11
 "metronome" int=123
-"die-cast robot princess bubblegum" int=100 wis=43 power
+"die-cast robot princess bubblegum" int=100 wis=43 power luck=8
 "tentacle" int=100 wis=50
 "brimstone" int=200 wis=-30
 "netherrack" int=150 wis=50
@@ -48,4 +48,4 @@
 "Mask de Smith" wis=400 int=377
 "Magnitude Pocketwatch" int=500 wis=500 sentimentalityPercent=20
 "Cosmic Charm of the Idling Gods" int=2500 dex=2500
-"Black Hole" int=1500 dex=1500 con=1500 wis=1500 str=1500 agi=1500
+"Black Hole" int=1500 dex=1500 con=1500 wis=1500 str=1500 agi=1500 luck=100

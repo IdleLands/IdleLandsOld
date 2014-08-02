@@ -4,6 +4,7 @@ chance = new Chance()
 _ = require "underscore"
 _.str = require "underscore.string"
 
+Datastore = require "./DatabaseWrapper"
 MessageCreator = require "./MessageCreator"
 Constants = require "./Constants"
 
@@ -12,6 +13,7 @@ Party = require "../event/Party"
 class EventHandler
 
   constructor: (@game) ->
+    @playerEventsDb = new Datastore "playerEvents", (db) -> db.ensureIndex {createdAt: 1}, {expiresAfterSeconds: 1800}, ->
 
   doEventForPlayer: (playerName, callback, eventType = Constants.pickRandomEventType()) ->
     player = @game.playerManager.getPlayerByName playerName
@@ -46,13 +48,26 @@ class EventHandler
 
       player.recalculateStats()
 
+  broadcastEvent: (message, player, extra) ->
+    message = MessageCreator.doStringReplace message, player, extra
+    @game.broadcast MessageCreator.genericMessage message
+
+    @addEventToDb message, player
+
+  addEventToDb: (message, player) ->
+    @playerEventsDb.insert
+      createdAt: new Date()
+      player: player.name
+      message: message
+    , ->
+
   doYesNo: (event, player, callback) ->
     #player.emit "yesno"
     if chance.bool {likelihood: player.calculateYesPercent()}
-      (@game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.y, player) if event.y
+      (@broadcastEvent event.y, player) if event.y
       callback true
     else
-      (@game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.n, player) if event.n
+      (@broadcastEvent event.n, player) if event.n
       callback false
 
   doXp: (event, player, callback) ->
@@ -83,9 +98,9 @@ class EventHandler
       xpr: boost
       xpp: +(percent).toFixed 3
 
-    message = event.remark + " [%xprxp, ~%xpp%]"
+    message = "#{event.remark} [%xprxp, ~%xpp%]"
 
-    @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace message, player, extra
+    @broadcastEvent message, player, extra
 
     player.gainXp boost
 
@@ -106,7 +121,6 @@ class EventHandler
       if curGold < Math.abs goldTiers[i]
         highVal = if not goldTiers[i-1] then 100 else goldTiers[i-1]
         lowVal = if not goldTiers[i] then 1 else goldTiers[i]
-        console.log highVal,lowVal
 
         min = Math.min highVal, lowVal
         max = Math.max highVal, lowVal
@@ -129,7 +143,7 @@ class EventHandler
 
     message = event.remark + " [%goldr gold]"
 
-    @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace message, player, extra
+    @broadcastEvent message, player, extra
     callback()
 
   doItem: (event, player, callback) ->
@@ -161,7 +175,7 @@ class EventHandler
 
     player.emit "event.#{event.type}", player, item, boost
 
-    @game.broadcast MessageCreator.genericMessage string
+    @broadcastEvent string, player
     callback()
 
   doFindItem: (event, player, callback) ->
@@ -183,7 +197,7 @@ class EventHandler
       totalString = "#{event.remark} [perceived: #{myScore} -> #{score} | real: #{myRealScore} -> #{realScore} | +#{score-myScore}]"
       player.emit "event.findItem", player, item
 
-      @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace totalString, player, extra
+      @broadcastEvent totalString, player, extra
 
     else
       multiplier = player.calc.itemSellMultiplier item
@@ -204,7 +218,7 @@ class EventHandler
       party: _.str.toSentence _.pluck newPartyPlayers, 'name'
       partyName: newParty.name
 
-    @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.remark, player, extra
+    @broadcastEvent event.remark, player, extra
 
     callback()
 
@@ -229,12 +243,11 @@ class EventHandler
 
     item.enchantLevel = 0 if not item.enchantLevel or _.isNaN item.enchantLevel
 
-    string = MessageCreator.doStringReplace event.remark, player, extra
-    string += " [#{stat} = #{boost} | +#{item.enchantLevel} -> +#{++item.enchantLevel}]"
+    string = "#{event.remark} [#{stat} = #{boost} | +#{item.enchantLevel} -> +#{++item.enchantLevel}]"
 
     player.emit "event.enchant", player, item, item.enchantLevel
 
-    @game.broadcast MessageCreator.genericMessage string
+    @broadcastEvent string, player, extra
     callback()
 
   doFlipStat: (event, player, callback) ->
@@ -253,12 +266,11 @@ class EventHandler
 
     item[stat] = end
 
-    string = MessageCreator.doStringReplace event.remark, player, extra
-    string += " [#{stat} #{start} -> #{end}]"
+    string = "#{event.remark} [#{stat} #{start} -> #{end}]"
 
     player.emit "event.#{event.type}", player, item, stat
 
-    @game.broadcast MessageCreator.genericMessage string
+    @broadcastEvent string, player, extra
     callback()
 
 module.exports = exports = EventHandler

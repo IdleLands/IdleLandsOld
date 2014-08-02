@@ -8,7 +8,7 @@
 "card" int=6
 "sharp stick" str=6 vorpal
 "pill" int=7
-"sandwich" str=5 int=5
+"sandwich" str=5 int=5 luck=1
 "pancake" str=7 int=3
 "notepad" int=6
 "watermelon" str=7
@@ -22,17 +22,17 @@
 "kunai" str=10 agi=3
 "hammer" str=18 agi=-4
 "scriptures" int=14 deadeye
-"deck of cards" int=15
+"deck of cards" int=15 luck=3
 "axe" str=15
 "dragonslayer" str=15 silver
 "whip" str=15
 "paper plate" int=15
 "kris" str=16
-"joystick" int=16
+"joystick" int=16 luck=4
 "dirk" str=16
 "ice cube" int=15 ice=3
 "tome" int=17
-"glowstick" int=19
+"glowstick" int=19 luck=5
 "fisticuffs" str=18
 "knuckles" str=19
 "whiteboard" int=20
@@ -52,7 +52,7 @@
 "nunchucks" str=28
 "sword" str=28
 "pen" int=29
-"shamshir" int=30
+"shamshir" int=30 luck=6
 "flowerpot" str=15 int=15 earth=20
 "war-axe" str=30
 "estoc" str=31
@@ -71,7 +71,7 @@
 "mace" str=39
 "crosier" int=40 silver
 "morning star" str=40
-"subway sub" int=41
+"subway sub" int=41 luck=7
 "rod" int=42
 "four-by-four" str=42
 "fleuret" str=43
@@ -88,7 +88,7 @@
 "claymore" str=49
 "lance" str=50
 "halberd" str=50
-"option" int=40 sentimentality=10
+"option" int=40 sentimentality=10 luck=8
 "spear" str=50
 "broadsword" str=70 agi=-20
 "billboard" str=51
@@ -107,7 +107,7 @@
 "falchion" str=60 silver
 "tristaff" str=31 int=30
 "sceptre" int=61
-"ayuvir" int=62 sentimentality=50
+"ayuvir" int=62 sentimentality=50 luck=-10
 "cube" int=63
 "manual" int=63
 "vial" int=63
@@ -123,7 +123,7 @@
 "tail" str=77
 "device" int=77
 "snowball" str=79 ice=50
-"perpetually spinning object" int=80
+"perpetually spinning object" int=80 luck=10
 "pokeball" int=81
 "scythe" str=81 power
 "warhammer" str=83
@@ -157,7 +157,7 @@
 "Newton's cradle" int=103
 "greataxe" str=103
 "pet rock" str=103
-"ace of spades" int=104 offense
+"ace of spades" int=104 offense luck=10
 "pet turtle" int=54 con=50
 "pet hedgehog" str=53 agi=50
 "glaive" str=105
@@ -170,7 +170,7 @@
 "ultraball" int=113
 "stompin' boots" str=114
 "longbow" str=118
-"swordcane" str=95 int=35
+"swordcane" str=95 int=35 luck=11
 "zweihander" str=130
 "staff of healing" int=30 wis=100
 "grayswandir" str=135
@@ -185,7 +185,7 @@
 "rock candy" int=205
 "muramasa" str=175 piety=250 silver
 "bloodsword" str=200 power vorpal
-"chaos emerald" int=200
+"chaos emerald" int=200 luck=12
 "sleepsword" str=230
 "sunsword" str=170 int=50
 "ballpoint pen" int=240
@@ -216,7 +216,7 @@
 "flametongue" int=305 fire=150
 "icebrand" int=305 ice=80
 "mjollnir" str=335 thunder=150
-"drillbit" str=375
+"drillbit" str=375 luck=13
 "killer7" str=377 vorpal
 "jetengine" str=245 agi=150
 "smartphone" int=400
@@ -250,7 +250,7 @@
 "magicbane" str=753
 "excalibur" str=503 int=300 silver deadeye
 "popsicle stick" int=850
-"gungnir" str=853 deadeye vorpal
+"gungnir" str=853 deadeye vorpal luck=14
 "popsicle" str=630 ice=200
 "flying car" str=900
 "snickersnee" int=900
@@ -263,14 +263,14 @@
 "MadCatz Tournament Edition Arcade Stick" int=595 str=200
 "Lord of Vermillion" int=700 power
 "Punisher" int=400 str=150
-"Binary Tree" int=111
+"Binary Tree" int=111 luck=15
 "Deathbringer" str=850 vorpal
 "Macbook Pro" int=800
 "Kusanagi" str=800
 "Phantom Tiny Bluescreen" int=820
-"Kikuichimonki" str=850
+"Kikuichimonki" str=850 luck=16
 "Bucket of Glitter" int=876 glowing
-"Golden Egg" int=800
+"Golden Egg" int=800 luck=17
 "Johnny's Plank" str=950
 "Nuclear Reactor" int=780 firePercent=10
 "Absolute Zero Chamber" int=780 icePercent=10
