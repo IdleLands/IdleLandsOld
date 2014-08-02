@@ -97,6 +97,7 @@ class EventHandler
     if not event.remark
       console.error "GOLD EVENT FAILURE", event
       return
+
     goldTiers = Constants.eventEffects[event.type].amount
     curGold = player.gold.getValue()
 
@@ -105,13 +106,18 @@ class EventHandler
       if curGold < Math.abs goldTiers[i]
         highVal = if not goldTiers[i-1] then 100 else goldTiers[i-1]
         lowVal = if not goldTiers[i] then 1 else goldTiers[i]
+        console.log highVal,lowVal
 
         min = Math.min highVal, lowVal
         max = Math.max highVal, lowVal
         boost = chance.integer {min: min, max: max}
         break
 
-    return if not boost
+    if not boost
+      val = _.last goldTiers
+      min = Math.min val, 0
+      max = Math.max val, 1
+      boost = chance.integer min: min, max: max
 
     extra =
       gold: Math.abs boost
