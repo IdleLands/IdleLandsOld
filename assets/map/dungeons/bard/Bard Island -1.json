@@ -33,10 +33,10 @@
                  "properties":
                     {
                      "destName":"Bard Island",
+                     "destx":"73",
+                     "desty":"78",
                      "map":"Norkos",
-                     "movementType":"ascend",
-                     "x":"73",
-                     "y":"78"
+                     "movementType":"ascend"
                     },
                  "type":"Teleport",
                  "visible":true,

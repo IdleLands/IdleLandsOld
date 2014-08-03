@@ -89,7 +89,7 @@
                  "properties":
                     {
                      "destName":"Norkos Dungeon -1",
-                     "map":"Norkos Dungeon -1",
+                     "map":"NorkosDungeon",
                      "movementType":"descend",
                      "x":"30",
                      "y":"1"
@@ -107,11 +107,11 @@
                  "properties":
                     {
                      "destName":"Norkos Dungeon -3",
+                     "destx":"41",
+                     "desty":"1",
                      "fromName":"Norkos",
                      "map":"Norkos Dungeon -3",
-                     "movementType":"fall",
-                     "x":"41",
-                     "y":"1"
+                     "movementType":"fall"
                     },
                  "type":"Teleport",
                  "visible":true,
@@ -126,10 +126,10 @@
                  "properties":
                     {
                      "destName":"Norkos +1",
+                     "destx":"1",
+                     "desty":"1",
                      "map":"Norkos +1",
-                     "movementType":"ascend",
-                     "x":"1",
-                     "y":"1"
+                     "movementType":"ascend"
                     },
                  "type":"Teleport",
                  "visible":true,
@@ -493,10 +493,10 @@
                  "name":"PaladinTrainerStairs",
                  "properties":
                     {
+                     "destx":"38",
+                     "desty":"1",
                      "map":"Bard Island -1",
-                     "movementType":"descend",
-                     "x":"38",
-                     "y":"1"
+                     "movementType":"descend"
                     },
                  "type":"Teleport",
                  "visible":true,
@@ -525,10 +525,10 @@
                  "properties":
                     {
                      "destName":"Norkos Dungeon -1",
+                     "destx":"30",
+                     "desty":"1",
                      "map":"Norkos Dungeon -1",
-                     "movementType":"descend",
-                     "x":"30",
-                     "y":"1"
+                     "movementType":"descend"
                     },
                  "type":"Teleport",
                  "visible":true,
@@ -543,10 +543,10 @@
                  "properties":
                     {
                      "destName":"Norkos +1",
+                     "destx":"6",
+                     "desty":"11",
                      "map":"Norkos +1",
-                     "movementType":"ascend",
-                     "x":"6",
-                     "y":"11"
+                     "movementType":"ascend"
                     },
                  "type":"Teleport",
                  "visible":true,
