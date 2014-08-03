@@ -66,8 +66,8 @@ class Player extends Character
 
   handleTeleport: (tile) ->
     dest = tile.object.properties
-    dest.x = parseInt dest.x
-    dest.y = parseInt dest.y
+    dest.x = parseInt dest.destx
+    dest.y = parseInt dest.desty
 
     if not dest.map
       console.error "ERROR. No dest.map at #{@x},#{@y} in #{@map}"
