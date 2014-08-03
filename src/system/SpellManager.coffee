@@ -40,7 +40,7 @@ SpellManager::spellMods =
 
 # Constants.spellModifyPercent
 SpellManager::modifySpell = (spell) ->
-  doMod = chance.bool likelihood: Math.min 100, (spell.caster.calc.skillCrit spell)+(spell.caster.calc.stat 'luck')
+  doMod = chance.bool likelihood: Math.max 0, (Math.min 100, (spell.caster.calc.skillCrit spell)+(spell.caster.calc.stat 'luck'))
   return spell if not doMod
 
   probs = [100, 50, 20, 5, 1]
@@ -49,7 +49,7 @@ SpellManager::modifySpell = (spell) ->
   strength = 0
   newName = spell.name
   for prob in [(probs.length-1)..0]
-    if chance.bool {likelihood: probs[prob]}
+    if (chance.bool {likelihood: probs[prob]})
       strength = prob
       newName = "#{SpellManager::spellMods[element][prob]} #{spell.name}"
 

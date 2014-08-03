@@ -4,11 +4,11 @@ Personality = require "../base/Personality"
 class LeeroyJenkins extends Personality
   constructor: ->
 
-  intPercent: -> -10
-  wisPercent: -> -10
+  intPercent: -> -20
+  wisPercent: -> -20
 
-  strPercent: -> 10
-  agiPercent: -> 10
+  strPercent: -> 20
+  agiPercent: -> 20
 
   @canUse = (player) ->
     player.statistics["battle start"] > 1000

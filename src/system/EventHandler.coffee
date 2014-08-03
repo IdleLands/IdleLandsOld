@@ -93,6 +93,8 @@ class EventHandler
 
       boost = Math.floor player.xp.maximum / percent
 
+    boost = player.calcXpGain boost
+
     extra =
       xp: Math.abs boost
       xpr: boost
@@ -132,6 +134,8 @@ class EventHandler
       min = Math.min val, 0
       max = Math.max val, 1
       boost = chance.integer min: min, max: max
+
+    boost = player.calcGoldGain boost
 
     extra =
       gold: Math.abs boost
@@ -187,7 +191,7 @@ class EventHandler
     realScore = item.score()
     myRealScore = myItem.score()
 
-    if score >= myScore and realScore < player.itemFindRange()
+    if score >= myScore and realScore < player.itemFindRange() and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
       player.equipment = _.without player.equipment, myItem
       player.equipment.push item
 

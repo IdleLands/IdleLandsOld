@@ -28,6 +28,17 @@ class Spell
   determineTargets: ->
     do @targetEnemy
 
+  targetAll: (includeDead = no, onlyDead = no) ->
+    _.chain @baseTargets
+    .reject (target) ->
+      target.fled
+    .reject (target) ->
+      target.hp.atMin() and (not includeDead or onlyDead)
+    .value()
+
+  targetAny: (includeDead = no, num = 1, onlyDead = no) ->
+    _.sample (@targetAll includeDead, onlyDead), num
+
   targetFriendlies: (includeDead = no, onlyDead = no) ->
     _.chain @baseTargets
     .reject (target) ->

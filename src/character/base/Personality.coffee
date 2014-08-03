@@ -8,6 +8,15 @@ class Personality
 
   unbind: (player) ->
 
+Personality::isPhysical = (test) ->
+  test in ['Fighter', 'Generalist']
+
+Personality::isMagical = (test) ->
+  test in ['Mage', 'Cleric']
+
+Personality::isMedic = (test) ->
+  test in ['Cleric']
+
 Personality::getPersonality = (personality) ->
   personalities[personality]
 

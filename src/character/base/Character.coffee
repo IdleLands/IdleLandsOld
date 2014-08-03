@@ -45,6 +45,7 @@ class Character extends EventEmitter2
         combined.push applied if applied
       else
         combined += if applied then applied else 0
+
       combined
     , baseValue
 
@@ -78,20 +79,28 @@ class Character extends EventEmitter2
     @rebuildPersonalityList()
     yes
 
+  calcGoldGain: (gold) ->
+    @calc.stat 'gold', yes, gold
+
+  calcXpGain: (xp) ->
+    @calc.stat 'xp', yes, xp
+
   loadCalc: ->
     @calc =
       base: {}
       self: @
-      stat: (stat) ->
+      stat: (stat, ignoreNegative = yes, base = 0, basePct = 0) ->
         pct = "#{stat}Percent"
-        @base[stat] = _.reduce @self.equipment, ((prev, item) -> prev+item[stat]), 0
-        @base[pct] = _.reduce @self.equipment, ((prev, item) -> prev+(item[pct] or 0)), 0
+        @base[stat] = _.reduce @self.equipment, ((prev, item) -> prev+(item[stat] or 0)), base
+        @base[pct] = _.reduce @self.equipment, ((prev, item) -> prev+(item[pct] or 0)), basePct
 
-        baseVal = Math.max 0, @self.personalityReduce stat, [@self, @base[stat]], @base[stat]
-        percent = Math.max 0, @self.personalityReduce pct, [@self, @base[pct]], @base[pct]
+        baseVal = @self.personalityReduce stat, [@self, @base[stat]], @base[stat]
+        percent = @self.personalityReduce pct, [@self, @base[pct]], @base[pct]
 
         newValue = Math.floor baseVal/percent
         newValue = if _.isFinite newValue then newValue else 0
+
+        newValue = 0 if not ignoreNegative and newValue < 0
 
         baseVal+newValue
 
@@ -154,6 +163,10 @@ class Character extends EventEmitter2
         baseValue = item.score()
         Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue
 
+      itemReplaceChancePercent: ->
+        @base.itemReplaceChancePercent = 100
+        Math.min 0, Math.max 100, @self.personalityReduce 'itemReplaceChancePercent', [@self, @base.itemReplaceChancePercent], @base.itemReplaceChancePercent
+
       eventFumble: ->
         @base.eventFumble = 25
         @self.personalityReduce 'eventFumble', [@self, @base.eventFumble], @base.eventFumble
@@ -185,6 +198,18 @@ class Character extends EventEmitter2
       fleePercent: ->
         @base.fleePercent = 0.1
         @self.personalityReduce 'fleePercent', [@self, @base.fleePercent], @base.fleePercent
+
+      criticalChance: ->
+        @base.criticalChance = 1 + @self.calc.stat 'luck'
+        @self.personalityReduce 'criticalChance', [@self, @base.criticalChance], @base.criticalChance
+
+      partyLeavePercent: ->
+        @base.partyLeavePercent = Constants.defaults.player.defaultPartyLeavePercent
+        @self.personalityReduce 'partyLeavePercent', [@self, @base.partyLeavePercent], @base.partyLeavePercent
+
+      classChangePercent: (potential) ->
+        @base.classChangePercent = 100
+        Math.min 0, Math.max 100, @self.personalityReduce 'classChangePercent', [@self, potential, @base.classChangePercent], @base.classChangePercent
 
 Character::num2dir = (dir,x,y) ->
   switch dir

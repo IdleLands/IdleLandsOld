@@ -175,7 +175,7 @@ class Battle
 
     critRoll = chance.integer {min: 1, max: 10000}
 
-    if critRoll <= (player.calc.stat 'luck')+1
+    if critRoll <= player.calc.criticalChance()
       damage = maxDamage
 
     weapon = _.findWhere player.equipment, {type: "mainhand"}
@@ -232,6 +232,7 @@ class Battle
     # winning player xp distribution
     _.each @winningParty.players, (player) ->
       xpGain = player.personalityReduce 'combatEndXpGain', [player, deadVariables], 0
+      xpGain = player.calcXpGain xpGain
       pct = +((xpGain/player.xp.maximum)*100).toFixed 3
       winMessages.push "#{player.name} gained #{xpGain}xp [#{pct}%]"
 
@@ -239,6 +240,7 @@ class Battle
 
     _.each @winningParty.players, (player) ->
       xpGain = player.personalityReduce 'combatEndXpGain', [player, deadVariables], 0
+      xpGain = player.calcXpGain xpGain
       player.gainXp xpGain
 
     # end winning
@@ -247,6 +249,7 @@ class Battle
 
     _.each deadVariables.deadPlayers, (player) ->
       xpLoss = player.personalityReduce 'combatEndXpLoss', [player, deadVariables], 0
+      xpLoss = player.calcXpGain xpLoss
       pct = +((xpLoss/player.xp.maximum)*100).toFixed 3
       loseMessages.push "#{player.name} lost #{xpLoss}xp [#{pct}%]"
 
@@ -254,6 +257,7 @@ class Battle
 
     _.each deadVariables.deadPlayers, (player) ->
       xpLoss = player.personalityReduce 'combatEndXpLoss', [player, deadVariables], 0
+      xpLoss = player.calcXpGain xpLoss
       player.gainXp -xpLoss
 
     # end losing

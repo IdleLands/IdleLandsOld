@@ -51,16 +51,16 @@ class Player extends Character
       message += " Alas, #{@name} is already a #{className}!"
       @isBusy = false
       @emit "player.trainer.isAlready", @, className
-      
+
     @playerManager.game.broadcast MessageCreator.genericMessage message
 
-    if @professionName isnt className
+    if @professionName isnt className and (chance.bool likelihood: @calc.classChangePercent className)
       @playerManager.game.eventHandler.doYesNo {}, @, (result) =>
         @isBusy = false
         if not result
           @emit "player.trainer.ignore", @, className
           return
-          
+
         @emit "player.trainer.speak", @, className
         @changeProfession className
 
@@ -145,7 +145,7 @@ class Player extends Character
     Math.min 100, (Math.max 0, Constants.defaults.player.defaultYesPercent + @personalityReduce 'calculateYesPercentBonus')
 
   calculatePartyLeavePercent: ->
-    Math.min 100, (Math.max 0, Constants.defaults.player.defaultPartyLeavePercent + @personalityReduce 'partyLeaveProbabilityBonus')
+    Math.min 100, (Math.max 0, @calc.partyLeavePercent())
 
   getGender: ->
     "male"
