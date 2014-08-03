@@ -105,24 +105,29 @@ class Player extends Character
 
     dir = if chance.bool {likelihood: 75} then @lastDir else dir
     newLoc = @num2dir dir, @x, @y
+    try
+      tile = @playerManager.game.world.maps[@map].getTile newLoc.x,newLoc.y
 
-    tile = @playerManager.game.world.maps[@map].getTile newLoc.x,newLoc.y
-    if not tile.blocked
-      @x = newLoc.x
-      @y = newLoc.y
-      @lastDir = dir
-      @ignoreDir = null
+      if not tile.blocked
+        @x = newLoc.x
+        @y = newLoc.y
+        @lastDir = dir
+        @ignoreDir = null
+
+      else
+        @lastDir = null
+        @ignoreDir = dir
+
+        @emit 'explore.hit.wall', @
 
       @emit 'explore.walk', @
       @emit "explore.walk.#{tile.terrain}".toLowerCase(), @
 
-    else
-      @lastDir = null
-      @ignoreDir = dir
+      @handleTile tile
 
-      @emit 'explore.hit.wall', @
-
-    @handleTile tile
+    catch
+      @x = @y = 10
+      @map = "Norkos"
 
   changeProfession: (to, suppress = no) ->
     @profession?.unload? @
