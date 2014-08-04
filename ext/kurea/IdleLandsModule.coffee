@@ -236,7 +236,7 @@ module.exports = (Module) ->
       @addRoute "idle-register :name", registerCommand
       @addRoute "register :name", registerCommand
 
-      @addRoute "idle-event :player :event?", "idle.game.gm", (origin, route) =>
+      @addRoute 'idle-event ":player" :event?', "idle.game.gm", (origin, route) =>
         [player, event] = [route.params.player, route.params.event]
         @IdleWrapper.api.game.doEvent player, event, => @reply origin, "Your event is done."
 
@@ -262,11 +262,11 @@ module.exports = (Module) ->
         [name] = [route.params.playerName]
         @IdleWrapper.api.game.unbanPlayer name
 
-      @addRoute "idle-teleportloc :playerName :location", "idle.game.gm", (origin, route) =>
+      @addRoute 'idle-teleportloc ":playerName" :location', "idle.game.gm", (origin, route) =>
         [name, location] = [route.params.playerName, route.params.location]
         @IdleWrapper.api.game.teleport.singleLocation name, location
 
-      @addRoute "idle-teleport :playerName :map :x,:y", "idle.game.gm", (origin, route) =>
+      @addRoute 'idle-teleport ":playerName" :map :x,:y', "idle.game.gm", (origin, route) =>
         [name, map, x, y] = [route.params.playerName, route.params.map, route.params.x, route.params.y]
         x = parseInt x
         y = parseInt y
