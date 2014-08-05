@@ -13,7 +13,7 @@ Party = require "../event/Party"
 class EventHandler
 
   constructor: (@game) ->
-    @playerEventsDb = new Datastore "playerEvents", (db) -> db.ensureIndex {createdAt: 1}, {expiresAfterSeconds: 1800}, ->
+    @playerEventsDb = new Datastore "playerEvents", (db) -> db.ensureIndex {createdAt: 1}, {expiresAfterSeconds: 7200}, ->
 
   doEventForPlayer: (playerName, callback, eventType = Constants.pickRandomEventType()) ->
     player = @game.playerManager.getPlayerByName playerName
