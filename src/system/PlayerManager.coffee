@@ -142,6 +142,8 @@ class PlayerManager
 
     player.setMaxListeners 100
     player.wildcard = yes
+    player.listenerTree = {}
+    player._events = {}
 
     @beginWatchingPlayerStatistics player
 
