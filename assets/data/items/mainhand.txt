@@ -179,6 +179,7 @@
 "eight-by-four" str=161
 "body pillow" int=165
 "wand" int=175
+"downvote" str=250 int=-50 wis=-50
 "bastardsword" str=195
 "gaming laptop" int=200 thunder=50
 "party cannon" str=202
@@ -257,6 +258,7 @@
 "Gigasword" str=390
 "Vacuum Gun" str=420
 "Full Ale Bottle" str=450
+"Banhammer" str=350 int=100 wis=100 con=-100
 "Chaos Grid" int=500
 "Mom's Knife" str=666 power
 "Notepad++" int=700
