@@ -61,6 +61,7 @@ class PlayerManager
     playerObject.playerManager = @
     playerObject.initialize()
     saveObj = @buildPlayerSaveObject playerObject
+    saveObj._events = {}
 
     @db.insert saveObj, (iErr) =>
       if iErr
