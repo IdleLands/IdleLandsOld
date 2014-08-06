@@ -64,7 +64,7 @@ class PlayerManager
 
     @db.insert saveObj, (iErr) =>
       if iErr
-        console.error "Player creation error: #{iErr}" if callback?
+        console.error "Player creation error: #{iErr}", playerObject if callback?
         callback?(iErr)
         return
 
