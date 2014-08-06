@@ -32,6 +32,7 @@
 "magic orb shield" str=103 int=40 luck=5
 "cube of meat" con=100 str=50
 "phalanx shield" con=113 str=60
+"upvote" wis=200 piety=50 str=-50
 "spiked targe" str=153 con=50
 "parasol" str=20 dex=30 agi=40 con=50
 "pavise" con=175 str=50 defense
