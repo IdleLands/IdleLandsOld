@@ -4,8 +4,8 @@ Class = require "./../base/Class"
 class Barbarian extends Class
 
   baseHp: 200
-  baseHpPerLevel: 18
-  baseHpPerCon: 6
+  baseHpPerLevel: 25
+  baseHpPerCon: 10
 
   baseMp: 0
   baseMpPerLevel: -10
@@ -25,7 +25,7 @@ class Barbarian extends Class
     - item.int
 
   physicalAttackChance: (player) ->
-    if player.special.getValue() > 70 then 40 else 25
+    if player.special.getValue() > 70 then 30 else 5
 
   minDamage: (player) ->
     player.calc.damage()*0.40

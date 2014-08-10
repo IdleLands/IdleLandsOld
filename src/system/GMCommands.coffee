@@ -43,8 +43,7 @@ class GMCommands
       map: "Norkos"
       x: 43
       y: 23
-    "mage":
-      map: "Norkos"
+    "mage": map: "Norkos"
       x: 47
       y: 23
     "barbarian":
