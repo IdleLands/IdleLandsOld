@@ -68,7 +68,7 @@ class Battle
         string += " [ "
         string += "HP #{stats.hp.getValue()}/#{stats.hp.maximum} " if stats.hp
         string += "MP #{stats.mp.getValue()}/#{stats.mp.maximum} " if stats.mp
-        string += "SP #{stats.special.getValue()}/#{stats.special.maximum} " if stats.special
+        string += "#{stats.special.name or "SP"} #{stats.special.getValue()}/#{stats.special.maximum} " if stats.special
       string += "]"
 
     string
@@ -132,11 +132,11 @@ class Battle
     else
       @doMagicalAttack player, spellChosen
 
-  doPhysicalAttack: (player, target = null) ->
+  doPhysicalAttack: (player, target = null, isCounter = no) ->
     target = _.sample _.reject @turnOrder, ((target) -> ((player.party is target.party) or target.hp.atMin() or target.fled)) if not target
     return if not target
 
-    message = "#{player.name} is attacking #{target.name}"
+    message = "#{player.name} is #{if isCounter then "COUNTER-" else ""}attacking #{target.name}"
 
     [dodgeMin, dodgeMax] = [-target.calc.dodge(), player.calc.beatDodge()]
 

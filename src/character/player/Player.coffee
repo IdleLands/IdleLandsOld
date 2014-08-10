@@ -212,6 +212,5 @@ class Player extends Character
   recalculateStats: ->
     @hp.maximum = @calc.hp()
     @mp.maximum = @calc.mp()
-    @special.maximum = @calc.special()
 
 module.exports = exports = Player

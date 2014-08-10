@@ -132,8 +132,8 @@ class Character extends EventEmitter2
         @self.personalityReduce 'minDamage', [@self, @base.minDamage], @base.minDamage
 
       physicalAttackChance: ->
-        @base.physicalAttackChance = 75
-        @self.personalityReduce 'physicalAttackChance', [@self, @base.physicalAttackChance], @base.physicalAttackChance
+        @base.physicalAttackChance = 65
+        Math.max 0, Math.min 100, @self.personalityReduce 'physicalAttackChance', [@self, @base.physicalAttackChance], @base.physicalAttackChance
 
       hp: ->
         @base.hp = 0
@@ -142,10 +142,6 @@ class Character extends EventEmitter2
       mp: ->
         @base.mp = 0
         Math.max 0, @self.personalityReduce 'mp', [@self, @base.mp], @base.mp
-
-      special: ->
-        @base.special = 0
-        @self.personalityReduce 'special', [@self, @base.special], @base.special
 
       combatEndXpGain: (oppParty) ->
         @base.combatEndXpGain = 0
