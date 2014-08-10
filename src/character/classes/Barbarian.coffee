@@ -48,7 +48,7 @@ class Barbarian extends Class
     player.on "combat.self.killed", @events.selfDead = -> player.special.toMinimum()
     player.on "combat.self.deflect", @events.selfDeflect = (target) =>
       probability = (Math.floor player.level.getValue()/10)*10
-      if @chance.bool {likelihood: probability}
+      if @chance.bool({likelihood: probability})
         player.party.currentBattle.doPhysicalAttack player, target, yes
 
   unload: (player) ->
