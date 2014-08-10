@@ -51,5 +51,9 @@ class GMCommands
       map: "Norkos"
       x: 112
       y: 14
+    "jail":
+      map: "Norkos"
+      x: 13
+      y: 44
 
 module.exports = exports = GMCommands
