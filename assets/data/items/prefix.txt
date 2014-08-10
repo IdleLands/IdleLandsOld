@@ -195,6 +195,7 @@
 "screaming" agi=150 str=50
 "spiritual" agi=150 int=50 luck=22
 "omniscient" wis=200
+"ordered" wis=123 int=123
 "otherworldly" dex=150 wis=50
 "kryptonite" wis=100 dex=100
 "celestial" int=200 wisPercent=1 intPercent=1 luckPercent=1 luck=10
@@ -244,6 +245,7 @@
 "universal" int=100 str=100 dex=100 agi=100
 "godly" str=70 int=70 agi=70 con=70 dex=70 wis=71 luck=69
 "unmatched" agi=300 dex=200
+"unyielding" con=110 str=100
 "sunstone" str=300 con=100
 "moonstone" wis=150 con=250
 "runestone" dex=150 con=250
@@ -255,6 +257,7 @@
 "dextrous" dexPercent=10
 "agile" agiPercent=10
 "constitutional" conPercent=10
+"recursive" intPercent=9
 "final" strPercent=10 intPercent=10 wisPercent=10 dexPercent=10 agiPercent=10 conPercent=10 luckPercent=10
 "chaotic" strPercent=10 intPercent=-10 agiPercent=10 conPercent=-10 dexPercent=10 wisPercent=-10 luckPercent=-10
 "unfortunate" strPercent=-10 intPercent=-10 agiPercent=-10 conPercent=-10 dexPercent=-10 wisPercent=-10 luckPercent=-10
