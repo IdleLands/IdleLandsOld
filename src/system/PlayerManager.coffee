@@ -18,6 +18,9 @@ class PlayerManager
       db.ensureIndex { identifier: 1 }, { unique: true }, ->
       db.ensureIndex { name: 1 }, { unique: true }, ->
 
+  randomPlayer: ->
+    _.sample @players
+
   banPlayer: (name, callback) ->
     @db.update {name: name}, {banned: true}, {}, callback
 

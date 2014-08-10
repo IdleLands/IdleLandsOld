@@ -41,8 +41,6 @@ class EventHandler
           @doFindItem event, player, callback
         when 'party'
           @doParty event, player, callback
-        when 'battle'
-          @doBattle event, player, callback
         when 'enchant'
           @doEnchant event, player, callback
         when 'flipStat'

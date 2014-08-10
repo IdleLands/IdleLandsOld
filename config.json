@@ -3,6 +3,12 @@
     "storageURL": "localhost:27017",
     "gameConstants": {
         "gameName": "Idletopia",
+        "globalEventTimers": [
+            {
+                "type": "battle",
+                "duration": 1200
+            }
+        ],
         "eventRates": [
             {
                 "type": "findItem",
@@ -53,11 +59,6 @@
                 "type": "party",
                 "min": 1,
                 "max": 600
-            },
-            {
-                "type": "battle",
-                "min": 1,
-                "max": 1200
             }
         ],
         "eventEffects": {
