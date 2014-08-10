@@ -165,7 +165,7 @@ class Character extends EventEmitter2
 
       itemReplaceChancePercent: ->
         @base.itemReplaceChancePercent = 100
-        Math.min 0, Math.max 100, @self.personalityReduce 'itemReplaceChancePercent', [@self, @base.itemReplaceChancePercent], @base.itemReplaceChancePercent
+        Math.max 0, Math.min 100, @self.personalityReduce 'itemReplaceChancePercent', [@self, @base.itemReplaceChancePercent], @base.itemReplaceChancePercent
 
       eventFumble: ->
         @base.eventFumble = 25
@@ -209,7 +209,7 @@ class Character extends EventEmitter2
 
       classChangePercent: (potential) ->
         @base.classChangePercent = 100
-        Math.min 0, Math.max 100, @self.personalityReduce 'classChangePercent', [@self, potential, @base.classChangePercent], @base.classChangePercent
+        Math.max 0, Math.min 100, @self.personalityReduce 'classChangePercent', [@self, potential, @base.classChangePercent], @base.classChangePercent
 
 Character::num2dir = (dir,x,y) ->
   switch dir
