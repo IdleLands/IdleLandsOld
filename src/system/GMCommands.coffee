@@ -35,5 +35,21 @@ class GMCommands
       map: "Norkos"
       x: 10
       y: 10
+    "cleric":
+      map: "Norkos"
+      x: 38
+      y: 23
+    "fighter":
+      map: "Norkos"
+      x: 43
+      y: 23
+    "mage":
+      map: "Norkos"
+      x: 47
+      y: 23
+    "barbarian":
+      map: "Norkos"
+      x: 112
+      y: 14
 
 module.exports = exports = GMCommands
