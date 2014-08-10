@@ -121,7 +121,7 @@ class Battle
     if chance.bool {likelihood: player.calc.fleePercent()}
       @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace "#{player.name} has fled from combat!", player
       player.fled = true
-      @emitEventToAll "flee"
+      @emitEventToAll "flee", player
       return
 
     availableSpells = @game.spellManager.getSpellsAvailableFor player
