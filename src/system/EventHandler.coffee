@@ -17,7 +17,9 @@ class EventHandler
 
   doEventForPlayer: (playerName, callback, eventType = Constants.pickRandomEventType()) ->
     player = @game.playerManager.getPlayerByName playerName
-    return if not player
+    if not player
+      console.error "Attempting to do event #{eventType} for #{playerName}, but player was not there."
+      return
 
     @doEvent eventType, player, callback
 
