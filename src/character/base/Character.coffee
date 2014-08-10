@@ -60,7 +60,7 @@ class Character extends EventEmitter2
     return no if not Personality::doesPersonalityExist newPersonality
 
     potentialPersonality = Personality::getPersonality newPersonality
-    return no if not 'canUse' of potentialPersonality or not potentialPersonality.canUse @
+    return no if not ('canUse' of potentialPersonality) or not potentialPersonality.canUse @
 
     if not @personalityStrings
       @personalityStrings = []
