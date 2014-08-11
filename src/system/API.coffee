@@ -39,9 +39,10 @@ class API
       @gameInstance.playerManager.unbanPlayer name, callback
 
     doEvent: (player, eventType, callback) =>
-      console.info "API call reached - #{player}, #{eventType}"
       @gameInstance.eventHandler.doEventForPlayer player, callback, eventType
-      console.info "API call succeeded - #{player}, #{eventType}"
+
+    doGlobalEvent: (eventType, callback) =>
+      @gameInstance.globalEventHandler.doEvent eventType, callback
 
   @add =
     yesno: (question, y, n) =>

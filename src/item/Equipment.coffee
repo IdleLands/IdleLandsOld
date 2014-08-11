@@ -67,7 +67,7 @@ class Equipment
       @[prop] = true if prop of options
 
   # TODO
-  #score xp, xpP, gold, goldP
+  # score xp, xpP, gold, goldP
   # also, special props ^^^
   score: ->
     @str + @dex + @con + @int + @wis + @agi +

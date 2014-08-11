@@ -22,4 +22,10 @@ class Constants
     return event.type if prob <= (event.min+eventMod+player.calc.stat 'luck')
     null
 
+  @pickRandomGlobalEventType = ->
+    _.sample @globalEventTimers
+
+  @pickRandomGlobalEvent = ->
+    @pickRandomGlobalEventType().type
+
 module.exports = exports = Constants
