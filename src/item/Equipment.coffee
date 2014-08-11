@@ -66,6 +66,9 @@ class Equipment
     _.each ['silver','power','deadeye','prone','offense','defense','crit','dodge','glowing'], (prop) =>
       @[prop] = true if prop of options
 
+  # TODO
+  #score xp, xpP, gold, goldP
+  # also, special props ^^^
   score: ->
     @str + @dex + @con + @int + @wis + @agi +
     (@luck*3) +

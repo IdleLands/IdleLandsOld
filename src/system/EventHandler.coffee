@@ -92,7 +92,7 @@ class EventHandler
 
       percent = min + steps + fluxed
 
-      boost = Math.floor player.xp.maximum / percent
+      boost = Math.floor player.xp.maximum * (percent/100)
 
     boost = player.calcXpGain boost
 
