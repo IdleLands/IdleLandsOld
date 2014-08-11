@@ -257,7 +257,8 @@ class EventHandler
 
   doFlipStat: (event, player, callback) ->
     item = (_.sample player.equipment)
-    stat = (_.sample (_.reject (_.keys item), (key) -> key in ["name", "type", "itemClass", "enchantLevel"] or item[key] is 0 or _.isNaN item[key]))
+    stat = _.sample (_.reject (_.keys item), (key) ->
+      key in ["name", "type", "itemClass", "enchantLevel"] or item[key] is 0 or _.isNaN item[key] or _.isBoolean item[key])
 
     return callback false if not stat or item[stat] is 0
 
