@@ -237,8 +237,6 @@ module.exports = (Module) ->
       @addRoute "idle-register :name", registerCommand
       @addRoute "register :name", registerCommand
 
-      console.log "registering routes"
-
       @addRoute 'idle-event ":player" :event?', "idle.game.gm", (origin, route) =>
         [player, event] = [route.params.player, route.params.event]
         @IdleWrapper.api.game.doEvent player, event, => @reply origin, "Your event is done."
