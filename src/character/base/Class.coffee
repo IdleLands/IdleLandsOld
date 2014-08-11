@@ -77,6 +77,7 @@ class Class extends Personality
     event.min
 
   load: (player) ->
+    @chance = new (require "chance")()
     player.on "explore.walk", ->
       player.gainXp 10
 

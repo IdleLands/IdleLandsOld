@@ -1,6 +1,7 @@
 Annihilators
 Assassins
 Bagels
+Bankers
 Bookfacers
 Bolsheviks
 Bots
@@ -8,6 +9,7 @@ Bros
 Cats
 Characters
 Chefs
+Chili Peppers
 Circlejerkers
 Clubs
 Crabs
@@ -26,7 +28,9 @@ Fear
 Ferrets
 Fire
 Foxes
+Hax0rs
 Heroes
+Hippies
 Hippos
 Humans
 Ice
@@ -49,6 +53,7 @@ Maids
 Masters
 Meerkats
 Narwhals
+Nazis
 Numberphiles
 Officers
 Pacifists
@@ -57,10 +62,12 @@ Plunderers
 Prayers
 Psychopaths
 Puppies
+Pranksters
 Representatives
 Roflcopters
 Rustlers
 Ruses
+SexManiacs
 Singularity
 Sprockets
 Straws
@@ -83,5 +90,6 @@ Wimblybooters
 Wizards
 Workers
 Wombats
+Vegans
 Vickys
 Void

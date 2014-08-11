@@ -107,6 +107,7 @@ module.exports = (Module) ->
           docs.each (e, doc) =>
             return if not doc
             bot = BotManager.botHash[doc.server]
+            return if not bot
             @addServerChannel bot, doc.server, doc.channel
 
     beginGameLoop: ->
@@ -235,6 +236,8 @@ module.exports = (Module) ->
 
       @addRoute "idle-register :name", registerCommand
       @addRoute "register :name", registerCommand
+
+      console.log "registering routes"
 
       @addRoute 'idle-event ":player" :event?', "idle.game.gm", (origin, route) =>
         [player, event] = [route.params.player, route.params.event]

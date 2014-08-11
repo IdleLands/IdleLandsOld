@@ -18,6 +18,9 @@ class PlayerManager
       db.ensureIndex { identifier: 1 }, { unique: true }, ->
       db.ensureIndex { name: 1 }, { unique: true }, ->
 
+  randomPlayer: ->
+    _.sample @players
+
   banPlayer: (name, callback) ->
     @db.update {name: name}, {banned: true}, {}, callback
 
@@ -61,10 +64,11 @@ class PlayerManager
     playerObject.playerManager = @
     playerObject.initialize()
     saveObj = @buildPlayerSaveObject playerObject
+    saveObj._events = {}
 
     @db.insert saveObj, (iErr) =>
       if iErr
-        console.error "Player creation error: #{iErr}" if callback?
+        console.error "Player creation error: #{iErr}", playerObject if callback?
         callback?(iErr)
         return
 
@@ -75,7 +79,7 @@ class PlayerManager
       callback?({ success: true, name: options.name })
 
   buildPlayerSaveObject: (player) ->
-    _.omit player, 'playerManager', 'party', 'personalities', 'calc', 'spellsAffectedBy', '_events', 'fled', 'event', 'delimiter', '_conf', 'wildcard', '_all'
+    _.omit player, 'playerManager', 'party', 'personalities', 'calc', 'spellsAffectedBy', 'fled'
 
   savePlayer: (player) ->
     savePlayer = @buildPlayerSaveObject player
@@ -112,6 +116,12 @@ class PlayerManager
 
     player.__proto__ = Player.prototype
 
+    player.wildcard = yes
+    player.listenerTree = {}
+    player._events = {}
+    player.newListener = false
+    player.setMaxListeners 100
+
     player.playerManager = @
     player.isBusy = false
     player.loadCalc()
@@ -138,9 +148,6 @@ class PlayerManager
     player.lastLogin = new Date()
 
     player.statistics = {} if not player.statistics
-
-    player.setMaxListeners 100
-    player.wildcard = yes
 
     @beginWatchingPlayerStatistics player
 
@@ -186,9 +193,9 @@ class PlayerManager
         when "combat.self.kill"
           addStat arguments[0].name, 1, "calculated kills"
 
-      @event = @event.split(".").join " "
-      player.statistics[@event] = 1 if not @event of player.statistics or _.isNaN player.statistics[@event]
-      player.statistics[@event]++
-      player.statistics[@event] = 1 if not player.statistics[@event]
+      event = @event.split(".").join " "
+      player.statistics[event] = 1 if not event of player.statistics or _.isNaN player.statistics[event]
+      player.statistics[event]++
+      player.statistics[event] = 1 if not player.statistics[event]
 
 module.exports = exports = PlayerManager

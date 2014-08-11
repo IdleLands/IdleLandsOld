@@ -9,6 +9,7 @@ class Constants
   @gameName = config.gameName
   @eventRates = config.eventRates
   @eventEffects = config.eventEffects
+  @globalEventTimers = config.globalEventTimers
   @defaults = config.defaults
 
   @pickRandomEventType = ->

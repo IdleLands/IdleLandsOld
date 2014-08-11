@@ -535,6 +535,20 @@
                  "width":0,
                  "x":944,
                  "y":224
+                }, 
+                {
+                 "gid":13,
+                 "height":0,
+                 "name":"Barbarian",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Trainer",
+                 "visible":true,
+                 "width":0,
+                 "x":1792,
+                 "y":240
                 }],
          "opacity":1,
          "type":"objectgroup",
