@@ -16,15 +16,12 @@ class EventHandler
     @playerEventsDb = new Datastore "playerEvents", (db) -> db.ensureIndex {createdAt: 1}, {expiresAfterSeconds: 7200}, ->
 
   doEventForPlayer: (playerName, callback, eventType = Constants.pickRandomEventType()) ->
-    console.info "Attempting to do event: #{playerName} - #{eventType}"
     player = @game.playerManager.getPlayerByName playerName
     if not player
       console.error "Attempting to do event #{eventType} for #{playerName}, but player was not there."
-      return
+      return callback()
 
-    console.info "Doing event: #{playerName} - #{eventType}"
     @doEvent eventType, player, callback
-    console.info "Did event: #{playerName} - #{eventType}"
 
   doEvent: (eventType, player, callback = ->) ->
     @game.componentDatabase.getRandomEvent eventType, (e, event) =>
@@ -76,7 +73,8 @@ class EventHandler
   doXp: (event, player, callback) ->
     if not event.remark
       console.error "XP EVENT FAILURE", event
-      return
+      return callback false
+
     boost = 0
     percent = 0
 
@@ -111,12 +109,12 @@ class EventHandler
 
     player.emit "event.#{event.type}", player, extra
 
-    callback()
+    callback true
 
   doGold: (event, player, callback) ->
     if not event.remark
       console.error "GOLD EVENT FAILURE", event
-      return
+      return callback false
 
     goldTiers = Constants.eventEffects[event.type].amount
     curGold = player.gold.getValue()
@@ -151,12 +149,12 @@ class EventHandler
     message = event.remark + " [%goldr gold]"
 
     @broadcastEvent message, player, extra
-    callback()
+    callback true
 
   doItem: (event, player, callback) ->
     item = (_.sample player.equipment)
     stat = (_.sample (_.reject (_.keys item), (key) -> key in ["name", "type", "itemClass", "enchantLevel"] or item[key] is 0))
-    return if not stat
+    return callback false if not stat
 
     val = item[stat] ? 0
 
@@ -173,7 +171,7 @@ class EventHandler
     start = val
     end = val+boost
 
-    return if start is end
+    return callback false if start is end
 
     item[stat] = end
 
@@ -183,12 +181,12 @@ class EventHandler
     player.emit "event.#{event.type}", player, item, boost
 
     @broadcastEvent string, player
-    callback()
+    callback true
 
   doFindItem: (event, player, callback) ->
     item = @game.equipmentGenerator.generateItem()
     myItem = _.findWhere player.equipment, {type: item.type}
-    return if not myItem
+    return callback false if not myItem
     score = player.calc.itemScore item
     myScore = player.calc.itemScore myItem
     realScore = item.score()
@@ -212,12 +210,12 @@ class EventHandler
       player.gold.add value
       player.emit "event.sellItem", player, item, value
 
-    callback()
+    callback true
 
   doParty: (event, player, callback) ->
-    return if player.party or @game.inBattle
+    return callback false if player.party or @game.inBattle
     newParty = @game.createParty player
-    return if not newParty?.name
+    return callback false if not newParty?.name
 
     newPartyPlayers = _.without newParty.players, player
 
@@ -227,18 +225,18 @@ class EventHandler
 
     @broadcastEvent event.remark, player, extra
 
-    callback()
+    callback true
 
   doBattle: (event, player, callback) ->
     event.player = player
     @game.startBattle [], event
 
-    callback()
+    callback true
 
   doEnchant: (event, player, callback) ->
     item = _.sample _.reject player.equipment, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel
 
-    return if not item
+    return callback false if not item
     stat = (_.sample (_.reject (_.keys item), (key) -> key in ["name", "type", "itemClass", "enchantLevel"] or item[key] isnt 0))
 
     boost = 10
@@ -255,13 +253,13 @@ class EventHandler
     player.emit "event.enchant", player, item, item.enchantLevel
 
     @broadcastEvent string, player, extra
-    callback()
+    callback true
 
   doFlipStat: (event, player, callback) ->
     item = (_.sample player.equipment)
-    stat = (_.sample (_.reject (_.keys item), (key) -> key in ["name", "type", "itemClass", "enchantLevel"] or item[key] is 0))
+    stat = (_.sample (_.reject (_.keys item), (key) -> key in ["name", "type", "itemClass", "enchantLevel"] or item[key] is 0 or _.isNaN item[key]))
 
-    return if not stat or item[stat] is 0
+    return callback false if not stat or item[stat] is 0
 
     val = item[stat] ? 0
 
@@ -278,6 +276,6 @@ class EventHandler
     player.emit "event.#{event.type}", player, item, stat
 
     @broadcastEvent string, player, extra
-    callback()
+    callback true
 
 module.exports = exports = EventHandler
