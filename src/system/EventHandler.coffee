@@ -16,12 +16,15 @@ class EventHandler
     @playerEventsDb = new Datastore "playerEvents", (db) -> db.ensureIndex {createdAt: 1}, {expiresAfterSeconds: 7200}, ->
 
   doEventForPlayer: (playerName, callback, eventType = Constants.pickRandomEventType()) ->
+    console.debug "Attempting to do event: #{playerName} - #{eventType}"
     player = @game.playerManager.getPlayerByName playerName
     if not player
       console.error "Attempting to do event #{eventType} for #{playerName}, but player was not there."
       return
 
+    console.debug "Doing event: #{playerName} - #{eventType}"
     @doEvent eventType, player, callback
+    console.debug "Did event: #{playerName} - #{eventType}"
 
   doEvent: (eventType, player, callback = ->) ->
     @game.componentDatabase.getRandomEvent eventType, (e, event) =>
