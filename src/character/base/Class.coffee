@@ -78,7 +78,10 @@ class Class extends Personality
 
   load: (player) ->
     @chance = new (require "chance")()
-    player.on "explore.walk", ->
+    player.on "explore.walk", @walkEvent = ->
       player.gainXp 10
+  
+  unload: (player) ->
+    player.off "explore.walk", @walkEvent
 
 module.exports = exports = Class
