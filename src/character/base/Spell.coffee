@@ -89,15 +89,12 @@ class Spell
           #this would normalize turns / event, but eh, not necessary atm?
           #@turns *= eventList.length
           me = @
-          @modifiedBindings = {}
           _.each eventList, (event) =>
-            return if @modifiedBindings[event]
             newFunc = ->
               me.bindings[event].apply me, arguments
               me.decrementTurns player
 
-            @modifiedBindings[event] = newFunc
-            player.on event, newFunc
+            player.many event, turns, newFunc
 
         (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
 
@@ -109,8 +106,6 @@ class Spell
     battleInstance = @caster.party?.currentBattle
     player.spellsAffectedBy = _.without player.spellsAffectedBy, @
     (@bindings.doSpellUncast.apply @, [player]) if 'doSpellUncast' of @bindings
-    _.each (_.keys @modifiedBindings), (event) =>
-      player.removeListener event, @modifiedBindings[event]
 
     return if not battleInstance
     battleInstance.emitEvents "skill.duration.end", "skill.duration.endAt", @caster, player, skill: @
