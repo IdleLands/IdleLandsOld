@@ -28,32 +28,32 @@
             {
                 "type": "blessItem",
                 "min": 1,
-                "max": 2250
+                "max": 1750
             },
             {
                 "type": "forsakeItem",
                 "min": 1,
-                "max": 2650
+                "max": 2350
             },
             {
                 "type": "blessXp",
                 "min": 1,
-                "max": 2365
+                "max": 1565
             },
             {
                 "type": "forsakeXp",
                 "min": 1,
-                "max": 2855
+                "max": 2055
             },
             {
                 "type": "blessGold",
                 "min": 1,
-                "max": 2475
+                "max": 2175
             },
             {
                 "type": "forsakeGold",
                 "min": 1,
-                "max": 3050
+                "max": 2750
             },
             {
                 "type": "party",
@@ -91,7 +91,7 @@
         },
         "defaults": {
             "game": {
-                "maxPartyMembers": 3,
+                "maxPartyMembers": 4,
                 "maxEnchantLevel": 10,
                 "maxPartyScorePercentDifference": 0.65
             },

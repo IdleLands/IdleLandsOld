@@ -41,6 +41,9 @@ class API
     doEvent: (player, eventType, callback) =>
       @gameInstance.eventHandler.doEventForPlayer player, callback, eventType
 
+    doGlobalEvent: (eventType, callback) =>
+      @gameInstance.globalEventHandler.doEvent eventType, callback
+
   @add =
     yesno: (question, y, n) =>
       @gameInstance.componentDatabase.insertYesNo question, y, n

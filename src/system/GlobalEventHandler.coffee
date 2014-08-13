@@ -13,10 +13,12 @@ class GlobalEventHandler
     _.each timers, (timer) =>
       setInterval (@doEvent.bind @,timer.type), timer.duration*1000
 
-  doEvent: (event) ->
+  doEvent: (event = Constants.pickRandomGlobalEvent(), callback = ->) ->
     switch event
       when 'battle'
         do @doBattle
+
+    callback true
 
   doBattle: ->
     @game.componentDatabase.getRandomEvent 'battle', (e, event) =>

@@ -239,7 +239,16 @@ module.exports = (Module) ->
 
       @addRoute 'idle-event ":player" :event?', "idle.game.gm", (origin, route) =>
         [player, event] = [route.params.player, route.params.event]
-        @IdleWrapper.api.game.doEvent player, event, => @reply origin, "Your event is done."
+        @IdleWrapper.api.game.doEvent player, event, (did) =>
+          @reply origin, "Your event is done." if did
+          @reply origin, "Your event failed (the player wasn't found)." if _.isUndefined did
+          @reply origin, "Your event has failed (mysterious error, check the logs, or the event was just negative)." if did is false
+
+      @addRoute 'idle-globalevent :event?', "idle.game.gm", (origin, route) =>
+        event = route.params.event
+        @IdleWrapper.api.game.doGlobalEvent event, (did) =>
+          @reply origin, "Your event is done." if did
+          @reply origin, "Your event failed (something weird went wrong)." if not did
 
       @addRoute "idle-add event yesno \":question\" \":affirm\" \":deny\"", "idle.game.gm", (origin, route) =>
         [question, affirm, deny] = [route.params.question, route.params.affirm, route.params.deny]

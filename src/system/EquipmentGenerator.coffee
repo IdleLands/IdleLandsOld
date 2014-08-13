@@ -19,8 +19,8 @@ class EquipmentGenerator
       item = _.reduce propArray, ((combined, prop) ->
         if prop.type is "suffix" then combined.name += " of the #{prop.name}" else combined.name += " #{prop.name}"
         for attr,val of prop
-          continue if not _.isNumber val
-          if attr of combined then combined[attr] += prop[attr] else combined[attr] = prop[attr]
+          continue if (not _.isNumber val) or _.isEmpty attr
+          if attr of combined then combined[attr] += prop[attr] else combined[attr] = if _.isNaN prop[attr] then true else prop[attr]
         combined
       ), {name: ""}
       item.name = item.name.trim()
@@ -35,7 +35,7 @@ class EquipmentGenerator
     (itemProperties.push _.sample itemList['suffix']) if chance.integer({min: 0, max: 14}) is 1
 
     newItem = makeItem itemProperties
-    newItem.class = "Normal"
+    newItem.itemClass = "Normal"
     newItem.type = type
 
     new Equipment newItem

@@ -102,7 +102,9 @@ class Character extends EventEmitter2
 
         newValue = 0 if not ignoreNegative and newValue < 0
 
-        baseVal+newValue
+        combinedVal = baseVal+newValue
+        combinedVal = 0 if _.isNaN combinedVal
+        combinedVal
 
       stats: (stats) ->
         _.reduce stats, ((prev, stat) => prev+@stat stat), 0
