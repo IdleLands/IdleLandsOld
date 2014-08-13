@@ -175,6 +175,10 @@ class Player extends Character
     @playerManager.savePlayer @
 
   gainGold: (gold) ->
+    if _.isNaN gold
+      console.error "BAD GOLD VALUE GOTTEN SOMEHOW"
+      gold = 1
+
     if gold > 0
       @emit "player.gold.gain", @, gold
     else

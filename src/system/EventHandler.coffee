@@ -136,7 +136,15 @@ class EventHandler
       max = Math.max val, 1
       boost = chance.integer min: min, max: max
 
+    if _.isNaN boost
+      console.error "BOOST PRE-CALC IS NaN"
+      boost = 1
+
     boost = player.calcGoldGain boost
+
+    if _.isNaN boost
+      console.error "BOOST POST-CALC IS NaN"
+      boost = 1
 
     extra =
       gold: Math.abs boost
