@@ -118,10 +118,14 @@ class Game
       return if potentialParties.length < 2
       parties = potentialParties
 
-    # TODO: Support multiple parties
+    console.log parties
+
+    # TODO: Support more parties parties
     party1score = parties[0].score()
     party2score = parties[1].score()
 
+    # map parties to score
+    # max = Math.min partyScores...
     minScore = Math.min party1score, party2score
     maxScore = Math.max party1score, party2score
 

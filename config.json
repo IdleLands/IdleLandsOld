@@ -91,7 +91,7 @@
         },
         "defaults": {
             "game": {
-                "maxPartyMembers": 3,
+                "maxPartyMembers": 4,
                 "maxEnchantLevel": 10,
                 "maxPartyScorePercentDifference": 0.65
             },
