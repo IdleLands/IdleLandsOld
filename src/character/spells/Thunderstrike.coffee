@@ -12,7 +12,7 @@ class Thunderstrike extends Spell
 
   calcDamage: ->
     intDamage = (@caster.calc.stat 'int') * 0.25 * @baseTurns
-    maxIntDamage = (@caster.calc.stat 'int') * 0.3 * (@baseTurns-1)
+    maxIntDamage = (@caster.calc.stat 'int') + 0.4 * (@baseTurns-1)
     @chance.integer min: intDamage, max: Math.max intDamage+1,maxIntDamage
 
   cast: (player) ->
@@ -26,7 +26,7 @@ class Thunderstrike extends Spell
 
   tick: (player) ->
     message = "Storm clouds brew above #{player.name}..."
-    @broadcastBuffMessage message
+    @broadcast message
 
   constructor: (@game, @caster) ->
     super @game, @caster
