@@ -229,36 +229,47 @@ class Battle
     winMessages = []
     loseMessages = []
 
+    xpMap = {}
+
     # winning player xp distribution
     _.each @winningParty.players, (player) ->
-      xpGain = player.personalityReduce 'combatEndXpGain', [player, deadVariables], 0
+      basePct = chance.integer min: 1, max: 6
+      basePctValue = Math.floor player.xp.maximum * (basePct/100)
+
+      xpGain = player.personalityReduce 'combatEndXpGain', [player, deadVariables], basePctValue
       xpGain = player.calcXpGain xpGain
-      pct = +((xpGain/player.xp.maximum)*100).toFixed 3
+
+      gainPct = (xpGain/player.xp.maximum)*100
+      pct = +((gainPct).toFixed 3)
+
       winMessages.push "#{player.name} gained #{xpGain}xp [#{pct}%]"
+
+      xpMap[player] = xpGain
 
     @game.broadcast MessageCreator.genericMessage (_.str.toSentence winMessages)+"!" if winMessages.length > 0
 
     _.each @winningParty.players, (player) ->
-      xpGain = player.personalityReduce 'combatEndXpGain', [player, deadVariables], 0
-      xpGain = player.calcXpGain xpGain
-      player.gainXp xpGain
+      player.gainXp xpMap[player]
 
     # end winning
 
     #losing player xp distribution
 
     _.each deadVariables.deadPlayers, (player) ->
-      xpLoss = player.personalityReduce 'combatEndXpLoss', [player, deadVariables], 0
+      basePct = chance.integer min: 1, max: 6
+      basePctValue = Math.floor player.xp.maximum * (basePct/100)
+
+      xpLoss = player.personalityReduce 'combatEndXpLoss', [player, deadVariables], basePctValue
       xpLoss = player.calcXpGain xpLoss
+
       pct = +((xpLoss/player.xp.maximum)*100).toFixed 3
       loseMessages.push "#{player.name} lost #{xpLoss}xp [#{pct}%]"
+      xpMap[player] = xpLoss
 
     @game.broadcast MessageCreator.genericMessage (_.str.toSentence loseMessages)+"!" if loseMessages.length > 0
 
     _.each deadVariables.deadPlayers, (player) ->
-      xpLoss = player.personalityReduce 'combatEndXpLoss', [player, deadVariables], 0
-      xpLoss = player.calcXpGain xpLoss
-      player.gainXp -xpLoss
+      player.gainXp -xpMap[player]
 
     # end losing
 
