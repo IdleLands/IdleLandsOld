@@ -43,6 +43,20 @@
                  "width":0,
                  "x":608,
                  "y":32
+                }, 
+                {
+                 "gid":12,
+                 "height":0,
+                 "name":"Bard",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Trainer",
+                 "visible":true,
+                 "width":0,
+                 "x":64,
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",
