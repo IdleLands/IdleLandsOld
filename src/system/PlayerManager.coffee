@@ -79,7 +79,7 @@ class PlayerManager
       callback?({ success: true, name: options.name })
 
   buildPlayerSaveObject: (player) ->
-    _.omit player, 'playerManager', 'party', 'personalities', 'calc', 'spellsAffectedBy', 'fled', '_events'
+    _.omit player, 'playerManager', 'party', 'personalities', 'calc', 'spellsAffectedBy', 'fled', '_events', 'profession.chance'
 
   savePlayer: (player) ->
     savePlayer = @buildPlayerSaveObject player
@@ -100,7 +100,7 @@ class PlayerManager
 
     loadRN = (obj) ->
       return if not obj
-      obj.__current = 0 if _.isNaN obj.current
+      obj.__current = 0 if _.isNaN obj.__current
       obj.__proto__ = RestrictedNumber.prototype
       obj
 
