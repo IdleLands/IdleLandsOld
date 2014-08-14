@@ -19,10 +19,10 @@ class Cleric extends Class
   baseWisPerLevel: 5
 
   itemScore: (player, item) ->
-    item.wis*1.5
-    - item.str*0.2
-    - item.dex*0.1
-    - item.int*0.1
+    item.wis*1.5 -
+    item.str*0.2 -
+    item.dex*0.1 -
+    item.int*0.1
 
   physicalAttackChance: -> -10
 
