@@ -19,10 +19,10 @@ class Barbarian extends Class
   baseWisPerLevel: -3
 
   itemScore: (player, item) ->
-    item.con*2
-    + item.str*2
-    - item.wis
-    - item.int
+    item.con*2 +
+    item.str*2 -
+    item.wis -
+    item.int
 
   physicalAttackChance: (player) ->
     if player.special.getValue() > 70 then 30 else 5
