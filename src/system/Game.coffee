@@ -114,20 +114,16 @@ class Game
       for i in [0...numberOfTeams]
         parties[i] = collapseGroup(groups[i])
     else
-      potentialParties = _.sample @parties, 2
-      return if potentialParties.length < 2
-      parties = potentialParties
+      parties = _.sample @parties, 2
 
     console.log parties
 
-    # TODO: Support more parties parties
-    party1score = parties[0].score()
-    party2score = parties[1].score()
+    partyScores = _.map parties, (party) -> party.score()
 
-    # map parties to score
-    # max = Math.min partyScores...
-    minScore = Math.min party1score, party2score
-    maxScore = Math.max party1score, party2score
+    minScore = Math.min partyScores...
+    maxScore = Math.max partyScores...
+
+    console.log minScore, maxScore
 
     playerLists = _.map parties, (party) -> _.map party.players, (player) -> player.name
     if (_.intersection playerLists...).length > 1

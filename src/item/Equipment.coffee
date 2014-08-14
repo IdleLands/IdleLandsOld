@@ -77,10 +77,8 @@ class Equipment
     @luckPercent*30 +
     @icePercent*10 + @firePercent*10 + @waterPercent*10 + @earthPercent*10 + @thunderPercent*10 +
     @goldPercent*20 + @xpPercent*20 +
-    @enchantLevel*25 +
-
-    @silver*50 + @power*50 + @deadeye*50 + @prone*50 + @defense*50 + @crit*50 + @dodge*50 + @glowing*50
-
+    @enchantLevel*25
+    
   getName: ->
     if @enchantLevel then "+#{@enchantLevel} #{@name}" else @name
 

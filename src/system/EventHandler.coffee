@@ -215,7 +215,7 @@ class EventHandler
     else
       multiplier = player.calc.itemSellMultiplier item
       value = Math.floor item.score() * multiplier
-      player.gold.add value
+      player.gainGold value
       player.emit "event.sellItem", player, item, value
 
     callback true
