@@ -2,6 +2,7 @@
 _ = require "underscore"
 _.str = require "underscore.string"
 MessageCreator = require "../system/MessageCreator"
+chance = new (require "chance")()
 
 class Party
   constructor: (@game, @players) ->
@@ -9,18 +10,21 @@ class Party
     @name = @pickPartyName()
     return if not @name or not @players
     @addGlobally()
-    @recruit(@players)
+    @recruit @players
 
   score: ->
-    _.reduce @players, ((prev, player) -> prev + player.calc.partyScore()), 0
+    _.reduce @players, ((prev, player) -> prev + player.calc.totalItemScore()), 0
 
   getPartyName: ->
     if @players.length > 1 then @name else @players[0].name
 
+  genNullPartyName: ->
+    "The Null Party #{chance.integer min: 1}"
+
   pickPartyName: ->
-    return "The Null Party" if not Party::partyGrammar?
+    return @genNullPartyName() if not Party::partyGrammar?
     format = _.sample Party::partyGrammar
-    return "The Null Party" if not format?
+    return @genNullPartyName() if not format?
     arr =  format.split(" ")
     _.str.clean (_.reduce arr, (sentence, word) ->
       repl = null
@@ -46,6 +50,9 @@ class Party
       @game.parties = []
 
     @game.parties.push @
+
+  addPlayer: (player) ->
+    @recruit [player]
 
   recruit: (players)->
     _.forEach players, (player) =>

@@ -161,6 +161,9 @@ class Character extends EventEmitter2
         baseValue = item.score()
         Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue
 
+      totalItemScore: ->
+        _.reduce @self.equipment, ((prev, item) => prev+item.score()), 0
+
       itemReplaceChancePercent: ->
         @base.itemReplaceChancePercent = 100
         Math.max 0, Math.min 100, @self.personalityReduce 'itemReplaceChancePercent', [@self, @base.itemReplaceChancePercent], @base.itemReplaceChancePercent
@@ -176,10 +179,6 @@ class Character extends EventEmitter2
       itemSellMultiplier: (item) ->
         @base.itemSellMultiplier = 0.05
         @self.personalityReduce 'itemSellMultiplier', [@self, item, @base.itemSellMultiplier], @base.itemSellMultiplier
-
-      partyScore: ->
-        baseValue = _.reduce @self.equipment, ((prev, item) => prev + @self.calc.itemScore item), 0
-        @self.personalityReduce 'partyScore', [@self, baseValue], baseValue
 
       damageTaken: (attacker, damage, skillType, reductionType) ->
         baseValue = 0

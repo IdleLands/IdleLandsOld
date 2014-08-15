@@ -161,7 +161,7 @@ class EventHandler
 
   doItem: (event, player, callback) ->
     item = (_.sample player.equipment)
-    stat = (_.sample (_.reject (_.keys item), (key) -> key in ["name", "type", "itemClass", "enchantLevel"] or item[key] is 0))
+    stat = (_.sample (_.reject (_.keys item), (key) -> key is 'enchantLevel' or item[key] is 0 or not _.isNumber item[key]))
     return callback false if not stat
 
     val = item[stat] ? 0
@@ -245,7 +245,7 @@ class EventHandler
     item = _.sample _.reject player.equipment, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel
 
     return callback false if not item
-    stat = (_.sample (_.reject (_.keys item), (key) -> key in ["name", "type", "itemClass", "enchantLevel"] or item[key] isnt 0))
+    stat = (_.sample (_.reject (_.keys item), (key) -> key is 'enchantLevel' or item[key] isnt 0 or not _.isNumber item[key]))
 
     boost = 10
 
@@ -266,7 +266,7 @@ class EventHandler
   doFlipStat: (event, player, callback) ->
     item = (_.sample player.equipment)
     stat = _.sample (_.reject (_.keys item), (key) ->
-      key in ["name", "type", "itemClass", "enchantLevel"] or item[key] is 0 or _.isNaN item[key] or _.isBoolean item[key])
+      key in ["name", "type", "itemClass", "enchantLevel"] or item[key] is 0 or _.isNaN item[key] or not _.isNumber item[key])
 
     return callback false if not stat or item[stat] is 0
 

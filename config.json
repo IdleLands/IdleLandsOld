@@ -93,6 +93,8 @@
             "game": {
                 "maxPartyMembers": 4,
                 "maxParties": 3,
+                "soloBattleProbability": 35,
+                "aboveAveragePartyCountBattleProbability": 25,
                 "maxEnchantLevel": 10,
                 "maxPartyScorePercentDifference": 0.65
             },

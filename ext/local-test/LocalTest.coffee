@@ -6,7 +6,7 @@ _ = require "underscore"
 #### GAME CONSTANTS ####
 
 # change this if you want the console game to go faster
-DELAY_INTERVAL = 10
+DELAY_INTERVAL = 1
 
 ########################
 
@@ -20,6 +20,15 @@ players = [
   'Jeut'
   'Axce'
   'Groat'
+  'Jack'
+  'Xefe'
+  'Ooola'
+  'Getry'
+  'Seripity'
+  'Tence'
+  'Rawgle'
+  'Plez'
+  'Zep'
 ]
 
 hashes = []
