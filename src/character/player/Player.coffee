@@ -65,6 +65,8 @@ class Player extends Character
         @changeProfession className
 
   handleTeleport: (tile) ->
+    return if @stepCooldown > 0
+    @stepCooldown = 20
     dest = tile.object.properties
     dest.x = parseInt dest.destx
     dest.y = parseInt dest.desty
@@ -100,11 +102,13 @@ class Player extends Character
 
   moveAction: ->
     @ignoreDir = [] if not @ignoreDir
+    @stepCooldown = 0 if not @stepCooldown
+
     randomDir = -> chance.integer({min: 1, max: 9})
     dir = randomDir()
     dir = randomDir() while dir in @ignoreDir
 
-    dir = if chance.bool {likelihood: 75} then @lastDir else dir
+    dir = if chance.bool {likelihood: 80} then @lastDir else dir
     newLoc = @num2dir dir, @x, @y
     try
       tile = @playerManager.game.world.maps[@map].getTile newLoc.x,newLoc.y
@@ -125,6 +129,8 @@ class Player extends Character
       @emit "explore.walk.#{tile.terrain}".toLowerCase(), @
 
       @handleTile tile
+
+      @stepCooldown--
 
     catch
       @x = @y = 10
