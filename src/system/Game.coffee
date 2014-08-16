@@ -59,126 +59,144 @@ class Game
     new Party @, partyPlayers
 
   startBattle: (parties = [], event = null) ->
-    #return if @inBattle
+    return if @inBattle
     return if parties.length < 2 and @playerManager.players.length < 2
 
-    console.log @parties.length, parties.length, @playerManager.players.length
-    if parties.length < 2 and @parties.length < 2
-      # player ordering
-      soloPlayers = _.reject @playerManager.players, (player) -> player.party
-      soloPlayersOrdered = _.sortBy soloPlayers, (player) -> -player.calc.totalItemScore()
+    startBattle = (parties) =>
 
-      # constants
-      maxParties = Constants.defaults.game.maxParties
-      maxPartyMembers = Constants.defaults.game.maxPartyMembers
-      numberOfTeams = 2
+      if event
+        @broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.remark, event.player
 
-      # party generation variables
-      buckets = @parties or []
-      isSoloBattle = chance.bool likelihood: Constants.defaults.game.soloBattleProbability
-      numberOfTeams = chance.integer({min: 3, max: maxParties}) if chance.bool likelihood: Constants.defaults.game.aboveAveragePartyCountBattleProbability
-      maxPlayersPerTeam = if isSoloBattle then 1 else maxPartyMembers
+      @inBattle = true
+      new Battle @,parties
 
-      playerArrayToScores = (players) ->
-        _.map players, (player) -> player.calc.totalItemScore()
+    tryBattle = (parties) =>
+      return if parties.length is 0
 
-      createParties = (givenPlayers, existingParties, partyMax = 2, perPartyMax = 1) =>
-        arrayStartPos = soloPlayersOrdered.length - partyMax - 1
-        availablePlayers = givenPlayers
-        maxPartyScore = _.max existingParties, (party) -> party.score()
+      partyScores = _.map parties, (party) -> party.score()
 
-        if arrayStartPos > 1
-          startIndex = chance.integer min: 0, max: arrayStartPos
+      minScore = Math.min partyScores...
+      maxScore = Math.max partyScores...
 
-          firstPlayers = givenPlayers[startIndex..startIndex+partyMax]
+      playerLists = _.map parties, (party) -> _.map party.players, (player) -> player.name
+      modified = _.flatten playerLists
+      if (_.uniq modified).length < modified.length
+        console.error "ERROR: BATTLE FORMATION BLOCKED DUE TO ONE PLAYER BEING ON BOTH SIDES"
+        return no
 
-          availablePlayers = _.without availablePlayers, firstPlayers...
+      maxPercDiff = Constants.defaults.game.maxPartyScorePercentDifference
 
-          maxPartyScore = _.reduce (playerArrayToScores firstPlayers), ((prev, score) -> prev+score), 0
+      if minScore < maxScore*maxPercDiff
+        @broadcast MessageCreator.genericMessage "#{parties[0].getPartyName()} passed by #{parties[1].getPartyName()}, smiling and waving."
+        _.each parties, (party) -> party.disband()
+        return no
 
-        partyScores = {}
-        canPartiesTakeMoreMembers = {}
-        partyNames = {}
-        partiesAvailable = []
+      return no if parties.length is 0
 
-        # add a party to the roster list
-        addPartyToRoster = (party) ->
-          partyName = party.getPartyName()
-          partyScores[partyName] = party.score()
-          canPartiesTakeMoreMembers[partyName] = yes
-          partyNames[partyName] = party
-          partiesAvailable.push party
+      yes
 
-        #check if existing parties are below the max score (add to party hash if so)
-        _.each existingParties, (existingBucket) ->
-          addPartyToRoster existingBucket if existingBucket.score() < maxPartyScore
-
-        arePartiesReady = ->
-          for partyName,isReady of canPartiesTakeMoreMembers
-            return yes if not isReady
-          no
-
-        partiesChoosePlayer = ->
-          for partyName, score of partyScores
-            continue if not canPartiesTakeMoreMembers[partyName]
-            choosablePlayers = _.filter availablePlayers, (player) -> player.calc.totalItemScore() <= maxPartyScore-score
-
-            if choosablePlayers.length > 0
-
-              party = partyNames[partyName]
-
-              chosenPlayer = _.sample choosablePlayers
-              availablePlayers = _.without availablePlayers, chosenPlayer
-              partyScores[partyName] += chosenPlayer.calc.totalItemScore()
-              canPartiesTakeMoreMembers[partyName] = no if party.players.length is perPartyMax
-
-              party.addPlayer chosenPlayer
-
-            else
-              canPartiesTakeMoreMembers[partyName] = no
-
-        _.each firstPlayers, (player) =>
-          newParty = new Party @, player
-          addPartyToRoster newParty
-
-        do partiesChoosePlayer for x in [0..givenPlayers.length]
-
-        parties = _.sample partiesAvailable, partyMax
-
-      createParties soloPlayersOrdered, buckets, numberOfTeams, maxPlayersPerTeam
-
-    else
-      console.log "HIT ELSE"
-      parties = _.sample @parties, 2
-
-    # TODO max average level difference
-    partyScores = _.map parties, (party) -> party.score()
-
-    minScore = Math.min partyScores...
-    maxScore = Math.max partyScores...
-
-    #console.log minScore, maxScore
-
-    playerLists = _.map parties, (party) -> _.map party.players, (player) -> player.name
-    if (_.intersection playerLists...).length > 1
-      console.error "ERROR: BATTLE FORMATION BLOCKED DUE TO ONE PLAYER BEING ON BOTH SIDES"
+    group = _.sample parties, 2
+    if tryBattle group
+      startBattle group
       return
 
-    maxPercDiff = Constants.defaults.game.maxPartyScorePercentDifference
 
-    if minScore < maxScore*maxPercDiff
-      @broadcast MessageCreator.genericMessage "#{parties[0].getPartyName()} passed by #{parties[1].getPartyName()}, smiling and waving."
-      _.each parties, (party) -> party.disband()
-      return
+    # player ordering
+    soloPlayers = _.reject @playerManager.players, (player) -> player.party
+    soloPlayersOrdered = _.sortBy soloPlayers, (player) -> -player.calc.totalItemScore()
 
-    return if parties.length is 0
-    console.log "PARTIES",parties
+    # constants
+    maxParties = Constants.defaults.game.maxParties
+    maxPartyMembers = Constants.defaults.game.maxPartyMembers
+    numberOfTeams = 2
 
-    if event
-      @broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.remark, event.player
+    # party generation variables
+    buckets = @parties or []
+    isSoloBattle = chance.bool likelihood: Constants.defaults.game.soloBattleProbability
+    numberOfTeams = chance.integer({min: 3, max: maxParties}) if chance.bool likelihood: Constants.defaults.game.aboveAveragePartyCountBattleProbability
+    maxPlayersPerTeam = if isSoloBattle then 1 else maxPartyMembers
 
-    @inBattle = true
-    new Battle @,parties
+    playerArrayToScores = (players) ->
+      _.map players, (player) -> player.calc.totalItemScore()
+
+    createParties = (givenPlayers, existingParties, partyMax = 2, perPartyMax = 1) =>
+      arrayStartPos = soloPlayersOrdered.length - partyMax - 1
+      availablePlayers = givenPlayers
+      maxPartyScore = (_.max existingParties, (party) -> party.score()).score?()
+
+      if arrayStartPos > 1
+        startIndex = chance.integer min: 0, max: arrayStartPos
+
+        firstPlayers = givenPlayers[startIndex..startIndex+partyMax]
+
+        availablePlayers = _.without availablePlayers, firstPlayers...
+
+        maxPartyScore = _.reduce (playerArrayToScores firstPlayers), ((prev, score) -> prev+score), 0
+
+      partyScores = {}
+      canPartiesTakeMoreMembers = {}
+      partyNames = {}
+      partiesAvailable = []
+
+      # add a party to the roster list
+      addPartyToRoster = (party) ->
+        partyName = party.name
+        partyScores[partyName] = party.score()
+        canPartiesTakeMoreMembers[partyName] = yes
+        partyNames[partyName] = party
+        partiesAvailable.push party
+
+        updatePartySize party
+
+      destroyParty = (party) ->
+        partyName = party.name
+        delete partyScores[partyName]
+        delete partyNames[partyName]
+        delete canPartiesTakeMoreMembers[partyName]
+        party.disband()
+
+      #check if existing parties are below the max score (add to party hash if so)
+      _.each existingParties, (existingBucket) ->
+        addPartyToRoster existingBucket if existingBucket.score() <= maxPartyScore
+
+      updatePartySize = (party) ->
+        canPartiesTakeMoreMembers[party.name] = no if party.players.length is perPartyMax
+
+      partiesChoosePlayer = ->
+        for partyName, score of partyScores
+          continue if not canPartiesTakeMoreMembers[partyName]
+
+          choosablePlayers = _.reject availablePlayers, (player) -> player.calc.totalItemScore() > maxPartyScore-score
+
+          if choosablePlayers.length > 0
+
+            party = partyNames[partyName]
+
+            chosenPlayer = _.max choosablePlayers, (player) -> player.calc.totalItemScore()
+            availablePlayers = _.without availablePlayers, chosenPlayer
+            partyScores[partyName] += chosenPlayer.calc.totalItemScore()
+
+            party.addPlayer chosenPlayer
+
+            updatePartySize party
+          else
+            canPartiesTakeMoreMembers[partyName] = no
+
+      _.each firstPlayers, (player) =>
+        newParty = new Party @, player
+        addPartyToRoster newParty
+
+      parties = _.sample partiesAvailable, partyMax
+
+      unusedParties = _.difference partiesAvailable, parties
+
+      _.each unusedParties, destroyParty
+
+      do partiesChoosePlayer for x in [0..availablePlayers.length]
+
+    createParties soloPlayersOrdered, buckets, numberOfTeams, maxPlayersPerTeam
+
+    startBattle parties if tryBattle parties
 
   teleport: (player, map, x, y, text) ->
     player.map = map

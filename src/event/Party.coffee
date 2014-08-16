@@ -5,12 +5,13 @@ MessageCreator = require "../system/MessageCreator"
 chance = new (require "chance")()
 
 class Party
-  constructor: (@game, @players) ->
-    @players = [@players] if not _.isArray @players
+  constructor: (@game, players) ->
+    @players = []
+    players = [players] if not _.isArray players
+    return if not players or players.length is 0
+    @recruit players
     @name = @pickPartyName()
-    return if not @name or not @players
     @addGlobally()
-    @recruit @players
 
   score: ->
     _.reduce @players, ((prev, player) -> prev + player.calc.totalItemScore()), 0
@@ -19,7 +20,7 @@ class Party
     if @players.length > 1 then @name else @players[0].name
 
   genNullPartyName: ->
-    "The Null Party #{chance.integer min: 1}"
+    "The Null Party #{chance.integer min: 1, max: 1000}"
 
   pickPartyName: ->
     return @genNullPartyName() if not Party::partyGrammar?
@@ -54,28 +55,31 @@ class Party
   addPlayer: (player) ->
     @recruit [player]
 
-  recruit: (players)->
+  recruit: (players) ->
     _.forEach players, (player) =>
+      return if player of @players
       player.emit "player.party.join"
       player.party = @
       player.partyName = if @players.length > 1 then @name else ''
+      @players.push player
 
-  playerLeave: (player) ->
+  playerLeave: (player, forced = no) ->
     @players = _.without @players, player
     player.emit "player.party.leave", player, @
     player.partyName = ''
-    if @players.length <= 1
-      @disband()
-      player.playerManager.game.broadcast MessageCreator.genericMessage "#{player.name} has disbanded #{@name}."
-    else
-      player.playerManager.game.broadcast MessageCreator.genericMessage "#{player.name} has left #{@name}."
 
-    delete player.party
+    # forced = yes means disband() called this
+    if not forced
+      if @players.length <= 1
+        @disband()
+        player.playerManager.game.broadcast MessageCreator.genericMessage "#{player.name} has disbanded #{@name}." if not forced
+      else
+        player.playerManager.game.broadcast MessageCreator.genericMessage "#{player.name} has left #{@name}."
+
+    player.party = null
 
   disband: ->
     @game.parties = _.without @game.parties, @
-    _.forEach @players, (player) ->
-      player.emit "player.party.leave"
-      delete player.party
+    _.forEach @players, (player) => @playerLeave player, yes
 
 module.exports = exports = Party

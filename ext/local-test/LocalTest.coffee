@@ -29,6 +29,12 @@ players = [
   'Rawgle'
   'Plez'
   'Zep'
+  'Shet'
+  'Lord Sirpy'
+  'Sir Pipe'
+  'Pleb'
+  'Rekter'
+  'Pilu'
 ]
 
 hashes = []

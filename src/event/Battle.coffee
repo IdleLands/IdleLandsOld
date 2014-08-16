@@ -140,7 +140,7 @@ class Battle
 
     [dodgeMin, dodgeMax] = [-target.calc.dodge(), player.calc.beatDodge()]
 
-    dodgeChance = chance.integer {min: dodgeMin, max: dodgeMax}
+    dodgeChance = chance.integer {min: dodgeMin, max: Math.max dodgeMin+1, dodgeMax}
 
     sendBattleMessage = (message, player) =>
       @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace message, player
@@ -153,7 +153,7 @@ class Battle
 
     [hitMin, hitMax] = [-target.calc.hit(), player.calc.beatHit()]
 
-    hitChance = chance.integer {min: hitMin, max: hitMax}
+    hitChance = chance.integer {min: hitMin, max: Math.max hitMin+1, hitMax}
 
     if -(target.calc.stat 'luck') <= hitChance <= 0
       message += ", but #{player.name} missed!"
@@ -279,7 +279,6 @@ class Battle
       _.each party.players, (player) ->
         player.clearAffectingSpells()
 
-      delete party.currentBattle
       party.disband()
 
     @game.inBattle = false

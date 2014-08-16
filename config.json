@@ -96,7 +96,7 @@
                 "soloBattleProbability": 35,
                 "aboveAveragePartyCountBattleProbability": 25,
                 "maxEnchantLevel": 10,
-                "maxPartyScorePercentDifference": 0.65
+                "maxPartyScorePercentDifference": 0.85
             },
             "player": {
                 "defaultYesPercent": 50,
