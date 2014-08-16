@@ -99,9 +99,10 @@ class Player extends Character
       @playerManager.game.eventHandler.doEventForPlayer @name, tile.object.forceEvent
 
   moveAction: ->
+    @ignoreDir = [] if not @ignoreDir
     randomDir = -> chance.integer({min: 1, max: 9})
     dir = randomDir()
-    dir = randomDir() while dir is @ignoreDir
+    dir = randomDir() while dir in @ignoreDir
 
     dir = if chance.bool {likelihood: 75} then @lastDir else dir
     newLoc = @num2dir dir, @x, @y
@@ -112,11 +113,11 @@ class Player extends Character
         @x = newLoc.x
         @y = newLoc.y
         @lastDir = dir
-        @ignoreDir = null
+        @ignoreDir = []
 
       else
         @lastDir = null
-        @ignoreDir = dir
+        @ignoreDir.push dir
 
         @emit 'explore.hit.wall', @
 
