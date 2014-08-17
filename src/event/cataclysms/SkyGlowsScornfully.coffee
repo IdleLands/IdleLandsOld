@@ -3,19 +3,19 @@ Cataclysm = require "../Cataclysm"
 _ = require "underscore"
 MessageCreator = require "../../system/MessageCreator"
 
-class SkyShinesBright extends Cataclysm
+class SkyGlowsScornfully extends Cataclysm
   constructor: (game) ->
-    super game, "skybrightshine"
+    super game, "skyscornglow"
 
   go: ->
     @map = @pickRandomMap()
     affected = @getPlayersInMap @map
-    message = "The sky shines brightly in #{@map}#{if affected.length >0 then "!" else ", but no one was around to see it."}"
+    message = "The sky glows scornfully in #{@map}#{if affected.length >0 then "!" else ", but no one was around to see it."}"
     @game.broadcast MessageCreator.genericMessage message
 
     _.each affected, (player) =>
       @affect player
       callback = ->
-      @game.eventHandler.doEventForPlayer player.name, callback, 'blessXp'
+      @game.eventHandler.doEventForPlayer player.name, callback, 'forsakeXp'
 
-module.exports = exports = SkyShinesBright
+module.exports = exports = SkyGlowsScornfully
