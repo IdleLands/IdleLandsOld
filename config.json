@@ -69,12 +69,12 @@
             "blessXp": {
                 "fail": 1,
                 "flux": 1.5,
-                "minPercent": 5,
-                "maxPercent": 25
+                "minPercent": 1,
+                "maxPercent": 20
             },
             "forsakeXp": {
-                "fail": -1,
-                "flux": 1.5,
+                "fail": -2,
+                "flux": 2.5,
                 "minPercent": -5,
                 "maxPercent": -25
             },
@@ -82,15 +82,15 @@
                 "amount": [1, 60, 100, 400, 1000, 3000, 7000, 10000, 25000, 50000, 65000, 85000, 100000]
             },
             "forsakeGold": {
-                "amount": [-1, -60, -100, -400, -1000, -3000, -7000, -10000, -25000, -50000, -65000, -85000, -100000]
+                "amount": [-1, -90, -300, -750, -1700, -4890, -9001, -16500, -35900, -57000, -69000, -95000, -300000]
             },
             "blessItem": {
                 "amount": 1,
                 "percent": 5
             },
             "forsakeItem": {
-                "amount": -1,
-                "percent": -5
+                "amount": -2,
+                "percent": -7
             }
         },
         "defaults": {
