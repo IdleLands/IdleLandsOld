@@ -100,7 +100,6 @@ class Game
       startBattle group
       return
 
-
     # player ordering
     soloPlayers = _.reject @playerManager.players, (player) -> player.party
     soloPlayersOrdered = _.sortBy soloPlayers, (player) -> -player.calc.totalItemScore()
@@ -120,6 +119,10 @@ class Game
       _.map players, (player) -> player.calc.totalItemScore()
 
     createParties = (givenPlayers, existingParties, partyMax = 2, perPartyMax = 1) =>
+
+      updatePartySize = (party) ->
+        canPartiesTakeMoreMembers[party.name] = no if party.players.length is perPartyMax
+        
       arrayStartPos = soloPlayersOrdered.length - partyMax - 1
       availablePlayers = givenPlayers
       maxPartyScore = (_.max existingParties, (party) -> party.score()).score?()
@@ -158,9 +161,6 @@ class Game
       #check if existing parties are below the max score (add to party hash if so)
       _.each existingParties, (existingBucket) ->
         addPartyToRoster existingBucket if existingBucket.score() <= maxPartyScore
-
-      updatePartySize = (party) ->
-        canPartiesTakeMoreMembers[party.name] = no if party.players.length is perPartyMax
 
       partiesChoosePlayer = ->
         for partyName, score of partyScores
