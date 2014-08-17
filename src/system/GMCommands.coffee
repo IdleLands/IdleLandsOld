@@ -51,6 +51,10 @@ class GMCommands
       map: "Norkos"
       x: 112
       y: 14
+    "bard":
+      map: "Bard Island -1"
+      x: 4
+      y: 4
     "jail":
       map: "Norkos"
       x: 13
