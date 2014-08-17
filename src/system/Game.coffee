@@ -21,8 +21,6 @@ console.log "Rebooted IdleLands."
 
 class Game
 
-  #Constants either go here, or in a Constants class
-
   constructor: () ->
     @parties = []
     @componentDatabase = new ComponentDatabase @
@@ -122,7 +120,7 @@ class Game
 
       updatePartySize = (party) ->
         canPartiesTakeMoreMembers[party.name] = no if party.players.length is perPartyMax
-        
+
       arrayStartPos = soloPlayersOrdered.length - partyMax - 1
       availablePlayers = givenPlayers
       maxPartyScore = (_.max existingParties, (party) -> party.score()).score?()

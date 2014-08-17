@@ -3,6 +3,10 @@ Constants = require "./Constants"
 
 _ = require "underscore"
 
+requireDir = require "require-dir"
+
+cataclysms = requireDir "../event/cataclysms"
+
 class GlobalEventHandler
 
   constructor: (@game) ->
@@ -18,11 +22,18 @@ class GlobalEventHandler
       when 'battle'
         do @doBattle
 
+      when 'cataclysm'
+        do @doCataclysm
+
     callback true
 
   doBattle: ->
     @game.componentDatabase.getRandomEvent 'battle', (e, event) =>
       event.player = @game.playerManager.randomPlayer()
       @game.startBattle [], event
+
+  doCataclysm: ->
+    cata = new cataclysms[_.sample _.keys cataclysms] @game
+    do cata.go
 
 module.exports = exports = GlobalEventHandler

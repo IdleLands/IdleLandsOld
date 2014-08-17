@@ -7,6 +7,10 @@
             {
                 "type": "battle",
                 "duration": 1200
+            },
+            {
+                "type": "cataclysms",
+                "duration": 14400
             }
         ],
         "eventRates": [
