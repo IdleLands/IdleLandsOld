@@ -15,11 +15,11 @@ class EventHandler
   constructor: (@game) ->
     @playerEventsDb = new Datastore "playerEvents", (db) -> db.ensureIndex {createdAt: 1}, {expiresAfterSeconds: 7200}, ->
 
-  doEventForPlayer: (playerName, callback, eventType = Constants.pickRandomEventType()) ->
+  doEventForPlayer: (playerName, callback, eventType = Constants.pickRandomNormalEventType()) ->
     player = @game.playerManager.getPlayerByName playerName
     if not player
       console.error "Attempting to do event #{eventType} for #{playerName}, but player was not there."
-      return callback()
+      return callback?()
 
     @doEvent eventType, player, callback
 
@@ -265,8 +265,7 @@ class EventHandler
 
   doFlipStat: (event, player, callback) ->
     item = (_.sample player.equipment)
-    stat = _.sample (_.reject (_.keys item), (key) ->
-      key in ["name", "type", "itemClass", "enchantLevel"] or item[key] is 0 or _.isNaN item[key] or not _.isNumber item[key])
+    stat = (_.sample (_.reject (_.keys item), (key) -> key is 'enchantLevel' or item[key] is 0 or not _.isNumber item[key]))
 
     return callback false if not stat or item[stat] is 0
 
