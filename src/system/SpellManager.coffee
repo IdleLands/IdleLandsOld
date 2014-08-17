@@ -31,12 +31,13 @@ SpellManager::spellMods =
   'water': ['moist', 'wet', 'soaked', 'tidal', 'monsoon-y']
   'thunder': ['static', 'shocking', 'jolting', 'bolting', 'storming']
   'earth': ['dirty', 'pebbly', 'rocky', 'boulder-y', 'avalanche-y']
+  'holy': ['cheesy', 'pure', 'blessed', 'holy', 'godly']
 
-  'energy': ['weak', 'able', 'powerful', 'oh-so-magical', 'godly']
+  'energy': ['weak', 'able', 'powerful', 'oh-so-magical', 'solar']
   'heal': ['mending', 'alleviating', 'healing', 'blessing', 'restoring']
-  'buff': ['abrupt', 'short', 'medium', 'long', 'eternal']
+  # 'buff': ['abrupt', 'short', 'medium', 'long', 'eternal']
 
-  'normal': ['plain', 'normal', 'ordinary', 'obvious', 'conspicious']
+  'physical': ['plain', 'normal', 'ordinary', 'obvious', 'conspicious']
 
 # Constants.spellModifyPercent
 SpellManager::modifySpell = (spell) ->
@@ -54,7 +55,7 @@ SpellManager::modifySpell = (spell) ->
       newName = "#{SpellManager::spellMods[element][prob]} #{spell.name}"
 
   spell.name = newName
-  spell.element &= Spell::Element[element]
+  spell.element |= Spell::Element[element]
   spell.bonusElement = Spell::Element[element]
   spell.bonusElementRanking = strength
   spell
