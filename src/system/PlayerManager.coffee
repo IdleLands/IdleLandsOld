@@ -79,7 +79,7 @@ class PlayerManager
       callback?({ success: true, name: options.name })
 
   buildPlayerSaveObject: (player) ->
-    _.omit player, 'playerManager', 'party', 'personalities', 'calc', 'spellsAffectedBy', 'fled', '_events', 'profession.chance'
+    _.omit player, 'playerManager', 'party', 'personalities', 'calc', 'spellsAffectedBy', 'fled', '_events', 'profession', 'stepCooldown'
 
   savePlayer: (player) ->
     savePlayer = @buildPlayerSaveObject player
