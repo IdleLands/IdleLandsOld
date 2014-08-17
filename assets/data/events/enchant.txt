@@ -3,3 +3,5 @@
 %player had a vision in which %she realized %hisher alter ego lived inside %hisher %item, and that it was enchanted!
 %player read something about an enchanting ritual in a book and buries %hisher %item on a field. Suddenly, thunder strucks the place and after digging it out, %player sees that %hisher %item got enchanted!
 %player prayed for %hisher deity to enchant %hisher %item.  After that tactic didn't pan out, %player got a job crushing baby seals to pay for the enchantment.
+An enchantress approaches %player and enchants %hisher %item, making it glow pretty colors.
+%player used what sorecery %she knows to enchant %hisher %item with extra power!
