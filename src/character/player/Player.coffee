@@ -43,7 +43,7 @@ class Player extends Character
     ]
 
   handleTrainerOnTile: (tile) ->
-    return if @isBusy
+    return if @isBusy or @stepCooldown > 0
     @isBusy = true
     className = tile.object.name
     message = "#{@name} has met with the #{className} trainer!"
@@ -51,6 +51,7 @@ class Player extends Character
       message += " Alas, #{@name} is already a #{className}!"
       @isBusy = false
       @emit "player.trainer.isAlready", @, className
+      @stepCooldown = 10
 
     @playerManager.game.broadcast MessageCreator.genericMessage message
 
