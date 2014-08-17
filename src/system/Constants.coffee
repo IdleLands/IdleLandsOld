@@ -12,11 +12,14 @@ class Constants
   @globalEventTimers = config.globalEventTimers
   @defaults = config.defaults
 
-  @pickRandomEventType = ->
+  @pickRandomNormalEvent = ->
     _.sample @eventRates
 
+  @pickRandomNormalEventType = ->
+    @pickRandomNormalEvent().type
+
   @pickRandomEvent = (player) ->
-    event = @pickRandomEventType()
+    event = @pickRandomNormalEvent()
     eventMod = player.personalityReduce 'eventModifier', [event], 0
     prob = (chance.integer {min: 0, max: event.max})
     return event.type if prob <= (event.min+eventMod+player.calc.stat 'luck')
