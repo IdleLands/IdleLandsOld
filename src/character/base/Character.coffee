@@ -208,6 +208,10 @@ class Character extends EventEmitter2
         @base.classChangePercent = 100
         Math.max 0, Math.min 100, @self.personalityReduce 'classChangePercent', [@self, potential, @base.classChangePercent], @base.classChangePercent
 
+      alignment: ->
+        @base.alignment = 0
+        Math.max -10, Math.min 10, @self.personalityReduce 'alignment', [@self, @base.alignment], @base.alignment
+
 Character::num2dir = (dir,x,y) ->
   switch dir
     when 1 then return {x: x-1, y: y-1}
