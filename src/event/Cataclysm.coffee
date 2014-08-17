@@ -14,6 +14,12 @@ class Cataclysm
   findRandomSetOfPlayers: ->
     @getPlayersInMap @pickRandomMap()
 
+  allPlayers: ->
+    @game.playerManager.players
+
+  randomPlayer: ->
+    _.sample @allPlayers()
+
   affect: (player) ->
     player.emit "event.cataclysms"
     player.emit "event.cataclysms.#{@name}"
