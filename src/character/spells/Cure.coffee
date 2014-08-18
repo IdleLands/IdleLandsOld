@@ -12,7 +12,9 @@ class Cure extends Spell
     @targetFriendly()
 
   calcDamage: ->
-    @chance.integer min: ((@caster.calc.stat 'wis')/4), max: Math.max (((@caster.calc.stat 'wis')/4)+1),(@caster.calc.stat 'wis')
+    minStat = (@caster.calc.stat 'wis')/4
+    maxStat = @caster.calc.stat 'wis'
+    super() + @minMax minStat, maxStat
 
   cast: (player) ->
     damage = @calcDamage()

@@ -3,7 +3,7 @@ Spell = require "../base/Spell"
 
 class BluntHit extends Spell
   name: "blunt hit"
-  @element = BluntHit::element = Spell::Element.normal
+  @element = BluntHit::element = Spell::Element.physical
   @cost = BluntHit::cost = 100
   @restrictions =
     "Fighter": 13
@@ -15,7 +15,9 @@ class BluntHit extends Spell
   calcDuration: -> super()+1
 
   calcDamage: ->
-    @chance.integer min: (@caster.calc.stat 'str')/6, max: Math.max ((@caster.calc.stat 'str')/6)+1,(@caster.calc.stat 'str')/4
+    minStat = (@caster.calc.stat 'str')/6
+    maxStat = (@caster.calc.stat 'str')/4
+    super() + @minMax minStat, maxStat
 
   cast: (player) ->
     damage = @calcDamage()

@@ -4,7 +4,7 @@ Spell = require "../base/Spell"
 class Treatment extends Spell
   name: "treatment"
   @element = Treatment::element = Spell::Element.heal & Spell::Element.buff
-  @cost = Treatment::cost = 225
+  @cost = Treatment::cost = 400
   @restrictions =
     "Generalist": 7
 

@@ -4,12 +4,14 @@ Spell = require "../base/Spell"
 class SweepingGeneralization extends Spell
   name: "sweeping generalization"
   @element = SweepingGeneralization::element = Spell::Element.normal
-  @cost = SweepingGeneralization::cost = 250
+  @cost = SweepingGeneralization::cost = 350
   @restrictions =
     "Generalist": 1
 
   calcDamage: ->
-    @chance.integer min: ((@caster.calc.stats ['str', 'dex'])/4), max: Math.max ((@caster.calc.stats ['str', 'dex'])/4)+1,((@caster.calc.stats ['str', 'dex'])/2)
+    minStat = (@caster.calc.stats ['str', 'dex'])/4
+    maxStat = (@caster.calc.stats ['str', 'dex'])/2
+    super() + @minMax minStat, maxStat
 
   determineTargets: ->
     @targetEnemies()

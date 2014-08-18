@@ -3,8 +3,8 @@ Spell = require "../base/Spell"
 
 class DoubleTap extends Spell
   name: "double tap"
-  @element = DoubleTap::element = Spell::Element.normal
-  @cost = DoubleTap::cost = 50
+  @element = DoubleTap::element = Spell::Element.physical
+  @cost = DoubleTap::cost = 450
   @restrictions =
     "Fighter": 1
 

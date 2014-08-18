@@ -15,7 +15,9 @@ class FrostBite extends Spell
   calcDuration: -> super()+1
 
   calcDamage: ->
-    @chance.integer min: (@caster.calc.stat 'int')/6, max: Math.max ((@caster.calc.stat 'int')/6)+1,(@caster.calc.stat 'int')/4
+    minStat = (@caster.calc.stat 'int')/6
+    maxStat = (@caster.calc.stat 'int')/4
+    super() + @minMax minStat, maxStat
 
   cast: (player) ->
     damage = @calcDamage()

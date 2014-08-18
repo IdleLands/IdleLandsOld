@@ -13,7 +13,9 @@ class CureGroup extends Spell
     @targetFriendlies()
 
   calcDamage: ->
-    @chance.integer min: ((@caster.calc.stat 'wis')/5), max: Math.max (((@caster.calc.stat 'wis')/5)+1),(@caster.calc.stat 'wis')/1.5
+    minStat = (@caster.calc.stat 'wis')/5
+    maxStat = (@caster.calc.stat 'wis')/1.5
+    super() + @minMax minStat, maxStat
 
   cast: (player) ->
     damage = @calcDamage()

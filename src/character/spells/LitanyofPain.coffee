@@ -11,7 +11,9 @@ class LitanyOfPain extends Spell
   calcDuration: -> super()+3
   
   calcDamage: ->
-    @chance.integer min: (@caster.calc.stat 'int')/5, max: Math.max ((@caster.calc.stat 'int')/5)+1,(@caster.calc.stat 'int')/3
+    minInt = (@caster.calc.stat 'int')/5
+    maxInt = (@caster.calc.stat 'int')/3
+    super() + @minMax minInt, maxInt
 
   determineTargets: ->
     @targetFriendlies()
@@ -21,7 +23,7 @@ class LitanyOfPain extends Spell
     @broadcast message
 
   tick: (player) ->
-    if((@chance.integer min: (Math.min 0,-(@caster.calc.stat 'wis')), max: (Math.max 0,(player.calc.stats ['agi', 'dex']/2))) < 0)
+    if((@chance.integer min: (Math.min 0, -(@caster.calc.stat 'wis')), max: (Math.max 0,(player.calc.stats ['agi', 'dex']/2))) < 0)
       damage = @calcDamage()
       message = "#{player.name} is damaged by #{@caster.name}'s \"#{@name}\" for #{damage} HP damage"
       @caster.party?.currentBattle?.takeHp @caster, player, damage, @determineType(), message

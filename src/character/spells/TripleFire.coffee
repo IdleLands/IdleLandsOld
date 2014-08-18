@@ -4,7 +4,7 @@ Spell = require "../base/Spell"
 class TripleFire extends Spell
   name: "triple fire"
   @element = TripleFire::element = Spell::Element.fire
-  @cost = TripleFire::cost = 250
+  @cost = TripleFire::cost = 650
   @restrictions =
     "Mage": 10
 
@@ -12,9 +12,9 @@ class TripleFire extends Spell
     @targetEnemy no, 3
 
   calcDamage: ->
-    minDmg = (@caster.calc.stat 'int')*0.4
-    maxDmg = (@caster.calc.stat 'int')*0.8
-    @chance.integer min: minDmg, max: Math.max (minDmg)+1,maxDmg
+    minStat = (@caster.calc.stat 'int')*0.4
+    maxStat = (@caster.calc.stat 'int')*0.75
+    super() + @minMax minStat, maxStat
 
   cast: (player) ->
     damage = @calcDamage()

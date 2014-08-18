@@ -4,7 +4,7 @@ Spell = require "../base/Spell"
 class Thunderstrike extends Spell
   name: "thunderstrike"
   @element = Thunderstrike::element = Spell::Element.thunder
-  @cost = Thunderstrike::cost = 150
+  @cost = Thunderstrike::cost = 375
   @restrictions =
     "Mage": 7
 
@@ -13,7 +13,7 @@ class Thunderstrike extends Spell
   calcDamage: ->
     intDamage = (@caster.calc.stat 'int') * 0.25 * @baseTurns
     maxIntDamage = (@caster.calc.stat 'int') + 0.4 * (@baseTurns-1)
-    @chance.integer min: intDamage, max: Math.max intDamage+1,maxIntDamage
+    super() + @minMax intDamage, maxIntDamage
 
   cast: (player) ->
     message = "#{@caster.name} cast #{@name} at #{player.name}!"
