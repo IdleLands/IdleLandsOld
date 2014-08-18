@@ -20,10 +20,10 @@ class Bard extends Class
   baseWisPerLevel: 3
 
   itemScore: (player, item) ->
-    item.int*1.4
-    + item.wis*1.4
-    - item.con*0.8
-    - item.str*0.8
+    item.int*1.4 +
+    item.wis*1.4 -
+    item.con*0.8 -
+    item.str*0.8
 
   physicalAttackChance: -> -20
 
