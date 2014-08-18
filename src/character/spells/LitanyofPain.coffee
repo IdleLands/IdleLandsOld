@@ -14,7 +14,7 @@ class LitanyOfPain extends Spell
     @chance.integer min: (@caster.calc.stat 'int')/5, max: Math.max ((@caster.calc.stat 'int')/5)+1,(@caster.calc.stat 'int')/3
 
   determineTargets: ->
-    @targetFriendlies()
+    @targetEnemies()
 
   cast: (player) ->
     message = "#{@caster.name} begins playing \"#{@name}\" at #{player.name}!"
