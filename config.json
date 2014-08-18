@@ -69,13 +69,13 @@
             "blessXp": {
                 "fail": 1,
                 "flux": 1.5,
-                "minPercent": 1,
-                "maxPercent": 20
+                "minPercent": 3,
+                "maxPercent": 15
             },
             "forsakeXp": {
                 "fail": -2,
                 "flux": 2.5,
-                "minPercent": -5,
+                "minPercent": -10,
                 "maxPercent": -25
             },
             "blessGold": {
@@ -89,8 +89,8 @@
                 "percent": 5
             },
             "forsakeItem": {
-                "amount": -2,
-                "percent": -7
+                "amount": -3,
+                "percent": -9
             }
         },
         "defaults": {
