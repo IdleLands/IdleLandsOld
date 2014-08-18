@@ -1,5 +1,6 @@
 
 Class = require "./../base/Class"
+MessageCreator = require "../../system/MessageCreator"
 
 class Bard extends Class
 
@@ -29,7 +30,18 @@ class Bard extends Class
   minDamage: (player) ->
     player.calc.damage()*0.10
 
+  events: {}
+
   load: (player) ->
     super player
+
+    player.on "combat.party.win", @events.partyWin = ->
+      goldBonus = player.calcGoldGain 1000
+      player.gainGold goldBonus
+      player.playerManager.game.broadcast MessageCreator.genericMessage "A stunning performance by #{player.name} netted #{goldBonus} gold from the audience!"
+
+  unload: (player) ->
+    player.off "combat.party.win", @events.partyWin
+
 
 module.exports = exports = Bard
