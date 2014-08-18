@@ -19,7 +19,16 @@ class Spell
 
   calcDuration: (player) -> @bonusElementRanking
 
-  calcEleBonus: -> @elementalBonus
+  calcDamage: ->
+    damage = 0
+    for damageType, damageBit of @Element
+      continue if not @element & damageBit
+      damage += @caster.calc.stat damageType
+
+    damage
+
+  minMax: (min, max) ->
+    @chance.integer min: min, max: Math.max min+1, max
 
   prepareCast: ->
     targets = @determineTargets()
@@ -136,16 +145,16 @@ Spell::Element =
   thunder: 8
   earth: 16
 
+  holy: 1 | 2 | 4 | 8 | 16
+
   energy: 32
   heal: 64
   buff: 128
   debuff: 256
 
-  normal: 512
-
-Spell::Element.holy = Spell::Element.ice & Spell::Element.fire & Spell::Element.water & Spell::Element.thunder & Spell::Element.earth
+  physical: 512
 
 Spell::determineType = ->
-  if @element & @Element.normal then "physical" else "magical"
+  if @element & @Element.physical then "physical" else "magical"
 
 module.exports = exports = Spell
