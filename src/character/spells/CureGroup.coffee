@@ -20,7 +20,7 @@ class CureGroup extends Spell
   cast: (player) ->
     damage = @calcDamage()
     message = "#{@caster.name} cast #{@name} at #{player.name} and healed #{damage} HP!"
-    @caster.party.currentBattle.takeHp @caster, player, -damage, @determineType(), message
+    @doDamageTo player, -damage, message
 
   constructor: (@game, @caster) ->
     super @game, @caster

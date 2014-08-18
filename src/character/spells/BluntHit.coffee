@@ -22,8 +22,7 @@ class BluntHit extends Spell
   cast: (player) ->
     damage = @calcDamage()
     message = "#{@caster.name} used #{@name} on #{player.name} and dealt #{damage} HP damage!"
-    @caster.party.currentBattle.takeHp @caster, player, damage, @determineType()
-    @broadcast message
+    @doDamageTo player, damage, message
 
   tick: (player) ->
     message = "#{player.name} is still suffering from #{@name}."

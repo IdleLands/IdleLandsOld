@@ -3,10 +3,10 @@ Spell = require "../base/Spell"
 
 class SweepingGeneralization extends Spell
   name: "sweeping generalization"
-  @element = SweepingGeneralization::element = Spell::Element.normal
+  @element = SweepingGeneralization::element = Spell::Element.physical
   @cost = SweepingGeneralization::cost = 350
   @restrictions =
-    "Generalist": 1
+    "Generalist": 5
 
   calcDamage: ->
     minStat = (@caster.calc.stats ['str', 'dex'])/4

@@ -16,7 +16,7 @@ class EnergyMissile extends Spell
   cast: (player) ->
     damage = @calcDamage()
     message = "#{@caster.name} cast #{@name} at #{player.name} for #{damage} HP damage!"
-    @caster.party.currentBattle.takeHp @caster, player, damage, @determineType(), message
+    @doDamageTo player, damage, message
 
   constructor: (@game, @caster) ->
     super @game, @caster

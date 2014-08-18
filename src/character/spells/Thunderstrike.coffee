@@ -20,9 +20,10 @@ class Thunderstrike extends Spell
     @broadcast message
 
   uncast: (player) ->
+    return if not @caster.party or not @caster.party.currentBattle
     damage = @calcDamage()
     message = "#{player.name} was struck by #{@caster.name}'s #{@name} for #{damage} HP damage!"
-    @caster.party?.currentBattle?.takeHp @caster, player, damage, @determineType(), message
+    @doDamageTo player, damage, message
 
   tick: (player) ->
     message = "Storm clouds brew above #{player.name}..."
