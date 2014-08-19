@@ -37,9 +37,13 @@ class MessageCreator
 
   #more types: combat, health, mana, special, announcement, event.gold, event.item, event.xp
 
-  @doStringReplace: (string, player, extra = null) ->
+  @doStringReplace: (string, player, extra = {}) ->
     gender = player.getGender()
     string = _.str.clean string
+
+    for key, val of extra
+      string = string.split("%#{key}").join val
+
     string
       .split('%player').join player.name
       .split('%hishers').join getGenderPronoun gender, '%hishers'
@@ -53,16 +57,5 @@ class MessageCreator
       .split('%Himher').join _.str.capitalize getGenderPronoun gender, '%himher'
       .split('%She').join _.str.capitalize getGenderPronoun gender, '%she'
       .split('%Heshe').join _.str.capitalize getGenderPronoun gender, '%she'
-
-      .split('%item').join extra?.item
-      .split('%xpp').join extra?.xpp
-      .split('%xpr').join extra?.xpr
-      .split('%xp').join extra?.xp
-      .split('%goldr').join extra?.goldr
-      .split('%gold').join extra?.gold
-      .split('%partyName').join extra?.partyName
-      .split('%party').join extra?.party
-
-      .split('%damage').join extra?.damage
 
 module.exports = exports = MessageCreator
