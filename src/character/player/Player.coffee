@@ -67,7 +67,7 @@ class Player extends Character
 
   handleTeleport: (tile) ->
     return if @stepCooldown > 0
-    @stepCooldown = 20
+    @stepCooldown = 30
     dest = tile.object.properties
     dest.x = parseInt dest.destx
     dest.y = parseInt dest.desty
