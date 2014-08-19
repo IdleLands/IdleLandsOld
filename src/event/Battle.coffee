@@ -283,15 +283,15 @@ class Battle
 
     @game.inBattle = false
 
-  takeHp: (attacker, defender, damage, type, message) ->
-    @takeStatFrom attacker, defender, damage, type, "hp", message
+  takeHp: (attacker, defender, damage, type, spell, message) ->
+    @takeStatFrom attacker, defender, damage, type, "hp", spell, message
 
-  takeMp: (attacker, defender, damage, type, message) ->
-    @takeStatFrom attacker, defender, damage, type, "mp", message
+  takeMp: (attacker, defender, damage, type, spell, message) ->
+    @takeStatFrom attacker, defender, damage, type, "mp", spell, message
 
-  takeStatFrom: (attacker, defender, damage, type, damageType = "hp", message = null) ->
+  takeStatFrom: (attacker, defender, damage, type, damageType = "hp", spell, message = null) ->
 
-    damage -= defender.calc.damageTaken attacker, damage, type, damageType
+    damage -= defender.calc.damageTaken attacker, damage, type, spell, damageType
 
     defender[damageType]?.sub damage
 
@@ -311,6 +311,10 @@ class Battle
       else
         @emitEvents "vitiate", "vitiated", attacker, defender, type: type, damage: damage
 
+    extra =
+      damage: Math.abs damage
+
+    message = MessageCreator.doStringReplace message, attacker, extra
     @game.broadcast MessageCreator.genericMessage message if message and typeof message is "string"
 
   emitEventToAll: (event, data) ->
