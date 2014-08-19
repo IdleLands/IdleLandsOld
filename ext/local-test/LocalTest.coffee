@@ -105,7 +105,7 @@ interactiveSession = ->
 
   cli.on 'line', (line) ->
     clearInterval(interval)
-    cli.setPrompt "halt: c to continue> "
+    cli.setPrompt "halted: c to continue> "
 
     if (line) == ""
       cli.prompt()
