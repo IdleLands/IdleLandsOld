@@ -48,7 +48,6 @@ class MessageCreator
       .split('%she').join getGenderPronoun gender, '%she'
       .split('%heshe').join getGenderPronoun gender, '%she'
 
-
       .split('%Hishers').join _.str.capitalize getGenderPronoun gender, '%hishers'
       .split('%Hisher').join _.str.capitalize getGenderPronoun gender, '%hisher'
       .split('%Himher').join _.str.capitalize getGenderPronoun gender, '%himher'
@@ -63,5 +62,7 @@ class MessageCreator
       .split('%gold').join extra?.gold
       .split('%partyName').join extra?.partyName
       .split('%party').join extra?.party
+
+      .split('%damage').join extra?.damage
 
 module.exports = exports = MessageCreator
