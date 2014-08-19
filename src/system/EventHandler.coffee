@@ -98,10 +98,10 @@ class EventHandler
 
     extra =
       xp: Math.abs boost
-      xpr: boost
-      xpp: +(percent).toFixed 3
+      realXp: boost
+      percentXp: +(percent).toFixed 3
 
-    message = "#{event.remark} [%xprxp, ~%xpp%]"
+    message = "#{event.remark} [%realXpxp, ~%percentXp%]"
 
     @broadcastEvent message, player, extra
 
@@ -148,13 +148,13 @@ class EventHandler
 
     extra =
       gold: Math.abs boost
-      goldr: boost
+      realGold: boost
 
     player.gainGold boost
 
     player.emit "event.#{event.type}", player, extra
 
-    message = event.remark + " [%goldr gold]"
+    message = event.remark + " [%realGold gold]"
 
     @broadcastEvent message, player, extra
     callback true
@@ -228,7 +228,7 @@ class EventHandler
     newPartyPlayers = _.without newParty.players, player
 
     extra =
-      party: _.str.toSentence _.pluck newPartyPlayers, 'name'
+      partyMembers: _.str.toSentence _.pluck newPartyPlayers, 'name'
       partyName: newParty.name
 
     @broadcastEvent event.remark, player, extra
