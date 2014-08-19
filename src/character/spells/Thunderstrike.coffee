@@ -22,7 +22,7 @@ class Thunderstrike extends Spell
   uncast: (player) ->
     return if not @caster.party or not @caster.party.currentBattle
     damage = @calcDamage()
-    message = "#{player.name} was struck by #{@caster.name}'s #{@name} for #{damage} HP damage!"
+    message = "#{player.name} was struck by #{@caster.name}'s #{@name} for %damage HP damage!"
     @doDamageTo player, damage, message
 
   tick: (player) ->

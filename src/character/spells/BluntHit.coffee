@@ -21,7 +21,7 @@ class BluntHit extends Spell
 
   cast: (player) ->
     damage = @calcDamage()
-    message = "#{@caster.name} used #{@name} on #{player.name} and dealt #{damage} HP damage!"
+    message = "#{@caster.name} used #{@name} on #{player.name} and dealt %damage HP damage!"
     @doDamageTo player, damage, message
 
   tick: (player) ->

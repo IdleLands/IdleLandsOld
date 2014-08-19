@@ -15,7 +15,7 @@ class HolyBolt extends Spell
 
   cast: (player) ->
     damage = @calcDamage()
-    message = "#{@caster.name} cast #{@name} at #{player.name} for #{damage} HP damage!"
+    message = "#{@caster.name} cast #{@name} at #{player.name} for %damage HP damage!"
     @doDamageTo player, damage, message
 
   constructor: (@game, @caster) ->

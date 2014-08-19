@@ -18,8 +18,8 @@ class SweepingGeneralization extends Spell
 
   cast: (player) ->
     damage = @calcDamage()
-    message = "#{@caster.name} cast #{@name} and #{player.name} took #{damage} HP damage!"
-    @caster.party.currentBattle.takeHp @caster, player, damage, @determineType(), message
+    message = "#{@caster.name} cast #{@name} and #{player.name} took %damage HP damage!"
+    @doDamageTo player, damage, message
 
   constructor: (@game, @caster) ->
     super @game, @caster
