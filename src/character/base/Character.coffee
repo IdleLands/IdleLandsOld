@@ -109,29 +109,71 @@ class Character extends EventEmitter2
       stats: (stats) ->
         _.reduce stats, ((prev, stat) => prev+@stat stat), 0
 
+      crit: -> @self.calc.stat 'crit'
+      prone: -> 0 < @self.calc.stat 'prone'
+      power: -> 0 < @self.calc.stat 'power'
+      dance: -> 0 < @self.calc.stat 'dance'
+      offense: -> @self.calc.stat 'offense'
+      defense: -> @self.calc.stat 'defense'
+      glowing: -> @self.calc.stat 'glowing'
+      deadeye: -> @self.calc.stat 'deadeye'
+      silver: -> 0 < @self.calc.stat 'silver'
+      vorpal: -> 0 < @self.calc.stat 'vorpal'
+
+      boosts: (stats, baseValue) ->
+        Math.floor _.reduce stats, (prev, stat) =>
+          switch stat
+            when 'crit' then                return prev += 100 * @self.calc.crit()
+            when 'dance', 'deadeye' then    return prev += baseValue if @self.calc.dance()
+            when 'silver', 'power' then     return prev += baseValue / 10 if @self.calc[stat]()
+            when 'offense', 'defense' then  return prev += baseValue * @self.calc[stat]()/10
+            when 'glowing' then             return prev += baseValue * @self.calc.glowing()/20
+            when 'vorpal' then              return prev += baseValue / 2 if @self.calc.vorpal()
+          prev
+        , 0
+
       dodge: ->
         @base.dodge = @self.calc.stat 'agi'
-        @self.personalityReduce 'dodge', [@self, @base.dodge], @base.dodge
+        value = @self.personalityReduce 'dodge', [@self, @base.dodge], @base.dodge
+        value += @self.calc.boosts ['dance', 'glowing', 'defense'], @base.dodge
+        value
 
       beatDodge: ->
         @base.beatDodge = Math.max 10, @self.calc.stats ['dex','str','agi','wis','con','int']
-        @self.personalityReduce 'beatDodge', [@self, @base.beatDodge], @base.beatDodge
+        value = @self.personalityReduce 'beatDodge', [@self, @base.beatDodge], @base.beatDodge
+        value += @self.calc.boosts ['deadeye', 'glowing', 'offense'], @base.beatDodge
+        value
 
       hit: ->
         @base.hit = (@self.calc.stats ['dex', 'agi', 'con']) / 6
-        @self.personalityReduce 'hit', [@self, @base.hit], @base.hit
+        value = @self.personalityReduce 'hit', [@self, @base.hit], @base.hit
+        value += @self.calc.boosts ['defense', 'glowing'], @base.hit
+        value
 
       beatHit: ->
         @base.beatHit = Math.max 10, (@self.calc.stats ['str', 'dex']) / 2
-        @self.personalityReduce 'beatHit', [@self, @base.beatHit], @base.beatHit
+        value = @self.personalityReduce 'beatHit', [@self, @base.beatHit], @base.beatHit
+        value += @self.calc.boosts ['offense', 'glowing'], @base.beatHit
+        value
 
       damage: ->
         @base.damage = Math.max 10, @self.calc.stats ['str']
-        @self.personalityReduce 'damage', [@self, @base.damage], @base.damage
+        value = @self.personalityReduce 'damage', [@self, @base.damage], @base.damage
+        value += @self.calc.boosts ['power', 'offense', 'glowing', 'vorpal'], @base.damage
+        value
 
       minDamage: ->
         @base.minDamage = 1
-        @self.personalityReduce 'minDamage', [@self, @base.minDamage], @base.minDamage
+        maxDamage = @self.calc.damage()
+        value = @self.personalityReduce 'minDamage', [@self, @base.minDamage], @base.minDamage
+        value += @self.calc.boosts ['silver', 'offense', 'glowing', 'vorpal'], maxDamage
+        Math.min value, maxDamage-1
+
+      criticalChance: ->
+        @base.criticalChance = 1 + @self.calc.stat 'luck'
+        value = @self.personalityReduce 'criticalChance', [@self, @base.criticalChance], @base.criticalChance
+        value += @self.calc.boosts ['crit'], @base.criticalChance
+        value
 
       physicalAttackChance: ->
         @base.physicalAttackChance = 65
@@ -195,10 +237,6 @@ class Character extends EventEmitter2
       fleePercent: ->
         @base.fleePercent = 0.1
         @self.personalityReduce 'fleePercent', [@self, @base.fleePercent], @base.fleePercent
-
-      criticalChance: ->
-        @base.criticalChance = 1 + @self.calc.stat 'luck'
-        @self.personalityReduce 'criticalChance', [@self, @base.criticalChance], @base.criticalChance
 
       partyLeavePercent: ->
         @base.partyLeavePercent = Constants.defaults.player.defaultPartyLeavePercent
