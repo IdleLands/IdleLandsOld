@@ -33,6 +33,10 @@ class Barbarian extends Class
   strPercent: (player) ->
     player.special.getValue()
 
+  damageTaken: (player, attacker, damage, skillType, spell, reductionType) ->
+    return 0 if reductionType isnt "hp" or skillType isnt "magical"
+    -Math.floor damage/2
+
   events: {}
 
   load: (player) ->
@@ -47,7 +51,7 @@ class Barbarian extends Class
     player.on "combat.self.kill", @events.enemyDeath = -> player.special.sub 15
     player.on "combat.self.killed", @events.selfDead = -> player.special.toMinimum()
     player.on "combat.self.deflect", @events.selfDeflect = (target) =>
-      probability = (Math.floor player.level.getValue()/10)*10
+      probability = (Math.floor player.level.getValue()/10)*5
       if @chance.bool({likelihood: probability})
         player.party.currentBattle.doPhysicalAttack player, target, yes
 
