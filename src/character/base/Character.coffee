@@ -180,9 +180,9 @@ class Character extends EventEmitter2
         @base.itemSellMultiplier = 0.05
         @self.personalityReduce 'itemSellMultiplier', [@self, item, @base.itemSellMultiplier], @base.itemSellMultiplier
 
-      damageTaken: (attacker, damage, skillType, reductionType) ->
+      damageTaken: (attacker, damage, skillType, spell, reductionType) ->
         baseValue = 0
-        @self.personalityReduce 'damageTaken', [@self, attacker, damage, skillType, reductionType], baseValue
+        @self.personalityReduce 'damageTaken', [@self, attacker, damage, skillType, spell, reductionType], baseValue
 
       cantAct: ->
         baseValue = 0
