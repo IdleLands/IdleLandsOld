@@ -145,7 +145,7 @@ class Character extends EventEmitter2
         value
 
       hit: ->
-        @base.hit = (@self.calc.stats ['dex', 'agi', 'con']) / 6
+        @base.hit = (@self.calc.stats ['dex', 'agi', 'con']) / 3
         value = @self.personalityReduce 'hit', [@self, @base.hit], @base.hit
         value += @self.calc.boosts ['defense', 'glowing'], @base.hit
         value
