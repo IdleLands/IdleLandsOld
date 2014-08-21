@@ -15,7 +15,7 @@ The Goddess of Riches, Kirierath, causes it to rain gold down at %player only, a
 %player got a welfare check for %gold gold!
 %player found a wallet containing %gold gold while walking around. %She decided to keep the money after thinking about it briefly.
 %player wrote %hisher thoughts into a book, and ended up selling it for %gold gold!
-%player received %gold from a charity to help adventurers in need!
+%player received %gold gold from a charity to help adventurers in need!
 %player was picking %hisher ears, when suddenly %gold gold coins fell out right into %hisher hands!
 %player pawned off some things %she didn't need for %gold gold!
 %player got a %gold reward for slaying a monster!
