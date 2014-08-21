@@ -36,6 +36,7 @@
 "Grabbin' 'n Slowin' Ghosts" agi=150 dex=150
 "Rocket Rocket Rocket Skates" agi=300 dex=25
 "Flippity Floppies" dex=250 agi=100
+"Savin' The World Boots" dex=150 agi=150 con=150
 "Rocket Shoes" agi=200 dex=150
 "Hover Boots" agi=150 dex=250
 "Expensive Cardboard Shoes" agi=250 dex=200
