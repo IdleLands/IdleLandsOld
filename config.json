@@ -2,7 +2,7 @@
     "storage": "mongo",
     "storageURL": "localhost:27017",
     "gameConstants": {
-        "gameName": "Idletopia",
+        "gameName": "Idliathla",
         "globalEventTimers": [
             {
                 "type": "battle",
