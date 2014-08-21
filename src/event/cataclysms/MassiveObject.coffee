@@ -10,6 +10,7 @@ class MassiveObject extends Cataclysm
   go: ->
     massObj = @randomPlayer()
     affected = _.difference @allPlayers(), [massObj]
+    return if not massObj or affected.length is 0
     message = "#{massObj.name} suddenly becomes a massive object, pulling all players to the nearby vicinity!"
     @game.broadcast MessageCreator.genericMessage message
 
