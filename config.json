@@ -6,7 +6,7 @@
         "globalEventTimers": [
             {
                 "type": "battle",
-                "duration": 600
+                "duration": 1200
             },
             {
                 "type": "cataclysm",
