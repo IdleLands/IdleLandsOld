@@ -53,7 +53,7 @@ class PlayerManager
     name = (_.findWhere @players, {identifier, identifier})?.name
     return if not name
 
-    @players = _.filter @players, (player) -> not player.identifier is identifier
+    @players = _.reject @players, (player) -> player.identifier is identifier
     delete @playerHash[identifier]
 
     @game.broadcast MessageCreator.generateMessage "#{name} has left #{Constants.gameName}!"
