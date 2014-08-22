@@ -196,7 +196,7 @@ module.exports = (Module) ->
           { upsert: true }, ->
 
         @addServerChannel origin.bot, server, channel
-        @broadcast "#{origin.bot.config.server}/#{origin.channel} has joined the Idletopia network!"
+        @broadcast "#{origin.bot.config.server}/#{origin.channel} has joined the Idle Lands network!"
 
       @addRoute "idle-stop", "idle.game.stop", (origin, route) =>
         [channel, server] = [origin.channel, origin.bot.config.server]
@@ -204,7 +204,7 @@ module.exports = (Module) ->
           { channel: channel, server: server, active: false },
           { upsert: true }, ->
 
-        @broadcast "#{origin.bot.config.server}/#{origin.channel} has left the Idletopia network!"
+        @broadcast "#{origin.bot.config.server}/#{origin.channel} has left the Idle Lands network!"
         @removeServerChannel origin.bot, server, channel
 
       registerCommand = (origin, route) =>
