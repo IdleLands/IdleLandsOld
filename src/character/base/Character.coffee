@@ -170,7 +170,7 @@ class Character extends EventEmitter2
         Math.min value, maxDamage-1
 
       criticalChance: ->
-        @base.criticalChance = 1 + @self.calc.stat 'luck'
+        @base.criticalChance = 1 + ((@self.calc.stats ['luck', 'dex']) / 2)
         value = @self.personalityReduce 'criticalChance', [@self, @base.criticalChance], @base.criticalChance
         value += @self.calc.boosts ['crit'], @base.criticalChance
         value
