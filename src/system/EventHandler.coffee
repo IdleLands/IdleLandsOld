@@ -286,7 +286,9 @@ class EventHandler
     @broadcastEvent string, player, extra
     callback true
 
+  specialStats: ['offense', 'defense', 'prone', 'power', 'silver', 'crit', 'dance', 'deadeye', 'glowing', 'vorpal']
+
   validItemStat: (item) ->
-    _.sample (_.reject (_.keys item), (key) -> key is 'enchantLevel' or item[key] is 0 or not _.isNumber item[key])
+    _.sample (_.reject (_.keys item), (key) -> key is 'enchantLevel' or item[key] is 0 or not _.isNumber item[key] or key of @specialStats)
 
 module.exports = exports = EventHandler
