@@ -11,7 +11,7 @@ class LightsFromTheStars extends Spell
   calcDuration: -> super()+3
 
   determineTargets: ->
-    @targetFriendlies()
+    @targetAllAllies()
 
   int: -> @storedInt
   

@@ -16,7 +16,7 @@ class LitanyOfPain extends Spell
     super() + @minMax minInt, maxInt
 
   determineTargets: ->
-    @targetEnemies()
+    @targetAllEnemies()
 
   cast: (player) ->
     message = "#{@caster.name} begins playing \"#{@name}\" at #{player.name}!"

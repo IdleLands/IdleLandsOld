@@ -11,7 +11,7 @@ class NoEscape extends Spell
   calcDuration: -> super()+3
 
   determineTargets: ->
-    @targetFriendlies()
+    @targetAllAllies()
 
   dex: -> (@caster.calc.stat 'int')/4
   

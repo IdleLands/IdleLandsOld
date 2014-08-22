@@ -95,7 +95,7 @@
         },
         "defaults": {
             "game": {
-                "maxPartyMembers": 4,
+                "maxPartyMembers": 3,
                 "maxParties": 3,
                 "soloBattleProbability": 35,
                 "aboveAveragePartyCountBattleProbability": 25,

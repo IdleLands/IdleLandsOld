@@ -9,11 +9,11 @@ class TripleFire extends Spell
     "Mage": 10
 
   determineTargets: ->
-    @targetEnemy no, 3
+    @targetSomeEnemies size: 3, guaranteeSize: yes
 
   calcDamage: ->
-    minStat = (@caster.calc.stat 'int')*0.4
-    maxStat = (@caster.calc.stat 'int')*0.75
+    minStat = (@caster.calc.stat 'int')*0.3
+    maxStat = (@caster.calc.stat 'int')*0.5
     super() + @minMax minStat, maxStat
 
   cast: (player) ->

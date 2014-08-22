@@ -14,7 +14,7 @@ class SweepingGeneralization extends Spell
     super() + @minMax minStat, maxStat
 
   determineTargets: ->
-    @targetEnemies()
+    @targetAllEnemies()
 
   cast: (player) ->
     damage = @calcDamage()

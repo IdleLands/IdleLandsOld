@@ -11,7 +11,7 @@ class Treatment extends Spell
   calcDuration: -> super()+3
 
   determineTargets: ->
-    @targetFriendly()
+    @targetSomeAllies()
 
   calcDamage: (player) ->
     Math.floor (player.hp.maximum * 0.07)

@@ -10,7 +10,7 @@ class CureGroup extends Spell
     "Cleric": 15
 
   determineTargets: ->
-    @targetFriendlies()
+    @targetAllAllies()
 
   calcDamage: ->
     minStat = (@caster.calc.stat 'wis')/5

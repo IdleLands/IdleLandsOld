@@ -9,7 +9,7 @@ class Cure extends Spell
     "Cleric": 5
 
   determineTargets: ->
-    @targetFriendly()
+    @targetSomeAllies()
 
   calcDamage: ->
     minStat = (@caster.calc.stat 'wis')/4

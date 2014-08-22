@@ -11,7 +11,7 @@ class OurHeartsIgnite extends Spell
   calcDuration: -> super()+3
 
   determineTargets: ->
-    @targetFriendlies()
+    @targetAllAllies()
 
   str: -> (@caster.calc.stat 'int')/4
   

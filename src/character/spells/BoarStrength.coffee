@@ -11,7 +11,7 @@ class BoarStrength extends Spell
   calcDuration: -> super()+3
 
   determineTargets: ->
-    @targetFriendly()
+    @targetSomeAllies()
 
   strPercent: -> 25
 

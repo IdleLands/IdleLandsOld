@@ -38,44 +38,40 @@ class Spell
     @affect targets
 
   determineTargets: ->
-    do @targetEnemy
+    @targetSomeEnemies size: 1
 
-  targetAll: (includeDead = no, onlyDead = no) ->
+  _chooseTargets: (targets, options = {}) ->
+    options = _.defaults options, {guaranteeSize: no, size: 1}
+    return (_.sample targets, options.size) if not options.guaranteeSize
+    ret = []
+    ret.push (_.sample targets) while ret.length < options.size
+    ret
+
+  _baseTarget: (options = {}) ->
+    options = _.defaults options, {includeLiving: yes, includeDead: no}
     _.chain @baseTargets
-    .reject (target) ->
-      target.fled
-    .reject (target) ->
-      target.hp.atMin() and (not includeDead or onlyDead)
+    .reject (target) -> target.fled
+    .reject (target) -> target.hp.atMin() and not options.includeDead
+    .filter (target) -> not target.hp.atMin() and options.includeLiving
     .value()
 
-  targetAny: (includeDead = no, num = 1, onlyDead = no) ->
-    _.sample (@targetAll includeDead, onlyDead), num
+  targetAll: (options) ->
+    @_baseTarget options
 
-  targetFriendlies: (includeDead = no, onlyDead = no) ->
-    _.chain @baseTargets
-    .reject (target) ->
-      target.fled
-    .reject (target) ->
-      target.hp.atMin() and (not includeDead or onlyDead)
-    .reject (target) =>
-      @caster.party isnt target.party
-    .value()
+  targetSome: (options) ->
+    @_chooseTargets (@targetAll options), options
 
-  targetFriendly: (includeDead = no, num = 1, onlyDead = no) ->
-    _.sample (@targetFriendlies includeDead, onlyDead), num
+  targetAllAllies: (options) ->
+    _.reject (@targetAll options), (target) => @caster.party isnt target.party
 
-  targetEnemies: (includeDead = no, onlyDead = no) ->
-    _.chain @baseTargets
-    .reject (target) ->
-      target.fled
-    .reject (target) ->
-      target.hp.atMin() and (not includeDead or onlyDead)
-    .reject (target) =>
-      @caster.party is target.party
-    .value()
+  targetSomeAllies: (options) ->
+    @_chooseTargets (@targetAllAllies options), options
 
-  targetEnemy: (includeDead = no, num = 1, onlyDead = no) ->
-    _.sample (@targetEnemies includeDead, onlyDead), num
+  targetAllEnemies: (options) ->
+    _.reject (@targetAll options), (target) => @caster.party is target.party
+
+  targetSomeEnemies: (options) ->
+    @_chooseTargets (@targetAllEnemies options), options
 
   affect: (affected = []) ->
     @affected = if affected and not _.isArray affected then [affected] else affected
