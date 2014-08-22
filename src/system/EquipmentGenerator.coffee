@@ -35,9 +35,18 @@ class EquipmentGenerator
     (itemProperties.push _.sample itemList['suffix']) if chance.integer({min: 0, max: 14}) is 1
 
     newItem = makeItem itemProperties
-    newItem.itemClass = "Normal"
     newItem.type = type
 
-    new Equipment newItem
+    item = new Equipment newItem
+    newItem.itemClass = @getItemClass item
+    item
+
+  getItemClass: (item) ->
+    itemClass = "basic"
+    itemClass = "pro" if item.name.toLowerCase() isnt item.name
+    itemClass = "idle" if item.name.toLowerCase().indexOf("idle") isnt -1 or item.name.toLowerCase().indexOf("idling") isnt -1
+    itemClass = "godly" if item.score() > 5000
+
+    itemClass
 
 module.exports = exports = EquipmentGenerator
