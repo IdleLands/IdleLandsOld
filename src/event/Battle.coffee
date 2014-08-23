@@ -183,6 +183,7 @@ class Battle
 
     @emitEvents "attack", "attacked", player, target
     @takeStatFrom player, target, damage, "physical", "hp"
+    @checkBattleEffects player, target
 
     if target.hp.atMin()
       message += " -- a fatal blow!"
@@ -195,6 +196,18 @@ class Battle
   doMagicalAttack: (player, spellClass) ->
     spell = @game.spellManager.modifySpell new spellClass @game, player
     spell.prepareCast()
+
+  checkBattleEffects: (attacker, defender) ->
+    findSpell = (name) => _.findWhere @game.spellManager.spells, name: name
+    spellProto = null
+    [aEvent, dEvent] = ['','']
+    if attacker.calc.prone() and chance.bool(likelihood: 15)
+      spellProto = findSpell "Prone"
+      [aEvent, dEvent] = ['effect.prone', 'effect.proned']
+
+    @emitEvents aEvent, dEvent, attacker, defender
+    spellInst = new spellProto @game, attacker, defender
+    spellInst.prepareCast()
 
   endBattle: ->
     @emitEventToAll "battle.end", @turnOrder
