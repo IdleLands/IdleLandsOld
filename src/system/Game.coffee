@@ -2,7 +2,7 @@
 
 PlayerManager = require "./PlayerManager"
 EventHandler = require "./EventHandler"
-MonsterManager = require "./MonsterManager"
+MonsterGenerator = require "./MonsterGenerator"
 MessageCreator = require "./MessageCreator"
 ComponentDatabase = require "./ComponentDatabase"
 EquipmentGenerator = require "./EquipmentGenerator"
@@ -25,7 +25,7 @@ class Game
     @parties = []
     @componentDatabase = new ComponentDatabase @
     @playerManager = new PlayerManager @
-    @monsterManager = new MonsterManager()
+    @monsterGenerator = new MonsterGenerator()
     @spellManager = new SpellManager @
     @eventHandler = new EventHandler @
     @globalEventHandler = new GlobalEventHandler @
