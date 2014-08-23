@@ -152,9 +152,6 @@ class Player extends Character
   calculateYesPercent: ->
     Math.min 100, (Math.max 0, Constants.defaults.player.defaultYesPercent + @personalityReduce 'calculateYesPercentBonus')
 
-  calculatePartyLeavePercent: ->
-    Math.min 100, (Math.max 0, @calc.partyLeavePercent())
-
   getGender: ->
     "male"
 
@@ -169,7 +166,7 @@ class Player extends Character
   possiblyLeaveParty: ->
     return if not @party
     return if @party.currentBattle
-    return if not chance.bool {likelihood: @calculatePartyLeavePercent()}
+    return if not chance.bool {likelihood: @calc.partyLeavePercent()}
     @party.playerLeave @
 
   takeTurn: ->
