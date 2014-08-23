@@ -1,5 +1,5 @@
 
-Character = require "./../base/Character"
+Character = require "../base/Character"
 RestrictedNumber = require "restricted-number"
 MessageCreator = require "../../system/MessageCreator"
 Constants = require "../../system/Constants"
