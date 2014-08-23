@@ -1,27 +1,27 @@
 
-Spell = require "../base/Spell"
+Spell = require "../../../base/Spell"
 
-class FrostBite extends Spell
-  name: "frostbite"
-  @element = FrostBite::element = Spell::Element.ice
-  @cost = FrostBite::cost = 100
+class BluntHit extends Spell
+  name: "blunt hit"
+  @element = BluntHit::element = Spell::Element.physical
+  @cost = BluntHit::cost = 100
   @restrictions =
-    "Mage": 4
+    "Fighter": 13
 
-  cantAct: -> if @chance.bool({likelihood:25}) then 1 else 0
+  cantAct: -> 1
 
-  cantActMessages: -> "%player is currently frostbitten"
+  cantActMessages: -> "%player is currently stunned"
 
   calcDuration: -> super()+1
 
   calcDamage: ->
-    minStat = (@caster.calc.stat 'int')/6
-    maxStat = (@caster.calc.stat 'int')/4
+    minStat = (@caster.calc.stat 'str')/6
+    maxStat = (@caster.calc.stat 'str')/4
     super() + @minMax minStat, maxStat
 
   cast: (player) ->
     damage = @calcDamage()
-    message = "#{@caster.name} cast #{@name} at #{player.name} for %damage HP damage!"
+    message = "#{@caster.name} used #{@name} on #{player.name} and dealt %damage HP damage!"
     @doDamageTo player, damage, message
 
   tick: (player) ->
@@ -39,4 +39,4 @@ class FrostBite extends Spell
       doSpellUncast: @uncast
       "combat.self.turn.end": @tick
 
-module.exports = exports = FrostBite
+module.exports = exports = BluntHit

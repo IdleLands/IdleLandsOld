@@ -38,6 +38,7 @@ class Spell
     @affect targets
 
   determineTargets: ->
+    return @forcedTargets if @forcedTargets
     @targetSomeEnemies size: 1
 
   _chooseTargets: (targets, options = {}) ->
@@ -97,7 +98,7 @@ class Spell
           #this would normalize turns / event, but eh, not necessary atm?
           #@turns *= eventList.length
           me = @
-          _.each eventList, (event) =>
+          _.each eventList, (event) ->
             newFunc = ->
               me.bindings[event].apply me, arguments
               me.decrementTurns player
@@ -126,7 +127,7 @@ class Spell
     newMessage = MessageCreator.doStringReplace message, @caster
     @game.broadcast MessageCreator.genericMessage newMessage if not @suppressed
 
-  constructor: (@game, @caster) ->
+  constructor: (@game, @caster, @forcedTargets = null) ->
     @baseTargets = @caster.party.currentBattle.turnOrder
 
     @cost = @cost.bind null, @caster if _.isFunction @cost

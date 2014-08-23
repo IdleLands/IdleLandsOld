@@ -1,16 +1,16 @@
 
-Spell = require "../base/Spell"
+Spell = require "../../../base/Spell"
 
-class EnergyMissile extends Spell
-  name: "energy missile"
-  @element = EnergyMissile::element = Spell::Element.energy
-  @cost = EnergyMissile::cost = 150
+class HolyBolt extends Spell
+  name: "holy bolt"
+  @element = HolyBolt::element = Spell::Element.holy
+  @cost = HolyBolt::cost = 125
   @restrictions =
-    "Mage": 1
+    "Cleric": 5
 
   calcDamage: ->
-    minStat = (@caster.calc.stat 'int')/4
-    maxStat = @caster.calc.stat 'int'
+    minStat = (@caster.calc.stat 'wis')/4
+    maxStat = @caster.calc.stat 'wis'
     super() + @minMax minStat, maxStat
 
   cast: (player) ->
@@ -23,4 +23,4 @@ class EnergyMissile extends Spell
     @bindings =
       doSpellCast: @cast
 
-module.exports = exports = EnergyMissile
+module.exports = exports = HolyBolt

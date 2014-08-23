@@ -1,19 +1,18 @@
+Spell = require "../../../base/Spell"
 
-Spell = require "../base/Spell"
-
-class BoarStrength extends Spell
-  name: "boar strength"
-  @element = BoarStrength::element = Spell::Element.buff
-  @cost = BoarStrength::cost = 300
+class Testosterone extends Spell
+  name: "testosterone"
+  @element = Testosterone::element = Spell::Element.buff
+  @cost = Testosterone::cost = 300
   @restrictions =
-    "Cleric": 4
+    "Fighter": 4
 
-  calcDuration: -> super()+3
+  calcDuration: -> super()+2
 
   determineTargets: ->
-    @targetSomeAllies()
-
-  strPercent: -> 25
+    @caster
+    
+  strPercent: -> 35
 
   cast: (player) ->
     message = "#{@caster.name} infused #{player.name} with #{@name}!"
@@ -34,4 +33,4 @@ class BoarStrength extends Spell
       doSpellUncast: @uncast
       "combat.self.turn.end": @tick
 
-module.exports = exports = BoarStrength
+module.exports = exports = Testosterone

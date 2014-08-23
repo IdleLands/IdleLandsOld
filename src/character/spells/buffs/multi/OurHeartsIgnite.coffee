@@ -1,21 +1,21 @@
 
-Spell = require "../base/Spell"
+Spell = require "../../../base/Spell"
 
-class NoEscape extends Spell
-  name: "No Escape"
-  @element = NoEscape::element = Spell::Element.buff
-  @cost = NoEscape::cost = 300
+class OurHeartsIgnite extends Spell
+  name: "Our Hearts Ignite"
+  @element = OurHeartsIgnite::element = Spell::Element.buff
+  @cost = OurHeartsIgnite::cost = 300
   @restrictions =
-    "Bard": 5
+    "Bard": 1
 
   calcDuration: -> super()+3
 
   determineTargets: ->
     @targetAllAllies()
 
-  dex: -> (@caster.calc.stat 'int')/4
+  str: -> (@caster.calc.stat 'int')/4
   
-  agi: -> (@caster.calc.stat 'wis')/4
+  con: -> (@caster.calc.stat 'wis')/4
 
   cast: (player) ->
     return if @caster isnt player
@@ -24,7 +24,7 @@ class NoEscape extends Spell
 
   tick: (player) ->
     return if @caster isnt player
-    message = "#{@caster.name} cheers on %hisher teammates to not lose sight of their foes!"
+    message = "#{@caster.name} continues to ignite the hearts of %hisher teammates!"
     @broadcastBuffMessage message
 
   uncast: (player) ->
@@ -39,4 +39,4 @@ class NoEscape extends Spell
       doSpellUncast: @uncast
       "combat.self.turn.end": @tick
 
-module.exports = exports = NoEscape
+module.exports = exports = OurHeartsIgnite

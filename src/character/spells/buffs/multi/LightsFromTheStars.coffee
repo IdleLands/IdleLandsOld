@@ -1,5 +1,5 @@
 
-Spell = require "../base/Spell"
+Spell = require "../../../base/Spell"
 
 class LightsFromTheStars extends Spell
   name: "Lights from the Stars"
