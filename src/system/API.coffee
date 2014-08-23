@@ -45,6 +45,7 @@ class API
       @gameInstance.globalEventHandler.doEvent eventType, callback
 
     update: =>
+      @gameInstance.doCodeUpdate()
 
   @add =
     yesno: (question, y, n) =>
