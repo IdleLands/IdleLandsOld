@@ -204,7 +204,7 @@ class Character extends EventEmitter2
         Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue
 
       totalItemScore: ->
-        _.reduce @self.equipment, ((prev, item) => prev+item.score()), 0
+        _.reduce @self.equipment, ((prev, item) -> prev+item.score()), 0
 
       itemReplaceChancePercent: ->
         @base.itemReplaceChancePercent = 100
