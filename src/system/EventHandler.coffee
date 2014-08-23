@@ -201,8 +201,7 @@ class EventHandler
     myRealScore = myItem.score()
 
     if score >= myScore and realScore < player.itemFindRange() and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
-      player.equipment = _.without player.equipment, myItem
-      player.equipment.push item
+      player.equip item
 
       extra =
         item: item.getName()

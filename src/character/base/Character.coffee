@@ -85,6 +85,11 @@ class Character extends EventEmitter2
   calcXpGain: (xp) ->
     @calc.stat 'xp', yes, xp
 
+  equip: (item) ->
+    current = _.findWhere @equipment, {type: item.type}
+    @equipment = _.without @equipment, current
+    @equipment.push item
+
   loadCalc: ->
     @calc =
       base: {}
