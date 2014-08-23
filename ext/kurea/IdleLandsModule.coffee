@@ -250,6 +250,9 @@ module.exports = (Module) ->
           @reply origin, "Your event is done." if did
           @reply origin, "Your event failed (something weird went wrong)." if not did
 
+      @addRoute 'idle-update', 'idle.game.gm', (origin) ->
+        @IdleWrapper.api.game.update()
+
       @addRoute "idle-add event yesno \":question\" \":affirm\" \":deny\"", "idle.game.gm", (origin, route) =>
         [question, affirm, deny] = [route.params.question, route.params.affirm, route.params.deny]
         @IdleWrapper.api.add.yesno question, affirm, deny
@@ -258,7 +261,7 @@ module.exports = (Module) ->
         [eventType, question] = [route.params.eventType, route.params.question]
 
         if eventType not in ['blessXp', 'forsakeXp', 'blessGold', 'forsakeGold', 'blessItem', 'forsakeItem', 'findItem',
-                             'party', 'battle']
+                             'party']
           @reply origin, "#{eventType} isn't a valid event type."
           return
 

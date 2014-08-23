@@ -205,4 +205,10 @@ class Game
   nextAction: (identifier) ->
     @playerManager.playerTakeTurn identifier
 
+  doCodeUpdate: ->
+    require("git-pull") "../", (e, consoleOutput) ->
+      console.error e if e
+      console.log consoleOutput
+      process.exit 0
+
 module.exports = exports = Game
