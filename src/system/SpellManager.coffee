@@ -1,7 +1,7 @@
 
 _ = require "underscore"
 requireDir = require "require-dir"
-spells = requireDir "../character/spells"
+spells = requireDir "../character/spells", recurse: yes
 Spell = require "../character/base/Spell"
 chance = new (require "chance")()
 
@@ -10,18 +10,21 @@ class SpellManager
     @loadSpells()
 
   loadSpells: ->
-    @spells.push spell for spell of spells
+    loadSpellObject = (obj) =>
+      for spellKey, spell of obj
+        @spells.push spell if _.isFunction spell
+        loadSpellObject spell if not _.isFunction spell
+
+    loadSpellObject spells
 
 SpellManager::getSpellsAvailableFor = (player) ->
-  _.filter @spells, (spell) ->
-    realSpell = spells[spell]
+  _.filter @spells, (realSpell) ->
 
     realSpell.cost = realSpell.cost.bind null, player if _.isFunction realSpell.cost
 
     player.professionName of realSpell.restrictions and
       player.level.getValue() >= realSpell.restrictions[player.professionName] and
       player[realSpell.stat].getValue() >= _.result realSpell, 'cost'
-  .map (spell) -> spells[spell]
 
 SpellManager::spells = []
 
