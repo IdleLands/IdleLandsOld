@@ -1,33 +1,10 @@
-###
-  all items should have a calculated item rating
-  level-restricted
-  <enchantment-level 1-10> <avatar> <special-attr> <retro | color | descriptor> <noun> <animal | saint | spirit>
-
-  stats (calculated on demand):
-
-  str: damage
-  dex: to-hit
-  int: magick damage
-  wis: healing / buff duration,strength
-  con: dodging / hp
-  agi: dodging
-  sentimentality: emotional damage
-  piety: spiritual damage
-
-  hidden stat: luck
-###
-
 _ = require "underscore"
 
 class Equipment
 
   constructor: (options) ->
-   # @name = options.name
-    #@type = options.type
-    #@itemClass = options.class or "basic"
-
     _.extend @, _.defaults options, Equipment.defaults
-    console.error "ERROR in equipment constructor, name=#{@name}, type=#{@type}" if not @name or not @type
+    #console.error "ERROR in equipment constructor, name=#{@name}, type=#{@type}" if not @name or not @type
 
   score: ->
     ret = 0

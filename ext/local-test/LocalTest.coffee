@@ -72,6 +72,9 @@ IdleWrapper = require(idlePath+"/system/ExternalWrapper")()
 getWrapper = ->
   return IdleWrapper
 
+genItem = ->
+  getWrapper().api.gameInstance.equipmentGenerator.generateItem()
+
 ## API call functions ##
 loadIdle = ->
   IdleWrapper.load()

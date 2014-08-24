@@ -200,8 +200,7 @@ class Player extends Character
     @xp.set 0 if _.isNaN @xp.__current
     @xp.add xp
 
-    if @xp.atMax()
-      @levelUp()
+    @levelUp() if @xp.atMax()
 
   levelUp: (suppress = no) ->
     return if not @playerManager or @level.getValue() is @level.maximum
