@@ -14,9 +14,11 @@ class ComponentDatabase
     @eventsDb = new Datastore "events", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @itemsDb = new Datastore "items", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @stringsDb = new Datastore "strings", (db) -> db.ensureIndex {random: '2dsphere'}, ->
+    @monstersDb = new Datastore "monsters", (db) -> db.ensureIndex {random: '2dsphere'}, ->
 
     @loadItems()
     @loadGrammar()
+    @loadMonsters()
     @loadPartyNames()
 
   loadGrammar: ->
@@ -59,6 +61,24 @@ class ComponentDatabase
       console.log e if e
       Party::partyGrammar = _.pluck docs, 'data'
 
+  loadMonsters: ->
+
+  parseMonsterString: (str) ->
+    return if not str.trim()
+    [name, parameters] = [str.split("\"")[1], str.split("\"")[2].trim()]
+
+    parameters = _.map (parameters.split ' '), (item) ->
+      arr = item.split '='
+      retval = {}
+      testVal = parseInt arr[1]
+      retval[arr[0]] = if _.isNaN testVal then arr[1] else testVal
+      retval
+    .reduce (cur, prev) ->
+      _.extend prev, cur
+    , { name: name }
+
+    @insertMonster parameters, ->
+
   parseItemString: (str, type) ->
     return if not str.trim()
     if str.indexOf("%") isnt -1
@@ -78,9 +98,10 @@ class ComponentDatabase
     @insertItem parameters, ->
 
   importAllData: ->
-    @eventsDb.remove {}, {}, ->
     @itemsDb.remove {}, {}, ->
+    @eventsDb.remove {}, {}, ->
     @stringsDb.remove {}, {}, ->
+    @monstersDb.remove {}, {}, ->
 
     itemstream = readdirp {root: "#{__dirname}/../../assets/data/items", fileFilter: "*.txt"}
     itemstream
@@ -108,6 +129,18 @@ class ComponentDatabase
       type = entry.name.split(".")[0]
       fs.readFile entry.fullPath, {}, (e, data) =>
         _.each data.toString().split("\n"), (line) => @insertString type, line
+
+    monsterstream = readdirp {root: "#{__dirname}/../../assets/data/monsters", fileFilter: "*.txt"}
+    monsterstream
+    .on "warn", (e) -> console.log "importAllData warning: #{e}"
+    .on "error", (e) -> console.log "importAllData error: #{e}"
+    .on "data", (entry) =>
+      fs.readFile entry.fullPath, {}, (e, data) =>
+        _.each data.toString().split("\n"), (line) => @parseMonsterString line
+
+  insertMonster: (monster) ->
+    monster.random = [Math.random(), 0]
+    @monstersDb.insert monster, ->
 
   insertString: (type, string) ->
     return if not string
@@ -167,6 +200,15 @@ class ComponentDatabase
   getRandomEvent: (type, callback) ->
     @eventsDb.findOne
       type: type
+      random:
+        $near:
+          $geometry:
+            type: "Point"
+            coordinates: [Math.random(), 0]
+    , callback
+
+  getRandomMonster: (type, callback) ->
+    @monstersDb.findOne
       random:
         $near:
           $geometry:

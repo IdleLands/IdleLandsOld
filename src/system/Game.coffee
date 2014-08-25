@@ -25,7 +25,7 @@ class Game
     @parties = []
     @componentDatabase = new ComponentDatabase @
     @playerManager = new PlayerManager @
-    @monsterGenerator = new MonsterGenerator()
+    @monsterGenerator = new MonsterGenerator @
     @spellManager = new SpellManager @
     @eventHandler = new EventHandler @
     @globalEventHandler = new GlobalEventHandler @
