@@ -205,6 +205,8 @@ class Battle
       spellProto = findSpell "Prone"
       [aEvent, dEvent] = ['effect.prone', 'effect.proned']
 
+    return if not spellProto
+
     @emitEvents aEvent, dEvent, attacker, defender
     spellInst = new spellProto @game, attacker, defender
     spellInst.prepareCast()
