@@ -49,18 +49,18 @@ class Equipment
     goldPercent: 20
     xpPercent: 20
 
-    enchantLevel: 25
+    enchantLevel: -25
 
     luckPercent: 30
 
-    crit: 50
-    dodge: 50
-    prone: 50
-    power: 50
-    silver: 50
-    deadeye: 50
-    defense: 50
-    glowing: 50
+    crit: 25
+    dodge: 25
+    prone: 25
+    power: 25
+    silver: 25
+    deadeye: 25
+    defense: 25
+    glowing: 25
 
   @defaults =
     itemClass: "basic"
