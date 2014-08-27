@@ -27,6 +27,8 @@ npm start
 ##Important##
 While writing code, make sure it passes `coffeelint` -- the easy shortcut for this is `grunt dev`.
 
+##Another Note##
+Feel free to join us in irc.esper.net ##idlebot and chat with the devs and designers!
 
 Adding Content
 ==============
