@@ -1,9 +1,9 @@
-"rubber duck" type=aquatic level=1 str=1 dex=1
-"gnat" type=bug level=1 str=2 dex=2
-"sick and dying animal" type=forest level=1 dex=-1 str=-1
-"gnome nudist" type=forest class=Generalist level=3 str=1 dex=1 int=1 con=1 wis=1 agi=1
-"gnome rager" type=forest class=Barbarian level=3 str=5 dex=1 con=2
-"gnome fighter" type=forest class=Fighter level=3 str=3 dex=2 con=4
-"gnome cleric" type=forest class=Cleric level=3 wis=5 str=2
-"gnome singer" type=forest class=Bard level=3 int=4 wis=4
-"gnome magicslinger" type=forest class=Mage level=3 int=10
+"rubber duck" zone=aquatic level=1 str=1 dex=1
+"gnat" zone=forest level=1 str=2 dex=2
+"sick and dying animal" zone=forest level=1 dex=-1 str=-1
+"gnome nudist" zone=forest class=Generalist level=3 str=1 dex=1 int=1 con=1 wis=1 agi=1
+"gnome rager" zone=forest class=Barbarian level=3 str=5 dex=1 con=2
+"gnome fighter" zone=forest class=Fighter level=3 str=3 dex=2 con=4
+"gnome cleric" zone=forest class=Cleric level=3 wis=5 str=2
+"gnome singer" zone=forest class=Bard level=3 int=4 wis=4
+"gnome magicslinger" zone=forest class=Mage level=3 int=10

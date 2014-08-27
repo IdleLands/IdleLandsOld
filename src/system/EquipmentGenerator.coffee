@@ -8,9 +8,9 @@ class EquipmentGenerator
   types: ['body', 'charm', 'feet', 'finger', 'hands', 'head', 'legs', 'neck', 'mainhand', 'offhand']
   constructor: (@game) ->
 
-  generateItem: ->
+  generateItem: (type = null) ->
     itemList = @game.componentDatabase.itemStats
-    type = _.sample @types
+    type = _.sample @types if not type
     baseItem = _.sample itemList[type]
 
     item = new Equipment baseItem

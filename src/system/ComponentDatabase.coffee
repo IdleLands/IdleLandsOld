@@ -9,6 +9,7 @@ Party = require "../event/Party"
 class ComponentDatabase
 
   itemStats: {}
+  monsters: []
 
   constructor: (@game) ->
     @eventsDb = new Datastore "events", (db) -> db.ensureIndex {random: '2dsphere'}, ->
@@ -22,32 +23,12 @@ class ComponentDatabase
     @loadPartyNames()
 
   loadGrammar: ->
-    console.log "Loading grammar files..."
-    @stringsDb.find
-      type: "nouns"
-    , (e, docs) ->
-      console.log e if e
-      Party::nouns = _.pluck docs, 'data'
-    @stringsDb.find
-      type: "prepositions"
-    , (e, docs) ->
-      console.log e if e
-      Party::prepositions = _.pluck docs, 'data'
-    @stringsDb.find
-      type: "adjectives"
-    , (e, docs) ->
-      console.log e if e
-      Party::adjectives = _.pluck docs, 'data'
-    @stringsDb.find
-      type: "articles"
-    , (e, docs) ->
-      console.log e if e
-      Party::articles = _.pluck docs, 'data'
-    @stringsDb.find
-      type: "conjunctions"
-    , (e, docs) ->
-      console.log e if e
-      Party::conjunctions = _.pluck docs, 'data'
+    _.each ["nouns", "prepositions", "adjectives", "articles", "conjunctions"], (type) =>
+      @stringsDb.find
+        type: type
+      , (e, docs) ->
+        console.log e if e
+        Party::[type] = _.pluck docs, 'data'
 
   loadPartyNames: ->
     @stringsDb.find
@@ -60,8 +41,6 @@ class ComponentDatabase
     , (e, docs) ->
       console.log e if e
       Party::partyGrammar = _.pluck docs, 'data'
-
-  loadMonsters: ->
 
   parseMonsterString: (str) ->
     return if not str.trim()
@@ -77,7 +56,7 @@ class ComponentDatabase
       _.extend prev, cur
     , { name: name }
 
-    @insertMonster parameters, ->
+    @insertMonster parameters
 
   parseItemString: (str, type) ->
     return if not str.trim()
@@ -140,6 +119,9 @@ class ComponentDatabase
 
   insertMonster: (monster) ->
     monster.random = [Math.random(), 0]
+    monster.class = "Monster" if not monster.class
+    monster.level = 1 if not monster.level
+    monster.zone = "none" if not monster.zone
     @monstersDb.insert monster, ->
 
   insertString: (type, string) ->
@@ -189,26 +171,9 @@ class ComponentDatabase
     object.random = [Math.random(), 0]
     @itemsDb.insert object, ->
 
-  addItemToHash: (object) ->
-    copy = _.extend {}, object
-
-    if not (copy.type of @itemStats)
-      @itemStats[copy.type] = []
-
-    @itemStats[copy.type].push copy
-
   getRandomEvent: (type, callback) ->
     @eventsDb.findOne
       type: type
-      random:
-        $near:
-          $geometry:
-            type: "Point"
-            coordinates: [Math.random(), 0]
-    , callback
-
-  getRandomMonster: (type, callback) ->
-    @monstersDb.findOne
       random:
         $near:
           $geometry:
@@ -226,7 +191,21 @@ class ComponentDatabase
 
   loadItems: ->
     @itemsDb.find {}, (e, docs) =>
-      _.forEach docs, (item) =>
-        @addItemToHash item
+      _.forEach docs, @addItemToHash.bind @
+
+  addItemToHash: (object) ->
+    copy = _.extend {}, object
+
+    if not (copy.type of @itemStats)
+      @itemStats[copy.type] = []
+
+    @itemStats[copy.type].push copy
+
+  loadMonsters: ->
+    @monstersDb.find {}, (e, docs) =>
+      _.each docs, @addMonsterToList.bind @
+
+  addMonsterToList: (monster) ->
+    @monsters.push monster
 
 module.exports = exports = ComponentDatabase

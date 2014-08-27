@@ -23,14 +23,14 @@ class Game
 
   constructor: () ->
     @parties = []
-    @componentDatabase = new ComponentDatabase @
-    @playerManager = new PlayerManager @
-    @monsterGenerator = new MonsterGenerator @
+    @gmCommands = new GMCommands @
     @spellManager = new SpellManager @
     @eventHandler = new EventHandler @
+    @playerManager = new PlayerManager @
+    @monsterGenerator = new MonsterGenerator @
+    @componentDatabase = new ComponentDatabase @
     @globalEventHandler = new GlobalEventHandler @
     @equipmentGenerator = new EquipmentGenerator @
-    @gmCommands = new GMCommands @
     @world = new World()
 
   registerBroadcastHandler: (@broadcastHandler, @broadcastContext) ->

@@ -1,11 +1,14 @@
 
+_ = require "underscore"
+Monster = require "../character/npc/Monster"
+
 class MonsterGenerator
   constructor: (@game) ->
 
   generateMonster: ->
+    baseMonster = _.sample @game.componentDatabase.monsters
+    monster = new Monster baseMonster
 
   generateMonsterAtScore: (targetScore, tolerance = 0.15) ->
-
-  #when generating a monster, add an item in a "monster" slot and give it the stats that the monster has.
 
 module.exports = exports = MonsterGenerator
