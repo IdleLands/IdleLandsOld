@@ -31,7 +31,7 @@ class Spell
     @chance.integer min: min, max: Math.max min+1, max
 
   doDamageTo: (player, damage, message = "") ->
-    @caster.party.currentBattle.takeHp @caster, player, damage, @determineType(), @, message
+    @caster.party?.currentBattle?.takeHp @caster, player, damage, @determineType(), @, message
 
   prepareCast: ->
     targets = @determineTargets()
