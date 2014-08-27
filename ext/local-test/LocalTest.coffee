@@ -69,8 +69,10 @@ broadcastHandler = (messageArray) ->
 interval = null
 IdleWrapper = require(idlePath+"/system/ExternalWrapper")()
 
-getWrapper = ->
-  return IdleWrapper
+w = getWrapper = -> IdleWrapper
+
+api = -> w().api
+inst = -> api().gameInstance
 
 ## API call functions ##
 loadIdle = ->
@@ -126,12 +128,12 @@ interactiveSession = ->
           variables[RegExp.$1] = RegExp.$2
           line = RegExp.$2
 
-        broadcast "Evaluating [#{line}]"
+        broadcast "Evaluating `#{line}`"
         result = eval(line)
         broadcast result
         variables['lc'] = line if result?
       catch error
-        broadcast error
+        console.error error.stack
       
       cli.prompt()
   
