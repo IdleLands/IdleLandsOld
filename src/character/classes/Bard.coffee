@@ -36,6 +36,7 @@ class Bard extends Class
     super player
 
     player.on "combat.party.win", @events.partyWin = ->
+      return if player.isMonster
       goldBonus = player.calcGoldGain 1000
       player.gainGold goldBonus
       player.playerManager.game.broadcast MessageCreator.genericMessage "A stunning performance by #{player.name} netted #{goldBonus} gold from the audience!"
