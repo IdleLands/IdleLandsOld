@@ -102,6 +102,7 @@ class Character extends EventEmitter2
     Math.floor 100 + (400 * Math.pow level, 1.71)
 
   gainXp: ->
+  gainGold: ->
 
   loadCalc: ->
     @calc =
