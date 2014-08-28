@@ -1,0 +1,275 @@
+# misc
+"rarespawn" level=1
+"chunk of meat" level=4
+"blob of meat" level=10
+"blob"
+"blob of blobs"
+"android"
+"mimic"
+"mist"
+"memory"
+"manifestation"
+"subsonic wave"
+"nightmare"
+"mysterious presence"
+
+# town creatures
+"pedestrian"            zone=town level=3
+"puppy"                 zone=town level=1 str=3 dex=2
+"kitty"                 zone=town level=1 int=3 wis=2
+"hippie"                zone=town level=1 dex=-10
+"hillbilly"             zone=town level=1 agi=-5 dex=10
+"hipster"               zone=town level=3 luck=-10 agi=-5 str=-5 con=40
+"rat"                   zone=town level=4 agi=10 dex=5 dodge=1
+"dog"                   zone=town level=4 str=10 agi=5 offense=1
+"cat"                   zone=town level=4 int=10 str=5 defense=1
+"bat"
+"batdog"                zone=town level=5 agi=10 dex=10 str=10
+"ratdog"                zone=town level=6 agi=11 dex=11 str=11
+"batcat"
+"catdog"
+"red-eyed programmer"
+"serial killer"
+"metalhead"
+"hivemind"
+"internetizens"
+
+# alliterate creatures
+"energetic evangelist"  zone=town level=5 class=Bard int=10 wis=10 luck=5
+"snorting squirrel"     zone=forest level=7 int=-4 str=3 wis=15 dodge=1
+"apathetic agnostic"    zone=town level=9 class=Mage int=60 wis=10 str=-10 dex=-10 con=-10
+"radioactive rabbit"    zone=forest level=11 int=10 str=20 dex=20 con=-10 prone=1
+"silly snake"           zone=forest level=13 int=5 wis=5 dex=10 str=10 con=10
+"arrogant atheist"      zone=town level=15 class=Bard wis=30 int=30 dex=-10 str=-10
+"welsh warthog"
+"helpful hedgehog"
+"bustling badger"
+"jumping jackalope"
+"castrated cat"
+"goofy gopher"
+"slippery seal"
+"gelatinous jabberwocky"
+"diaphanous drake"
+"ornery ocelot"
+"gory giraffe"
+"daring duck"
+"horny hornet"
+"malicious meerkat"
+"never-narwhal"
+"intrepid iguana"
+"furious fawn"
+"karmic koala"
+"herping heron"
+"derping deer"
+
+# water monsters
+"rubber duck"               zone=aquatic level=1 str=1 dex=1
+"fish"                      zone=aquatic level=2 str=3 dex=3 int=-4
+"goldfish"                  zone=aquatic level=2 int=-10
+"sly fish"                  zone=aquatic level=4 agi=10 str=3
+"wonderful fish"            zone=aquatic level=5 str=3 dex=3 con=3 wis=3
+"surströmming"              zone=aquatic level=6 str=5 dex=5 agi=5
+"lutefisk"                  zone=aquatic level=7 str=10 dex=5 wis=-10
+"laser shark"
+"geoduck"
+"jellyfish"
+"kraken"
+"hydra"
+
+# forest animals
+"mouse"                     zone=forest level=1 str=1 dodge=1
+"louse"                     zone=forest level=1 str=1 agi=1 wis=1 dodge=1
+"gnat"                      zone=forest level=1 str=2 dex=2 dodge=1
+"sick and dying animal"     zone=forest level=1 dex=-3 str=-3
+"mushroom"                  zone=forest level=2 int=-1 wis=-1
+"bear"                      zone=forest level=3 class=Fighter str=15 prone=1
+"snake"                     zone=forest level=3 dex=5 str=5
+"viper"                     zone=forest level=4 str=10 dex=10
+"pig"                       zone=forest level=4 class=Fighter str=10 dex=10 prone=1
+"generic insect"            zone=forest level=4 dex=10 agi=10
+"owl"                       zone=forest level=5 class=Cleric wis=30
+"random pokemon"            zone=forest level=7 str=10 dex=10 wis=10
+"skag"                      zone=forest level=10 str=30 dex=30 con=30
+"salamander"
+"lizardman"
+"slime"
+"goo"
+"ooze"
+"insect swarm"
+"supergnat"
+"derpig"
+"pixie"
+"kappa"
+
+# undead entities
+"olde zombie"
+"old zombie"
+"zombie"
+"smart zombie"
+"wight"
+"ghost"
+"ghoul"
+"vampiric gun-slinging samurai space pirate ninja robot schoolgirl"
+"poltergeist"
+"spooky thing"
+"vengeful soul"
+"vampire"
+"vampyre"
+"abomination"
+"wandering spirit"
+
+# extraplanar entities
+"demon"
+"devil"
+"satanist"
+"ritualist"
+"mutant"
+"twisted vortex creature"
+"heretic"
+"zealot"
+"incubator"
+"transcendentalist"
+"deity avatar"
+"incubus"
+"succubus"
+"demigod"
+"trans-dimensional being"
+
+# other civilized beings
+"roc"
+"gryphon"
+"hellhound"
+"will-o-wisp"
+"will-o-wishin'"
+"elemental"
+"minotaur"
+"satyr"
+"mudman"
+"golem"
+"gorgon"
+"behemoth"
+"demogorgon"
+"phoenix"
+"wyvern"
+"dragon"
+"red dragon"
+"black dragon"
+"silver dragon"
+"party-hat-wearing dragon"
+
+# ancient beings
+"velociraptor-riding transformer"
+"laser cannon"
+"warmech"
+"ninja pirate zombie robot"
+"automaton"
+
+# generic entities
+"barbarian"             zone=forest level=5 class=Barbarian str=30 con=30
+"generalist"            zone=forest level=5 class=Generalist str=8 dex=8 con=8 wis=8 int=8 agi=8 luck=8
+"fighter"               zone=forest level=5 class=Fighter str=50 con=10
+"mage"                  zone=forest level=5 class=Mage int=60
+"cleric"                zone=forest level=5 class=Cleric wis=60
+"bard"                  zone=forest level=5 class=Bard int=30 wis=30
+"druid"
+
+# gnomish beings
+"gnome"
+"gnome nudist"          zone=forest level=7 class=Generalist str=11 dex=11 int=11 con=11 wis=11 agi=11
+"gnome rager"           zone=forest level=7 class=Barbarian str=25 dex=11 con=22
+"gnome fighter"         zone=forest level=7 class=Fighter str=13 dex=12 con=24
+"gnome cleric"          zone=forest level=7 class=Cleric wis=25 str=12
+"gnome singer"          zone=forest level=7 class=Bard int=24 wis=24
+"gnome magicslinger"    zone=forest level=7 class=Mage int=50
+"procrastination gnome"
+
+# human beings
+"human"
+"human child"
+"human nudist"
+"human barbarian"
+"human fighter"
+"human cleric"
+"human bard"
+"human mage"
+"human professor"
+
+# kobold beings
+"kobold"
+"kobold nudist"
+"kobold archer"
+"kobold warrior"
+"kobold caster"
+
+# orcish beings
+"orc"
+"orc nudist"
+"orc brawler"
+"orc rockstar"
+"orc spy"
+"orc fighter"
+"orc sorceror"
+"orc holyfighter"
+"orc boomcaster"
+"orc healer"
+
+# half-orc beings
+"half-orc"
+"half-orc nudist"
+"half-orc giant"
+
+# giant beings
+"giant"
+"half-giant orc"
+"half-half-orc giant"
+"half-giant gnome"
+"half-gnome giant"
+"half-human giant"
+"half-kobold giant"
+"half-goblin giant"
+"half-dwarf giant"
+"half-giant giant"
+
+# goblish beings
+"goblin"
+# etc
+
+# dwarven beings
+"dwarf"
+# etc (pull from idlemaster https://github.com/seiyria/idlemaster/blob/master/data/monsters/Monsters.txt#L105)
+
+# pygmy beings
+"pygmy"
+"pygmy warrior"
+# etc
+
+# ogre beings
+"ogre"
+#etc
+
+# elvish beings
+"elf"
+#etc
+
+# skeletal beings
+"skeleton"
+#etc
+
+# miscellanous beings
+"ninja"
+"pirate"
+"caveman"
+"hero"
+"acolyte"
+"zephyr"
+"conjuror"
+"black knight"
+"black night"
+"miniboss squad"
+
+# symbolic beings
+♥
+☺
+♪
+♫
+►

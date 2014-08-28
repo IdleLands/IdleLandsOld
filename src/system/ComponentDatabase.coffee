@@ -2,6 +2,7 @@
 Datastore = require "./DatabaseWrapper"
 ObjectID = require("mongodb").ObjectID
 _ = require "underscore"
+_.str = require "underscore.string"
 readdirp = require "readdirp"
 fs = require "fs"
 Party = require "../event/Party"
@@ -9,43 +10,26 @@ Party = require "../event/Party"
 class ComponentDatabase
 
   itemStats: {}
+  monsters: []
 
   constructor: (@game) ->
     @eventsDb = new Datastore "events", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @itemsDb = new Datastore "items", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @stringsDb = new Datastore "strings", (db) -> db.ensureIndex {random: '2dsphere'}, ->
+    @monstersDb = new Datastore "monsters", (db) -> db.ensureIndex {random: '2dsphere'}, ->
 
     @loadItems()
     @loadGrammar()
+    @loadMonsters()
     @loadPartyNames()
 
   loadGrammar: ->
-    console.log "Loading grammar files..."
-    @stringsDb.find
-      type: "nouns"
-    , (e, docs) ->
-      console.log e if e
-      Party::nouns = _.pluck docs, 'data'
-    @stringsDb.find
-      type: "prepositions"
-    , (e, docs) ->
-      console.log e if e
-      Party::prepositions = _.pluck docs, 'data'
-    @stringsDb.find
-      type: "adjectives"
-    , (e, docs) ->
-      console.log e if e
-      Party::adjectives = _.pluck docs, 'data'
-    @stringsDb.find
-      type: "articles"
-    , (e, docs) ->
-      console.log e if e
-      Party::articles = _.pluck docs, 'data'
-    @stringsDb.find
-      type: "conjunctions"
-    , (e, docs) ->
-      console.log e if e
-      Party::conjunctions = _.pluck docs, 'data'
+    _.each ["nouns", "prepositions", "adjectives", "articles", "conjunctions"], (type) =>
+      @stringsDb.find
+        type: type
+      , (e, docs) ->
+        console.log e if e
+        Party::[type] = _.pluck docs, 'data'
 
   loadPartyNames: ->
     @stringsDb.find
@@ -59,12 +43,29 @@ class ComponentDatabase
       console.log e if e
       Party::partyGrammar = _.pluck docs, 'data'
 
-  parseItemString: (str, type) ->
-    return if not str.trim()
-    if str.indexOf("%") isnt -1
-      console.log "error: string still using % format: #{str}"
-      return
+  parseMonsterString: (str) ->
+    return if (_.str.isBlank str) or _.str.contains str, "#"
+    str = _.str.clean str
     [name, parameters] = [str.split("\"")[1], str.split("\"")[2].trim()]
+    return if not parameters
+
+    parameters = _.map (parameters.split ' '), (item) ->
+      arr = item.split '='
+      retval = {}
+      testVal = parseInt arr[1]
+      retval[arr[0]] = if _.isNaN testVal then arr[1] else testVal
+      retval
+    .reduce (cur, prev) ->
+      _.extend prev, cur
+    , { name: name }
+
+    @insertMonster parameters
+
+  parseItemString: (str, type) ->
+    return if (_.str.isBlank str) or _.str.contains str, "#"
+    str = _.str.clean str
+    [name, parameters] = [str.split("\"")[1], str.split("\"")[2].trim()]
+    return if not parameters
 
     parameters = _.map (parameters.split ' '), (item) ->
       arr = item.split '='
@@ -78,9 +79,10 @@ class ComponentDatabase
     @insertItem parameters, ->
 
   importAllData: ->
-    @eventsDb.remove {}, {}, ->
     @itemsDb.remove {}, {}, ->
+    @eventsDb.remove {}, {}, ->
     @stringsDb.remove {}, {}, ->
+    @monstersDb.remove {}, {}, ->
 
     itemstream = readdirp {root: "#{__dirname}/../../assets/data/items", fileFilter: "*.txt"}
     itemstream
@@ -108,6 +110,21 @@ class ComponentDatabase
       type = entry.name.split(".")[0]
       fs.readFile entry.fullPath, {}, (e, data) =>
         _.each data.toString().split("\n"), (line) => @insertString type, line
+
+    monsterstream = readdirp {root: "#{__dirname}/../../assets/data/monsters", fileFilter: "*.txt"}
+    monsterstream
+    .on "warn", (e) -> console.log "importAllData warning: #{e}"
+    .on "error", (e) -> console.log "importAllData error: #{e}"
+    .on "data", (entry) =>
+      fs.readFile entry.fullPath, {}, (e, data) =>
+        _.each data.toString().split("\n"), (line) => @parseMonsterString line
+
+  insertMonster: (monster) ->
+    monster.random = [Math.random(), 0]
+    monster.class = "Monster" if not monster.class
+    monster.level = 1 if not monster.level
+    monster.zone = "none" if not monster.zone
+    @monstersDb.insert monster, ->
 
   insertString: (type, string) ->
     return if not string
@@ -156,14 +173,6 @@ class ComponentDatabase
     object.random = [Math.random(), 0]
     @itemsDb.insert object, ->
 
-  addItemToHash: (object) ->
-    copy = _.extend {}, object
-
-    if not (copy.type of @itemStats)
-      @itemStats[copy.type] = []
-
-    @itemStats[copy.type].push copy
-
   getRandomEvent: (type, callback) ->
     @eventsDb.findOne
       type: type
@@ -184,7 +193,21 @@ class ComponentDatabase
 
   loadItems: ->
     @itemsDb.find {}, (e, docs) =>
-      _.forEach docs, (item) =>
-        @addItemToHash item
+      _.forEach docs, @addItemToHash.bind @
+
+  addItemToHash: (object) ->
+    copy = _.extend {}, object
+
+    if not (copy.type of @itemStats)
+      @itemStats[copy.type] = []
+
+    @itemStats[copy.type].push copy
+
+  loadMonsters: ->
+    @monstersDb.find {}, (e, docs) =>
+      _.each docs, @addMonsterToList.bind @
+
+  addMonsterToList: (monster) ->
+    @monsters.push monster
 
 module.exports = exports = ComponentDatabase
