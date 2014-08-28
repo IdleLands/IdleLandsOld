@@ -41,7 +41,7 @@ class MonsterGenerator extends Generator
     monster
 
   generateMonsterParty: (targetScore = 100, tolerance = 0.15) ->
-    monsterCount = chance.integer({min: 1, max: Constants.defaults.game.maxPartyMembers*2})
+    monsterCount = chance.integer({min: 1, max: Constants.defaults.game.maxPartyMembers})
     monsters = []
 
     (monsters.push @generateMonsterAtScore (targetScore/monsterCount), tolerance) for x in [1..monsterCount]
