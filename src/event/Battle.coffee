@@ -271,6 +271,7 @@ class Battle
     #losing player xp distribution
 
     _.each deadVariables.deadPlayers, (player) ->
+      return if player.isMonster
       basePct = chance.integer min: 1, max: 6
       basePctValue = Math.floor player.xp.maximum * (basePct/100)
 

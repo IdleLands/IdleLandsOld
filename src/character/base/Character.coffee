@@ -94,6 +94,15 @@ class Character extends EventEmitter2
     @equipment = _.without @equipment, current
     @equipment.push item
 
+  recalculateStats: ->
+    @hp.maximum = @calc.hp()
+    @mp.maximum = @calc.mp()
+
+  levelUpXpCalc: (level) ->
+    Math.floor 100 + (400 * Math.pow level, 1.71)
+
+  gainXp: ->
+
   loadCalc: ->
     @calc =
       base: {}

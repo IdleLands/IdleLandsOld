@@ -59,6 +59,7 @@ class Game
   startBattle: (parties = [], event = null) ->
     return if @inBattle
     return if parties.length < 2 and @playerManager.players.length < 2
+    wasPassedEnoughParties = parties.length > 1
 
     startBattle = (parties) =>
 
@@ -97,6 +98,8 @@ class Game
     if tryBattle group
       startBattle group
       return
+
+    return if wasPassedEnoughParties
 
     # player ordering
     soloPlayers = _.reject @playerManager.players, (player) -> player.party

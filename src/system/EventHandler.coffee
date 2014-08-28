@@ -45,6 +45,8 @@ class EventHandler
           @doEnchant event, player, callback
         when 'flipStat'
           @doFlipStat event, player, callback
+        when 'battle'
+          @doMonsterBattle event, player, callback
 
       player.recalculateStats()
 
@@ -234,9 +236,15 @@ class EventHandler
 
     callback true
 
-  doBattle: (event, player, callback) ->
+  doMonsterBattle: (event, player, callback) ->
     event.player = player
-    @game.startBattle [], event
+
+    new Party @game, player if not player.party
+    party = player.party
+
+    monsterParty = @game.monsterGenerator.generateMonsterParty party.score()
+
+    @game.startBattle [monsterParty, player.party], event
 
     callback true
 

@@ -211,14 +211,7 @@ class Player extends Character
     @emit "player.level.up", @
     @recalculateStats()
 
-  levelUpXpCalc: (level) ->
-    Math.floor 100 + (400 * Math.pow level, 1.71)
-
   itemFindRange: ->
     (@level.getValue()+1) * @calc.itemFindRangeMultiplier()
-
-  recalculateStats: ->
-    @hp.maximum = @calc.hp()
-    @mp.maximum = @calc.mp()
 
 module.exports = exports = Player
