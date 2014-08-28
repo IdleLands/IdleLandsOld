@@ -3,20 +3,20 @@ Class = require "./../base/Class"
 
 class Monster extends Class
 
-  baseHp: 10
-  baseHpPerLevel: 5
-  baseHpPerCon: 5
+  baseHp: 50
+  baseHpPerLevel: 15
+  baseHpPerCon: 15
 
-  baseMp: 10
-  baseMpPerLevel: 5
-  baseMpPerInt: 5
+  baseMp: 50
+  baseMpPerLevel: 15
+  baseMpPerInt: 15
 
-  baseConPerLevel: 1
-  baseDexPerLevel: 1
-  baseAgiPerLevel: 1
-  baseStrPerLevel: 1
-  baseIntPerLevel: 1
-  baseWisPerLevel: 1
+  baseConPerLevel: 10
+  baseDexPerLevel: 10
+  baseAgiPerLevel: 10
+  baseStrPerLevel: 10
+  baseIntPerLevel: 10
+  baseWisPerLevel: 10
 
   baseXpGainPerCombat: 0
   baseXpGainPerOpponentLevel: 0

@@ -27,13 +27,17 @@ class Monster extends Character
 
   setClassTo: (newClass = 'Monster') ->
     toClass = null
+    toClassName = newClass
 
     try
       toClass = new (require "../classes/#{newClass}")()
     catch
       toClass = new (require "../classes/Monster")()
+      toClassName = "Monster"
 
     @profession = toClass
+    toClass.load @
+    @professionName = toClassName
 
   canEquip: (item) ->
     current = _.findWhere @equipment, {type: item.type}
