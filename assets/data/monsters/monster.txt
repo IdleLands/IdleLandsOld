@@ -61,6 +61,7 @@
 "karmic koala"
 "herping heron"
 "derping deer"
+"fascist fauna"
 
 # water monsters
 "rubber duck"               zone=aquatic level=1 str=1 dex=1
