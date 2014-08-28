@@ -32,7 +32,7 @@
 "serial killer"
 "metalhead"
 "hivemind"
-"internetizens"
+"internetizen"
 
 # alliterate creatures
 "energetic evangelist"  zone=town level=5 class=Bard int=10 wis=10 luck=5
