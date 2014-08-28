@@ -2,6 +2,7 @@
 Datastore = require "./DatabaseWrapper"
 ObjectID = require("mongodb").ObjectID
 _ = require "underscore"
+_.str = require "underscore.string"
 readdirp = require "readdirp"
 fs = require "fs"
 Party = require "../event/Party"
@@ -43,7 +44,8 @@ class ComponentDatabase
       Party::partyGrammar = _.pluck docs, 'data'
 
   parseMonsterString: (str) ->
-    return if not str.trim()
+    return if (_.str.isBlank str) or _.str.contains str, "#"
+    str = _.str.clean str
     [name, parameters] = [str.split("\"")[1], str.split("\"")[2].trim()]
 
     parameters = _.map (parameters.split ' '), (item) ->
@@ -59,10 +61,8 @@ class ComponentDatabase
     @insertMonster parameters
 
   parseItemString: (str, type) ->
-    return if not str.trim()
-    if str.indexOf("%") isnt -1
-      console.log "error: string still using % format: #{str}"
-      return
+    return if (_.str.isBlank str) or _.str.contains str, "#"
+    str = _.str.clean str
     [name, parameters] = [str.split("\"")[1], str.split("\"")[2].trim()]
 
     parameters = _.map (parameters.split ' '), (item) ->
