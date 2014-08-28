@@ -47,6 +47,7 @@ class ComponentDatabase
     return if (_.str.isBlank str) or _.str.contains str, "#"
     str = _.str.clean str
     [name, parameters] = [str.split("\"")[1], str.split("\"")[2].trim()]
+    return if not parameters
 
     parameters = _.map (parameters.split ' '), (item) ->
       arr = item.split '='
@@ -64,6 +65,7 @@ class ComponentDatabase
     return if (_.str.isBlank str) or _.str.contains str, "#"
     str = _.str.clean str
     [name, parameters] = [str.split("\"")[1], str.split("\"")[2].trim()]
+    return if not parameters
 
     parameters = _.map (parameters.split ' '), (item) ->
       arr = item.split '='
