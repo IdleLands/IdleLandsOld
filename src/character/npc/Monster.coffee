@@ -45,16 +45,16 @@ class Monster extends Character
 
   generateBaseEquipment: ->
     @equipment = [
-      new Equipment {type: "body",    class: "newbie", name: "Bloody Corpse", con: 1}
-      new Equipment {type: "feet",    class: "newbie", name: "Nails of Evil Doom of Evil", dex: 1}
-      new Equipment {type: "finger",  class: "newbie", name: "Golden Ring, Fit for Bullying", int: 1}
-      new Equipment {type: "hands",   class: "newbie", name: "Fake Infinity Gauntlet Merch", str: 1}
-      new Equipment {type: "head",    class: "newbie", name: "Toothy Fangs", wis: 1}
-      new Equipment {type: "legs",    class: "newbie", name: "Skull-adorned Legging", agi: 1}
-      new Equipment {type: "neck",    class: "newbie", name: "Tribal Necklace", wis: 1, int: 1}
-      new Equipment {type: "mainhand",class: "newbie", name: "Large Bloody Bone", str: 1, luck: 1}
-      new Equipment {type: "offhand", class: "newbie", name: "Chunk of Meat", dex: 1, str: 1}
-      new Equipment {type: "charm",   class: "newbie", name: "Wooden Human Tooth Replica", con: 1, dex: 1}
+      new Equipment {type: "body",    class: "newbie", name: "Bloody Corpse", con: 30}
+      new Equipment {type: "feet",    class: "newbie", name: "Nails of Evil Doom of Evil", dex: 30}
+      new Equipment {type: "finger",  class: "newbie", name: "Golden Ring, Fit for Bullying", int: 30}
+      new Equipment {type: "hands",   class: "newbie", name: "Fake Infinity Gauntlet Merch", str: 30}
+      new Equipment {type: "head",    class: "newbie", name: "Toothy Fangs", wis: 30}
+      new Equipment {type: "legs",    class: "newbie", name: "Skull-adorned Legging", agi: 30}
+      new Equipment {type: "neck",    class: "newbie", name: "Tribal Necklace", luck: 10}
+      new Equipment {type: "mainhand",class: "newbie", name: "Large Bloody Bone", str: 10, dex: 10}
+      new Equipment {type: "offhand", class: "newbie", name: "Chunk of Meat", con: 10, agi: 10}
+      new Equipment {type: "charm",   class: "newbie", name: "Wooden Human Tooth Replica", int: 10, wis: 10}
     ]
 
   pullOutStatsFrom: (base) ->
