@@ -1,14 +1,51 @@
 
 _ = require "underscore"
 Monster = require "../character/npc/Monster"
+Generator = require "./Generator"
+Constants = require "./Constants"
+Party = require "../event/Party"
+chance = new (require "chance")()
 
-class MonsterGenerator
+class MonsterGenerator extends Generator
   constructor: (@game) ->
 
   generateMonster: ->
+    itemList = @game.componentDatabase.itemStats
     baseMonster = _.sample @game.componentDatabase.monsters
     monster = new Monster baseMonster
 
-  generateMonsterAtScore: (targetScore, tolerance = 0.15) ->
+    if chance.integer({min: 0, max: 2}) is 1
+      @mergePropInto monster, _.sample itemList['prefix']
+      (@mergePropInto monster,  _.sample itemList['prefix']) until chance.integer({min: -1, max: 7**(i = (i+1) or 0)}) isnt 1
+
+    (@mergePropInto monster,  _.sample itemList['prefix-special']) if chance.integer({min: 0, max: 21}) is 1
+
+    (@mergePropInto monster,  _.sample itemList['suffix']) if chance.integer({min: 0, max: 14}) is 1
+
+    _.each @types, (type) =>
+      item = @game.equipmentGenerator.generateItem type
+      monster.equip item if monster.canEquip item
+
+    monster
+
+  generateMonsterAtScore: (targetScore = 100, tolerance = 0.15) ->
+    testMonster = (monster) ->
+      baseScore = monster.calc.totalItemScore()
+      flux = baseScore * tolerance
+      baseScore-flux <= targetScore <= baseScore+flux
+
+    tries = 0
+    monster = @generateMonster()
+    monster = @generateMonster() while (not testMonster monster) and tries++ < 100
+
+    monster
+
+  generateMonsterParty: (targetScore = 100, tolerance = 0.15) ->
+    monsterCount = chance.integer({min: 1, max: Constants.defaults.game.maxPartyMembers*2})
+    monsters = []
+
+    (monsters.push @generateMonsterAtScore (targetScore/monsterCount), tolerance) for x in [1..monsterCount]
+
+    new Party @game, monsters
 
 module.exports = exports = MonsterGenerator
