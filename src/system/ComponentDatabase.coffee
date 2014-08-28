@@ -46,7 +46,7 @@ class ComponentDatabase
   parseMonsterString: (str) ->
     return if (_.str.isBlank str) or _.str.contains str, "#"
     str = _.str.clean str
-    [name, parameters] = [str.split("\"")[1], str.split("\"")[2].trim()]
+    [name, parameters] = [str.split("\"")[1], str.split("\"")[2]?.trim()]
     return if not parameters
 
     parameters = _.map (parameters.split ' '), (item) ->
@@ -64,7 +64,7 @@ class ComponentDatabase
   parseItemString: (str, type) ->
     return if (_.str.isBlank str) or _.str.contains str, "#"
     str = _.str.clean str
-    [name, parameters] = [str.split("\"")[1], str.split("\"")[2].trim()]
+    [name, parameters] = [str.split("\"")[1], str.split("\"")[2]?.trim()]
     return if not parameters
 
     parameters = _.map (parameters.split ' '), (item) ->
