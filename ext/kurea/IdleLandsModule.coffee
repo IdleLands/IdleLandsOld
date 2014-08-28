@@ -261,7 +261,7 @@ module.exports = (Module) ->
         [eventType, question] = [route.params.eventType, route.params.question]
 
         if eventType not in ['blessXp', 'forsakeXp', 'blessGold', 'forsakeGold', 'blessItem', 'forsakeItem', 'findItem',
-                             'party']
+                             'party', 'battle']
           @reply origin, "#{eventType} isn't a valid event type."
           return
 
