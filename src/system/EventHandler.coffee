@@ -244,8 +244,10 @@ class EventHandler
 
     monsterParty = @game.monsterGenerator.generateMonsterParty party.score()
 
+    console.log party.score(), monsterParty.score()
+
     @game.startBattle [monsterParty, player.party], event
-    player.emit "event.monsterbattle", player, extra
+    player.emit "event.monsterbattle", player
 
     callback true
 

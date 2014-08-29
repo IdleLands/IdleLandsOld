@@ -41,7 +41,7 @@ class Monster extends Character
 
   canEquip: (item) ->
     current = _.findWhere @equipment, {type: item.type}
-    current.score() <= item.score() and @level.getValue()*25 >= item.score()
+    current.score() <= item.score() and @level.getValue()*15 >= item.score()
 
   generateBaseEquipment: ->
     @equipment = [

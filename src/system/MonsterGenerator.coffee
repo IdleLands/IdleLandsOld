@@ -9,7 +9,7 @@ chance = new (require "chance")()
 class MonsterGenerator extends Generator
   constructor: (@game) ->
 
-  generateMonster: ->
+  generateMonster: (maxScore = 99999) ->
     itemList = @game.componentDatabase.itemStats
     baseMonster = _.sample @game.componentDatabase.monsters
     monster = new Monster baseMonster
@@ -23,24 +23,25 @@ class MonsterGenerator extends Generator
     (@mergePropInto monster,  _.sample itemList['suffix']) if chance.integer({min: 0, max: 14}) is 1
 
     _.each @types, (type) =>
+      return if monster.calc.totalItemScore() > maxScore
       item = @game.equipmentGenerator.generateItem type
       monster.equip item if monster.canEquip item
 
     monster
 
-  generateMonsterAtScore: (targetScore = 100, tolerance = 0.15) ->
+  generateMonsterAtScore: (targetScore = 100, tolerance = 0.1) ->
     testMonster = (monster) ->
       baseScore = monster.calc.totalItemScore()
       flux = baseScore * tolerance
       baseScore-flux <= targetScore <= baseScore+flux
 
     tries = 0
-    monster = @generateMonster()
-    monster = @generateMonster() while (not testMonster monster) and tries++ < 100
+    monster = @generateMonster targetScore
+    monster = (@generateMonster targetScore) while (not testMonster monster) and tries++ < 100
 
     monster
 
-  generateMonsterParty: (targetScore = 100, tolerance = 0.15) ->
+  generateMonsterParty: (targetScore = 100, tolerance = 0.1) ->
     monsterCount = chance.integer({min: 1, max: Constants.defaults.game.maxPartyMembers})
     monsters = []
 
