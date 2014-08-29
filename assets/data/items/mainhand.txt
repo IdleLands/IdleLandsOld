@@ -230,6 +230,7 @@
 "Naryu's Love" int=600 silver
 "kilobyte" int=512 prone
 "deathswat" int=503
+"car" str=500 prone silver power
 "flame crystal" fire=600
 "water crystal" water=600
 "earth crystal" earth=600
