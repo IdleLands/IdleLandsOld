@@ -1,276 +1,286 @@
 # misc
-"rarespawn" level=1
-"chunk of meat" level=4
-"blob of meat" level=10
-"blob"
-"blob of blobs"
-"android"
-"mimic"
-"mist"
-"memory"
-"manifestation"
-"subsonic wave"
-"nightmare"
-"mysterious presence"
+"rarespawn"             level=1
+"chunk of meat"         level=4
+"blob of meat"          level=10
+"blob"                  level=17
+"bean"                  level=23
+"blob of blobs"         level=27
+"blob of beans"         level=30
+"android"               level=31
+"mimic"                 level=37
+"mist"                  level=40
+"memory"                level=50
+"manifestation"         level=57
+"subsonic wave"         level=64
+"nightmare"             level=70
+"mysterious presence"   level=89
 
 # town creatures
-"pedestrian"            zone=town level=3
-"puppy"                 zone=town level=1 str=3 dex=2
-"kitty"                 zone=town level=1 int=3 wis=2
-"hippie"                zone=town level=1 dex=-10
-"hillbilly"             zone=town level=1 agi=-5 dex=10
-"hipster"               zone=town level=3 luck=-10 agi=-5 str=-5 con=40
-"rat"                   zone=town level=4 agi=10 dex=5 dodge=1
-"dog"                   zone=town level=4 str=10 agi=5 offense=1
-"cat"                   zone=town level=4 int=10 str=5 defense=1
-"bat"
-"batdog"                zone=town level=5 agi=10 dex=10 str=10
-"ratdog"                zone=town level=6 agi=11 dex=11 str=11
-"batcat"
-"catdog"
-"red-eyed programmer"
-"serial killer"
-"metalhead"
-"hivemind"
-"internetizen"
+"pedestrian"            zone=town level=2
+"puppy"                 zone=town level=4 str=3 dex=2
+"kitty"                 zone=town level=6 int=3 wis=2
+"hippie"                zone=town level=8 dex=-10
+"hillbilly"             zone=town level=10 agi=-5 dex=10
+"hipster"               zone=town level=12 luck=-10 agi=-5 str=-5 con=40
+"rat"                   zone=town level=14 agi=10 dex=5 dodge=1
+"dog"                   zone=town level=16 str=10 agi=5 offense=1
+"cat"                   zone=town level=18 int=10 str=9 defense=1
+"bat"                   zone=town level=20 wis=10 con=15 dex=5
+"batdog"                zone=town level=22 agi=15 dex=15 str=15
+"ratdog"                zone=town level=24 agi=21 dex=21 str=21
+"batcat"                zone=town level=26 int=25 str=40 con=20 wis=20
+"catdog"                zone=town level=28 int=35 str=60 dex=35
+"red-eyed programmer"   zone=town level=30 class=Mage int=100 con=150
+"serial killer"         zone=town level=35 class=Rogue str=125 dex=125 con=50 int=50
+"metalhead"             zone=town level=40 str=150 dex=150 con=250
+"hivemind"              zone=town level=50 int=300 con=300 wis=300
+"internetizen"          zone=town level=60 class=Bard wis=500 int=500
 
 # alliterate creatures
-"energetic evangelist"  zone=town level=5 class=Bard int=10 wis=10 luck=5
-"snorting squirrel"     zone=forest level=7 int=-4 str=3 wis=15 dodge=1
-"apathetic agnostic"    zone=town level=9 class=Mage int=60 wis=10 str=-10 dex=-10 con=-10
-"radioactive rabbit"    zone=forest level=11 int=10 str=20 dex=20 con=-10 prone=1
-"silly snake"           zone=forest level=13 int=5 wis=5 dex=10 str=10 con=10
-"arrogant atheist"      zone=town level=15 class=Bard wis=30 int=30 dex=-10 str=-10
-"welsh warthog"
-"helpful hedgehog"
-"bustling badger"
-"jumping jackalope"
-"castrated cat"
-"goofy gopher"
-"slippery seal"
-"gelatinous jabberwocky"
-"diaphanous drake"
-"ornery ocelot"
-"gory giraffe"
-"daring duck"
-"horny hornet"
-"malicious meerkat"
-"never-narwhal"
-"intrepid iguana"
-"furious fawn"
-"karmic koala"
-"herping heron"
-"derping deer"
-"fascist fauna"
+"energetic evangelist"      zone=town   level=4     class=Bard int=10 wis=10 luck=5
+"snorting squirrel"         zone=forest level=8     int=-4 str=3 wis=15 dodge=1
+"apathetic agnostic"        zone=town   level=12    class=Mage int=60 wis=10 str=-10 dex=-10 con=-10
+"radioactive rabbit"        zone=forest level=16    int=10 str=20 dex=20 con=-10 prone=1
+"silly snake"               zone=forest level=20    int=15 wis=15 dex=10 str=10 con=10
+"arrogant atheist"          zone=town   level=24    class=Bard wis=50 int=80 dex=-10 str=-10
+"welsh warthog"             zone=forest level=28    class=Fighter str=150 con=50
+"helpful hedgehog"          zone=forest level=32    class=Cleric wis=300
+"bustling badger"           zone=forest level=36    class=Generalist wis=40 con=40 dex=40 agi=40 int=40 str=40 luck=40
+"jumping jackalope"         zone=forest level=40    class=Rogue agi=200 dex=100 str=100
+"castrated cat"             zone=town   level=44    dex=-100 str=-100 con=600
+"goofy gopher"              zone=town   level=48
+"slippery seal"             zone=town   level=52
+"gelatinous jabberwocky"    zone=forest level=56
+"diaphanous drake"          zone=forest level=60
+"ornery ocelot"             zone=forest level=64
+"gory giraffe"              zone=forest level=68
+"daring duck"               zone=town   level=72
+"horny hornet"              zone=town   level=76
+"malicious meerkat"         zone=town   level=80
+"never-narwhal"             zone=water  level=84
+"intrepid iguana"           zone=forest level=88
+"furious fawn"              zone=forest level=92
+"karmic koala"              zone=forest level=96
+"herping heron"             zone=forest level=100
+"derping deer"              zone=forest level=104
+"fascist fauna"             zone=forest level=120
 
 # water monsters
-"rubber duck"               zone=aquatic level=1 str=1 dex=1
-"fish"                      zone=aquatic level=2 str=3 dex=3 int=-4
-"goldfish"                  zone=aquatic level=2 int=-10
-"sly fish"                  zone=aquatic level=4 agi=10 str=3
-"wonderful fish"            zone=aquatic level=5 str=3 dex=3 con=3 wis=3
-"surströmming"              zone=aquatic level=6 str=5 dex=5 agi=5
-"lutefisk"                  zone=aquatic level=7 str=10 dex=5 wis=-10
-"laser shark"
-"geoduck"
-"jellyfish"
-"kraken"
-"hydra"
+"rubber duck"       zone=water level=1 str=1 dex=1
+"fish"              zone=water level=2 str=3 dex=3 int=-4
+"goldfish"          zone=water level=4 int=-10
+"sly fish"          zone=water level=6 agi=10 str=3
+"wonderful fish"    zone=water level=8 str=13 dex=13 con=13 wis=13
+"surströmming"      zone=water level=12 str=25 dex=35 agi=15
+"lutefisk"          zone=water level=15 str=110 dex=51 wis=-10
+"laser shark"       zone=water level=37 str=200 dex=200 agi=200
+"geoduck"           zone=water level=55 class=Druid con=300 wis=500 earth=500
+"jellyfish"         zone=water level=62 con=100 dex=200 wis=300 agi=400 str=500
+"kraken"            zone=water level=87 class=Mage water=1000 int=1500 con=1000
+"hydra"             zone=swamp level=99 class=Fighter str=2000 con=1500 dex=1000
 
 # forest animals
 "mouse"                     zone=forest level=1 str=1 dodge=1
-"louse"                     zone=forest level=1 str=1 agi=1 wis=1 dodge=1
-"gnat"                      zone=forest level=1 str=2 dex=2 dodge=1
-"sick and dying animal"     zone=forest level=1 dex=-3 str=-3
-"mushroom"                  zone=forest level=2 int=-1 wis=-1
-"bear"                      zone=forest level=3 class=Fighter str=15 prone=1
-"snake"                     zone=forest level=3 dex=5 str=5
-"viper"                     zone=forest level=4 str=10 dex=10
-"pig"                       zone=forest level=4 class=Fighter str=10 dex=10 prone=1
-"generic insect"            zone=forest level=4 dex=10 agi=10
-"owl"                       zone=forest level=5 class=Cleric wis=30
-"random pokemon"            zone=forest level=7 str=10 dex=10 wis=10
-"skag"                      zone=forest level=10 str=30 dex=30 con=30
-"salamander"
-"lizardman"
-"slime"
-"goo"
-"ooze"
-"insect swarm"
-"supergnat"
-"derpig"
-"pixie"
-"kappa"
+"louse"                     zone=forest level=2 str=1 agi=1 wis=1 dodge=1
+"gnat"                      zone=forest level=3 str=2 dex=2 dodge=1
+"sick and dying animal"     zone=forest level=4 dex=-3 str=-3
+"mushroom"                  zone=forest level=5 int=-1 wis=-1
+"bear"                      zone=forest level=11 class=Fighter str=15 prone=1
+"snake"                     zone=forest level=12 dex=5 str=5
+"viper"                     zone=forest level=13 str=10 dex=10
+"pig"                       zone=forest level=14 class=Fighter str=10 dex=10 prone=1
+"generic insect"            zone=forest level=15 dex=10 agi=10
+"owl"                       zone=forest level=21 class=Cleric wis=300
+"random pokemon"            zone=forest level=22 str=80 dex=80 wis=80 con=80
+"skag"                      zone=forest level=23 str=100 dex=100 con=100 prone=1
+"salamander"                zone=forest level=24 class=Mage int=400
+"lizardman"                 zone=forest level=25 class=Fighter con=300 str=300
+"slime"                     zone=forest level=31 con=800
+"goo"                       zone=forest level=32 con=850
+"ooze"                      zone=forest level=33 con=900
+"insect swarm"              zone=forest level=34 agi=200 wis=200 str=200
+"supergnat"                 zone=forest level=35 str=500 dex=500
+"derpig"                    zone=forest level=40 dex=300 str=300 con=-1000 wis=500 int=500
+"pixie"                     zone=forest level=50 class=Cleric wis=1000 con=500
+"kappa"                     zone=forest level=60 class=Mage int=2000 con=300
 
 # undead entities
-"olde zombie"
-"old zombie"
-"zombie"
-"smart zombie"
-"wight"
-"ghost"
-"ghoul"
-"vampiric gun-slinging samurai space pirate ninja robot schoolgirl"
-"poltergeist"
-"spooky thing"
-"vengeful soul"
-"vampire"
-"vampyre"
-"abomination"
-"wandering spirit"
+"olde zombie"               zone=town level=5 int=-10 str=-10 dex=-10 con=-10 agi=-10 wis=10
+"old zombie"                zone=town level=10 int=-50 str=-50 dex=-50 con=-50 agi=-50 wis=50
+"zombie"                    zone=town level=15 int=-100 str=-100 dex=-100 con=-100 agi=-100 wis=100
+"smart zombie"              zone=town level=20 class=Mage int=150 str=-150 dex=-150 con=-150
+"wight"                     zone=town level=23 class=Rogue dex=200 con=-50 str=100 agi=150
+"ghost"                     zone=town level=26 class=Fighter dex=150 str=200 agi=-100 con=200
+"healghost"                 zone=town level=29 class=Cleric wis=1000 con=-100 str=-100 dex=-100
+"spiteghost"                zone=town level=33 class=Barbarian con=300 str=300 dex=200
+"ghoul"                     zone=town level=37
+"poltergeist"               zone=town level=41
+"spooky thing"              zone=town level=45
+"vengeful soul"             zone=town level=50
+"vampire"                   zone=town level=55
+"vampyre"                   zone=town level=55 class=Mage int=1000 fire=5000
+"abomination"               zone=town level=65 class=Barbarian str=1000 con=1000 dex=1000 agi=1000
+"wandering spirit"          zone=town level=75
+"vampiric gun-slinging samurai space pirate ninja robot schoolgirl" class=Random level=100
 
 # extraplanar entities
-"demon"
-"devil"
-"satanist"
-"ritualist"
-"mutant"
-"twisted vortex creature"
-"heretic"
-"zealot"
-"incubator"
-"transcendentalist"
-"deity avatar"
-"incubus"
-"succubus"
-"demigod"
-"trans-dimensional being"
+"satanist"                  zone=other level=3
+"ritualist"                 zone=other level=9
+"heretic"                   zone=other level=15
+"zealot"                    zone=other level=21
+"transcendentalist"         zone=other level=27
+"trans-dimensional being"   zone=other level=33
+"demon"                     zone=other level=39
+"devil"                     zone=other level=45
+"mutant"                    zone=other level=51
+"twisted vortex creature"   zone=other level=57
+"incubus"                   zone=other level=63
+"succubus"                  zone=other level=69
+"deity avatar"              zone=other level=75
+"demigod"                   zone=other level=81
+"incubator"                 zone=other level=120
 
 # other civilized beings
-"roc"
-"gryphon"
-"hellhound"
-"will-o-wisp"
-"will-o-wishin'"
-"elemental"
-"minotaur"
-"satyr"
-"mudman"
-"golem"
-"gorgon"
-"behemoth"
-"demogorgon"
-"phoenix"
-"wyvern"
-"dragon"
-"red dragon"
-"black dragon"
-"silver dragon"
-"party-hat-wearing dragon"
+"will-o-wisp"               level=3
+"mudman"                    level=5
+"will-o-wishin'"            level=7
+"roc"                       level=9
+"elemental"                 level=11
+"satyr"                     level=13
+"hellhound"                 level=15
+"dragon"                    level=17
+"wyvern"                    level=19
+"minotaur"                  level=21
+"gryphon"                   level=23
+"red dragon"                level=46
+"golem"                     level=48
+"phoenix"                   level=50
+"gorgon"                    level=55
+"black dragon"              level=65
+"behemoth"                  level=70
+"silver dragon"             level=75
+"demogorgon"                level=85
+"party-hat-wearing dragon"  level=105
 
 # ancient beings
-"velociraptor-riding transformer"
-"laser cannon"
-"warmech"
-"ninja pirate zombie robot"
-"automaton"
+"laser cannon"                      level=35
+"automaton"                         level=45
+"velociraptor-riding transformer"   level=50
+"warmech"                           level=65
+"ninja pirate zombie robot"         level=77
+
+# miscellanous beings
+"ninja"             level=37 class=Rogue
+"pirate"            level=37 class=Fighter
+"caveman"           level=37 class=Barbarian
+"hero"              level=37 class=Generalist
+"acolyte"           level=37 class=Cleric
+"conjuror"          level=37 class=Mage
+"zephyr"            level=37
+"black knight"      level=37
+"black night"       level=38
+"miniboss squad"    level=46
+
+# symbolic beings
+♥   level=50
+☺   level=55
+♪   level=60
+♫   level=65
+►   level=70
+
 
 # generic entities
+"generalist"            zone=forest level=1 class=Generalist str=8 dex=8 con=8 wis=8 int=8 agi=8 luck=8
+"fighter"               zone=forest level=2 class=Fighter str=50 con=10
+"mage"                  zone=forest level=3 class=Mage int=60
+"cleric"                zone=forest level=4 class=Cleric wis=60
 "barbarian"             zone=forest level=5 class=Barbarian str=30 con=30
-"generalist"            zone=forest level=5 class=Generalist str=8 dex=8 con=8 wis=8 int=8 agi=8 luck=8
-"fighter"               zone=forest level=5 class=Fighter str=50 con=10
-"mage"                  zone=forest level=5 class=Mage int=60
-"cleric"                zone=forest level=5 class=Cleric wis=60
-"bard"                  zone=forest level=5 class=Bard int=30 wis=30
-"druid"
+"bard"                  zone=forest level=6 class=Bard int=30 wis=30
+"jester"                zone=forest level=7 class=Jester luck=60
+"druid"                 zone=forest level=8 class=Druid wis=40 str=10 dex=10 int=30
+"archer"                zone=forest level=9
 
 # gnomish beings
-"gnome"
-"gnome nudist"          zone=forest level=7 class=Generalist str=11 dex=11 int=11 con=11 wis=11 agi=11
-"gnome rager"           zone=forest level=7 class=Barbarian str=25 dex=11 con=22
-"gnome fighter"         zone=forest level=7 class=Fighter str=13 dex=12 con=24
-"gnome cleric"          zone=forest level=7 class=Cleric wis=25 str=12
-"gnome singer"          zone=forest level=7 class=Bard int=24 wis=24
-"gnome magicslinger"    zone=forest level=7 class=Mage int=50
-"procrastination gnome"
+"gnome"                 zone=forest level=13
+"gnome nudist"          zone=forest level=13 class=Generalist str=11 dex=11 int=11 con=11 wis=11 agi=11
+"gnome rager"           zone=forest level=13 class=Barbarian str=25 dex=11 con=22
+"gnome fighter"         zone=forest level=13 class=Fighter str=13 dex=12 con=24
+"gnome cleric"          zone=forest level=13 class=Cleric wis=25 str=12
+"gnome singer"          zone=forest level=13 class=Bard int=24 wis=24
+"gnome magicslinger"    zone=forest level=13 class=Mage int=50
+"procrastination gnome" zone=forest level=1
 
 # human beings
-"human"
-"human child"
-"human nudist"
-"human barbarian"
-"human fighter"
-"human cleric"
-"human bard"
-"human mage"
+"human"                 zone=town level=18
+"human child"           zone=town level=17
+"human nudist"          zone=town level=18 class=Generalist
+"human barbarian"       zone=town level=18 class=Barbarian
+"human fighter"         zone=town level=18 class=Fighter
+"human cleric"          zone=town level=18 class=Cleric
+"human bard"            zone=town level=18 class=Bard
+"human mage"            zone=town level=18 class=Mage
 "human professor"
 
 # kobold beings
-"kobold"
-"kobold nudist"
-"kobold archer"
-"kobold warrior"
-"kobold caster"
+"kobold"                zone=cave level=26
+"kobold nudist"         zone=cave level=26 class=Generalist
+"kobold warrior"        zone=cave level=26 class=Fighter
+"kobold caster"         zone=cave level=26 class=Mage
+"kobold curist"         zone=cave level=26 class=Cleric
+"kobold chanter"        zone=cave level=26 class=Bard
+"kobold zerker"         zone=cave level=26 class=Barbarian
 
 # orcish beings
-"orc"
-"orc nudist"
-"orc brawler"
-"orc rockstar"
-"orc spy"
-"orc fighter"
-"orc sorceror"
-"orc holyfighter"
-"orc boomcaster"
-"orc healer"
+"orc"                   zone=cave level=35
+"orc nudist"            zone=cave level=35 class=Generalist
+"orc brawler"           zone=cave level=35 class=Barbarian
+"orc rockstar"          zone=cave level=35 class=Bard
+"orc spy"               zone=cave level=35
+"orc fighter"           zone=cave level=35 class=Fighter
+"orc sorceror"          zone=cave level=35
+"orc holyfighter"       zone=cave level=35
+"orc boomcaster"        zone=cave level=35 class=Mage
+"orc healer"            zone=cave level=35 class=Cleric
+
+# skeletal beings
+"skeleton"              zone=cave level=37
+#etc
 
 # half-orc beings
-"half-orc"
-"half-orc nudist"
-"half-orc giant"
-
-# giant beings
-"giant"
-"half-giant orc"
-"half-half-orc giant"
-"half-giant gnome"
-"half-gnome giant"
-"half-human giant"
-"half-kobold giant"
-"half-goblin giant"
-"half-dwarf giant"
-"half-giant giant"
+"half-orc"              zone=cave level=42
+"half-orc nudist"       zone=cave level=42
+"half-orc giant"        zone=cave level=42
 
 # goblish beings
-"goblin"
+"goblin"                zone=cave level=47
 # etc
 
+# giant beings
+"giant"                 zone=cave level=55
+"giant nudist"          zone=cave level=55 class=Generalist
+"half-giant orc"        zone=cave level=55 class=Fighter str=1500 con=500 dex=500
+"half-goblin giant"     zone=cave level=55 class=Fighter str=500 con=1500 dex=500
+"half-half-orc giant"   zone=cave level=55 class=Barbarian str=1000 con=1500
+"half-dwarf giant"      zone=cave level=55 class=Barbarian str=1500 con=1000
+"half-giant gnome"      zone=cave level=55 class=Mage int=1500 con=500
+"half-gnome giant"      zone=cave level=55 class=Mage int=500 con=1500
+"half-human giant"      zone=cave level=55
+"half-kobold giant"     zone=cave level=55
+"half-giant giant"      zone=cave level=55
+
+# elvish beings
+"elf"                   zone=town level=60
+#etc
+
 # dwarven beings
-"dwarf"
+"dwarf"                 zone=town level=65
 # etc (pull from idlemaster https://github.com/seiyria/idlemaster/blob/master/data/monsters/Monsters.txt#L105)
 
 # pygmy beings
-"pygmy"
-"pygmy warrior"
+"pygmy"                 zone=cave level=73
+"pygmy warrior"         zone=cave level=73
 # etc
 
 # ogre beings
-"ogre"
+"ogre"                  zone=cave level=77
 #etc
-
-# elvish beings
-"elf"
-#etc
-
-# skeletal beings
-"skeleton"
-#etc
-
-# miscellanous beings
-"ninja"
-"pirate"
-"caveman"
-"hero"
-"acolyte"
-"zephyr"
-"conjuror"
-"black knight"
-"black night"
-"miniboss squad"
-
-# symbolic beings
-♥
-☺
-♪
-♫
-►
