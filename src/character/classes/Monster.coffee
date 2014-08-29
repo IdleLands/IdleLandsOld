@@ -11,13 +11,13 @@ class Monster extends Class
   baseMpPerLevel: 4
   baseMpPerInt: 4
 
-  baseConPerLevel: 2
-  baseDexPerLevel: 2
-  baseAgiPerLevel: 2
-  baseStrPerLevel: 2
-  baseIntPerLevel: 2
-  baseWisPerLevel: 2
-  baseLuckPerLevel: 2
+  baseConPerLevel: 4
+  baseDexPerLevel: 4
+  baseAgiPerLevel: 4
+  baseStrPerLevel: 4
+  baseIntPerLevel: 4
+  baseWisPerLevel: 4
+  baseLuckPerLevel: 4
 
   baseXpGainPerCombat: 0
   baseXpGainPerOpponentLevel: 0
