@@ -23,44 +23,44 @@ class Equipment
     wis: 1
     agi: 1
 
-    ice: 1
-    fire: 1
-    water: 1
-    earth: 1
-    thunder: 1
+    ice: 0.3
+    fire: 0.3
+    water: 0.3
+    earth: 0.3
+    thunder: 0.3
 
     gold: 2
     xp: 2
 
     luck: 3
 
-    strPercent: 10
-    dexPercent: 10
-    conPercent: 10
-    intPercent: 10
-    wisPercent: 10
-    agiPercent: 10
-    icePercent: 10
-    firePercent: 10
-    waterPercent: 10
-    earthPercent: 10
-    thunderPercent: 10
+    strPercent: 6
+    dexPercent: 6
+    conPercent: 6
+    intPercent: 6
+    wisPercent: 6
+    agiPercent: 6
+    icePercent: 2
+    firePercent: 2
+    waterPercent: 2
+    earthPercent: 2
+    thunderPercent: 2
 
-    goldPercent: 20
-    xpPercent: 20
+    goldPercent: 10
+    xpPercent: 10
 
     enchantLevel: -25
 
-    luckPercent: 30
+    luckPercent: 15
 
-    crit: 25
-    dodge: 25
-    prone: 25
-    power: 25
-    silver: 25
-    deadeye: 25
-    defense: 25
-    glowing: 25
+    crit: 20
+    dodge: 20
+    prone: 20
+    power: 20
+    silver: 20
+    deadeye: 20
+    defense: 20
+    glowing: 20
 
   @defaults =
     itemClass: "basic"
