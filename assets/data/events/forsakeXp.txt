@@ -64,3 +64,5 @@ A survivor on %player's team turned into a zombie and bit %himher!
 %player built a watch tower in %hisher warehouse to keep away the zombies, but no one was guarding it, so they got in.
 %player's teammates left the gates open, and the undead got in and slaughtered %hisher team.
 %player got run over by a PC truck. The owner of the truck installed Windows on %player, forcing %himher to wait while updates were downloaded and installed.  %She lost %xpxp waiting for this process to finish.
+%player got mowed down by a mac and cheese truck when it exploded. %She drowned in the cheesy deliciousness.
+%player got stopped by a chili mac truck. The driver got out and threw hot chili in %hisher face.
