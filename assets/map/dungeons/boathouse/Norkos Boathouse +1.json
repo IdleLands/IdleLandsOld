@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="9" height="8" tilewidth="16" tileheight="16">
+ <properties>
+  <property name="name" value="norkos"/>
+ </properties>
+ <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16">
+  <image source="../../../img/tiles.png" width="144" height="32"/>
+ </tileset>
+ <layer name="Terrain" width="9" height="8">
+  <data encoding="base64" compression="zlib">
+   eJxjZ2BgYB/FODEAIJ8B+Q==
+  </data>
+ </layer>
+ <layer name="Blocking" width="9" height="8">
+  <data encoding="base64" compression="zlib">
+   eJxjZmBgYCYCowNmNDaxatDNZMYiTwjgcyOx5hDjZxAGAEhsAH8=
+  </data>
+ </layer>
+ <objectgroup name="Interactables" width="9" height="8">
+  <object name="ToBoathouseF1" type="Teleport" gid="1" x="48" y="32">
+   <properties>
+    <property name="destName" value="Norkos Boathouse"/>
+    <property name="destx" value="4"/>
+    <property name="desty" value="85"/>
+    <property name="map" value="Norkos"/>
+    <property name="movementType" value="descend"/>
+   </properties>
+  </object>
+  <object name="ToNorkosDungeon2" type="Teleport" gid="1" x="128" y="80">
+   <properties>
+    <property name="destName" value="Norkos Boathouse Entrance"/>
+    <property name="destx" value="10"/>
+    <property name="desty" value="88"/>
+    <property name="map" value="Norkos"/>
+    <property name="movementType" value="fall"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
