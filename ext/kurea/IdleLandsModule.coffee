@@ -99,7 +99,7 @@ module.exports = (Module) ->
         for channel in channels
           IdleModule::serverBots[server]?.say channel, message if (@hashServerChannel server, channel) in @currentlyInChannels
 
-    sendMessageToAll: (messageArray) ->
+    sendMessageToAll: (message) ->
       @broadcast message
 
     generateIdent: (server, username) ->
