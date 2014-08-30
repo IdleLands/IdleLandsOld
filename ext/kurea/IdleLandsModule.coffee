@@ -24,7 +24,7 @@ module.exports = (Module) ->
     userIdentsList: []
     userIdents: {}
 
-    topic: "Welcome to Idletopia! /msg IdleMaster !idle-register <your character name> | New player? Join ##idlebot | Got feedback? Send it to http://idle_lands.reddit.com. | Check your stats: http://kurea.link/idle | GitHub: https://github.com/seiyria/IdleLands"
+    topic: "Welcome to Idletopia! /msg IdleMaster !idle-register <your character name> | New player? Join ##idlebot | Got feedback? Send it to http://reddit.com/r/idle_lands | Check your stats: http://kurea.link/idle | GitHub: https://github.com/seiyria/IdleLands"
 
     colorMap:
       "player.name":                c.bold
@@ -100,14 +100,6 @@ module.exports = (Module) ->
           IdleModule::serverBots[server]?.say channel, message if (@hashServerChannel server, channel) in @currentlyInChannels
 
     sendMessageToAll: (messageArray) ->
-      messageArray = [messageArray] if !_.isArray messageArray
-
-      constructMessage = (messageToConstruct) ->
-        _.map messageToConstruct, (messageItem) ->
-          messageItem.message
-        .join ' '
-
-      message = constructMessage messageArray
       @broadcast message
 
     generateIdent: (server, username) ->
