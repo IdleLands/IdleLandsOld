@@ -10,7 +10,7 @@ class Equipment
     ret = 0
     for attr, mult of Equipment.multipliers
       ret += @[attr]*mult if attr of @
-    ret
+    parseInt ret
 
   getName: ->
     if @enchantLevel then "+#{@enchantLevel} #{@name}" else @name
