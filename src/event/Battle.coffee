@@ -98,7 +98,7 @@ class Battle
       @turnPosition = @turnPosition or 0
 
       if @turnPosition is 0
-        @game.broadcast MessageCreator.genericMessage "A new combat round has started. Current status: #{@getAllStatStrings().join ' VS '}"
+        @game.broadcast MessageCreator.genericMessage "ROUND STATUS: #{@getAllStatStrings().join ' VS '}"
         @emitEventToAll "round.start", @turnOrder
 
       @emitEventToAll "turn.start", player
