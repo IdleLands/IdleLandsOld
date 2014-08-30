@@ -35,7 +35,10 @@ class Game
 
   registerBroadcastHandler: (@broadcastHandler, @broadcastContext) ->
     console.info "Registered broadcast handler."
-    @broadcast MessageCreator.generateMessage "Initializing the Lands that Idle (#{Constants.gameName})."
+    @broadcast "Initializing the Lands that Idle (#{Constants.gameName})."
+
+  registerColors: (colors) ->
+    MessageCreator.registerMessageMap colors
 
   broadcast: (message) ->
     return if not message

@@ -1,6 +1,7 @@
 
 finder = require "fs-finder"
 watch = require "node-watch"
+colors = require "cli-color"
 _ = require "underscore"
 
 #### GAME CONSTANTS ####
@@ -53,15 +54,7 @@ buildHashes = ->
 broadcast = (message) ->
   console.log message
 
-broadcastHandler = (messageArray) ->
-  messageArray = [messageArray] if !_.isArray messageArray
-
-  constructMessage = (messageToConstruct) ->
-    _.map messageToConstruct, (messageItem) ->
-      messageItem.message
-    .join ' '
-
-  message = constructMessage messageArray
+broadcastHandler = (message) ->
   broadcast message
 
 ## ## ## ## ## ## ## ##
@@ -74,9 +67,50 @@ w = getWrapper = -> IdleWrapper
 api = -> w().api
 inst = -> api().gameInstance
 
+colorMap =
+  "player.name":                colors.bold
+  "event.partyName":            colors.bold
+  "event.partyMembers":         colors.bold
+  "event.damage":               colors.red
+  "event.gold":                 colors.yellowBright
+  "event.realGold":             colors.yellowBright
+  "event.xp":                   colors.green
+  "event.realXp":               colors.green
+  "event.percentXp":            colors.green
+  "event.item.newbie":          colors.whiteBright
+  "event.item.Normal":          colors.black
+  "event.item.basic":           colors.black
+  "event.item.pro":             colors.white
+  "event.item.idle":            colors.cyan
+  "event.item.godly":           colors.cyanBright
+  "event.finditem.scoreboost":  colors.bold
+  "event.finditem.perceived":   colors.bold
+  "event.finditem.real":        colors.bold
+  "event.blessItem.stat":       colors.bold
+  "event.blessItem.value":      colors.bold
+  "event.flip.stat":            colors.bold
+  "event.flip.value":           colors.bold
+  "event.enchant.boost":        colors.bold
+  "event.enchant.stat":         colors.bold
+  "event.transfer.destination": colors.bold
+  "event.transfer.from":        colors.bold
+  "player.class":               colors.bold
+  "player.level":               colors.bold
+  "stats.hp":                   colors.red
+  "stats.mp":                   colors.blue
+  "stats.sp":                   colors.yellow
+  "damage.hp":                  colors.red
+  "damage.mp":                  colors.blue
+  "spell.turns":                colors.bold
+  "spell.spellName":            colors.bold
+  "event.casterName":           colors.bold
+  "event.spellName":            colors.bold
+  "event.targetName":           colors.bold
+
 ## API call functions ##
 loadIdle = ->
   IdleWrapper.load()
+  IdleWrapper.api.register.colorMap colorMap
   IdleWrapper.api.register.broadcastHandler broadcastHandler, null
   do loadAllPlayers
 

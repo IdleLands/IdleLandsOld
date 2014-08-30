@@ -44,7 +44,7 @@ class PlayerManager
       return if not player
       @players.push player
       @playerHash[identifier] = player
-      @game.broadcast MessageCreator.generateMessage "#{player.name}, the level #{player.level.__current} #{player.professionName}, has joined #{Constants.gameName}!" if not suppress
+      @game.broadcast "#{player.name}, the level #{player.level.__current} #{player.professionName}, has joined #{Constants.gameName}!" if not suppress
 
       @players = _.uniq @players
 
@@ -56,7 +56,7 @@ class PlayerManager
     @players = _.reject @players, (player) -> player.identifier is identifier
     delete @playerHash[identifier]
 
-    @game.broadcast MessageCreator.generateMessage "#{name} has left #{Constants.gameName}!"
+    @game.broadcast "#{name} has left #{Constants.gameName}!"
 
   registerPlayer: (options, middleware, callback) ->
 

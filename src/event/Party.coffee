@@ -72,9 +72,9 @@ class Party
     if not forced
       if @players.length <= 1
         @disband()
-        player.playerManager.game.broadcast MessageCreator.genericMessage "#{player.name} has disbanded #{@name}." if not forced
+        player.playerManager.game.broadcast MessageCreator.genericMessage "<player.name>#{player.name}</player.name> has disbanded <event.partyName>#{@name}</event.partyName>." if not forced
       else
-        player.playerManager.game.broadcast MessageCreator.genericMessage "#{player.name} has left #{@name}."
+        player.playerManager.game.broadcast MessageCreator.genericMessage "<player.name>#{player.name}</player.name> has left <event.partyName>#{@name}</event.partyName>."
 
     player.party = null
 

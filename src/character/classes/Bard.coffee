@@ -39,7 +39,12 @@ class Bard extends Class
       return if player.isMonster
       goldBonus = player.calcGoldGain 1000
       player.gainGold goldBonus
-      player.playerManager.game.broadcast MessageCreator.genericMessage "A stunning performance by #{player.name} netted #{goldBonus} gold from the audience!"
+      extra =
+        player: player.name
+
+      message = "A stunning performance by %player netted #{goldBonus} gold from the audience!"
+      message = MessageCreator.doStringReplace message, player, extra
+      player.playerManager.game.broadcast MessageCreator.genericMessage message
 
   unload: (player) ->
     player.off "combat.party.win", @events.partyWin

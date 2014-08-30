@@ -21,16 +21,16 @@ class BluntHit extends Spell
 
   cast: (player) ->
     damage = @calcDamage()
-    message = "#{@caster.name} used #{@name} on #{player.name} and dealt %damage HP damage!"
+    message = "%casterName used %spellName on %targetName and dealt %damage HP damage!"
     @doDamageTo player, damage, message
 
   tick: (player) ->
-    message = "#{player.name} is still suffering from #{@name}."
-    @broadcastBuffMessage message
+    message = "%targetName is still suffering from %spellName."
+    @broadcastBuffMessage player, message
 
   uncast: (player) ->
-    message = "#{player.name} is no longer suffering from #{@name}."
-    @broadcast message
+    message = "%targetName is no longer suffering from %spellName."
+    @broadcast player, message
 
   constructor: (@game, @caster) ->
     super @game, @caster

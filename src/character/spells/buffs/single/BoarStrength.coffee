@@ -16,16 +16,16 @@ class BoarStrength extends Spell
   strPercent: -> 25
 
   cast: (player) ->
-    message = "#{@caster.name} infused #{player.name} with #{@name}!"
-    @broadcast message
+    message = "%casterName infused %targetName with %spellName!"
+    @broadcast player, message
 
   tick: (player) ->
-    message = "#{@caster.name}'s #{@name} on #{player.name} is fading slowly!"
-    @broadcastBuffMessage message
+    message = "%casterName's %spellName on %targetName is fading slowly!"
+    @broadcastBuffMessage player, message
 
   uncast: (player) ->
-    message = "#{player.name} no longer has #{@name}."
-    @broadcast message
+    message = "%targetName no longer has %spellName."
+    @broadcast player, message
 
   constructor: (@game, @caster) ->
     super @game, @caster

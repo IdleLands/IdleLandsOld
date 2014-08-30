@@ -12,9 +12,9 @@ class Berserk extends Spell
     @caster
 
   cast: (player) ->
-    message = "#{player.name} is going #{@name}!"
+    message = "%playerName is going %spellName!"
     player.special.add 15
-    @broadcast message
+    @broadcast player, message
 
   constructor: (@game, @caster) ->
     super @game, @caster

@@ -14,21 +14,21 @@ class Treatment extends Spell
     @targetSomeAllies()
 
   calcDamage: (player) ->
-    Math.floor (player.hp.maximum * 0.07)
+    Math.floor (player.hp.maximum * 0.1)
 
   cast: (player) ->
-    message = "#{@caster.name} began treating #{player.name}'s wounds with #{@name}!"
-    @broadcast message
+    message = "%casterName began treating %targetName's wounds with %spellName!"
+    @broadcast player, message
 
   uncast: (player) ->
-    message = "#{@caster.name} is no longer treating #{player.name} with #{@name}."
-    @broadcast message
+    message = "%casterName is no longer treating %targetName with %spellName."
+    @broadcast player, message
 
   tick: (player) ->
     restored = @calcDamage player
-    message = "#{@caster.name}'s #{@name} restored #{restored} HP for #{player.name}!"
+    message = "%casterName's %spellName restored #{restored} HP for %targetName!"
     @doDamageTo player, -restored
-    @broadcastBuffMessage message
+    @broadcastBuffMessage player, message
 
   constructor: (@game, @caster) ->
     super @game, @caster

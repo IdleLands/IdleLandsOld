@@ -17,20 +17,20 @@ class Fortify extends Spell
     Math.floor @caster.hp.getValue() * 0.1
 
   cast: (player) ->
-    message = "#{@caster.name} cast #{@name}!"
+    message = "%casterName cast %spellName!"
     @hpBoost = @calcDamage()
     player.hp.addAndBound @hpBoost
-    @broadcast message
+    @broadcast player, message
 
   tick: (player) ->
-    message = "#{@caster.name}'s #{@name} on #{player.name} is fading slowly!"
-    @broadcastBuffMessage message
+    message = "%casterName's %spellName is fading slowly!"
+    @broadcastBuffMessage player, message
 
   uncast: (player) ->
-    message = "#{player.name} no longer has #{@name}."
+    message = "%targetName no longer has %spellName."
     player.hp.maximum -= @hpBoost
     player.hp.set player.hp.getValue()
-    @broadcast message
+    @broadcast player, message
 
   constructor: (@game, @caster) ->
     super @game, @caster

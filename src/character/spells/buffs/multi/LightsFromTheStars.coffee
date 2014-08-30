@@ -21,18 +21,18 @@ class LightsFromTheStars extends Spell
     @storedInt = (@caster.calc.stat 'int')/4
     @storedWis = (@caster.calc.stat 'wis')/4
     return if @caster isnt player
-    message = "#{@caster.name} begins playing \"#{@name}!\""
-    @broadcast message
+    message = "%casterName begins playing \"%spellName!\""
+    @broadcast player, message
 
   tick: (player) ->
     return if @caster isnt player
-    message = "#{@caster.name} still calls power from the celestial bodies for %hisher teammates!"
-    @broadcastBuffMessage message
+    message = "%casterName still calls power from the celestial bodies for %hisher teammates!"
+    @broadcastBuffMessage player, message
 
   uncast: (player) ->
     return if @caster isnt player
-    message = "#{@caster.name} finishes \"#{@name}.\""
-    @broadcast message
+    message = "%casterName finishes \"%spellName.\""
+    @broadcast player, message
 
   constructor: (@game, @caster) ->
     super @game, @caster

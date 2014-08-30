@@ -31,6 +31,13 @@ class Spell
     @chance.integer min: min, max: Math.max min+1, max
 
   doDamageTo: (player, damage, message = "") ->
+    extra =
+      casterName: @caster.name
+      targetName: player.name
+      spellName: @name
+
+    message = MessageCreator.doStringReplace message, @caster, extra
+
     @caster.party?.currentBattle?.takeHp @caster, player, damage, @determineType(), @, message
 
   prepareCast: ->
@@ -119,12 +126,22 @@ class Spell
     return if not battleInstance
     battleInstance.emitEvents "skill.duration.end", "skill.duration.endAt", @caster, player, skill: @
 
-  broadcastBuffMessage: (message) ->
-    newMessage = MessageCreator.doStringReplace message, @caster
-    @game.broadcast MessageCreator.genericMessage newMessage+" [#{@turns} turns]" if (@turns > 0 and @turns isnt @baseTurns) and (not @suppressed)
+  broadcastBuffMessage: (target, message) ->
+    extra =
+      spellName: @name
+      targetName: target.name
+      casterName: @caster.name
 
-  broadcast: (message) ->
-    newMessage = MessageCreator.doStringReplace message, @caster
+    newMessage = MessageCreator.doStringReplace message, @caster, extra
+    @game.broadcast MessageCreator.genericMessage newMessage+" [<spell.turns>#{@turns}</spell.turns> turns]" if (@turns > 0 and @turns isnt @baseTurns) and (not @suppressed)
+
+  broadcast: (target, message) ->
+    extra =
+      spellName: @name
+      targetName: target.name
+      casterName: @caster.name
+
+    newMessage = MessageCreator.doStringReplace message, @caster, extra
     @game.broadcast MessageCreator.genericMessage newMessage if not @suppressed
 
   constructor: (@game, @caster, @forcedTargets = null) ->

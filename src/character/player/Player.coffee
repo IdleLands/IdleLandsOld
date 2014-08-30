@@ -46,9 +46,9 @@ class Player extends Character
     return if @isBusy or @stepCooldown > 0
     @isBusy = true
     className = tile.object.name
-    message = "#{@name} has met with the #{className} trainer!"
+    message = "<player.name>#{@name}</player.name> has met with the <player.class>#{className}</player.class> trainer!"
     if @professionName is className
-      message += " Alas, #{@name} is already a #{className}!"
+      message += " Alas, <player.name>#{@name}</player.name> is already a <player.class>#{className}</player.class>!"
       @isBusy = false
       @emit "player.trainer.isAlready", @, className
       @stepCooldown = 10
@@ -85,9 +85,9 @@ class Player extends Character
     dest.destName = dest.map if not dest.destName
 
     switch dest.movementType
-      when "ascend" then message = "#{@name} has ascended to #{dest.destName}."
-      when "descend" then message = "#{@name} has descended to #{dest.destName}."
-      when "fall" then message = "#{@name} has fallen from #{dest.fromName} to #{dest.destName}!"
+      when "ascend" then message = "<player.name>#{@name}</player.name> has ascended to <event.transfer.destination>#{dest.destName}</event.transfer.destination>."
+      when "descend" then message = "<player.name>#{@name}</player.name> has descended to <event.transfer.destination>#{dest.destName}</event.transfer.destination>."
+      when "fall" then message = "<player.name>#{@name}</player.name> has fallen from <event.transfer.from>#{dest.fromName}</event.transfer.from> to <event.transfer.destination>#{dest.destName}</event.transfer.destination>!"
 
     @emit "explore.transfer.#{dest.movementType}", @
 
@@ -144,7 +144,7 @@ class Player extends Character
     @profession = new professionProto()
     @professionName = professionProto.name
     @profession.load @
-    @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} is now a #{to}!" if not suppress
+    @playerManager.game.broadcast MessageCreator.genericMessage "<player.name>#{@name}</player.name> is now a <player.class>#{to}</player.class>!" if not suppress
     @emit "player.profession.change", @, oldProfessionName, @professionName
 
     @recalculateStats()
@@ -205,7 +205,7 @@ class Player extends Character
   levelUp: (suppress = no) ->
     return if not @playerManager or @level.getValue() is @level.maximum
     @level.add 1
-    @playerManager.game.broadcast MessageCreator.genericMessage "#{@name} has attained level #{@level.getValue()}!" if not suppress
+    @playerManager.game.broadcast MessageCreator.genericMessage "<player.name>#{@name}</player.name> has attained level <player.level>#{@level.getValue()}</player.level>!" if not suppress
     @xp.maximum = @levelUpXpCalc @level.getValue()
     @xp.toMinimum()
     @emit "player.level.up", @

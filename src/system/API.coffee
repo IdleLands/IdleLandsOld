@@ -10,6 +10,9 @@ class API
     broadcastHandler: (handler, context) =>
       @gameInstance.registerBroadcastHandler handler, context
 
+    colorMap: (map) =>
+      @gameInstance.registerColors map
+
     playerLoadHandler: (handler) =>
       @gameInstance.playerManager.registerLoadAllPlayersHandler handler
 

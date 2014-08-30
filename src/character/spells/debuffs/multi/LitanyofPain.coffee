@@ -19,19 +19,19 @@ class LitanyOfPain extends Spell
     @targetAllEnemies()
 
   cast: (player) ->
-    message = "#{@caster.name} begins playing \"#{@name}\" at #{player.name}!"
-    @broadcast message
+    message = "%casterName begins playing \"%spellName\" at %targetName!"
+    @broadcast player, message
 
   tick: (player) ->
     if((@chance.integer min: (Math.min 0, -(@caster.calc.stat 'wis')), max: (Math.max 0,(player.calc.stats ['agi', 'dex']/2))) < 0)
       damage = @calcDamage()
-      message = "#{player.name} is damaged by #{@caster.name}'s \"#{@name}\" for %damage HP damage"
+      message = "%targetName is damaged by %casterName's \"%spellName\" for %damage HP damage"
       @doDamageTo player, damage, message
 
   uncast: (player) ->
     return if @caster isnt player
-    message = "#{player.name} is no longer under the effects of \"#{@name}.\""
-    @broadcast message
+    message = "%targetName is no longer under the effects of \"%spellName.\""
+    @broadcast player message
 
   constructor: (@game, @caster) ->
     super @game, @caster

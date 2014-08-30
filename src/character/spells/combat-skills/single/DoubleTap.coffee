@@ -9,10 +9,10 @@ class DoubleTap extends Spell
     "Fighter": 1
 
   cast: (player) ->
-    @broadcast "#{@caster.name} is going double-tap crazy on #{player.name}!"
+    @broadcast player,"%casterName is going double-tap crazy on %targetName!"
     @caster.party.currentBattle.doPhysicalAttack @caster, player
     if player.hp.atMin()
-      @broadcast "#{@caster.name} needs not hit #{player.name} again!"
+      @broadcast player,"%casterName needs not hit %targetName again!"
       return
 
     @caster.party.currentBattle.doPhysicalAttack @caster, player

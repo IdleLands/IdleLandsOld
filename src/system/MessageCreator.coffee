@@ -1,12 +1,67 @@
 
-_ = {}
+_ = require "underscore"
 _.str = require "underscore.string"
 
 class MessageCreator
 
-  genericMessage = (message) ->
+  defaultReplaceFunction = (msg) -> msg
+
+  defaultColorMap =
+    colorMap =
+      "player.name":                defaultReplaceFunction
+      "event.partyName":            defaultReplaceFunction
+      "event.partyMembers":         defaultReplaceFunction
+      "event.damage":               defaultReplaceFunction
+      "event.gold":                 defaultReplaceFunction
+      "event.realGold":             defaultReplaceFunction
+      "event.xp":                   defaultReplaceFunction
+      "event.realXp":               defaultReplaceFunction
+      "event.percentXp":            defaultReplaceFunction
+      "event.item.newbie":          defaultReplaceFunction
+      "event.item.Normal":          defaultReplaceFunction
+      "event.item.basic":           defaultReplaceFunction
+      "event.item.pro":             defaultReplaceFunction
+      "event.item.idle":            defaultReplaceFunction
+      "event.item.godly":           defaultReplaceFunction
+      "event.finditem.scoreboost":  defaultReplaceFunction
+      "event.finditem.perceived":   defaultReplaceFunction
+      "event.finditem.real":        defaultReplaceFunction
+      "event.blessItem.stat":       defaultReplaceFunction
+      "event.blessItem.value":      defaultReplaceFunction
+      "event.flip.stat":            defaultReplaceFunction
+      "event.flip.value":           defaultReplaceFunction
+      "event.enchant.boost":        defaultReplaceFunction
+      "event.enchant.stat":         defaultReplaceFunction
+      "event.transfer.destination": defaultReplaceFunction
+      "event.transfer.from":        defaultReplaceFunction
+      "player.class":               defaultReplaceFunction
+      "player.level":               defaultReplaceFunction
+      "stats.hp":                   defaultReplaceFunction
+      "stats.mp":                   defaultReplaceFunction
+      "stats.sp":                   defaultReplaceFunction
+      "damage.hp":                  defaultReplaceFunction
+      "damage.mp":                  defaultReplaceFunction
+      "spell.turns":                defaultReplaceFunction
+      "spell.spellName":            defaultReplaceFunction
+      "event.casterName":           defaultReplaceFunction
+      "event.spellName":            defaultReplaceFunction
+      "event.targetName":           defaultReplaceFunction
+
+  @replaceMessageColors: (message) ->
+    map = _.defaults (@colorMap or {}), defaultColorMap
+
+    for search, replaceFunc of map
+      regexp = new RegExp "(<#{search}>)([\\s\\S]*?)(<\\/#{search}>)", "g"
+      message = message.replace regexp, (replaceFunc "$2")
+
+    message
+
+  @genericMessage: (message) ->
     return if not message
-    [{type: 'generic', message: message}]
+    @replaceMessageColors message
+
+  @registerMessageMap: (@colorMap) ->
+    console.log "Registered color map."
 
   getGenderPronoun = (gender, replace) ->
     switch replace
@@ -30,22 +85,16 @@ class MessageCreator
         else if gender is 'female' then 'she'
         else 'it'
 
-  @generateMessage: (message) ->
-    genericMessage message
-
-  @genericMessage: genericMessage
-
   #more types: combat, health, mana, special, announcement, event.gold, event.item, event.xp
 
   @doStringReplace: (string, player, extra = {}) ->
     gender = player.getGender()
     string = _.str.clean string
 
-    for key, val of extra
-      string = string.split("%#{key}").join val
+    (string = string.split("%#{key}").join (if key is "item" then val else "<event.#{key}>#{val}</event.#{key}>")) for key, val of extra
 
     string
-      .split('%player').join player.name
+      .split('%player').join "<player.name>#{player.name}</player.name>"
       .split('%hishers').join getGenderPronoun gender, '%hishers'
       .split('%hisher').join getGenderPronoun gender, '%hisher'
       .split('%himher').join getGenderPronoun gender, '%himher'

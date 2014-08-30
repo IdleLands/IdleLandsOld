@@ -18,7 +18,7 @@ class Cure extends Spell
 
   cast: (player) ->
     damage = @calcDamage()
-    message = "#{@caster.name} cast #{@name} at #{player.name} and healed %damage HP!"
+    message = "%casterName cast %spellName at %targetName and healed %damage HP!"
     @doDamageTo player, -damage, message
 
   constructor: (@game, @caster) ->

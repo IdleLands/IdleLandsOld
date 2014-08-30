@@ -19,18 +19,18 @@ class NoEscape extends Spell
 
   cast: (player) ->
     return if @caster isnt player
-    message = "#{@caster.name} begins playing \"#{@name}!\""
-    @broadcast message
+    message = "%casterName begins playing \"%spellName!\""
+    @broadcast player, message
 
   tick: (player) ->
     return if @caster isnt player
-    message = "#{@caster.name} cheers on %hisher teammates to not lose sight of their foes!"
-    @broadcastBuffMessage message
+    message = "%casterName cheers on %hisher teammates to not lose sight of their foes!"
+    @broadcastBuffMessage player, message
 
   uncast: (player) ->
     return if @caster isnt player
-    message = "#{@caster.name} finishes \"#{@name}.\""
-    @broadcast message
+    message = "%casterName finishes \"%spellName.\""
+    @broadcast player, message
 
   constructor: (@game, @caster) ->
     super @game, @caster

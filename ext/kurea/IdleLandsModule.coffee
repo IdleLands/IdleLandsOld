@@ -5,6 +5,8 @@ Q = require "q"
 finder = require "fs-finder"
 watch = require "node-watch"
 
+c = require "irc-colors"
+
 idlePath = __dirname + "/../../src"
 
 module.exports = (Module) ->
@@ -24,12 +26,53 @@ module.exports = (Module) ->
 
     topic: "Welcome to Idletopia! /msg IdleMaster !idle-register <your character name> | New player? Join ##idlebot | Got feedback? Send it to http://idle_lands.reddit.com. | Check your stats: http://kurea.link/idle | GitHub: https://github.com/seiyria/IdleLands"
 
+    colorMap:
+      "player.name":                c.bold
+      "event.partyName":            c.underline
+      "event.partyMembers":         c.bold
+      "event.damage":               c.red
+      "event.gold":                 c.olive
+      "event.realGold":             c.olive
+      "event.xp":                   c.lime
+      "event.realXp":               c.lime
+      "event.percentXp":            c.lime
+      "event.item.newbie":          c.brown
+      "event.item.Normal":          (msg) -> msg
+      "event.item.basic":           (msg) -> msg
+      "event.item.pro":             defaultReplaceFunction
+      "event.item.idle":            c.rainbow
+      "event.item.godly":           c.white.bgblack
+      "event.finditem.scoreboost":  c.bold
+      "event.finditem.perceived":   c.bold
+      "event.finditem.real":        c.bold
+      "event.blessItem.stat":       c.bold
+      "event.blessItem.value":      c.bold
+      "event.flip.stat":            c.bold
+      "event.flip.value":           c.bold
+      "event.enchant.boost":        c.bold
+      "event.enchant.stat":         c.bold
+      "event.transfer.destination": c.bold
+      "event.transfer.from":        c.bold
+      "player.class":               c.italic
+      "player.level":               c.bold
+      "stats.hp":                   c.red
+      "stats.mp":                   c.blue
+      "stats.sp":                   c.yellow
+      "damage.hp":                  c.red
+      "damage.mp":                  c.blue
+      "spell.turns":                c.bold
+      "spell.spellName":            c.underline
+      "event.casterName":           c.bold
+      "event.spellName":            c.underline
+      "event.targetName":           c.bold
+
     loadIdle: (stopIfLoaded) ->
       @buildUserList()
       if not (stopIfLoaded and @idleLoaded)
         @idleLoaded = true
         @IdleWrapper.load()
         @IdleWrapper.api.register.broadcastHandler @sendMessageToAll, @
+        @IdleWrapper.api.register.colorMap @colorMap
         @IdleWrapper.api.register.playerLoadHandler @getAllUsers
 
     addServerChannel: (bot, server, channel) =>

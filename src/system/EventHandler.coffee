@@ -176,7 +176,7 @@ class EventHandler
       boost = Math.floor Math.abs(val) / Constants.eventEffects[event.type].percent
 
     extra =
-      item: item.getName()
+      item: "<event.item.#{item.itemClass}>#{item.getName()}</event.item.#{item.itemClass}>"
 
     start = val
     end = val+boost
@@ -186,7 +186,7 @@ class EventHandler
     item[stat] = end
 
     string = MessageCreator.doStringReplace event.remark, player, extra
-    string += " [#{stat} #{start} -> #{end}]"
+    string += " [<event.blessItem.stat>#{stat}</event.blessItem.stat> <event.blessItem.value>#{start} -> #{end}</event.blessItem.value>]"
 
     player.emit "event.#{event.type}", player, item, boost
 
@@ -206,9 +206,9 @@ class EventHandler
       player.equip item
 
       extra =
-        item: item.getName()
+        item: "<event.item.#{item.itemClass}>#{item.getName()}</event.item.#{item.itemClass}>"
 
-      totalString = "#{event.remark} [perceived: #{myScore} -> #{score} | real: #{myRealScore} -> #{realScore} | +#{score-myScore}]"
+      totalString = "#{event.remark} [perceived: <event.finditem.perceived>#{myScore} -> #{score}</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore}</event.finditem.real> | <event.finditem.scoreboost>+#{score-myScore}</event.finditem.scoreboost>]"
       player.emit "event.findItem", player, item
 
       @broadcastEvent totalString, player, extra
@@ -258,13 +258,13 @@ class EventHandler
     boost = 10
 
     extra =
-      item: item.getName()
+      item: "<event.item.#{item.itemClass}>#{item.getName()}</event.item.#{item.itemClass}>"
 
     item[stat] += boost
 
     item.enchantLevel = 0 if not item.enchantLevel or _.isNaN item.enchantLevel
 
-    string = "#{event.remark} [#{stat} = #{boost} | +#{item.enchantLevel} -> +#{++item.enchantLevel}]"
+    string = "#{event.remark} [<event.enchant.stat>#{stat} = #{boost}</event.enchant.stat> | <event.enchant.boost>+#{item.enchantLevel} -> +#{++item.enchantLevel}</event.enchant.boost>]"
 
     player.emit "event.enchant", player, item, item.enchantLevel
 
@@ -280,14 +280,14 @@ class EventHandler
     val = item[stat] ? 0
 
     extra =
-      item: item.getName()
+      item: "<event.item.#{item.itemClass}>#{item.getName()}</event.item.#{item.itemClass}>"
 
     start = val
     end = -val
 
     item[stat] = end
 
-    string = "#{event.remark} [#{stat} #{start} -> #{end}]"
+    string = "#{event.remark} [<event.flip.stat>#{stat}</event.flip.stat> <event.flip.value>#{start} -> #{end}</event.flip.value>]"
 
     player.emit "event.#{event.type}", player, item, stat
 

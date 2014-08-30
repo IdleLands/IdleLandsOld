@@ -16,18 +16,18 @@ class Thunderstrike extends Spell
     super() + @minMax intDamage, maxIntDamage
 
   cast: (player) ->
-    message = "#{@caster.name} cast #{@name} at #{player.name}!"
-    @broadcast message
+    message = "%casterName cast %spellName at %targetName!"
+    @broadcast player, message
 
   uncast: (player) ->
     return if not @caster.party or not @caster.party.currentBattle
     damage = @calcDamage()
-    message = "#{player.name} was struck by #{@caster.name}'s #{@name} for %damage HP damage!"
+    message = "%targetName was struck by %casterName's %spellName for %damage HP damage!"
     @doDamageTo player, damage, message
 
   tick: (player) ->
-    message = "Storm clouds brew above #{player.name}..."
-    @broadcast message
+    message = "Storm clouds brew above %targetName..."
+    @broadcast player, message
 
   constructor: (@game, @caster) ->
     super @game, @caster

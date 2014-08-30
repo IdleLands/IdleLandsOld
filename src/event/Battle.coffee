@@ -45,7 +45,7 @@ class Battle
 
   getRelevantStats: (player) ->
     stats =
-      name: player.name
+      name: "<player.name>#{player.name}</player.name>"
 
     stats.hp = player.hp if player.hp.maximum isnt 0
     stats.mp = player.mp if player.mp.maximum isnt 0
@@ -66,9 +66,9 @@ class Battle
 
       else
         string += " [ "
-        string += "HP #{stats.hp.getValue()}/#{stats.hp.maximum} " if stats.hp
-        string += "MP #{stats.mp.getValue()}/#{stats.mp.maximum} " if stats.mp
-        string += "#{stats.special.name or "SP"} #{stats.special.getValue()}/#{stats.special.maximum} " if stats.special
+        string += "<stats.hp>HP #{stats.hp.getValue()}/#{stats.hp.maximum}</stats.hp> " if stats.hp
+        string += "<stats.mp>MP #{stats.mp.getValue()}/#{stats.mp.maximum}</stats.mp> " if stats.mp
+        string += "<stats.sp>#{stats.special.name or "SP"} #{stats.special.getValue()}/#{stats.special.maximum}</stats.sp> " if stats.special
       string += "]"
 
     string
@@ -119,7 +119,7 @@ class Battle
       return
 
     if chance.bool {likelihood: player.calc.fleePercent()}
-      @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace "#{player.name} has fled from combat!", player
+      @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace "<player.name>#{player.name}</player.name> has fled from combat!", player
       player.fled = true
       @emitEventToAll "flee", player
       return
@@ -136,7 +136,7 @@ class Battle
     target = _.sample _.reject @turnOrder, ((target) -> ((player.party is target.party) or target.hp.atMin() or target.fled)) if not target
     return if not target
 
-    message = "#{player.name} is #{if isCounter then "COUNTER-" else ""}attacking #{target.name}"
+    message = "<player.name>#{player.name}</player.name> is #{if isCounter then "COUNTER-" else ""}attacking <player.name>#{target.name}</player.name>"
 
     [dodgeMin, dodgeMax] = [-target.calc.dodge(), player.calc.beatDodge()]
 
@@ -146,7 +146,7 @@ class Battle
       @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace message, player
 
     if dodgeChance <= 0
-      message += ", but #{target.name} dodged!"
+      message += ", but <player.name>#{target.name}</player.name> dodged!"
       sendBattleMessage message, target
       @emitEvents "dodge", "dodged", target, player
       return
@@ -156,14 +156,14 @@ class Battle
     hitChance = chance.integer {min: hitMin, max: Math.max hitMin+1, hitMax}
 
     if -(target.calc.stat 'luck') <= hitChance <= 0
-      message += ", but #{player.name} missed!"
+      message += ", but <player.name>#{player.name}</player.name> missed!"
       sendBattleMessage message, target
       @emitEvents "miss", "missed", player, target
       return
 
     if hitChance < -(target.calc.stat 'luck')
       deflectItem = _.sample target.equipment
-      message += ", but #{target.name} deflected it with %hisher #{deflectItem.getName()}!"
+      message += ", but <player.name>#{target.name}</player.name> deflected it with %hisher <event.item.#{deflectItem.itemClass}>#{deflectItem.getName()}</event.item.#{deflectItem.itemClass}>!"
       sendBattleMessage message, target
       @emitEvents "deflect", "deflected", target, player
       return
@@ -179,7 +179,7 @@ class Battle
       damage = maxDamage
 
     weapon = _.findWhere player.equipment, {type: "mainhand"}
-    message += ", and #{if damage is maxDamage then "CRITICALLY " else ""}hit with %hisher #{weapon.getName()} for #{damage} HP damage"
+    message += ", and #{if damage is maxDamage then "CRITICALLY " else ""}hit with %hisher <event.item.#{weapon.itemClass}>#{weapon.getName()}</event.item.#{weapon.itemClass}> for <damage.hp>#{damage}</damage.hp> HP damage"
 
     @emitEvents "attack", "attacked", player, target
     @takeStatFrom player, target, damage, "physical", "hp"
@@ -228,7 +228,7 @@ class Battle
     @emitEventsTo "party.lose", @losingPlayers
     @emitEventsTo "party.win",  @winningParty.players
 
-    @game.broadcast MessageCreator.genericMessage "The battle was won by #{winnerName}."
+    @game.broadcast MessageCreator.genericMessage "The battle was won by <event.partyName>#{winnerName}</event.partyName>."
 
     @divvyXp()
     @cleanUp()
@@ -258,7 +258,7 @@ class Battle
       gainPct = (xpGain/player.xp.maximum)*100
       pct = +((gainPct).toFixed 3)
 
-      winMessages.push "#{player.name} gained #{xpGain}xp [#{pct}%]"
+      winMessages.push "<player.name>#{player.name}</player.name> gained <event.xp>#{xpGain}</event.xp>xp [<event.xp>#{pct}</event.xp>%]"
 
       xpMap[player] = xpGain
 
@@ -280,7 +280,7 @@ class Battle
       xpLoss = player.calcXpGain xpLoss
 
       pct = +((xpLoss/player.xp.maximum)*100).toFixed 3
-      loseMessages.push "#{player.name} lost #{xpLoss}xp [#{pct}%]"
+      loseMessages.push "<player.name>#{player.name}</player.name> lost <event.xp>#{xpLoss}</event.xp>xp [<event.xp>#{pct}</event.xp>%]"
       xpMap[player] = xpLoss
 
     @game.broadcast MessageCreator.genericMessage (_.str.toSentence loseMessages)+"!" if loseMessages.length > 0
