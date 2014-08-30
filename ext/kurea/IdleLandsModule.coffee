@@ -39,7 +39,7 @@ module.exports = (Module) ->
       "event.item.newbie":          c.brown
       "event.item.Normal":          (msg) -> msg
       "event.item.basic":           (msg) -> msg
-      "event.item.pro":             defaultReplaceFunction
+      "event.item.pro":             c.purple
       "event.item.idle":            c.rainbow
       "event.item.godly":           c.white.bgblack
       "event.finditem.scoreboost":  c.bold
