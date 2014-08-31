@@ -285,7 +285,7 @@ module.exports = (Module) ->
           @reply origin, "Your event is done." if did
           @reply origin, "Your event failed (something weird went wrong)." if not did
 
-      @addRoute 'idle-update', 'idle.game.gm', (origin) ->
+      @addRoute 'idle-update', 'idle.game.gm', (origin) =>
         @IdleWrapper.api.game.update()
 
       @addRoute "idle-add event yesno \":question\" \":affirm\" \":deny\"", "idle.game.gm", (origin, route) =>
