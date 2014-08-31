@@ -48,7 +48,9 @@ class MessageCreator
       "event.targetName":           defaultReplaceFunction
 
   @replaceMessageColors: (message) ->
-    map = _.defaults (@colorMap or {}), defaultColorMap
+    @_replaceMessageColors message, _.defaults (@colorMap or {}), defaultColorMap
+
+  @_replaceMessageColors: (message, map = defaultColorMap) ->
 
     for search, replaceFunc of map
       regexp = new RegExp "(<#{search}>)([\\s\\S]*?)(<\\/#{search}>)", "g"

@@ -60,7 +60,7 @@ class EventHandler
     @playerEventsDb.insert
       createdAt: new Date()
       player: player.name
-      message: message
+      message: MessageCreator._replaceMessageColors message
     , ->
 
   doYesNo: (event, player, callback) ->
