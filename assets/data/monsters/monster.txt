@@ -188,7 +188,6 @@
 ♫   level=65
 ►   level=70
 
-
 # generic entities
 "generalist"            zone=forest level=1 class=Generalist str=8 dex=8 con=8 wis=8 int=8 agi=8 luck=8
 "fighter"               zone=forest level=2 class=Fighter str=50 con=10
@@ -197,8 +196,9 @@
 "barbarian"             zone=forest level=5 class=Barbarian str=30 con=30
 "bard"                  zone=forest level=6 class=Bard int=30 wis=30
 "jester"                zone=forest level=7 class=Jester luck=60
-"druid"                 zone=forest level=8 class=Druid wis=40 str=10 dex=10 int=30
-"archer"                zone=forest level=9
+"rogue"                 zone=forest level=8 class=Rogue agi=40 dex=30 str=20
+"druid"                 zone=forest level=9 class=Druid wis=40 str=10 dex=10 int=30
+"archer"                zone=forest level=10
 
 # gnomish beings
 "gnome"                 zone=forest level=13
@@ -208,7 +208,10 @@
 "gnome cleric"          zone=forest level=13 class=Cleric wis=25 str=12
 "gnome singer"          zone=forest level=13 class=Bard int=24 wis=24
 "gnome magicslinger"    zone=forest level=13 class=Mage int=50
+"gnome loller"          zone=forest level=13 class=Jester luck=100
+"gnome stealer"         zone=forest level=13 class=Rogue dex=70 agi=70
 "procrastination gnome" zone=forest level=1
+"garden gnome"          zone=town   level=1
 
 # human beings
 "human"                 zone=town level=18
@@ -219,6 +222,8 @@
 "human cleric"          zone=town level=18 class=Cleric
 "human bard"            zone=town level=18 class=Bard
 "human mage"            zone=town level=18 class=Mage
+"human jester"          zone=town level=18 class=Jester
+"human rogue"           zone=town level=18 class=Rogue
 "human professor"
 
 # kobold beings
@@ -229,18 +234,20 @@
 "kobold curist"         zone=cave level=26 class=Cleric
 "kobold chanter"        zone=cave level=26 class=Bard
 "kobold zerker"         zone=cave level=26 class=Barbarian
+"kobold jester"         zone=cave level=26 class=Jester
 
 # orcish beings
 "orc"                   zone=cave level=35
 "orc nudist"            zone=cave level=35 class=Generalist
 "orc brawler"           zone=cave level=35 class=Barbarian
 "orc rockstar"          zone=cave level=35 class=Bard
-"orc spy"               zone=cave level=35
+"orc spy"               zone=cave level=35 class=Rogue
 "orc fighter"           zone=cave level=35 class=Fighter
 "orc sorceror"          zone=cave level=35
 "orc holyfighter"       zone=cave level=35
 "orc boomcaster"        zone=cave level=35 class=Mage
 "orc healer"            zone=cave level=35 class=Cleric
+"orc fool"              zone=cave level=35 class=Jester
 
 # skeletal beings
 "skeleton"              zone=cave level=37
@@ -266,7 +273,7 @@
 "half-gnome giant"      zone=cave level=55 class=Mage int=500 con=1500
 "half-human giant"      zone=cave level=55
 "half-kobold giant"     zone=cave level=55
-"half-giant giant"      zone=cave level=55
+"half-giant giant"      zone=cave level=55 class=Jester luck=750
 
 # elvish beings
 "elf"                   zone=town level=60
