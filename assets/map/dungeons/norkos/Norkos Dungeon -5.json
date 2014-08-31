@@ -345,6 +345,20 @@
                  "width":0,
                  "x":48,
                  "y":608
+                }, 
+                {
+                 "gid":14,
+                 "height":0,
+                 "name":"Jester",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Trainer",
+                 "visible":true,
+                 "width":0,
+                 "x":624,
+                 "y":720
                 }],
          "opacity":1,
          "type":"objectgroup",
