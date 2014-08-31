@@ -5,6 +5,7 @@ MessageCreator = require "../../system/MessageCreator"
 class Spell
   name: "THIS SPELL HAS NO NAME"
   @restrictions = {}
+  @canChoose = (caster) -> yes
   stat: @stat = "mp"
   oper: @oper = "sub"
   cost: @cost = 0
