@@ -1,39 +1,97 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="9" height="8" tilewidth="16" tileheight="16">
- <properties>
-  <property name="name" value="norkos"/>
- </properties>
- <tileset firstgid="1" name="tiles" tilewidth="16" tileheight="16">
-  <image source="../../../img/tiles.png" width="144" height="32"/>
- </tileset>
- <layer name="Terrain" width="9" height="8">
-  <data encoding="base64" compression="zlib">
-   eJxjZ2BgYB/FODEAIJ8B+Q==
-  </data>
- </layer>
- <layer name="Blocking" width="9" height="8">
-  <data encoding="base64" compression="zlib">
-   eJxjZmBgYCYCowNmNDaxatDNZMYiTwjgcyOx5hDjZxAGAEhsAH8=
-  </data>
- </layer>
- <objectgroup name="Interactables" width="9" height="8">
-  <object name="ToBoathouseF1" type="Teleport" gid="1" x="48" y="32">
-   <properties>
-    <property name="destName" value="Norkos Boathouse"/>
-    <property name="destx" value="4"/>
-    <property name="desty" value="85"/>
-    <property name="map" value="Norkos"/>
-    <property name="movementType" value="descend"/>
-   </properties>
-  </object>
-  <object name="ToNorkosDungeon2" type="Teleport" gid="1" x="128" y="80">
-   <properties>
-    <property name="destName" value="Norkos Boathouse Entrance"/>
-    <property name="destx" value="10"/>
-    <property name="desty" value="88"/>
-    <property name="map" value="Norkos"/>
-    <property name="movementType" value="fall"/>
-   </properties>
-  </object>
- </objectgroup>
-</map>
+{ "height":8,
+ "layers":[
+        {
+         "data":[7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+         "height":8,
+         "name":"Terrain",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":9,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 3, 0, 0, 3, 3, 0, 0, 0, 0, 3, 0, 0, 3, 3, 3, 3, 3, 0, 3, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+         "height":8,
+         "name":"Blocking",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":9,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "height":8,
+         "name":"Interactables",
+         "objects":[
+                {
+                 "gid":1,
+                 "height":0,
+                 "name":"ToBoathouseF1",
+                 "properties":
+                    {
+                     "destName":"Norkos Boathouse",
+                     "destx":"4",
+                     "desty":"85",
+                     "map":"Norkos",
+                     "movementType":"descend"
+                    },
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":48,
+                 "y":32
+                }, 
+                {
+                 "gid":1,
+                 "height":0,
+                 "name":"ToNorkosDungeon2",
+                 "properties":
+                    {
+                     "destName":"Norkos Boathouse Entrance",
+                     "destx":"10",
+                     "desty":"88",
+                     "map":"Norkos",
+                     "movementType":"fall"
+                    },
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":128,
+                 "y":80
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":9,
+         "x":0,
+         "y":0
+        }],
+ "orientation":"orthogonal",
+ "properties":
+    {
+     "name":"norkos"
+    },
+ "tileheight":16,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "image":"..\/..\/..\/img\/tiles.png",
+         "imageheight":32,
+         "imagewidth":144,
+         "margin":0,
+         "name":"tiles",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tileheight":16,
+         "tilewidth":16
+        }],
+ "tilewidth":16,
+ "version":1,
+ "width":9
+}
