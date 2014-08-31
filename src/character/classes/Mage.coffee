@@ -11,7 +11,7 @@ class Mage extends Class
   baseMpPerLevel: 4
   baseMpPerInt: 6
 
-  baseConPerLevel: 1
+  baseConPerLevel: 2
   baseDexPerLevel: 1
   baseAgiPerLevel: 2
   baseStrPerLevel: 1
