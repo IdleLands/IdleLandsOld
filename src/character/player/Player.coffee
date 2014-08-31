@@ -101,7 +101,7 @@ class Player extends Character
     if tile.object?.forceEvent
       @playerManager.game.eventHandler.doEventForPlayer @name, tile.object.forceEvent
 
-  moveAction: ->
+  pickRandomTile: ->
     @ignoreDir = [] if not @ignoreDir
     @stepCooldown = 0 if not @stepCooldown
 
@@ -110,9 +110,19 @@ class Player extends Character
     dir = randomDir() while dir in @ignoreDir
 
     dir = if chance.bool {likelihood: 80} then @lastDir else dir
-    newLoc = @num2dir dir, @x, @y
+
+    [(@num2dir dir, @x, @y), dir]
+
+  moveAction: ->
+    lookAtTile = @playerManager.game.world.maps[@map].getTile.bind @playerManager.game.world.maps[@map]
+    [newLoc, dir] = @pickRandomTile()
+
     try
-      tile = @playerManager.game.world.maps[@map].getTile newLoc.x,newLoc.y
+      tile = lookAtTile newLoc.x,newLoc.y
+
+      while (tile.blocked and chance.bool likelihood: 75)
+        [newLoc, dir] = @pickRandomTile()
+        tile = lookAtTile newLoc.x, newLoc.y
 
       if not tile.blocked
         @x = newLoc.x
