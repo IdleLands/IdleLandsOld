@@ -212,7 +212,8 @@ class Game
     @playerManager.playerTakeTurn identifier
 
   doCodeUpdate: ->
-    require("git-pull") "../", (e, consoleOutput) ->
+
+    require("git-pull") "#{__dirname}/../", (e, consoleOutput) ->
       console.error e if e
       console.log consoleOutput
       process.exit 0
