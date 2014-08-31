@@ -33,6 +33,9 @@ class Barbarian extends Class
   strPercent: (player) ->
     player.special.getValue()
 
+  dexPercent: -> -25
+  agiPercent: -> -25
+
   damageTaken: (player, attacker, damage, skillType, spell, reductionType) ->
     return 0 if reductionType isnt "hp" or skillType isnt "magical"
     -Math.floor damage/2
