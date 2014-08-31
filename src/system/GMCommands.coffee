@@ -38,6 +38,12 @@ class GMCommands
       formalName: "the Start Location"
       x: 10
       y: 10
+    "jail":
+      map: "Norkos"
+      formalName: "Jail"
+      x: 13
+      y: 44
+
     "cleric":
       map: "Norkos"
       formalName: "the Cleric Trainer"
@@ -58,15 +64,31 @@ class GMCommands
       formalName: "the Barbarian Trainer"
       x: 112
       y: 14
+    "jester":
+      map: "Norkos Dungeon -5"
+      formalName: "the Jester Trainer"
+      x: 39
+      y: 43
     "bard":
       map: "Bard Island -1"
       formalName: "the Bard Trainer"
       x: 4
       y: 4
-    "jail":
+
+    "fisheries":
       map: "Norkos"
-      formalName: "Jail"
-      x: 13
-      y: 44
+      formalName: "the Fisheries"
+      x: 35
+      y: 70
+    "boathouse":
+      map: "Norkos"
+      formalName: "the Boathouse"
+      x: 10
+      y: 88
+    "prison":
+      map: "Norkos"
+      formalName: "Norkos Prison"
+      x: 92
+      y: 11
 
 module.exports = exports = GMCommands
