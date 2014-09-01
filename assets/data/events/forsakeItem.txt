@@ -18,3 +18,4 @@ A demon decides to play a trick on %player by placing a curse on %hisher %item.
 %player discovered tumblr on the magic box and left %hisher %item to gather dust and rust.
 %player used what magic %she knows to enchant %hisher %item with extra power!... Unfortunately, it failed, so %hisher %item ended up in worse condition.
 %player spent too long idling while watching a seagull without a left foot hobble around.  %Hisher %item decayed a bit from lack of use.
+Sarda, The Wizard Who Did It made %player's %item worse for being to powerful.
