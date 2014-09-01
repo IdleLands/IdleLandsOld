@@ -35,18 +35,18 @@ class Jester extends Class
     item.int -
     item.intPercent
 
-  str: (player, base) -> -base + player.calc.stat 'luck'
-  dex: (player, base) -> -base + player.calc.stat 'luck'
-  int: (player, base) -> -base + player.calc.stat 'luck'
-  con: (player, base) -> -base + player.calc.stat 'luck'
-  agi: (player, base) -> -base + player.calc.stat 'luck'
-  wis: (player, base) -> -base + player.calc.stat 'luck'
-  strPercent: (player, base) -> -base + player.calc.stat 'luckPercent'
-  dexPercent: (player, base) -> -base + player.calc.stat 'luckPercent'
-  intPercent: (player, base) -> -base + player.calc.stat 'luckPercent'
-  conPercent: (player, base) -> -base + player.calc.stat 'luckPercent'
-  agiPercent: (player, base) -> -base + player.calc.stat 'luckPercent'
-  wisPercent: (player, base) -> -base + player.calc.stat 'luckPercent'
+  str: (player) -> player.calc.stat 'luck'
+  dex: (player) -> player.calc.stat 'luck'
+  int: (player) -> player.calc.stat 'luck'
+  con: (player) -> player.calc.stat 'luck'
+  agi: (player) -> player.calc.stat 'luck'
+  wis: (player) -> player.calc.stat 'luck'
+  strPercent: (player) -> player.calc.stat 'luckPercent'
+  dexPercent: (player) -> player.calc.stat 'luckPercent'
+  intPercent: (player) -> player.calc.stat 'luckPercent'
+  conPercent: (player) -> player.calc.stat 'luckPercent'
+  agiPercent: (player) -> player.calc.stat 'luckPercent'
+  wisPercent: (player) -> player.calc.stat 'luckPercent'
 
   load: (player) ->
     super player
