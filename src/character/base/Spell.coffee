@@ -164,6 +164,7 @@ class Spell
     @game.broadcast MessageCreator.genericMessage newMessage if not @suppressed
 
   constructor: (@game, @caster, @forcedTargets = null) ->
+    @baseName = @name
     @baseTargets = @caster.party.currentBattle.turnOrder
 
     @cost = @cost.bind null, @caster if _.isFunction @cost
