@@ -27,6 +27,9 @@ SpellManager::getSpellsAvailableFor = (player) ->
     (player[realSpell.stat].getValue() >= _.result realSpell, 'cost') and
     (realSpell.canChoose player)
 
+SpellManager::getStatusEffects = ->
+  _.filter @spells, (realSpell) -> realSpell.isStatusEffect
+
 SpellManager::spells = []
 
 SpellManager::spellMods =
