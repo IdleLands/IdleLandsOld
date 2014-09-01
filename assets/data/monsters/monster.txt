@@ -152,6 +152,8 @@
 "wyvern"                    level=19
 "minotaur"                  level=21
 "gryphon"                   level=23
+"garden-fresh tomato"       level=25
+"tomato in the mirror"      level=27
 "red dragon"                level=46
 "golem"                     level=48
 "phoenix"                   level=50
