@@ -32,3 +32,4 @@ A miniature samurai ninja zombie pirate robot velociraptor with psychic powers s
 %player didn't expect the Spanish Inquisition, and got inquisitioned for %gold gold!
 %player landed on the "Go To Jail" tile.  %She passed GO! but didn't collect %gold gold.  Instead, %she paid %gold in bail gold to get away from the scary looks sent %hisher way by that damned dog.
 %player sailed the Seven Seals and all %she got was this stupid typo.  And %she lost %gold gold in poorly-planned, rum-fueled, failed piracy endeavors.
+Sarda, The Wizard Who Did It took %gold gold from %player because he could.
