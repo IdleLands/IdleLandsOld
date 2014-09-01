@@ -18,6 +18,11 @@ class TripleFire extends Spell
 
   cast: (player) ->
     damage = @calcDamage()
+    if player.hp.atMin()
+      message = "%casterName has no more valid targets for %spellName!"
+      @broadcast player, message
+      return
+
     message = "%casterName cast %spellName at %targetName for %damage HP damage!"
     @doDamageTo player, damage, message
 
