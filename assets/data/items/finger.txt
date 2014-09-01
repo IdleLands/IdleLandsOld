@@ -12,6 +12,7 @@
 "miniature world" wis=50 int=60 luck=3
 "fingerpuppet" wis=100 int=65
 "painted nails" wis=200 int=150
+"vine ring" wis=250 int=50 dex=50
 "Egregiously Long Nails" wis=175 int=100 dex=-25
 "Blood of the Victims" int=275
 "Ring of Slow Digestion" wis=300 int=50 luck=5

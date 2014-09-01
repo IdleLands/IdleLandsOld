@@ -193,7 +193,7 @@
 "flaming arrow" str=200 fire=50
 "frozen arrow" str=200 ice=50
 "spark arrow" str=200 thunder=50
-"torrent arrow" str=200 water=50
+"torrent arrow" str=200 water=50200
 "earthen arrow" str=200 earth=50
 "murasame" str=218 int=50 piety=250
 "mythblade" int=235 piety=150
@@ -220,6 +220,7 @@
 "drillbit" str=375 luck=13
 "killer7" str=377 vorpal
 "jetengine" str=245 agi=150
+"tomato" str=275 agi=75 dex=85
 "smartphone" int=400
 "swordchucks" str=400
 "graytooth" str=410
