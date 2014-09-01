@@ -11,3 +11,4 @@ Although they all hate eachother, their common goal has brought %player and %par
 %player was just hanging out with %party, but someone ended up mistaking them for a party, so they were registered as a party called "%partyName."
 %player brought the food and drinks, %party brought music, entertainment, and put up flyers for party at "%partyName's" house.  Everybody's invited!
 %player shanghaied %party into joining the most foul-smelling, basest, rudest party of scalliwags called "%partyName."
+Sarda, The Wizard Who Did It made a party called %partyName, and forced %player, %party into it.
