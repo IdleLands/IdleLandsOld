@@ -67,6 +67,10 @@ class Spell
   targetSomeEnemies: (options) ->
     @_chooseTargets (@targetAllEnemies options), options
 
+  ## specialized targetting functions
+  targetBelowMaxHealth: (party) ->
+    _.reject party, (member) -> member.hp.atMax()
+
   ## / targetting functions
 
   calcDuration: (player) -> @bonusElementRanking

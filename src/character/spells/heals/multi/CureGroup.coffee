@@ -13,7 +13,7 @@ class CureGroup extends Spell
     Spell.areAnyPartyMembersBelowMaxHealth caster
 
   determineTargets: ->
-    @targetAllAllies()
+    @targetBelowMaxHealth @targetAllAllies()
 
   calcDamage: ->
     minStat = (@caster.calc.stat 'wis')/5
