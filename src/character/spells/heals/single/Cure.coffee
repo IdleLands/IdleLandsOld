@@ -13,7 +13,7 @@ class Cure extends Spell
     Spell.areAnyPartyMembersBelowMaxHealth caster
 
   determineTargets: ->
-    @targetBelowMaxHealth @targetSomeAllies()
+    @targetLowestHp @caster.party.players
 
   calcDamage: ->
     minStat = (@caster.calc.stat 'wis')/4

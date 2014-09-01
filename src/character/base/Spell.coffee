@@ -71,6 +71,12 @@ class Spell
   targetBelowMaxHealth: (party) ->
     _.reject party, (member) -> member.hp.atMax()
 
+  targetLowestHp: (party) ->
+    _.chain party
+      .reject (member) -> member.hp.atMin()
+      .min (member) -> member.hp.asPercent()
+      .value()
+
   ## / targetting functions
 
   calcDuration: (player) -> @bonusElementRanking
