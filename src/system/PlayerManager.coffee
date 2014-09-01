@@ -191,7 +191,7 @@ class PlayerManager
           addStat "calculated damage received", arguments[1].damage
 
         when "combat.self.kill"
-          addStat arguments[0].name, 1, "calculated kills"
+          addStat arguments[0].name, 1, "calculated kills" if not arguments[0].isMonster
 
       event = @event.split(".").join " "
       player.statistics[event] = 1 if not event of player.statistics or _.isNaN player.statistics[event]
