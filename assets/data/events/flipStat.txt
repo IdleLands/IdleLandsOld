@@ -1,1 +1,2 @@
 %player had the ol' switcheroo happen to %item.
+Sarda, The Wizard Who Did It caused %player's %item to have its polarity reversed!
