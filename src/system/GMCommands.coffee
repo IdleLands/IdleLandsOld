@@ -64,16 +64,21 @@ class GMCommands
       formalName: "the Barbarian Trainer"
       x: 112
       y: 14
-    "jester":
-      map: "Norkos Dungeon -5"
-      formalName: "the Jester Trainer"
-      x: 39
-      y: 43
     "bard":
       map: "Bard Island -1"
       formalName: "the Bard Trainer"
       x: 4
       y: 4
+    "jester":
+      map: "Norkos Dungeon -5"
+      formalName: "the Jester Trainer"
+      x: 39
+      y: 43
+    "rogue":
+      map: "Norkos Prison -1"
+      formalName: "the Rogue Trainer"
+      x: 34
+      y: 1
 
     "fisheries":
       map: "Norkos"
