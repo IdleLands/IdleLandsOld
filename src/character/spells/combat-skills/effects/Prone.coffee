@@ -15,17 +15,11 @@ class Prone extends Spell
 
   calcDamage: -> 0
 
-  cast: ->
-
-  tick: ->
-
-  uncast: ->
-
   constructor: (@game, @caster, forced) ->
     super @game, @caster, forced
     @bindings =
-      doSpellCast: @cast
-      doSpellUncast: @uncast
-      "combat.self.turn.end": @tick
+      doSpellCast: ->
+      doSpellUncast: ->
+      "combat.self.turn.end": ->
 
 module.exports = exports = Prone
