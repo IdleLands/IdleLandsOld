@@ -37,35 +37,23 @@ Want to add content such as Classes, Personalities, Spells, or anything like tha
 
 #Debugging#
 
-While running LocalTest.coffee, you may press [ENTER] to enter an interactive session. This will pause the execution and allow you to execute code. By calling *getWrapper()*, you will be able to access the IdleGameWrapper object.
+While running LocalTest.coffee, you may press [ENTER] to enter an interactive session. This will pause the execution and allow you to execute code. By calling `getWrapper()`, you will be able to access the IdleGameWrapper object. You can get a direct hold on the current game instance with `inst()` and a reference to the API object with `api()`.
 
 ###Examples###
 ####Change a player's gold####
 ```
- %pm%=getWrapper().api.gameInstance.playerManager
- %pm%.players[0].addGold1\(100)
-```
-####Generate a party name####
-```
-getWrapper().api.gameInstance.playerManager.players[0].party.pickPartyName()
-> Many Brave Peasants
-%lc%  (Special variable, returns the last command you entered)
-> Omnipotent Fear Near Darkness
+inst().playerManager.getPlayerByName('Danret').addGold(100)
 ```
 
 ####Force a battle to start####
 ```
-%gi%=getWrapper().api.gameInstance
-%pm%=%gi%.playerManager
-%gi%.createParty(%pm%.players[0])
-%gi%.createParty(%pm%.players[1])
-%gi%.startBattle(%gi%.parties[0],%gi%.parties[1])
-c
+api().game.doGlobalEvent('battle')     # PvP battle
+api().game.doEvent('Danret', 'battle') # monster battle
 > A battle is raging...
 ```
 
 ####Cause any event to happen####
 ```
-getWrapper().api.game.doEvent('Danret', 'enchant')
-getWrapper().api.game.doEvent('Danret', 'blessItem')
+api().game.doEvent('Danret', 'enchant')
+api().game.doEvent('Danret', 'blessItem')
 ```
