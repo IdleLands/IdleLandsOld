@@ -198,18 +198,26 @@ class Battle
     spell.prepareCast()
 
   checkBattleEffects: (attacker, defender) ->
+
+    effects = []
+    effects.push "Prone" if attacker.calc.prone() and chance.bool(likelihood: 15)
+    return if effects.length is 0
+
+    @doBattleEffects effects, attacker, defender
+
+  doBattleEffects: (effects, attacker, defender) ->
     findSpell = (name) => _.findWhere @game.spellManager.spells, name: name
-    spellProto = null
-    [aEvent, dEvent] = ['','']
-    if attacker.calc.prone() and chance.bool(likelihood: 15)
-      spellProto = findSpell "Prone"
-      [aEvent, dEvent] = ['effect.prone', 'effect.proned']
 
-    return if not spellProto
+    eventMap =
+      "Prone": ['effect.prone', 'effect.proned']
 
-    @emitEvents aEvent, dEvent, attacker, defender
-    spellInst = new spellProto @game, attacker, defender
-    spellInst.prepareCast()
+    _.each effects, (effect) =>
+      spellProto = findSpell effect
+      [aEvent, dEvent] = eventMap[effect]
+
+      @emitEvents aEvent, dEvent, attacker, defender
+      spellInst = new spellProto @game, attacker, defender
+      spellInst.prepareCast()
 
   endBattle: ->
     @emitEventToAll "battle.end", @turnOrder
