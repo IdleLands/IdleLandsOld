@@ -38,6 +38,6 @@ class LitanyOfPain extends Spell
     @bindings =
       doSpellCast: @cast
       doSpellUncast: @uncast
-      "combat.self.turn.end": @tick
+      "combat.round.end": @tick
 
 module.exports = exports = LitanyOfPain
