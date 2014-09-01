@@ -308,7 +308,7 @@ class Battle
 
   takeStatFrom: (attacker, defender, damage, type, damageType = "hp", spell, message = null) ->
 
-    damage -= defender.calc.damageTaken attacker, damage, type, spell, damageType
+    damage -= defender.calc?.damageTaken attacker, damage, type, spell, damageType
 
     defender[damageType]?.sub damage
 
@@ -350,6 +350,7 @@ class Battle
       player.emit "combat.#{event}", data
 
   emitEvents: (attackerEvent, defenderEvent, attacker, defender, extra = {}) ->
+    return if (not defender) or (not attacker)
     attacker.emit "combat.self.#{attackerEvent}", defender, extra
     _.forEach (_.without attacker.party.players, attacker), (partyMate) ->
       partyMate.emit "combat.ally.#{attackerEvent}", attacker, defender, extra
