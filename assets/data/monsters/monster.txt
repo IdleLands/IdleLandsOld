@@ -237,6 +237,7 @@
 "kobold chanter"        zone=cave level=26 class=Bard
 "kobold zerker"         zone=cave level=26 class=Barbarian
 "kobold jester"         zone=cave level=26 class=Jester
+"kobold lockpick"       zone=cave level=26 class=Rogue
 
 # orcish beings
 "orc"                   zone=cave level=35
