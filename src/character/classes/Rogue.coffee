@@ -21,13 +21,23 @@ class Rogue extends Class
   itemScore: (player, item) ->
     item.agi*1.4 +
     item.dex*1.4 +
-    item.str*0.7 +
+    item.str*0.3 +
     item.con*0.2 -
     item.wis*0.8 -
     item.int*0.8
 
+  physicalAttackChance: -> -40
+
   minDamage: (player) ->
     player.calc.damage()*0.37
+
+  updateCombo: (spell) ->
+    @lastComboSkill = spell.baseName
+    @lastComboSkillTurn = 2
+
+  resetCombo: ->
+    @lastComboSkill = null
+    @lastComboSkillTurn = 0
 
   events: {}
 
@@ -37,12 +47,20 @@ class Rogue extends Class
     player.special.__current = 100
     player.special.name = "Stamina"
 
-    player.on "combat.battle.start", @events.combatStart = -> player.special.toMaximum()
+    player.on "combat.battle.start", @events.combatStart = =>
+      @resetCombo()
+      player.special.toMaximum()
+
+    player.on "combat.round.start", @events.roundStart = =>
+      player.special.add 5
+      @lastComboSkillTurn--  if @lastComboSkillTurn > 0
+      @lastComboSkill = null if @lastComboSkillTurn <= 0
 
   unload: (player) ->
     player.special.maximum = 0
     player.special.name = ""
 
     player.off "combat.battle.start", @events.combatStart
+    player.off "combat.round.start", @events.roundStart
 
 module.exports = exports = Rogue
