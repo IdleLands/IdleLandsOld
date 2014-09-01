@@ -9,6 +9,9 @@ class CureGroup extends Spell
   @restrictions =
     "Cleric": 15
 
+  @canChoose = (caster) ->
+    Spell.areAnyPartyMembersBelowMaxHealth caster
+
   determineTargets: ->
     @targetAllAllies()
 

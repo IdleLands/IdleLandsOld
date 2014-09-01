@@ -15,36 +15,21 @@ class Spell
     doSpellUncast: ->
 
   bonusElementRanking: 0
-
   bonusElement: 0 #Spell::Element.none
 
-  calcDuration: (player) -> @bonusElementRanking
+  ## utility chooser functions
+  gpmbmh = @getPartyMembersBelowMaxHealth = (player) ->
+    return [] if not player.party
+    _.chain player.party.players
+      .reject (member) -> member.hp.atMax()
+      .value()
 
-  calcDamage: ->
-    damage = 0
-    for damageType, damageBit of @Element
-      continue if not @element & damageBit
-      damage += @caster.calc.stat damageType
+  @areAnyPartyMembersBelowMaxHealth = (player) ->
+    gpmbmh(player).length > 0
 
-    damage
+  ## / utility chooser functions
 
-  minMax: (min, max) ->
-    @chance.integer min: min, max: Math.max min+1, max
-
-  doDamageTo: (player, damage, message = "") ->
-    extra =
-      casterName: @caster.name
-      targetName: player.name
-      spellName: @name
-
-    message = MessageCreator.doStringReplace message, @caster, extra
-
-    @caster.party?.currentBattle?.takeHp @caster, player, damage, @determineType(), @, message
-
-  prepareCast: ->
-    targets = @determineTargets()
-    @affect targets
-
+  ## targetting functions
   determineTargets: ->
     return @forcedTargets if @forcedTargets
     @targetSomeEnemies size: 1
@@ -81,6 +66,35 @@ class Spell
 
   targetSomeEnemies: (options) ->
     @_chooseTargets (@targetAllEnemies options), options
+
+  ## / targetting functions
+
+  calcDuration: (player) -> @bonusElementRanking
+
+  calcDamage: ->
+    damage = 0
+    for damageType, damageBit of @Element
+      continue if not @element & damageBit
+      damage += @caster.calc.stat damageType
+
+    damage
+
+  minMax: (min, max) ->
+    @chance.integer min: min, max: Math.max min+1, max
+
+  doDamageTo: (player, damage, message = "") ->
+    extra =
+      casterName: @caster.name
+      targetName: player.name
+      spellName: @name
+
+    message = MessageCreator.doStringReplace message, @caster, extra
+
+    @caster.party?.currentBattle?.takeHp @caster, player, damage, @determineType(), @, message
+
+  prepareCast: ->
+    targets = @determineTargets()
+    @affect targets
 
   affect: (affected = []) ->
     @affected = if affected and not _.isArray affected then [affected] else affected

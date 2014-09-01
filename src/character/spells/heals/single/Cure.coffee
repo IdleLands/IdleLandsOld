@@ -5,8 +5,12 @@ class Cure extends Spell
   name: "cure"
   @element = Cure::element = Spell::Element.heal
   @cost = Cure::cost = 50
+
   @restrictions =
     "Cleric": 5
+
+  @canChoose = (caster) ->
+    Spell.areAnyPartyMembersBelowMaxHealth caster
 
   determineTargets: ->
     @targetSomeAllies()

@@ -22,10 +22,10 @@ SpellManager::getSpellsAvailableFor = (player) ->
 
     realSpell.cost = realSpell.cost.bind null, player if _.isFunction realSpell.cost
 
-    player.professionName of realSpell.restrictions and
-      player.level.getValue() >= realSpell.restrictions[player.professionName] and
-      player[realSpell.stat].getValue() >= _.result realSpell, 'cost' and
-      realSpell.canChoose player
+    (player.professionName of realSpell.restrictions) and
+    (player.level.getValue() >= realSpell.restrictions[player.professionName]) and
+    (player[realSpell.stat].getValue() >= _.result realSpell, 'cost') and
+    (realSpell.canChoose player)
 
 SpellManager::spells = []
 
