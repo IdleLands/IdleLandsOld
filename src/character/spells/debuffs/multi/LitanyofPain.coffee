@@ -23,10 +23,9 @@ class LitanyOfPain extends Spell
     @broadcast player, message
 
   tick: (player) ->
-    if((@chance.integer min: (Math.min 0, -(@caster.calc.stat 'wis')), max: (Math.max 0,(player.calc.stats ['agi', 'dex']/2))) < 0)
-      damage = @calcDamage()
-      message = "%targetName is damaged by %casterName's \"%spellName\" for %damage HP damage"
-      @doDamageTo player, damage, message
+    damage = @calcDamage()
+    message = "%targetName is damaged by %casterName's \"%spellName\" for %damage HP damage"
+    @doDamageTo player, damage, message
 
   uncast: (player) ->
     return if @caster isnt player
