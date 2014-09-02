@@ -9,7 +9,7 @@ class ChainStab extends Spell
   @restrictions =
     "Rogue": 3
 
-  @canChoose = (caster) -> caster.profession.lastComboSkill in ['opening strike', 'chain stab']
+  @canChoose = (caster) -> caster.profession.lastComboSkill in ['opening strike', 'chain stab', 'backstab']
 
   calcDamage: ->
     minStat = (@caster.calc.stats ['str', 'dex']) * 0.4
