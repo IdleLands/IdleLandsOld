@@ -128,16 +128,16 @@ class Character extends EventEmitter2
       stats: (stats) ->
         _.reduce stats, ((prev, stat) => prev+@stat stat), 0
 
-      crit: -> @self.calc.stat 'crit'
-      dance: -> 0 < @self.calc.stat 'dance'
-      defense: -> @self.calc.stat 'defense'
-      prone: -> 0 < @self.calc.stat 'prone'
-      power: -> 0 < @self.calc.stat 'power'
-      offense: -> @self.calc.stat 'offense'
-      glowing: -> @self.calc.stat 'glowing'
-      deadeye: -> @self.calc.stat 'deadeye'
-      silver: -> 0 < @self.calc.stat 'silver'
-      vorpal: -> 0 < @self.calc.stat 'vorpal'
+      crit:     -> @self.calc.stat 'crit'
+      dance:    -> 0 < @self.calc.stat 'dance'
+      defense:  -> @self.calc.stat 'defense'
+      prone:    -> 0 < @self.calc.stat 'prone'
+      power:    -> 0 < @self.calc.stat 'power'
+      offense:  -> @self.calc.stat 'offense'
+      glowing:  -> @self.calc.stat 'glowing'
+      deadeye:  -> @self.calc.stat 'deadeye'
+      silver:   -> 0 < @self.calc.stat 'silver'
+      vorpal:   -> 0 < @self.calc.stat 'vorpal'
 
       boosts: (stats, baseValue) ->
         Math.floor _.reduce stats, (prev, stat) =>
@@ -150,6 +150,14 @@ class Character extends EventEmitter2
             when 'vorpal' then              return prev += baseValue / 2 if @self.calc.vorpal()
           prev
         , 0
+
+      hp: ->
+        @base.hp = @self.calc.stat 'hp'
+        Math.max 1, @base.hp
+
+      mp: ->
+        @base.mp = @self.calc.stat 'mp'
+        Math.max 0, @base.mp
 
       dodge: ->
         @base.dodge = @self.calc.stat 'agi'
@@ -197,14 +205,6 @@ class Character extends EventEmitter2
       physicalAttackChance: ->
         @base.physicalAttackChance = 65
         Math.max 0, Math.min 100, @self.personalityReduce 'physicalAttackChance', [@self, @base.physicalAttackChance], @base.physicalAttackChance
-
-      hp: ->
-        @base.hp = 0
-        Math.max 1, @self.personalityReduce 'hp', [@self, @base.hp], @base.hp
-
-      mp: ->
-        @base.mp = 0
-        Math.max 0, @self.personalityReduce 'mp', [@self, @base.mp], @base.mp
 
       combatEndXpGain: (oppParty) ->
         @base.combatEndXpGain = 0

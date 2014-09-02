@@ -251,6 +251,8 @@
 "runestone" dex=150 con=250
 "orichalcum" piety=5
 "godstone" strPercent=5 intPercent=5 conPercent=5
+"demonstone" wisPercent=5 agiPercent=5 dexPercent=5
+"redstone" fire=100 intPercent=10 luckPercent=5
 "strong" strPercent=10
 "intellectual" intPercent=10
 "wise" wisPercent=10
@@ -258,8 +260,27 @@
 "agile" agiPercent=10
 "constitutional" conPercent=10
 "recursive" intPercent=9
-"final" strPercent=10 intPercent=10 wisPercent=10 dexPercent=10 agiPercent=10 conPercent=10 luckPercent=10
-"chaotic" strPercent=10 intPercent=-10 agiPercent=10 conPercent=-10 dexPercent=10 wisPercent=-10 luckPercent=-10
-"unfortunate" strPercent=-10 intPercent=-10 agiPercent=-10 conPercent=-10 dexPercent=-10 wisPercent=-10 luckPercent=-10
+"final" strPercent=10 intPercent=10 wisPercent=10 dexPercent=10 agiPercent=10 conPercent=10 luckPercent=10 hpPercent=10 mpPercent=10
+"chaotic" strPercent=10 intPercent=-10 agiPercent=10 conPercent=-10 dexPercent=10 wisPercent=-10 luckPercent=-10 hpPercent=-10 mpPercent=10
+"oppochaotic" strPercent=-10 intPercent=10 agiPercent=-10 conPercent=10 dexPercent=-10 wisPercent=10 luckPercent=10 hpPercent=10 mpPercent=-10
+"unfortunate" strPercent=-10 intPercent=-10 agiPercent=-10 conPercent=-10 dexPercent=-10 wisPercent=-10 luckPercent=-10 hpPercent=-10 mpPercent =-10
 "elemental" waterPercent=10 firePercent=10 thunderPercent=10 earthPercent=10 icePercent=10
 "cosmic" luck=200 intPercent=10 wisPercent=10
+
+"novice" xp=1
+"experienced" xp=5
+"expert" xp=10
+"master" xpPercent=10
+
+"monetary" gold=1
+"valuable" gold=5
+"golden" gold=10
+"el-dorado" goldPercent=10
+
+"healthy" hp=100
+"vigorous" hp=1000
+"vital" hp=10000
+
+"smart" mp=100
+"intelligentual" mp=1000
+"superdupermagical" mp=10000
