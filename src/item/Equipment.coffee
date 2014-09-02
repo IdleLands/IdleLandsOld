@@ -18,7 +18,7 @@ class Equipment
   @multipliers =
     str: 1
     dex: 1
-    con: 1
+    con: 2.5
     int: 1
     wis: 1
     agi: 1
@@ -36,7 +36,7 @@ class Equipment
 
     strPercent: 6
     dexPercent: 6
-    conPercent: 6
+    conPercent: 15
     intPercent: 6
     wisPercent: 6
     agiPercent: 6
