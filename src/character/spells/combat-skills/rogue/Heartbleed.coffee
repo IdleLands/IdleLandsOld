@@ -9,7 +9,7 @@ class Heartbleed extends Spell
   @restrictions =
     "Rogue": 15
 
-  @canChoose = (caster) -> caster.profession.lastComboSkill in ['backstab', 'chain stab']
+  @canChoose = (caster) -> caster.profession.lastComboSkill in ['chain stab']
 
   calcDamage: ->
     minStat = (@caster.calc.stats ['str', 'dex']) * 0.3
