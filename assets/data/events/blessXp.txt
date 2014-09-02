@@ -33,3 +33,4 @@
 The last survivor on %player's team was dying of the black plague, so %player put %hisher teammate out of their misery.
 %player successfully defended %hisher fortress from the undead!
 %player built a watch tower in %hisher warehouse to keep away the zombies, and it worked!
+Sarda, The Wizard Who Did It gave %player %xpxp to borrow.

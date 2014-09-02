@@ -30,3 +30,4 @@ The Goddess of Riches, Kirierath, causes it to rain gold down at %player only, a
 %player's Great Aunt Myrtle just kicked the bucket, leaving %himher %gold gold in her will.  %player didn't even know %she had a Great Aunt Myrtle.
 %player fell on some hard times, and decided to sell a tooth to the tooth faerie for %gold gold.
 %player made a successful trade with some nearby townspeople!
+Sarda, The Wizard Who Did It gave %player %gold gold to shake up the economy.

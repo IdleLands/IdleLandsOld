@@ -17,3 +17,4 @@ The God of Items, Shashkajze, caused a golden, shimmering %item to appear in fro
 %player parts a curtain and picks up something saying, "We've got %item over here!"
 %player finishes doing %hisher laundry and mourns the loss of a sock to the Dryer Monster.  The clothing gods took pity on %himher...%she found %item instead!
 %player found %item in the backseat of the taxi %she got into.  The previous passenger must have left it behind...
+Sarda, The Wizard Who Did It gave %player a shiny new %item. Everyone is jealous.
