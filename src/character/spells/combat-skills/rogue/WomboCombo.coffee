@@ -9,7 +9,7 @@ class WomboCombo extends Spell
   @restrictions =
     "Rogue": 25
 
-  @canChoose = (caster) -> caster.profession.lastComboSkill in ['backstab', 'chain stab', 'heartbleed']
+  @canChoose = (caster) -> caster.profession.lastComboSkill in ['chain stab', 'heartbleed']
 
   calcDamage: ->
     minStat = (@caster.calc.stats ['str', 'dex']) * 0.45
