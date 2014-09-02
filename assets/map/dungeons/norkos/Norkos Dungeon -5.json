@@ -359,6 +359,25 @@
                  "width":0,
                  "x":624,
                  "y":720
+                }, 
+                {
+                 "gid":1,
+                 "height":0,
+                 "name":"ToNorkos-6",
+                 "properties":
+                    {
+                     "destName":"Norkos Dungeon -6",
+                     "destx":"8",
+                     "desty":"4",
+                     "fromName":"Norkos",
+                     "map":"Norkos Dungeon -6",
+                     "movementType":"fall"
+                    },
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":848,
+                 "y":272
                 }],
          "opacity":1,
          "type":"objectgroup",
