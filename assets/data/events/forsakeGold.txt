@@ -33,3 +33,4 @@ A miniature samurai ninja zombie pirate robot velociraptor with psychic powers s
 %player landed on the "Go To Jail" tile.  %She passed GO! but didn't collect %gold gold.  Instead, %she paid %gold in bail gold to get away from the scary looks sent %hisher way by that damned dog.
 %player sailed the Seven Seals and all %she got was this stupid typo.  And %she lost %gold gold in poorly-planned, rum-fueled, failed piracy endeavors.
 %player won the lottery!  %She received %gold, which %she then used to buy %gold 2-gold scratch-off tickets.  Luck, apparently, is a fickle lady.  %player lost at every single one of those scratch-offs.
+Sarda, The Wizard Who Did It took %gold gold from %player because he could.
