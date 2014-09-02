@@ -33,7 +33,7 @@ class Rogue extends Class
 
   updateCombo: (spell) ->
     @lastComboSkill = spell.baseName
-    @lastComboSkillTurn = 2
+    @lastComboSkillTurn = 4
 
   resetCombo: ->
     @lastComboSkill = null
@@ -52,7 +52,7 @@ class Rogue extends Class
       player.special.toMaximum()
 
     player.on "combat.round.start", @events.roundStart = =>
-      player.special.add 5
+      player.special.add 2
       @lastComboSkillTurn--  if @lastComboSkillTurn > 0
       @lastComboSkill = null if @lastComboSkillTurn <= 0
 
