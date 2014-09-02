@@ -32,6 +32,9 @@ class Equipment
     gold: 2
     xp: 2
 
+    hp: 4
+    mp: 2
+
     luck: 3
 
     strPercent: 6
@@ -48,6 +51,9 @@ class Equipment
 
     goldPercent: 10
     xpPercent: 10
+
+    hpPercent: 20
+    mpPercent: 10
 
     enchantLevel: -25
 
