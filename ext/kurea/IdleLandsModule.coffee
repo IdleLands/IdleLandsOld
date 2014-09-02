@@ -57,7 +57,7 @@ module.exports = (Module) ->
       "player.level":               c.bold
       "stats.hp":                   c.red
       "stats.mp":                   c.blue
-      "stats.sp":                   c.yellow
+      "stats.sp":                   c.olive
       "damage.hp":                  c.red
       "damage.mp":                  c.blue
       "spell.turns":                c.bold
