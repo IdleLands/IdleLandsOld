@@ -9,7 +9,7 @@ class FinishingBlow extends Spell
   @restrictions =
     "Rogue": 38
 
-  @canChoose = (caster) -> caster.profession.lastComboSkill in ['wombo combo', 'savage stab', 'heartbleed']
+  @canChoose = (caster) -> caster.profession.lastComboSkill in ['wombo combo', 'savage stab']
 
   calcDamage: ->
     minStat = (@caster.calc.stats ['str', 'dex']) * 3
