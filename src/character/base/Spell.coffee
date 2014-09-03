@@ -135,12 +135,12 @@ class Spell
               me.bindings[event].apply me, arguments
               me.decrementTurns player
 
-            player.many event, turns, newFunc
+            player.many event, turns+1, newFunc
 
         (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
 
   decrementTurns: (player) ->
-    if --@turns <= 0
+    if --@turns < 0
       @unaffect player
 
   unaffect: (player) ->
