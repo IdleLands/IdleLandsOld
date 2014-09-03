@@ -8,6 +8,6 @@ class Devoted extends Personality
     -100
 
   @canUse = (player) ->
-    player.statistics["player trainer speak"] > 10
+    player.statistics["player trainer speak"] >= 10
 
 module.exports = exports = Devoted
