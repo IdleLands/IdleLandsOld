@@ -120,7 +120,7 @@ class Player extends Character
     try
       tile = lookAtTile newLoc.x,newLoc.y
 
-      while (tile.blocked and chance.bool likelihood: 75)
+      while (tile.blocked and chance.bool likelihood: 95)
         [newLoc, dir] = @pickRandomTile()
         tile = lookAtTile newLoc.x, newLoc.y
 
