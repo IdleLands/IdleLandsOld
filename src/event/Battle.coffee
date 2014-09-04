@@ -35,8 +35,12 @@ class Battle
 
       player.fled = false
 
-      player.hp.toMaximum()
-      player.mp.toMaximum()
+      try
+        player.hp.toMaximum()
+        player.mp.toMaximum()
+      catch e
+        console.error e
+        console.error "FAILED TO SET HP ????"
 
   calculateTurnOrder: ->
     playerList = _.reduce @parties, ((prev, party) -> prev.concat party.players), []
