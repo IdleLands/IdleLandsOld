@@ -15,7 +15,7 @@ class EquipmentGenerator extends Generator
 
     item = new Equipment baseItem
 
-    if chance.integer({min: 0, max: 4}) is 1
+    if chance.integer({min: 0, max: 2}) is 1
       @mergePropInto item, _.sample itemList['prefix']
       (@mergePropInto item,  _.sample itemList['prefix']) until chance.integer({min: -1, max: 7**(i = (i+1) or 0)}) isnt 1
 
