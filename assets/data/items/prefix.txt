@@ -202,6 +202,7 @@
 "venomous" agi=30 dex=30 con=-30
 "ancestral" wis=150 con=50
 "eternal" con=250 agi=-50 luck=31
+"untested" luck=-20 con=50 agi=50 wis=-10 int=-10 str=50
 "meteoric" str=150 agi=100
 "seeking" dex=200 agi=50
 "prismatic" int=150 agi=100
@@ -225,6 +226,8 @@
 "ruby" con=180 str=140
 "onyx" con=320
 "jade" luck=78
+"radioactive" con=-200 str=350 wis=50 int=-50 dex=50 agi=-50
+"jenga" dex=100 agi=100 con=100
 "legendary" str=200 int=150
 "transcendent" wis=250 agi=100
 "undulating" agi=100 wis=250
