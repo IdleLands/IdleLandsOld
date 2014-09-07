@@ -35,6 +35,7 @@
 "Fuckin' Magnet" int=175 wis=75
 "Guardian Angel" wis=200 int=100 defense
 "Rabbit's Foot" wis=200 int=150 luck=30
+"Standard Monetary Unit" luck=45
 "Whole Rabbit" wis=200 int=100 agi=100
 "Jaffa Cake" wis=420
 "Twilight Bracelet" int=300 wis=150
