@@ -33,9 +33,9 @@ module.exports = (Module) ->
       "event.damage":               c.red
       "event.gold":                 c.olive
       "event.realGold":             c.olive
-      "event.xp":                   c.lime
-      "event.realXp":               c.lime
-      "event.percentXp":            c.lime
+      "event.xp":                   c.green
+      "event.realXp":               c.green
+      "event.percentXp":            c.green
       "event.item.newbie":          c.brown
       "event.item.Normal":          c.gray
       "event.item.basic":           c.gray
