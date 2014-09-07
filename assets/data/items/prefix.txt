@@ -12,6 +12,7 @@
 "abysmal" agi=-30 int=-20
 "cowardly" agi=20 str=-70
 "nerfed" con=-15 dex=-15 str=-15 int=-15 wis=-15 agi=-15
+"Rock-Bottom" con=-25 dex=-25 str=-25 int=-25 wis=-25 agi=-25 luck=15
 "worthless" con=-5 str=-5 int=-5 dex=-5 wis=-5 agi=-5
 "tarnished" agi=-5 wis=-5
 "rusted" agi=-20 con=5
