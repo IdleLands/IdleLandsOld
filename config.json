@@ -10,7 +10,7 @@
             },
             {
                 "type": "cataclysm",
-                "duration": 14400
+                "duration": 4800
             }
         ],
         "eventRates": [
