@@ -8,7 +8,7 @@ _ = require "underscore"
 Personality = require "../base/Personality"
 
 Chance = require "chance"
-chance = new Chance()
+chance = new Chance Math.random
 
 class Player extends Character
 
