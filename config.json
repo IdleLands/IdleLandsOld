@@ -52,12 +52,12 @@
             {
                 "type": "blessGold",
                 "min": 1,
-                "max": 2175
+                "max": 6175
             },
             {
                 "type": "forsakeGold",
                 "min": 1,
-                "max": 2750
+                "max": 7750
             },
             {
                 "type": "party",
