@@ -257,6 +257,7 @@
 "popsicle" str=630 ice=200
 "flying car" str=900
 "snickersnee" int=900
+"homeless person" str=500 int=200 wis=-100 dex=400
 "Gigasword" str=390
 "Vacuum Gun" str=420
 "Full Ale Bottle" str=450
