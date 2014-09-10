@@ -255,11 +255,11 @@ class Character extends EventEmitter2
 
       fleePercent: ->
         @base.fleePercent = 0.1
-        @self.personalityReduce 'fleePercent', [@self, @base.fleePercent], @base.fleePercent
+        Math.max 0, Math.min 100, @self.personalityReduce 'fleePercent', [@self, @base.fleePercent], @base.fleePercent
 
       partyLeavePercent: ->
         @base.partyLeavePercent = Constants.defaults.player.defaultPartyLeavePercent
-        @self.personalityReduce 'partyLeavePercent', [@self, @base.partyLeavePercent], @base.partyLeavePercent
+        Math.max 0, Math.min 100, @self.personalityReduce 'partyLeavePercent', [@self, @base.partyLeavePercent], @base.partyLeavePercent
 
       classChangePercent: (potential) ->
         @base.classChangePercent = 100
