@@ -71,7 +71,7 @@ class Battle
       else
         string += " [ "
         string += "<stats.hp>HP #{stats.hp.getValue()}/#{stats.hp.maximum}</stats.hp> " if stats.hp
-        string += "<stats.mp>MP #{stats.mp.getValue()}f/#{stats.mp.maximum}</stats.mp> " if stats.mp
+        string += "<stats.mp>MP #{stats.mp.getValue()}/#{stats.mp.maximum}</stats.mp> " if stats.mp
         string += "<stats.sp>#{stats.special.name or "SP"} #{stats.special.getValue()}/#{stats.special.maximum}</stats.sp> " if stats.special
       string += "]"
 
