@@ -17,7 +17,10 @@ class Party
     _.reduce @players, ((prev, player) -> prev + player.calc.totalItemScore()), 0
 
   getPartyName: ->
-    if @players.length > 1 then @name else @players[0].name
+    try
+      return if @players.length > 1 then @name else @players[0].name
+    catch e
+      console.error e, @players
 
   genNullPartyName: ->
     "The Null Party #{chance.integer min: 1, max: 1000}"
