@@ -170,6 +170,7 @@
 "ultraball" int=113
 "stompin' boots" str=114
 "longbow" str=118
+"brazier" fire=100 str=70 int=30
 "swordcane" str=95 int=35 luck=11
 "zweihander" str=130
 "staff of healing" int=30 wis=100
