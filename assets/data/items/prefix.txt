@@ -143,6 +143,10 @@
 "flashy" int=60 dex=20
 "aerodynamic" agi=70 wis=10
 "sagely" wis=50 int=30
+"two-pronged" str=20 dex=20
+"three-pronged" str=30 dex=30
+"seventeen-pronged" str=170 dex=170
+"googolplex-pronged" str=1000 dex=1000
 "crystal" con=100
 "stabby" agi=45 str=25
 "elven" int=60 dex=40
