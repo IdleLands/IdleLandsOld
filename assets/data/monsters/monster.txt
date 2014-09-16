@@ -43,11 +43,13 @@
 "radioactive rabbit"        zone=forest level=16    int=10 str=20 dex=20 con=-10 prone=1
 "silly snake"               zone=forest level=20    int=15 wis=15 dex=10 str=10 con=10
 "arrogant atheist"          zone=town   level=24    class=Bard wis=50 int=80 dex=-10 str=-10
+"killer kobold"             zone=cave   level=26
 "welsh warthog"             zone=forest level=28    class=Fighter str=150 con=50
 "helpful hedgehog"          zone=forest level=32    class=Cleric wis=300
 "bustling badger"           zone=forest level=36    class=Generalist wis=40 con=40 dex=40 agi=40 int=40 str=40 luck=40
 "jumping jackalope"         zone=forest level=40    class=Rogue agi=200 dex=100 str=100
 "castrated cat"             zone=town   level=44    dex=-100 str=-100 con=600
+"gnarly goblin"             zone=cave   level=47
 "goofy gopher"              zone=town   level=48
 "slippery seal"             zone=town   level=52
 "gelatinous jabberwocky"    zone=forest level=56
