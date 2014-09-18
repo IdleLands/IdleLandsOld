@@ -214,6 +214,7 @@
 "shotgun" str=340
 "minigun" str=345
 "pinto" str=350
+"wad o' cash" str=350 int=100 wis=-50
 "whisker" int=352
 "flametongue" int=305 fire=150
 "icebrand" int=305 ice=80
