@@ -4,12 +4,14 @@ class Equipment
 
   constructor: (options) ->
     _.extend @, _.defaults options, Equipment.defaults
+    @foundAt = new Date()
     #console.error "ERROR in equipment constructor, name=#{@name}, type=#{@type}" if not @name or not @type
 
   score: ->
     ret = 0
     for attr, mult of Equipment.multipliers
       ret += @[attr]*mult if attr of @
+    @_calcScore = ret
     parseInt ret
 
   getName: ->
