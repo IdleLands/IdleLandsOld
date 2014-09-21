@@ -6,9 +6,9 @@ chance = new (require "chance")()
 
 class Party
   constructor: (@game, players) ->
-    @players = []
     players = [players] if not _.isArray players
-    if (not players) or players.length <= 1
+    @players = []
+    if (not players) or players.length < 1
       @disband()
       return
     @recruit players
