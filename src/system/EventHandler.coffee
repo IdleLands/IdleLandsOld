@@ -163,7 +163,7 @@ class EventHandler
 
   doItem: (event, player, callback) ->
     item = (_.sample player.equipment)
-    stat = @validItemStat item
+    stat = @pickBlessStat item
     return callback false if not stat
 
     val = item[stat] ? 0
@@ -253,7 +253,7 @@ class EventHandler
     item = _.sample _.reject player.equipment, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel
 
     return callback false if not item
-    stat = @validItemStat item
+    stat = @pickStatNotPresentOnItem item
 
     boost = 10
 
@@ -273,7 +273,7 @@ class EventHandler
 
   doFlipStat: (event, player, callback) ->
     item = (_.sample player.equipment)
-    stat = @validItemStat item
+    stat = @pickStatPresentOnItem item
 
     return callback false if not stat or item[stat] is 0
 
@@ -294,9 +294,42 @@ class EventHandler
     @broadcastEvent string, player, extra
     callback true
 
+  ignoreKeys: ['_calcScore', 'enchantLevel']
   specialStats: ['offense', 'defense', 'prone', 'power', 'silver', 'crit', 'dance', 'deadeye', 'glowing', 'vorpal']
+  t0: ['int', 'str', 'dex', 'con', 'wis', 'agi']
+  t1: ['intPercent', 'strPercent', 'conPercent', 'wisPercent', 'agiPercent']
+  t2: ['gold', 'xp', 'hp', 'mp']
+  t3: ['goldPercent', 'xpPercent', 'hpPercent', 'mpPercent', 'luck']
+  t4: ['luckPercent']
 
-  validItemStat: (item) ->
-    _.sample (_.reject (_.keys item), (key) -> key is 'enchantLevel' or item[key] is 0 or not _.isNumber item[key] or key of @specialStats)
+  allValidStats: -> @t0.concat @t1.concat @t2.concat @t3.concat @t4
+
+  pickStatPresentOnItem: (item, base = @allValidStats()) ->
+    nonZeroStats = _.reject (_.keys item), (stat) -> item[stat] is 0 or _.isNaN item[stat]
+    statsInBoth = _.intersection base, nonZeroStats
+    _.sample statsInBoth
+
+  pickStatNotPresentOnItem: (item, base = @allValidStats()) ->
+    zeroStats = _.filter (_.keys item), (stat) -> item[stat] is 0
+    statsMissing = _.intersection base, zeroStats
+    _.sample statsMissing
+
+  pickBlessStat: (item) ->
+    chances = [1, 5, 10, 20, 100]
+    keys = [@t4, @t3, @t2, @t1, @t0]
+    validKeysToChoose = _.compact _.map keys, (keyList) =>
+      @pickStatPresentOnItem item, keyList
+
+    return '' if validKeysToChoose.length is 0
+
+    chances = chances[-validKeysToChoose.length..]
+
+    retStat = ''
+    for i in [0..validKeysToChoose.length]
+      if chance.bool {likelihood: chances[i]}
+        retStat = validKeysToChoose[i]
+        break
+
+    retStat
 
 module.exports = exports = EventHandler
