@@ -89,7 +89,8 @@ class Game
       maxPercDiff = Constants.defaults.game.maxPartyScorePercentDifference
 
       if minScore < maxScore*maxPercDiff
-        @broadcast MessageCreator.genericMessage "#{parties[0].getPartyName()} passed by #{parties[1].getPartyName()}, smiling and waving."
+        if parties[0].players.length and parties[1].players.length
+          @broadcast MessageCreator.genericMessage "#{parties[0].getPartyName()} passed by #{parties[1].getPartyName()}, smiling and waving."
         _.each parties, (party) -> party.disband()
         return no
 
