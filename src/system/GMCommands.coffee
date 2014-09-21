@@ -21,11 +21,9 @@ class GMCommands
 
   massTeleportLocation: (locationTitle) ->
     location = @lookupLocation locationTitle
-    console.log "MTL: #{locationTitle} #{location}"
-    @massTeleport location.map, location.x, location.y, locationTitle
+    @massTeleport location.map, location.x, location.y, location.formalName
 
   massTeleport: (map, x, y, title = null) ->
-    console.info "MT: ",_.map @game.playerManager.players, (player) -> player.name
     _.each @game.playerManager.players, (player) =>
       @teleport player, map, x, y, title
 
