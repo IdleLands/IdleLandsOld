@@ -7,6 +7,6 @@ class Clingy extends Personality
   partyLeavePercent: -> -100
 
   @canUse = (player) ->
-    player.statistics["player party join"] > 500
+    player.statistics["player party join"] >= 500
 
 module.exports = exports = Clingy

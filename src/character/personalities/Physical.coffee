@@ -20,6 +20,6 @@ class Physical extends Personality
     -100 if @isMagical potential
 
   @canUse = (player) ->
-    player.statistics["event findItem"] > 500
+    player.statistics["event findItem"] >= 500
 
 module.exports = exports = Physical

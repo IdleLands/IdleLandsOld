@@ -20,6 +20,6 @@ class Explorer extends Personality
   agiPercent: -> -10
 
   @canUse = (player) ->
-    player.statistics["explore walk"] > 100000
+    player.statistics["explore walk"] >= 100000
 
 module.exports = exports = Explorer

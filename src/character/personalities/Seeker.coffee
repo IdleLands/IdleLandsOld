@@ -8,6 +8,6 @@ class Seeker extends Personality
   xpPercent: -> 15
 
   @canUse = (player) ->
-    player.statistics["player xp gain"] > 100000
+    player.statistics["player xp gain"] >= 100000
 
 module.exports = exports = Seeker
