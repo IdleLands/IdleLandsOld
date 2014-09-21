@@ -366,6 +366,18 @@ module.exports = (Module) ->
           else
             @reply origin, "Successfully updated your personality settings."
 
+      @addRoute "idle-string :action(remove|add) :type :string?", (origin, route) =>
+        [bot, action, sType, string] = [origin.bot, route.params.action, route.params.type, route.params.string]
+        bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to change your string settings!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          @IdleWrapper.api[action].string identifier, sType, string
+          @reply origin, "Successfully updated your string settings."
+
       @addRoute "idle-add all-data", "idle.game.owner", (origin, route) =>
         @reply origin, "Re-initializing all modifier/event/etc data from disk."
         @IdleWrapper.api.add.allData()

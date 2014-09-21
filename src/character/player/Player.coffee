@@ -221,4 +221,8 @@ class Player extends Character
     @emit "player.level.up", @
     @recalculateStats()
 
+  setString: (type, val = '') ->
+    @messages = {} if not @messages
+    @messages[type] = val.substring 0, 24
+
 module.exports = exports = Player

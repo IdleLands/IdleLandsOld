@@ -63,6 +63,8 @@ class API
       @gameInstance.playerManager.getPlayerById(identifier)?.addPersonality personality
     allData: =>
       @gameInstance.componentDatabase.importAllData()
+    string: (identifier, stringType, string) =>
+      @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType, string
 
   @find =
     static: (query, callback) =>
@@ -75,5 +77,7 @@ class API
       @gameInstance.playerManager.removePlayer identifier
     personality: (identifier, personality) =>
       @gameInstance.playerManager.playerHash[identifier]?.removePersonality personality
+    string: (identifier, stringType) =>
+      @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType
 
 module.exports = exports = API

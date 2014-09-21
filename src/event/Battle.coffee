@@ -189,13 +189,17 @@ class Battle
     @takeStatFrom player, target, damage, "physical", "hp"
     @checkBattleEffects player, target
 
+    fatal = no
     if target.hp.atMin()
       message += " -- a fatal blow!"
-      @emitEvents "kill", "killed", player, target
+      fatal = yes
+
     else
       message += "!"
 
     sendBattleMessage message, player
+
+    (@emitEvents "kill", "killed", player, target) if fatal
 
   doMagicalAttack: (player, spellClass) ->
     spell = @game.spellManager.modifySpell new spellClass @game, player

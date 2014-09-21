@@ -76,12 +76,20 @@ class Class extends Personality
   eventModifier: (event) ->
     event.min
 
+  events: {}
+
   load: (player) ->
     @chance = new (require "chance")()
-    player.on "explore.walk", @walkEvent = ->
+    player.on "explore.walk", @events.walkEvent = ->
       player.gainXp 10
+    player.on "combat.self.kill", @events.killSpeakEvent = ->
+      player.playerManager.game.broadcast "<#{player.name}> #{player.messages.kill}" if player.messages?.kill
+    player.on "combat.self.killed", @events.deathSpeakEvent = ->
+      player.playerManager.game.broadcast "<#{player.name}> #{player.messages.death}" if player.messages?.death
   
   unload: (player) ->
-    player.off "explore.walk", @walkEvent
+    player.off "explore.walk", @events.walkEvent
+    player.off "combat.self.kill", @events.killSpeakEvent
+    player.off "combat.self.killed", @events.deathSpeakEvent
 
 module.exports = exports = Class
