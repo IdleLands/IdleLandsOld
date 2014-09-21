@@ -73,7 +73,7 @@ class Game
       new Battle @,parties
 
     tryBattle = (parties) =>
-      return if parties.length is 0
+      return if parties.length <= 1
 
       partyScores = _.map parties, (party) -> party.score()
 
