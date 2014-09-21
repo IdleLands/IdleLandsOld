@@ -191,6 +191,7 @@ module.exports = (Module) ->
       @on "join", (bot, channel, sender) =>
         if bot.config.nick is sender
           setTimeout =>
+            return if channel isnt '#idlebot'
             bot.send 'TOPIC', channel, @topic
             bot.send 'MODE', channel, '+m'
             @currentlyInChannels.push @hashServerChannel bot.config.server, channel
@@ -204,6 +205,7 @@ module.exports = (Module) ->
           @userIdents[@generateIdent bot.config.server, sender] = ident
 
       @on "part", (bot, channel, sender) =>
+        return if channel isnt '#idlebot'
         bot.userManager.getUsername {user: sender, bot: bot}, (e, username) =>
           ident = @generateIdent bot.config.server, username
           @removeUser ident
