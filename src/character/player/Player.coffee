@@ -221,7 +221,4 @@ class Player extends Character
     @emit "player.level.up", @
     @recalculateStats()
 
-  itemFindRange: ->
-    (@level.getValue()+1) * @calc.itemFindRangeMultiplier()
-
 module.exports = exports = Player

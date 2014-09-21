@@ -214,6 +214,10 @@ class Character extends EventEmitter2
         @base.combatEndXpLoss = Math.floor self.xp.maximum / 10
         @self.personalityReduce 'combatEndXpLoss', [@self, @base.combatEndXpLoss], @base.combatEndXpLoss
 
+      itemFindRange: ->
+        @base.itemFindRange = (@self.level.getValue()+1) * @self.calc.itemFindRangeMultiplier()
+        @self.personalityReduce 'itemFindRange', [@self, @base.itemFindRange], @base.itemFindRange
+
       itemFindRangeMultiplier: ->
         @base.itemFindRangeMultiplier = Constants.defaults.player.defaultItemFindModifier
         @self.personalityReduce 'itemFindRangeMultipler', [@self, @base.itemFindRangeMultiplier], @base.itemFindRangeMultiplier

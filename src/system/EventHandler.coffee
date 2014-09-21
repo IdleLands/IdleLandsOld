@@ -202,7 +202,7 @@ class EventHandler
     realScore = item.score()
     myRealScore = myItem.score()
 
-    if score > myScore and realScore < player.itemFindRange() and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
+    if score > myScore and realScore < player.calc.itemFindRange() and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
       player.equip item
 
       extra =
@@ -247,6 +247,7 @@ class EventHandler
     return if not player.party
 
     monsterParty = @game.monsterGenerator.generateMonsterParty party.score()
+    return if monsterParty.players.length is 0
 
     @game.startBattle [monsterParty, player.party], event
     player.emit "event.monsterbattle", player
