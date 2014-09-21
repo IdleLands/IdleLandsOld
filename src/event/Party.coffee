@@ -8,7 +8,9 @@ class Party
   constructor: (@game, players) ->
     @players = []
     players = [players] if not _.isArray players
-    return if not players or players.length is 0
+    if (not players) or players.length <= 1
+      @disband()
+      return
     @recruit players
     @name = @pickPartyName()
     @addGlobally()
@@ -17,10 +19,7 @@ class Party
     _.reduce @players, ((prev, player) -> prev + player.calc.totalItemScore()), 0
 
   getPartyName: ->
-    try
-      return if @players.length > 1 then @name else @players[0].name
-    catch e
-      console.error e, @players
+    if @players.length > 1 then @name else @players[0].name
 
   genNullPartyName: ->
     "The Null Party #{chance.integer min: 1, max: 1000}"

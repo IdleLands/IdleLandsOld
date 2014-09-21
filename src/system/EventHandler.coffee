@@ -208,7 +208,10 @@ class EventHandler
       extra =
         item: "<event.item.#{item.itemClass}>#{item.getName()}</event.item.#{item.itemClass}>"
 
-      totalString = "#{event.remark} [perceived: <event.finditem.perceived>#{myScore} -> #{score}</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore}</event.finditem.real> | <event.finditem.scoreboost>+#{score-myScore}</event.finditem.scoreboost>]"
+      realScoreDiff = realScore-myRealScore
+      normalizedRealScore = if realScoreDiff > 0 then "+#{realScoreDiff}" else realScoreDiff
+
+      totalString = "#{event.remark} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (+#{score-myScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
       player.emit "event.findItem", player, item
 
       @broadcastEvent totalString, player, extra
@@ -241,6 +244,7 @@ class EventHandler
 
     new Party @game, player if not player.party
     party = player.party
+    return if not player.party
 
     monsterParty = @game.monsterGenerator.generateMonsterParty party.score()
 
