@@ -4,6 +4,7 @@ class Equipment
 
   constructor: (options) ->
     _.extend @, _.defaults options, Equipment.defaults
+    @_baseScore = @score()
     @foundAt = new Date()
     #console.error "ERROR in equipment constructor, name=#{@name}, type=#{@type}" if not @name or not @type
 
