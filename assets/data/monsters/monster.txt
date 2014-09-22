@@ -14,6 +14,7 @@
 "subsonic wave"         level=64
 "nightmare"             level=70
 "mysterious presence"   level=89
+"tetradigm"             level=97
 
 # town creatures
 "pedestrian"            zone=town level=2
