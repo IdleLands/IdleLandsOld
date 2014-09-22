@@ -15,6 +15,7 @@ class Character extends EventEmitter2
     @special = new RestrictedNumber 0, 0, 0
     @level = new RestrictedNumber 0, 100, 0
     @equipment = []
+    @createDate = new Date()
     @loadCalc()
 
     @
