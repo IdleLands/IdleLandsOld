@@ -320,7 +320,7 @@ module.exports = (Module) ->
         [name, location] = [route.params.playerName, route.params.location]
         @IdleWrapper.api.game.teleport.singleLocation name, location
 
-      @addRoute 'idle-teleport ":playerName" :map :x,:y', "idle.game.gm", (origin, route) =>
+      @addRoute 'idle-teleport ":playerName" ":map" :x,:y', "idle.game.gm", (origin, route) =>
         [name, map, x, y] = [route.params.playerName, route.params.map, route.params.x, route.params.y]
         x = parseInt x
         y = parseInt y
@@ -330,7 +330,7 @@ module.exports = (Module) ->
         [location] = [route.params.location]
         @IdleWrapper.api.game.teleport.massLocation location
 
-      @addRoute "idle-massteleport :map :x,:y", "idle.game.gm", (origin, route) =>
+      @addRoute 'idle-massteleport ":map" :x,:y', "idle.game.gm", (origin, route) =>
         [map, x, y] = [route.params.map, route.params.x, route.params.y]
         x = parseInt x
         y = parseInt y
