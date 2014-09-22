@@ -248,6 +248,10 @@ module.exports = (Module) ->
         [bot, name] = [origin.bot, route.params.name]
 
         name = name.trim()
+        
+        if name.length < 2
+          @reply origin, "You have to make your name above 2 characters!"
+          return
 
         if name.length > 20
           @reply origin, "You have to keep your name under 20 characters!"
