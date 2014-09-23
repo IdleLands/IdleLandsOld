@@ -24,6 +24,8 @@ npm install
 npm start
 ```
 
+If you're interested in having the front end available (perhaps for debugging maps, movement, or the like), then you will want to install [kurea.web](https://github.com/kellyirc/kurea.web). Then you can watch your characters move around on the map more easily.
+
 ##Important##
 While writing code, make sure it passes `coffeelint` -- the easy shortcut for this is `grunt dev`. **Additionally, check out CONTRIBUTING.md - it has guidelines for contributions and you should read it.**
 
