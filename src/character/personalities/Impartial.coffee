@@ -7,6 +7,6 @@ class Impartial extends Personality
   partyLeavePercent: -> 50
 
   @canUse = (player) ->
-    player.statistics["player party leave"] >= 500
+    player.statistics["player party leave"] >= 250
 
 module.exports = exports = Impartial
