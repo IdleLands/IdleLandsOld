@@ -8,6 +8,6 @@ class Greedy extends Personality
   xpPercent: -> -15
 
   @canUse = (player) ->
-    player.statistics["player gold gain"] >= 25000
+    player.statistics["player gold gain"] >= 10000
 
 module.exports = exports = Greedy
