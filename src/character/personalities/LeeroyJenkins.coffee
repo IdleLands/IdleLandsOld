@@ -11,6 +11,6 @@ class LeeroyJenkins extends Personality
   agiPercent: -> 20
 
   @canUse = (player) ->
-    player.statistics["combat battle start"] >= 1000
+    player.statistics["combat battle start"] >= 250
 
 module.exports = exports = LeeroyJenkins
