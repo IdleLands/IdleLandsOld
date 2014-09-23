@@ -7,6 +7,6 @@ class Conservative extends Personality
   physicalAttackChance: -> 40
 
   @canUse = (player) ->
-    player.statistics["combat self skill use"] >= 1000
+    player.statistics["combat self skill use"] >= 150
 
 module.exports = exports = Conservative
