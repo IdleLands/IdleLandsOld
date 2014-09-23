@@ -279,12 +279,11 @@ Character::num2dir = (dir,x,y) ->
     when 1 then return {x: x-1, y: y-1}
     when 2 then return {x: x, y: y-1}
     when 3 then return {x: x+1, y: y-1}
-    when 4 then return {x: x-1, y: y}
-
-    when 6 then return {x: x+1, y: y}
+    when 4 then return {x: x+1, y: y}
+    when 5 then return {x: x+1, y: y+1}
+    when 6 then return {x: x, y: y+1}
     when 7 then return {x: x-1, y: y+1}
-    when 8 then return {x: x, y: y+1}
-    when 9 then return {x: x+1, y: y+1}
+    when 8 then return {x: x-1, y: y}
 
     else return {x: x, y: y}
 
