@@ -25,7 +25,7 @@ npm start
 ```
 
 ##Important##
-While writing code, make sure it passes `coffeelint` -- the easy shortcut for this is `grunt dev`. *Additionally, check out CONTRIBUTING.md - it has guidelines for contributions and you should read it.*
+While writing code, make sure it passes `coffeelint` -- the easy shortcut for this is `grunt dev`. **Additionally, check out CONTRIBUTING.md - it has guidelines for contributions and you should read it.**
 
 ##Another Note##
 Feel free to join us in irc.esper.net ##idlebot and chat with the devs and designers!
