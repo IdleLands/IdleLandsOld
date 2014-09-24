@@ -41,16 +41,24 @@
 "lifesaver" con=50 wis=80
 "combat vest" con=100 agi=30
 "mithril mail" con=150
+"rock hard physique" con=160 str=20
 "diamond mail" con=200
+"high-tech armor" con=240
+"winner's shirt" con=270
 "holy garb" agi=120 con=30
+"beautiful dress" con=100 wis=100 int=60
 "dragonscale armor" con=100 agi=100 str=30
 "invisible armor" con=150 agi=50
 "ABS" con=300
+"Suit of Belts" con=320 dex=30 agi=30
+"Super Tie Dye Shirt" str=70 con=70 int=70 wis=70 dex=70 luck=10
 "Kevlar" con=200 dex=50 agi=50
 "Viking Armor" con=175 agi=75
 "Pokemon Pelt" agi=201 con=151
 "Invisibility Cloak" agi=300 con=100
 "Tuxedo" con=100 agi=250
+"Gem Sweater" con=150 int=90 wis=90
+"Glass Mail" con=1 str=200 int=200
 "Space Suit" agi=200 con=300
 "Baron's Cape" agi=400 con=100
 "Sentinel Armor" con=550 agi=100
