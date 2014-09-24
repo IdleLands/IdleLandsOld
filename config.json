@@ -27,7 +27,7 @@
             {
                 "type": "flipStat",
                 "min": 1,
-                "max": 15000
+                "max": 25000
             },
             {
                 "type": "blessItem",
