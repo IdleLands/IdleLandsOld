@@ -31,3 +31,17 @@ The Goddess of Riches, Kirierath, causes it to rain gold down at %player only, a
 %player fell on some hard times, and decided to sell a tooth to the tooth faerie for %gold gold.
 %player made a successful trade with some nearby townspeople!
 Sarda, The Wizard Who Did It gave %player %gold gold to shake up the economy.
+%player played the stock markets! %player profitted with %gold gold.
+%player found %gold gold in a brownie sundae!
+%player dug up a Time Capsule! %player found %gold gold.
+A time anomaly made a few bank statements non-exist! The bank credits you %gold gold.
+%player starts a Youtube channel! They were paid %gold gold.
+%player chanced upon some unicorn dung! They find %gold gold in it.
+%player finds the right end of a black hole! They find %gold gold.
+%player works a night guarding a VIP. %player is paid %gold gold. Good job.
+%player kills a caribou and crawls inside. They find %gold gold in it's stomach!
+%player starts eating moonrocks... a week later they find %gold gold...
+%player yells insults at a passing god. The god thanks them with %gold gold.
+%player happens upon a dragon ride camp. They spend 2 weeks learning to fly. Upon graduation, %player was awarded %gold gold for having top honours!
+%player logs onto their computer and checks their email. They won several online lotteries gaining %gold gold!
+%player eats a vial of nuclear waste thus winning a bet! %player wins %gold gold!
