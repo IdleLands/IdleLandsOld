@@ -1,11 +1,16 @@
-"socks and sandals" agi=1 dex=1 wis=-20
+# agi
 "socks" agi=1
 "sneakers" agi=3
+
+# dex
 "sandals" dex=1
 "high-heels" dex=5 luck=-1
+"flip flops" dex=7
+
+# agi / dex
+"socks and sandals" agi=1 dex=1 wis=-20
 "duct-tape shoes" agi=3 dex=2 luck=1
-"golf shoes" dex=3 agi=2
-"flip flops" dex=5
+"golf shoes" dex=3 agi=4
 "boots" dex=10 agi=5
 "geta" agi=10 dex=8
 "greaves" dex=10 agi=10
@@ -47,6 +52,10 @@
 "Mario Boots" agi=400 dex=200
 "Silver Surfboard" agi=533 dex=200
 "Advanced Knee Replacement" dex=650 agi=200
-"Continuity Shoes" dex=500 agi=500 glowing
+"Continuity Shoes" dex=500 agi=500 glowing=1
+
+# idle-class
 "Fastidious Feet of the Idling Gods" agi=2500 dex=2500
+
+# godly-class
 "Time Travel Boots" agi=7500 dex=2500

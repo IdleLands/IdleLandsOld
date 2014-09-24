@@ -7,4 +7,6 @@
 "vorpal" crit=1
 "dancing" dodge=1
 "glowing" glowing=1
+
 "annihilating" crit=3 offense=3 prone=1 power=1 silver=1 vorpal=1
+"obliterated" crit=-3 offense=-3 defense=-3 prone=-1 power=-1

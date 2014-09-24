@@ -1,16 +1,23 @@
+# useless
 "invisible leaf"
+
+# agi
 "stockings" agi=1
+"oak leaf" agi=5
+"poison ivy leaf" agi=8 poison=1
+"kneesocks" agi=245
+"Bunny Pajamas" agi=675
+
+# agi / con
 "panties" agi=2 con=1
 "pantaloons" con=3 agi=1
-"oak leaf" agi=5
 "evergreen branch" con=4 agi=3
-"censor leaf" con=3 agi=4
-"poison ivy leaf" agi=8 poison
-"pants" con=7 agi=3
-"trousers" agi=7 con=7
+"censor leaf" con=5 agi=4
+"pants" con=7 agi=4
+"trousers" agi=10 con=7
 "leggings" agi=14 con=3
-"chaps" con=15 agi=5
-"chausses" con=16 agi=8
+"chaps" con=19 agi=5
+"chausses" con=21 agi=10
 "assless chaps" agi=30 con=-5 luck=-1
 "leather pants" agi=20 con=19
 "ponyskin" agi=30 con=18
@@ -21,19 +28,29 @@
 "leather leggings" agi=60 con=50
 "gold leggings" agi=40 con=80
 "iron leggings" agi=45 con=90
+"silver leggings" con=120 agi=50
 "diamond leggings" agi=20 con=180
-"lucky leggings" luck=30
-"kneesocks" agi=245
-"Victoria's Panties" agi=300 wis=50
-"Granny's Pantaloons" agi=300 wis=75
-"Plated Pants" con=400 agi=25
+"Unobtainium Leggings" agi=120 con=120
 "Venus Flytrap" con=150 agi=200
+"Plated Pants" con=400 agi=25
 "Black Bar" agi=400 con=100
 "Untouchable Pants" con=315 agi=300 luck=35
-"Bunny Pajamas" agi=675
 "Hoverchair" con=500 agi=215
-"Panzer Tank Treads" con=850
 "Full Monty" agi=400 con=400
 "Greaves of Null and All" agi=500 con=500 pietyPercent=50
+
+# agi / wis
+"Granny's Pantaloons" agi=100 wis=75
+"Victoria's Panties" agi=300 wis=50
+
+# con
+"Panzer Tank Treads" con=850
+
+# luck
+"lucky leggings" luck=30
+
+# idle-class
 "Gloomy Greaves of the Idling Gods" con=1500 agi=1500 str=1500
+
+# godly-class
 "The Biggest Fishnets You Ever Dun Seen" agi=1500 con=1500 int=-200 wis=-100 dex=7000

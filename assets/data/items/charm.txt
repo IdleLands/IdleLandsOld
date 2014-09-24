@@ -1,12 +1,25 @@
+# int
 "pin" int=1
+"earring" int=8
+"talisman" int=10
+"quill" int=60
+"metronome" int=123
+"Fox Rods" int=631
+
+# wis
+"bauble" wis=7 luck=1
+"plume" wis=10
+"bead" wis=50 luck=5
+"Jaffa Cake" wis=420
+"Crystal Ball" wis=640
+
+# agi / int
+"teleporter" agi=10 int=20 dodge=1 luck=3
+
+# int / wis
 "bracelet" int=1 wis=1
 "armband" wis=3 int=2
-"bauble" wis=7 luck=1
-"earring" int=8
 "trinket" wis=5 int=5
-"plume" wis=10
-"teleporter" agi=10 int=20 dodge luck=3
-"talisman" int=10
 "plume" wis=10 int=3
 "pixane" int=10 wis=5
 "juju" int=30 wis=-7 luck=-5
@@ -15,38 +28,38 @@
 "luckstone" int=16 wis=16 luck=10
 "magic mirror" wis=30 int=5
 "whistle" int=20 wis=17
-"wooden stake" int=25 wis=15 silver
-"cross" int=20 wis=20 silver
+"wooden stake" int=25 wis=15 silver=1
+"cross" int=20 wis=20 silver=1
 "candle" int=35 wis=10
-"bead" wis=50 luck=5
 "magnifying glass" wis=60
-"quill" int=60
 "scroll" int=35 wis=35
 "hoverpet" wis=50 int=40
 "sextant" int=69 wis=18 luck=7
 "dollar" wis=50 int=50
 "sun stone" wis=80 int=20
 "blessed mess" wis=100 int=11
-"metronome" int=123
-"die-cast robot princess bubblegum" int=100 wis=43 power luck=8
+"die-cast robot princess bubblegum" int=100 wis=43 power=1 luck=8
 "tentacle" int=100 wis=50
 "brimstone" int=200 wis=-30
 "netherrack" int=150 wis=50
 "Fuckin' Magnet" int=175 wis=75
-"Guardian Angel" wis=200 int=100 defense
+"Guardian Angel" wis=200 int=100 defense=1
 "Rabbit's Foot" wis=200 int=150 luck=30
-"Standard Monetary Unit" luck=45
 "Whole Rabbit" wis=200 int=100 agi=100
-"Jaffa Cake" wis=420
 "Twilight Bracelet" int=300 wis=150
 "Attorney's Badge" int=300 wis=203
 "Mirror Mirror" int=312 wis=213
 "Nevermeltice" int=230 wis=329 ice=100
-"Fox Rods" int=631
-"Crystal Ball" wis=640
 "Everburn" int=350 wis=300 fire=100
 "Faithful Pet Wolf" int=300 wis=450
 "Mask de Smith" wis=400 int=377
 "Magnitude Pocketwatch" int=500 wis=500 sentimentalityPercent=20
+
+# luck
+"Standard Monetary Unit" luck=45
+
+# idle-class
 "Cosmic Charm of the Idling Gods" int=2500 dex=2500
+
+# godly-class
 "Black Hole" int=1500 dex=1500 con=1500 wis=1500 str=1500 agi=1500 luck=100

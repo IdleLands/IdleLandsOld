@@ -1,6 +1,5 @@
 "destroyed" str=-40 con=-20
 "unacceptable" dex=-30 int=-20
-"obliterated" con=-50
 "papier-mache" str=-30
 "rotten-to-the-bone" con=-20 int=-10
 "blind" dex=-30

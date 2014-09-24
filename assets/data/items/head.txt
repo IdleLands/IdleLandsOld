@@ -1,55 +1,95 @@
+# con
 "hat" con=1
-"barette" agi=2
-"sombrero" con=2 agi=2
-"beret" agi=2
-"mask" int=2
-"helm" con=2
-"coif" wis=3
-"cap" con=4
-"skullcap" con=2 str=2
-"aventail" con=9
-"corsage" wis=7 con=3
-"glasses" int=7 con=4
-"diadem" con=5 int=7 luck=2
-"flowerpot" wis=13
-"halo" wis=5 dex=10 luck=3
-"devil horns" str=10 con=6 luck=-3
-"coronet" dex=5 con=5
-"horned cap" str=20 con=10
-"aiming goggles" dex=30 crit
-"fishbowl" dex=33
-"cornuthaum" int=35
-"mitre" wis=40
-"cowl" agi=42
-"rose" dex=45
-"pile of hats" dex=25 agi=25
-"pile of helms" dex=25 con=25 luck=5
-"cardboard box" agi=50 dex=10
-"saucer" wis=35 dex=30
-"paper hat" agi=50 wis=20
-"tinfoil hat" wis=67 int=20
-"hipster hat" str=20 con=60
-"earbuds" wis=101
-"skull" str=155 dex=10
-"umbrella hat" con=100 dex=76
-"cute animal" wis=90 con=100
-"monocle" int=110 wis=100
-"Fedora" agi=150 con=100 luck=-10
-"Jungle Rose" int=100 str=200
-"Dunce Cap" con=400 int=-50
-"Top Hat" int=450
-"Vice-Versa" str=400 con=100
+"helm" con=5
+"cap" con=9
+"aventail" con=15
 "Metal Box" con=600
-"Headwings" agi=430 con=200
-"Fusion Earring" dex=330 con=300 luck=10
-"Flying Saucer" int=650
-"Powdered Wig" con=380 wis=300
 "Ye Olde Helm" con=750
-"Viking Helmet" str=400 con=400
-"Chap's Monocle" int=400 con=400
+
+# agi
+"barette" agi=2
+"beret" agi=4
+"cowl" agi=42
+
+# int
+"mask" int=2
+"cornuthaum" int=35
+"Top Hat" int=450
+"Flying Saucer" int=650
+
+# dex
+"aiming goggles" dex=30 crit=1
+"fishbowl" dex=33
+"rose" dex=45
+
+# wis
+"coif" wis=3
+"flowerpot" wis=13
+"mitre" wis=40
+"earbuds" wis=101
+
+# con / agi
+"sombrero" con=2 agi=2
+"Fedora" agi=150 con=100 luck=-10
+"Headwings" agi=430 con=200
 "Aerodynamic Haircut" agi=840 con=400
+
+# con / str
+"skullcap" con=2 str=2
+"devil horns" str=10 con=6 luck=-3
+"horned cap" str=20 con=10
+"hipster hat" str=25 con=60
+"Vice-Versa" str=400 con=100
+"Viking Helmet" str=400 con=400
+
+# con / wis
+"corsage" wis=7 con=3
+"haircut" wis=50 con=50
+"Chap's Monocle" int=400 con=400
+
+# con / int
+"glasses" int=7 con=4
+"diadem" con=5 int=9 luck=2
+"Dunce Cap" con=400 int=-50
+
+# con / dex
+"coronet" dex=5 con=5
+"pile of helms" dex=25 con=25 luck=5
+"umbrella hat" con=100 dex=76
+"Fusion Earring" dex=230 con=200 luck=10
 "Superscouter 9001" dex=400 con=400 luck=15
+
+# wis / dex
+"halo" wis=5 dex=10 luck=3
+"saucer" wis=35 dex=30
+
+# agi / dex
+"pile of hats" dex=25 agi=25
+"cardboard box" agi=50 dex=10
+
+# str / dex
+"skull" str=155 dex=10
+
+# str / int
+"Jungle Rose" int=100 str=200
+
+# wis / agi
+"paper hat" agi=50 wis=20
+
+# wis / int
+"tinfoil hat" wis=67 int=20
+"monocle" int=110 wis=100
+
+# wis / con
+"cute animal" wis=90 con=100
+"Powdered Wig" con=200 wis=200
 "Holy Mitre" wis=400 con=400
-"Antiverse Circlet" str=100 int=100 dex=100 con=500 agi=100 wis=100 deadeye
+
+# mega-hybrid
+"Antiverse Circlet" str=100 int=100 dex=100 con=500 agi=100 wis=100 deadeye=1
+
+# idle-class
 "Feathered Fez of the Idling Gods" int=-100 con=2000 str=500 wis=-100 agi=700
+
+# godly-class
 "Pile Of Hats That Reaches to the Moon" wis=10000

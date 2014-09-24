@@ -1,5 +1,10 @@
+# dex
 "mittens" dex=1
+
+# str
 "gloves" str=3 luck=1
+
+# dex / str
 "bracers" dex=3 str=1
 "gauntlets" str=6 dex=3
 "armlets" dex=8 str=2
@@ -12,13 +17,17 @@
 "crimson gloves" str=150 dex=6
 "Roll of Quarters" str=125 dex=75
 "Glover" dex=200 str=50 luck=3
-"How-Do-You-Type-With-These Boxing Gloves" str=300
 "Real Steel" str=100 dex=156 luck=4
+"How-Do-You-Type-With-These Boxing Gloves" str=300
 "Scyther" str=212 dex=123
 "Knife-Fists" str=300 dex=156
 "Pixelated Gloves" dex=350 str=100
 "My Little Painbringers" str=200 dex=311 luck=5
 "Godhand" dex=400 str=200
-"Hands of Fate" str=500 dex=500 power
+"Hands of Fate" str=500 dex=500 power=1
+
+# idle-class
 "Glowing Gauntlets of the Idling Gods" str=1500 con=1500 dex=1000
+
+# godly-class
 "Infinitely Expanding Fractal Gloves" int=-1000 con=3000 str=3000 dex=3000
