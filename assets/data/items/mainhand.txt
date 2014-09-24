@@ -206,9 +206,12 @@
 "masamune" str=235 int=80 silver piety=500
 "arbalest" str=300
 "sniper rifle" str=310 deadeye
+"sange" str=250 con=70
+"yasha" str=100 dex=220
 "m80" str=325
 "defibrillator" int=250 thunder=75
 "deagle" str=330
+"claimh solais" str=300 holy=50
 "giant atom" int=333
 "uzi" str=335
 "shotgun" str=340
@@ -216,6 +219,8 @@
 "pinto" str=350
 "wad o' cash" str=350 int=100 wis=-50
 "whisker" int=352
+"monado" str=360
+"infinity edge" str=375 crit
 "flametongue" int=305 fire=150
 "icebrand" int=305 ice=80
 "mjollnir" str=335 thunder=150
@@ -225,6 +230,9 @@
 "tomato" str=275 agi=75 dex=85
 "smartphone" int=400
 "swordchucks" str=400
+"storm wand indra" int=300 thunder=100
+"fire scepter agni" int=300 fire=100
+"ice staff dagon" int=300 water=100
 "graytooth" str=410
 "pet hellhound" str=453
 "crossblade" str=485
