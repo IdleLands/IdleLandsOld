@@ -7,55 +7,10 @@ It can be run with a backend of IRC, or a console, or really just about anything
 
 Developing
 ==========
+Whether you want to create events, or create the next best class, all of the information is housed in the [wiki](https://github.com/seiyria/IdleLands/wiki/New-Developer-Guide)!
 
-Want to help develop Idle Lands? Great! Testing is super easy, as you can do it right in your console (or, go the more painful route and test it in IRC)!
+IRC
+===
+Feel free to join us in ##idlebot (on any server) and chat with the devs and designers!
 
-Here are the prerequisites:
 
-* MongoDB, Git, and npm
-* coffee-script (npm install -g coffee-script)
-* grunt (npm install -g grunt-cli)
-
-Then do:
-
-```
-git clone https://github.com/seiyria/IdleLands.git
-npm install
-npm start
-```
-
-If you're interested in having the front end available (perhaps for debugging maps, movement, or the like), then you will want to install [kurea.web](https://github.com/kellyirc/kurea.web). Then you can watch your characters move around on the map more easily.
-
-##Important##
-While writing code, make sure it passes `coffeelint` -- the easy shortcut for this is `grunt dev`. **Additionally, check out CONTRIBUTING.md - it has guidelines for contributions and you should read it.**
-
-##Another Note##
-Feel free to join us in irc.esper.net ##idlebot and chat with the devs and designers!
-
-Adding Content
-==============
-
-Want to add content such as Classes, Personalities, Spells, or anything like that? Check out the [wiki](https://github.com/seiyria/IdleLands/wiki) for all of the existing documentation on events and functions available.
-
-#Debugging#
-
-While running LocalTest.coffee, you may press [ENTER] to enter an interactive session. This will pause the execution and allow you to execute code. By calling `getWrapper()`, you will be able to access the IdleGameWrapper object. You can get a direct hold on the current game instance with `inst()` and a reference to the API object with `api()`.
-
-###Examples###
-####Change a player's gold####
-```
-inst().playerManager.getPlayerByName('Danret').addGold(100)
-```
-
-####Force a battle to start####
-```
-api().game.doGlobalEvent('battle')     # PvP battle
-api().game.doEvent('Danret', 'battle') # monster battle
-> A battle is raging...
-```
-
-####Cause any event to happen####
-```
-api().game.doEvent('Danret', 'enchant')
-api().game.doEvent('Danret', 'blessItem')
-```
