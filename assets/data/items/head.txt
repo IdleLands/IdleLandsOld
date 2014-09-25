@@ -3,6 +3,8 @@
 "helm" con=5
 "cap" con=9
 "aventail" con=15
+"diving helm" con=150 agi=-20
+"hat made of beef" con=300
 "Metal Box" con=600
 "Ye Olde Helm" con=750
 
@@ -10,10 +12,12 @@
 "barette" agi=2
 "beret" agi=4
 "cowl" agi=42
+"jet hat" agi=180
 
 # int
 "mask" int=2
 "cornuthaum" int=35
+"psychic's ribbon" int=150
 "Top Hat" int=450
 "Flying Saucer" int=650
 
@@ -21,15 +25,19 @@
 "aiming goggles" dex=30 crit=1
 "fishbowl" dex=33
 "rose" dex=45
+"magnifying glasses" dex=99
 
 # wis
 "coif" wis=3
 "flowerpot" wis=13
 "mitre" wis=40
 "earbuds" wis=101
+"thinking cap" wis=250
 
 # con / agi
 "sombrero" con=2 agi=2
+"cowboy hat" con=40 agi=50
+"backwards baseball cap" con=90 agi=100
 "Fedora" agi=150 con=100 luck=-10
 "Headwings" agi=430 con=200
 "Aerodynamic Haircut" agi=840 con=400
@@ -39,22 +47,29 @@
 "devil horns" str=10 con=6 luck=-3
 "horned cap" str=20 con=10
 "hipster hat" str=25 con=60
+"bladed bowler" str=80 con=50
+"face of death" str=250 con=-50
 "Vice-Versa" str=400 con=100
 "Viking Helmet" str=400 con=400
 
 # con / wis
 "corsage" wis=7 con=3
 "haircut" wis=50 con=50
+"clever disguise" wis=120 con=80
 "Chap's Monocle" int=400 con=400
 
 # con / int
 "glasses" int=7 con=4
 "diadem" con=5 int=9 luck=2
+"second brain" int=250 con=50
+"bloody bandages" int=300 con=-50
 "Dunce Cap" con=400 int=-50
+"Glamorous Wizard Hat" int=600 con=50
 
 # con / dex
 "coronet" dex=5 con=5
 "pile of helms" dex=25 con=25 luck=5
+"cat ears" con=80 dex=40
 "umbrella hat" con=100 dex=76
 "Fusion Earring" dex=230 con=200 luck=10
 "Superscouter 9001" dex=400 con=400 luck=15
@@ -68,22 +83,29 @@
 "cardboard box" agi=50 dex=10
 
 # str / dex
+"dog ears" str=100 dex=30
 "skull" str=155 dex=10
 
 # str / int
 "Jungle Rose" int=100 str=200
+"Majora's Mask" int=300 str=200
 
 # wis / agi
 "paper hat" agi=50 wis=20
 
 # wis / int
 "tinfoil hat" wis=67 int=20
+"summoner's horn" int=80 wis=20
 "monocle" int=110 wis=100
+"technician's magic hat" int=180 wis=80
 
 # wis / con
 "cute animal" wis=90 con=100
 "Powdered Wig" con=200 wis=200
 "Holy Mitre" wis=400 con=400
+
+# luck
+"expensive party hat" con=50 luck=10
 
 # mega-hybrid
 "Antiverse Circlet" str=100 int=100 dex=100 con=500 agi=100 wis=100 deadeye=1
