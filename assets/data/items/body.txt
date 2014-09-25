@@ -77,6 +77,7 @@
 "Bill Cosby's Sweater" agi=500 con=300 wis=50
 
 # n-stat
+"The Black Box of Reverse" str=-10 con=-10 dex=-10 int=50 wis=50 agi=50
 "Super Tie Dye Shirt" str=70 con=70 int=70 wis=70 dex=70 luck=10
 "Plasma Mail" int=100 con=450 dex=50 str=50 agi=100 offense=1
 
