@@ -5,7 +5,7 @@ class Generalist extends Class
 
   baseHp: 50
   baseHpPerLevel: 15
-  baseHpPerCon: 4
+  baseHpPerCon: 6
 
   baseMp: 5
   baseMpPerLevel: 2

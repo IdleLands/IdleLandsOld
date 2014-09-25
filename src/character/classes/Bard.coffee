@@ -6,7 +6,7 @@ class Bard extends Class
 
   baseHp: 30
   baseHpPerLevel: 10
-  baseHpPerCon: 4
+  baseHpPerCon: 6
 
   baseMp: 10
   baseMpPerLevel: 3
