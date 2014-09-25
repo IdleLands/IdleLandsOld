@@ -9,6 +9,10 @@ Developing
 ==========
 Whether you want to create events, or create the next best class, all of the information is housed in the [wiki](https://github.com/seiyria/IdleLands/wiki/New-Developer-Guide)!
 
+If you're more interested in content development (events, monsters, items, etc) click [here](https://github.com/seiyria/IdleLands/wiki/New-Developer-Guide#content-development).
+
+If you're more interested in code development (backend, spells, classes, personalities, etc) click [here](https://github.com/seiyria/IdleLands/wiki/New-Developer-Guide#code-development).
+
 IRC
 ===
 Feel free to join us in ##idlebot (on any server) and chat with the devs and designers!
