@@ -4,7 +4,15 @@
 "talisman" int=10
 "quill" int=60
 "metronome" int=123
+"ooparts" int=199
 "Fox Rods" int=631
+
+# str
+"10 pound earring" str=40 wis=-5
+
+# con
+"heart piece" con=50
+"heart container" con=150
 
 # wis
 "bauble" wis=7 luck=1
@@ -55,7 +63,12 @@
 "Mask de Smith" wis=400 int=377
 "Magnitude Pocketwatch" int=500 wis=500 sentimentalityPercent=20
 
+# hybrid
+"prism" str=10 con=10 int=10 wis=10 dex=10 luck=1
+
 # luck
+"4 leaf clover" luck=4
+"8 leaf clover" luck=8
 "Standard Monetary Unit" luck=45
 
 # idle-class
