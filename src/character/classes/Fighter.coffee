@@ -5,7 +5,7 @@ class Fighter extends Class
 
   baseHp: 70
   baseHpPerLevel: 20
-  baseHpPerCon: 7
+  baseHpPerCon: 8
 
   baseMp: 2
   baseMpPerLevel: 2

@@ -5,7 +5,7 @@ class Jester extends Class
 
   baseHp: 30
   baseHpPerLevel: 10
-  baseHpPerCon: 12
+  baseHpPerCon: 9
 
   baseMp: 0
   baseMpPerLevel: 0
