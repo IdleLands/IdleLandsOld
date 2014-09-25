@@ -5,8 +5,15 @@
 "stockings" agi=1
 "oak leaf" agi=5
 "poison ivy leaf" agi=8 poison=1
+"flexible thong" agi=60
+"fuzzy legwarmers" agi=150 wis=-5
 "kneesocks" agi=245
+"Hottest Pants" agi=450 fire=50
 "Bunny Pajamas" agi=675
+
+# int / con
+"smarty pants" int=40 con=20
+"mean jeans" int=150 con=60
 
 # agi / con
 "panties" agi=2 con=1
@@ -31,6 +38,7 @@
 "silver leggings" con=120 agi=50
 "diamond leggings" agi=20 con=180
 "Unobtainium Leggings" agi=120 con=120
+"Segway" agi=100 con=200
 "Venus Flytrap" con=150 agi=200
 "Plated Pants" con=400 agi=25
 "Black Bar" agi=400 con=100
