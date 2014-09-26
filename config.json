@@ -80,8 +80,8 @@
             "forsakeXp": {
                 "fail": -2,
                 "flux": 2.5,
-                "minPercent": -10,
-                "maxPercent": -25
+                "minPercent": -8,
+                "maxPercent": -20
             },
             "blessGold": {
                 "amount": [1, 60, 100, 400, 1000, 3000, 7000, 10000, 25000, 50000, 65000, 85000, 100000]
