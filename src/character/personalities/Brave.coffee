@@ -6,6 +6,10 @@ class Brave extends Personality
 
   fleePercent: -> -100
 
+  strPercent: -> 5
+
+  combatEndXpLoss: (player, baseCombatEndXpLoss) -> parseInt baseCombatEndXpLoss*0.1
+
   @canUse = (player) ->
     player.statistics["combat self flee"] > 0
 

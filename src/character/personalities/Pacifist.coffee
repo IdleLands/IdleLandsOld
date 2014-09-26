@@ -6,6 +6,8 @@ class Pacifist extends Personality
 
   fleePercent: -> 100
 
+  xpPercent: -> 5
+
   @canUse = (player) ->
     player.statistics["combat self flee"] > 0
 
