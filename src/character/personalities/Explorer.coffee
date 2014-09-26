@@ -19,6 +19,10 @@ class Explorer extends Personality
   wisPercent: -> -10
   agiPercent: -> -10
 
+  ascendChance: -> 50
+  descendChance: -> 50
+  teleportChance: -> 50
+
   @canUse = (player) ->
     player.statistics["explore walk"] >= 100000
 

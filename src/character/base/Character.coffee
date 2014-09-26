@@ -80,6 +80,9 @@ class Character extends EventEmitter2
     @rebuildPersonalityList()
     yes
 
+  hasPersonality: (personality) ->
+    personality in @personalityStrings
+
   calcGoldGain: (gold) ->
     @calc.stat 'gold', yes, gold
 
@@ -277,6 +280,22 @@ class Character extends EventEmitter2
       alignment: ->
         @base.alignment = 0
         Math.max -10, Math.min 10, @self.personalityReduce 'alignment', [@self, @base.alignment], @base.alignment
+
+      ascendChance: ->
+        @base.ascendChance = 100
+        Math.max 0, Math.min 100, @self.personalityReduce 'ascendChance', [@self, @base.ascendChance], @base.ascendChance
+
+      descendChance: ->
+        @base.descendChance = 100
+        Math.max 0, Math.min 100, @self.personalityReduce 'descendChance', [@self, @base.descendChance], @base.descendChance
+
+      teleportChance: ->
+        @base.teleportChance = 100
+        Math.max 0, Math.min 100, @self.personalityReduce 'teleportChance', [@self, @base.teleportChance], @base.teleportChance
+
+      fallChance: ->
+        @base.fallChance = 100
+        Math.max 0, Math.min 100, @self.personalityReduce 'fallChance', [@self, @base.fallChance], @base.fallChance
 
 Character::num2dir = (dir,x,y) ->
   switch dir

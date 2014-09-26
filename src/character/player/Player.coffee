@@ -76,6 +76,12 @@ class Player extends Character
       console.error "ERROR. No dest.map at #{@x},#{@y} in #{@map}"
       return
 
+    eventToTest = "#{dest.movementType}Chance"
+
+    prob = @calc[eventToTest]()
+
+    return if not chance.bool({likelihood: prob})
+
     @map = dest.map
     @x = dest.x
     @y = dest.y
@@ -88,6 +94,10 @@ class Player extends Character
       when "ascend" then message = "<player.name>#{@name}</player.name> has ascended to <event.transfer.destination>#{dest.destName}</event.transfer.destination>."
       when "descend" then message = "<player.name>#{@name}</player.name> has descended to <event.transfer.destination>#{dest.destName}</event.transfer.destination>."
       when "fall" then message = "<player.name>#{@name}</player.name> has fallen from <event.transfer.from>#{dest.fromName}</event.transfer.from> to <event.transfer.destination>#{dest.destName}</event.transfer.destination>!"
+
+    if @hasPersonality "Wheelchair"
+      if dest.movementType is "descend"
+        message = "<player.name>#{@name}</player.name> went crashing down in a wheelchair to <event.transfer.destination>#{dest.destName}</event.transfer.destination>."
 
     @emit "explore.transfer.#{dest.movementType}", @
 
