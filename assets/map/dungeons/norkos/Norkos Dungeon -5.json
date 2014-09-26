@@ -369,9 +369,9 @@
                      "destName":"Norkos Dungeon -6",
                      "destx":"8",
                      "desty":"4",
-                     "fromName":"Norkos",
+                     "fromName":"Norkos Dungeon -5",
                      "map":"Norkos Dungeon -6",
-                     "movementType":"fall"
+                     "movementType":"descend"
                     },
                  "type":"Teleport",
                  "visible":true,
