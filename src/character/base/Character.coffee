@@ -238,6 +238,10 @@ class Character extends EventEmitter2
         @base.eventFumble = 25
         @self.personalityReduce 'eventFumble', [@self, @base.eventFumble], @base.eventFumble
 
+      eventModifier: (event) ->
+        @base.eventModifier = 0
+        @self.personalityReduce 'eventModifier', [@self, event, @base.eventModifier], 0
+
       skillCrit: (spell) ->
         @base.skillCrit = 1
         @self.personalityReduce 'skillCrit', [@self, spell, @base.skillCrit], @base.skillCrit
