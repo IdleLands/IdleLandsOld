@@ -166,14 +166,14 @@ class PlayerManager
 
     maxStat = (stat, val) ->
       val = Math.abs val
-      player.statistics[stat] = 1 if not stat of player.statistics or _.isNaN player.statistics[stat]
+      player.statistics[stat] = 1 if not (stat of player.statistics) or _.isNaN player.statistics[stat]
       player.statistics[stat] = Math.max val, player.statistics[stat]
 
     addStat = (stat, val, intermediate) ->
       player.statistics[intermediate] = {} if intermediate and not (intermediate of player.statistics)
       root = if intermediate then player.statistics[intermediate] else player.statistics
       val = Math.abs val
-      root[stat] = 1 if not (stat of root) or _.isNaN root[stat]
+      root[stat] = 0 if not (stat of root) or _.isNaN root[stat]
       root[stat] += val
 
     player.onAny ->
@@ -195,6 +195,10 @@ class PlayerManager
 
         when "combat.self.kill"
           addStat arguments[0].name, 1, "calculated kills" if not arguments[0].isMonster
+          addStat arguments[0].professionName, 1, "calculated kills by class" if arguments[0].professionName
+
+        when "player.profession.change"
+          addStat arguments[2], 1, "calculated class changes"
 
       event = @event.split(".").join " "
       player.statistics[event] = 1 if not event of player.statistics or _.isNaN player.statistics[event]
