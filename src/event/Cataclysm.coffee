@@ -1,6 +1,6 @@
 
 _ = require "underscore"
-MessageCreator = require "../../system/MessageCreator"
+MessageCreator = require "../system/MessageCreator"
 
 class Cataclysm
 
