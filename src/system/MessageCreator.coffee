@@ -11,6 +11,7 @@ class MessageCreator
       "player.name":                defaultReplaceFunction
       "event.partyName":            defaultReplaceFunction
       "event.partyMembers":         defaultReplaceFunction
+      "event.player":               defaultReplaceFunction
       "event.damage":               defaultReplaceFunction
       "event.gold":                 defaultReplaceFunction
       "event.realGold":             defaultReplaceFunction

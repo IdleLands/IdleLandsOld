@@ -28,6 +28,8 @@ class Player extends Character
       @levelUp yes
       @generateBaseEquipment()
 
+      @calc.itemFindRange()
+
   generateBaseEquipment: ->
     @equipment = [
       new Equipment {type: "body",    class: "newbie", name: "Tattered Shirt", con: 1}

@@ -30,6 +30,7 @@ module.exports = (Module) ->
       "player.name":                c.bold
       "event.partyName":            c.underline
       "event.partyMembers":         c.bold
+      "event.player":               c.bold
       "event.damage":               c.red
       "event.gold":                 c.olive
       "event.realGold":             c.olive

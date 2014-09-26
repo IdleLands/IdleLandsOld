@@ -71,6 +71,7 @@ colorMap =
   "player.name":                colors.bold
   "event.partyName":            colors.bold
   "event.partyMembers":         colors.bold
+  "event.player":               colors.bold
   "event.damage":               colors.red
   "event.gold":                 colors.yellowBright
   "event.realGold":             colors.yellowBright

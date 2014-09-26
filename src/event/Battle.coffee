@@ -199,7 +199,7 @@ class Battle
 
     sendBattleMessage message, player
 
-    (@emitEvents "kill", "killed", player, target) if fatal
+    (@emitEvents "kill", "killed", player, target, {dead: target}) if fatal
 
   doMagicalAttack: (player, spellClass) ->
     spell = @game.spellManager.modifySpell new spellClass @game, player
