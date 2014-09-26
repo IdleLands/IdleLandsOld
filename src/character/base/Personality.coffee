@@ -9,7 +9,7 @@ class Personality
   unbind: (player) ->
 
 Personality::isPhysical = (test) ->
-  test in ['Fighter', 'Generalist', 'Barbarian']
+  test in ['Fighter', 'Generalist', 'Barbarian', 'Rogue', 'Jester']
 
 Personality::isMagical = (test) ->
   test in ['Mage', 'Cleric', 'Bard']
