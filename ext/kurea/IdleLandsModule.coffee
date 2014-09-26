@@ -24,7 +24,7 @@ module.exports = (Module) ->
     userIdentsList: []
     userIdents: {}
 
-    topic: "Welcome to Idletopia! /msg IdleMaster !idle-register <your character name> | New player? Join ##idlebot | Got feedback? Send it to http://reddit.com/r/idle_lands | Check your stats: http://kurea.link/idle | GitHub: https://github.com/seiyria/IdleLands"
+    topic: "Welcome to Idletopia! New player? Join ##idlebot & read https://github.com/seiyria/IdleLands/wiki/New-Player-Guide | Got feedback? Send it to https://github.com/seiyria/IdleLands | Check your stats: http://kurea.link/idle"
 
     colorMap:
       "player.name":                c.bold
