@@ -1,7 +1,6 @@
 
 Cataclysm = require "../Cataclysm"
 _ = require "underscore"
-MessageCreator = require "../../system/MessageCreator"
 
 class SkyShinesBright extends Cataclysm
   constructor: (game) ->
@@ -11,7 +10,7 @@ class SkyShinesBright extends Cataclysm
     @map = @pickRandomMap()
     affected = @getPlayersInMap @map
     message = "The sky shines brightly in #{@map}#{if affected.length >0 then "!" else ", but no one was around to see it."}"
-    @game.broadcast MessageCreator.genericMessage message
+    @broadcastMessage message
 
     _.each affected, (player) =>
       @affect player

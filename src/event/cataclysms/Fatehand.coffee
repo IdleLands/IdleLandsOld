@@ -1,7 +1,6 @@
 
 Cataclysm = require "../Cataclysm"
 _ = require "underscore"
-MessageCreator = require "../../system/MessageCreator"
 
 class Fatehand extends Cataclysm
   constructor: (game) ->
@@ -10,7 +9,7 @@ class Fatehand extends Cataclysm
   go: ->
     affected = @allPlayers()
     message = "Everyone was touched by the hand of fate!"
-    @game.broadcast MessageCreator.genericMessage message
+    @broadcastMessage message
 
     _.each affected, (player) =>
       @affect player

@@ -1,9 +1,13 @@
 
 _ = require "underscore"
+MessageCreator = require "../../system/MessageCreator"
 
 class Cataclysm
 
   constructor: (@game, @name) ->
+
+  broadcastMessage: (message) ->
+    @game.broadcast MessageCreator.genericMessage ">>> CATACLYSM: #{message}"
 
   pickRandomMap: ->
     _.sample _.keys @game.world.maps
