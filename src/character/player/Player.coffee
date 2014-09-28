@@ -117,21 +117,10 @@ class Player extends Character
     @ignoreDir = [] if not @ignoreDir
     @stepCooldown = 0 if not @stepCooldown
 
-    randomDir = -> chance.integer({min: 1, max: 100})
+    randomDir = -> chance.integer({min: 1, max: 9})
 
     dir = randomDir()
     dir = randomDir() while dir in @ignoreDir
-
-    switch
-      when 1  <=  randomDir <=  80      then dir = @lastDir
-      when 81 <=  randomDir <=  84      then dir = (@lastDir + 1) %% 8
-      when 85 <=  randomDir <=  87      then dir = (@lastDir + 2) %% 8
-      when randomDir = 88               then dir = (@lastDir + 3) %% 8
-      when randomDir = 89               then dir = (@lastDir + 4) %% 8
-      when randomDir = 90               then dir = (@lastDir + 5) %% 8
-      when 91 <=  randomDir <=  93      then dir = (@lastDir + 6) %% 8
-      when 94 <=  randomDir <=  97      then dir = (@lastDir + 7) %% 8
-      else dir = 9
 
     dir = if chance.bool {likelihood: 80} then @lastDir else dir
 
@@ -153,6 +142,7 @@ class Player extends Character
         @y = newLoc.y
         @lastDir = dir
         @ignoreDir = []
+        #console.log "moving to #{newLoc.x},#{newLoc.y}"
 
       else
         @lastDir = null
@@ -166,8 +156,10 @@ class Player extends Character
       @handleTile tile
 
       @stepCooldown--
+      #console.log @x, @y, tile
 
-    catch
+    catch e
+      console.error e,e.message
       @x = @y = 10
       @map = "Norkos"
 
