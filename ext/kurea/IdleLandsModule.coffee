@@ -276,6 +276,8 @@ module.exports = (Module) ->
           , null, (status) =>
             if not status.success
               @reply origin, "You're already registered a character to that ident!"
+            else if status.message
+              @reply origin, status.message
 
       @addRoute "idle-register :name", registerCommand
       @addRoute "register :name", registerCommand

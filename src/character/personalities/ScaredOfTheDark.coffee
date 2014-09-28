@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-class Wheelchair extends Personality
+class ScaredOfTheDark extends Personality
 
   constructor: ->
 
@@ -13,4 +13,4 @@ class Wheelchair extends Personality
 
   @desc = "Ascend 5 staircases"
 
-module.exports = exports = Wheelchair
+module.exports = exports = ScaredOfTheDark
