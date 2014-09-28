@@ -11,7 +11,7 @@ class Walkative extends Achievement
     multiplier = 10
     achieved = []
 
-    while baseStat > currentCheckValue
+    while baseStat >= currentCheckValue
       level = @log multiplier, currentCheckValue
       achieved.push
         name: "Walkative #{toRoman level}"

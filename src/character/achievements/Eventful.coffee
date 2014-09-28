@@ -11,7 +11,7 @@ class Eventful extends Achievement
     multiplier = 10
     achieved = []
 
-    while baseStat > currentCheckValue
+    while baseStat >= currentCheckValue
       level = @log multiplier, currentCheckValue
       achieved.push
         name: "Eventful #{toRoman level}"
