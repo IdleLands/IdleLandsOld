@@ -8,4 +8,6 @@ class Evil extends Personality
 
   @canUse = -> yes
 
+  @desc = "No prerequisite"
+
 module.exports = exports = Evil

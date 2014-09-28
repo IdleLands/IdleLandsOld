@@ -13,4 +13,6 @@ class LeeroyJenkins extends Personality
   @canUse = (player) ->
     player.statistics["combat battle start"] >= 250
 
+  @desc = "Enter 250 battles"
+
 module.exports = exports = LeeroyJenkins

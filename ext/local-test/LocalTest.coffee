@@ -107,6 +107,7 @@ colorMap =
   "event.casterName":           colors.bold
   "event.spellName":            colors.bold
   "event.targetName":           colors.bold
+  "event.achievement":          colors.bold
 
 ## API call functions ##
 loadIdle = ->

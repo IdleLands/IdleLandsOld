@@ -25,5 +25,7 @@ class Explorer extends Personality
 
   @canUse = (player) ->
     player.statistics["explore walk"] >= 100000
+    
+  @desc = "Take 100000 steps"
 
 module.exports = exports = Explorer

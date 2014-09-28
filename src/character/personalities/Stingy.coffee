@@ -9,4 +9,6 @@ class Stingy extends Personality
   @canUse = (player) ->
     player.statistics["event findItem"] >= 100
 
+  @desc = "Equip 100 items"
+
 module.exports = exports = Stingy

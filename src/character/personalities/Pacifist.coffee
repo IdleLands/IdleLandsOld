@@ -11,4 +11,6 @@ class Pacifist extends Personality
   @canUse = (player) ->
     player.statistics["combat self flee"] > 0
 
+  @desc = "Flee combat once"
+
 module.exports = exports = Pacifist

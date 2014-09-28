@@ -66,6 +66,7 @@ module.exports = (Module) ->
       "event.casterName":           c.bold
       "event.spellName":            c.underline
       "event.targetName":           c.bold
+      "event.achievement":          c.underlines
 
     loadIdle: (stopIfLoaded) ->
       @buildUserList()

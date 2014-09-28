@@ -1,5 +1,5 @@
 
-
+AchievementManager = require "./AchievementManager"
 PlayerManager = require "./PlayerManager"
 EventHandler = require "./EventHandler"
 MonsterGenerator = require "./MonsterGenerator"
@@ -31,6 +31,7 @@ class Game
     @componentDatabase = new ComponentDatabase @
     @globalEventHandler = new GlobalEventHandler @
     @equipmentGenerator = new EquipmentGenerator @
+    @achievementManager = new AchievementManager @
     @world = new World()
 
   registerBroadcastHandler: (@broadcastHandler, @broadcastContext) ->

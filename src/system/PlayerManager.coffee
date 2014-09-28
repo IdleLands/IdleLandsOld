@@ -76,6 +76,8 @@ class PlayerManager
       @playerHash[options.identifier] = playerObject
       @players.push playerObject
 
+      @beginWatchingPlayerStatistics playerObject
+
       callback?({ success: true, name: options.name })
 
   buildPlayerSaveObject: (player) ->
@@ -177,6 +179,7 @@ class PlayerManager
       root[stat] += val
 
     player.onAny ->
+      player.statistics = {} if not player.statistics
 
       switch @event
         when "combat.self.heal"
@@ -204,5 +207,7 @@ class PlayerManager
       player.statistics[event] = 1 if not event of player.statistics or _.isNaN player.statistics[event]
       player.statistics[event]++
       player.statistics[event] = 1 if not player.statistics[event]
+
+      player.checkAchievements()
 
 module.exports = exports = PlayerManager

@@ -10,4 +10,6 @@ class Devoted extends Personality
   @canUse = (player) ->
     player.statistics["player trainer speak"] >= 10
 
+  @desc = "Change class 10 times"
+
 module.exports = exports = Devoted

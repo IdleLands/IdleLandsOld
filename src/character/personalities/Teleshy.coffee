@@ -10,4 +10,6 @@ class Teleshy extends Personality
   @canUse = (player) ->
     player.statistics["explore transfer teleport"] >= 5
 
+  @desc = "Step through 5 portals"
+
 module.exports = exports = Teleshy

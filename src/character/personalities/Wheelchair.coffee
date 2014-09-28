@@ -11,4 +11,6 @@ class Wheelchair extends Personality
   @canUse = (player) ->
     player.statistics["explore transfer descend"] >= 5
 
+  @desc = "Descend 5 staircases"
+
 module.exports = exports = Wheelchair

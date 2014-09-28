@@ -9,4 +9,6 @@ class Conservative extends Personality
   @canUse = (player) ->
     player.statistics["combat self skill use"] >= 150
 
+  @desc = "Use 150 combat skills"
+
 module.exports = exports = Conservative

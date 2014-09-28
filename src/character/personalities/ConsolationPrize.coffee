@@ -23,4 +23,6 @@ class ConsolationPrize extends Personality
   @canUse = (player) ->
     player.statistics["combat self killed"] >= 50
 
+  @desc = "Die 50 times"
+
 module.exports = exports = ConsolationPrize

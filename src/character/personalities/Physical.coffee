@@ -22,4 +22,6 @@ class Physical extends Personality
   @canUse = (player) ->
     player.statistics["event findItem"] >= 50
 
+  @desc = "Equip 50 items"
+
 module.exports = exports = Physical

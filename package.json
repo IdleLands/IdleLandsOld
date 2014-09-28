@@ -38,6 +38,7 @@
     "eventemitter2": "~0.4.14",
     "git-pull": "~0.1.0",
     "cli-color": "~0.3.2",
-    "irc-colors": "~1.1.0"
+    "irc-colors": "~1.1.0",
+    "roman-numerals": "~0.3.2"
   }
 }

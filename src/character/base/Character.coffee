@@ -39,6 +39,7 @@ class Character extends EventEmitter2
     .concat @profession ? []
     .concat @personalities ? []
     .concat @spellsAffectedBy ? []
+    .concat @achievements ? []
 
     _.reduce array, (combined, iter) ->
       applied = iter?[appFunctionName]?.apply iter, args

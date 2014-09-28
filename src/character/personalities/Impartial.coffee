@@ -9,4 +9,6 @@ class Impartial extends Personality
   @canUse = (player) ->
     player.statistics["player party leave"] >= 250
 
+  @desc = "Leave 250 parties"
+
 module.exports = exports = Impartial

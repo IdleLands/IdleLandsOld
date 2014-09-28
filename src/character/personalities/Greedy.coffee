@@ -10,4 +10,6 @@ class Greedy extends Personality
   @canUse = (player) ->
     player.statistics["player gold gain"] >= 10000
 
+  @desc = "Gain gold 10000 times"
+
 module.exports = exports = Greedy

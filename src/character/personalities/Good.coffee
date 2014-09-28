@@ -8,4 +8,6 @@ class Good extends Personality
 
   @canUse = -> yes
 
+  @desc = "No prerequisite"
+
 module.exports = exports = Good

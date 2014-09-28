@@ -117,11 +117,23 @@ class Player extends Character
     @ignoreDir = [] if not @ignoreDir
     @stepCooldown = 0 if not @stepCooldown
 
-    randomDir = -> chance.integer({min: 1, max: 9})
+    randomDir = -> chance.integer({min: 1, max: 100})
+    
     dir = randomDir()
     dir = randomDir() while dir in @ignoreDir
 
-    dir = if chance.bool {likelihood: 80} then @lastDir else dir
+    switch
+      when 1  <=  randomDir <=  80      then dir = @lastDir
+      when 81 <=  randomDir <=  84      then dir = (@lastDir + 1) %% 8
+      when 85 <=  randomDir <=  87      then dir = (@lastDir + 2) %% 8
+      when randomDir = 88               then dir = (@lastDir + 3) %% 8
+      when randomDir = 89               then dir = (@lastDir + 4) %% 8
+      when randomDir = 90               then dir = (@lastDir + 5) %% 8
+      when 91 <=  randomDir <=  93      then dir = (@lastDir + 6) %% 8
+      when 94 <=  randomDir <=  97      then dir = (@lastDir + 7) %% 8
+      else dir = 9
+
+    #dir = if chance.bool {likelihood: 80} then @lastDir else dir
 
     [(@num2dir dir, @x, @y), dir]
 
@@ -236,5 +248,24 @@ class Player extends Character
   setString: (type, val = '') ->
     @messages = {} if not @messages
     @messages[type] = val.substring 0, 24
+
+  checkAchievements: (silent = no) ->
+    oldAchievements = _.compact _.clone @achievements
+    @achievements = []
+
+    achieved = @playerManager.game.achievementManager.getAllAchievedFor @
+
+    stringCurrent = _.map oldAchievements, (achievement) -> achievement.name
+    stringAll = _.map achieved, (achievement) -> achievement.name
+
+    newAchievements = _.difference stringAll, stringCurrent
+
+    _.each newAchievements, (achievementName) =>
+      achievement = _.findWhere achieved, name: achievementName
+      @achievements.push achievement
+      if not silent
+        @playerManager.game.broadcast MessageCreator.genericMessage "<player.name>#{@name}</player.name> has achieved <event.achievement>#{achievementName}</event.achievement> (#{achievement.desc} | #{achievement.reward})"
+
+    @achievements = achieved
 
 module.exports = exports = Player

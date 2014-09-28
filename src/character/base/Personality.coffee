@@ -21,6 +21,8 @@ Personality::isMagical = (test) ->
 Personality::isMedic = (test) ->
   test in ['Cleric']
 
+Personality::allPersonalities = -> personalities
+
 Personality::getPersonality = (personality) ->
   personalities[personality]
 
