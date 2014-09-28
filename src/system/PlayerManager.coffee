@@ -18,7 +18,7 @@ class PlayerManager
       db.ensureIndex { identifier: 1 }, { unique: true }, ->
       db.ensureIndex { name: 1 }, { unique: true }, ->
 
-      db.update {}, {isOnline: no}, {multi: yes}, ->
+      db.update {}, {$set:{isOnline: no}}, {multi: yes}, ->
 
   randomPlayer: ->
     _.sample @players
