@@ -27,6 +27,7 @@ class Player extends Character
       @changeProfession "Generalist", yes
       @levelUp yes
       @generateBaseEquipment()
+      @lastLogin = new Date()
 
       @calc.itemFindRange()
 
@@ -142,7 +143,6 @@ class Player extends Character
         @y = newLoc.y
         @lastDir = dir
         @ignoreDir = []
-        #console.log "moving to #{newLoc.x},#{newLoc.y}"
 
       else
         @lastDir = null
@@ -156,7 +156,6 @@ class Player extends Character
       @handleTile tile
 
       @stepCooldown--
-      #console.log @x, @y, tile
 
     catch e
       console.error e,e.message
