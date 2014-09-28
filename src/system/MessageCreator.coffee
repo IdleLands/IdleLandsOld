@@ -47,6 +47,7 @@ class MessageCreator
       "event.casterName":           defaultReplaceFunction
       "event.spellName":            defaultReplaceFunction
       "event.targetName":           defaultReplaceFunction
+      "event.achievement":          defaultReplaceFunction
 
   @replaceMessageColors: (message) ->
     @_replaceMessageColors message, _.defaults (@colorMap or {}), defaultColorMap

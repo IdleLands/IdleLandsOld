@@ -118,7 +118,7 @@ class Player extends Character
     @stepCooldown = 0 if not @stepCooldown
 
     randomDir = -> chance.integer({min: 1, max: 100})
-    
+
     dir = randomDir()
     dir = randomDir() while dir in @ignoreDir
 
@@ -133,7 +133,7 @@ class Player extends Character
       when 94 <=  randomDir <=  97      then dir = (@lastDir + 7) %% 8
       else dir = 9
 
-    #dir = if chance.bool {likelihood: 80} then @lastDir else dir
+    dir = if chance.bool {likelihood: 80} then @lastDir else dir
 
     [(@num2dir dir, @x, @y), dir]
 
