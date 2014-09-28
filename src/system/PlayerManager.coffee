@@ -18,6 +18,8 @@ class PlayerManager
       db.ensureIndex { identifier: 1 }, { unique: true }, ->
       db.ensureIndex { name: 1 }, { unique: true }, ->
 
+      db.update {}, {isOnline: no}, {multi: yes}, ->
+
   randomPlayer: ->
     _.sample @players
 
@@ -42,6 +44,7 @@ class PlayerManager
     return if _.findWhere @players, {identifier: identifier} or identifier of @playerHash
     @retrievePlayer identifier, (player) =>
       return if not player
+      player.isOnline = yes
       @players.push player
       @playerHash[identifier] = player
       @game.broadcast "#{player.name}, the level #{player.level.__current} #{player.professionName}, has joined #{Constants.gameName}!" if not suppress
@@ -50,8 +53,13 @@ class PlayerManager
 
   removePlayer: (identifier) ->
 
-    name = (_.findWhere @players, {identifier, identifier})?.name
-    return if not name
+    player = _.findWhere @players, {identifier, identifier}
+    return if not player
+
+    player.isOnline = no
+    @savePlayer player
+
+    name = player.name
 
     @players = _.reject @players, (player) -> player.identifier is identifier
     delete @playerHash[identifier]
@@ -63,6 +71,7 @@ class PlayerManager
     playerObject = new Player options
     playerObject.playerManager = @
     playerObject.initialize()
+    playerObject.isOnline = yes
     saveObj = @buildPlayerSaveObject playerObject
     saveObj._events = {}
 
