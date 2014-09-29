@@ -1,0 +1,5 @@
+"lettuce" agi=1
+"tomato" str=1
+"grass" luck=-1
+"microgreens" int=1
+"dandelion" wis=1

@@ -1,0 +1,6 @@
+"steak" str=1
+"turkey" wis=1
+"chicken" agi=1
+"ostrich" int=1
+"worm" luck=1
+"sand" str=-1

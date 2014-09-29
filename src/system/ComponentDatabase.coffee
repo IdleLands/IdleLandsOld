@@ -10,15 +10,18 @@ Party = require "../event/Party"
 class ComponentDatabase
 
   itemStats: {}
+  ingredientStats: {}
   monsters: []
 
   constructor: (@game) ->
     @eventsDb = new Datastore "events", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @itemsDb = new Datastore "items", (db) -> db.ensureIndex {random: '2dsphere'}, ->
+    @ingredientsDb = new Datastore "items", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @stringsDb = new Datastore "strings", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @monstersDb = new Datastore "monsters", (db) -> db.ensureIndex {random: '2dsphere'}, ->
 
     @loadItems()
+    @loadIngredients()
     @loadGrammar()
     @loadMonsters()
     @loadPartyNames()
@@ -78,8 +81,26 @@ class ComponentDatabase
 
     @insertItem parameters, ->
 
+  parseIngredientString: (str, type) ->
+    return if (_.str.isBlank str) or _.str.contains str, "#"
+    str = _.str.clean str
+    [name, parameters] = [str.split("\"")[1], str.split("\"")[2]?.trim()]
+    return if not parameters
+
+    parameters = _.map (parameters.split ' '), (item) ->
+      arr = item.split '='
+      retval = {}
+      retval[arr[0]] = (parseInt arr[1]) ? null
+      retval
+    .reduce (cur, prev) ->
+      _.extend prev, cur
+    , { name: name, type: type }
+
+    @insertIngredient parameters, ->
+
   importAllData: ->
     @itemsDb.remove {}, {}, ->
+    @ingredientsDb.remove {}, {}, ->
     @eventsDb.remove {}, {}, ->
     @stringsDb.remove {}, {}, ->
     @monstersDb.remove {}, {}, ->
@@ -92,6 +113,15 @@ class ComponentDatabase
       type = entry.name.split(".")[0]
       fs.readFile entry.fullPath, {}, (e, data) =>
         _.each data.toString().split("\n"), (line) => @parseItemString line, type
+
+    ingredientstream = readdirp {root: "#{__dirname}/../../assets/data/ingredients", fileFilter: "*.txt"}
+    ingredientstream
+    .on "warn", (e) -> console.log "importAllData warning: #{e}"
+    .on "error", (e) -> console.log "importAllData error: #{e}"
+    .on "data", (entry) =>
+      type = entry.name.split(".")[0]
+      fs.readFile entry.fullPath, {}, (e, data) =>
+        _.each data.toString().split("\n"), (line) => @parseIngredientString line, type
 
     eventstream = readdirp {root: "#{__dirname}/../../assets/data/events", fileFilter: "*.txt"}
     eventstream
@@ -165,6 +195,21 @@ class ComponentDatabase
         return
 
       @addItem object
+  
+  insertIngredient: (object, duplicateCallback) ->
+    copy = _.extend {}, object
+    delete copy.name
+    query = [ copy, {name: object.name} ]
+    @itemsDb.findOne { $or: query }, (e, doc) =>
+
+      if doc?.name is object.name
+        duplicateCallback {name: doc.name}
+        return
+      else if doc
+        duplicateCallback {stats: true}
+        return
+
+      @addIngredient object
 
   addItem: (object) ->
 
@@ -172,6 +217,28 @@ class ComponentDatabase
 
     object.random = [Math.random(), 0]
     @itemsDb.insert object, ->
+
+  insertItem: (object, duplicateCallback) ->
+    copy = _.extend {}, object
+    delete copy.name
+    query = [ copy, {name: object.name} ]
+    @itemsDb.findOne { $or: query }, (e, doc) =>
+
+      if doc?.name is object.name
+        duplicateCallback {name: doc.name}
+        return
+      else if doc
+        duplicateCallback {stats: true}
+        return
+
+      @addItem object
+
+  addIngredient: (object) ->
+
+    @addIngredientToHash object
+
+    object.random = [Math.random(), 0]
+    @ingredientsDb.insert object, ->
 
   getRandomEvent: (type, callback) ->
     @eventsDb.findOne
@@ -203,6 +270,18 @@ class ComponentDatabase
 
     @itemStats[copy.type].push copy
 
+  loadIngredients: ->
+    @ingredientsDb.find {}, (e, docs) =>
+      _.forEach docs, @addIngredientToHash.bind @
+
+  addIngredientToHash: (object) ->
+    copy = _.extend {}, object
+
+    if not (copy.type of @ingredientStats)
+      @ingredientStats[copy.type] = []
+
+    @ingredientStats[copy.type].push copy	
+  
   loadMonsters: ->
     @monstersDb.find {}, (e, docs) =>
       _.each docs, @addMonsterToList.bind @
