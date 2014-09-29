@@ -10,6 +10,7 @@ An enchantress approaches %player and offers to enchant an item of %hisher choic
 As %player was going around stealing cheese wheels from various shops, a guard approaches %himher and makes %himher pay %gold bits of gold and return the cheese wheels.
 %player spent %gold gold on an exotic new food that was on display. It turned out to be Guano.
 %player spent %gold gold on an exotic new food that was on display. It turned out to be Acai.
+%player spent %gold gold on an exotic new food that was on display. It turned out to be a testicle of a newt.
 %player donates %gold bits of gold to a project on Punchgetgoing that was aiming to create the first 3D gaming system. The gaming system turned out to be a flop, and all that gold went down the drain...
 %player slipped and fell on a wet floor in a restaurant. The owner sued %player for %gold gold for vandalizing the floor with blood.
 %player took an arrow to the gold pouch, losing %gold all over the ground.
@@ -26,6 +27,7 @@ A miniature samurai ninja zombie pirate robot velociraptor with psychic powers s
 %player got pickpocketed of %gold gold without noticing!
 %player had %gold gold stolen from the Gold Fairie! Someone catch that fairie!
 %player took someone out for dinner. It ended up costing %gold gold, but at least %she had a good time!
+%player took someone out for dinner. It ended up costing %gold gold, and unfortunately the date turned out abysmally.  Protip: don't tell your date about your Drizzt-clone.
 %player was fined %gold gold for assaulting innocent adventurers!
 %player had to pay %gold gold of 'debt' to the Stillstanders, an organized crime organization who organize organized crime.
 %player had %hisher clothing stolen, so %she had to pay %gold gold for new clothes!
@@ -35,3 +37,4 @@ A miniature samurai ninja zombie pirate robot velociraptor with psychic powers s
 %player won the lottery!  %She received %gold, which %she then used to buy %gold 2-gold scratch-off tickets.  Luck, apparently, is a fickle lady.  %player lost at every single one of those scratch-offs.
 Sarda, The Wizard Who Did It took %gold gold from %player because he could.
 %player bought a burrito for %gold gold, sadly it was a snail burrito.
+%player decided to invest in a pyramid scheme.  After spending %gold gold, they are still no closer to the top.
