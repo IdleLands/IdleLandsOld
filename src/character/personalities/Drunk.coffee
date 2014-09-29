@@ -16,6 +16,6 @@ class Drunk extends Personality
   @canUse = (player) ->
     player.level.getValue() >= 18
 
-  @desc = "Player is in legal drinking age."
+  @desc = "Become level 18"
 
 module.exports = exports = Drunk

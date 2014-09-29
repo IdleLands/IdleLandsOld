@@ -35,13 +35,14 @@ Sarda, The Wizard Who Did It gave %player %gold gold to shake up the economy.
 %player found %gold gold in a brownie sundae!
 %player dug up a Time Capsule! %player found %gold gold.
 A time anomaly made a few bank statements non-exist! The bank credits %player %gold gold.
-%player starts a Youtube channel! %she was paid %gold gold.
-%player chanced upon some unicorn dung! %she finds %gold gold in it.
-%player finds the right end of a black hole! %she finds %gold gold.
+%player starts a Youtube channel! %She was paid %gold gold.
+%player chanced upon some unicorn dung! %She finds %gold gold in it.
+%player finds the right end of a black hole! %She finds %gold gold.
 %player works a night guarding a VIP. %player is paid %gold gold. Good job.
-%player kills a caribou and crawls inside. %she finds %gold gold in it's stomach!
+%player kills a caribou and crawls inside. %She finds %gold gold in it's stomach!
 %player starts eating moonrocks... a week later they find %gold gold...
 %player yells insults at a passing god. The god thanks %himher with %gold gold.
-%player happens upon a dragon ride camp. %she spends 2 weeks learning to fly. Upon graduation, %player was awarded %gold gold for having top honours!
-%player logs onto %hisher computer and checks their email. %she won several online lotteries gaining %gold gold!
-%player eats a vial of nuclear waste thus winning a bet! %player wins %gold gold!
+%player happens upon a dragon ride camp. %She spends two weeks learning to fly. Upon graduation, %player was awarded %gold gold for having top honours!
+%player logs onto %hisher computer and checks their email. %She won several online lotteries gaining %gold gold!
+%player eats a vial of nuclear waste thus winning a bet! %player wins %gold gold!  And cancer!
+%player smashes a parking meter with a stick, and absconds with the %gold gold inside it.
