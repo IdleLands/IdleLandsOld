@@ -43,6 +43,6 @@ A time anomaly made a few bank statements non-exist! The bank credits %player %g
 %player starts eating moonrocks... a week later they find %gold gold...
 %player yells insults at a passing god. The god thanks %himher with %gold gold.
 %player happens upon a dragon ride camp. %She spends two weeks learning to fly. Upon graduation, %player was awarded %gold gold for having top honours!
-%player logs onto %hisher computer and checks their email. %She won several online lotteries gaining %gold gold!
+%player logs onto %hisher computer and checks %hisher email. %She won several online lotteries gaining %gold gold!
 %player eats a vial of nuclear waste thus winning a bet! %player wins %gold gold!  And cancer!
 %player smashes a parking meter with a stick, and absconds with the %gold gold inside it.
