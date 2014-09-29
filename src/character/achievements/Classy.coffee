@@ -14,7 +14,7 @@ class Classy extends Achievement
   getAllAchievedFor: (player) ->
     achieved = []
 
-    beenTo = _.filter classList, (className) -> className of player.statistics['calculated class changes']
+    beenTo = _.filter classList, (className) -> className of player.statistics?['calculated class changes']
 
     _.each beenTo, (className) ->
 
