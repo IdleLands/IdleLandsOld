@@ -82,6 +82,7 @@ class Character extends EventEmitter2
     yes
 
   hasPersonality: (personality) ->
+    return no if not @personalityStrings
     personality in @personalityStrings
 
   calcGoldGain: (gold) ->
