@@ -238,7 +238,7 @@ class Player extends Character
 
   setString: (type, val = '') ->
     @messages = {} if not @messages
-    @messages[type] = val.substring 0, 24
+    @messages[type] = val.substring 0, 99
 
   checkAchievements: (silent = no) ->
     oldAchievements = _.compact _.clone @achievements
