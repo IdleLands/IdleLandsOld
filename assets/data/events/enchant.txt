@@ -6,3 +6,4 @@
 An enchantress approaches %player and enchants %hisher %item, making it glow pretty colors.
 %player used what sorecery %she knows to enchant %hisher %item with extra power!
 Sarda, The Wizard Who Did It enchanted %player's %item to see what would happen.
+%player brought %hisher %item to the Dark Lord, enchanting it with the imbuement of his malice.
