@@ -193,6 +193,7 @@
 "pole" int=63
 "baton" int=65
 "lute" int=67
+"d2" int=68
 "bell" int=69
 "shell" int=71
 "viola" int=73
@@ -202,6 +203,7 @@
 "ayuvir" int=81 sentimentality=50 luck=-10
 "contraption" int=83
 "utensil" int=85
+"d4" int=86
 "orb" int=87
 "device" int=89
 "perpetually spinning object" int=91 luck=10
@@ -211,6 +213,7 @@
 "Din's Fire" int=100 fire=300
 "magic magazine" int=101
 "pillow" int=103
+"d8" int=104
 "reflector" int=105
 "knitting needles" int=107
 "king of hearts" int=109 offense=1 sentimentality=10
@@ -226,6 +229,7 @@
 "fireflower" int=144
 "body pillow" int=151
 "wand" int=158
+"d12" int=163
 "magic wand" int=165
 "supermagic wand" int=172 luck=1
 "megamagic wand" int=179 luck=2
@@ -237,16 +241,19 @@
 "ballpoint pen" int=221
 "defibrillator" int=228 thunder=75
 "giant atom" int=239
+"d17" int=244
 "whisker" int=250
 "storm wand indra" int=261 thunder=100
 "fire scepter agni" int=272 fire=100
 "ice staff dagon" int=283 water=100
 "smartphone" int=294
+"d20" int=298
 "Faore's Wind" int=300 dancing=1
 "flame crystal" int=305 fire=600
 "water crystal" int=316 water=600
 "earth crystal" int=327 earth=600
 "ice crystal" int=338 ice=600
+"d100" int=345
 "thunder crystal" int=349 thunder=600
 "kilobyte" int=350 prone=1
 "deathswat" int=371
