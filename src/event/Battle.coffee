@@ -186,6 +186,7 @@ class Battle
     message += ", and #{if damage is maxDamage then "CRITICALLY " else ""}hit with %hisher <event.item.#{weapon.itemClass}>#{weapon.getName()}</event.item.#{weapon.itemClass}> for <damage.hp>#{damage}</damage.hp> HP damage"
 
     @emitEvents "attack", "attacked", player, target
+    @emitEvents "critical", "criticalled", player, target if damage is maxDamage
     @takeStatFrom player, target, damage, "physical", "hp"
     @checkBattleEffects player, target
 

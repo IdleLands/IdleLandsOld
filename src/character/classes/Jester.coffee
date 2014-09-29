@@ -17,7 +17,7 @@ class Jester extends Class
   baseStrPerLevel: 0
   baseIntPerLevel: 0
   baseWisPerLevel: 0
-  baseLuckPerLevel: 1
+  baseLuckPerLevel: 2
 
   itemScore: (player, item) ->
     item.luck*5 +

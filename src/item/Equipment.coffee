@@ -22,7 +22,7 @@ class Equipment
     str: 1
     dex: 1
     con: 3.5
-    int: 2
+    int: 1.5
     wis: 1
     agi: 1
 
