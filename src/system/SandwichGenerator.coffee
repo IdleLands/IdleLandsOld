@@ -25,7 +25,7 @@ class SandwichGenerator extends Generator
     else
       meat = _.sample ingredientList['meat']
       @mergeIngredientInto sandwich, meat
-      sandwich.name = "#{meat.name} on #{sandwich.name}"    
+      sandwich.name = "#{meat.name} on #{sandwich.name}"
 
     sandwich.name = sandwich.name.trim()
 	

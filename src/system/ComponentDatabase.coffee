@@ -280,8 +280,8 @@ class ComponentDatabase
     if not (copy.type of @ingredientStats)
       @ingredientStats[copy.type] = []
 
-    @ingredientStats[copy.type].push copy	
-  
+    @ingredientStats[copy.type].push copy
+
   loadMonsters: ->
     @monstersDb.find {}, (e, docs) =>
       _.each docs, @addMonsterToList.bind @

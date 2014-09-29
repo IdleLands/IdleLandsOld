@@ -1,4 +1,4 @@
-# test: inst().playerManager.getPlayerByName('Danret').changeProfession('Jester')
+# test:inst().playerManager.getPlayerByName('Danret').changeProfession('SandwichArtist')
 Class = require "./../base/Class"
 
 class SandwichArtist extends Class
@@ -27,22 +27,11 @@ class SandwichArtist extends Class
 
   minDamage: (player) ->
     player.calc.damage()*0.15
-	
+
   events: {}
 
   load: (player) ->
     super player
-    player.special.maximum = 999999
-	# This doesn't hide it
-    player.special.name = ""
-
-    player.on "combat.round.start", @events.roundstart = -> player.special.set Math.floor(Math.random()*1000000)
-
-  unload: (player) ->
-    player.special.maximum = 0
-    player.special.name = ""
-
-    player.off "sombat.round.start", @events.roundstart
 
 module.exports = exports = SandwichArtist
  
