@@ -9,10 +9,10 @@ class Critical extends Achievement
 
     currentCheckValue = 500
     multiplier = 10
+    level = 1
     achieved = []
 
     while baseStat >= currentCheckValue
-      level = @log multiplier, currentCheckValue
       achieved.push
         name: "Critical #{toRoman level}"
         desc: "Perform #{currentCheckValue} critical hits"
@@ -20,6 +20,7 @@ class Critical extends Achievement
         crit: -> 1
 
       currentCheckValue *= multiplier
+      level++
 
     achieved
 

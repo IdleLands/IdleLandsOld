@@ -9,10 +9,10 @@ class Defensive extends Achievement
 
     currentCheckValue = 1000
     multiplier = 10
+    level = 1
     achieved = []
 
     while baseStat >= currentCheckValue
-      level = @log multiplier, currentCheckValue
       achieved.push
         name: "Defensive #{toRoman level}"
         desc: "Receive #{currentCheckValue} total damage"
@@ -20,6 +20,7 @@ class Defensive extends Achievement
         con: -> level*10
 
       currentCheckValue *= multiplier
+      level++
 
     achieved
 

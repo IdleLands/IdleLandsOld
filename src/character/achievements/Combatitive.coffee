@@ -7,12 +7,12 @@ class Combatitive extends Achievement
   getAllAchievedFor: (player) ->
     baseStat = player.statistics['combat battle start']
 
-    currentCheckValue = 5
+    currentCheckValue = 15
     multiplier = 5
+    level = 1
     achieved = []
 
     while baseStat >= currentCheckValue
-      level = @log multiplier, currentCheckValue
       achieved.push
         name: "Combatitive #{toRoman level}"
         desc: "Enter #{currentCheckValue} battles"
@@ -21,6 +21,7 @@ class Combatitive extends Achievement
         defense: -> 1
 
       currentCheckValue *= multiplier
+      level++
 
     achieved
 

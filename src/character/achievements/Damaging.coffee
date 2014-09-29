@@ -9,10 +9,10 @@ class Damaging extends Achievement
 
     currentCheckValue = 1000
     multiplier = 10
+    level = 1
     achieved = []
 
     while baseStat >= currentCheckValue
-      level = @log multiplier, currentCheckValue
       achieved.push
         name: "Damaging #{toRoman level}"
         desc: "Deal #{currentCheckValue} total damage"
@@ -20,6 +20,7 @@ class Damaging extends Achievement
         str: -> level*10
 
       currentCheckValue *= multiplier
+      level++
 
     achieved
 
