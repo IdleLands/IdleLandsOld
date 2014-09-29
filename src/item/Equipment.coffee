@@ -21,8 +21,8 @@ class Equipment
   @multipliers =
     str: 1
     dex: 1
-    con: 2.5
-    int: 1
+    con: 3.5
+    int: 2
     wis: 1
     agi: 1
 
@@ -33,17 +33,17 @@ class Equipment
     thunder: 0.3
 
     gold: 2
-    xp: 2
+    xp: 3
 
     hp: 4
     mp: 2
 
-    luck: 3
+    luck: 4.5
 
     strPercent: 6
     dexPercent: 6
     conPercent: 15
-    intPercent: 6
+    intPercent: 10
     wisPercent: 6
     agiPercent: 6
     icePercent: 2
@@ -53,14 +53,14 @@ class Equipment
     thunderPercent: 2
 
     goldPercent: 10
-    xpPercent: 10
+    xpPercent: 13
 
     hpPercent: 20
-    mpPercent: 10
+    mpPercent: 13
 
     enchantLevel: -25
 
-    luckPercent: 15
+    luckPercent: 20
 
     crit: 20
     dodge: 20
