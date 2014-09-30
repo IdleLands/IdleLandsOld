@@ -128,16 +128,19 @@ class Player extends Character
 
     [(@num2dir dir, @x, @y), dir]
 
-  moveAction: ->
+  getTileAt: (x = @x, y = @y) ->
     lookAtTile = @playerManager.game.world.maps[@map].getTile.bind @playerManager.game.world.maps[@map]
+    lookAtTile x,y
+
+  moveAction: ->
     [newLoc, dir] = @pickRandomTile()
 
     try
-      tile = lookAtTile newLoc.x,newLoc.y
+      tile = @getTileAt newLoc.x,newLoc.y
 
       while (tile.blocked and chance.bool likelihood: if @hasPersonality 'Drunk' then 80 else 95)
         [newLoc, dir] = @pickRandomTile()
-        tile = lookAtTile newLoc.x, newLoc.y
+        tile = @getTileAt newLoc.x, newLoc.y
 
       if not tile.blocked
         @x = newLoc.x

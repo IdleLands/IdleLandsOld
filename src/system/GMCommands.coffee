@@ -19,6 +19,9 @@ class GMCommands
 
     @game.teleport player, map, x, y, "#{player.name} got whisked away to #{text}."
 
+    playerTile = player.getTileAt()
+    player.handleTile playerTile
+
   massTeleportLocation: (locationTitle) ->
     location = @lookupLocation locationTitle
     @massTeleport location.map, location.x, location.y, location.formalName
