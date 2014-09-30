@@ -8,6 +8,8 @@ Datastore = require "./DatabaseWrapper"
 MessageCreator = require "./MessageCreator"
 Constants = require "./Constants"
 
+BossFactory = require "../event/BossFactory"
+
 Party = require "../event/Party"
 
 class EventHandler
@@ -49,6 +51,14 @@ class EventHandler
           @doMonsterBattle event, player, callback
 
       player.recalculateStats()
+
+  bossBattle: (player, bossName) ->
+    message = ">>> BOSS BATTLE: %player prepares for an epic battle!"
+    message = MessageCreator.doStringReplace message, player
+    @game.broadcast MessageCreator.genericMessage message
+    @doEventForPlayer player.name, 'party', =>
+      console.log BossFactory.createBoss bossName
+      
 
   broadcastEvent: (message, player, extra) ->
     message = MessageCreator.doStringReplace message, player, extra

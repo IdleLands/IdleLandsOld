@@ -24,16 +24,20 @@ class API
       singleLocation: (playerName, location) =>
         player = @gameInstance.playerManager.getPlayerByName playerName
         @gameInstance.gmCommands.teleportLocation player, location
+        null
 
       single: (playerName, map, x, y) =>
         player = @gameInstance.playerManager.getPlayerByName playerName
         @gameInstance.gmCommands.teleport player, map, x, y
+        null
 
       massLocation: (location) =>
         @gameInstance.gmCommands.massTeleportLocation location
+        null
 
       mass: (map, x, y) =>
         @gameInstance.gmCommands.massTeleport map, x, y
+        null
 
     banPlayer: (name, callback) =>
       @gameInstance.playerManager.banPlayer name, callback

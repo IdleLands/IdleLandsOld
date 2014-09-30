@@ -110,9 +110,13 @@ class Player extends Character
     switch tile.object?.type
       when "Trainer" then @handleTrainerOnTile tile
       when "Teleport" then @handleTeleport tile
+      when "Boss" then @handleBossBattle tile.object.name
 
     if tile.object?.forceEvent
       @playerManager.game.eventHandler.doEventForPlayer @name, tile.object.forceEvent
+
+  handleBossBattle: (bossName) ->
+    @playerManager.game.eventHandler.bossBattle @, bossName
 
   pickRandomTile: ->
     @ignoreDir = [] if not @ignoreDir

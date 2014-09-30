@@ -94,4 +94,10 @@ class GMCommands
       x: 92
       y: 11
 
+    "goblinlord":
+      map: "Norkos Dungeon -1"
+      formalName: "the Goblin Lord"
+      x: 30
+      y: 12
+
 module.exports = exports = GMCommands
