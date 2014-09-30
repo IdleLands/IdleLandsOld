@@ -34,4 +34,3 @@ class SandwichArtist extends Class
     super player
 
 module.exports = exports = SandwichArtist
- 
