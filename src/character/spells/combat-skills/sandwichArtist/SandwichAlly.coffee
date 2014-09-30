@@ -1,23 +1,27 @@
 
 Spell = require "../../../base/Spell"
+Cookie = require "./Cookie.coffee"
+Chance = require "chance"
+chance = new Chance()
 
-class PoisonedSandwich extends Spell
-  name: "Poisoned Sandwich"
-  @element = PoisonedSandwich::element = Spell::Element.physical
-  @cost = PoisonedSandwich::cost = 1
+class SandwichAlly extends Spell
+  name: "Sandwich Ally"
+  @element = SandwichAlly::element = Spell::Element.physical
+  @cost = SandwichAlly::cost = 0
   @restrictions =
     "SandwichArtist": 1
 
-# Duration 1 at con >500, 2 at con 251-500, 3 at con <= 250
-  calcDuration: (player) -> super()+1+Math.floor(500/player.con)
-  
+# 3 turn stat boost
+  calcDuration: (player) -> super()+3
+
+# Cure group level healing  
   calcDamage: ->
-    minStat = (@caster.calc.stat 'dex')/6
-    maxStat = (@caster.calc.stat 'dex')/4
+    minStat = (@caster.calc.stat 'dex')/5
+    maxStat = (@caster.calc.stat 'dex')/1.5
     super() + @minMax minStat, maxStat
 
   determineTargets: ->
-    @targetSomeEnemies size: Math.floor(Math.random() + 1.5)
+    @targetSomeAllies size: Math.floor(Math.random() + 1.5)
 
 # Random stat buffs from sandwich ingredients; standard for sandwich artist spells
   str: -> this.sandwich.str*this.size/6
@@ -53,29 +57,38 @@ class PoisonedSandwich extends Spell
     # Generate a sandwich name
     this.sandwich = @game.sandwichGenerator.generateSandwich()
 
-    # Monsters have no gold; instead, 50% chance of getting 6 or 12 inch. Could be level-based.
-    if player.gold?
-      targetGold = player.gold.getValue()
-    else
-      targetGold = Math.random()*20000
+    # This spell only targets allies, so there is always a gold value defined.
+    targetGold = player.gold.getValue()
     if targetGold > 10000
       this.size = 12
     else
       this.size = 6
     damage = @calcDamage()
-    this.name = "poisoned #{this.size}-inch #{this.sandwich.name}"
-    message = "%casterName made %targetName a %spellName and dealt %damage HP damage!"
-    @doDamageTo player, damage, message
+    this.name = "#{this.size}-inch #{this.sandwich.name}"
+    message = "%casterName made %targetName a %spellName and healed %damage HP!"
+    @doDamageTo player, -damage, message
+    if chance.integer({min: 1, max: 10}) < 10
+      # Rate the sandwich; moderate chance of rating a 5, >50% chance of not doing so
+      rating = chance.integer({min: 1, max: 7})
+      if rating < 5
+        message = "%targetName rated the %spellName a #{rating}. %casterName confiscates his cookie!"
+        @broadcast player, message
+        cookie = @game.spellManager.modifySpell new Cookie @game, @caster
+        cookie.affect @caster
+      else
+        message = "%targetName rated the %spellName a 5, and gets a free cookie!"
+        @broadcast player, message
+        cookie = @game.spellManager.modifySpell new Cookie @game, @caster
+        cookie.affect player
 
   tick: (player) ->
-    damage = @calcDamage()
-    message = "%targetName is damaged by %casterName's \"%spellName\" for %damage HP damage"
-    @doDamageTo player, damage, message
+    message = "%targetName is still boosted by %casterName's \"%spellName\"."
+    @broadcast player, message
 
   uncast: (player) ->
     return if @caster isnt player
     message = "%targetName is no longer under the effects of \"%spellName.\""
-    @broadcast player message
+    @broadcast player, message
 
   constructor: (@game, @caster) ->
     super @game, @caster
@@ -84,4 +97,4 @@ class PoisonedSandwich extends Spell
       doSpellUncast: @uncast
       "combat.self.turn.start": @tick
 
-module.exports = exports = PoisonedSandwich
+module.exports = exports = SandwichAlly

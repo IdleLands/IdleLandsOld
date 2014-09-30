@@ -4,3 +4,7 @@
 "ostrich" int=1
 "worm" luck=1
 "sand" str=-1
+"fish" agi=1
+"ham" con=3
+"snake" int=5
+"boar" str=5
