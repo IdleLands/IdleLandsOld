@@ -14,46 +14,46 @@
 "subsonic wave"         level=64
 "nightmare"             level=70
 "mysterious presence"   level=89
-"tetradigm"             level=97
+"tetradigm"             level=97 class=SandwichArtist int=-1000
 
 # town creatures
 "pedestrian"            zone=town level=2
 "puppy"                 zone=town level=4 str=3 dex=2
 "kitty"                 zone=town level=6 int=3 wis=2
 "hippie"                zone=town level=8 dex=-10
-"hillbilly"             zone=town level=10 agi=-5 dex=10
-"hipster"               zone=town level=12 luck=-10 agi=-5 str=-5 con=40
-"rat"                   zone=town level=14 agi=10 dex=5 dodge=1
-"dog"                   zone=town level=16 str=10 agi=5 offense=1
-"cat"                   zone=town level=18 int=10 str=9 defense=1
-"bat"                   zone=town level=20 wis=10 con=15 dex=5
-"batdog"                zone=town level=22 agi=15 dex=15 str=15
-"ratdog"                zone=town level=24 agi=21 dex=21 str=21
-"batcat"                zone=town level=26 int=25 str=40 con=20 wis=20
-"catdog"                zone=town level=28 int=35 str=60 dex=35
-"red-eyed programmer"   zone=town level=30 class=Mage int=100 con=150
-"serial killer"         zone=town level=35 class=Rogue str=125 dex=125 con=50 int=50
-"metalhead"             zone=town level=40 str=150 dex=150 con=250
-"hivemind"              zone=town level=50 int=300 con=300 wis=300
-"internetizen"          zone=town level=60 class=Bard wis=500 int=500
+"hillbilly"             zone=town level=10 agi=-5 dex=100
+"hipster"               zone=town level=12 luck=-10 agi=-5 str=-5 con=200
+"rat"                   zone=town level=14 agi=100 dex=50 dodge=1
+"dog"                   zone=town level=16 str=100 agi=50 offense=1
+"cat"                   zone=town level=18 int=100 str=90 defense=1
+"bat"                   zone=town level=20 wis=100 con=150 dex=50
+"batdog"                zone=town level=22 agi=150 dex=150 str=150
+"ratdog"                zone=town level=24 agi=210 dex=210 str=210
+"batcat"                zone=town level=26 int=250 str=40 con=20 wis=200
+"catdog"                zone=town level=28 int=350 str=60 dex=350
+"red-eyed programmer"   zone=town level=30 class=Mage int=400 con=150
+"serial killer"         zone=town level=35 class=Rogue str=325 dex=325 con=50 int=50
+"metalhead"             zone=town level=40 str=550 dex=550 con=350
+"hivemind"              zone=town level=50 int=600 con=600 wis=600
+"internetizen"          zone=town level=60 class=Bard wis=1500 int=1500
 
 # alliterate creatures
 "energetic evangelist"      zone=town   level=4     class=Bard int=10 wis=10 luck=5
 "snorting squirrel"         zone=forest level=8     int=-4 str=3 wis=15 dodge=1
-"apathetic agnostic"        zone=town   level=12    class=Mage int=60 wis=10 str=-10 dex=-10 con=-10
-"radioactive rabbit"        zone=forest level=16    int=10 str=20 dex=20 con=-10 prone=1
-"silly snake"               zone=forest level=20    int=15 wis=15 dex=10 str=10 con=10
-"arrogant atheist"          zone=town   level=24    class=Bard wis=50 int=80 dex=-10 str=-10
-"killer kobold"             zone=cave   level=26
-"welsh warthog"             zone=forest level=28    class=Fighter str=150 con=50
-"helpful hedgehog"          zone=forest level=32    class=Cleric wis=300
-"bustling badger"           zone=forest level=36    class=Generalist wis=40 con=40 dex=40 agi=40 int=40 str=40 luck=40
-"jumping jackalope"         zone=forest level=40    class=Rogue agi=200 dex=100 str=100
-"castrated cat"             zone=town   level=44    dex=-100 str=-100 con=600
-"gnarly goblin"             zone=cave   level=47
-"goofy gopher"              zone=town   level=48
-"slippery seal"             zone=town   level=52
-"gelatinous jabberwocky"    zone=forest level=56
+"apathetic agnostic"        zone=town   level=12    class=Mage int=160 wis=10 str=-10 dex=-10 con=-10
+"radioactive rabbit"        zone=forest level=16    int=110 str=120 dex=120 con=-10 prone=1
+"silly snake"               zone=forest level=20    int=115 wis=215 dex=110 str=110 con=110
+"arrogant atheist"          zone=town   level=24    class=Bard wis=250 int=280 dex=-10 str=-10
+"killer kobold"             zone=cave   level=26    class=Rogue dex=300 str=300 agi=300
+"welsh warthog"             zone=forest level=28    class=Fighter str=650 con=350
+"helpful hedgehog"          zone=forest level=32    class=Cleric wis=900
+"bustling badger"           zone=forest level=36    class=Generalist wis=300 con=300 dex=300 agi=300 int=300 str=300 luck=40
+"jumping jackalope"         zone=forest level=40    class=Rogue agi=500 dex=300 str=300
+"castrated cat"             zone=town   level=44    dex=-100 str=-100 con=3000
+"gnarly goblin"             zone=cave   level=47    str=300 dex=700 con=400
+"goofy gopher"              zone=town   level=48    wis=300 int=3000 luck=40 agi=200
+"slippery seal"             zone=town   level=52    agi=2000
+"gelatinous jabberwocky"    zone=forest level=56    agi=500 dex=500 con=1000
 "diaphanous drake"          zone=forest level=60
 "ornery ocelot"             zone=forest level=64
 "gory giraffe"              zone=forest level=68
@@ -73,14 +73,14 @@
 "fish"              zone=water level=2 str=3 dex=3 int=-4
 "goldfish"          zone=water level=4 int=-10
 "sly fish"          zone=water level=6 agi=10 str=3
-"wonderful fish"    zone=water level=8 str=13 dex=13 con=13 wis=13
-"surströmming"      zone=water level=12 str=25 dex=35 agi=15
-"lutefisk"          zone=water level=15 str=110 dex=51 wis=-10
-"laser shark"       zone=water level=37 str=200 dex=200 agi=200
-"geoduck"           zone=water level=55 class=Druid con=300 wis=500 earth=500
-"jellyfish"         zone=water level=62 con=100 dex=200 wis=300 agi=400 str=500
-"kraken"            zone=water level=87 class=Mage water=1000 int=1500 con=1000
-"hydra"             zone=swamp level=99 class=Fighter str=2000 con=1500 dex=1000
+"wonderful fish"    zone=water level=8 str=130 dex=13 con=13 wis=130
+"surströmming"      zone=water level=12 str=250 dex=35 agi=150
+"lutefisk"          zone=water level=15 str=310 dex=51 wis=-10
+"laser shark"       zone=water level=37 str=500 dex=500 agi=300
+"geoduck"           zone=water level=55 class=Druid con=1300 wis=1500 earth=500
+"jellyfish"         zone=water level=62 con=100 dex=1200 wis=300 agi=400 str=1500 poison=1
+"kraken"            zone=water level=87 class=Mage water=1000 int=3000 con=1000 hp=10000
+"hydra"             zone=swamp level=99 class=Fighter str=3000 con=2500 dex=1000 hp=100000
 
 # forest animals
 "mouse"                     zone=forest level=1 str=1 dodge=1
@@ -88,16 +88,16 @@
 "gnat"                      zone=forest level=3 str=2 dex=2 dodge=1
 "sick and dying animal"     zone=forest level=4 dex=-3 str=-3
 "mushroom"                  zone=forest level=5 int=-1 wis=-1
-"bear"                      zone=forest level=11 class=Fighter str=15 prone=1
-"snake"                     zone=forest level=12 dex=5 str=5
-"viper"                     zone=forest level=13 str=10 dex=10
-"pig"                       zone=forest level=14 class=Fighter str=10 dex=10 prone=1
-"generic insect"            zone=forest level=15 dex=10 agi=10
+"bear"                      zone=forest level=11 class=Fighter str=150 prone=1
+"snake"                     zone=forest level=12 dex=50 str=50
+"viper"                     zone=forest level=13 str=100 dex=100
+"pig"                       zone=forest level=14 class=Fighter str=150 dex=150 prone=1
+"generic insect"            zone=forest level=15 dex=190 agi=150
 "owl"                       zone=forest level=21 class=Cleric wis=300
 "random pokemon"            zone=forest level=22 str=80 dex=80 wis=80 con=80
-"skag"                      zone=forest level=23 str=100 dex=100 con=100 prone=1
+"skag"                      zone=forest level=23 str=100 dex=100 con=100 agi=100 prone=1
 "salamander"                zone=forest level=24 class=Mage int=400
-"lizardman"                 zone=forest level=25 class=Fighter con=300 str=300
+"lizardman"                 zone=forest level=25 class=Fighter con=400 str=400 dex=200
 "slime"                     zone=forest level=31 con=800
 "goo"                       zone=forest level=32 con=850
 "ooze"                      zone=forest level=33 con=900
@@ -144,28 +144,29 @@
 "incubator"                 zone=other level=120
 
 # other civilized beings
-"will-o-wisp"               level=3
-"mudman"                    level=5
-"will-o-wishin'"            level=7
-"roc"                       level=9
-"elemental"                 level=11
-"satyr"                     level=13
-"hellhound"                 level=15
-"dragon"                    level=17
-"wyvern"                    level=19
-"minotaur"                  level=21
-"gryphon"                   level=23
-"garden-fresh tomato"       level=25
-"tomato in the mirror"      level=27
-"red dragon"                level=46
-"golem"                     level=48
-"phoenix"                   level=50
-"gorgon"                    level=55
-"black dragon"              level=65
-"behemoth"                  level=70
-"silver dragon"             level=75
-"demogorgon"                level=85
-"party-hat-wearing dragon"  level=105
+"will-o-wisp"               level=3 hp=100
+"mudman"                    level=5 hp=200
+"will-o-wishin'"            level=7 hp=400
+"roc"                       level=9 hp=600
+"elemental"                 level=11 hp=800
+"satyr"                     level=13 hp=1000
+"hellhound"                 level=15 hp=1200
+"dragon"                    level=17 hp=1800 class=Mage prone=1
+"wyvern"                    level=19 hp=2400
+"minotaur"                  level=21 hp=2600
+"gryphon"                   level=23 hp=3000
+"garden-fresh tomato"       level=25 hp=3200
+"tomato in the mirror"      level=27 hp=3400
+"red dragon"                level=46 hp=4000 class=Mage prone=1 fire=1000
+"golem"                     level=48 hp=4500
+"blue dragon"               level=49 hp=4700 class=Mage water=1000
+"phoenix"                   level=50 hp=5000 class=Mage fire=1000 int=1000
+"gorgon"                    level=55 hp=5500 prone=1
+"black dragon"              level=65 hp=6000 class=Mage prone=1 earth=1000
+"behemoth"                  level=70 hp=6500 prone=1 str=1000 con=1000 dex=1000
+"silver dragon"             level=75 hp=7000 class=Mage prone=1 thunder=1000
+"demogorgon"                level=85 hp=9000 prone=1
+"party-hat-wearing dragon"  level=105 hp=10000 class=Mage str=2000 fire=4000 agi=2000
 
 # ancient beings
 "laser cannon"                      level=35
@@ -207,11 +208,11 @@
 
 # gnomish beings
 "gnome"                 zone=forest level=13
-"gnome nudist"          zone=forest level=13 class=Generalist str=11 dex=11 int=11 con=11 wis=11 agi=11
-"gnome rager"           zone=forest level=13 class=Barbarian str=25 dex=11 con=22
-"gnome fighter"         zone=forest level=13 class=Fighter str=13 dex=12 con=24
-"gnome cleric"          zone=forest level=13 class=Cleric wis=25 str=12
-"gnome singer"          zone=forest level=13 class=Bard int=24 wis=24
+"gnome nudist"          zone=forest level=13 class=Generalist str=111 dex=111 int=111 con=111 wis=111 agi=111 luck=11
+"gnome rager"           zone=forest level=13 class=Barbarian str=251 dex=111 con=221
+"gnome fighter"         zone=forest level=13 class=Fighter str=113 dex=112 con=124
+"gnome cleric"          zone=forest level=13 class=Cleric wis=125 str=121
+"gnome singer"          zone=forest level=13 class=Bard int=241 wis=241
 "gnome magicslinger"    zone=forest level=13 class=Mage int=50
 "gnome loller"          zone=forest level=13 class=Jester luck=100
 "gnome stealer"         zone=forest level=13 class=Rogue dex=70 agi=70
@@ -221,136 +222,174 @@
 # human beings
 "human"                 zone=town level=18
 "human child"           zone=town level=17
-"human nudist"          zone=town level=18 class=Generalist
-"human barbarian"       zone=town level=18 class=Barbarian
-"human fighter"         zone=town level=18 class=Fighter
-"human cleric"          zone=town level=18 class=Cleric
-"human bard"            zone=town level=18 class=Bard
-"human mage"            zone=town level=18 class=Mage
-"human jester"          zone=town level=18 class=Jester
-"human rogue"           zone=town level=18 class=Rogue
+"human nudist"          zone=town level=18 class=Generalist str=211 dex=211 int=211 con=211 wis=211 agi=211 luck=11
+"human barbarian"       zone=town level=18 class=Barbarian str=400 dex=200 con=300
+"human fighter"         zone=town level=18 class=Fighter str=300 dex=200 con=300
+"human cleric"          zone=town level=18 class=Cleric wis=500 con=300
+"human bard"            zone=town level=18 class=Bard int=500 wis=500 con=100
+"human mage"            zone=town level=18 class=Mage int=1000
+"human jester"          zone=town level=18 class=Jester luck=300
+"human rogue"           zone=town level=18 class=Rogue dex=500 agi=500
 "human professor"
 
 # kobold beings
 "kobold"                zone=cave level=26
-"kobold nudist"         zone=cave level=26 class=Generalist
-"kobold warrior"        zone=cave level=26 class=Fighter
-"kobold caster"         zone=cave level=26 class=Mage
-"kobold curist"         zone=cave level=26 class=Cleric
-"kobold chanter"        zone=cave level=26 class=Bard
-"kobold zerker"         zone=cave level=26 class=Barbarian
-"kobold jester"         zone=cave level=26 class=Jester
-"kobold lockpick"       zone=cave level=26 class=Rogue
+"kobold nudist"         zone=cave level=26 class=Generalist str=311 dex=311 int=311 con=311 wis=311 agi=311 luck=11
+"kobold warrior"        zone=cave level=26 class=Fighter str=700 dex=300 con=500
+"kobold caster"         zone=cave level=26 class=Mage int=1000 con=200
+"kobold curist"         zone=cave level=26 class=Cleric wis=1000 con=300
+"kobold chanter"        zone=cave level=26 class=Bard int=650 wis=650
+"kobold zerker"         zone=cave level=26 class=Barbarian str=1500
+"kobold jester"         zone=cave level=26 class=Jester luck=400
+"kobold lockpick"       zone=cave level=26 class=Rogue dex=500 str=500 agi=500 con=200
 
 # orcish beings
 "orc"                   zone=cave level=35
-"orc nudist"            zone=cave level=35 class=Generalist
-"orc brawler"           zone=cave level=35 class=Barbarian
-"orc rockstar"          zone=cave level=35 class=Bard
-"orc spy"               zone=cave level=35 class=Rogue
-"orc fighter"           zone=cave level=35 class=Fighter
+"orc nudist"            zone=cave level=35 class=Generalist str=400 dex=400 int=400 con=400 wis=400 agi=400 luck=20
+"orc brawler"           zone=cave level=35 class=Barbarian str=900 con=700 dex=400
+"orc rockstar"          zone=cave level=35 class=Bard int=900 wis=900
+"orc spy"               zone=cave level=35 class=Rogue dex=600 str=800 agi=600
+"orc fighter"           zone=cave level=35 class=Fighter str=1000 con=500
 "orc sorceror"          zone=cave level=35
 "orc holyfighter"       zone=cave level=35
-"orc boomcaster"        zone=cave level=35 class=Mage
-"orc healer"            zone=cave level=35 class=Cleric
-"orc fool"              zone=cave level=35 class=Jester
+"orc boomcaster"        zone=cave level=35 class=Mage int=1500
+"orc healer"            zone=cave level=35 class=Cleric wis=1500
+"orc fool"              zone=cave level=35 class=Jester luck=500
 
 # skeletal beings
-"skeleton"              zone=cave level=37
-#etc
+"skeleton"              zone=cave level=41
+"skeleton nudist"       zone=cave level=41 class=Generalist str=500 dex=500 int=500 con=500 wis=500 agi=500
+"skeleton mage"         zone=cave level=41 class=Mage int=1900
+"skeleton witch"        zone=cave level=41 class=Bard int=1100 wis=1100
+"skeleton meathead"     zone=cave level=41 class=Barbarian str=2000
+"skeleton stabber"      zone=cave level=41 class=Fighter str=1000 dex=300 con=700
+"skeleton sneaker"      zone=cave level=41 class=Rogue str=800 con=800 dex=800
+"skeleton healer"       zone=cave level=41 class=Cleric wis=1900
+"skeleton jester"       zone=cave level=41 class=Jester luck=600
 
 # half-orc beings
-"half-orc"              zone=cave level=42
-"half-orc nudist"       zone=cave level=42
-"half-orc giant"        zone=cave level=42
+"half-orc"              zone=cave level=46
+"half-orc nudist"       zone=cave level=46 class=Generalist str=600 dex=600 int=600 con=600 wis=600 agi=600
+"half-orc giant"        zone=cave level=46 class=Barbarian str=2500
+"half-orc fighter"      zone=cave level=46 class=Fighter str=1200 dex=400 con=500
+"half-orc magicer"      zone=cave level=46 class=Mage int=2100
+"half-orc jester"       zone=cave level=46 class=Jester luck=700
+"half-orc hider"        zone=cave level=46 class=Rogue str=1000 agi=800 dex=400
+"half-orc healer"       zone=cave level=46 class=Cleric wis=1800 con=400
 
 # goblish beings
-"goblin"                zone=cave level=47
-# etc
+"goblin"                zone=cave level=51
+"goblin nudist"         zone=cave level=51 class=Generalist str=700 dex=700 int=700 con=700 wis=700
+"goblin giant"          zone=cave level=51 class=Barbarian str=2300 dex=300 con=500
+"goblin fighter"        zone=cave level=51 class=Fighter str=1500 dex=1200 con=300
+"goblin magicer"        zone=cave level=51 class=Mage int=2200 con=500
+"goblin jester"         zone=cave level=51 class=Jester luck=800
+"goblin hider"          zone=cave level=51 class=Rogue str=800 agi=1300 dex=300
+"goblin healer"         zone=cave level=51 class=Cleric wis=2200 agi=500
 
 # giant beings
-"giant"                 zone=cave level=55
-"giant nudist"          zone=cave level=55 class=Generalist
-"half-giant orc"        zone=cave level=55 class=Fighter str=1500 con=500 dex=500
-"half-goblin giant"     zone=cave level=55 class=Fighter str=500 con=1500 dex=500
-"half-half-orc giant"   zone=cave level=55 class=Barbarian str=1000 con=1500
-"half-dwarf giant"      zone=cave level=55 class=Barbarian str=1500 con=1000
-"half-giant gnome"      zone=cave level=55 class=Mage int=1500 con=500
-"half-gnome giant"      zone=cave level=55 class=Mage int=500 con=1500
-"half-human giant"      zone=cave level=55
-"half-kobold giant"     zone=cave level=55
-"half-giant giant"      zone=cave level=55 class=Jester luck=750
+"giant"                 zone=cave level=57
+"giant nudist"          zone=cave level=57 class=Generalist
+"half-giant orc"        zone=cave level=57 class=Fighter str=1500 con=500 dex=500
+"half-goblin giant"     zone=cave level=57 class=Fighter str=500 con=1500 dex=500
+"half-half-orc giant"   zone=cave level=57 class=Barbarian str=1000 con=1500
+"half-dwarf giant"      zone=cave level=57 class=Barbarian str=1500 con=1000
+"half-giant gnome"      zone=cave level=57 class=Mage int=1500 con=500
+"half-gnome giant"      zone=cave level=57 class=Mage int=500 con=1500
+"half-human giant"      zone=cave level=57 class=Bard int=1000 wis=1000
+"half-giant human"      zone=cave level=57 class=Rogue dex=1000 agi=1000 str=500
+"half-kobold giant"     zone=cave level=57 class=Cleric wis=3000
+"half-giant giant"      zone=cave level=57 class=Jester luck=750
 
 # elvish beings
-"elf"                   zone=town level=60
+"elf"                   zone=town level=63
+"elf nudist"            zone=town level=63 class=Generalist
+"elf magician"          zone=town level=63 class=Mage
+"elf singer"            zone=town level=63 class=Bard
+"elf cleric"            zone=town level=63 class=Cleric
+"elf servant"           zone=town level=63 class=Jester
+"elf warrior"           zone=town level=63 class=Fighter
+"elf zerker"            zone=town level=63 class=Barbarian
+
 #etc
 
 # dwarven beings
-"dwarf"                 zone=town level=65
-# etc (pull from idlemaster https://github.com/seiyria/idlemaster/blob/master/data/monsters/Monsters.txt#L105)
+"dwarf"                 zone=town level=69
+"dwarf nudist"          zone=town level=69 class=Generalist
+"dwarf fighter"         zone=town level=69 class=Fighter
+"dwarf barbarian"       zone=town level=69 class=Barbarian
+"dwarf healer"          zone=town level=69 class=Cleric
+"dwarf jester"          zone=town level=69 class=Jester
+"dwarf king"            zone=town level=69
+"dwarf queen"           zone=town level=69
+"dwarf shadowknight"    zone=town level=69
+"dwarf shadowcaster"    zone=town level=69 class=Mage
+"dwarf shadowdancer"    zone=town level=69 class=Rogue
+"dwarf shadow"          zone=town level=69
+"dwarf prince"          zone=town level=69 class=Bard
 
 # pygmy beings
-"pygmy"                 zone=cave level=73
-"pygmy warrior"         zone=cave level=73
+"pygmy"                 zone=cave level=76
+"pygmy warrior"         zone=cave level=76
 # etc
 
 # ogre beings
-"ogre"                  zone=cave level=77
+"ogre"                  zone=cave level=87
 #etc
 
 # kin beings
-"embryo-kin"            zone=town   level=1
-"bird-kin"              zone=forest level=2
-"angel-kin"             zone=cave   level=4
-"demon-kin"             zone=cave   level=5
-"dragon-kin"            zone=town   level=10
-"god-kin"               zone=cave   level=11
-"scarecrow-kin"         zone=town   level=15
-"monster-kin"           zone=town   level=16
-"snake-kin"             zone=forest level=17
-"tab-kin"               zone=town   level=18
-"alien-kin"             zone=town   level=20
-"cat-kin"               zone=town   level=22
-"dog-kin"               zone=town   level=24
-"lion-kin"              zone=cave   level=26
-"dingo-kin"             zone=forest level=29
-"moon-kin"              zone=cave   level=31
-"moon-moon-kin"         zone=cave   level=32
-"boom-kin"              zone=forest level=33
-"dongbag-kin"           zone=town   level=34
-"clementine-kin"        zone=town   level=37
-"darwin-kin"            zone=town   level=38
-"robot-kin"             zone=town   level=40
-"flour-kin"             zone=town   level=42
-"space-kin"             zone=town   level=44
-"celestial-kin"         zone=cave   level=48
-"toaster-kin"           zone=town   level=54
-"couch-kin"             zone=town   level=58
-"refridgerator-kin"     zone=town   level=62
-"soap-kin"              zone=town   level=64
-"jester-kin"            zone=town   level=67 class=Jester
-"troll-kin"             zone=cave   level=69
-"fae-kin"               zone=cave   level=71
-"rickroll-kin"          zone=town   level=72
-"vampire-kin"           zone=cave   level=73
-"undead-kin"            zone=cave   level=74
-"ghost-kin"             zone=town   level=75
-"royal-kin"             zone=town   level=77
-"brittney spears-kin"   zone=town   level=78
-"kin-kin"               zone=town   level=79
-"plant-kin"             zone=forest level=81
-"water-kin"             zone=water  level=83
-"earth-wind-fire-kin"   zone=town   level=84
-"virtual-kin"           zone=town   level=85
-"daedra-kin"            zone=cave   level=87
-"sloth-kin"             zone=forest level=88
-"koolaid-kin"           zone=town   level=89
-"void-kin"              zone=cave   level=90
-"planet-kin"            zone=cave   level=91
-"deathgod-kin"          zone=cave   level=92
-"dryad-kin"             zone=forest level=93
-"omni-kin"              zone=cave   level=94
-"sylveon-kin"           zone=cave   level=95
-"kawaii-kin"            zone=town   level=110
-"tableflip-kin"         zone=town   level=115
-"dickbutt-kin"          zone=town   level=120
+"embryo-kin"            zone=town   level=1     class=Jester
+"bird-kin"              zone=forest level=2     class=Jester
+"angel-kin"             zone=cave   level=4     class=Jester
+"demon-kin"             zone=cave   level=5     class=Jester
+"dragon-kin"            zone=town   level=10    class=Jester
+"god-kin"               zone=cave   level=11    class=Jester
+"scarecrow-kin"         zone=town   level=15    class=Jester
+"monster-kin"           zone=town   level=16    class=Jester
+"snake-kin"             zone=forest level=17    class=Jester
+"tab-kin"               zone=town   level=18    class=Jester
+"alien-kin"             zone=town   level=20    class=Jester
+"cat-kin"               zone=town   level=22    class=Jester
+"dog-kin"               zone=town   level=24    class=Jester
+"lion-kin"              zone=cave   level=26    class=Jester
+"dingo-kin"             zone=forest level=29    class=Jester
+"moon-kin"              zone=cave   level=31    class=Jester
+"moon-moon-kin"         zone=cave   level=32    class=Jester
+"boom-kin"              zone=forest level=33    class=Jester
+"dongbag-kin"           zone=town   level=34    class=Jester
+"clementine-kin"        zone=town   level=37    class=Jester
+"darwin-kin"            zone=town   level=38    class=Jester
+"robot-kin"             zone=town   level=40    class=Jester
+"flour-kin"             zone=town   level=42    class=Jester
+"space-kin"             zone=town   level=44    class=Jester
+"celestial-kin"         zone=cave   level=48    class=Jester
+"toaster-kin"           zone=town   level=54    class=Jester
+"couch-kin"             zone=town   level=58    class=Jester
+"refridgerator-kin"     zone=town   level=62    class=Jester
+"soap-kin"              zone=town   level=64    class=Jester
+"jester-kin"            zone=town   level=67    class=Jester
+"troll-kin"             zone=cave   level=69    class=Jester
+"fae-kin"               zone=cave   level=71    class=Jester
+"rickroll-kin"          zone=town   level=72    class=Jester
+"vampire-kin"           zone=cave   level=73    class=Jester
+"undead-kin"            zone=cave   level=74    class=Jester
+"ghost-kin"             zone=town   level=75    class=Jester
+"royal-kin"             zone=town   level=77    class=Jester
+"brittney spears-kin"   zone=town   level=78    class=Jester
+"kin-kin"               zone=town   level=79    class=Jester
+"plant-kin"             zone=forest level=81    class=Jester
+"water-kin"             zone=water  level=83    class=Jester
+"earth-wind-fire-kin"   zone=town   level=84    class=Jester
+"virtual-kin"           zone=town   level=85    class=Jester
+"daedra-kin"            zone=cave   level=87    class=Jester
+"sloth-kin"             zone=forest level=88    class=Jester
+"koolaid-kin"           zone=town   level=89    class=Jester
+"void-kin"              zone=cave   level=90    class=Jester
+"planet-kin"            zone=cave   level=91    class=Jester
+"deathgod-kin"          zone=cave   level=92    class=Jester
+"dryad-kin"             zone=forest level=93    class=Jester
+"omni-kin"              zone=cave   level=94    class=Jester
+"sylveon-kin"           zone=cave   level=95    class=Jester
+"kawaii-kin"            zone=town   level=110   class=Jester
+"tableflip-kin"         zone=town   level=115   class=Jester
+"dickbutt-kin"          zone=town   level=120   class=Jester
