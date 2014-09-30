@@ -15,6 +15,6 @@ If you're more interested in code development (backend, spells, classes, persona
 
 IRC
 ===
-Feel free to join us in ##idlebot (on any server) and chat with the devs and designers!
+Feel free to join us in ##idlebot (on any server listed [here](https://github.com/seiyria/IdleLands/wiki/IRC-Info)) and chat with the devs and designers!
 
 
