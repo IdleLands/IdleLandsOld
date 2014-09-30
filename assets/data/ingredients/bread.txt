@@ -3,8 +3,3 @@
 "rye" wis=1
 "cake" int=1
 "pizza" luck=1
-"meatloaf" str=10
-"cardboard" con=-5
-"mystery loaf" int=10
-"twelve grain" con=20
-"twelve hundred grain" con=30

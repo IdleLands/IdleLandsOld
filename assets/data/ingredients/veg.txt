@@ -3,8 +3,3 @@
 "grass" luck=-1
 "microgreens" int=1
 "dandelion" wis=1
-"poison ivy" wis=-5
-"frozen vegetables" con=-3
-"bamboo" con=4
-"mushrooms" int=3
-"avocado" str=7
