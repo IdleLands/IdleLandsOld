@@ -7,9 +7,9 @@ chance = new Chance()
 class SandwichAlly extends Spell
   name: "Sandwich Ally"
   @element = SandwichAlly::element = Spell::Element.physical
-  @cost = SandwichAlly::cost = 0
+  @cost = SandwichAlly::cost = 200
   @restrictions =
-    "SandwichArtist": 1
+    "SandwichArtist": 10
 
 # 3 turn stat boost
   calcDuration: (player) -> super()+3
@@ -85,7 +85,7 @@ class SandwichAlly extends Spell
         cookie.affect player
 
   tick: (player) ->
-    message = "%targetName is still boosted by %casterName's \"%spellName\"."
+    message = "%targetName is still under the effects of %casterName's \"%spellName\"."
     @broadcast player, message
 
   uncast: (player) ->
