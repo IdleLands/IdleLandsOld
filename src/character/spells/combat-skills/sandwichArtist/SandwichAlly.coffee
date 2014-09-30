@@ -57,8 +57,11 @@ class SandwichAlly extends Spell
     # Generate a sandwich name
     this.sandwich = @game.sandwichGenerator.generateSandwich()
 
-    # This spell only targets allies, so there is always a gold value defined.
-    targetGold = player.gold.getValue()
+     # Monsters have no gold; instead, 50% chance of getting 6 or 12 inch. Could be level-based.
+    if player.gold?
+      targetGold = player.gold.getValue()
+    else
+      targetGold = Math.random()*20000
     if targetGold > 10000
       this.size = 12
     else
