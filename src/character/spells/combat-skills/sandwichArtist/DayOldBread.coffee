@@ -1,19 +1,20 @@
 
 Spell = require "../../../base/Spell"
+Prone = require "../effects/Prone.coffee"
 
-class PoisonedSandwich extends Spell
-  name: "Poisoned Sandwich"
-  @element = PoisonedSandwich::element = Spell::Element.physical
-  @cost = PoisonedSandwich::cost = 200
+class DayOldBread extends Spell
+  name: "Day-Old Bread"
+  @element = DayOldBread::element = Spell::Element.physical
+  @cost = DayOldBread::cost = 50
   @restrictions =
-    "SandwichArtist": 10
+    "SandwichArtist": 5
 
-# Duration 1 at con >500, 2 at con 251-500, 3 at con <= 250
-  calcDuration: (player) -> super()+1+Math.floor(500/player.con)
+# 3 turn stat boost
+  calcDuration: (player) -> super()+3
   
   calcDamage: ->
-    minStat = (@caster.calc.stat 'dex')/6
-    maxStat = (@caster.calc.stat 'dex')/4
+    minStat = (@caster.calc.stat 'dex')/8
+    maxStat = (@caster.calc.stat 'dex')/6
     super() + @minMax minStat, maxStat
 
   determineTargets: ->
@@ -63,14 +64,16 @@ class PoisonedSandwich extends Spell
     else
       this.size = 6
     damage = @calcDamage()
-    this.name = "poisoned #{this.size}-inch #{this.sandwich.name}"
-    message = "%casterName made %targetName a %spellName and dealt %damage HP damage!"
+    this.name = "day-old #{this.size}-inch #{this.sandwich.name}"
+    message = "%casterName served %targetName a %spellName. %targetName falls over and loses %damage HP!"
     @doDamageTo player, damage, message
-
+    prone = @game.spellManager.modifySpell new Prone @game, @caster
+    prone.affect player
+    
   tick: (player) ->
     damage = @calcDamage()
-    message = "%targetName is damaged by %casterName's \"%spellName\" for %damage HP damage"
-    @doDamageTo player, damage, message
+    message = "%targetName is still under the effects of %casterName's \"%spellName\"."
+    @broadcast player, message
 
   uncast: (player) ->
     return if @caster isnt player
@@ -84,4 +87,4 @@ class PoisonedSandwich extends Spell
       doSpellUncast: @uncast
       "combat.self.turn.start": @tick
 
-module.exports = exports = PoisonedSandwich
+module.exports = exports = DayOldBread
