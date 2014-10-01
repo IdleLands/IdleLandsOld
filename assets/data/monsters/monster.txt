@@ -107,6 +107,11 @@
 "pixie"                     zone=forest level=50 class=Cleric wis=1000 con=500
 "kappa"                     zone=forest level=60 class=Mage int=2000 con=300
 
+# cave entities
+"strange goo"               zone=cave level=1 str=1 agi=-1 wis=-2
+"space anemone"             zone=cave level=20 str=300 agi=-200 int=-500
+"tiny alien"                zone=cave class=Rogue level=28 str=200 agi=300 dex=240 int=400
+
 # undead entities
 "olde zombie"               zone=town level=5 int=-10 str=-10 dex=-10 con=-10 agi=-10 wis=10
 "old zombie"                zone=town level=10 int=-50 str=-50 dex=-50 con=-50 agi=-50 wis=50
