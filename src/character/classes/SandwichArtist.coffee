@@ -7,9 +7,9 @@ class SandwichArtist extends Class
   baseHpPerLevel: 12
   baseHpPerCon: 5
 
-  baseMp: 8
+  baseMp: 10
   baseMpPerLevel: 3
-  baseMpPerInt: 2
+  baseMpPerInt: 5
 
   baseConPerLevel: 1
   baseDexPerLevel: 5
@@ -21,7 +21,7 @@ class SandwichArtist extends Class
   itemScore: (player, item) ->
     item.dex*2 +
     item.str*0.8 -
-    item.int
+    item.int*0.5
 
   physicalAttackChance: -> -10
 

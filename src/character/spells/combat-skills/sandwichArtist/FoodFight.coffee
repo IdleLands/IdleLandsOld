@@ -35,12 +35,6 @@ class FoodFight extends Spell
       @doDamageTo player, damage, message
     else if chance.bool({likelihood: 40})
       damage = @calcDamage()/2
-      message = "%targetName slips on some %spellName and falls down!"
-      @broadcast player, message
-      prone = @game.spellManager.modifySpell new Prone @game, @caster
-      prone.affect player
-    else if chance.bool({likelihood: 40})
-      damage = @calcDamage()/2
       message = "%targetName narrowly avoided %spellName."
       @broadcast player, message
 
