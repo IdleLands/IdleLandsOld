@@ -1,6 +1,5 @@
 
 Spell = require "../../../base/Spell"
-Prone = require "../effects/Prone.coffee"
 Chance = require "Chance"
 chance = new Chance
 
@@ -10,13 +9,13 @@ class Resume extends Spell
   @cost = Resume::cost = 10
   @restrictions =
     "SandwichArtist": 1
-  @canChoose: (player) -> (player.hp.getValue() < player.hp.maximum*0.25)
+  @canChoose = (player) -> (player.hp.asPercent() <= 25)
 
-  cantAct: -> 0
+  cantAct: -> @resumeRejected
 
-  cantActMessages: -> "%casterName is still fuming about the resume %heshe gave to %player!"
+  cantActMessages: -> "#{@caster.name} is still fuming about the resume %heshe gave to %player!"
 
-  calcDuration: -> 1
+  calcDuration: -> super()+1
 
   determineTargets: ->
     @targetSomeEnemies size: 1
@@ -38,7 +37,7 @@ class Resume extends Spell
     else
       message = "%targetName turned down %casterName. %casterName shoved %himher to the ground!"
       @broadcast player, message
-      this.cantAct = 1
+      this.resumeRejected = 1
 
   constructor: (@game, @caster) ->
     super @game, @caster

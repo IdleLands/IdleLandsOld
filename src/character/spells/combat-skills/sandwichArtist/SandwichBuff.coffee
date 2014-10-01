@@ -46,7 +46,10 @@ class SandwichBuff extends Spell
 
     # Monsters have no gold; instead, 50% chance of getting 6 or 12 inch. Could be level-based.
     if player.gold?
-      targetGold = player.gold.getValue()
+      if player.gold.getValue? # Shouldn't be necessary, but issue occurred once
+        targetGold = player.gold.getValue()
+      else
+        targetGold = Math.random()*20000
     else
       targetGold = Math.random()*20000
     if targetGold > 10000
