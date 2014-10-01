@@ -1,6 +1,5 @@
 
 Spell = require "../../../base/Spell"
-_ = require "underscore"
 
 class Revive extends Spell
   name: "revive"
