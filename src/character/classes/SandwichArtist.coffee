@@ -1,4 +1,4 @@
-# test:inst().playerManager.getPlayerByName('Danret').changeProfession('SandwichArtist')
+
 Class = require "./../base/Class"
 
 class SandwichArtist extends Class

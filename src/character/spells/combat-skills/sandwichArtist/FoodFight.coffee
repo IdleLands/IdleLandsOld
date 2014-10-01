@@ -40,7 +40,7 @@ class FoodFight extends Spell
 
   uncast: (player) ->
     this.name = "Food Fight"
-    message = "%targetName escaped @casterName's \"%spellName.\""
+    message = "%targetName escaped %casterName's \"%spellName.\""
     @broadcast player, message
 
   constructor: (@game, @caster) ->
