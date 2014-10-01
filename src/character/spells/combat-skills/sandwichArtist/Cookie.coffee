@@ -30,13 +30,11 @@ class Cookie extends Spell
     @broadcast player, message
 
   tick: (player) ->
-    damage = @calcDamage()
-    message = "%targetName is still boosted by %casterName's \"%spellName\"."
+    message = "%targetName has a sugar rush from %casterName's \"%spellName\"!"
     @broadcast player, message
 
   uncast: (player) ->
-    return if @caster isnt player
-    message = "%targetName is no longer under the effects of \"%spellName.\""
+    message = "%targetName's sugar rush wore off."
     @broadcast player, message
 
   constructor: (@game, @caster) ->
