@@ -17,7 +17,7 @@ class Toasted extends Spell
     super() + @minMax minStat, maxStat
 
   determineTargets: ->
-    @targetSomeEnemies size: Math.floor(Math.random() + 1.5)
+    @targetSomeEnemies size: chance.integer({min: 1, max: 2})
 
   cast: (player) ->
     buff = @game.spellManager.modifySpell new SandwichBuff @game, @caster

@@ -1,6 +1,8 @@
 
 Spell = require "../../../base/Spell"
 SandwichBuff = require "./SandwichBuff.coffee"
+Chance = require "chance"
+chance = new Chance()
 
 class PoisonedSandwich extends Spell
   name: "Poisoned Sandwich"
@@ -18,7 +20,7 @@ class PoisonedSandwich extends Spell
     super() + @minMax minStat, maxStat
 
   determineTargets: ->
-    @targetSomeEnemies size: Math.floor(Math.random() + 1.5)
+    @targetSomeEnemies size: chance.integer({min: 1, max: 2})
 
   cast: (player) ->
     buff = @game.spellManager.modifySpell new SandwichBuff @game, @caster
