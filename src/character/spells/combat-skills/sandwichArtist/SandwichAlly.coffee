@@ -19,7 +19,7 @@ class SandwichAlly extends Spell
     super() + @minMax minStat, maxStat
 
   determineTargets: ->
-    @targetSomeAllies size: Math.floor(Math.random() + 1.5)
+    @targetSomeAllies size: chance.integer({min: 1, max: 2})
 
   cast: (player) ->
     buff = @game.spellManager.modifySpell new SandwichBuff @game, @caster
