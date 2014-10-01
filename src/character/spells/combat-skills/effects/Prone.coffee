@@ -11,7 +11,7 @@ class Prone extends Spell
 
   cantActMessages: -> "%player was knocked prone"
 
-  calcDuration: -> 1
+  calcDuration: (player) -> super()+1
 
   calcDamage: -> 0
 

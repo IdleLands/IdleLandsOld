@@ -8,9 +8,9 @@ chance = new Chance
 class FoodFight extends Spell
   name: "Food Fight"
   @element = FoodFight::element = Spell::Element.physical
-  @cost = FoodFight::cost = 0
+  @cost = FoodFight::cost = 400
   @restrictions =
-    "SandwichArtist": 1
+    "SandwichArtist": 15
 
   calcDuration: (player) -> super()+3
   
@@ -45,9 +45,8 @@ class FoodFight extends Spell
       @broadcast player, message
 
   uncast: (player) ->
-    return if @caster isnt player
     this.name = "Food Fight"
-    message = "%targetName is no longer under the effects of \"%spellName.\""
+    message = "%targetName escaped @casterName's \"%spellName.\""
     @broadcast player, message
 
   constructor: (@game, @caster) ->
