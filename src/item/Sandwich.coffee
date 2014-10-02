@@ -23,6 +23,8 @@ class Sandwich
     water: 0
     earth: 0
     thunder: 0
+    xp: 0
+    gold: 0
 
     strPercent: 0
     dexPercent: 0
@@ -38,5 +40,14 @@ class Sandwich
     waterPercent: 0
     earthPercent: 0
     thunderPercent: 0
+
+    crit: 0
+    dodge: 0
+    prone: 0
+    power: 0
+    silver: 0
+    deadeye: 0
+    defense: 0
+    glowing: 0
 
 module.exports = exports = Sandwich

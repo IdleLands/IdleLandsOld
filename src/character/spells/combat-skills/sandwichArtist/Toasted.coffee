@@ -22,7 +22,7 @@ class Toasted extends Spell
   cast: (player) ->
     buff = @game.spellManager.modifySpell new SandwichBuff @game, @caster
     buff.affect player
-    this.name = buff.name
+    @name = buff.name
     damage = @calcDamage()
     message = "%casterName made %targetName a %spellName."
     @broadcast player, message
@@ -33,11 +33,11 @@ class Toasted extends Spell
     if yesno
       message = "%targetName wanted the %spellName toasted. %targetName is burned for %damage!"
       @doDamageTo player, damage, message
-      this.name = "toasted #{this.name}"
+      @name = "toasted #{@name}"
     else
       message = "%targetName didn't want the %spellName toasted."
       @broadcast player, message
-    buff.name = this.name
+    buff.name = @name
 
   constructor: (@game, @caster) ->
     super @game, @caster

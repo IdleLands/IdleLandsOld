@@ -11,38 +11,48 @@ class SandwichBuff extends Spell
   calcDuration: (player) -> super()+3
 
 # Random stat buffs from sandwich ingredients; standard for sandwich artist spells
-  str: -> this.sandwich.str*this.size/6
-  dex: -> this.sandwich.dex*this.size/6
-  int: -> this.sandwich.int*this.size/6
-  con: -> this.sandwich.con*this.size/6
-  wis: -> this.sandwich.wis*this.size/6
-  agi: -> this.sandwich.agi*this.size/6
-  luck: -> this.sandwich.luck*this.size/6
-  sentimentality: -> this.sandwich.sentimentality*this.size/6
-  piety: -> this.sandwich.piety*this.size/6
-  ice: -> this.sandwich.ice*this.size/6
-  fire: -> this.sandwich.fire*this.size/6
-  water: -> this.sandwich.water*this.size/6
-  earth: -> this.sandwich.earth*this.size/6
-  thunder: -> this.sandwich.thunder*this.size/6
-  strPercent: -> this.sandwich.strPercent*this.size/6
-  dexPercent: -> this.sandwich.dexPercent*this.size/6
-  intPercent: -> this.sandwich.intPercent*this.size/6
-  conPercent: -> this.sandwich.conPercent*this.size/6
-  wisPercent: -> this.sandwich.wisPercent*this.size/6
-  agiPercent: -> this.sandwich.agiPercent*this.size/6
-  luckPercent: -> this.sandwich.luckPercent*this.size/6
-  sentimentalityPercent: -> this.sandwich.sentimentalityPercent*this.size/6
-  pietyPercent: -> this.sandwich.pietyPercent*this.size/6
-  icePercent: -> this.sandwich.icePercent*this.size/6
-  firePercent: -> this.sandwich.firePercent*this.size/6
-  waterPercent: -> this.sandwich.waterPercent*this.size/6
-  earthPercent: -> this.sandwich.earthPercent*this.size/6
-  thunderPercent: -> this.sandwich.thunderPercent*this.size/6
+  str: -> @sandwich.str*@size/6
+  dex: -> @sandwich.dex*@size/6
+  int: -> @sandwich.int*@size/6
+  con: -> @sandwich.con*@size/6
+  wis: -> @sandwich.wis*@size/6
+  agi: -> @sandwich.agi*@size/6
+  luck: -> @sandwich.luck*@size/6
+  sentimentality: -> @sandwich.sentimentality*@size/6
+  piety: -> @sandwich.piety*@size/6
+  ice: -> @sandwich.ice*@size/6
+  fire: -> @sandwich.fire*@size/6
+  water: -> @sandwich.water*@size/6
+  earth: -> @sandwich.earth*@size/6
+  thunder: -> @sandwich.thunder*@size/6
+  xp: -> @sandwich.xp*@size/6
+  gold: -> @sandwich.gold*@size/6
+  strPercent: -> @sandwich.strPercent*@size/6
+  dexPercent: -> @sandwich.dexPercent*@size/6
+  intPercent: -> @sandwich.intPercent*@size/6
+  conPercent: -> @sandwich.conPercent*@size/6
+  wisPercent: -> @sandwich.wisPercent*@size/6
+  agiPercent: -> @sandwich.agiPercent*@size/6
+  luckPercent: -> @sandwich.luckPercent*@size/6
+  sentimentalityPercent: -> @sandwich.sentimentalityPercent*@size/6
+  pietyPercent: -> @sandwich.pietyPercent*@size/6
+  icePercent: -> @sandwich.icePercent*@size/6
+  firePercent: -> @sandwich.firePercent*@size/6
+  waterPercent: -> @sandwich.waterPercent*@size/6
+  earthPercent: -> @sandwich.earthPercent*@size/6
+  thunderPercent: -> @sandwich.thunderPercent*@size/6
+  crit: -> @sandwich.crit*@size/6
+  dodge: -> @sandwich.dodge*@size/6
+  prone: -> @sandwich.prone*@size/6
+  power: -> @sandwich.power*@size/6
+  silver: -> @sandwich.silver*@size/6
+  deadeye: -> @sandwich.deadeye*@size/6
+  defense: -> @sandwich.defense*@size/6
+  glowing: -> @sandwich.glowing*@size/6
 
   cast: (player) ->
     # Generate a sandwich name
-    this.sandwich = @game.sandwichGenerator.generateSandwich()
+    @sandwich = @game.sandwichGenerator.generateSandwich()
 
     # Monsters have no gold; instead, 50% chance of getting 6 or 12 inch. Could be level-based.
     if player.gold?
@@ -53,11 +63,11 @@ class SandwichBuff extends Spell
     else
       targetGold = Math.random()*20000
     if targetGold > 10000
-      this.size = 12
+      @size = 12
     else
-      this.size = 6
+      @size = 6
     damage = @calcDamage()
-    this.name = "#{this.size}-inch #{this.sandwich.name}"
+    @name = "#{@size}-inch #{@sandwich.name}"
 
   tick: (player) ->
     damage = @calcDamage()

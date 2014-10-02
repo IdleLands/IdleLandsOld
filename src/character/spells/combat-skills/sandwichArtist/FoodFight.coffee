@@ -28,7 +28,7 @@ class FoodFight extends Spell
   tick: (player) ->
     ingredientList = @game.componentDatabase.ingredientStats
     ingredient = _.sample ingredientList['veg']
-    this.name = ingredient.name
+    @name = ingredient.name
     if chance.bool({likelihood: 40})
       damage = @calcDamage()
       message = "%targetName is hit by %spellName for %damage damage!"
@@ -39,7 +39,7 @@ class FoodFight extends Spell
       @broadcast player, message
 
   uncast: (player) ->
-    this.name = "Food Fight"
+    @name = "Food Fight"
     message = "%targetName escaped %casterName's \"%spellName.\""
     @broadcast player, message
 
