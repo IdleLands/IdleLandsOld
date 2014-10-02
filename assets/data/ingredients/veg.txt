@@ -1,0 +1,10 @@
+"lettuce" agi=10
+"tomato" str=10
+"grass" luck=-10
+"microgreens" int=10
+"dandelion" wis=10
+"poison ivy" wis=-25
+"frozen vegetables" con=-20
+"bamboo" con=20
+"mushrooms" int=15
+"avocado" str=30

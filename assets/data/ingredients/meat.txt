@@ -1,0 +1,10 @@
+"steak" str=10
+"turkey" wis=10
+"chicken" agi=10
+"ostrich" int=10
+"worm" luck=10
+"sand" str=-10
+"fish" agi=10
+"ham" con=20
+"snake" int=25
+"boar" str=25

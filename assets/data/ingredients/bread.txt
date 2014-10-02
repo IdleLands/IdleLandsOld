@@ -1,0 +1,10 @@
+"white" str=10
+"whole wheat" con=10
+"rye" wis=10
+"cake" int=10
+"pizza" luck=10
+"meatloaf" str=50
+"cardboard" con=-30
+"mystery loaf" int=66
+"twelve grain" con=12
+"twelve hundred grain" con=120
