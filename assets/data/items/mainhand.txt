@@ -343,9 +343,11 @@
 "Lord of Vermillion" int=500 wis=200 power=1
 
 # 3 stat hybrids
+"trusty handgun" str=100 int=90 agi=60 fire=10 crit=5 offense=3
 "downvote" str=250 int=-50 wis=-50
 "wad o' cash" str=350 int=100 wis=-50
 "tomato" str=275 agi=75 dex=85
+"peculiar object" str=400 int=-300 wis=-200 energy=500 glowing=3
 
 # 4 stat hybrids
 "Banhammer" str=350 int=100 wis=100 con=-100
