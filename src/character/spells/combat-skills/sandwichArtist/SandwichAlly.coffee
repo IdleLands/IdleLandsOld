@@ -24,7 +24,7 @@ class SandwichAlly extends Spell
   cast: (player) ->
     buff = @game.spellManager.modifySpell new SandwichBuff @game, @caster
     buff.affect player
-    this.name = buff.name
+    @name = buff.name
     damage = @calcDamage()
     message = "%casterName made %targetName a %spellName and healed %damage HP!"
     @doDamageTo player, -damage, message

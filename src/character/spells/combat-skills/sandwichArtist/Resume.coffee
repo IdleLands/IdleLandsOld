@@ -37,7 +37,7 @@ class Resume extends Spell
     else
       message = "%targetName turned down %casterName. %casterName shoved %himher to the ground!"
       @broadcast player, message
-      this.resumeRejected = 1
+      @resumeRejected = yes
 
   constructor: (@game, @caster) ->
     super @game, @caster

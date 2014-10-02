@@ -26,7 +26,7 @@ class PoisonedSandwich extends Spell
     buff = @game.spellManager.modifySpell new SandwichBuff @game, @caster
     buff.affect player
     buff.name = "poisoned #{buff.name}"
-    this.name = buff.name
+    @name = buff.name
     damage = @calcDamage()
     message = "%casterName made %targetName a %spellName and dealt %damage damage!"
     @doDamageTo player, damage, message

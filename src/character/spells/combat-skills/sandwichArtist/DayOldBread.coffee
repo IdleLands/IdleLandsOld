@@ -29,7 +29,7 @@ class DayOldBread extends Spell
     buff = @game.spellManager.modifySpell new SandwichBuff @game, @caster
     buff.affect player
     buff.name = "day-old #{buff.name}"
-    this.name = buff.name
+    @name = buff.name
     damage = @calcDamage()
     message = "%casterName served %targetName a %spellName. %targetName falls over and loses %damage HP!"
     @doDamageTo player, damage, message
