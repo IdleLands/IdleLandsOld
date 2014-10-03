@@ -10,7 +10,7 @@ class SandwichAlly extends Spell
   @restrictions =
     "SandwichArtist": 10
 
-# Cure group level healing  
+# Cure group level healing
   calcDamage: ->
     minStat = (@caster.calc.stat 'dex')/5
     maxStat = (@caster.calc.stat 'dex')/1.5

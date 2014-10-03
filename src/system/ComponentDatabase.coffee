@@ -180,21 +180,6 @@ class ComponentDatabase
       remark: remark
       random: [Math.random(), 0]
     , ->
-
-  insertItem: (object, duplicateCallback) ->
-    copy = _.extend {}, object
-    delete copy.name
-    query = [ copy, {name: object.name} ]
-    @itemsDb.findOne { $or: query }, (e, doc) =>
-
-      if doc?.name is object.name
-        duplicateCallback {name: doc.name}
-        return
-      else if doc
-        duplicateCallback {stats: true}
-        return
-
-      @addItem object
   
   insertIngredient: (object, duplicateCallback) ->
     copy = _.extend {}, object

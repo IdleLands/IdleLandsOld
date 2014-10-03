@@ -45,12 +45,12 @@ class Spell
     options = _.defaults options, {includeLiving: yes, includeDead: no}
     _.chain @baseTargets
     .reject (target) -> target.fled
-    .filter (target) -> 
-        return yes if not options.includeDead
-        target.hp.atMin()
-    .filter (target) -> 
-        return yes if not options.includeLiving
-        not target.hp.atMin()
+    .filter (target) ->
+      return yes if not options.includeDead
+      target.hp.atMin()
+    .filter (target) ->
+      return yes if not options.includeLiving
+      not target.hp.atMin()
     .value()
 
   targetAll: (options) ->

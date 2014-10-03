@@ -18,7 +18,7 @@ class Revive extends Spell
   cast: (player) ->
     damage = @calcDamage()
     damage = parseInt player.hp.maximum*damage*0.01
-    damage = 1 if damage < 1 
+    damage = 1 if damage < 1
     message = "%casterName cast %spellName on %targetName and revived %himher to %damage HP!"
     @doDamageTo player, -damage, message
 

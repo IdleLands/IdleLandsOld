@@ -22,7 +22,7 @@ class Cleric extends Class
     item.int*0.7 +
     item.wis*1.5 -
     item.str*0.4 -
-    item.dex*0.4 
+    item.dex*0.4
 
   physicalAttackChance: -> -10
 

@@ -6,7 +6,7 @@ MessageCreator = require "../../system/MessageCreator"
 class ConsolationPrize extends Personality
 
   constructor: (player) ->
-    @deathListener = (killer, extra) =>
+    @deathListener = (killer, extra) ->
       if chance.bool({likelihood: 10})
         player = extra.dead
         player.hp.toMaximum()
