@@ -13,7 +13,7 @@ class Personable extends Achievement
 
     _.each achievedPersonalities, (personality) ->
       achieved.push
-        name: "Personality: #{personality.name}"
+        name: "Personable: #{personality.name}"
         desc: personality.desc
         reward: "Can now use personality \"#{personality.name}\""
 
