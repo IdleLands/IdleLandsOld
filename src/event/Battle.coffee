@@ -19,6 +19,7 @@ class Battle
 
   setupParties: ->
     _.each @parties, (party) =>
+      console.log @parties if party is null
       party.currentBattle = @
 
   initializePlayers: ->
@@ -242,8 +243,8 @@ class Battle
     @losingPlayers  = _.reject (_.difference @turnOrder, @winningParty.players), (player) -> player.fled
     @winningParty.players = _.reject @winningParty.players, (player) -> player.fled
 
-    @emitEventsTo "party.lose", @losingPlayers
-    @emitEventsTo "party.win",  @winningParty.players
+    @emitEventsTo "party.lose", @losingPlayers, @winningParty.players
+    @emitEventsTo "party.win",  @winningParty.players, @losingPlayers
 
     @game.broadcast MessageCreator.genericMessage "The battle was won by <event.partyName>#{winnerName}</event.partyName>."
 

@@ -52,15 +52,22 @@ class EventHandler
       player.recalculateStats()
 
   bossBattle: (player, bossName) ->
-    @doEventForPlayer player.name, 'party', =>
+    doBossBattle = =>
+      boss = @game.bossFactory.createBoss bossName
+      return if not boss
+
       message = ">>> BOSS BATTLE: %player prepares for an epic battle!"
       message = MessageCreator.doStringReplace message, player
       @game.broadcast MessageCreator.genericMessage message
 
-      boss = @game.bossFactory.createBoss bossName
       bossParty = new Party @game, boss
 
       new Battle @game, [player.party, bossParty]
+
+    if player.party
+      doBossBattle()
+    else
+      @doEventForPlayer player.name, 'party', doBossBattle
 
   broadcastEvent: (message, player, extra) ->
     message = MessageCreator.doStringReplace message, player, extra
@@ -205,28 +212,37 @@ class EventHandler
     @broadcastEvent string, player
     callback true
 
-  doFindItem: (event, player, callback) ->
-    item = @game.equipmentGenerator.generateItem()
+  doItemEquip: (player, item, messageString) ->
     myItem = _.findWhere player.equipment, {type: item.type}
-    return callback false if not myItem
     score = player.calc.itemScore item
     myScore = player.calc.itemScore myItem
     realScore = item.score()
     myRealScore = myItem.score()
 
+    player.equip item
+
+    extra =
+      item: "<event.item.#{item.itemClass}>#{item.getName()}</event.item.#{item.itemClass}>"
+
+    realScoreDiff = realScore-myRealScore
+    normalizedRealScore = if realScoreDiff > 0 then "+#{realScoreDiff}" else realScoreDiff
+
+    totalString = "#{messageString} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (+#{score-myScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
+    player.emit "event.findItem", player, item
+
+    @broadcastEvent totalString, player, extra
+
+  doFindItem: (event, player, callback) ->
+    item = @game.equipmentGenerator.generateItem()
+    return if not item
+    myItem = _.findWhere player.equipment, {type: item.type}
+    return callback false if not myItem
+    score = player.calc.itemScore item
+    myScore = player.calc.itemScore myItem
+    realScore = item.score()
+
     if score > myScore and realScore < player.calc.itemFindRange() and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
-      player.equip item
-
-      extra =
-        item: "<event.item.#{item.itemClass}>#{item.getName()}</event.item.#{item.itemClass}>"
-
-      realScoreDiff = realScore-myRealScore
-      normalizedRealScore = if realScoreDiff > 0 then "+#{realScoreDiff}" else realScoreDiff
-
-      totalString = "#{event.remark} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (+#{score-myScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
-      player.emit "event.findItem", player, item
-
-      @broadcastEvent totalString, player, extra
+      @doItemEquip player, item, event.remark
 
     else
       multiplier = player.calc.itemSellMultiplier item
