@@ -16,10 +16,19 @@ Personality::isPhysical = (test) ->
   test in ['Fighter', 'Generalist', 'Barbarian', 'Rogue', 'Jester']
 
 Personality::isMagical = (test) ->
-  test in ['Mage', 'Cleric', 'Bard']
+  test in ['Mage', 'Cleric', 'Bard', 'SandwichArtist']
 
 Personality::isMedic = (test) ->
-  test in ['Cleric']
+  test in ['Cleric', 'SandwichArtist']
+
+Personality::isDPS = (test) ->
+  test in ['Mage', 'Thief']
+
+Personality::isTank = (test) ->
+  test in ['Fighter', 'Barbarian']
+
+Personality::isSupport = (test) ->
+  test in ['Bard', 'SandwichArtist']
 
 Personality::allPersonalities = -> personalities
 

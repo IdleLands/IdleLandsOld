@@ -19,11 +19,11 @@ class Monster extends Class
   baseWisPerLevel: 4
   baseLuckPerLevel: 4
 
-  baseXpGainPerCombat: 0
-  baseXpGainPerOpponentLevel: 0
+  baseXpGainPerCombat: 200
+  baseXpGainPerOpponentLevel: 100
 
-  baseXpLossPerCombat: 0
-  baseXpLossPerOpponentLevel: 0
+  baseXpLossPerCombat: 5
+  baseXpLossPerOpponentLevel: 1
 
   load: (player) ->
     super player

@@ -1,5 +1,6 @@
 BotManager = require("../../../../core/BotManager").BotManager
 _ = require "underscore"
+_.str = require "underscore.string"
 Q = require "q"
 
 finder = require "fs-finder"
@@ -385,15 +386,27 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          @IdleWrapper.api[action].string identifier, sType, string
-          @reply origin, "Successfully updated your string settings."
+          newString = @IdleWrapper.api[action].string identifier, sType, string
+          @reply origin, "Successfully updated your string settings. String \"#{sType}\" is now: #{if newString then newString else 'empty!'}"
 
       @addRoute "idle-add all-data", "idle.game.owner", (origin, route) =>
         @reply origin, "Re-initializing all modifier/event/etc data from disk."
         @IdleWrapper.api.add.allData()
 
       @addRoute "idle-broadcast :message", "idle.game.owner", (origin, route) =>
-        @broadcast route.params.message
+        @broadcast "THIS IS A BROADCAST TO ALL IDLELANDS PLAYERS: #{route.params.message}"
+
+      @addRoute "idle-gender :newGender", (origin, route) =>
+        gender = route.params.newGender
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to change your string settings!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          newGender = @IdleWrapper.api.set.gender identifier, gender
+          @reply origin, "Your gender is now #{newGender}."
 
       @initialize()
 

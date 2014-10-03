@@ -19,6 +19,9 @@ class GMCommands
 
     @game.teleport player, map, x, y, "#{player.name} got whisked away to #{text}."
 
+    playerTile = player.getTileAt()
+    player.handleTile playerTile
+
   massTeleportLocation: (locationTitle) ->
     location = @lookupLocation locationTitle
     @massTeleport location.map, location.x, location.y, location.formalName
@@ -77,6 +80,11 @@ class GMCommands
       formalName: "the Rogue Trainer"
       x: 34
       y: 1
+    "sandwichartist":
+      map: "Norkos"
+      formalName: "the Sandwich Artist Trainer"
+      x: 54
+      y: 122
 
     "fisheries":
       map: "Norkos"

@@ -97,6 +97,7 @@ class PlayerManager
 
   savePlayer: (player) ->
     savePlayer = @buildPlayerSaveObject player
+    savePlayer.lastLogin = new Date()
     @db.update { identifier: player.identifier }, savePlayer, {upsert: true}, (e) ->
       console.error "Save error: #{e}" if e
 

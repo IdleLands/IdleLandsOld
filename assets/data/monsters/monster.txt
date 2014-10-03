@@ -79,8 +79,8 @@
 "laser shark"       zone=water level=37 str=500 dex=500 agi=300
 "geoduck"           zone=water level=55 class=Druid con=1300 wis=1500 earth=500
 "jellyfish"         zone=water level=62 con=100 dex=1200 wis=300 agi=400 str=1500 poison=1
-"kraken"            zone=water level=87 class=Mage water=1000 int=3000 con=1000 hp=10000
-"hydra"             zone=swamp level=99 class=Fighter str=3000 con=2500 dex=1000 hp=100000
+"kraken"            zone=water level=87 class=Mage water=1000 int=4000 con=3000 hp=10000
+"hydra"             zone=swamp level=99 class=Fighter str=4000 con=4500 dex=3000 hp=100000
 
 # forest animals
 "mouse"                     zone=forest level=1 str=1 dodge=1
@@ -104,8 +104,13 @@
 "insect swarm"              zone=forest level=34 agi=200 wis=200 str=200
 "supergnat"                 zone=forest level=35 str=500 dex=500
 "derpig"                    zone=forest level=40 dex=300 str=300 con=-1000 wis=500 int=500
-"pixie"                     zone=forest level=50 class=Cleric wis=1000 con=500
-"kappa"                     zone=forest level=60 class=Mage int=2000 con=300
+"pixie"                     zone=forest level=50 class=Cleric wis=3000 con=500
+"kappa"                     zone=forest level=60 class=Mage int=4000 con=300
+
+# cave entities
+"strange goo"               zone=cave level=1 str=1 agi=-1 wis=-2
+"space anemone"             zone=cave level=20 str=300 agi=-200 int=-500
+"tiny alien"                zone=cave class=Rogue level=28 str=200 agi=300 dex=240 int=400
 
 # undead entities
 "olde zombie"               zone=town level=5 int=-10 str=-10 dex=-10 con=-10 agi=-10 wis=10
@@ -118,11 +123,11 @@
 "spiteghost"                zone=town level=33 class=Barbarian con=300 str=300 dex=200
 "ghoul"                     zone=town level=37
 "poltergeist"               zone=town level=41
-"spooky thing"              zone=town level=45
-"vengeful soul"             zone=town level=50
-"vampire"                   zone=town level=55
+"spooky thing"              zone=town level=45 dex=1500 agi=1500
+"vengeful soul"             zone=town level=50 str=3500
+"vampire"                   zone=town level=55 str=2000 int=1000 dex=1000
 "vampyre"                   zone=town level=55 class=Mage int=1000 fire=5000
-"abomination"               zone=town level=65 class=Barbarian str=1000 con=1000 dex=1000 agi=1000
+"abomination"               zone=town level=65 class=Barbarian str=2000 con=2000 dex=1000 agi=1000 hp=10000
 "wandering spirit"          zone=town level=75
 "vampiric gun-slinging samurai space pirate ninja robot schoolgirl" class=Random level=100
 
@@ -160,13 +165,13 @@
 "red dragon"                level=46 hp=4000 class=Mage prone=1 fire=1000
 "golem"                     level=48 hp=4500
 "blue dragon"               level=49 hp=4700 class=Mage water=1000
-"phoenix"                   level=50 hp=5000 class=Mage fire=1000 int=1000
+"phoenix"                   level=50 hp=5000 class=Mage fire=1000 int=1000 con=2000
 "gorgon"                    level=55 hp=5500 prone=1
-"black dragon"              level=65 hp=6000 class=Mage prone=1 earth=1000
-"behemoth"                  level=70 hp=6500 prone=1 str=1000 con=1000 dex=1000
+"black dragon"              level=65 hp=6000 class=Mage prone=1 earth=1000 str=2000 con=1000 dex=500
+"behemoth"                  level=70 hp=6500 prone=1 str=3000 con=1500 dex=1000
 "silver dragon"             level=75 hp=7000 class=Mage prone=1 thunder=1000
 "demogorgon"                level=85 hp=9000 prone=1
-"party-hat-wearing dragon"  level=105 hp=10000 class=Mage str=2000 fire=4000 agi=2000
+"party-hat-wearing dragon"  level=105 hp=10000 class=Mage str=3000 fire=4000 agi=2000
 
 # ancient beings
 "laser cannon"                      level=35

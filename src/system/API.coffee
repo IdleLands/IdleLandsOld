@@ -84,4 +84,8 @@ class API
     string: (identifier, stringType) =>
       @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType
 
+  @set =
+    gender: (identifier, newGender) =>
+      @gameInstance.playerManager.getPlayerById(identifier)?.setGender newGender
+
 module.exports = exports = API

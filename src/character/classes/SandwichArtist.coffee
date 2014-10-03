@@ -1,35 +1,36 @@
 
 Class = require "./../base/Class"
 
-class Cleric extends Class
+class SandwichArtist extends Class
 
   baseHp: 40
   baseHpPerLevel: 12
   baseHpPerCon: 5
 
-  baseMp: 8
+  baseMp: 10
   baseMpPerLevel: 3
-  baseMpPerInt: 2
+  baseMpPerInt: 5
 
-  baseConPerLevel: 2
-  baseDexPerLevel: 1
+  baseConPerLevel: 1
+  baseDexPerLevel: 5
   baseAgiPerLevel: 1
-  baseStrPerLevel: 2
+  baseStrPerLevel: 3
   baseIntPerLevel: 1
-  baseWisPerLevel: 5
+  baseWisPerLevel: 1
 
   itemScore: (player, item) ->
-    item.int*0.7 +
-    item.wis*1.5 -
-    item.str*0.4 -
-    item.dex*0.4
+    item.dex*2 +
+    item.str*0.8 -
+    item.int*0.5
 
   physicalAttackChance: -> -10
 
   minDamage: (player) ->
     player.calc.damage()*0.15
 
+  events: {}
+
   load: (player) ->
     super player
 
-module.exports = exports = Cleric
+module.exports = exports = SandwichArtist

@@ -28,6 +28,7 @@ class Player extends Character
       @levelUp yes
       @generateBaseEquipment()
       @lastLogin = new Date()
+      @gender = "male"
 
       @calc.itemFindRange()
 
@@ -127,21 +128,23 @@ class Player extends Character
     dir = randomDir()
     dir = randomDir() while dir in @ignoreDir
 
-    if not @hasPersonality 'Drunk'
-      dir = if chance.bool {likelihood: 80} then @lastDir else dir
+    dir = if chance.bool {likelihood: if @hasPersonality 'Drunk' then 40 else 80} then @lastDir else dir
 
     [(@num2dir dir, @x, @y), dir]
 
-  moveAction: ->
+  getTileAt: (x = @x, y = @y) ->
     lookAtTile = @playerManager.game.world.maps[@map].getTile.bind @playerManager.game.world.maps[@map]
+    lookAtTile x,y
+
+  moveAction: ->
     [newLoc, dir] = @pickRandomTile()
 
     try
-      tile = lookAtTile newLoc.x,newLoc.y
+      tile = @getTileAt newLoc.x,newLoc.y
 
       while (tile.blocked and chance.bool likelihood: if @hasPersonality 'Drunk' then 80 else 95)
         [newLoc, dir] = @pickRandomTile()
-        tile = lookAtTile newLoc.x, newLoc.y
+        tile = @getTileAt newLoc.x, newLoc.y
 
       if not tile.blocked
         @x = newLoc.x
@@ -183,7 +186,10 @@ class Player extends Character
     Math.min 100, (Math.max 0, Constants.defaults.player.defaultYesPercent + @personalityReduce 'calculateYesPercentBonus')
 
   getGender: ->
-    "male"
+    if @gender then @gender else "male"
+
+  setGender: (newGender) ->
+    @gender = newGender.substring 0,9
 
   score: ->
     @calc.partyScore()
