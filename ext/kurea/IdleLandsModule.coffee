@@ -42,7 +42,7 @@ module.exports = (Module) ->
       "event.item.Normal":          c.gray
       "event.item.basic":           c.gray
       "event.item.pro":             c.purple
-      "event.item.idle":            c.rainbow.bold
+      "event.item.idle":            c.bold.rainbow
       "event.item.godly":           c.white.bgblack
       "event.finditem.scoreboost":  c.bold
       "event.finditem.perceived":   c.bold
