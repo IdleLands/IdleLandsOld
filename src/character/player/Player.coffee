@@ -181,7 +181,10 @@ class Player extends Character
     Math.min 100, (Math.max 0, Constants.defaults.player.defaultYesPercent + @personalityReduce 'calculateYesPercentBonus')
 
   getGender: ->
-    "male"
+    if @gender then @gender else "male"
+
+  setGender: (newGender) ->
+    @gender = newGender.substring 0,9
 
   score: ->
     @calc.partyScore()
