@@ -52,6 +52,7 @@ class EventHandler
       player.recalculateStats()
 
   bossBattle: (player, bossName) ->
+    return if @game.inBattle
     doBossBattle = =>
       boss = @game.bossFactory.createBoss bossName, player
       return if not boss
