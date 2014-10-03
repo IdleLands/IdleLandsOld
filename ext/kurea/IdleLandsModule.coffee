@@ -398,10 +398,15 @@ module.exports = (Module) ->
 
       @addRoute "idle-gender :newGender", (origin, route) =>
         gender = route.params.newGender
-        identifier = @generateIdent origin.bot.config.server, username
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to change your string settings!"
+            return
 
-        newGender = @IdleWrapper.api.set.gender identifier, gender
-        @reply origin, "Your gender is now #{newGender}."
+          identifier = @generateIdent origin.bot.config.server, username
+
+          newGender = @IdleWrapper.api.set.gender identifier, gender
+          @reply origin, "Your gender is now #{newGender}."
 
       @initialize()
 

@@ -28,6 +28,7 @@ class Player extends Character
       @levelUp yes
       @generateBaseEquipment()
       @lastLogin = new Date()
+      @gender = "male"
 
       @calc.itemFindRange()
 
