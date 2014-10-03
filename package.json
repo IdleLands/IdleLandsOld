@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "coffee ext/local-test/LocalTest.coffee",
-    "test": "grunt"
+    "test": "grunt && coffee ext/local-test/Travis.coffee"
   },
   "repository": {
     "type": "git",
