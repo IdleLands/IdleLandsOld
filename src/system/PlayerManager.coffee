@@ -141,6 +141,8 @@ class PlayerManager
     player.isBusy = false
     player.loadCalc()
 
+    player.calc.itemFindRange()
+
     if not player.equipment
       player.generateBaseEquipment()
     else

@@ -390,8 +390,8 @@
                  "type":"Boss",
                  "visible":true,
                  "width":0,
-                 "x":544,
-                 "y":576
+                 "x":64,
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",

@@ -46,17 +46,17 @@ class BossInformation
   @items =
     "Goblin Lord Shortsword":
       type: "mainhand"
-      str: 200
-      agi: 200
-      dex: 200
-      hp: 1000
+      str: 100
+      agi: 100
+      dex: 100
+      hp: 500
       silver: 1
     "Mummy Lord Greatsword":
       type: "mainhand"
-      str: 400
-      agi: 400
-      dex: 400
-      hp: 2000
+      str: 200
+      agi: 200
+      dex: 200
+      hp: 700
       prone: 1
       offense: 3
     "Lizard King Staff":
@@ -71,7 +71,7 @@ class BossInformation
       availableScore: 500
       stats:
         'class': 'Monster'
-        hp: 6000
+        hp: 15000
         level: 15
       items: [
         { name: "Goblin Lord Shortsword", dropPercent: 35 }
@@ -82,7 +82,7 @@ class BossInformation
       availableScore: 1500
       stats:
         'class': 'Fighter'
-        hp: 9000
+        hp: 25000
         level: 25
       items: [
         { name: "Mummy Lord Greatsword", dropPercent: 35 }
@@ -93,7 +93,7 @@ class BossInformation
       availableScore: 2500
       stats:
         'class': 'Mage'
-        hp: 13000
+        hp: 30000
         level: 35
       items: [
         { name: "Lizard King Staff", dropPercent: 35 }

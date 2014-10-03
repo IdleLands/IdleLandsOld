@@ -105,17 +105,17 @@ class GMCommands
     "goblinlord":
       map: "Norkos Dungeon -1"
       formalName: "the Goblin Lord"
-      x: 30
-      y: 12
+      x: 41
+      y: 14
     "mummylord":
       map: "Norkos Dungeon -3"
       formalName: "the Mummy Lord"
-      x: 24
-      y: 16
+      x: 40
+      y: 13
     "lizardking":
       map: "Norkos Dungeon -5"
       formalName: "the Lizard King"
-      x: 34
-      y: 35
+      x: 4
+      y: 4
 
 module.exports = exports = GMCommands

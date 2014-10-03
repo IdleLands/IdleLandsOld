@@ -42,7 +42,7 @@ module.exports = (Module) ->
       "event.item.Normal":          c.gray
       "event.item.basic":           c.gray
       "event.item.pro":             c.purple
-      "event.item.idle":            c.rainbow
+      "event.item.idle":            c.purple.bgolive
       "event.item.godly":           c.white.bgblack
       "event.finditem.scoreboost":  c.bold
       "event.finditem.perceived":   c.bold
@@ -67,7 +67,7 @@ module.exports = (Module) ->
       "event.casterName":           c.bold
       "event.spellName":            c.underline
       "event.targetName":           c.bold
-      "event.achievement":          c.underlines
+      "event.achievement":          c.underline
 
     loadIdle: (stopIfLoaded) ->
       @buildUserList()
