@@ -1,5 +1,6 @@
 BotManager = require("../../../../core/BotManager").BotManager
 _ = require "underscore"
+_.str = require "underscore.string"
 Q = require "q"
 
 finder = require "fs-finder"
@@ -393,8 +394,15 @@ module.exports = (Module) ->
         @IdleWrapper.api.add.allData()
 
       @addRoute "idle-broadcast :message", "idle.game.owner", (origin, route) =>
-        @broadcast route.params.message
+        @broadcast "THIS IS A BROADCAST TO ALL IDLELANDS PLAYERS: #{route.params.message}"
 
+      @addRoute "idle-repo", (origin) =>
+        @reply origin, "https://github.com/seiyria/IdleLands"
+
+      @addRoute "idle-wiki :page?", (origin, route) ->
+        page = route.params.page or ''
+        @reply origin, "https://github.com/seiyria/IdleLands/wiki/#{_.str.slugify page}"
+        
       @initialize()
 
       #@on "notice", (bot, sender, channel, message) =>
