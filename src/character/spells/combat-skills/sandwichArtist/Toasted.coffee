@@ -1,8 +1,6 @@
 
 Spell = require "../../../base/Spell"
 SandwichBuff = require "./SandwichBuff.coffee"
-Chance = require "Chance"
-chance = new Chance
 
 class Toasted extends Spell
   name: "Toasted"
@@ -17,7 +15,7 @@ class Toasted extends Spell
     super() + @minMax minStat, maxStat
 
   determineTargets: ->
-    @targetSomeEnemies size: chance.integer({min: 1, max: 2})
+    @targetSomeEnemies size: @chance.integer({min: 1, max: 2})
 
   cast: (player) ->
     buff = @game.spellManager.modifySpell new SandwichBuff @game, @caster
@@ -27,9 +25,9 @@ class Toasted extends Spell
     message = "%casterName made %targetName a %spellName."
     @broadcast player, message
     if player.calculateYesPercent?
-      yesno = chance.bool {likelihood: player.calculateYesPercent()}
+      yesno = @chance.bool {likelihood: player.calculateYesPercent()}
     else
-      yesno = chance.bool {likelihood: 50}
+      yesno = @chance.bool {likelihood: 50}
     if yesno
       message = "%targetName wanted the %spellName toasted. %targetName is burned for %damage!"
       @doDamageTo player, damage, message

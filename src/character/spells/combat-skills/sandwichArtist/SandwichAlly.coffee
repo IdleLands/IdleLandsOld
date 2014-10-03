@@ -2,8 +2,6 @@
 Spell = require "../../../base/Spell"
 SandwichBuff = require "./SandwichBuff.coffee"
 Cookie = require "./Cookie.coffee"
-Chance = require "chance"
-chance = new Chance()
 
 class SandwichAlly extends Spell
   name: "Sandwich Ally"
@@ -19,7 +17,7 @@ class SandwichAlly extends Spell
     super() + @minMax minStat, maxStat
 
   determineTargets: ->
-    @targetSomeAllies size: chance.integer({min: 1, max: 2})
+    @targetSomeAllies size: @chance.integer({min: 1, max: 2})
 
   cast: (player) ->
     buff = @game.spellManager.modifySpell new SandwichBuff @game, @caster
@@ -29,9 +27,9 @@ class SandwichAlly extends Spell
     message = "%casterName made %targetName a %spellName and healed %damage HP!"
     @doDamageTo player, -damage, message
     if player isnt @caster
-      if chance.integer({min: 1, max: 10}) < 10
+      if @chance.integer({min: 1, max: 10}) < 10
         # Rate the sandwich; moderate chance of rating a 5, >50% chance of not doing so
-        rating = chance.integer({min: 1, max: 7})
+        rating = @chance.integer({min: 1, max: 7})
         if rating < 5
           message = "%targetName rated the %spellName a #{rating}. %casterName confiscates his cookie!"
           @broadcast player, message

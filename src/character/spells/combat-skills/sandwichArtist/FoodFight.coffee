@@ -1,9 +1,6 @@
 
 Spell = require "../../../base/Spell"
-Prone = require "../effects/Prone.coffee"
 _ = require "underscore"
-Chance = require "Chance"
-chance = new Chance
 
 class FoodFight extends Spell
   name: "Food Fight"
@@ -19,7 +16,7 @@ class FoodFight extends Spell
     maxStat = (@caster.calc.stat 'dex')/4
     super() + @minMax minStat, maxStat
 
-  determineTargets: -> @targetSome size: chance.integer({min: 2, max: 10})
+  determineTargets: -> @targetSome size: @chance.integer({min: 2, max: 10})
 
   cast: (player) ->
     message = "%targetName is caught in %casterName's %spellName!"
@@ -29,11 +26,11 @@ class FoodFight extends Spell
     ingredientList = @game.componentDatabase.ingredientStats
     ingredient = _.sample ingredientList['veg']
     @name = ingredient.name
-    if chance.bool({likelihood: 40})
+    if @chance.bool({likelihood: 40})
       damage = @calcDamage()
       message = "%targetName is hit by %spellName for %damage damage!"
       @doDamageTo player, damage, message
-    else if chance.bool({likelihood: 40})
+    else if @chance.bool({likelihood: 40})
       damage = @calcDamage()/2
       message = "%targetName narrowly avoided %spellName."
       @broadcast player, message

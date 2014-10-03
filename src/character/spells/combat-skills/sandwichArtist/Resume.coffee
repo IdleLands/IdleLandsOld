@@ -1,7 +1,5 @@
 
 Spell = require "../../../base/Spell"
-Chance = require "Chance"
-chance = new Chance
 
 class Resume extends Spell
   name: "Resume"

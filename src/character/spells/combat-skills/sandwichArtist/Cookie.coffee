@@ -5,8 +5,6 @@ class Cookie extends Spell
   name: "Cookie"
   @element = Cookie::element = Spell::Element.physical
   @cost = Cookie::cost = 100
-  @restrictions =
-    "SandwichArtist": 1000
 
   calcDuration: (player) -> super()+3
   
