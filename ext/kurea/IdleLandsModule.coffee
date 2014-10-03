@@ -385,8 +385,8 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          @IdleWrapper.api[action].string identifier, sType, string
-          @reply origin, "Successfully updated your string settings."
+          newString = @IdleWrapper.api[action].string identifier, sType, string
+          @reply origin, "Successfully updated your string settings. String #{sType} is now: #{if newString then newString else 'empty!'}"
 
       @addRoute "idle-add all-data", "idle.game.owner", (origin, route) =>
         @reply origin, "Re-initializing all modifier/event/etc data from disk."
