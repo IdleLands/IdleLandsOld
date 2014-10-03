@@ -73,6 +73,7 @@ class BossInformation
         'class': 'Monster'
         hp: 15000
         level: 15
+        dex: 2000
       items: [
         { name: "Goblin Lord Shortsword", dropPercent: 35 }
       ]
@@ -84,6 +85,7 @@ class BossInformation
         'class': 'Fighter'
         hp: 25000
         level: 25
+        dex: 3000
       items: [
         { name: "Mummy Lord Greatsword", dropPercent: 35 }
       ]
@@ -95,6 +97,8 @@ class BossInformation
         'class': 'Mage'
         hp: 30000
         level: 35
+        dex: 4000
+        mp: 10000
       items: [
         { name: "Lizard King Staff", dropPercent: 35 }
       ]
