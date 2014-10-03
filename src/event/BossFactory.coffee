@@ -6,8 +6,7 @@ chance = new (require "chance")()
 class BossFactory
   constructor: (@game) ->
 
-  createBoss: (name) ->
-    # TODO: timer (should be customizable per boss too)
+  createBoss: (name, forPlayer) ->
     currentTimer = BossInformation.timers[name]
     respawnTimer = BossInformation.bosses[name].respawn or 3600
 
@@ -36,6 +35,9 @@ class BossFactory
           @game.eventHandler.doItemEquip member, (new Equipment baseItem), message
 
       BossInformation.timers[name] = new Date()
+
+    monster.on "combat.party.win", (losingParty) =>
+      baseObj.playerLose? forPlayer, losingParty
 
     monster
 

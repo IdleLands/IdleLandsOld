@@ -53,7 +53,7 @@ class EventHandler
 
   bossBattle: (player, bossName) ->
     doBossBattle = =>
-      boss = @game.bossFactory.createBoss bossName
+      boss = @game.bossFactory.createBoss bossName, player
       return if not boss
 
       message = ">>> BOSS BATTLE: %player prepares for an epic battle!"
