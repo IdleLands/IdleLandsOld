@@ -226,9 +226,11 @@ class EventHandler
       item: "<event.item.#{item.itemClass}>#{item.getName()}</event.item.#{item.itemClass}>"
 
     realScoreDiff = realScore-myRealScore
+    perceivedScoreDiff = score-myScore
     normalizedRealScore = if realScoreDiff > 0 then "+#{realScoreDiff}" else realScoreDiff
+    normalizedPerceivedScore = if perceivedScoreDiff > 0 then "+#{perceivedScoreDiff}" else perceivedScoreDiff
 
-    totalString = "#{messageString} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (+#{score-myScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
+    totalString = "#{messageString} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (#{normalizedPerceivedScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
     player.emit "event.findItem", player, item
 
     @broadcastEvent totalString, player, extra
