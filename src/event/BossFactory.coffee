@@ -50,12 +50,15 @@ class BossInformation
       agi: 200
       dex: 200
       hp: 1000
-    "Mummy King Greatsword":
+      silver: 1
+    "Mummy Lord Greatsword":
       type: "mainhand"
       str: 400
       agi: 400
       dex: 400
       hp: 2000
+      prone: 1
+      offense: 3
     "Lizard King Staff":
       int: 500
       wis: 500
@@ -82,7 +85,7 @@ class BossInformation
         hp: 9000
         level: 25
       items: [
-        { name: "Mummy King Greatsword", dropPercent: 35 }
+        { name: "Mummy Lord Greatsword", dropPercent: 35 }
       ]
 
     "Lizard King":
