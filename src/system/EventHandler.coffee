@@ -7,8 +7,7 @@ _.str = require "underscore.string"
 Datastore = require "./DatabaseWrapper"
 MessageCreator = require "./MessageCreator"
 Constants = require "./Constants"
-
-BossFactory = require "../event/BossFactory"
+Battle = require "../event/Battle"
 
 Party = require "../event/Party"
 
@@ -17,7 +16,7 @@ class EventHandler
   constructor: (@game) ->
     @playerEventsDb = new Datastore "playerEvents", (db) -> db.ensureIndex {createdAt: 1}, {expiresAfterSeconds: 7200}, ->
 
-  doEventForPlayer: (playerName, callback, eventType = Constants.pickRandomNormalEventType()) ->
+  doEventForPlayer: (playerName, eventType = Constants.pickRandomNormalEventType(), callback) ->
     player = @game.playerManager.getPlayerByName playerName
     if not player
       console.error "Attempting to do event #{eventType} for #{playerName}, but player was not there."
@@ -53,12 +52,15 @@ class EventHandler
       player.recalculateStats()
 
   bossBattle: (player, bossName) ->
-    message = ">>> BOSS BATTLE: %player prepares for an epic battle!"
-    message = MessageCreator.doStringReplace message, player
-    @game.broadcast MessageCreator.genericMessage message
     @doEventForPlayer player.name, 'party', =>
-      console.log BossFactory.createBoss bossName
-      
+      message = ">>> BOSS BATTLE: %player prepares for an epic battle!"
+      message = MessageCreator.doStringReplace message, player
+      @game.broadcast MessageCreator.genericMessage message
+
+      boss = @game.bossFactory.createBoss bossName
+      bossParty = new Party @game, boss
+
+      new Battle @game, [player.party, bossParty]
 
   broadcastEvent: (message, player, extra) ->
     message = MessageCreator.doStringReplace message, player, extra

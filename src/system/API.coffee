@@ -46,7 +46,7 @@ class API
       @gameInstance.playerManager.unbanPlayer name, callback
 
     doEvent: (player, eventType, callback) =>
-      @gameInstance.eventHandler.doEventForPlayer player, callback, eventType
+      @gameInstance.eventHandler.doEventForPlayer player, eventType, callback
 
     doGlobalEvent: (eventType, callback) =>
       @gameInstance.globalEventHandler.doEvent eventType, callback

@@ -15,6 +15,6 @@ class SkyGlowsScornfully extends Cataclysm
     _.each affected, (player) =>
       @affect player
       callback = ->
-      @game.eventHandler.doEventForPlayer player.name, callback, 'forsakeXp'
+      @game.eventHandler.doEventForPlayer player.name, 'forsakeXp', callback
 
 module.exports = exports = SkyGlowsScornfully

@@ -15,8 +15,8 @@ class BlackRays extends Cataclysm
     _.each affected, (player) =>
       @affect player
       callback = ->
-      @game.eventHandler.doEventForPlayer player.name, callback, 'forsakeXp'
-      @game.eventHandler.doEventForPlayer player.name, callback, 'forsakeGold'
-      @game.eventHandler.doEventForPlayer player.name, callback, 'forsakeItem'
+      @game.eventHandler.doEventForPlayer player.name, 'forsakeXp', callback
+      @game.eventHandler.doEventForPlayer player.name, 'forsakeGold', callback
+      @game.eventHandler.doEventForPlayer player.name, 'forsakeItem', callback
 
 module.exports = exports = BlackRays

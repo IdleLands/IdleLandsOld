@@ -15,6 +15,6 @@ class SkyShinesBright extends Cataclysm
     _.each affected, (player) =>
       @affect player
       callback = ->
-      @game.eventHandler.doEventForPlayer player.name, callback, 'blessXp'
+      @game.eventHandler.doEventForPlayer player.name, 'blessXp', callback
 
 module.exports = exports = SkyShinesBright

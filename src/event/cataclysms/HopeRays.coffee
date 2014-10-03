@@ -15,8 +15,8 @@ class HopeRays extends Cataclysm
     _.each affected, (player) =>
       @affect player
       callback = ->
-      @game.eventHandler.doEventForPlayer player.name, callback, 'blessXp'
-      @game.eventHandler.doEventForPlayer player.name, callback, 'blessGold'
-      @game.eventHandler.doEventForPlayer player.name, callback, 'blessItem'
+      @game.eventHandler.doEventForPlayer player.name, 'blessXp', callback
+      @game.eventHandler.doEventForPlayer player.name, 'blessGold', callback
+      @game.eventHandler.doEventForPlayer player.name, 'blessItem', callback
 
 module.exports = exports = HopeRays
