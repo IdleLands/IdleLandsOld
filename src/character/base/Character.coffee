@@ -134,14 +134,14 @@ class Character extends EventEmitter2
       stats: (stats) ->
         _.reduce stats, ((prev, stat) => prev+@stat stat), 0
 
-      crit:     -> @self.calc.stat 'crit'
+      crit:     -> Math.max 0, @self.calc.stat 'crit'
       dance:    -> 0 < @self.calc.stat 'dance'
-      defense:  -> @self.calc.stat 'defense'
+      defense:  -> Math.max 0, @self.calc.stat 'defense'
       prone:    -> 0 < @self.calc.stat 'prone'
       power:    -> 0 < @self.calc.stat 'power'
-      offense:  -> @self.calc.stat 'offense'
-      glowing:  -> @self.calc.stat 'glowing'
-      deadeye:  -> @self.calc.stat 'deadeye'
+      offense:  -> Math.max 0, @self.calc.stat 'offense'
+      glowing:  -> Math.max 0, @self.calc.stat 'glowing'
+      deadeye:  -> Math.max 0, @self.calc.stat 'deadeye'
       silver:   -> 0 < @self.calc.stat 'silver'
       vorpal:   -> 0 < @self.calc.stat 'vorpal'
 
