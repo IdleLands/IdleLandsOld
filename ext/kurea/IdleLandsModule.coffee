@@ -387,7 +387,7 @@ module.exports = (Module) ->
           identifier = @generateIdent origin.bot.config.server, username
 
           newString = @IdleWrapper.api[action].string identifier, sType, string
-          @reply origin, "Successfully updated your string settings. String #{sType} is now: #{if newString then newString else 'empty!'}"
+          @reply origin, "Successfully updated your string settings. String \"#{sType}\" is now: #{if newString then newString else 'empty!'}"
 
       @addRoute "idle-add all-data", "idle.game.owner", (origin, route) =>
         @reply origin, "Re-initializing all modifier/event/etc data from disk."
@@ -399,10 +399,10 @@ module.exports = (Module) ->
       @addRoute "idle-repo", (origin) =>
         @reply origin, "https://github.com/seiyria/IdleLands"
 
-      @addRoute "idle-wiki :page?", (origin, route) ->
+      @addRoute "idle-wiki :page?", (origin, route) =>
         page = route.params.page or ''
         @reply origin, "https://github.com/seiyria/IdleLands/wiki/#{_.str.slugify page}"
-        
+
       @initialize()
 
       #@on "notice", (bot, sender, channel, message) =>
