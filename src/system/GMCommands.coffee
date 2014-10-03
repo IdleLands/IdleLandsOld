@@ -80,6 +80,11 @@ class GMCommands
       formalName: "the Rogue Trainer"
       x: 34
       y: 1
+    "sandwichartist":
+      map: "Norkos"
+      formalName: "the Sandwich Artist Trainer"
+      x: 54
+      y: 122
 
     "fisheries":
       map: "Norkos"
