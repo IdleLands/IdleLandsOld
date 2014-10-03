@@ -673,6 +673,20 @@
                  "width":0,
                  "x":528,
                  "y":1136
+                }, 
+                {
+                 "gid":12,
+                 "height":0,
+                 "name":"SandwichArtist",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Trainer",
+                 "visible":true,
+                 "width":0,
+                 "x":864,
+                 "y":1968
                 }],
          "opacity":1,
          "type":"objectgroup",
