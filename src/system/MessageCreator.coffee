@@ -56,7 +56,7 @@ class MessageCreator
 
     for search, replaceFunc of map
       regexp = new RegExp "(<#{search}>)([\\s\\S]*?)(<\\/#{search}>)", "g"
-      message = message.replace regexp, (replaceFunc "$2")
+      message = message.replace regexp, (str) -> replaceFunc str
 
     message
 
