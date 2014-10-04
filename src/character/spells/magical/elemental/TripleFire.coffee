@@ -19,7 +19,7 @@ class TripleFire extends Spell
   cast: (player) ->
     damage = @calcDamage()
     if player.hp.atMin()
-      message = "%casterName has no more valid targets for %spellName!"
+      message = "%targetName is no longer a valid target for %spellName!"
       @broadcast player, message
       return
 
