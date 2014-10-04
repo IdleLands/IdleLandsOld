@@ -12,8 +12,8 @@ class OpeningStrike extends Spell
   @canChoose = (caster) -> caster.profession.lastComboSkillTurn <= 0
 
   calcDamage: ->
-    minStat = (@caster.calc.stats ['str', 'dex']) * 0.5
-    maxStat = (@caster.calc.stats ['str', 'dex']) * 0.75
+    minStat = (@caster.calc.stats ['str', 'dex'] / 2) * 0.5
+    maxStat = (@caster.calc.stats ['str', 'dex'] / 2) * 0.75
     super() + @minMax minStat, maxStat
 
   cast: (player) ->

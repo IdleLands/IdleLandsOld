@@ -12,8 +12,8 @@ class WomboCombo extends Spell
   @canChoose = (caster) -> caster.profession.lastComboSkill in ['chain stab', 'heartbleed']
 
   calcDamage: ->
-    minStat = (@caster.calc.stats ['str', 'dex']) * 0.45
-    maxStat = (@caster.calc.stats ['str', 'dex']) * 0.5
+    minStat = (@caster.calc.stats ['str', 'dex'] / 2) * 0.45
+    maxStat = (@caster.calc.stats ['str', 'dex'] / 2) * 0.5
     super() + @minMax minStat, maxStat
 
   cast: (player) ->

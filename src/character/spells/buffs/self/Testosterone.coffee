@@ -7,7 +7,7 @@ class Testosterone extends Spell
   @restrictions =
     "Fighter": 4
 
-  calcDuration: -> super()+2
+  calcDuration: -> super()+4
 
   determineTargets: ->
     @caster

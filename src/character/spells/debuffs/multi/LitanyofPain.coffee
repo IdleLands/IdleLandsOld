@@ -12,15 +12,15 @@ class LitanyOfPain extends Spell
   
   calcDamage: ->
     minInt = (@caster.calc.stat 'int')/5
-    maxInt = (@caster.calc.stat 'int')/3
+    maxInt = (@caster.calc.stat 'int')/2
     super() + @minMax minInt, maxInt
 
   determineTargets: ->
     @targetAllEnemies()
 
-  cast: (player) ->
-    message = "%casterName begins playing \"%spellName\" at %targetName!"
-    @broadcast player, message
+  init: ->
+    message = "%casterName begins playing \"%spellName!\""
+    @broadcast @caster, message
 
   tick: (player) ->
     damage = @calcDamage()
@@ -28,15 +28,14 @@ class LitanyOfPain extends Spell
     @doDamageTo player, damage, message
 
   uncast: (player) ->
-    return if @caster isnt player
     message = "%targetName is no longer under the effects of \"%spellName.\""
-    @broadcast player message
+    @broadcast player, message
 
   constructor: (@game, @caster) ->
     super @game, @caster
     @bindings =
-      doSpellCast: @cast
+      doSpellInit: @init
       doSpellUncast: @uncast
-      "combat.self.turn.start": @tick
+      "combat.round.start": @tick
 
 module.exports = exports = LitanyOfPain

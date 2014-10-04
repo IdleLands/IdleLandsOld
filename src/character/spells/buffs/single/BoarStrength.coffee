@@ -8,12 +8,12 @@ class BoarStrength extends Spell
   @restrictions =
     "Cleric": 4
 
-  calcDuration: -> super()+3
+  calcDuration: -> super()+4
 
   determineTargets: ->
     @targetSomeAllies()
 
-  strPercent: -> 25
+  strPercent: -> 15
 
   cast: (player) ->
     message = "%casterName infused %targetName with %spellName!"

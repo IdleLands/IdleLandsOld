@@ -12,8 +12,8 @@ class BackStab extends Spell
   @canChoose = (caster) -> caster.profession.lastComboSkill in ['opening strike']
 
   calcDamage: ->
-    minStat = (@caster.calc.stats ['str', 'dex'])
-    maxStat = (@caster.calc.stats ['str', 'dex']) * 1.25
+    minStat = (@caster.calc.stats ['str', 'dex'] / 2) * 0.8
+    maxStat = (@caster.calc.stats ['str', 'dex'] / 2) * 1.1
     super() + @minMax minStat, maxStat
 
   cast: (player) ->

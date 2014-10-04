@@ -12,8 +12,8 @@ class Heartbleed extends Spell
   @canChoose = (caster) -> caster.profession.lastComboSkill in ['chain stab']
 
   calcDamage: ->
-    minStat = (@caster.calc.stats ['str', 'dex']) * 0.3
-    maxStat = (@caster.calc.stats ['str', 'dex']) * 0.7
+    minStat = (@caster.calc.stats ['str', 'dex'] / 2) * 0.2
+    maxStat = (@caster.calc.stats ['str', 'dex'] / 2) * 0.5
     super() + @minMax minStat, maxStat
 
   calcDuration: -> super() + 2

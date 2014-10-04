@@ -13,18 +13,19 @@ class OurHeartsIgnite extends Spell
   determineTargets: ->
     @targetAllAllies()
 
-  str: -> (@caster.calc.stat 'int')/4
+  str: -> @storedInt
   
-  con: -> (@caster.calc.stat 'wis')/4
+  con: -> @storedWis
 
-  cast: (player) ->
-    return if @caster isnt player
+  init: ->
+    @storedInt = (@caster.calc.stat 'int')/4
+    @storedWis = (@caster.calc.stat 'wis')/4
     message = "%casterName begins playing \"%spellName!\""
-    @broadcast player, message
+    @broadcast @caster, message
 
   tick: (player) ->
     return if @caster isnt player
-    message = "%casterName continues to ignite the hearts of %hisher teammates!"
+    message = "%casterName continues to ignite the hearts of %hisher teammates with \"%spellName!\""
     @broadcastBuffMessage player, message
 
   uncast: (player) ->
@@ -35,8 +36,8 @@ class OurHeartsIgnite extends Spell
   constructor: (@game, @caster) ->
     super @game, @caster
     @bindings =
-      doSpellCast: @cast
+      doSpellInit: @init
       doSpellUncast: @uncast
-      "combat.self.turn.end": @tick
+      "combat.round.end": @tick
 
 module.exports = exports = OurHeartsIgnite

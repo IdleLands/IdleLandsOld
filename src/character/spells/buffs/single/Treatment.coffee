@@ -4,7 +4,7 @@ Spell = require "../../../base/Spell"
 class Treatment extends Spell
   name: "treatment"
   @element = Treatment::element = Spell::Element.heal & Spell::Element.buff
-  @cost = Treatment::cost = 400
+  @cost = Treatment::cost = 450
   @restrictions =
     "Generalist": 7
 
@@ -14,7 +14,7 @@ class Treatment extends Spell
     @targetSomeAllies()
 
   calcDamage: (player) ->
-    Math.floor (player.hp.maximum * 0.1)
+    Math.floor (player.hp.maximum * 0.15)
 
   cast: (player) ->
     message = "%casterName began treating %targetName's wounds with %spellName!"

@@ -8,13 +8,13 @@ class Fortify extends Spell
   @restrictions =
     "Generalist": 15
 
-  calcDuration: -> super()+3
+  calcDuration: -> super()+7
 
   determineTargets: ->
     @caster
 
   calcDamage: ->
-    Math.floor @caster.hp.getValue() * 0.1
+    Math.floor @caster.hp.getValue() * 0.2
 
   cast: (player) ->
     message = "%casterName cast %spellName!"

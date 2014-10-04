@@ -13,18 +13,19 @@ class NoEscape extends Spell
   determineTargets: ->
     @targetAllAllies()
 
-  dex: -> (@caster.calc.stat 'int')/4
+  dex: -> @storedInt
   
-  agi: -> (@caster.calc.stat 'wis')/4
+  agi: -> @storedWis
 
-  cast: (player) ->
-    return if @caster isnt player
+  init: ->
+    @storedInt = (@caster.calc.stat 'int')/4
+    @storedWis = (@caster.calc.stat 'wis')/4
     message = "%casterName begins playing \"%spellName!\""
-    @broadcast player, message
+    @broadcast @caster, message
 
   tick: (player) ->
     return if @caster isnt player
-    message = "%casterName cheers on %hisher teammates to not lose sight of their foes!"
+    message = "%casterName cheers on %hisher teammates to not lose sight of their foes with \"%spellName!\""
     @broadcastBuffMessage player, message
 
   uncast: (player) ->
@@ -35,8 +36,8 @@ class NoEscape extends Spell
   constructor: (@game, @caster) ->
     super @game, @caster
     @bindings =
-      doSpellCast: @cast
+      doSpellInit: @init
       doSpellUncast: @uncast
-      "combat.self.turn.end": @tick
+      "combat.round.end": @tick
 
 module.exports = exports = NoEscape

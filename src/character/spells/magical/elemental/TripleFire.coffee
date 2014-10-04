@@ -12,8 +12,8 @@ class TripleFire extends Spell
     @targetSomeEnemies size: 3, guaranteeSize: yes
 
   calcDamage: ->
-    minStat = (@caster.calc.stat 'int')*0.3
-    maxStat = (@caster.calc.stat 'int')*0.5
+    minStat = (@caster.calc.stat 'int')*0.2
+    maxStat = (@caster.calc.stat 'int')*0.4
     super() + @minMax minStat, maxStat
 
   cast: (player) ->

@@ -17,16 +17,15 @@ class LightsFromTheStars extends Spell
   
   wis: -> @storedWis
 
-  cast: (player) ->
+  init: ->
     @storedInt = (@caster.calc.stat 'int')/4
     @storedWis = (@caster.calc.stat 'wis')/4
-    return if @caster isnt player
     message = "%casterName begins playing \"%spellName!\""
-    @broadcast player, message
+    @broadcast @caster, message
 
   tick: (player) ->
     return if @caster isnt player
-    message = "%casterName still calls power from the celestial bodies for %hisher teammates!"
+    message = "%casterName still calls power from the celestial bodies for %hisher teammates with \"%spellName!\""
     @broadcastBuffMessage player, message
 
   uncast: (player) ->
@@ -37,8 +36,8 @@ class LightsFromTheStars extends Spell
   constructor: (@game, @caster) ->
     super @game, @caster
     @bindings =
-      doSpellCast: @cast
+      doSpellInit: @init
       doSpellUncast: @uncast
-      "combat.self.turn.end": @tick
+      "combat.round.end": @tick
 
 module.exports = exports = LightsFromTheStars

@@ -13,8 +13,8 @@ class SavageStab extends Spell
   @canChoose = (caster) -> caster.profession.lastComboSkill in ['heartbleed', 'wombo combo']
 
   calcDamage: ->
-    minStat = (@caster.calc.stats ['str', 'dex']) * 0.05
-    maxStat = (@caster.calc.stats ['str', 'dex']) * 0.15
+    minStat = (@caster.calc.stats ['str', 'dex'] / 2) * 0.05
+    maxStat = (@caster.calc.stats ['str', 'dex'] / 2) * 0.15
     super() + @minMax minStat, maxStat
 
   cast: (player) ->
