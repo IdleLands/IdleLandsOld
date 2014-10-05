@@ -10,16 +10,25 @@ class Battle
   constructor: (@game, @parties) ->
     return if @parties.length < 2
     @startBattle()
+
+    return if @isBad
+    
     @endBattle()
 
   startBattle: ->
     @setupParties()
+
+    return if @isBad
+
     @initializePlayers()
     @beginTakingTurns()
 
   setupParties: ->
     _.each @parties, (party) =>
-      console.log @parties if party is null
+      if not party
+        console.error "INVALID PARTY ??? ABORTING"
+        @isBad = yes
+        return
       party.currentBattle = @
 
   initializePlayers: ->
