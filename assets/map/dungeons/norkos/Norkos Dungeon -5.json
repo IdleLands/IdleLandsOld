@@ -378,6 +378,20 @@
                  "width":0,
                  "x":848,
                  "y":272
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Lizard King",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Boss",
+                 "visible":true,
+                 "width":0,
+                 "x":64,
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",

@@ -28,6 +28,7 @@ class Player extends Character
       @levelUp yes
       @generateBaseEquipment()
       @lastLogin = new Date()
+      @gender = "male"
 
       @calc.itemFindRange()
 
@@ -110,9 +111,13 @@ class Player extends Character
     switch tile.object?.type
       when "Trainer" then @handleTrainerOnTile tile
       when "Teleport" then @handleTeleport tile
+      when "Boss" then @handleBossBattle tile.object.name
 
     if tile.object?.forceEvent
       @playerManager.game.eventHandler.doEventForPlayer @name, tile.object.forceEvent
+
+  handleBossBattle: (bossName) ->
+    @playerManager.game.eventHandler.bossBattle @, bossName
 
   pickRandomTile: ->
     @ignoreDir = [] if not @ignoreDir
@@ -181,7 +186,10 @@ class Player extends Character
     Math.min 100, (Math.max 0, Constants.defaults.player.defaultYesPercent + @personalityReduce 'calculateYesPercentBonus')
 
   getGender: ->
-    "male"
+    if @gender then @gender else "male"
+
+  setGender: (newGender) ->
+    @gender = newGender.substring 0,9
 
   score: ->
     @calc.partyScore()

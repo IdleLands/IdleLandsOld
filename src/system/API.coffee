@@ -24,16 +24,20 @@ class API
       singleLocation: (playerName, location) =>
         player = @gameInstance.playerManager.getPlayerByName playerName
         @gameInstance.gmCommands.teleportLocation player, location
+        null
 
       single: (playerName, map, x, y) =>
         player = @gameInstance.playerManager.getPlayerByName playerName
         @gameInstance.gmCommands.teleport player, map, x, y
+        null
 
       massLocation: (location) =>
         @gameInstance.gmCommands.massTeleportLocation location
+        null
 
       mass: (map, x, y) =>
         @gameInstance.gmCommands.massTeleport map, x, y
+        null
 
     banPlayer: (name, callback) =>
       @gameInstance.playerManager.banPlayer name, callback
@@ -42,7 +46,7 @@ class API
       @gameInstance.playerManager.unbanPlayer name, callback
 
     doEvent: (player, eventType, callback) =>
-      @gameInstance.eventHandler.doEventForPlayer player, callback, eventType
+      @gameInstance.eventHandler.doEventForPlayer player, eventType, callback
 
     doGlobalEvent: (eventType, callback) =>
       @gameInstance.globalEventHandler.doEvent eventType, callback
@@ -79,5 +83,9 @@ class API
       @gameInstance.playerManager.playerHash[identifier]?.removePersonality personality
     string: (identifier, stringType) =>
       @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType
+
+  @set =
+    gender: (identifier, newGender) =>
+      @gameInstance.playerManager.getPlayerById(identifier)?.setGender newGender
 
 module.exports = exports = API

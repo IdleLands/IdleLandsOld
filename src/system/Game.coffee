@@ -8,6 +8,7 @@ ComponentDatabase = require "./ComponentDatabase"
 EquipmentGenerator = require "./EquipmentGenerator"
 SandwichGenerator = require "./SandwichGenerator"
 GlobalEventHandler = require "./GlobalEventHandler"
+BossFactory = require "../event/BossFactory"
 SpellManager = require "./SpellManager"
 Constants = require "./Constants"
 GMCommands = require "./GMCommands"
@@ -28,12 +29,13 @@ class Game
     @spellManager = new SpellManager @
     @eventHandler = new EventHandler @
     @playerManager = new PlayerManager @
-    @monsterGenerator = new MonsterGenerator @
     @componentDatabase = new ComponentDatabase @
     @globalEventHandler = new GlobalEventHandler @
     @equipmentGenerator = new EquipmentGenerator @
+    @monsterGenerator = new MonsterGenerator @
     @achievementManager = new AchievementManager @
     @sandwichGenerator = new SandwichGenerator @
+    @bossFactory = new BossFactory @
     @world = new World()
 
   registerBroadcastHandler: (@broadcastHandler, @broadcastContext) ->

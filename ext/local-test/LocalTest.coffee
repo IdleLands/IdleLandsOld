@@ -103,9 +103,9 @@ colorMap =
   "damage.hp":                  colors.red
   "damage.mp":                  colors.blue
   "spell.turns":                colors.bold
-  "spell.spellName":            colors.bold
+  "spell.spellName":            colors.bold.underline
   "event.casterName":           colors.bold
-  "event.spellName":            colors.bold
+  "event.spellName":            colors.bold.underline
   "event.targetName":           colors.bold
   "event.achievement":          colors.bold
 

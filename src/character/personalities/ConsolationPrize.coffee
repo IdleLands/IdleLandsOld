@@ -7,7 +7,7 @@ class ConsolationPrize extends Personality
 
   constructor: (player) ->
     @deathListener = (killer, extra) ->
-      if chance.bool({likelihood: 10})
+      if chance.bool({likelihood: 5})
         player = extra.dead
         player.hp.toMaximum()
         #bad, but inheritance for whatever reason isn't working
@@ -18,7 +18,7 @@ class ConsolationPrize extends Personality
   unbind: (player) ->
     player.off 'combat.self.killed', @deathListener
 
-  hpPercent: -> -10
+  hpPercent: -> -20
 
   @canUse = (player) ->
     player.statistics["combat self killed"] >= 50

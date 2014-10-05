@@ -12,7 +12,7 @@ class FrostBite extends Spell
 
   cantActMessages: -> "%player is currently frostbitten"
 
-  calcDuration: -> super()+1
+  calcDuration: -> super()+3
 
   calcDamage: ->
     minStat = (@caster.calc.stat 'int')/6

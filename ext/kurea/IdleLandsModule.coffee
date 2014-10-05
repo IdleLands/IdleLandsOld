@@ -42,7 +42,7 @@ module.exports = (Module) ->
       "event.item.Normal":          c.gray
       "event.item.basic":           c.gray
       "event.item.pro":             c.purple
-      "event.item.idle":            c.rainbow
+      "event.item.idle":            c.bold.rainbow
       "event.item.godly":           c.white.bgblack
       "event.finditem.scoreboost":  c.bold
       "event.finditem.perceived":   c.bold
@@ -67,7 +67,7 @@ module.exports = (Module) ->
       "event.casterName":           c.bold
       "event.spellName":            c.underline
       "event.targetName":           c.bold
-      "event.achievement":          c.underlines
+      "event.achievement":          c.underline
 
     loadIdle: (stopIfLoaded) ->
       @buildUserList()
@@ -396,12 +396,17 @@ module.exports = (Module) ->
       @addRoute "idle-broadcast :message", "idle.game.owner", (origin, route) =>
         @broadcast "THIS IS A BROADCAST TO ALL IDLELANDS PLAYERS: #{route.params.message}"
 
-      @addRoute "idle-repo", (origin) =>
-        @reply origin, "https://github.com/seiyria/IdleLands"
+      @addRoute "idle-gender :newGender", (origin, route) =>
+        gender = route.params.newGender
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to change your string settings!"
+            return
 
-      @addRoute "idle-wiki :page?", (origin, route) =>
-        page = route.params.page or ''
-        @reply origin, "https://github.com/seiyria/IdleLands/wiki/#{_.str.slugify page}"
+          identifier = @generateIdent origin.bot.config.server, username
+
+          newGender = @IdleWrapper.api.set.gender identifier, gender
+          @reply origin, "Your gender is now #{newGender}."
 
       @initialize()
 

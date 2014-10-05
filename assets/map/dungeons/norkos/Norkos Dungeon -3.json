@@ -61,6 +61,20 @@
                  "width":0,
                  "x":448,
                  "y":288
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Mummy Lord",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Boss",
+                 "visible":true,
+                 "width":0,
+                 "x":640,
+                 "y":224
                 }],
          "opacity":1,
          "type":"objectgroup",

@@ -113,16 +113,23 @@ class Spell
   affect: (affected = []) ->
     @affected = if affected and not _.isArray affected then [affected] else affected
     battleInstance = @caster.party.currentBattle
+
+    (@bindings.doSpellInit.apply @, []) if 'doSpellInit' of @bindings
+
+    @baseTurns = {}
+    @turns = {}
+    turns = {}
+
     _.each @affected, (player) =>
-      @baseTurns = @turns = turns = @calcDuration player
+      @baseTurns[player.name] = @turns[player.name] = turns[player.name] = @calcDuration player
       battleInstance.emitEvents "skill.use", "skill.used", @caster, player, skill: @
       battleInstance.emitEvents "skill.#{@determineType()}.use", "skill.#{@determineType()}.used", @caster, player, skill: @
-      if turns is 0
+      if turns[player.name] is 0
         (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
       else
-        oldSpell = _.findWhere player.spellsAffectedBy, name: @name
+        oldSpell = _.findWhere player.spellsAffectedBy, baseName: @baseName
         if oldSpell and @stack is "duration"
-          oldSpell.turns = oldSpell.calcDuration player
+          oldSpell.turns[player.name] = oldSpell.calcDuration player
           battleInstance.emitEvents "skill.duration.refresh", "skill.duration.refreshed", @caster, player, skill: oldSpell, turns: oldSpell.turns
 
         else
@@ -130,21 +137,22 @@ class Spell
           player?.spellsAffectedBy.push @ # got an error here once
           battleInstance.emitEvents "skill.duration.begin", "skill.duration.beginAt", @caster, player, skill: @, turns: @turns
 
-          eventList = _.keys _.omit @bindings, 'doSpellCast', 'doSpellUncast'
-          #this would normalize turns / event, but eh, not necessary atm?
-          #@turns *= eventList.length
+          @eventList = _.keys _.omit @bindings, 'doSpellCast', 'doSpellUncast', 'doSpellInit'
           me = @
-          _.each eventList, (event) ->
+          @eventFunctions = {}
+          _.each @eventList, (event) ->
             newFunc = ->
-              me.bindings[event].apply me, arguments
+              return if not (me in player.spellsAffectedBy)
+              me.bindings[event].apply me, [player]
               me.decrementTurns player
 
-            player.many event, turns+1, newFunc
+            player.many event, turns[player.name], newFunc
 
         (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
 
   decrementTurns: (player) ->
-    if --@turns < 0
+    #console.log "turns",@caster.name, player.name, @name, @turns[player.name]
+    if --@turns[player.name] <= 0
       @unaffect player
 
   unaffect: (player) ->
@@ -162,7 +170,7 @@ class Spell
       casterName: @caster.name
 
     newMessage = MessageCreator.doStringReplace message, @caster, extra
-    @game.broadcast MessageCreator.genericMessage newMessage+" [<spell.turns>#{@turns}</spell.turns> turns]" if (@turns > 0 and @turns isnt @baseTurns) and (not @suppressed)
+    @game.broadcast MessageCreator.genericMessage newMessage+" [<spell.turns>#{@turns[target.name]}</spell.turns> turns]" if (@turns[target.name] > 0 and @turns[target.name] isnt @baseTurns[target.name]) and (not @suppressed)
 
   broadcast: (target, message) ->
     extra =

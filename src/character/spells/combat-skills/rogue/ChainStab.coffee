@@ -12,8 +12,8 @@ class ChainStab extends Spell
   @canChoose = (caster) -> caster.profession.lastComboSkill in ['opening strike', 'chain stab', 'backstab']
 
   calcDamage: ->
-    minStat = (@caster.calc.stats ['str', 'dex']) * 0.4
-    maxStat = (@caster.calc.stats ['str', 'dex']) * 0.6
+    minStat = (@caster.calc.stats ['str', 'dex'] / 2) * 0.3
+    maxStat = (@caster.calc.stats ['str', 'dex'] / 2) * 0.5
     super() + @minMax minStat, maxStat
 
   cast: (player) ->
