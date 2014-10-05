@@ -20,6 +20,7 @@ class GrogDance extends Spell
   cast: (player) ->
     message = "%casterName begins performing a %spellName!"
     @broadcast player, message
+    @frenzyTarget = @targetSomeEnemies size: 1
 
   tick: (player) ->
 # Duration effects still broken?
