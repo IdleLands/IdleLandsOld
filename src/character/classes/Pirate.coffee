@@ -51,7 +51,6 @@ class Pirate extends Class
     player.special.name = "Bottles"
     player.on "combat.battle.start", @events.battleStart = ->
       player.special.toMaximum()
-      player.profession.drunkPct.toMinimum()
 
   unload: (player) ->
     player.special.maximum = 0
