@@ -294,6 +294,22 @@ class Battle
     _.each @winningParty.players, (player) ->
       player.gainXp xpMap[player]
 
+    # winning player gold distribution
+
+    winMessages = []
+
+    _.each @winningParty.players, (player) ->
+      return if player.isMonster
+
+      goldGain = player.personalityReduce 'combatEndGoldGain', [player, deadVariables]
+      goldGain = player.calcGoldGain goldGain
+
+      player.gainGold goldGain
+
+      winMessages.push "<player.name>#{player.name}</player.name> gained <event.gold>#{goldGain}</event.gold> gold" if goldGain
+
+    @game.broadcast MessageCreator.genericMessage (_.str.toSentence winMessages)+"!" if winMessages.length > 0
+
     # end winning
 
     #losing player xp distribution
@@ -314,6 +330,22 @@ class Battle
 
     _.each deadVariables.deadPlayers, (player) ->
       player.gainXp -xpMap[player]
+
+    #losing player gold distribution
+
+    loseMessages = []
+
+    _.each deadVariables.deadPlayers, (player) ->
+      return if player.isMonster
+
+      goldLoss = player.personalityReduce 'combatEndGoldLoss', [player, deadVariables]
+      goldLoss = player.calcGoldGain goldLoss
+
+      player.gainGold -goldLoss
+
+      loseMessages.push "<player.name>#{player.name}</player.name> lost <event.gold>#{goldLoss}</event.gold> gold" if goldLoss
+
+    @game.broadcast MessageCreator.genericMessage (_.str.toSentence loseMessages)+"!" if loseMessages.length > 0
 
     # end losing
 

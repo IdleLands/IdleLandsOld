@@ -223,6 +223,14 @@ class Character extends EventEmitter2
         @base.combatEndXpLoss = Math.floor self.xp.maximum / 10
         @self.personalityReduce 'combatEndXpLoss', [@self, @base.combatEndXpLoss], @base.combatEndXpLoss
 
+      combatEndGoldGain: (oppParty) ->
+        @base.combatEndGoldGain = 0
+        @self.personalityReduce 'combatEndGoldGain', [@self, oppParty, @base.combatEndGoldGain], @base.combatEndGoldGain
+
+      combatEndGoldLoss: ->
+        @base.combatEndXpLoss = Math.floor self.xp.maximum / 10
+        @self.personalityReduce 'combatEndGoldLoss', [@self, @base.combatEndGoldLoss], @base.combatEndGoldLoss
+
       itemFindRange: ->
         @base.itemFindRange = (@self.level.getValue()+1) * @self.calc.itemFindRangeMultiplier()
         @self.personalityReduce 'itemFindRange', [@self, @base.itemFindRange], @base.itemFindRange

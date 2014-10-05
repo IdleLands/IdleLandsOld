@@ -49,6 +49,7 @@
 "helpful hedgehog"          zone=forest level=32    class=Cleric wis=900
 "bustling badger"           zone=forest level=36    class=Generalist wis=300 con=300 dex=300 agi=300 int=300 str=300 luck=40
 "jumping jackalope"         zone=forest level=40    class=Rogue agi=500 dex=300 str=300
+"pop-up pirate"             zone=water  level=42    class=Pirate con=700 str=300
 "castrated cat"             zone=town   level=44    dex=-100 str=-100 con=3000
 "gnarly goblin"             zone=cave   level=47    str=300 dex=700 con=400
 "goofy gopher"              zone=town   level=48    wis=300 int=3000 luck=40 agi=200
@@ -98,6 +99,7 @@
 "skag"                      zone=forest level=23 str=100 dex=100 con=100 agi=100 prone=1
 "salamander"                zone=forest level=24 class=Mage int=400
 "lizardman"                 zone=forest level=25 class=Fighter con=400 str=400 dex=200
+"pie rat"                   zone=forest level=28 class=Pirate con=600 str=200
 "slime"                     zone=forest level=31 con=800
 "goo"                       zone=forest level=32 con=850
 "ooze"                      zone=forest level=33 con=900
@@ -125,6 +127,7 @@
 "poltergeist"               zone=town level=41
 "spooky thing"              zone=town level=45 dex=1500 agi=1500
 "vengeful soul"             zone=town level=50 str=3500
+"ghost pirate"              zone=town level=52 con=2500 str=1500
 "vampire"                   zone=town level=55 str=2000 int=1000 dex=1000
 "vampyre"                   zone=town level=55 class=Mage int=1000 fire=5000
 "abomination"               zone=town level=65 class=Barbarian str=2000 con=2000 dex=1000 agi=1000 hp=10000
@@ -138,6 +141,7 @@
 "zealot"                    zone=other level=21
 "transcendentalist"         zone=other level=27
 "trans-dimensional being"   zone=other level=33
+"pirate of the astral sea"  zone=other level=35 class=Pirate
 "demon"                     zone=other level=39
 "devil"                     zone=other level=45
 "mutant"                    zone=other level=51
@@ -182,7 +186,7 @@
 
 # miscellanous beings
 "ninja"             level=37 class=Rogue
-"pirate"            level=37 class=Fighter
+"viking"            level=37 class=Fighter
 "caveman"           level=37 class=Barbarian
 "hero"              level=37 class=Generalist
 "acolyte"           level=37 class=Cleric
@@ -211,6 +215,7 @@
 "druid"                 zone=forest level=9 class=Druid wis=40 str=10 dex=10 int=30
 "sandwich artist"       zone=forest level=10 class=SandwichArtist dex=70 str=30 wis=60
 "archer"                zone=forest level=11 class=Archer
+"pirate"                zone=forest level=12 class=Fighter
 
 # gnomish beings
 "gnome"                 zone=forest level=13
@@ -223,6 +228,7 @@
 "gnome loller"          zone=forest level=13 class=Jester luck=100
 "gnome stealer"         zone=forest level=13 class=Rogue dex=70 agi=70
 "gnome foodmaker"       zone=forest level=13 class=SandwichArtist dex=90 str=50
+"gnome swashbuckler"    zone=water  level=13 class=Pirate con=100 str=50
 "procrastination gnome" zone=forest level=1
 "garden gnome"          zone=town   level=1
 
@@ -238,6 +244,7 @@
 "human jester"          zone=town level=18 class=Jester luck=300
 "human rogue"           zone=town level=18 class=Rogue dex=500 agi=500
 "human sandwich artist" zone=town level=18 class=SandwichArtist dex=480 str=300 wis=250
+"human buccaneer"       zone=town level=18 class=Pirate con=500 str=500
 "human professor"
 
 # kobold beings
@@ -251,6 +258,7 @@
 "kobold jester"         zone=cave level=26 class=Jester luck=400
 "kobold lockpick"       zone=cave level=26 class=Rogue dex=500 str=500 agi=500 con=200
 "kobold foodie"         zone=cave level=26 class=SandwichArtist dex=1000 wis=300 str=500
+"kobold privateer"      zone=water level=26 class=Pirate con=1000 str=750
 
 # orcish beings
 "orc"                   zone=cave level=35
@@ -265,6 +273,7 @@
 "orc healer"            zone=cave level=35 class=Cleric wis=1500
 "orc fool"              zone=cave level=35 class=Jester luck=500
 "orc sandwich guy"      zone=cave level=35 class=SandwichArtist dex=1300 str=400 wis=200
+"orc drunkard"          zone=cave level=35 class=Pirate con=1000 str=500
 
 # skeletal beings
 "skeleton"              zone=cave level=41
@@ -277,6 +286,7 @@
 "skeleton healer"       zone=cave level=41 class=Cleric wis=1900
 "skeleton jester"       zone=cave level=41 class=Jester luck=600
 "skeleton enhungerer"   zone=cave level=41 class=SandwichArtist dex=1500 str=500 wis=-300
+"skeleton pirate"       zone=cave level=41 class=Pirate con=1350 str=550
 
 # half-orc beings
 "half-orc"              zone=cave level=46
@@ -288,6 +298,7 @@
 "half-orc hider"        zone=cave level=46 class=Rogue str=1000 agi=800 dex=400
 "half-orc healer"       zone=cave level=46 class=Cleric wis=1800 con=400
 "half-orc sandwicher"   zone=cave level=46 class=SandwichArtist dex=1500 str=300 wis=500
+"half-orc cave pirate"  zone=cave level=46 class=Pirate con=1500 str=700
 
 # goblish beings
 "goblin"                zone=cave level=51
@@ -299,6 +310,7 @@
 "goblin hider"          zone=cave level=51 class=Rogue str=800 agi=1300 dex=300
 "goblin healer"         zone=cave level=51 class=Cleric wis=2200 agi=500
 "goblin foodmaker"      zone=cave level=51 class=SandwichArtist dex=2000 str=300 wis=200
+"goblin corsair"        zone=cave level=51 class=Pirate con=2000 str=750
 
 # giant beings
 "giant"                 zone=cave level=57
@@ -314,6 +326,7 @@
 "half-kobold giant"     zone=cave level=57 class=Cleric wis=3000
 "half-giant giant"      zone=cave level=57 class=Jester luck=750
 "half-elf giant"        zone=cave level=57 class=SandwichArtist dex=3000
+"half-drunk giant"      zone=cave level=57 class=Pirate con=2000 str=1000
 
 # elvish beings
 "elf"                   zone=town level=63
@@ -325,6 +338,7 @@
 "elf warrior"           zone=town level=63 class=Fighter
 "elf zerker"            zone=town level=63 class=Barbarian
 "elf sandwich creator"  zone=town level=63 class=SandwichArtist
+"elf privateer"         zone=town level=63 class=Pirate
 
 #etc
 
@@ -356,6 +370,7 @@
 # kin beings
 "embryo-kin"            zone=town   level=1     class=Jester
 "bird-kin"              zone=forest level=2     class=Jester
+"nap-kin"               zone=town   level=3     class=Jester
 "angel-kin"             zone=cave   level=4     class=Jester
 "demon-kin"             zone=cave   level=5     class=Jester
 "dragon-kin"            zone=town   level=10    class=Jester
@@ -377,6 +392,7 @@
 "darwin-kin"            zone=town   level=38    class=Jester
 "robot-kin"             zone=town   level=40    class=Jester
 "flour-kin"             zone=town   level=42    class=Jester
+"rame-kin"              zone=town   level=43    class=Jester
 "space-kin"             zone=town   level=44    class=Jester
 "celestial-kin"         zone=cave   level=48    class=Jester
 "toaster-kin"           zone=town   level=54    class=Jester
