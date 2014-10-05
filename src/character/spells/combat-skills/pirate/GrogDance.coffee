@@ -53,4 +53,4 @@ class GrogDance extends Spell
       doSpellUncast: @uncast
       "combat.self.turn.start": @tick
 
-module.exports = exports = GrogDance 
+module.exports = exports = GrogDance

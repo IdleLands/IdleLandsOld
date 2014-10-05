@@ -15,8 +15,8 @@ class DeathGlare extends Spell
       when @caster.special.lte 66 then 2
       else 1
   
-  strPercent: (player) -> 
-    if player isnt @caster 
+  strPercent: (player) ->
+    if player isnt @caster
       -(20 + 3*Math.floor(11 - player.special.getValue()/9))
     else 0
 
