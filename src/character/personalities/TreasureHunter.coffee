@@ -11,8 +11,8 @@ class TreasureHunter extends Personality
   itemFindRangeMultiplier: -> level*0.2
 
   @canUse = (player) ->
-    player.statistics["event sellItem"] > 1000
+    player.statistics["event sellItem"] >= 1000
 
-  @desc = "Sell items 1000 times"
+  @desc = "Sell 1000 items"
 
 module.exports = exports = TreasureHunter
