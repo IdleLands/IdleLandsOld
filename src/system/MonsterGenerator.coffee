@@ -10,9 +10,17 @@ class MonsterGenerator extends Generator
   constructor: (@game) ->
 
   generateMonster: (maxScore = 99999, baseMonster = _.sample @game.componentDatabase.monsters) ->
+
+    if not baseMonster
+      console.error "COULD NOT GENERATE MONSTER"
+      return
+
     itemList = @game.componentDatabase.itemStats
 
-    console.error "GENERATE ERROR, NO LEVEL: ",baseMonster if not baseMonster.level
+    if not baseMonster.level
+      console.error "GENERATE ERROR, NO LEVEL: ",baseMonster
+      return
+
     monster = new Monster baseMonster
 
     if chance.integer({min: 0, max: 2}) is 1
