@@ -148,12 +148,11 @@ class PlayerManager
     else
       player.equipment = loadEquipment player.equipment
 
-    #if not player.professionName
-    #  player.changeProfession "Generalist"
-    #else
-    #  player.profession = loadProfession player.professionName
-    #  player.profession.load player
-    player.changeProfession "Pirate"
+    if not player.professionName
+      player.changeProfession "Generalist"
+    else
+      player.profession = loadProfession player.professionName
+      player.profession.load player
 
     if not player.personalityStrings
       player.personalityStrings = []
