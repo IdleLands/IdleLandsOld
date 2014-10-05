@@ -304,9 +304,9 @@ class Battle
       goldGain = player.personalityReduce 'combatEndGoldGain', [player, deadVariables]
       goldGain = player.calcGoldGain goldGain
 
-      player.gainGold goldGain
-
-      winMessages.push "<player.name>#{player.name}</player.name> gained <event.gold>#{goldGain}</event.gold> gold" if goldGain
+      if goldGain > 0
+        player.gainGold goldGain
+        winMessages.push "<player.name>#{player.name}</player.name> gained <event.gold>#{goldGain}</event.gold> gold"
 
     @game.broadcast MessageCreator.genericMessage (_.str.toSentence winMessages)+"!" if winMessages.length > 0
 
@@ -341,9 +341,9 @@ class Battle
       goldLoss = player.personalityReduce 'combatEndGoldLoss', [player, deadVariables]
       goldLoss = player.calcGoldGain goldLoss
 
-      player.gainGold -goldLoss
-
-      loseMessages.push "<player.name>#{player.name}</player.name> lost <event.gold>#{goldLoss}</event.gold> gold" if goldLoss
+      if goldLoss > 0
+        player.gainGold -goldLoss
+        loseMessages.push "<player.name>#{player.name}</player.name> lost <event.gold>#{goldLoss}</event.gold> gold"
 
     @game.broadcast MessageCreator.genericMessage (_.str.toSentence loseMessages)+"!" if loseMessages.length > 0
 
