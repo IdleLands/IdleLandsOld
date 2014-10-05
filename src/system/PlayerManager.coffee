@@ -97,6 +97,7 @@ class PlayerManager
 
   addForAnalytics: (player) ->
     playerObject = @buildPlayerSaveObject player
+    playerObject.saveTime = new Date()
     @game.componentDatabase.insertNewAnalyticsPoint playerObject
 
   savePlayer: (player) ->
