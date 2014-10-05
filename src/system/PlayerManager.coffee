@@ -72,6 +72,7 @@ class PlayerManager
     playerObject.playerManager = @
     playerObject.initialize()
     playerObject.isOnline = yes
+    playerObject.registrationDate = new Date()
     saveObj = @buildPlayerSaveObject playerObject
     saveObj._events = {}
 
