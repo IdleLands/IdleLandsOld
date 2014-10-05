@@ -34,12 +34,12 @@ class Equipment
     thunder: 0.3
 
     gold: 2
-    xp: 3
+    xp: 7
 
-    hp: 4
+    hp: 3.5
     mp: 2
 
-    luck: 4.5
+    luck: 5.5
 
     strPercent: 6
     dexPercent: 6
@@ -54,7 +54,7 @@ class Equipment
     thunderPercent: 2
 
     goldPercent: 10
-    xpPercent: 13
+    xpPercent: 27
 
     hpPercent: 20
     mpPercent: 13
