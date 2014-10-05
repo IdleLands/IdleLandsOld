@@ -10,6 +10,7 @@ class SandwichGenerator extends Generator
 
   generateSandwich: ->
     ingredientList = @game.componentDatabase.ingredientStats
+    return {name: "generic sandwich"} if not ingredientList
     baseSandwich = _.sample ingredientList['bread']
 
     sandwich = new Sandwich baseSandwich

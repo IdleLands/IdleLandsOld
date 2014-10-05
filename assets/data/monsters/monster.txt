@@ -209,7 +209,8 @@
 "jester"                zone=forest level=7 class=Jester luck=60
 "rogue"                 zone=forest level=8 class=Rogue agi=40 dex=30 str=20
 "druid"                 zone=forest level=9 class=Druid wis=40 str=10 dex=10 int=30
-"archer"                zone=forest level=10
+"sandwich artist"       zone=forest level=10 class=SandwichArtist dex=70 str=30 wis=60
+"archer"                zone=forest level=11 class=Archer
 
 # gnomish beings
 "gnome"                 zone=forest level=13
@@ -221,6 +222,7 @@
 "gnome magicslinger"    zone=forest level=13 class=Mage int=50
 "gnome loller"          zone=forest level=13 class=Jester luck=100
 "gnome stealer"         zone=forest level=13 class=Rogue dex=70 agi=70
+"gnome foodmaker"       zone=forest level=13 class=SandwichArtist dex=90 str=50
 "procrastination gnome" zone=forest level=1
 "garden gnome"          zone=town   level=1
 
@@ -235,6 +237,7 @@
 "human mage"            zone=town level=18 class=Mage int=1000
 "human jester"          zone=town level=18 class=Jester luck=300
 "human rogue"           zone=town level=18 class=Rogue dex=500 agi=500
+"human sandwich artist" zone=town level=18 class=SandwichArtist dex=480 str=300 wis=250
 "human professor"
 
 # kobold beings
@@ -247,6 +250,7 @@
 "kobold zerker"         zone=cave level=26 class=Barbarian str=1500
 "kobold jester"         zone=cave level=26 class=Jester luck=400
 "kobold lockpick"       zone=cave level=26 class=Rogue dex=500 str=500 agi=500 con=200
+"kobold foodie"         zone=cave level=26 class=SandwichArtist dex=1000 wis=300 str=500
 
 # orcish beings
 "orc"                   zone=cave level=35
@@ -260,6 +264,7 @@
 "orc boomcaster"        zone=cave level=35 class=Mage int=1500
 "orc healer"            zone=cave level=35 class=Cleric wis=1500
 "orc fool"              zone=cave level=35 class=Jester luck=500
+"orc sandwich guy"      zone=cave level=35 class=SandwichArtist dex=1300 str=400 wis=200
 
 # skeletal beings
 "skeleton"              zone=cave level=41
@@ -271,6 +276,7 @@
 "skeleton sneaker"      zone=cave level=41 class=Rogue str=800 con=800 dex=800
 "skeleton healer"       zone=cave level=41 class=Cleric wis=1900
 "skeleton jester"       zone=cave level=41 class=Jester luck=600
+"skeleton enhungerer"   zone=cave level=41 class=SandwichArtist dex=1500 str=500 wis=-300
 
 # half-orc beings
 "half-orc"              zone=cave level=46
@@ -281,6 +287,7 @@
 "half-orc jester"       zone=cave level=46 class=Jester luck=700
 "half-orc hider"        zone=cave level=46 class=Rogue str=1000 agi=800 dex=400
 "half-orc healer"       zone=cave level=46 class=Cleric wis=1800 con=400
+"half-orc sandwicher"   zone=cave level=46 class=SandwichArtist dex=1500 str=300 wis=500
 
 # goblish beings
 "goblin"                zone=cave level=51
@@ -291,6 +298,7 @@
 "goblin jester"         zone=cave level=51 class=Jester luck=800
 "goblin hider"          zone=cave level=51 class=Rogue str=800 agi=1300 dex=300
 "goblin healer"         zone=cave level=51 class=Cleric wis=2200 agi=500
+"goblin foodmaker"      zone=cave level=51 class=SandwichArtist dex=2000 str=300 wis=200
 
 # giant beings
 "giant"                 zone=cave level=57
@@ -305,6 +313,7 @@
 "half-giant human"      zone=cave level=57 class=Rogue dex=1000 agi=1000 str=500
 "half-kobold giant"     zone=cave level=57 class=Cleric wis=3000
 "half-giant giant"      zone=cave level=57 class=Jester luck=750
+"half-elf giant"        zone=cave level=57 class=SandwichArtist dex=3000
 
 # elvish beings
 "elf"                   zone=town level=63
@@ -315,6 +324,7 @@
 "elf servant"           zone=town level=63 class=Jester
 "elf warrior"           zone=town level=63 class=Fighter
 "elf zerker"            zone=town level=63 class=Barbarian
+"elf sandwich creator"  zone=town level=63 class=SandwichArtist
 
 #etc
 
@@ -328,6 +338,7 @@
 "dwarf king"            zone=town level=69
 "dwarf queen"           zone=town level=69
 "dwarf shadowknight"    zone=town level=69
+"dwarf sandwichknight"  zone=town level=69 class=SandwichArtist
 "dwarf shadowcaster"    zone=town level=69 class=Mage
 "dwarf shadowdancer"    zone=town level=69 class=Rogue
 "dwarf shadow"          zone=town level=69
