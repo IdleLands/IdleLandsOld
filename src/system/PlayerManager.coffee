@@ -117,6 +117,8 @@ class PlayerManager
   migratePlayer: (player) ->
     return if not player
 
+    player.registrationDate = new Date() if not player.registrationDate
+
     player.gold = (new RestrictedNumber 0, 9999999999, 0) if not player.gold or not player.gold?.maximum
 
     loadRN = (obj) ->
