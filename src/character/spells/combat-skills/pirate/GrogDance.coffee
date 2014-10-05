@@ -22,7 +22,7 @@ class GrogDance extends Spell
     @broadcast player, message
 
   tick: (player) ->
-# Duration effects broken
+# Duration effects still broken?
     if player?
       message = "%casterName is boosted by %hisher %spellName."
       # This would be @caster, but an issue arose.
@@ -32,17 +32,18 @@ class GrogDance extends Spell
         message = "%casterName is #{@caster.profession.drunkPct.getValue()}% drunk."
         @broadcast @caster, message
       else
-        @broadcast @caster, message
-        @unaffect @caster
-        stupor = new DrunkenStupor @game, @caster
-        stupor.cast @caster
+      # End the dance. Stupor occurs in uncast so it can follow the frenzy.
+        @turns[@caster.name] = 0
 
   uncast: (player) ->
     if player.party.currentBattle?
-      message = "%casterName's %spellName wore off."
+      message = "%casterName stops %hisher %spellName."
       @broadcast player, message
       frenzy = @game.spellManager.modifySpell new DrunkenFrenzy @game, @caster
       frenzy.prepareCast()
+      if @caster.profession.drunkPct.atMax()
+        stupor = new DrunkenStupor @game, @caster
+        stupor.prepareCast()
 
   constructor: (@game, @caster) ->
     super @game, @caster

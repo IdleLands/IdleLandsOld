@@ -12,9 +12,9 @@ class PirateShanty extends Spell
 
   calcDuration: (player) ->
     switch
-      when @caster.special.lte 33 then 3
-      when @caster.special.lte 66 then 2
-      else 1
+      when @caster.special.lte 33 then super()+4
+      when @caster.special.lte 66 then super()+3
+      else super()+2
   
   strPercent: (player) -> 20 + 3*Math.floor(11 - player.special.getValue()/9)
 
@@ -22,7 +22,7 @@ class PirateShanty extends Spell
 
   cast: (player) ->
     return if player isnt @caster
-    message = "%casterName begins performing a %spellName!"
+    message = "%casterName sings a %spellName!"
     @broadcast player, message
     player.profession.drunkPct.add @chance.integer({min: 20, max: 30})
     player.special.sub @chance.integer({min: 10, max: 15})
@@ -34,11 +34,11 @@ class PirateShanty extends Spell
         stupor.prepareCast()
 
   tick: (player) ->
-    message = "%targetName is boosted by %casterName's %spellName!"
+    message = "%targetName is boosted by %casterName's %spellName."
     @broadcast player, message
 
   uncast: (player) ->
-    message = "%targetName is no longer boosted by %casterName's %spellName."
+    message = "%casterName's %spellName wore off."
     @broadcast player, message
 
   constructor: (@game, @caster) ->

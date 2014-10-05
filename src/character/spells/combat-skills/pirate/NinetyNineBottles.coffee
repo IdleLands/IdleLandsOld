@@ -4,11 +4,10 @@ Spell = require "../../../base/Spell"
 class NinetyNineBottles extends Spell
   name: "99 Bottles of Ale"
   @element = NinetyNineBottles ::element = Spell::Element.physical
-  @cost = NinetyNineBottles::cost = 0 #500
+  @cost = NinetyNineBottles::cost = 500
   @stat = NinetyNineBottles::stat = "hp"
   @restrictions =
-    "Pirate": 1
-#23
+    "Pirate": 25
 
   calcDamage: ->
     missingNines = Math.floor((99 - @caster.special.getValue())/9)

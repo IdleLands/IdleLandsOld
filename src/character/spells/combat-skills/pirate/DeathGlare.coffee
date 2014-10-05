@@ -23,7 +23,7 @@ class DeathGlare extends Spell
   determineTargets: -> @targetAllEnemies()
 
   cast: (player) ->
-    message = "%casterName casts a %spellName at %targetName!"
+    message = "%casterName shoots a %spellName at %targetName!"
     @broadcast player, message
 
   tick: (player) ->

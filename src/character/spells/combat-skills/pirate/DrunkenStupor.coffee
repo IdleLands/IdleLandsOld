@@ -1,22 +1,24 @@
 
 Spell = require "../../../base/Spell"
+_ = require "underscore"
 
 class DrunkenStupor extends Spell
   name: "Drunken Stupor"
   @element = DrunkenStupor ::element = Spell::Element.physical
 
-  determineTargets: ->
-    @caster
+  determineTargets: -> @caster
 
   calcDamage: -> Math.floor(0.05*@caster.hp.maximum)
 
-  calcDuration: ->
+  calcDuration: (player) ->
     switch
-      when @caster.special.lte 33 then 3
-      when @caster.special.lte 66 then 2
-      else 1
+      when @caster.special.lte 33 then super()+3
+      when @caster.special.lte 66 then super()+2
+      else super()+1
 
   cantAct: -> 1
+
+  cantActMessages: -> "%player tries to act, but %heshe's too drunk to move"
 
   restSpecial: ->
     switch
@@ -31,11 +33,13 @@ class DrunkenStupor extends Spell
 
   tick: ->
     damage = @calcDamage()
-    message = "%casterName is resting in a %spellName, and recovers %damage HP."
+    message = "In %hisher %spellName, %casterName recovered %damage HP."
     @doDamageTo @caster, -damage, message
     @caster.special.add @restSpecial()
 
   uncast: ->
+    message = "%casterName recovers from %hisher %spellName."
+    @broadcast @caster, message
 
   constructor: (@game, @caster) ->
     super @game, @caster
