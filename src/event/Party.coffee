@@ -8,11 +8,11 @@ class Party
   constructor: (@game, players) ->
     players = [players] if not _.isArray players
     @players = []
+    @name = @pickPartyName()
     if (not players) or players.length < 1
       @disband()
       return
     @recruit players
-    @name = @pickPartyName()
     @addGlobally()
 
   score: ->
