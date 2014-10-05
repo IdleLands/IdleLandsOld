@@ -319,7 +319,7 @@ class Battle
       basePct = chance.integer min: 1, max: 6
       basePctValue = Math.floor player.xp.maximum * (basePct/100)
 
-      xpLoss = player.personalityReduce 'combatEndXpLoss', [player, deadVariables]
+      xpLoss = player.personalityReduce 'combatEndXpLoss', [player, deadVariables], basePctValue
       xpLoss = player.calcXpGain xpLoss
 
       pct = +((xpLoss/player.xp.maximum)*100).toFixed 3
