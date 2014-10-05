@@ -375,7 +375,7 @@ module.exports = (Module) ->
           if not personalityString
             @reply origin, "Could not #{action} the personality \"#{personality}\""
           else
-            @reply origin, "Successfully updated your personality settings. Personalities are now: #{personalityString}"
+            @reply origin, "Successfully updated your personality settings. Personalities are now: #{personalityString or "none"}"
 
       @addRoute "idle-string :action(remove|add) :type :string?", (origin, route) =>
         [bot, action, sType, string] = [origin.bot, route.params.action, route.params.type, route.params.string]

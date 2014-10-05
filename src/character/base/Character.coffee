@@ -53,7 +53,7 @@ class Character extends EventEmitter2
 
   rebuildPersonalityList: ->
     _.each @personalities, (personality) =>
-      personality.unbind @
+      personality.unbind? @
 
     @personalities = _.map @personalityStrings, (personality) =>
       Personality::createPersonality personality, @
