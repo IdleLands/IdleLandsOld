@@ -12,7 +12,7 @@ class Battle
     @startBattle()
 
     return if @isBad
-    
+
     @endBattle()
 
   startBattle: ->
