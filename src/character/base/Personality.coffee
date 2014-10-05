@@ -13,7 +13,7 @@ class Personality
     player.playerManager.game.broadcast MessageCreator.genericMessage message
 
 Personality::isPhysical = (test) ->
-  test in ['Fighter', 'Generalist', 'Barbarian', 'Rogue', 'Jester', 'Monster']
+  test in ['Fighter', 'Generalist', 'Barbarian', 'Rogue', 'Jester', 'Pirate', 'Monster']
 
 Personality::isMagical = (test) ->
   test in ['Mage', 'Cleric', 'Bard', 'SandwichArtist']
@@ -25,7 +25,7 @@ Personality::isDPS = (test) ->
   test in ['Mage', 'Thief']
 
 Personality::isTank = (test) ->
-  test in ['Fighter', 'Barbarian']
+  test in ['Fighter', 'Barbarian', 'Pirate']
 
 Personality::isSupport = (test) ->
   test in ['Bard', 'SandwichArtist']

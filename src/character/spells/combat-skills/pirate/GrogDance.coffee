@@ -6,7 +6,7 @@ DrunkenStupor = require "./DrunkenStupor.coffee"
 class GrogDance extends Spell
   name: "Grog Dance"
   @element = GrogDance ::element = Spell::Element.physical
-  @cost = GrogDance ::cost = 300
+  @cost = GrogDance ::cost = 600
   @stat = GrogDance::stat = "hp"
   @restrictions =
     "Pirate": 15
@@ -37,7 +37,7 @@ class GrogDance extends Spell
         @turns[@caster.name] = 0
 
   uncast: (player) ->
-    if player.party.currentBattle?
+    if player.party?.currentBattle?
       message = "%casterName stops %hisher %spellName."
       @broadcast player, message
       frenzy = @game.spellManager.modifySpell new DrunkenFrenzy @game, @caster

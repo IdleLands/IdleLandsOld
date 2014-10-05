@@ -5,7 +5,7 @@ DrunkenStupor = require "./DrunkenStupor.coffee"
 class PirateShanty extends Spell
   name: "Pirate Shanty"
   @element = PirateShanty ::element = Spell::Element.physical
-  @cost = PirateShanty ::cost = 50
+  @cost = PirateShanty ::cost = 100
   @stat = PirateShanty::stat = "hp"
   @restrictions =
     "Pirate": 1

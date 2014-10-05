@@ -4,9 +4,9 @@ RestrictedNumber = require "restricted-number"
 
 class Pirate extends Class
 
-  baseHp: 40
-  baseHpPerLevel: 12
-  baseHpPerCon: 5
+  baseHp: 150
+  baseHpPerLevel: 15
+  baseHpPerCon: 10
 
   baseMp: 10
   baseMpPerLevel: 3
@@ -15,7 +15,7 @@ class Pirate extends Class
   baseConPerLevel: 3
   baseDexPerLevel: 2
   baseAgiPerLevel: 2
-  baseStrPerLevel: 1
+  baseStrPerLevel: 2
   baseIntPerLevel: 1
   baseWisPerLevel: 1
 
@@ -51,7 +51,7 @@ class Pirate extends Class
     player.special.name = "Bottles"
     player.on "combat.battle.start", @events.battleStart = -> 
       player.special.toMaximum()
-      player.drunkPct = 0
+      player.profession.drunkPct.toMinimum()
 
   unload: (player) ->
     player.special.maximum = 0
@@ -59,6 +59,5 @@ class Pirate extends Class
     player.off "combat.battle.start", @events.battleStart
     player.baseGoldGainPerCombat = 0
     player.baseGoldGainPerOpponentLevel = 0
-    player.drunkPct = []
 
 module.exports = exports = Pirate

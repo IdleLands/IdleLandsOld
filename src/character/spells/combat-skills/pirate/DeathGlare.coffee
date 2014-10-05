@@ -4,7 +4,7 @@ Spell = require "../../../base/Spell"
 class DeathGlare extends Spell
   name: "Death Glare"
   @element = DeathGlare ::element = Spell::Element.physical
-  @cost = DeathGlare::cost = 100
+  @cost = DeathGlare::cost = 200
   @stat = DeathGlare::stat = "hp"
   @restrictions =
     "Pirate": 7

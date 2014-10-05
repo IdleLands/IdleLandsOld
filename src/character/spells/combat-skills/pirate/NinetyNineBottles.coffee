@@ -4,7 +4,7 @@ Spell = require "../../../base/Spell"
 class NinetyNineBottles extends Spell
   name: "99 Bottles of Ale"
   @element = NinetyNineBottles ::element = Spell::Element.physical
-  @cost = NinetyNineBottles::cost = 500
+  @cost = NinetyNineBottles::cost = 1200
   @stat = NinetyNineBottles::stat = "hp"
   @restrictions =
     "Pirate": 25
