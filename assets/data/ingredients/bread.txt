@@ -1,10 +1,12 @@
 "white" str=10
 "whole wheat" con=10
 "rye" wis=10
+"kaiser" agi=10
 "cake" int=10
 "pizza" luck=10
 "meatloaf" str=50
 "cardboard" con=-30
 "mystery loaf" int=66
 "twelve grain" con=12
+"rye or the kaiser" wis=50 agi=50
 "twelve hundred grain" con=120
