@@ -17,8 +17,14 @@ class Class extends Personality
   baseXpGainPerCombat: 100
   baseXpGainPerOpponentLevel: 50
 
+  baseGoldGainPerCombat: 0
+  baseGoldGainPerOpponentLevel: 0
+
   baseXpLossPerCombat: 10
   baseXpLossPerOpponentLevel: 5
+
+  baseGoldLossPerCombat: 0
+  baseGoldLossPerOpponentLevel: 0
 
   baseConPerLevel: 0
   baseDexPerLevel: 0
@@ -71,6 +77,16 @@ class Class extends Personality
   combatEndXpLoss: (player, deadVariables) ->
     @baseXpLossPerCombat + _.reduce (_.pluck (_.pluck deadVariables.winningParty.players, 'level'), '__current'),
       ((prevVal, level) => prevVal + (level * @baseXpLossPerOpponentLevel))
+    , 0
+
+  combatEndGoldGain: (player, deadVariables) ->
+    @baseGoldGainPerCombat + _.reduce (_.pluck (_.pluck deadVariables.deadPlayers, 'level'), '__current'),
+      ((prevVal, level) => prevVal + (level * @baseGoldGainPerOpponentLevel))
+    , 0
+
+  combatEndGoldLoss: (player, deadVariables) ->
+    @baseGoldLossPerCombat + _.reduce (_.pluck (_.pluck deadVariables.winningParty.players, 'level'), '__current'),
+      ((prevVal, level) => prevVal + (level * @baseGoldLossPerOpponentLevel))
     , 0
 
   eventModifier: (event) ->
