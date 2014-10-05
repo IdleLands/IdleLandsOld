@@ -74,12 +74,15 @@ class Character extends EventEmitter2
 
     @personalities = _.uniq @personalities
     @personalityStrings = _.uniq @personalityStrings
-    yes
+
+    @personalityStrings.join ", "
 
   removePersonality: (oldPersonality) ->
+    return no if not @hasPersonality oldPersonality
     @personalityStrings = _.without @personalityStrings, oldPersonality
     @rebuildPersonalityList()
-    yes
+
+    @personalityStrings.join ", "
 
   hasPersonality: (personality) ->
     return no if not @personalityStrings

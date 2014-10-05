@@ -371,11 +371,11 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          msg = @IdleWrapper.api[action].personality identifier, personality
-          if not msg
+          personalityString = @IdleWrapper.api[action].personality identifier, personality
+          if not personalityString
             @reply origin, "Could not #{action} the personality \"#{personality}\""
           else
-            @reply origin, "Successfully updated your personality settings."
+            @reply origin, "Successfully updated your personality settings. Personalities are now: #{personalityString}"
 
       @addRoute "idle-string :action(remove|add) :type :string?", (origin, route) =>
         [bot, action, sType, string] = [origin.bot, route.params.action, route.params.type, route.params.string]

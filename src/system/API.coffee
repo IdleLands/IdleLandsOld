@@ -80,7 +80,7 @@ class API
     player: (identifier) =>
       @gameInstance.playerManager.removePlayer identifier
     personality: (identifier, personality) =>
-      @gameInstance.playerManager.playerHash[identifier]?.removePersonality personality
+      @gameInstance.playerManager.getPlayerById(identifier)?.removePersonality personality
     string: (identifier, stringType) =>
       @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType
 
