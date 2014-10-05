@@ -95,6 +95,10 @@ class PlayerManager
     ret._baseStats = calc
     ret
 
+  addForAnalytics: (player) ->
+    playerObject = @buildPlayerSaveObject player
+    @game.componentDatabase.insertNewAnalyticsPoint playerObject
+
   savePlayer: (player) ->
     savePlayer = @buildPlayerSaveObject player
     savePlayer.lastLogin = new Date()

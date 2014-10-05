@@ -247,6 +247,8 @@ class Player extends Character
     @emit "player.level.up", @
     @recalculateStats()
 
+    @playerManager.addForAnalytics @
+
   setString: (type, val = '') ->
     @messages = {} if not @messages
     @messages[type] = val.substring 0, 99

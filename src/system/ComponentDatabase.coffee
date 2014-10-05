@@ -19,6 +19,7 @@ class ComponentDatabase
     @ingredientsDb = new Datastore "items", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @stringsDb = new Datastore "strings", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @monstersDb = new Datastore "monsters", (db) -> db.ensureIndex {random: '2dsphere'}, ->
+    @analyticsDb = new Datastore "analytics", ->
 
     @loadItems()
     @loadIngredients()
@@ -273,5 +274,8 @@ class ComponentDatabase
 
   addMonsterToList: (monster) ->
     @monsters.push monster
+
+  insertNewAnalyticsPoint: (player) ->
+    @analyticsDb.insert player, ->
 
 module.exports = exports = ComponentDatabase
