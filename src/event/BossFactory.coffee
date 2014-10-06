@@ -60,6 +60,7 @@ class BossInformation
       prone: 1
       offense: 3
     "Lizard King Staff":
+      type: "mainhand"
       int: 500
       wis: 500
       agi: 200
