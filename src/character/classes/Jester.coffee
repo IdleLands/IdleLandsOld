@@ -47,6 +47,7 @@ class Jester extends Class
   conPercent: (player) -> player.calc.stat 'luckPercent'
   agiPercent: (player) -> player.calc.stat 'luckPercent'
   wisPercent: (player) -> player.calc.stat 'luckPercent'
+  fleePercent: (player) -> if (player.hasPersonality 'Drunk' and player.hasPersonality 'Brave') then 230 else if (player.hasPersonality 'Drunk' or player.hasPersonality 'Brave') then 130 else 30
 
   load: (player) ->
     super player
