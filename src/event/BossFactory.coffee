@@ -68,7 +68,7 @@ class BossInformation
 
   @bosses =
     "Goblin Lord":
-      respawn: 3600
+      respawn: 7200
       availableScore: 500
       stats:
         'class': 'Monster'
@@ -82,7 +82,7 @@ class BossInformation
       ]
 
     "Mummy Lord":
-      respawn: 3600
+      respawn: 7200
       availableScore: 1500
       stats:
         'class': 'Fighter'
@@ -96,7 +96,7 @@ class BossInformation
       ]
 
     "Lizard King":
-      respawn: 3600
+      respawn: 10800
       availableScore: 2500
       stats:
         'class': 'Mage'
