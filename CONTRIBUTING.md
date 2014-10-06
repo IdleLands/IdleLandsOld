@@ -11,5 +11,5 @@
 ### Things to Update When Working With Code
 * If you've added an achievement, you're good to go. There's currently no list of achievements.
 * If you've added a spell, you're good to go. There's currently no list of spells.
-* If you've added or updated a personality, please update the [wiki page](https://github.com/seiyria/IdleLands/wiki/Personalities) to reflect your changes
+* If you've added or updated a personality, please update the [wiki page](https://github.com/seiyria/IdleLands/wiki/Personalities) to reflect your changes. If you've created personality which increases fleePercent - please update [src/character/classes/Jester.coffee](https://github.com/seiyria/IdleLands/blob/master/src/character/classes/Jester.coffee).
 * If you've added a class, please add some [monsters](https://github.com/seiyria/IdleLands/blob/master/assets/data/monsters/monster.txt#L202) to reflect the new class and consider updating isPhysical/isMagical/isMedic/isDPS/isTank/isSupport functions in [src/character/base/Personality.coffee](https://github.com/seiyria/IdleLands/blob/master/src/character/base/Personality.coffee). Feel free to get creative when describing the orcish, kobold, etc versions of your class.
