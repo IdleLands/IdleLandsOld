@@ -4,9 +4,9 @@ Spell = require "../../../base/Spell"
 class LightsFromTheStars extends Spell
   name: "Lights from the Stars"
   @element = LightsFromTheStars::element = Spell::Element.buff
-  @cost = LightsFromTheStars::cost = 300
-  @restrictions =
-    "Bard": 10
+  @tiers = LightsFromTheStars::tiers = [
+    {name: "Lights from the Stars", spellPower: 1, cost: 300, class: "Bard", level: 10}
+  ]
 
   calcDuration: -> super()+3
 

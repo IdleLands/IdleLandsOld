@@ -409,7 +409,7 @@ class Battle
       player.emit "combat.#{event}", data
 
   emitEvents: (attackerEvent, defenderEvent, attacker, defender, extra = {}) ->
-    return if (not defender) or (not attacker)
+    return if (not defender) or (not attacker) or (not defender.party) or (not attacker.party)
     attacker.emit "combat.self.#{attackerEvent}", defender, extra
     _.forEach (_.without attacker.party.players, attacker), (partyMate) ->
       partyMate.emit "combat.ally.#{attackerEvent}", attacker, defender, extra

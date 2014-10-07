@@ -4,9 +4,9 @@ Spell = require "../../../base/Spell"
 class Resume extends Spell
   name: "Resume"
   @element = Resume::element = Spell::Element.physical
-  @cost = Resume::cost = 10
-  @restrictions =
-    "SandwichArtist": 1
+  @tiers = Resume::tiers = [
+    {name: "Resume", spellPower: 1, cost: 10, class: "SandwichArtist", level: 1}
+  ]
   @canChoose = (player) -> (player.hp.asPercent() <= 25)
 
   cantAct: -> @resumeRejected

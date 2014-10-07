@@ -19,13 +19,18 @@ class SpellManager
 
 SpellManager::getSpellsAvailableFor = (player) ->
   _.filter @spells, (realSpell) ->
-
-    realSpell.cost = realSpell.cost.bind null, player if _.isFunction realSpell.cost
-
-    (player.professionName of realSpell.restrictions) and
-    (player.level.getValue() >= realSpell.restrictions[player.professionName]) and
-    (player[realSpell.stat].getValue() >= _.result realSpell, 'cost') and
-    (realSpell.canChoose player)
+    # Check highest usable tier of each spell
+    if realSpell.tiers.length > 0
+      spellTier = _.reject realSpell.tiers, (tier) -> (tier.level > player.level.getValue()) or (player.professionName != tier.class)
+      spellTier = _.max spellTier, (tier) -> tier.level
+      if spellTier?
+        if _.isFunction spellTier.cost
+          realSpell.cost = spellTier.cost.bind null, player
+          (player[realSpell.stat].getValue() >= _.result realSpell, 'cost') and (realSpell.canChoose player)
+        else
+          (player[realSpell.stat].getValue() >= spellTier.cost) and (realSpell.canChoose player)
+      else 0
+    else 0
 
 SpellManager::getStatusEffects = ->
   _.filter @spells, (realSpell) -> realSpell.isStatusEffect

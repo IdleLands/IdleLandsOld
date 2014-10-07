@@ -5,10 +5,9 @@ MessageCreator = require "../../../../system/MessageCreator"
 class FadeAway extends Spell
   name: "fade away"
   @element = FadeAway::element = Spell::Element.heal
-  @cost = FadeAway::cost = 0
-
-  @restrictions =
-    "Rogue": 10
+  @tiers = FadeAway::tiers = [
+    {name: "fade away", spellPower: 1, cost: 0, class: "Rogue", level: 10}
+  ]
 
   @canChoose = (caster) ->
     caster.special.ltePercent 25
