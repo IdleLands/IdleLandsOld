@@ -106,6 +106,7 @@ class Character extends EventEmitter2
   recalculateStats: ->
     @hp.maximum = @calc.hp()
     @mp.maximum = @calc.mp()
+    @calc.stats ['str', 'dex', 'con', 'int', 'agi', 'luck', 'wis']
 
   levelUpXpCalc: (level) ->
     Math.floor 100 + (400 * Math.pow level, 1.71)
