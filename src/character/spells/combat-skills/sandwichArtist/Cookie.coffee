@@ -4,7 +4,6 @@ Spell = require "../../../base/Spell"
 class Cookie extends Spell
   name: "Cookie"
   @element = Cookie::element = Spell::Element.physical
-  @cost = Cookie::cost = 100
 
   calcDuration: (player) -> super()+3
   

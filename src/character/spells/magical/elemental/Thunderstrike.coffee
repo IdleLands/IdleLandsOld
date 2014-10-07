@@ -4,9 +4,9 @@ Spell = require "../../../base/Spell"
 class Thunderstrike extends Spell
   name: "thunderstrike"
   @element = Thunderstrike::element = Spell::Element.thunder
-  @cost = Thunderstrike::cost = 375
-  @restrictions =
-    "Mage": 7
+  @tiers = Thunderstrike::tiers = [
+    {name: "thunderstrike", spellPower: 1, cost: 375, class: "Mage", level: 7}
+  ]
 
   calcDuration: -> super()+(@chance.integer min: 1, max: 3)
 

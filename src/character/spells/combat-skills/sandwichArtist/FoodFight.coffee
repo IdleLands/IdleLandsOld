@@ -5,9 +5,9 @@ _ = require "underscore"
 class FoodFight extends Spell
   name: "Food Fight"
   @element = FoodFight::element = Spell::Element.physical
-  @cost = FoodFight::cost = 400
-  @restrictions =
-    "SandwichArtist": 15
+  @tiers = FoodFight::tiers = [
+    {name: "Food Fight", spellPower: 1, cost: 400, class: "SandwichArtist", level: 15}
+  ]
 
   calcDuration: (player) -> super()+3
   

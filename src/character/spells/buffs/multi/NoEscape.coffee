@@ -4,9 +4,9 @@ Spell = require "../../../base/Spell"
 class NoEscape extends Spell
   name: "No Escape"
   @element = NoEscape::element = Spell::Element.buff
-  @cost = NoEscape::cost = 300
-  @restrictions =
-    "Bard": 5
+  @tiers = NoEscape::tiers = [
+    {name: "No Escape", spellPower: 1, cost: 300, class: "Bard", level: 5}
+  ]
 
   calcDuration: -> super()+3
 

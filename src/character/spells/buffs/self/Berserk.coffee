@@ -4,9 +4,9 @@ Spell = require "../../../base/Spell"
 class Berserk extends Spell
   name: "berserk"
   @element = Berserk::element = Spell::Element.buff
-  @cost = Berserk::cost = 0
-  @restrictions =
-    "Barbarian": 1
+  @tiers = Berserk::tiers = [
+    {name: "berserk", spellPower: 1, cost: 0, class: "Barbarian", level: 1}
+  ]
 
   determineTargets: ->
     @caster

@@ -4,10 +4,9 @@ Spell = require "../../../base/Spell"
 class CureGroup extends Spell
   name: "cure group"
   @element = CureGroup::element = Spell::Element.heal
-  @cost = CureGroup::cost = (caster) -> if caster.party then caster.party.players.length * 50 else 50
-
-  @restrictions =
-    "Cleric": 15
+  @tiers = CureGroup::tiers = [
+    {name: "cure group", spellPower: 1, cost: ((caster) -> if caster.party then caster.party.players.length * 50 else 50), class: "Cleric", level: 15}
+  ]
 
   @canChoose = (caster) ->
     Spell.areAnyPartyMembersBelowMaxHealth caster

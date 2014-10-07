@@ -5,10 +5,10 @@ DrunkenStupor = require "./DrunkenStupor.coffee"
 class PirateShanty extends Spell
   name: "Pirate Shanty"
   @element = PirateShanty ::element = Spell::Element.physical
-  @cost = PirateShanty ::cost = 100
   @stat = PirateShanty::stat = "hp"
-  @restrictions =
-    "Pirate": 1
+  @tiers = PirateShanty::tiers = [
+    {name: "Pirate Shanty", spellPower: 1, cost: 100, class: "Pirate", level: 1}
+  ]
 
   calcDuration: (player) ->
     switch

@@ -5,15 +5,15 @@ class Heartbleed extends Spell
   name: "heartbleed"
   stat: @stat = "special"
   @element = Heartbleed::element = Spell::Element.physical
-  @cost = Heartbleed::cost = 15
-  @restrictions =
-    "Rogue": 15
+  @tiers = Heartbleed::tiers = [
+    {name: "heartbleed", spellPower: 1, cost: 15, class: "Rogue", level: 15}
+  ]
 
   @canChoose = (caster) -> caster.profession.lastComboSkill in ['chain stab']
 
   calcDamage: ->
-    minStat = (@caster.calc.stats ['str', 'dex'] / 2) * 0.2
-    maxStat = (@caster.calc.stats ['str', 'dex'] / 2) * 0.5
+    minStat = ((@caster.calc.stats ['str', 'dex']) / 2) * 0.2
+    maxStat = ((@caster.calc.stats ['str', 'dex']) / 2) * 0.5
     super() + @minMax minStat, maxStat
 
   calcDuration: -> super() + 2

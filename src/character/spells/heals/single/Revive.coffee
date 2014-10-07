@@ -4,10 +4,9 @@ Spell = require "../../../base/Spell"
 class Revive extends Spell
   name: "revive"
   @element = Revive::element = Spell::Element.heal
-  @cost = Revive::cost = 500
-
-  @restrictions =
-    "Cleric": 20
+  @tiers = Revive::tiers = [
+    {name: "revive", spellPower: 1, cost: 500, class: "Cleric", level: 20}
+  ]
 
   determineTargets: ->
     @targetAllAllies includeDead: yes, includeLiving: no

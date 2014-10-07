@@ -4,9 +4,9 @@ Spell = require "../../../base/Spell"
 class Treatment extends Spell
   name: "treatment"
   @element = Treatment::element = Spell::Element.heal & Spell::Element.buff
-  @cost = Treatment::cost = 450
-  @restrictions =
-    "Generalist": 7
+  @tiers = Treatment::tiers = [
+    {name: "treatment", spellPower: 1, cost: 450, class: "Generalist", level: 7}
+  ]
 
   calcDuration: -> super()+3
 

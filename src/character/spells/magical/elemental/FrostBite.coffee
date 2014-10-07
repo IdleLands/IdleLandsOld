@@ -1,12 +1,13 @@
 
+_ = require "underscore"
 Spell = require "../../../base/Spell"
 
 class FrostBite extends Spell
   name: "frostbite"
   @element = FrostBite::element = Spell::Element.ice
-  @cost = FrostBite::cost = 100
-  @restrictions =
-    "Mage": 4
+  @tiers = FrostBite::tiers = [
+    {name: "frostbite", spellPower: 100, cost: 100, class: "Mage", level: 4}
+  ]
 
   cantAct: -> if @chance.bool({likelihood:25}) then 1 else 0
 

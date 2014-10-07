@@ -4,15 +4,16 @@ Spell = require "../../../base/Spell"
 class LitanyOfPain extends Spell
   name: "Litany of Pain"
   @element = LitanyOfPain::element = Spell::Element.energy
-  @cost = LitanyOfPain::cost = 300
-  @restrictions =
-    "Bard": 15
+  @tiers = LitanyOfPain::tiers = [
+    {name: "Litany of Pain", spellPower: 1, cost: 300, class: "Bard", level: 15}
+    {name: "Hymn of Torment", spellPower: 2, cost: 600, class: "Bard", level: 40}
+  ]
 
-  calcDuration: -> super()+3
+  calcDuration: -> super()+2+@spellPower
   
   calcDamage: ->
-    minInt = (@caster.calc.stat 'int')/5
-    maxInt = (@caster.calc.stat 'int')/2
+    minInt = @spellPower*(@caster.calc.stat 'int')/5
+    maxInt = @spellPower*(@caster.calc.stat 'int')/2
     super() + @minMax minInt, maxInt
 
   determineTargets: ->

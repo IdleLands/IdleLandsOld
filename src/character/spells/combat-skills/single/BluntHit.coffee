@@ -4,9 +4,9 @@ Spell = require "../../../base/Spell"
 class BluntHit extends Spell
   name: "blunt hit"
   @element = BluntHit::element = Spell::Element.physical
-  @cost = BluntHit::cost = 100
-  @restrictions =
-    "Fighter": 13
+  @tiers = BluntHit::tiers = [
+    {name: "blunt hit", spellPower: 1, cost: 100, class: "Fighter", level: 13}
+  ]
 
   cantAct: -> 1
 

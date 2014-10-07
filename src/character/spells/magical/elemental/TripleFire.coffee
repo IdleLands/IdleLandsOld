@@ -4,16 +4,19 @@ Spell = require "../../../base/Spell"
 class TripleFire extends Spell
   name: "triple fire"
   @element = TripleFire::element = Spell::Element.fire
-  @cost = TripleFire::cost = 650
-  @restrictions =
-    "Mage": 10
+  @tiers = TripleFire::tiers = [
+    {name: "triple fire", spellPower: 1, cost: 650, class: "Mage", level: 10}
+    {name: "quadruple fire", spellPower: 2, cost: 900, class: "Mage", level: 40}
+  ]
 
   determineTargets: ->
-    @targetSomeEnemies size: 3, guaranteeSize: yes
+    # 1 spellPower = 1 additional target
+    @targetSomeEnemies size: (3 + @spellPower - 1), guaranteeSize: yes
 
   calcDamage: ->
-    minStat = (@caster.calc.stat 'int')*0.2
-    maxStat = (@caster.calc.stat 'int')*0.4
+    # 1 spellPower = 20% base damage
+    minStat = (@caster.calc.stat 'int')*0.2*(0.2*@spellPower+0.8)
+    maxStat = (@caster.calc.stat 'int')*0.4*(0.2*@spellPower+0.8)
     super() + @minMax minStat, maxStat
 
   cast: (player) ->

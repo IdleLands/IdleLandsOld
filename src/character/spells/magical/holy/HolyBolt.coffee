@@ -4,13 +4,15 @@ Spell = require "../../../base/Spell"
 class HolyBolt extends Spell
   name: "holy bolt"
   @element = HolyBolt::element = Spell::Element.holy
-  @cost = HolyBolt::cost = 125
-  @restrictions =
-    "Cleric": 5
+  @tiers = HolyBolt::tiers = [
+    {name: "holy bolt", spellPower: 1, cost: 125, class: "Cleric", level: 5}
+    {name: "divine bolt", spellPower: 2, cost: 250, class: "Cleric", level: 30}
+    {name: "celestial bolt", spellPower: 4, cost: 500, class: "Cleric", level: 55}
+  ]
 
   calcDamage: ->
-    minStat = (@caster.calc.stat 'wis')/4
-    maxStat = @caster.calc.stat 'wis'
+    minStat = @spellPower*(@caster.calc.stat 'wis')/4
+    maxStat = @spellPower*@caster.calc.stat 'wis'
     super() + @minMax minStat, maxStat
 
   cast: (player) ->
