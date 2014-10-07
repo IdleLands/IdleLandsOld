@@ -38,3 +38,4 @@ A miniature samurai ninja zombie pirate robot velociraptor with psychic powers s
 Sarda, The Wizard Who Did It took %gold gold from %player because he could.
 %player bought a burrito for %gold gold, sadly it was a snail burrito.
 %player decided to invest in a pyramid scheme.  After spending %gold gold, they are still no closer to the top.
+%player was caught "treasure hunting" and lost %gold gold.

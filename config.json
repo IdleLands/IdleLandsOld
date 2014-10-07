@@ -22,7 +22,7 @@
             {
                 "type": "enchant",
                 "min": 1,
-                "max": 7500
+                "max": 17500
             },
             {
                 "type": "flipStat",
@@ -62,12 +62,12 @@
             {
                 "type": "party",
                 "min": 1,
-                "max": 400
+                "max": 700
             },
             {
                 "type": "battle",
                 "min": 1,
-                "max": 3500
+                "max": 10000
             }
         ],
         "eventEffects": {
