@@ -57,12 +57,12 @@ class Player extends Character
         if slot not in ["body","feet","finger","hands","head","legs","neck","mainhand","offhand","charm"]
           return false
         else
-           for slotNum in [0..@maxOverflow]
-             if not @overflow[slotNum]
-               @overflow[slotNum] = new Equipment {type: slot, name: "empty"}
-               return true
-             else if slotNum == 2
-               return false
+          for slotNum in [0..@maxOverflow]
+            if not @overflow[slotNum]
+              @overflow[slotNum] = new Equipment {type: slot, name: "empty"}
+              return true
+            else if slotNum == 2
+              return false
       when "swap"
         if not @overflow[slot]
           return false
