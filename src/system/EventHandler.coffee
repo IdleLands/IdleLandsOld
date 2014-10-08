@@ -288,7 +288,7 @@ class EventHandler
   doEnchant: (event, player, callback) ->
     item = _.sample _.reject player.equipment, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel
 
-    return callback false if not item
+    return callback false if (not item) or (item.name == "empty")
     stat = @pickStatNotPresentOnItem item
 
     boost = 10

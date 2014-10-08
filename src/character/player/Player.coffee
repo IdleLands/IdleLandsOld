@@ -27,6 +27,7 @@ class Player extends Character
       @changeProfession "Generalist", yes
       @levelUp yes
       @generateBaseEquipment()
+      @overflow = []
       @lastLogin = new Date()
       @gender = "male"
 
@@ -45,6 +46,54 @@ class Player extends Character
       new Equipment {type: "offhand", class: "newbie", name: "Chunk of Rust", dex: 1, str: 1}
       new Equipment {type: "charm",   class: "newbie", name: "Ancient Bracelet", con: 1, dex: 1}
     ]
+
+  manageOverflow: (option, slot) ->
+    if not @overflow
+      @overflow = []
+    if not @maxOverflow
+      @maxOverflow = 2
+    switch option
+      when "add"
+        if slot not in ["body","feet","finger","hands","head","legs","neck","mainhand","offhand","charm"]
+          return false
+        else
+           for slotNum in [0..@maxOverflow]
+             if not @overflow[slotNum]
+               @overflow[slotNum] = new Equipment {type: slot, name: "empty"}
+               return true
+             else if slotNum == 2
+               return false
+      when "swap"
+        if not @overflow[slot]
+          return false
+        else
+          current = _.findWhere @equipment, {type: @overflow[slot].type}
+          inOverflow = @overflow[slot]
+          @equipment = _.reject @equipment, {type: @overflow[slot].type}
+          @equipment.push inOverflow
+          @overflow[slot] = current
+          return true
+      when "sell"
+        if (not @overflow[slot]) or (@overflow[slot].name == "empty")
+          return false
+        else
+          salePrice = Math.floor(0.25*@overflow[slot].score())
+          salePrice = @calcGoldGain salePrice
+          @overflow[slot] = null
+          salePrice = 1 if salePrice < 1
+          @gainGold salePrice
+          return salePrice
+      when "list"
+        listItems = ""
+        for slotNum in [0..@maxOverflow]
+          if not @overflow[slotNum]
+            listItems += "no slot"
+          else
+            listItems += "#{@overflow[slotNum].name} (#{@overflow[slotNum].type})"
+          if slotNum < 2
+            listItems += ", "
+        return listItems
+      else return false
 
   handleTrainerOnTile: (tile) ->
     return if @isBusy or @stepCooldown > 0
