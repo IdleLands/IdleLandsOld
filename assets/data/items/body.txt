@@ -66,7 +66,7 @@
 
 # 3-stat
 "bustier" con=15 agi=5 wis=1
-"marcrame" dex=10 con=15 agi=7
+"macrame" dex=10 con=15 agi=7
 "squishy squish" con=80 agi=15 wis=20
 "beautiful dress" con=100 wis=100 int=60
 "Suit of Belts" con=320 dex=30 agi=30
