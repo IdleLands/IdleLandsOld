@@ -6,7 +6,7 @@ class Wheelchair extends Personality
   constructor: ->
 
   descendChance: -> -40
-  ascendChance: -> -500
+  ascendChance: -> -200
 
   @canUse = (player) ->
     player.statistics["explore transfer descend"] >= 5
