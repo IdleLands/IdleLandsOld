@@ -51,7 +51,7 @@ class Player extends Character
     if not @overflow
       @overflow = []
     if not @maxOverflow
-      @maxOverflow = 2
+      @maxOverflow = Constants.defaults.player.maxOverflow
     switch option
       when "add"
         if slot not in ["body","feet","finger","hands","head","legs","neck","mainhand","offhand","charm"]
@@ -61,7 +61,7 @@ class Player extends Character
             if not @overflow[slotNum]
               @overflow[slotNum] = new Equipment {type: slot, name: "empty"}
               return true
-            else if slotNum == 2
+            else if slotNum == @maxOverflow
               return false
       when "swap"
         if not @overflow[slot]
@@ -74,7 +74,7 @@ class Player extends Character
           @overflow[slot] = current
           return true
       when "sell"
-        if (not @overflow[slot]) or (@overflow[slot].name == "empty")
+        if (not @overflow[slot]) or (@overflow[slot].name is "empty")
           return false
         else
           salePrice = Math.floor(0.25*@overflow[slot].score())
@@ -90,7 +90,7 @@ class Player extends Character
             listItems += "no slot"
           else
             listItems += "#{@overflow[slotNum].name} (#{@overflow[slotNum].type})"
-          if slotNum < 2
+          if slotNum < @maxOverflow
             listItems += ", "
         return listItems
       else return false

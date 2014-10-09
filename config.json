@@ -110,7 +110,8 @@
             "player": {
                 "defaultYesPercent": 50,
                 "defaultPartyLeavePercent": 0.1,
-                "defaultItemFindModifier": 7
+                "defaultItemFindModifier": 7,
+                "maxOverflow": 2
             }
         }
     }
