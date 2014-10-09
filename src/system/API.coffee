@@ -69,6 +69,8 @@ class API
       @gameInstance.componentDatabase.importAllData()
     string: (identifier, stringType, string) =>
       @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType, string
+    overflow: (identifier, slot) =>
+      @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "add", slot
 
   @find =
     static: (query, callback) =>
@@ -83,9 +85,19 @@ class API
       @gameInstance.playerManager.getPlayerById(identifier)?.removePersonality personality
     string: (identifier, stringType) =>
       @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType
+    overflow: (identifier, slot) =>
+      @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "sell", slot
 
   @set =
     gender: (identifier, newGender) =>
       @gameInstance.playerManager.getPlayerById(identifier)?.setGender newGender
+
+  @swap =
+    overflow: (identifier, slot) =>
+      @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "swap", slot
+
+  @list =
+    overflow: (identifier) =>
+      @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "list"
 
 module.exports = exports = API
