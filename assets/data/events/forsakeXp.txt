@@ -70,3 +70,4 @@ Sarda, The Wizard Who Did It took %xpxp from %player, saying he needed it back.
 %player entered the famous competition show "Are You Smarter Than A Cheese Grater" and lost. %xpxp ran away in embarrassment.
 There was a snail burrito laying on the ground and %player, being as wise as %she is, decided to eat it. Good job.
 In todays Death Daily, %player found %hisher name. Better luck next time!
+%player found a legendary weapon and went to fight the demon lord.  Sadly it was excalipoor and %player died losing %xp xp.
