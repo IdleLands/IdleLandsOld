@@ -42,7 +42,7 @@ class Jester extends Class
     item.hpPercent -
     item.mp -
     item.mpPercent -
-    item.ice - 
+    item.ice -
     item.icePercent -
     item.fire -
     item.firePercent -
