@@ -1,7 +1,7 @@
 # mostly str
 "bit" int=1 prone
 "ice cream cone" str=1 ice=1
-"arrow" str=3 deadeye
+"arrow" str=3 deadeye=1
 "spoon" str=4
 "rusty spoon" str=5
 "sharp stick" str=6 vorpal=1
