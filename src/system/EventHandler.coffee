@@ -235,9 +235,7 @@ class EventHandler
 
     @broadcastEvent totalString, player, extra
 
-  doFindItem: (event, player, callback) ->
-    item = @game.equipmentGenerator.generateItem null, player.calc.luckBonus()
-    return if not item
+  doItemEvent: (event, player, item, callback) ->
     myItem = _.findWhere player.equipment, {type: item.type}
     return callback false if not myItem
     score = player.calc.itemScore item
@@ -246,6 +244,7 @@ class EventHandler
 
     if score > myScore and realScore < player.calc.itemFindRange() and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
       @doItemEquip player, item, event.remark
+      callback true
 
     else
       multiplier = player.calc.itemSellMultiplier item
@@ -253,7 +252,11 @@ class EventHandler
       player.gainGold value
       player.emit "event.sellItem", player, item, value
 
-    callback true
+  doFindItem: (event, player, callback) ->
+    item = @game.equipmentGenerator.generateItem null, player.calc.luckBonus()
+    return if not item
+
+    @doItemEvent event, player, item, callback
 
   doParty: (event, player, callback) ->
     return callback false if player.party or @game.inBattle

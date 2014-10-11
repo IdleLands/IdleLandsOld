@@ -32,9 +32,13 @@ class BossFactory
           baseItem = _.clone BossInformation.items[item.name]
           baseItem.name = item.name
           baseItem.itemClass = setAllItemClasses
-          message = "%player looted %item from the corpse of <player.name>#{name}</player.name>."
-          @game.eventHandler.doItemEquip member, (new Equipment baseItem), message
-          member.emit "event.bossbattle.loot", member, name, item
+
+          itemInst = new Equipment baseItem
+
+          event = remark: "%player looted %item from the corpse of <player.name>#{name}</player.name>."
+
+          @game.eventHandler.doItemEvent event, member, itemInst, ->
+            member.emit "event.bossbattle.loot", member, name, item
 
         member.emit "event.bossbattle.win", member, name
 

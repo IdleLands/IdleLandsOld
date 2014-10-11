@@ -175,6 +175,7 @@ class PlayerManager
     player.lastLogin = new Date()
 
     player.statistics = {} if not player.statistics
+    player.permanentAchievements = {} if not player.permanentAchievements
 
     @beginWatchingPlayerStatistics player
 

@@ -180,7 +180,12 @@ class Player extends Character
     @profession = new professionProto()
     @professionName = professionProto.name
     @profession.load @
-    @playerManager.game.broadcast MessageCreator.genericMessage "<player.name>#{@name}</player.name> is now a <player.class>#{to}</player.class>!" if not suppress
+
+    message = "<player.name>#{@name}</player.name> is now a <player.class>#{to}</player.class>!"
+
+    @playerManager.game.eventHandler.addEventToDb message, @
+
+    @playerManager.game.broadcast MessageCreator.genericMessage message if not suppress
     @emit "player.profession.change", @, oldProfessionName, @professionName
 
     @recalculateStats()
