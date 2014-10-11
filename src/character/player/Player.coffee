@@ -103,7 +103,8 @@ class Player extends Character
       if dest.movementType is "descend"
         message = "<player.name>#{@name}</player.name> went crashing down in a wheelchair to <event.transfer.destination>#{dest.destName}</event.transfer.destination>."
 
-    @emit "explore.transfer.#{dest.movementType}", @
+    @emit "explore.transfer", @, @map
+    @emit "explore.transfer.#{dest.movementType}", @, @map
 
     @playerManager.game.broadcast MessageCreator.genericMessage message
 
@@ -159,7 +160,9 @@ class Player extends Character
         @emit 'explore.hit.wall', @
 
       @emit 'explore.walk', @
-      @emit "explore.walk.#{tile.terrain}".toLowerCase(), @
+      @emit "explore.walk.#{tile.terrain or "void"}".toLowerCase(), @
+
+      console.error @x,@y, "INVALID TILE" if not tile.terrain
 
       @handleTile tile
 

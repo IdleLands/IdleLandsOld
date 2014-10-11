@@ -92,8 +92,10 @@ class PlayerManager
 
   buildPlayerSaveObject: (player) ->
     calc = player.calc.base
+    calcStats = player.calc.statCache
     ret = _.omit player, 'playerManager', 'party', 'personalities', 'calc', 'spellsAffectedBy', 'fled', '_events', 'profession', 'stepCooldown'
     ret._baseStats = calc
+    ret._statCache = calcStats
     ret
 
   addForAnalytics: (player) ->
@@ -207,14 +209,14 @@ class PlayerManager
           addStat "calculated total heals given", arguments[1].damage
 
         when "combat.self.healed"
-          addStat "calculated heal received", arguments[1].damage
+          addStat "calculated total heal received", arguments[1].damage
 
         when "combat.self.damage"
           maxStat "calculated max damage given", arguments[1].damage
           addStat "calculated total damage given", arguments[1].damage
 
         when "combat.self.damaged"
-          addStat "calculated damage received", arguments[1].damage
+          addStat "calculated total damage received", arguments[1].damage
 
         when "combat.self.kill"
           addStat arguments[0].name, 1, "calculated kills" if not arguments[0].isMonster
@@ -223,8 +225,26 @@ class PlayerManager
         when "player.profession.change"
           addStat arguments[2], 1, "calculated class changes"
 
+        when "player.xp.gain"
+          addStat "calculated total xp gained", arguments[1]
+
+        when "player.xp.lose"
+          addStat "calculated total xp lost", Math.abs arguments[1]
+
+        when "player.gold.gain"
+          addStat "calculated total gold gained", arguments[1]
+
+        when "player.gold.lose"
+          addStat "calculated total gold lost", Math.abs arguments[1]
+
+        when "explore.transfer"
+          addStat arguments[1], 1, "calculated map changes"
+
+        when "event.bossbattle.win"
+          addStat arguments[1], 1, "calculated boss kills"
+
       event = @event.split(".").join " "
-      player.statistics[event] = 1 if not event of player.statistics or _.isNaN player.statistics[event]
+      player.statistics[event] = 1 if not (event of player.statistics) or _.isNaN player.statistics[event]
       player.statistics[event]++
       player.statistics[event] = 1 if not player.statistics[event]
 

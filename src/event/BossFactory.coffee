@@ -33,11 +33,17 @@ class BossFactory
           baseItem.itemClass = setAllItemClasses
           message = "%player looted %item from the corpse of <player.name>#{name}</player.name>."
           @game.eventHandler.doItemEquip member, (new Equipment baseItem), message
+          member.emit "event.bossbattle.loot", member, name, item
+
+        member.emit "event.bossbattle.win", member, name
 
       BossInformation.timers[name] = new Date()
 
     monster.on "combat.party.win", (losingParty) ->
       baseObj.playerLose? forPlayer, losingParty
+
+      _.each losingParty, (member) ->
+        member.emit "event.bossbattle.lose", member, name
 
     monster
 

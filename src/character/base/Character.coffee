@@ -42,7 +42,7 @@ class Character extends EventEmitter2
     .concat @achievements ? []
 
     _.reduce array, (combined, iter) ->
-      applied = iter?[appFunctionName]?.apply iter, args
+      applied = if _.isFunction iter?[appFunctionName] then iter?[appFunctionName]?.apply iter, args else iter?[appFunctionName]
       if _.isArray combined
         combined.push applied if applied
       else
@@ -117,14 +117,15 @@ class Character extends EventEmitter2
   loadCalc: ->
     @calc =
       base: {}
+      statCache: {}
       self: @
       stat: (stat, ignoreNegative = yes, base = 0, basePct = 0) ->
         pct = "#{stat}Percent"
         @base[stat] = _.reduce @self.equipment, ((prev, item) -> prev+(item[stat] or 0)), base
         @base[pct] = _.reduce @self.equipment, ((prev, item) -> prev+(item[pct] or 0)), basePct
 
-        baseVal = @self.personalityReduce stat, [@self, @base[stat]], @base[stat]
-        percent = @self.personalityReduce pct, [@self, @base[pct]], @base[pct]
+        @statCache[stat] = baseVal = @self.personalityReduce stat, [@self, @base[stat]], @base[stat]
+        @statCache[pct] = percent = @self.personalityReduce pct, [@self, @base[pct]], @base[pct]
 
         newValue = Math.floor baseVal/percent
         newValue = if _.isFinite newValue then newValue else 0
@@ -233,12 +234,12 @@ class Character extends EventEmitter2
         @self.personalityReduce 'combatEndGoldLoss', [@self, @base.combatEndGoldLoss], @base.combatEndGoldLoss
 
       itemFindRange: ->
-        @base.itemFindRange = (@self.level.getValue()+1) * @self.calc.itemFindRangeMultiplier()
+        @base.itemFindRange = (@self.level.getValue()+1) * Constants.defaults.player.defaultItemFindModifier * @self.calc.itemFindRangeMultiplier()
         @self.personalityReduce 'itemFindRange', [@self, @base.itemFindRange], @base.itemFindRange
 
       itemFindRangeMultiplier: ->
-        @base.itemFindRangeMultiplier = Constants.defaults.player.defaultItemFindModifier
-        @self.personalityReduce 'itemFindRangeMultipler', [@self, @base.itemFindRangeMultiplier], @base.itemFindRangeMultiplier
+        @base.itemFindRangeMultiplier = 1 + (0.2 * Math.floor @self.level.getValue()/10)
+        @self.personalityReduce 'itemFindRangeMultiplier', [@self, @base.itemFindRangeMultiplier], @base.itemFindRangeMultiplier
 
       itemScore: (item) ->
         baseValue = item.score()
