@@ -5,9 +5,9 @@ SandwichBuff = require "./SandwichBuff.coffee"
 class Toasted extends Spell
   name: "Toasted"
   @element = Toasted::element = Spell::Element.fire
-  @cost = Toasted::cost = 50
-  @restrictions =
-    "SandwichArtist": 1
+  @tiers = Toasted::tiers = [
+    {name: "Toasted", spellPower: 1, cost: 50, class: "SandwichArtist", level: 1}
+  ]
   
   calcDamage: ->
     minStat = (@caster.calc.stat 'dex')/6

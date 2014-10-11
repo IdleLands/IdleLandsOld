@@ -4,10 +4,10 @@ Spell = require "../../../base/Spell"
 class DeathGlare extends Spell
   name: "Death Glare"
   @element = DeathGlare ::element = Spell::Element.physical
-  @cost = DeathGlare::cost = 200
   @stat = DeathGlare::stat = "hp"
-  @restrictions =
-    "Pirate": 7
+  @tiers = DeathGlare::tiers = [
+    {name: "Death Glare", spellPower: 1, cost: 200, class: "Pirate", level: 7}
+  ]
 
   calcDuration: (player) ->
     switch

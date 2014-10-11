@@ -33,7 +33,25 @@ class Jester extends Class
     item.wis -
     item.wisPercent -
     item.int -
-    item.intPercent
+    item.intPercent -
+    item.xp -
+    item.xpPercent -
+    item.gold -
+    item.goldPercent -
+    item.hp -
+    item.hpPercent -
+    item.mp -
+    item.mpPercent -
+    item.ice -
+    item.icePercent -
+    item.fire -
+    item.firePercent -
+    item.water -
+    item.waterPercent -
+    item.earth -
+    item.earthPercent -
+    item.thunder -
+    item.thunderPercent
 
   str: (player) -> player.calc.stat 'luck'
   dex: (player) -> player.calc.stat 'luck'
@@ -47,6 +65,7 @@ class Jester extends Class
   conPercent: (player) -> player.calc.stat 'luckPercent'
   agiPercent: (player) -> player.calc.stat 'luckPercent'
   wisPercent: (player) -> player.calc.stat 'luckPercent'
+  
   fleePercent: (player) -> if (player.hasPersonality 'Drunk' and player.hasPersonality 'Brave') then 230 else if (player.hasPersonality 'Drunk' or player.hasPersonality 'Brave') then 130 else 30
 
   load: (player) ->

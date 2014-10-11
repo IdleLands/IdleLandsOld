@@ -3,9 +3,9 @@ Spell = require "../../../base/Spell"
 class Testosterone extends Spell
   name: "testosterone"
   @element = Testosterone::element = Spell::Element.buff
-  @cost = Testosterone::cost = 300
-  @restrictions =
-    "Fighter": 4
+  @tiers = Testosterone::tiers = [
+    {name: "testosterone", spellPower: 1, cost: 300, class: "Fighter", level: 4}
+  ]
 
   calcDuration: -> super()+4
 

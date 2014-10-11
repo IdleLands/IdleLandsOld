@@ -4,13 +4,15 @@ Spell = require "../../../base/Spell"
 class EnergyMissile extends Spell
   name: "energy missile"
   @element = EnergyMissile::element = Spell::Element.energy
-  @cost = EnergyMissile::cost = 150
-  @restrictions =
-    "Mage": 1
+  @tiers = EnergyMissile::tiers = [
+    {name: "energy missile", spellPower: 1, cost: 150, class: "Mage", level: 1}
+    {name: "energy blast", spellPower: 2, cost: 450, class: "Mage", level: 26}
+    {name: "astral flare", spellPower: 4, cost: 2400, class: "Mage", level: 51}
+  ]
 
   calcDamage: ->
-    minStat = (@caster.calc.stat 'int')/4
-    maxStat = @caster.calc.stat 'int'
+    minStat = @spellPower*(@caster.calc.stat 'int')/4
+    maxStat = @spellPower*@caster.calc.stat 'int'
     super() + @minMax minStat, maxStat
 
   cast: (player) ->

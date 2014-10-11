@@ -6,15 +6,15 @@ class SavageStab extends Spell
   name: "savage stab"
   stat: @stat = "special"
   @element = SavageStab::element = Spell::Element.physical
-  @cost = SavageStab::cost = 30
-  @restrictions =
-    "Rogue": 45
+  @tiers = SavageStab::tiers = [
+    {name: "savage stab", spellPower: 1, cost: 30, class: "Rogue", level: 45}
+  ]
 
   @canChoose = (caster) -> caster.profession.lastComboSkill in ['heartbleed', 'wombo combo']
 
   calcDamage: ->
-    minStat = (@caster.calc.stats ['str', 'dex'] / 2) * 0.05
-    maxStat = (@caster.calc.stats ['str', 'dex'] / 2) * 0.15
+    minStat = ((@caster.calc.stats ['str', 'dex']) / 2) * 0.05
+    maxStat = ((@caster.calc.stats ['str', 'dex']) / 2) * 0.15
     super() + @minMax minStat, maxStat
 
   cast: (player) ->

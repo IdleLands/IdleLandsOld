@@ -6,9 +6,9 @@ Cookie = require "./Cookie.coffee"
 class SandwichAlly extends Spell
   name: "Sandwich Ally"
   @element = SandwichAlly::element = Spell::Element.physical
-  @cost = SandwichAlly::cost = 200
-  @restrictions =
-    "SandwichArtist": 10
+  @tiers = SandwichAlly::tiers = [
+    {name: "Sandwich Ally", spellPower: 1, cost: 200, class: "SandwichArtist", level: 10}
+  ]
 
 # Cure group level healing
   calcDamage: ->

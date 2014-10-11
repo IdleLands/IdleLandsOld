@@ -5,9 +5,9 @@ SandwichBuff = require "./SandwichBuff.coffee"
 class DayOldBread extends Spell
   name: "Day-Old Bread"
   @element = DayOldBread::element = Spell::Element.physical
-  @cost = DayOldBread::cost = 50
-  @restrictions =
-    "SandwichArtist": 5
+  @tiers = DayOldBread::tiers = [
+    {name: "Day-Old Bread", spellPower: 1, cost: 50, class: "SandwichArtist", level: 5}
+  ]
 
   cantAct: -> 1
 

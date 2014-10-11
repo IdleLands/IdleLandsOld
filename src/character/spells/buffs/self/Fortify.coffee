@@ -4,9 +4,9 @@ Spell = require "../../../base/Spell"
 class Fortify extends Spell
   name: "fortify"
   @element = Fortify::element = Spell::Element.buff
-  @cost = Fortify::cost = 300
-  @restrictions =
-    "Generalist": 15
+  @tiers = Fortify::tiers = [
+    {name: "fortify", spellPower: 1, cost: 300, class: "Generalist", level: 15}
+  ]
 
   calcDuration: -> super()+7
 

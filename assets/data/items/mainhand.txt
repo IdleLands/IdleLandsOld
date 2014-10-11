@@ -1,7 +1,7 @@
 # mostly str
 "bit" int=1 prone
 "ice cream cone" str=1 ice=1
-"arrow" str=3 deadeye
+"arrow" str=3 deadeye=1
 "spoon" str=4
 "rusty spoon" str=5
 "sharp stick" str=6 vorpal=1
@@ -347,7 +347,7 @@
 "downvote" str=250 int=-50 wis=-50
 "wad o' cash" str=350 int=100 wis=-50
 "tomato" str=275 agi=75 dex=85
-"peculiar object" str=400 int=-300 wis=-200 energy=500 glowing=3
+"peculiar object" str=400 int=-300 wis=-200 mp=500 glowing=3
 
 # 4 stat hybrids
 "Banhammer" str=350 int=100 wis=100 con=-100

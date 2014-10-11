@@ -17,7 +17,6 @@ class Monster extends Class
   baseStrPerLevel: 4
   baseIntPerLevel: 4
   baseWisPerLevel: 4
-  baseLuckPerLevel: 4
 
   baseXpGainPerCombat: 200
   baseXpGainPerOpponentLevel: 100

@@ -9,6 +9,8 @@ class Spell
   stat: @stat = "mp"
   oper: @oper = "sub"
   cost: @cost = 0
+  tiers: @tiers = []
+  spellPower: @spellPower = 1
   stack: "duration"
   bindings:
     doSpellCast: ->
@@ -82,6 +84,17 @@ class Spell
       .value()
 
   ## / targetting functions
+
+  calcTier: (player) ->
+    return if @tiers.length == 0
+    spellTier = _.reject @tiers, (tier) -> (tier.level > player.level.getValue()) or (player.professionName != tier.class)
+    spellTier = _.max spellTier, (tier) -> tier.level
+    @name = spellTier.name
+    @spellPower = spellTier.spellPower
+    if _.isFunction spellTier.cost
+      @cost = spellTier.cost.bind null, @caster
+    else
+      @cost = spellTier.cost
 
   calcDuration: (player) -> @bonusElementRanking
 
@@ -184,8 +197,7 @@ class Spell
   constructor: (@game, @caster, @forcedTargets = null) ->
     @baseName = @name
     @baseTargets = @caster.party.currentBattle.turnOrder
-
-    @cost = @cost.bind null, @caster if _.isFunction @cost
+    @calcTier @caster
     @caster[@stat][@oper] _.result @, 'cost'
     @chance = new (require "chance")()
 

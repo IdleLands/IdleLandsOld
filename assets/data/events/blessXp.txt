@@ -11,7 +11,7 @@
 %player finally got that check in the mail, finding a package containing %xpxp solid xp!
 %player returned a stray faerie to the forest. The faerie queen then rewarded %player with %xpxp!
 %player poured acid on that mean old lady, then proceeded to steal %xpxp from her while she was busy dissolving.
-%player found a can of Green Viper, and it give %himher wii~ings! %xpxp worth of wings, actually.
+%player found a can of Green Viper, and it gives %himher wii~ings! %xpxp worth of wings, actually.
 %player found a nugget of pure win. It was appraised to be worth %xpxp!
 %player found a golden nugget, but when %player appraised it it turned out to be a capsule for %xpxp.
 %player came across a shiny object. Upon further inspection, it turned out to be %xpxp!
@@ -34,3 +34,4 @@ The last survivor on %player's team was dying of the black plague, so %player pu
 %player successfully defended %hisher fortress from the undead!
 %player built a watch tower in %hisher warehouse to keep away the zombies, and it worked!
 Sarda, The Wizard Who Did It gave %player %xpxp to borrow.
+%player found a legendary weapon and went off to fight the demon lord.  Amazingly it was Excalibur and the fight was easily won earning %player %xp xp in the process.

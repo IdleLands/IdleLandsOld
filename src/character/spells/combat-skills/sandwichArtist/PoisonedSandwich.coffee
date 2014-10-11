@@ -5,9 +5,9 @@ SandwichBuff = require "./SandwichBuff.coffee"
 class PoisonedSandwich extends Spell
   name: "Poisoned Sandwich"
   @element = PoisonedSandwich::element = Spell::Element.physical
-  @cost = PoisonedSandwich::cost = 200
-  @restrictions =
-    "SandwichArtist": 10
+  @tiers = PoisonedSandwich::tiers = [
+    {name: "Poisoned Sandwich", spellPower: 1, cost: 200, class: "SandwichArtist", level: 10}
+  ]
 
 # Duration 1 at con >500, 2 at con 251-500, 3 at con <= 250
   calcDuration: (player) -> 1 + (player.calc.con < 500) + (player.calc.con < 250)

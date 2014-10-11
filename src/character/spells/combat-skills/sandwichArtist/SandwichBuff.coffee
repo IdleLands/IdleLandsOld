@@ -4,7 +4,6 @@ Spell = require "../../../base/Spell"
 class SandwichBuff extends Spell
   name: "Sandwich Buff"
   @element = SandwichBuff::element = Spell::Element.physical
-  @cost = SandwichBuff::cost = 200
 
   calcDuration: (player) -> super()+3
 
