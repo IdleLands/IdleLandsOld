@@ -170,6 +170,8 @@ class PlayerManager
     else
       player.rebuildPersonalityList()
 
+    player.recalculateStats()
+
     player.spellsAffectedBy = []
 
     player.lastLogin = new Date()
