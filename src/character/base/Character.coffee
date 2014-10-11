@@ -106,10 +106,27 @@ class Character extends EventEmitter2
   recalculateStats: ->
     @hp.maximum = @calc.hp()
     @mp.maximum = @calc.mp()
-    @calc.stats ['str', 'dex', 'con', 'int', 'agi', 'luck', 'wis']
+
+    # force a recalculation
+    @calc.stats ['str', 'dex', 'con', 'int', 'agi', 'luck', 'wis', 'water', 'fire', 'earth', 'ice', 'thunder']
 
   levelUpXpCalc: (level) ->
     Math.floor 100 + (400 * Math.pow level, 1.71)
+
+  calcLuckBonusFromValue: (value) ->
+    tiers = [1, 10, 50, 100, 250, 500]
+
+    postMaxTierDifference = 100
+
+    bonus = 0
+
+    for i in [0..tiers.length]
+      bonus++ if value >= tiers[i]
+
+    if value >= tiers[tiers.length-1]
+      bonus++ while value > tiers[tiers.length-1] += postMaxTierDifference
+
+    bonus
 
   gainXp: ->
   gainGold: ->
@@ -279,6 +296,10 @@ class Character extends EventEmitter2
       cantActMessages: ->
         baseValue = []
         @self.personalityReduce 'cantActMessages', [@self, baseValue], baseValue
+
+      luckBonus: ->
+        @baseValue = @self.calcLuckBonusFromValue @self.calc.stat 'luck'
+        @self.personalityReduce 'luckBonus', [@self, @baseValue], @baseValue
 
       fleePercent: ->
         @base.fleePercent = 0.1

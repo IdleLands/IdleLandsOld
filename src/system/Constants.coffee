@@ -22,7 +22,7 @@ class Constants
     event = @pickRandomNormalEvent()
     eventMod = player.calc.eventModifier event
     prob = (chance.integer {min: 0, max: event.max})
-    return event.type if prob <= (event.min+eventMod+(Math.max 1, player.calc.stat 'luck'))
+    return event.type if prob <= (event.min+eventMod+(Math.max 1, player.calc.luckBonus()))
     null
 
   @pickRandomGlobalEventType = ->

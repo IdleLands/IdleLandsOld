@@ -205,11 +205,11 @@ class PlayerManager
 
       switch @event
         when "combat.self.heal"
-          maxStat "calculated max heal given", arguments[1].damage
-          addStat "calculated total heals given", arguments[1].damage
+          maxStat "calculated max healing given", arguments[1].damage
+          addStat "calculated total healing given", arguments[1].damage
 
         when "combat.self.healed"
-          addStat "calculated total heal received", arguments[1].damage
+          addStat "calculated total healing received", arguments[1].damage
 
         when "combat.self.damage"
           maxStat "calculated max damage given", arguments[1].damage

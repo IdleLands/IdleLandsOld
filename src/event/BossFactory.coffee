@@ -27,7 +27,8 @@ class BossFactory
     monster.on "combat.party.lose", (winningParty) =>
       _.each winningParty, (member) =>
         _.each baseObj.items, (item) =>
-          return if not (chance.bool likelihood: item.dropPercent)
+          probability = Math.max 0, Math.min 100, item.dropPercent + member.calc.luckBonus()
+          return if not (chance.bool likelihood: probability)
           baseItem = _.clone BossInformation.items[item.name]
           baseItem.name = item.name
           baseItem.itemClass = setAllItemClasses

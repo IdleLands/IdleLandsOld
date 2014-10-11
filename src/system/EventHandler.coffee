@@ -236,7 +236,7 @@ class EventHandler
     @broadcastEvent totalString, player, extra
 
   doFindItem: (event, player, callback) ->
-    item = @game.equipmentGenerator.generateItem()
+    item = @game.equipmentGenerator.generateItem null, player.calc.luckBonus()
     return if not item
     myItem = _.findWhere player.equipment, {type: item.type}
     return callback false if not myItem

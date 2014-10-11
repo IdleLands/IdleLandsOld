@@ -8,7 +8,7 @@ chance = new Chance()
 class EquipmentGenerator extends Generator
   constructor: (@game) ->
 
-  generateItem: (type = null) ->
+  generateItem: (type = null, generatorBonus = 0) ->
     itemList = @game.componentDatabase.itemStats
     type = _.sample @types if not type
     return if not itemList or itemList.length is 0 or not (type of itemList)
@@ -18,11 +18,11 @@ class EquipmentGenerator extends Generator
 
     if chance.integer({min: 0, max: 2}) is 1
       @mergePropInto item, _.sample itemList['prefix']
-      (@mergePropInto item,  _.sample itemList['prefix']) until chance.integer({min: -1, max: 7**(i = (i+1) or 0)}) isnt 1
+      (@mergePropInto item,  _.sample itemList['prefix']) until chance.integer({min: -1, max: 8**(i = (i+1) or 0)}) > 1+generatorBonus
 
-    (@mergePropInto item,  _.sample itemList['prefix-special']) if chance.integer({min: 0, max: 21}) is 1
+    (@mergePropInto item,  _.sample itemList['prefix-special']) if chance.integer({min: 0, max: 26}) <= 1+generatorBonus
 
-    (@mergePropInto item,  _.sample itemList['suffix']) if chance.integer({min: 0, max: 14}) is 1
+    (@mergePropInto item,  _.sample itemList['suffix']) if chance.integer({min: 0, max: 18}) <= 1+generatorBonus
 
     item.type = type
 
