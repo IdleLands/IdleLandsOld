@@ -86,7 +86,7 @@ class Player extends Character
         console.log curItem
         return false if (not curItem) or (curItem.name is "empty")
 
-        salePrice = Math.max 1, @calcGoldGain Math.round curItem.score()*@calc.itemSellMultiplier curItem
+        salePrice = Math.max 2, @calcGoldGain Math.round curItem.score()*@calc.itemSellMultiplier curItem
         @gainGold salePrice
 
         @overflow[slot] = null
