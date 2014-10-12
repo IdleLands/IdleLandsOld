@@ -250,7 +250,7 @@ class EventHandler
       multiplier = player.calc.itemSellMultiplier item
       value = Math.floor item.score() * multiplier
       player.gainGold value
-      player.emit "event.sellItem", player, item, value
+      player.emit "player.sellItem", player, item, value
 
   doFindItem: (event, player, callback) ->
     item = @game.equipmentGenerator.generateItem null, player.calc.luckBonus()
