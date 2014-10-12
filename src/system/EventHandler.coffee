@@ -24,11 +24,13 @@ class EventHandler
 
     @doEvent eventType, player, callback
 
-  doEvent: (eventType, player, callback = ->) ->
+  doEvent: (eventType, player, callback = null) ->
     @game.componentDatabase.getRandomEvent eventType, (e, event) =>
       console.error e if e
       return if not event or not player
-      player.emit "event", event
+
+      if not callback then callback = (res) -> if res then player.emit "event", event
+
       switch eventType
         when 'yesno'
           @doYesNo event, player, callback
@@ -251,6 +253,7 @@ class EventHandler
       value = Math.floor item.score() * multiplier
       player.gainGold value
       player.emit "player.sellItem", player, item, value
+      callback false
 
   doFindItem: (event, player, callback) ->
     item = @game.equipmentGenerator.generateItem null, player.calc.luckBonus()
