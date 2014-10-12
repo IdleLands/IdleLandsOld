@@ -29,7 +29,7 @@ class EventHandler
       console.error e if e
       return if not event or not player
 
-      if not callback then callback = (res) -> if res then player.emit "event", event
+      callback = (res) -> if res then player.emit "event", event
 
       switch eventType
         when 'yesno'
