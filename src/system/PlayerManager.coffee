@@ -99,9 +99,12 @@ class PlayerManager
     ret
 
   addForAnalytics: (player) ->
+    console.log 'saving1'
     playerObject = @buildPlayerSaveObject player
     playerObject.saveTime = new Date()
+    console.log 'saving2'
     @game.componentDatabase.insertNewAnalyticsPoint playerObject
+    console.log 'saving3'
 
   savePlayer: (player) ->
     savePlayer = @buildPlayerSaveObject player

@@ -301,10 +301,14 @@ class Player extends Character
     @playerManager.game.broadcast MessageCreator.genericMessage "<player.name>#{@name}</player.name> has attained level <player.level>#{@level.getValue()}</player.level>!" if not suppress
     @xp.maximum = @levelUpXpCalc @level.getValue()
     @xp.toMinimum()
+    console.log 'test1'
     @emit "player.level.up", @
+    console.log 'test2'
     @recalculateStats()
+    console.log 'test3'
 
     @playerManager.addForAnalytics @
+    console.log 'test5'
 
   setString: (type, val = '') ->
     @messages = {} if not @messages
