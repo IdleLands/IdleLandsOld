@@ -48,36 +48,50 @@ class Player extends Character
     ]
 
   manageOverflow: (option, slot) ->
-    if not @overflow
-      @overflow = []
-    if not @maxOverflow
-      @maxOverflow = Constants.defaults.player.maxOverflow
+    maxOverflow = Constants.defaults.player.maxOverflow
+    @overflow = [] if not @overflow
+
+    cleanOverflow = =>
+      @overflow = _.compact _.reject @overflow, (item) -> item?.name is "empty"
+
     switch option
       when "add"
-        return false if slot not in ["body","feet","finger","hands","head","legs","neck","mainhand","offhand","charm"]
-        for slotNum in [0..@maxOverflow]
-          if not @overflow[slotNum]
-            @overflow[slotNum] = new Equipment {type: slot, name: "empty"}
-            return true
-          else if slotNum is @maxOverflow
-            return false
+        return false if not (slot in ["body","feet","finger","hands","head","legs","neck","mainhand","offhand","charm"])
+        return false if @overflow.length is maxOverflow
+
+        currentItem = _.findWhere @equipment, {type: slot}
+
+        @overflow.push currentItem
+        @equipment = _.without @equipment, currentItem
+        @equipment.push new Equipment {type: slot, name: "empty"}
+
+        return true
 
       when "swap"
         return false if not @overflow[slot]
+
         current = _.findWhere @equipment, {type: @overflow[slot].type}
         inOverflow = @overflow[slot]
-        @equipment = _.reject @equipment, {type: @overflow[slot].type}
+
+        @equipment = _.without @equipment, current
         @equipment.push inOverflow
+
         @overflow[slot] = current
+
+        cleanOverflow()
         return true
 
       when "sell"
-        return false if (not @overflow[slot]) or (@overflow[slot].name is "empty")
-        salePrice = Math.floor(0.25*@overflow[slot].score())
-        salePrice = @calcGoldGain salePrice
-        @overflow[slot] = null
-        salePrice = 1 if salePrice < 1
+        curItem = @overflow[slot]
+        console.log curItem
+        return false if (not curItem) or (curItem.name is "empty")
+
+        salePrice = Math.max 1, @calcGoldGain Math.round curItem.score()*@calc.itemSellMultiplier curItem
         @gainGold salePrice
+
+        @overflow[slot] = null
+        cleanOverflow()
+
         return salePrice
 
       when "list"

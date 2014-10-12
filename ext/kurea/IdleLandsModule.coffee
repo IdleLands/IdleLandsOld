@@ -421,7 +421,9 @@ module.exports = (Module) ->
 
           response = @IdleWrapper.api[action].overflow identifier, slot
 
-          if response
+          if response > 0
+            @reply origin, "Your item sold for #{response} gold!"
+          else if response
             @reply origin, "Your inventory has been updated."
           else
             @reply origin, "Your inventory has not been updated. Something may have went wrong!"

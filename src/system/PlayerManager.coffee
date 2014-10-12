@@ -157,6 +157,7 @@ class PlayerManager
       player.generateBaseEquipment()
     else
       player.equipment = loadEquipment player.equipment
+      player.overflow = loadEquipment player.overflow
 
     if not player.professionName
       player.changeProfession "Generalist"
