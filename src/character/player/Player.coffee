@@ -54,35 +54,32 @@ class Player extends Character
       @maxOverflow = Constants.defaults.player.maxOverflow
     switch option
       when "add"
-        if slot not in ["body","feet","finger","hands","head","legs","neck","mainhand","offhand","charm"]
-          return false
-        else
-          for slotNum in [0..@maxOverflow]
-            if not @overflow[slotNum]
-              @overflow[slotNum] = new Equipment {type: slot, name: "empty"}
-              return true
-            else if slotNum == @maxOverflow
-              return false
+        return false if slot not in ["body","feet","finger","hands","head","legs","neck","mainhand","offhand","charm"]
+        for slotNum in [0..@maxOverflow]
+          if not @overflow[slotNum]
+            @overflow[slotNum] = new Equipment {type: slot, name: "empty"}
+            return true
+          else if slotNum is @maxOverflow
+            return false
+
       when "swap"
-        if not @overflow[slot]
-          return false
-        else
-          current = _.findWhere @equipment, {type: @overflow[slot].type}
-          inOverflow = @overflow[slot]
-          @equipment = _.reject @equipment, {type: @overflow[slot].type}
-          @equipment.push inOverflow
-          @overflow[slot] = current
-          return true
+        return false if not @overflow[slot]
+        current = _.findWhere @equipment, {type: @overflow[slot].type}
+        inOverflow = @overflow[slot]
+        @equipment = _.reject @equipment, {type: @overflow[slot].type}
+        @equipment.push inOverflow
+        @overflow[slot] = current
+        return true
+
       when "sell"
-        if (not @overflow[slot]) or (@overflow[slot].name is "empty")
-          return false
-        else
-          salePrice = Math.floor(0.25*@overflow[slot].score())
-          salePrice = @calcGoldGain salePrice
-          @overflow[slot] = null
-          salePrice = 1 if salePrice < 1
-          @gainGold salePrice
-          return salePrice
+        return false if (not @overflow[slot]) or (@overflow[slot].name is "empty")
+        salePrice = Math.floor(0.25*@overflow[slot].score())
+        salePrice = @calcGoldGain salePrice
+        @overflow[slot] = null
+        salePrice = 1 if salePrice < 1
+        @gainGold salePrice
+        return salePrice
+
       when "list"
         listItems = ""
         for slotNum in [0..@maxOverflow]
@@ -93,6 +90,7 @@ class Player extends Character
           if slotNum < @maxOverflow
             listItems += ", "
         return listItems
+
       else return false
 
   handleTrainerOnTile: (tile) ->

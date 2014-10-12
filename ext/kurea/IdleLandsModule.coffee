@@ -408,6 +408,25 @@ module.exports = (Module) ->
           newGender = @IdleWrapper.api.set.gender identifier, gender
           @reply origin, "Your gender is now #{newGender}."
 
+      @addRoute "idle-inventory :action(swap|remove|add) :slot", (origin, route) =>
+        [action, slot] = [route.params.action, route.params.slot]
+        slot = parseInt slot if action isnt "add"
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to change your inventory settings!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          response = @IdleWrapper.api[action].overflow identifier, slot
+
+          if response
+            @reply origin, "Your inventory has been updated."
+          else
+            @reply origin, "Your inventory has not been updated. Something may have went wrong!"
+
+
       @initialize()
 
       #@on "notice", (bot, sender, channel, message) =>
