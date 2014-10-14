@@ -93,7 +93,7 @@ class PlayerManager
   buildPlayerSaveObject: (player) ->
     calc = player.calc.base
     calcStats = player.calc.statCache
-    ret = _.omit player, 'playerManager', 'party', 'personalities', 'calc', 'spellsAffectedBy', 'fled', '_events', 'profession', 'stepCooldown', '_id'
+    ret = _.omit player, 'playerManager', 'party', 'personalities', 'calc', 'spellsAffectedBy', 'fled', '_events', 'profession', 'stepCooldown', '_id', 'pushbullet'
     ret._baseStats = calc
     ret._statCache = calcStats
     ret

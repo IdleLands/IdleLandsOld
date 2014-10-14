@@ -76,13 +76,16 @@ class EventHandler
     message = MessageCreator.doStringReplace message, player, extra
     @game.broadcast MessageCreator.genericMessage message
 
-    @addEventToDb message, player
+    stripped = MessageCreator._replaceMessageColors message
+
+    player.pushbulletSend stripped
+    @addEventToDb stripped, player
 
   addEventToDb: (message, player) ->
     @playerEventsDb.insert
       createdAt: new Date()
       player: player.name
-      message: MessageCreator._replaceMessageColors message
+      message: message
     , ->
 
   doYesNo: (event, player, callback) ->

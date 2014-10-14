@@ -7,6 +7,8 @@ Equipment = require "../../item/Equipment"
 _ = require "underscore"
 Personality = require "../base/Personality"
 
+PushBullet = require "pushbullet"
+
 Chance = require "chance"
 chance = new Chance Math.random
 
@@ -46,6 +48,17 @@ class Player extends Character
       new Equipment {type: "offhand", class: "newbie", name: "Chunk of Rust", dex: 1, str: 1}
       new Equipment {type: "charm",   class: "newbie", name: "Ancient Bracelet", con: 1, dex: 1}
     ]
+
+  setPushbulletKey: (key) ->
+    @pushbulletApiKey = key
+
+  pushbulletSend: (message) ->
+    @pushbullet = new PushBullet @pushbulletApiKey if @pushbulletApiKey
+    return if not @pushbullet
+
+    @pushbullet.devices (e, res) =>
+      _.each res?.devices, (device) =>
+        @pushbullet.note device.iden, 'IdleLands', message, (e, res) ->
 
   manageOverflow: (option, slot) ->
     maxOverflow = Constants.defaults.player.maxOverflow

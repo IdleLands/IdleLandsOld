@@ -71,6 +71,8 @@ class API
       @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType, string
     overflow: (identifier, slot) =>
       @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "add", slot
+    pushbullet: (identifier, apiKey) =>
+      @gameInstance.playerManager.getPlayerById(identifier)?.setPushbulletKey apiKey
 
   @find =
     static: (query, callback) =>
@@ -87,6 +89,8 @@ class API
       @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType
     overflow: (identifier, slot) =>
       @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "sell", slot
+    pushbullet: (identifier) =>
+      @gameInstance.playerManager.getPlayerById(identifier)?.setPushbulletKey ''
 
   @set =
     gender: (identifier, newGender) =>
