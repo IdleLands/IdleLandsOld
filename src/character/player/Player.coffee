@@ -351,7 +351,7 @@ class Player extends Character
       @achievements.push achievement
       if not silent
         message = "<player.name>#{@name}</player.name> has achieved <event.achievement>#{achievementName}</event.achievement> (#{achievement.desc} | #{achievement.reward})"
-        @playerManager.game.eventHandler.broadcastEvent message, @ if not suppress
+        @playerManager.game.eventHandler.broadcastEvent message, @ if not silent
 
     @achievements = achieved
 
