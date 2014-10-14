@@ -72,11 +72,17 @@ class Party
 
     # forced = yes means disband() called this
     if not forced
+
+      message = ''
+
       if @players.length <= 1
         @disband()
-        player.playerManager.game.broadcast MessageCreator.genericMessage "<player.name>#{player.name}</player.name> has disbanded <event.partyName>#{@name}</event.partyName>." if not forced
+        message = "<player.name>#{player.name}</player.name> has disbanded <event.partyName>#{@name}</event.partyName>."
       else
-        player.playerManager.game.broadcast MessageCreator.genericMessage "<player.name>#{player.name}</player.name> has left <event.partyName>#{@name}</event.partyName>."
+        message = "<player.name>#{player.name}</player.name> has left <event.partyName>#{@name}</event.partyName>."
+
+      player.playerManager.game.broadcast MessageCreator.genericMessage message
+      @game.eventHandler.addEventToDb message, player
 
     player.party = null
 

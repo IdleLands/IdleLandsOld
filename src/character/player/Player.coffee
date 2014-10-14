@@ -180,6 +180,7 @@ class Player extends Character
     @emit "explore.transfer", @, @map
     @emit "explore.transfer.#{dest.movementType}", @, @map
 
+    @playerManager.game.eventHandler.addEventToDb message, @
     @playerManager.game.broadcast MessageCreator.genericMessage message
 
   handleTile: (tile) ->
