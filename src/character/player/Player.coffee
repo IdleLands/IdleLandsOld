@@ -257,9 +257,8 @@ class Player extends Character
 
     message = "<player.name>#{@name}</player.name> is now a <player.class>#{to}</player.class>!"
 
-    @playerManager.game.eventHandler.broadcastEvent message, @
+    @playerManager.game.eventHandler.broadcastEvent message, @ if not suppress
 
-    @playerManager.game.broadcast MessageCreator.genericMessage message if not suppress
     @emit "player.profession.change", @, oldProfessionName, @professionName
 
     @recalculateStats()
