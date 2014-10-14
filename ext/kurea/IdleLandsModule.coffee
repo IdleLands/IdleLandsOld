@@ -389,6 +389,18 @@ module.exports = (Module) ->
           newString = @IdleWrapper.api[action].string identifier, sType, string
           @reply origin, "Successfully updated your string settings. String \"#{sType}\" is now: #{if newString then newString else 'empty!'}"
 
+      @addRoute "idle-pushbullet :action(remove|add) :string?", (origin, route) =>
+        [bot, action, string] = [origin.bot, route.params.action, route.params.string]
+        bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to change your string settings!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          @IdleWrapper.api[action].pushbullet identifier, string
+          @reply origin, "Successfully updated your pushbullet settings."
+
       @addRoute "idle-add all-data", "idle.game.owner", (origin, route) =>
         @reply origin, "Re-initializing all modifier/event/etc data from disk."
         @IdleWrapper.api.add.allData()
