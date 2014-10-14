@@ -131,7 +131,7 @@ class Player extends Character
       @emit "player.trainer.isAlready", @, className
       @stepCooldown = 10
 
-    @playerManager.game.broadcast MessageCreator.genericMessage message
+    @playerManager.game.eventHandler.broadcastEvent message, @
 
     if @professionName isnt className and (chance.bool likelihood: @calc.classChangePercent className)
       @playerManager.game.eventHandler.doYesNo {}, @, (result) =>
@@ -180,8 +180,7 @@ class Player extends Character
     @emit "explore.transfer", @, @map
     @emit "explore.transfer.#{dest.movementType}", @, @map
 
-    @playerManager.game.eventHandler.addEventToDb message, @
-    @playerManager.game.broadcast MessageCreator.genericMessage message
+    @playerManager.game.eventHandler.broadcastEvent message, @
 
   handleTile: (tile) ->
     switch tile.object?.type
@@ -258,7 +257,7 @@ class Player extends Character
 
     message = "<player.name>#{@name}</player.name> is now a <player.class>#{to}</player.class>!"
 
-    @playerManager.game.eventHandler.addEventToDb message, @
+    @playerManager.game.eventHandler.broadcastEvent message, @
 
     @playerManager.game.broadcast MessageCreator.genericMessage message if not suppress
     @emit "player.profession.change", @, oldProfessionName, @professionName
@@ -325,12 +324,11 @@ class Player extends Character
     return if not @playerManager or @level.getValue() is @level.maximum
     @level.add 1
     message = "<player.name>#{@name}</player.name> has attained level <player.level>#{@level.getValue()}</player.level>!"
-    @playerManager.game.broadcast MessageCreator.genericMessage message if not suppress
     @xp.maximum = @levelUpXpCalc @level.getValue()
     @xp.toMinimum()
-    @emit "player.level.up", @
     @recalculateStats()
-    @playerManager.game.eventHandler.addEventToDb message, @
+    @emit "player.level.up", @
+    @playerManager.game.eventHandler.broadcastEvent message, @ if not suppress
 
     @playerManager.addForAnalytics @
 
@@ -353,7 +351,8 @@ class Player extends Character
       achievement = _.findWhere achieved, name: achievementName
       @achievements.push achievement
       if not silent
-        @playerManager.game.broadcast MessageCreator.genericMessage "<player.name>#{@name}</player.name> has achieved <event.achievement>#{achievementName}</event.achievement> (#{achievement.desc} | #{achievement.reward})"
+        message = "<player.name>#{@name}</player.name> has achieved <event.achievement>#{achievementName}</event.achievement> (#{achievement.desc} | #{achievement.reward})"
+        @playerManager.game.eventHandler.broadcastEvent message, @ if not suppress
 
     @achievements = achieved
 
