@@ -213,9 +213,9 @@ class EventHandler
     string = MessageCreator.doStringReplace event.remark, player, extra
     string += " [<event.blessItem.stat>#{stat}</event.blessItem.stat> <event.blessItem.value>#{start} -> #{end}</event.blessItem.value>]"
 
+    @broadcastEvent string, player
     player.emit "event.#{event.type}", player, item, boost
 
-    @broadcastEvent string, player
     callback true
 
   doItemEquip: (player, item, messageString) ->
@@ -236,9 +236,10 @@ class EventHandler
     normalizedPerceivedScore = if perceivedScoreDiff > 0 then "+#{perceivedScoreDiff}" else perceivedScoreDiff
 
     totalString = "#{messageString} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (#{normalizedPerceivedScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
+    
+    @broadcastEvent totalString, player, extra
     player.emit "event.findItem", player, item
 
-    @broadcastEvent totalString, player, extra
 
   doItemEvent: (event, player, item, callback) ->
     myItem = _.findWhere player.equipment, {type: item.type}
@@ -311,9 +312,9 @@ class EventHandler
 
     string = "#{event.remark} [<event.enchant.stat>#{stat} = #{boost}</event.enchant.stat> | <event.enchant.boost>+#{item.enchantLevel} -> +#{++item.enchantLevel}</event.enchant.boost>]"
 
-    player.emit "event.enchant", player, item, item.enchantLevel
-
     @broadcastEvent string, player, extra
+    player.emit "event.enchant", player, item, item.enchantLevel
+    
     callback true
 
   doFlipStat: (event, player, callback) ->
@@ -334,9 +335,9 @@ class EventHandler
 
     string = "#{event.remark} [<event.flip.stat>#{stat}</event.flip.stat> <event.flip.value>#{start} -> #{end}</event.flip.value>]"
 
+    @broadcastEvent string, player, extra
     player.emit "event.#{event.type}", player, item, stat
 
-    @broadcastEvent string, player, extra
     callback true
 
   ignoreKeys: ['_calcScore', 'enchantLevel']
