@@ -283,7 +283,7 @@ module.exports = (Module) ->
       @addRoute "idle-register :name", registerCommand
       @addRoute "register :name", registerCommand
 
-      @addRoute 'idle-event ":player" :event?', "idle.game.gm", (origin, route) =>
+      @addRoute 'idle-event ":player" :event', "idle.game.gm", (origin, route) =>
         [player, event] = [route.params.player, route.params.event]
         @IdleWrapper.api.game.doEvent player, event, (did) =>
           @reply origin, "Your event is done." if did
@@ -296,9 +296,10 @@ module.exports = (Module) ->
           @reply origin, "Your event is done." if did
           @reply origin, "Your event failed (something weird went wrong)." if not did
 
-      @addRoute 'idle-update', 'idle.game.gm', (origin) =>
+      @addRoute 'idle-update', 'idle.game.gm', =>
         @IdleWrapper.api.game.update()
 
+      ###
       @addRoute "idle-add event yesno \":question\" \":affirm\" \":deny\"", "idle.game.gm", (origin, route) =>
         [question, affirm, deny] = [route.params.question, route.params.affirm, route.params.deny]
         @IdleWrapper.api.add.yesno question, affirm, deny
@@ -312,6 +313,29 @@ module.exports = (Module) ->
           return
 
         @IdleWrapper.api.add.static eventType, question
+
+      @addRoute "idle-add item :itemOrDescType \":name\" *", "idle.game.gm", (origin, route) =>
+        [type, name, parameters] = [route.params.itemOrDescType, route.params.name, route.splats[0]]
+
+        if type not in ['prefix', 'suffix', 'prefix-special',
+                        'body', 'charm', 'feet', 'finger', 'hands', 'head', 'legs', 'neck', 'offhand', 'mainhand']
+          @reply origin, "#{type} isn't a valid type."
+          return
+
+        parameters = _.map (parameters.split ' '), (item) ->
+          arr = item.split '='
+          retval = {}
+          retval[arr[0]] = (parseInt arr[1]) ? null
+          retval
+        .reduce (cur, prev) ->
+          _.extend prev, cur
+        , { name: name, type: type }
+
+        @IdleWrapper.api.add.item parameters, (error) =>
+          @reply origin, "You cannot have a duplicate name (#{error.name})." if error.name
+          @reply origin, "It doesn't make sense to have the same stats twice." if error.stats
+
+      ###
 
       @addRoute "idle-ban :playerName", "idle.game.gm", (origin, route) =>
         [name] = [route.params.playerName]
@@ -341,27 +365,6 @@ module.exports = (Module) ->
         y = parseInt y
         @IdleWrapper.api.game.teleport.mass map, x, y
 
-      @addRoute "idle-add item :itemOrDescType \":name\" *", "idle.game.gm", (origin, route) =>
-        [type, name, parameters] = [route.params.itemOrDescType, route.params.name, route.splats[0]]
-
-        if type not in ['prefix', 'suffix', 'prefix-special',
-                        'body', 'charm', 'feet', 'finger', 'hands', 'head', 'legs', 'neck', 'offhand', 'mainhand']
-          @reply origin, "#{type} isn't a valid type."
-          return
-
-        parameters = _.map (parameters.split ' '), (item) ->
-          arr = item.split '='
-          retval = {}
-          retval[arr[0]] = (parseInt arr[1]) ? null
-          retval
-        .reduce (cur, prev) ->
-          _.extend prev, cur
-        , { name: name, type: type }
-
-        @IdleWrapper.api.add.item parameters, (error) =>
-          @reply origin, "You cannot have a duplicate name (#{error.name})." if error.name
-          @reply origin, "It doesn't make sense to have the same stats twice." if error.stats
-
       @addRoute "idle-personality :action(remove|add) :personality", (origin, route) =>
         [bot, action, personality] = [origin.bot, route.params.action, route.params.personality]
         bot.userManager.getUsername origin, (e, username) =>
@@ -377,7 +380,7 @@ module.exports = (Module) ->
           else
             @reply origin, "Successfully updated your personality settings. Personalities are now: #{personalityString or "none"}"
 
-      @addRoute "idle-string :action(remove|add) :type :string?", (origin, route) =>
+      stringFunc = (origin, route) =>
         [bot, action, sType, string] = [origin.bot, route.params.action, route.params.type, route.params.string]
         bot.userManager.getUsername origin, (e, username) =>
           if not username
@@ -389,7 +392,10 @@ module.exports = (Module) ->
           newString = @IdleWrapper.api[action].string identifier, sType, string
           @reply origin, "Successfully updated your string settings. String \"#{sType}\" is now: #{if newString then newString else 'empty!'}"
 
-      @addRoute "idle-pushbullet :action(remove|add) :string?", (origin, route) =>
+      @addRoute "idle-string :action(add) :type :string", stringFunc
+      @addRoute "idle-string :action(remove) :type", stringFunc
+
+      pushbulletFunc = (origin, route) =>
         [bot, action, string] = [origin.bot, route.params.action, route.params.string]
         bot.userManager.getUsername origin, (e, username) =>
           if not username
@@ -400,6 +406,9 @@ module.exports = (Module) ->
 
           @IdleWrapper.api[action].pushbullet identifier, string
           @reply origin, "Successfully updated your pushbullet settings."
+
+      @addRoute "idle-pushbullet :action(add) :string", pushbulletFunc
+      @addRoute "idle-pushbullet :action(remove)", pushbulletFunc
 
       @addRoute "idle-add all-data", "idle.game.owner", (origin, route) =>
         @reply origin, "Re-initializing all modifier/event/etc data from disk."
