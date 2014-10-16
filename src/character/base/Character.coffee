@@ -181,11 +181,11 @@ class Character extends EventEmitter2
 
       hp: ->
         @base.hp = @self.calc.stat 'hp'
-        Math.max 1, @base.hp
+        Math.round Math.max 1, @base.hp
 
       mp: ->
         @base.mp = @self.calc.stat 'mp'
-        Math.max 0, @base.mp
+        Math.round Math.max 0, @base.mp
 
       dodge: ->
         @base.dodge = @self.calc.stat 'agi'
