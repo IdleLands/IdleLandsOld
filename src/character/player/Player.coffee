@@ -150,8 +150,14 @@ class Player extends Character
     dest.x = parseInt dest.destx
     dest.y = parseInt dest.desty
 
-    if not dest.map
+    newLoc = dest
+
+    if not dest.map and not dest.toLoc
       console.error "ERROR. No dest.map at #{@x},#{@y} in #{@map}"
+      return
+
+    if not dest.movementType
+      console.error "ERROR. No dest.movementType at #{@x},#{@y} in #{@map}"
       return
 
     eventToTest = "#{dest.movementType}Chance"
@@ -160,18 +166,31 @@ class Player extends Character
 
     return if not chance.bool({likelihood: prob})
 
-    @map = dest.map
-    @x = dest.x
-    @y = dest.y
+    handleLoc = no
+
+    if dest.toLoc
+      newLoc = @playerManager.game.gmCommands.lookupLocation dest.toLoc
+      @map = newLoc.map
+      @x = newLoc.x
+      @y = newLoc.y
+      handleLoc = yes
+      dest.destName = newLoc.formalName
+
+    else
+      @map = newLoc.map
+      @x = newLoc.x
+      @y = newLoc.y
 
     message = ""
 
+    dest.fromName = @map if not dest.fromName
     dest.destName = dest.map if not dest.destName
 
     switch dest.movementType
-      when "ascend" then message = "<player.name>#{@name}</player.name> has ascended to <event.transfer.destination>#{dest.destName}</event.transfer.destination>."
-      when "descend" then message = "<player.name>#{@name}</player.name> has descended to <event.transfer.destination>#{dest.destName}</event.transfer.destination>."
-      when "fall" then message = "<player.name>#{@name}</player.name> has fallen from <event.transfer.from>#{dest.fromName}</event.transfer.from> to <event.transfer.destination>#{dest.destName}</event.transfer.destination>!"
+      when "ascend" then    message = "<player.name>#{@name}</player.name> has ascended to <event.transfer.destination>#{dest.destName}</event.transfer.destination>."
+      when "descend" then   message = "<player.name>#{@name}</player.name> has descended to <event.transfer.destination>#{dest.destName}</event.transfer.destination>."
+      when "fall" then      message = "<player.name>#{@name}</player.name> has fallen from <event.transfer.from>#{dest.fromName}</event.transfer.from> to <event.transfer.destination>#{dest.destName}</event.transfer.destination>!"
+      when "teleport" then  message = "<player.name>#{@name}</player.name> was teleported from <event.transfer.from>#{dest.fromName}</event.transfer.from> to <event.transfer.destination>#{dest.destName}</event.transfer.destination>!"
 
     if @hasPersonality "Wheelchair"
       if dest.movementType is "descend"
@@ -181,6 +200,8 @@ class Player extends Character
     @emit "explore.transfer.#{dest.movementType}", @, @map
 
     @playerManager.game.eventHandler.broadcastEvent message, @
+
+    @handleTile @getTileAt() if handleLoc
 
   handleTile: (tile) ->
     switch tile.object?.type

@@ -85,6 +85,11 @@ class GMCommands
       formalName: "the Sandwich Artist Trainer"
       x: 54
       y: 122
+    "pirate":
+      map: "Norkos"
+      formalName: "the Pirate Trainer"
+      x: 219
+      y: 49
 
     "fisheries":
       map: "Norkos"
@@ -101,6 +106,12 @@ class GMCommands
       formalName: "Norkos Prison"
       x: 92
       y: 11
+
+    "maeles":
+      map: "Norkos"
+      formalName: "Maeles"
+      x: 51
+      y: 115
 
     "goblinlord":
       map: "Norkos Dungeon -1"

@@ -63,7 +63,7 @@
                  "y":32
                 }, 
                 {
-                 "gid":15,
+                 "gid":26,
                  "height":0,
                  "name":"Goblin Lord",
                  "properties":
@@ -93,7 +93,7 @@
         {
          "firstgid":1,
          "image":"..\/..\/..\/img\/tiles.png",
-         "imageheight":32,
+         "imageheight":64,
          "imagewidth":144,
          "margin":0,
          "name":"tiles",
