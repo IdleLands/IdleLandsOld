@@ -53,12 +53,12 @@ class Player extends Character
     @pushbulletApiKey = key
 
   pushbulletSend: (message) ->
-    @pushbullet = new PushBullet @pushbulletApiKey if @pushbulletApiKey
-    return if not @pushbullet
+    pushbullet = new PushBullet @pushbulletApiKey if @pushbulletApiKey
+    return if not pushbullet
 
-    @pushbullet.devices (e, res) =>
+    pushbullet.devices (e, res) =>
       _.each res?.devices, (device) =>
-        @pushbullet.note device.iden, 'IdleLands', message, (e, res) ->
+        pushbullet.note device.iden, 'IdleLands', message, (e, res) ->
 
   manageOverflow: (option, slot) ->
     maxOverflow = Constants.defaults.player.maxOverflow
