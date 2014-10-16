@@ -401,7 +401,7 @@ class Battle
         player.emit "combat.ally.#{event}", data
       else if data instanceof Player and player.party isnt data.party
         player.emit "combat.enemy.#{event}", data
-      else if event and event not in ['turn.end', 'turn.start']
+      else if event and event not in ['turn.end', 'turn.start', 'flee']
         player.emit "combat.#{event}", data
 
   emitEventsTo: (event, to, data) ->
