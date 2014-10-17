@@ -107,11 +107,21 @@ class GMCommands
       x: 92
       y: 11
 
+    "norkos":
+      map: "Norkos"
+      formalName: "Norkos"
+      x: 34
+      y: 14
     "maeles":
       map: "Norkos"
       formalName: "Maeles"
       x: 51
       y: 115
+    "vocalnus":
+      map: "Vocalnus"
+      formalName: "Vocalnus"
+      x: 51
+      y: 35
 
     "goblinlord":
       map: "Norkos Dungeon -1"

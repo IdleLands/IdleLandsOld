@@ -456,6 +456,21 @@
                  "width":0,
                  "x":624,
                  "y":720
+                }, 
+                {
+                 "gid":32,
+                 "height":0,
+                 "name":"ToNorkos",
+                 "properties":
+                    {
+                     "movementType":"teleport",
+                     "toLoc":"norkos"
+                    },
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":1056,
+                 "y":784
                 }],
          "opacity":1,
          "type":"objectgroup",
