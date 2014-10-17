@@ -56,8 +56,8 @@ class Player extends Character
     pushbullet = new PushBullet @pushbulletApiKey if @pushbulletApiKey
     return if not pushbullet
 
-    pushbullet.devices (e, res) =>
-      _.each res?.devices, (device) =>
+    pushbullet.devices (e, res) ->
+      _.each res?.devices, (device) ->
         pushbullet.note device.iden, 'IdleLands', message, (e, res) ->
 
   manageOverflow: (option, slot) ->
