@@ -867,6 +867,23 @@
                  "width":0,
                  "x":3168,
                  "y":272
+                }, 
+                {
+                 "gid":1,
+                 "height":0,
+                 "name":"ToMythos",
+                 "properties":
+                    {
+                     "destx":"23",
+                     "desty":"23",
+                     "map":"Maeles Dungeon -1",
+                     "movementType":"descend"
+                    },
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":1712,
+                 "y":2080
                 }],
          "opacity":1,
          "type":"objectgroup",
