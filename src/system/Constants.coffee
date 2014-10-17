@@ -3,7 +3,7 @@ _ = require "underscore"
 Chance = require "chance"
 chance = new Chance()
 
-config = (require "../../config.json").gameConstants
+config = require "../../config/game.json"
 
 class Constants
   @gameName = config.gameName

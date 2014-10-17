@@ -1,0 +1,114 @@
+{
+    "gameName": "Idliathla",
+    "globalEventTimers": [
+        {
+            "type": "battle",
+            "duration": 2400
+        },
+        {
+            "type": "cataclysm",
+            "duration": 4800
+        }
+    ],
+    "eventRates": [
+        {
+            "type": "findItem",
+            "min": 1,
+            "max": 10
+        },
+        {
+            "type": "enchant",
+            "min": 1,
+            "max": 17500
+        },
+        {
+            "type": "flipStat",
+            "min": 1,
+            "max": 25000
+        },
+        {
+            "type": "blessItem",
+            "min": 1,
+            "max": 1050
+        },
+        {
+            "type": "forsakeItem",
+            "min": 1,
+            "max": 2150
+        },
+        {
+            "type": "blessXp",
+            "min": 1,
+            "max": 1000
+        },
+        {
+            "type": "forsakeXp",
+            "min": 1,
+            "max": 2055
+        },
+        {
+            "type": "blessGold",
+            "min": 1,
+            "max": 4075
+        },
+        {
+            "type": "forsakeGold",
+            "min": 1,
+            "max": 7150
+        },
+        {
+            "type": "party",
+            "min": 1,
+            "max": 500
+        },
+        {
+            "type": "battle",
+            "min": 1,
+            "max": 6000
+        }
+    ],
+    "eventEffects": {
+        "blessXp": {
+            "fail": 1,
+            "flux": 1.5,
+            "minPercent": 3,
+            "maxPercent": 15
+        },
+        "forsakeXp": {
+            "fail": -2,
+            "flux": 2.5,
+            "minPercent": -8,
+            "maxPercent": -20
+        },
+        "blessGold": {
+            "amount": [1, 60, 100, 400, 1000, 3000, 7000, 10000, 25000, 50000, 65000, 85000, 100000]
+        },
+        "forsakeGold": {
+            "amount": [-1, -90, -300, -750, -1700, -4890, -9001, -16500, -35900, -57000, -69000, -95000, -300000]
+        },
+        "blessItem": {
+            "amount": 1,
+            "percent": 5
+        },
+        "forsakeItem": {
+            "amount": -3,
+            "percent": -9
+        }
+    },
+    "defaults": {
+        "game": {
+            "maxPartyMembers": 3,
+            "maxParties": 3,
+            "soloBattleProbability": 35,
+            "aboveAveragePartyCountBattleProbability": 25,
+            "maxEnchantLevel": 10,
+            "maxPartyScorePercentDifference": 0.85
+        },
+        "player": {
+            "defaultYesPercent": 50,
+            "defaultPartyLeavePercent": 0.1,
+            "defaultItemFindModifier": 7,
+            "maxOverflow": 2
+        }
+    }
+}

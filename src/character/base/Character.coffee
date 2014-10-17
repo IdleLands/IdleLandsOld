@@ -114,7 +114,7 @@ class Character extends EventEmitter2
     Math.floor 100 + (400 * Math.pow level, 1.71)
 
   calcLuckBonusFromValue: (value) ->
-    tiers = [1, 10, 50, 100, 250, 500]
+    tiers = [1, 10, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 450, 500]
 
     postMaxTierDifference = 100
 
