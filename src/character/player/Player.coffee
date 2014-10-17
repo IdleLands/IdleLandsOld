@@ -168,6 +168,9 @@ class Player extends Character
 
     handleLoc = no
 
+    dest.fromName = @map if not dest.fromName
+    dest.destName = dest.map if not dest.destName
+
     if dest.toLoc
       newLoc = @playerManager.game.gmCommands.lookupLocation dest.toLoc
       @map = newLoc.map
@@ -182,9 +185,6 @@ class Player extends Character
       @y = newLoc.y
 
     message = ""
-
-    dest.fromName = @map if not dest.fromName
-    dest.destName = dest.map if not dest.destName
 
     switch dest.movementType
       when "ascend" then    message = "<player.name>#{@name}</player.name> has ascended to <event.transfer.destination>#{dest.destName}</event.transfer.destination>."

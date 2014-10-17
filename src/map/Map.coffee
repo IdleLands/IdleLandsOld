@@ -40,7 +40,7 @@ class Map
     35: "Hole"
     36: "Gravel"
 
-  blockers: [16, 17, 3]
+  blockers: [16, 17, 3, 33]
   interactables: [1, 2, 12, 13, 14, 15, 18]
 
   constructor: (path) ->

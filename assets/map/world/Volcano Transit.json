@@ -27,7 +27,7 @@
          "name":"Interactables",
          "objects":[
                 {
-                 "gid":2,
+                 "gid":1,
                  "height":0,
                  "name":"NorkosAccess",
                  "properties":
@@ -45,7 +45,7 @@
                  "y":112
                 }, 
                 {
-                 "gid":2,
+                 "gid":1,
                  "height":0,
                  "name":"ToVolcano",
                  "properties":

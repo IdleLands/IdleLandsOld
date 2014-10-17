@@ -393,6 +393,23 @@
                  "width":0,
                  "x":544,
                  "y":32
+                }, 
+                {
+                 "gid":1,
+                 "height":0,
+                 "name":"ToPrisons-2",
+                 "properties":
+                    {
+                     "destx":"22",
+                     "desty":"2",
+                     "map":"Norkos Prison -2",
+                     "movementType":"descend"
+                    },
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":352,
+                 "y":256
                 }],
          "opacity":1,
          "type":"objectgroup",
