@@ -43,6 +43,20 @@
                  "width":0,
                  "x":1040,
                  "y":368
+                }, 
+                {
+                 "gid":49,
+                 "height":0,
+                 "name":"Monster",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Trainer",
+                 "visible":true,
+                 "width":0,
+                 "x":96,
+                 "y":320
                 }],
          "opacity":1,
          "type":"objectgroup",

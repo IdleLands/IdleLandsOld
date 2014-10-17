@@ -1,0 +1,48 @@
+{
+    "Goblin Lord": {
+        "respawn": 7200,
+        "availableScore": 1000,
+        "stats": {
+            "class": "Monster",
+            "hp": 1000,
+            "level": 10,
+            "agi": 200,
+            "dex": 200,
+            "str": 300
+        },
+        "items": [
+            { "name": "Goblin Lord Shortsword", "dropPercent": 35 }
+        ]
+    },
+    "Mummy Lord": {
+        "respawn": 7200,
+        "availableScore": 1500,
+        "stats": {
+            "class": "Fighter",
+            "hp": 3000,
+            "level": 15,
+            "con": 200,
+            "dex": 200,
+            "str": 300
+        },
+        "items": [
+            { "name": "Mummy Lord Greatsword", "dropPercent": 35 }
+        ]
+    },
+    "Lizard King": {
+        "respawn": 10800,
+        "availableScore": 2500,
+        "stats": {
+            "class": "Mage",
+            "hp": 5000,
+            "mp": 10000,
+            "level": 20,
+            "con": 200,
+            "str": 200,
+            "int": 300
+        },
+        "items": [
+            { "name": "Lizard King Staff", "dropPercent": 35 }
+        ]
+    }
+}
