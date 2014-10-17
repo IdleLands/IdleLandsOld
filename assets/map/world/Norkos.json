@@ -579,7 +579,8 @@
                     {
                      "destx":"41",
                      "desty":"1",
-                     "map":"Norkos Dungeon -3"
+                     "map":"Norkos Dungeon -3",
+                     "movementType":"fall"
                     },
                  "type":"Teleport",
                  "visible":true,
