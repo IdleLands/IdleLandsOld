@@ -29,7 +29,7 @@ class Toasted extends Spell
     else
       yesno = @chance.bool {likelihood: 50}
     if yesno
-      message = "%targetName wanted the %spellName toasted. %targetName is burned for %damage!"
+      message = "%targetName wanted the %spellName toasted. %targetName is burned for %damage damage!"
       @doDamageTo player, damage, message
       @name = "toasted #{@name}"
     else
