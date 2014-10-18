@@ -546,20 +546,6 @@
                 {
                  "gid":13,
                  "height":0,
-                 "name":"Monster",
-                 "properties":
-                    {
-
-                    },
-                 "type":"Trainer",
-                 "visible":true,
-                 "width":0,
-                 "x":2128,
-                 "y":80
-                }, 
-                {
-                 "gid":13,
-                 "height":0,
                  "name":"Pirate",
                  "properties":
                     {
