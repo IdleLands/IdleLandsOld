@@ -29,12 +29,12 @@
                 {
                  "gid":2,
                  "height":0,
-                 "name":"ToMaelesDungeon",
+                 "name":"ToNorkos",
                  "properties":
                     {
                      "destx":"107",
                      "desty":"129",
-                     "map":"Maeles Dungeon -1",
+                     "map":"Norkos",
                      "movementType":"ascend"
                     },
                  "type":"Teleport",
