@@ -115,6 +115,8 @@ class Spell
       targetName: player.name
       spellName: @name
 
+    damage = player.calcDamageTaken damage
+
     message = MessageCreator.doStringReplace message, @caster, extra
 
     @caster.party?.currentBattle?.takeHp @caster, player, damage, @determineType(), @, message

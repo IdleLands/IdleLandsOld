@@ -118,6 +118,10 @@ class Character extends EventEmitter2
   calcXpGain: (xp) ->
     @calc.stat 'xp', yes, xp
 
+  calcDamageTaken: (baseDamage) ->
+    multiplier = @calc.damageMultiplier()
+    baseDamage * multiplier
+
   canEquip: (item) ->
     current = _.findWhere @equipment, {type: item.type}
     current.score() <= item.score()
@@ -247,6 +251,10 @@ class Character extends EventEmitter2
         value = @self.personalityReduce 'minDamage', [@self, @base.minDamage], @base.minDamage
         value += @self.calc.boosts ['silver', 'offense', 'glowing', 'vorpal'], maxDamage
         Math.min value, maxDamage-1
+
+      damageMultiplier: ->
+        @base.damageMultiplier = 1
+        @self.personalityReduce 'damageMultiplier', [@self, @base.damageMultiplier], @base.damageMultiplier
 
       criticalChance: ->
         @base.criticalChance = 1 + ((@self.calc.stats ['luck', 'dex']) / 2)

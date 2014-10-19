@@ -196,8 +196,13 @@ class Battle
     if critRoll <= player.calc.criticalChance()
       damage = maxDamage
 
+    damage = target.calcDamageTaken damage
+
+    damageType = if damage < 0 then "healing" else "damage"
+    realDamage = Math.abs damage
+
     weapon = _.findWhere player.equipment, {type: "mainhand"}
-    message += ", and #{if damage is maxDamage then "CRITICALLY " else ""}hit with %hisher <event.item.#{weapon.itemClass}>#{weapon.getName()}</event.item.#{weapon.itemClass}> for <damage.hp>#{damage}</damage.hp> HP damage"
+    message += ", and #{if damage is maxDamage then "CRITICALLY " else ""}hit with %hisher <event.item.#{weapon.itemClass}>#{weapon.getName()}</event.item.#{weapon.itemClass}> for <damage.hp>#{realDamage}</damage.hp> HP #{damageType}"
 
     @emitEvents "attack", "attacked", player, target
     @emitEvents "critical", "criticalled", player, target if damage is maxDamage
