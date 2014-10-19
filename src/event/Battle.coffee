@@ -147,7 +147,11 @@ class Battle
       @doMagicalAttack player, spellChosen
 
   doPhysicalAttack: (player, target = null, isCounter = no) ->
-    target = _.sample _.reject @turnOrder, ((target) -> ((player.party is target.party) or target.hp.atMin() or target.fled)) if not target
+    if not target
+      enemies = _.reject @turnOrder, (target) -> (player.party is target.party) or target.hp.atMin() or target.fled
+      targets = player.calc.physicalAttackTargets enemies, @turnOrder
+      target = _.sample targets
+
     return if not target
 
     message = "<player.name>#{player.name}</player.name> is #{if isCounter then "COUNTER-" else ""}attacking <player.name>#{target.name}</player.name>"

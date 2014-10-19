@@ -12,6 +12,14 @@ class Constants
   @globalEventTimers = config.globalEventTimers
   @defaults = config.defaults
 
+  @classCategorization =
+    physical: ['Fighter', 'Generalist', 'Barbarian', 'Rogue', 'Jester', 'Pirate', 'Monster']
+    magical: ['Mage', 'Cleric', 'Bard', 'SandwichArtist']
+    support: ['Bard', 'SandwichArtist']
+    medic: ['Cleric', 'SandwichArtist']
+    tank: ['Fighter', 'Barbarian', 'Pirate']
+    dps: ['Mage', 'Rogue']
+
   @pickRandomNormalEvent = ->
     _.sample @eventRates
 

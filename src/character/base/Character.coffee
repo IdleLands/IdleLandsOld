@@ -33,6 +33,30 @@ class Character extends EventEmitter2
 
     @spellsAffectedBy = []
 
+  probabilityReduce: (appFunctionName, args = [], baseObject) ->
+    args = [args] if not _.isArray args
+    array = []
+    .concat @profession ? []
+    .concat @personalities ? []
+    .concat @spellsAffectedBy ? []
+    .concat @achievements ? []
+
+    baseProbabilities = if baseObject then [baseObject] else []
+
+    probabilities = _.reduce array, (combined, iter) ->
+      applied = if _.isFunction iter?[appFunctionName] then iter?[appFunctionName]?.apply iter, args else iter?[appFunctionName]
+      combined.push applied if applied?.result.length > 0
+      combined
+    , baseProbabilities
+
+    return probabilities[0] if probabilities.length < 2
+
+    sortedProbabilities = _.sortBy probabilities, (prob) -> prob.probability
+    sum = _.reduce sortedProbabilities, ((prev, prob) -> prev + prob.probability), 0
+    sortedProbabilities[i].probability = sortedProbabilities[i].probability + sortedProbabilities[i-1].probability for i in [1...sortedProbabilities.length]
+    chosenInt = chance.integer {min: 0, max: sum}
+    (_.reject sortedProbabilities, (val) -> val.probability < chosenInt)[0]
+
   personalityReduce: (appFunctionName, args = [], baseValue = 0) ->
     args = [args] if not _.isArray args
     array = []
@@ -332,6 +356,10 @@ class Character extends EventEmitter2
       fallChance: ->
         @base.fallChance = 100
         Math.max 0, Math.min 100, @self.personalityReduce 'fallChance', [@self, @base.fallChance], @base.fallChance
+
+      physicalAttackTargets: (allEnemies, allCombatMembers) ->
+        allEnemies = {probability: 100, result: allEnemies} if _.isArray allEnemies
+        (@self.probabilityReduce 'physicalAttackTargets', [@self, allEnemies, allCombatMembers], allEnemies).result
 
 Character::num2dir = (dir,x,y) ->
   switch dir
