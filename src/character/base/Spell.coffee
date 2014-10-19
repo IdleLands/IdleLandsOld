@@ -120,7 +120,8 @@ class Spell
     @caster.party?.currentBattle?.takeHp @caster, player, damage, @determineType(), @, message
 
   prepareCast: ->
-    targets = @determineTargets()
+    enemies = @determineTargets()
+    targets = @caster.calc.magicalAttackTargets enemies, @baseTargets
     @affect targets
 
   affect: (affected = []) ->

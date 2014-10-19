@@ -361,6 +361,10 @@ class Character extends EventEmitter2
         allEnemies = {probability: 100, result: allEnemies} if _.isArray allEnemies
         (@self.probabilityReduce 'physicalAttackTargets', [@self, allEnemies, allCombatMembers], allEnemies).result
 
+      magicalAttackTargets: (allEnemies, allCombatMembers) ->
+        allEnemies = {probability: 100, result: allEnemies} if _.isArray allEnemies
+        (@self.probabilityReduce 'magicalAttackTargets', [@self, allEnemies, allCombatMembers], allEnemies).result
+
 Character::num2dir = (dir,x,y) ->
   switch dir
     when 1 then return {x: x-1, y: y-1}
