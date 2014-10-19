@@ -8,7 +8,7 @@ class TankSlayer extends Personality
 
   physicalAttackTargets: (player, enemies) ->
     targets = _.filter enemies, (enemy) -> enemy.professionName in Constants.classCategorization.tank
-    { probability: 100, result: targets }
+    { probability: 300, result: targets }
 
   @canUse = (player) ->
 

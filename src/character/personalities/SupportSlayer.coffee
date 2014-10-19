@@ -8,7 +8,7 @@ class SupportSlayer extends Personality
 
   physicalAttackTargets: (player, enemies) ->
     targets = _.filter enemies, (enemy) -> enemy.professionName in Constants.classCategorization.support
-    { probability: 100, result: targets }
+    { probability: 300, result: targets }
 
   @canUse = (player) ->
 
