@@ -247,6 +247,9 @@ class PlayerManager
         when "event.bossbattle.win"
           addStat arguments[1], 1, "calculated boss kills"
 
+        when "event.treasurechest.find"
+          addStat arguments[1], 1, "calculated treasure chests found"
+
       event = @event.split(".").join " "
       player.statistics[event] = 1 if not (event of player.statistics) or _.isNaN player.statistics[event]
       player.statistics[event]++
