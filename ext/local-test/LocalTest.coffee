@@ -66,6 +66,9 @@ w = getWrapper = -> IdleWrapper
 
 api = -> w().api
 inst = -> api().gameInstance
+player = -> api().player
+game = -> api().game
+gm = -> api().gm
 
 colorMap =
   "player.name":                colors.bold
@@ -112,17 +115,17 @@ colorMap =
 ## API call functions ##
 loadIdle = ->
   IdleWrapper.load()
-  IdleWrapper.api.register.colorMap colorMap
-  IdleWrapper.api.register.broadcastHandler broadcastHandler, null
+  IdleWrapper.api.game.handlers.colorMap colorMap
+  IdleWrapper.api.game.handlers.broadcastHandler broadcastHandler, null
   do loadAllPlayers
 
 registerAllPlayers = ->
   _.each hashes, (playerHashInList) ->
-    IdleWrapper.api.register.player {identifier: playerHashInList, name: playerHash[playerHashInList]}, null
+    IdleWrapper.api.player.auth.register {identifier: playerHashInList, name: playerHash[playerHashInList]}, null
 
 loadAllPlayers = ->
   _.each hashes, (playerHash) ->
-    IdleWrapper.api.add.player playerHash
+    IdleWrapper.api.player.auth.login playerHash
 
 gameLoop = ->
   doActionPerMember = (arr, action) ->
@@ -132,22 +135,22 @@ gameLoop = ->
       , DELAY_INTERVAL/arr.length*i, arr[i]
 	  
   interval = setInterval =>
-    doActionPerMember hashes, IdleWrapper.api.game.nextAction
+    doActionPerMember hashes, IdleWrapper.api.player.nextAction
   , DELAY_INTERVAL
   
 interactiveSession = ->
-  readline = require('readline')
+  readline = require 'readline'
 
   cli = readline.createInterface process.stdin, process.stdout, null
   variables = {}
 
   cli.on 'line', (line) ->
-    clearInterval(interval)
+    clearInterval interval
     cli.setPrompt "halted: c to continue> "
 
-    if (line) == ""
+    if line is ""
       cli.prompt()
-    else if (line) == "c"
+    else if line is "c"
       do gameLoop
     else
       try
@@ -195,4 +198,4 @@ do loadAllPlayers
 do watchIdleFiles
 do gameLoop
 do interactiveSession
-do IdleWrapper.api.add.allData
+do IdleWrapper.api.gm.data.reload

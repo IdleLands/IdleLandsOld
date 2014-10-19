@@ -74,9 +74,9 @@ module.exports = (Module) ->
       if not (stopIfLoaded and @idleLoaded)
         @idleLoaded = true
         @IdleWrapper.load()
-        @IdleWrapper.api.register.broadcastHandler @sendMessageToAll, @
-        @IdleWrapper.api.register.colorMap @colorMap
-        @IdleWrapper.api.register.playerLoadHandler @getAllUsers
+        @IdleWrapper.api.game.handlers.broadcastHandler @sendMessageToAll, @
+        @IdleWrapper.api.game.handlers.colorMap @colorMap
+        @IdleWrapper.api.game.handlers.playerLoadHandler @getAllUsers
 
     addServerChannel: (bot, server, channel) =>
       IdleModule::serverBots[server] = bot if not IdleModule::serverBots[server]
@@ -115,13 +115,13 @@ module.exports = (Module) ->
       @userIdentsList.push ident
       @userIdentsList = _.uniq @userIdentsList
 
-      @IdleWrapper.api.add.player ident, suppress
+      @IdleWrapper.api.player.auth.login ident, suppress
 
     removeUser: (ident) ->
       return if not ident or not _.contains @userIdentsList, ident
       @userIdentsList = _.without @userIdentsList, ident
 
-      @IdleWrapper.api.remove.player ident
+      @IdleWrapper.api.player.auth.logout ident
 
     buildUserList: ->
       for server, channels of @serverChannels
@@ -271,7 +271,7 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          @IdleWrapper.api.register.player
+          @IdleWrapper.api.player.auth.register
             identifier: identifier
             name: name
           , null, (status) =>
@@ -285,85 +285,47 @@ module.exports = (Module) ->
 
       @addRoute 'idle-event ":player" :event', "idle.game.gm", (origin, route) =>
         [player, event] = [route.params.player, route.params.event]
-        @IdleWrapper.api.game.doEvent player, event, (did) =>
+        @IdleWrapper.api.gm.event.single player, event, (did) =>
           @reply origin, "Your event is done." if did
           @reply origin, "Your event failed (the player wasn't found)." if _.isUndefined did
           @reply origin, "Your event has failed (mysterious error, check the logs, or the event was just negative)." if did is false
 
       @addRoute 'idle-globalevent :event?', "idle.game.gm", (origin, route) =>
         event = route.params.event
-        @IdleWrapper.api.game.doGlobalEvent event, (did) =>
+        @IdleWrapper.api.gm.event.global event, (did) =>
           @reply origin, "Your event is done." if did
           @reply origin, "Your event failed (something weird went wrong)." if not did
 
       @addRoute 'idle-update', 'idle.game.gm', =>
-        @IdleWrapper.api.game.update()
-
-      ###
-      @addRoute "idle-add event yesno \":question\" \":affirm\" \":deny\"", "idle.game.gm", (origin, route) =>
-        [question, affirm, deny] = [route.params.question, route.params.affirm, route.params.deny]
-        @IdleWrapper.api.add.yesno question, affirm, deny
-
-      @addRoute "idle-add event :eventType \":question\"", "idle.game.gm", (origin, route) =>
-        [eventType, question] = [route.params.eventType, route.params.question]
-
-        if eventType not in ['blessXp', 'forsakeXp', 'blessGold', 'forsakeGold', 'blessItem', 'forsakeItem', 'findItem',
-                             'party', 'battle']
-          @reply origin, "#{eventType} isn't a valid event type."
-          return
-
-        @IdleWrapper.api.add.static eventType, question
-
-      @addRoute "idle-add item :itemOrDescType \":name\" *", "idle.game.gm", (origin, route) =>
-        [type, name, parameters] = [route.params.itemOrDescType, route.params.name, route.splats[0]]
-
-        if type not in ['prefix', 'suffix', 'prefix-special',
-                        'body', 'charm', 'feet', 'finger', 'hands', 'head', 'legs', 'neck', 'offhand', 'mainhand']
-          @reply origin, "#{type} isn't a valid type."
-          return
-
-        parameters = _.map (parameters.split ' '), (item) ->
-          arr = item.split '='
-          retval = {}
-          retval[arr[0]] = (parseInt arr[1]) ? null
-          retval
-        .reduce (cur, prev) ->
-          _.extend prev, cur
-        , { name: name, type: type }
-
-        @IdleWrapper.api.add.item parameters, (error) =>
-          @reply origin, "You cannot have a duplicate name (#{error.name})." if error.name
-          @reply origin, "It doesn't make sense to have the same stats twice." if error.stats
-
-      ###
+        @IdleWrapper.api.gm.data.update()
 
       @addRoute "idle-ban :playerName", "idle.game.gm", (origin, route) =>
         [name] = [route.params.playerName]
-        @IdleWrapper.api.game.banPlayer name
+        @IdleWrapper.api.gm.status.ban name
 
       @addRoute "idle-unban :playerName", "idle.game.gm", (origin, route) =>
         [name] = [route.params.playerName]
-        @IdleWrapper.api.game.unbanPlayer name
+        @IdleWrapper.api.gm.status.unban name
 
       @addRoute 'idle-teleportloc ":playerName" :location', "idle.game.gm", (origin, route) =>
         [name, location] = [route.params.playerName, route.params.location]
-        @IdleWrapper.api.game.teleport.singleLocation name, location
+        @IdleWrapper.api.gm.teleport.location.single name, location
 
       @addRoute 'idle-teleport ":playerName" ":map" :x,:y', "idle.game.gm", (origin, route) =>
         [name, map, x, y] = [route.params.playerName, route.params.map, route.params.x, route.params.y]
         x = parseInt x
         y = parseInt y
-        @IdleWrapper.api.game.teleport.single name, map, x, y
+        @IdleWrapper.api.gm.teleport.map.single name, map, x, y
 
       @addRoute "idle-massteleportloc :location", "idle.game.gm", (origin, route) =>
         [location] = [route.params.location]
-        @IdleWrapper.api.game.teleport.massLocation location
+        @IdleWrapper.api.gm.teleport.map.location location
 
       @addRoute 'idle-massteleport ":map" :x,:y', "idle.game.gm", (origin, route) =>
         [map, x, y] = [route.params.map, route.params.x, route.params.y]
         x = parseInt x
         y = parseInt y
-        @IdleWrapper.api.game.teleport.mass map, x, y
+        @IdleWrapper.api.gm.teleport.map.mass map, x, y
 
       @addRoute "idle-personality :action(remove|add) :personality", (origin, route) =>
         [bot, action, personality] = [origin.bot, route.params.action, route.params.personality]
@@ -374,7 +336,7 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          personalityString = @IdleWrapper.api[action].personality identifier, personality
+          personalityString = @IdleWrapper.api.player.personality[action] identifier, personality
           if not personalityString
             @reply origin, "Could not #{action} the personality \"#{personality}\""
           else
@@ -389,7 +351,7 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          newString = @IdleWrapper.api[action].string identifier, sType, string
+          newString = @IdleWrapper.api.player.string[action] identifier, sType, string
           @reply origin, "Successfully updated your string settings. String \"#{sType}\" is now: #{if newString then newString else 'empty!'}"
 
       @addRoute "idle-string :action(add) :type :string", stringFunc
@@ -404,7 +366,7 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          @IdleWrapper.api[action].pushbullet identifier, string
+          @IdleWrapper.api.player.pushbullet[action] identifier, string
           @reply origin, "Successfully updated your pushbullet settings."
 
       @addRoute "idle-pushbullet :action(add) :string", pushbulletFunc
@@ -412,9 +374,9 @@ module.exports = (Module) ->
 
       @addRoute "idle-add all-data", "idle.game.owner", (origin, route) =>
         @reply origin, "Re-initializing all modifier/event/etc data from disk."
-        @IdleWrapper.api.add.allData()
+        @IdleWrapper.api.gm.data.reload()
 
-      @addRoute "idle-broadcast :message", "idle.game.owner", (origin, route) =>
+      @addRoute "idle-broadcast :message", "idle.game.gm", (origin, route) =>
         @broadcast "THIS IS A BROADCAST TO ALL IDLELANDS PLAYERS: #{route.params.message}"
 
       @addRoute "idle-gender :newGender", (origin, route) =>
@@ -426,7 +388,7 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          newGender = @IdleWrapper.api.set.gender identifier, gender
+          newGender = @IdleWrapper.api.player.gender identifier, gender
           @reply origin, "Your gender is now #{newGender}."
 
       @addRoute "idle-inventory :action(swap|remove|add) :slot", (origin, route) =>
@@ -440,7 +402,7 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          response = @IdleWrapper.api[action].overflow identifier, slot
+          response = @IdleWrapper.api.player.overflow[action] identifier, slot
 
           if response > 1
             @reply origin, "Your item sold for #{response} gold!"
