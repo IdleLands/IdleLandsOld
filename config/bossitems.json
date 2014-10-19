@@ -1,26 +1,26 @@
 {
     "Goblin Lord Shortsword": {
         "type": "mainhand",
-        "str": 100,
-        "agi": 100,
-        "dex": 100,
+        "str": 50,
+        "agi": 50,
+        "dex": 50,
         "hp": 100,
         "silver": 1
     },
     "Mummy Lord Greatsword": {
         "type": "mainhand",
-        "str": 200,
-        "agi": 200,
-        "dex": 200,
+        "str": 75,
+        "agi": 75,
+        "dex": 75,
         "prone": 1,
         "silver": 1,
         "offense": 1
     },
     "Lizard King Staff": {
         "type": "mainhand",
-        "int": 300,
-        "con": 300,
-        "wis": 300,
+        "int": 100,
+        "con": 100,
+        "wis": 100,
         "defense": 1
     }
 }

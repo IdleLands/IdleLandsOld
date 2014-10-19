@@ -9,6 +9,7 @@ EquipmentGenerator = require "./EquipmentGenerator"
 SandwichGenerator = require "./SandwichGenerator"
 GlobalEventHandler = require "./GlobalEventHandler"
 BossFactory = require "../event/BossFactory"
+TreasureFactory = require "../event/TreasureFactory"
 SpellManager = require "./SpellManager"
 Constants = require "./Constants"
 GMCommands = require "./GMCommands"
@@ -36,6 +37,7 @@ class Game
     @achievementManager = new AchievementManager @
     @sandwichGenerator = new SandwichGenerator @
     @bossFactory = new BossFactory @
+    @treasureFactory = new TreasureFactory @
     @world = new World()
 
   registerBroadcastHandler: (@broadcastHandler, @broadcastContext) ->

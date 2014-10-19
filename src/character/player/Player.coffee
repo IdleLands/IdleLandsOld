@@ -207,12 +207,16 @@ class Player extends Character
 
   handleTile: (tile) ->
     switch tile.object?.type
-      when "Trainer" then @handleTrainerOnTile tile
-      when "Teleport" then @handleTeleport tile
       when "Boss" then @handleBossBattle tile.object.name
+      when "Teleport" then @handleTeleport tile
+      when "Trainer" then @handleTrainerOnTile tile
+      when "Treasure" then @handleTreasure tile.object.name
 
     if tile.object?.forceEvent
       @playerManager.game.eventHandler.doEventForPlayer @name, tile.object.forceEvent
+
+  handleTreasure: (treasure) ->
+    @playerManager.game.treasureFactory.createTreasure treasure, @
 
   handleBossBattle: (bossName) ->
     @playerManager.game.eventHandler.bossBattle @, bossName

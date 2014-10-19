@@ -251,7 +251,9 @@ class EventHandler
     myScore = player.calc.itemScore myItem
     realScore = item.score()
 
-    if score > myScore and realScore < player.calc.itemFindRange() and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
+    rangeBoost = event.rangeBoost ?= 1
+
+    if score > myScore and realScore < player.calc.itemFindRange()*rangeBoost and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
       @doItemEquip player, item, event.remark
       callback true
 

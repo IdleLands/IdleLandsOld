@@ -35,7 +35,7 @@ class BossFactory
 
           itemInst = new Equipment baseItem
 
-          event = remark: "%player looted %item from the corpse of <player.name>#{name}</player.name>."
+          event = rangeBoost: 2, remark: "%player looted %item from the corpse of <player.name>#{name}</player.name>."
 
           @game.eventHandler.doItemEvent event, member, itemInst, ->
             member.emit "event.bossbattle.loot", member, name, item

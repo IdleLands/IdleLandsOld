@@ -114,6 +114,20 @@
                  "width":0,
                  "x":528,
                  "y":400
+                }, 
+                {
+                 "gid":27,
+                 "height":0,
+                 "name":"Draygon Gear",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Treasure",
+                 "visible":true,
+                 "width":0,
+                 "x":16,
+                 "y":528
                 }],
          "opacity":1,
          "type":"objectgroup",
