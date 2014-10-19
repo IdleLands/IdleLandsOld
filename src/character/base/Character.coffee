@@ -120,7 +120,7 @@ class Character extends EventEmitter2
 
   calcDamageTaken: (baseDamage) ->
     multiplier = @calc.damageMultiplier()
-    baseDamage * multiplier
+    (baseDamage - @calc.damageReduction()) * multiplier
 
   canEquip: (item) ->
     current = _.findWhere @equipment, {type: item.type}
@@ -251,6 +251,10 @@ class Character extends EventEmitter2
         value = @self.personalityReduce 'minDamage', [@self, @base.minDamage], @base.minDamage
         value += @self.calc.boosts ['silver', 'offense', 'glowing', 'vorpal'], maxDamage
         Math.min value, maxDamage-1
+
+      damageReduction: ->
+        @base.damageMultiplier = 0
+        @self.personalityReduce 'damageReduction', [@self, @base.damageReduction], @base.damageReduction
 
       damageMultiplier: ->
         @base.damageMultiplier = 1
