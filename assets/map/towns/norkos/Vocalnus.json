@@ -135,6 +135,69 @@
          "width":110,
          "x":0,
          "y":0
+        }, 
+        {
+         "height":60,
+         "name":"Regions",
+         "objects":[
+                {
+                 "height":400,
+                 "name":"Vocalnus Town",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":608,
+                 "x":320,
+                 "y":304
+                }, 
+                {
+                 "height":272,
+                 "name":"Gryffin Mountain",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":240,
+                 "x":1312,
+                 "y":432
+                }, 
+                {
+                 "height":256,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":912,
+                 "x":0,
+                 "y":16
+                }, 
+                {
+                 "height":256,
+                 "name":"Draygon Mountain",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":96,
+                 "x":0,
+                 "y":272
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":110,
+         "x":0,
+         "y":0
         }],
  "orientation":"orthogonal",
  "properties":

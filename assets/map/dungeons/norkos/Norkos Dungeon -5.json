@@ -898,6 +898,30 @@
          "width":70,
          "x":0,
          "y":0
+        }, 
+        {
+         "height":50,
+         "name":"Regions",
+         "objects":[
+                {
+                 "height":240,
+                 "name":"Raburro Town",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":352,
+                 "x":592,
+                 "y":512
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":70,
+         "x":0,
+         "y":0
         }],
  "orientation":"orthogonal",
  "properties":
