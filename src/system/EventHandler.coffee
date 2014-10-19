@@ -72,14 +72,18 @@ class EventHandler
     else
       @doEventForPlayer player.name, 'party', doBossBattle
 
-  broadcastEvent: (message, player, extra) ->
-    message = MessageCreator.doStringReplace message, player, extra
-    @game.broadcast MessageCreator.genericMessage message
+  # sendMessage = no implies that you're forwarding the original message to multiple people
+  broadcastEvent: (message, player, extra, sendMessage = yes) ->
+    if sendMessage
+      message = MessageCreator.doStringReplace message, player, extra
+      @game.broadcast MessageCreator.genericMessage message if sendMessage
 
     stripped = MessageCreator._replaceMessageColors message
 
     player.pushbulletSend stripped
     @addEventToDb stripped, player
+
+    message
 
   addEventToDb: (message, player) ->
     @playerEventsDb.insert
@@ -240,7 +244,6 @@ class EventHandler
     @broadcastEvent totalString, player, extra
     player.emit "event.findItem", player, item
 
-
   doItemEvent: (event, player, item, callback) ->
     myItem = _.findWhere player.equipment, {type: item.type}
     return callback false if not myItem
@@ -276,7 +279,8 @@ class EventHandler
       partyMembers: _.str.toSentence _.pluck newPartyPlayers, 'name'
       partyName: newParty.name
 
-    @broadcastEvent event.remark, player, extra
+    message = @broadcastEvent event.remark, player, extra
+    _.each newPartyPlayers, (newMember) => @broadcastEvent message, newMember, extra, no
 
     callback true
 
