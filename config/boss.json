@@ -11,7 +11,7 @@
             "str": 300
         },
         "items": [
-            { "name": "Goblin Lord Shortsword", "dropPercent": 35 }
+            { "name": "Goblin Lord Shortsword", "dropPercent": 95 }
         ]
     },
     "Mummy Lord": {
@@ -26,7 +26,7 @@
             "str": 300
         },
         "items": [
-            { "name": "Mummy Lord Greatsword", "dropPercent": 35 }
+            { "name": "Mummy Lord Greatsword", "dropPercent": 85 }
         ]
     },
     "Lizard King": {
@@ -42,7 +42,7 @@
             "int": 300
         },
         "items": [
-            { "name": "Lizard King Staff", "dropPercent": 35 }
+            { "name": "Lizard King Staff", "dropPercent": 80 }
         ]
     }
 }
