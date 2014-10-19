@@ -184,6 +184,8 @@ class Player extends Character
       @x = newLoc.x
       @y = newLoc.y
 
+    @mapRegion = newLoc.region
+
     message = ""
 
     switch dest.movementType
@@ -259,6 +261,7 @@ class Player extends Character
 
       console.error @x,@y,@map, "INVALID TILE" if not tile.terrain
 
+      @mapRegion = tile.region
       @handleTile tile
 
       @stepCooldown--

@@ -909,6 +909,212 @@
          "width":250,
          "x":0,
          "y":0
+        }, 
+        {
+         "height":150,
+         "name":"Regions",
+         "objects":[
+                {
+                 "height":144,
+                 "name":"Bard Island Area",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":224,
+                 "x":1008,
+                 "y":1168
+                }, 
+                {
+                 "height":432,
+                 "name":"Norkos Town",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":1120,
+                 "x":48,
+                 "y":32
+                }, 
+                {
+                 "height":368,
+                 "name":"Norkos Prison Area",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":624,
+                 "x":1248,
+                 "y":16
+                }, 
+                {
+                 "height":320,
+                 "name":"Vocalnus Base Area",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":496,
+                 "x":2832,
+                 "y":144
+                }, 
+                {
+                 "height":80,
+                 "name":"Draygon Base Area",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":304,
+                 "x":3024,
+                 "y":16
+                }, 
+                {
+                 "height":208,
+                 "name":"Gryffin Base Area",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":272,
+                 "x":3520,
+                 "y":112
+                }, 
+                {
+                 "height":256,
+                 "name":"Pirate Cove Area",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":272,
+                 "x":3456,
+                 "y":736
+                }, 
+                {
+                 "height":224,
+                 "name":"Norkos Volcano Area",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":288,
+                 "x":3600,
+                 "y":528
+                }, 
+                {
+                 "height":160,
+                 "name":"Mythos Dungeon Area",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":112,
+                 "x":3888,
+                 "y":560
+                }, 
+                {
+                 "height":496,
+                 "name":"Maeles Town",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":432,
+                 "x":592,
+                 "y":1696
+                }, 
+                {
+                 "height":576,
+                 "name":"Maeles Cave Area",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":416,
+                 "x":0,
+                 "y":1680
+                }, 
+                {
+                 "height":224,
+                 "name":"Maeles Dungeon Area",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":320,
+                 "x":1536,
+                 "y":1968
+                }, 
+                {
+                 "height":688,
+                 "name":"Dangerous Cave Area",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":624,
+                 "x":1872,
+                 "y":16
+                }, 
+                {
+                 "height":400,
+                 "name":"Norkos Boathouse Area",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":352,
+                 "x":16,
+                 "y":1184
+                }, 
+                {
+                 "height":464,
+                 "name":"Norkos Fisheries Area",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":944,
+                 "x":352,
+                 "y":704
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":250,
+         "x":0,
+         "y":0
         }],
  "orientation":"orthogonal",
  "properties":
