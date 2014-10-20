@@ -44,12 +44,12 @@ class PlayerManager
     defer = Q.defer()
 
     if _.findWhere @players, {identifier: identifier} or identifier of @playerHash
-      defer.reject {isSuccess: no, message: "Player not found."}
+      defer.resolve {isSuccess: no, message: "Player not found."}
       return defer
 
     @retrievePlayer identifier, (player) =>
       if not player
-        defer.reject {isSuccess: no, message: "Player not found."}
+        defer.resolve {isSuccess: no, message: "Player not found."}
         return
 
       player.isOnline = yes
@@ -69,7 +69,7 @@ class PlayerManager
 
     player = _.findWhere @players, {identifier: identifier}
     if not player
-      defer.reject {isSuccess: no, message: "Player not found."}
+      defer.resolve {isSuccess: no, message: "Player not found."}
       return
 
     player.isOnline = no
@@ -94,20 +94,14 @@ class PlayerManager
     options.name = options.name.trim()
 
     if options.name.length < 2
-      defer.reject {isSuccess: no, message: "You have to make your name above 2 characters!"}
-      console.log 'test1'
+      defer.resolve {isSuccess: no, message: "You have to make your name above 2 characters!"}
       isSuccess = no
 
     if options.name.length > 20
-      defer.reject {isSuccess: no, message: "You have to keep your name under 20 characters!"}
-      console.log 'test2'
+      defer.resolve {isSuccess: no, message: "You have to keep your name under 20 characters!"}
       isSuccess = no
 
-    console.log "fail", defer
-
     return defer if not isSuccess
-
-    console.log "success"
 
     playerObject = new Player options
     playerObject.playerManager = @
@@ -121,7 +115,7 @@ class PlayerManager
       if iErr
         message = "Player creation error: #{iErr} (you probably already registered a character to that ident)."
         console.error message, playerObject if callback?
-        defer.reject {isSuccess: no, message: message}
+        defer.resolve {isSuccess: no, message: message}
         callback?(iErr)
         return
 

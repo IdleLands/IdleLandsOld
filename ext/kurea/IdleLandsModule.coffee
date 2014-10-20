@@ -265,7 +265,6 @@ module.exports = (Module) ->
             identifier: identifier
             name: name
           ).then (res) =>
-            console.log res
             @reply origin, res.message
 
       @addRoute "idle-register :name", registerCommand
@@ -357,7 +356,7 @@ module.exports = (Module) ->
           .then (res) =>
             @reply origin, res.message
 
-      @addRoute "idle-pushbullet :action(add) :string", pushbulletFunc
+      @addRoute "idle-pushbullet :action(set) :string", pushbulletFunc
       @addRoute "idle-pushbullet :action(remove)", pushbulletFunc
 
       @addRoute "idle-add all-data", "idle.game.owner", (origin, route) =>

@@ -52,7 +52,6 @@ class Player extends Character
 
   setPushbulletKey: (key) ->
     defer = q.defer()
-    console.log "PBDEFER",defer
     @pushbulletApiKey = key
     defer.resolve {isSuccess: yes, message: "Your PushBullet API key has been #{if key then "added" else "removed"} successfully."}
     defer
@@ -89,14 +88,18 @@ class Player extends Character
 
   addOverflow:  (slot, defer) ->
     if not (slot in ["body","feet","finger","hands","head","legs","neck","mainhand","offhand","charm"])
-      defer.reject {isSuccess: no, message: "That slot is invalid."}
+      defer.resolve {isSuccess: no, message: "That slot is invalid."}
       return
 
     if @overflow.length is Constants.defaults.player.maxOverflow
-      defer.reject {isSuccess: no, message: "Your inventory is currently full!"}
+      defer.resolve {isSuccess: no, message: "Your inventory is currently full!"}
       return
 
     currentItem = _.findWhere @equipment, {type: slot}
+
+    if currentItem.name is "empty"
+      defer.resolve {isSuccess: no, message: "You can't add empty items to your inventory!"}
+      return
 
     @overflow.push currentItem
     @equipment = _.without @equipment, currentItem
@@ -105,7 +108,7 @@ class Player extends Character
 
   swapOverflow: (slot, defer) ->
     if not @overflow[slot]
-      defer.reject {isSuccess: no, message: "You don't have anything in that inventory slot."}
+      defer.resolve {isSuccess: no, message: "You don't have anything in that inventory slot."}
       return
 
     current = _.findWhere @equipment, {type: @overflow[slot].type}
@@ -121,7 +124,7 @@ class Player extends Character
   sellOverflow: (slot, defer) ->
     curItem = @overflow[slot]
     if (not curItem) or (curItem.name is "empty")
-      defer.reject {isSuccess: yes, message: "That item is not able to be sold!"}
+      defer.resolve {isSuccess: yes, message: "That item is not able to be sold!"}
       return
 
     salePrice = Math.max 2, @calcGoldGain Math.round curItem.score()*@calc.itemSellMultiplier curItem
@@ -376,7 +379,7 @@ class Player extends Character
     defer = q.defer()
     @messages = {} if not @messages
     @messages[type] = val.substring 0, 99
-    defer.resolve {isSuccess: yes, message: "Successfully updated your string settings. String \"#{sType}\" is now: #{if newString then newString else 'empty!'}"}
+    defer.resolve {isSuccess: yes, message: "Successfully updated your string settings. String \"#{type}\" is now: #{if val then val else 'empty!'}"}
     defer
 
   checkAchievements: (silent = no) ->

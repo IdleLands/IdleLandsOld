@@ -1,6 +1,14 @@
 
 q = require "q"
 
+notLoggedIn = ->
+  defer = q.defer()
+  defer.resolve {isSuccess: no, message: "You aren't logged in!"}
+  defer.promise
+
+pickValidPromise = (test) ->
+  test ?= notLoggedIn()
+
 class API
 
   @gameInstance: null
@@ -57,64 +65,63 @@ class API
   @player =
     nextAction: (identifier) =>
       defer = @gameInstance.nextAction identifier
-      defer.promise
+      pickValidPromise defer?.promise
 
     gender: (identifier, newGender) =>
       defer = @gameInstance.playerManager.getPlayerById(identifier)?.setGender newGender
-      defer.promise
+      pickValidPromise defer?.promise
 
     auth:
       register: (options) =>
         defer = @gameInstance.playerManager.registerPlayer options
-        defer.promise
+        pickValidPromise defer?.promise
 
       login: (identifier, suppress) =>
         defer = @gameInstance.playerManager.addPlayer identifier, suppress
-        defer.promise
+        pickValidPromise defer?.promise
 
       logout: (identifier) =>
         defer = @gameInstance.playerManager.removePlayer identifier
-        defer.promise
+        pickValidPromise defer?.promise
 
     overflow:
       add: (identifier, slot) =>
         defer = @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "add", slot
-        defer.promise
+        pickValidPromise defer?.promise
 
       sell: (identifier, slot) =>
         defer = @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "sell", slot
-        defer.promise
+        pickValidPromise defer?.promise
 
       swap: (identifier, slot) =>
         defer = @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "swap", slot
-        defer.promise
+        pickValidPromise defer?.promise
 
     personality:
       add: (identifier, personality) =>
-        console.log @gameInstance.playerManager.getPlayerById(identifier), identifier
         defer = @gameInstance.playerManager.getPlayerById(identifier)?.addPersonality personality
-        defer.promise
+        pickValidPromise defer?.promise
 
       remove: (identifier, personality) =>
         defer = @gameInstance.playerManager.getPlayerById(identifier)?.removePersonality personality
-        defer.promise
+        pickValidPromise defer?.promise
 
     pushbullet:
-      add: (identifier, apiKey) =>
+      set: (identifier, apiKey) =>
         defer = @gameInstance.playerManager.getPlayerById(identifier)?.setPushbulletKey apiKey
-        defer.promise
+        pickValidPromise defer?.promise
 
       remove: (identifier) =>
         defer = @gameInstance.playerManager.getPlayerById(identifier)?.setPushbulletKey ''
-        defer.promise
+        pickValidPromise defer?.promise
 
     string:
       add: (identifier, stringType, string) =>
         defer = @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType, string
-        defer.promise
+        pickValidPromise defer?.promise
 
       remove: (identifier, stringType) =>
         defer = @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType
-        defer.promise
+        pickValidPromise defer?.promise
 
 module.exports = exports = API

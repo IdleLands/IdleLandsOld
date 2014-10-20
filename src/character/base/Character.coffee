@@ -86,12 +86,12 @@ class Character extends EventEmitter2
   addPersonality: (newPersonality) ->
     defer = q.defer()
     if not Personality::doesPersonalityExist newPersonality
-      defer.reject {isSuccess: no, message: "You already have that personality set!"}
+      defer.resolve {isSuccess: no, message: "You already have that personality set!"}
       return defer
 
     potentialPersonality = Personality::getPersonality newPersonality
     if not ('canUse' of potentialPersonality) or not potentialPersonality.canUse @
-      defer.reject {isSuccess: no, message: "You can't use that personality yet!"}
+      defer.resolve {isSuccess: no, message: "You can't use that personality yet!"}
       return defer
 
     if not @personalityStrings
@@ -113,7 +113,7 @@ class Character extends EventEmitter2
   removePersonality: (oldPersonality) ->
     defer = q.defer()
     if not @hasPersonality oldPersonality
-      defer.reject {isSuccess: no, message: "You don't have that personality set!"}
+      defer.resolve {isSuccess: no, message: "You don't have that personality set!"}
       return defer
 
     @personalityStrings = _.without @personalityStrings, oldPersonality
