@@ -195,7 +195,7 @@ class Spell
       casterName: @caster.name
 
     newMessage = MessageCreator.doStringReplace message, @caster, extra
-    @game.broadcast MessageCreator.genericMessage newMessage if not @suppressed
+    @game.broadcast MessageCreator.genericMessage newMessage if not @suppressed and not target.fled
 
   constructor: (@game, @caster, @forcedTargets = null) ->
     @baseName = @name
