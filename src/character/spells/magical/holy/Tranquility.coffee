@@ -1,26 +1,26 @@
 
 Spell = require "../../../base/Spell"
 
-class FleeInTerror extends Spell
-  name: "Flee In Terror"
-  @element = FleeInTerror::element = Spell::Element.energy
-  @tiers = FleeInTerror::tiers = [
-    {name: "Flee In Terror", spellPower: 1, cost: 2000, class: "Bard", level: 50}
+class Tranquility extends Spell
+  name: "tranquility"
+  @element = Tranquility::element = Spell::Element.holy
+  @tiers = Tranquility::tiers = [
+    {name: "tranquility", spellPower: 1, cost: 125, class: "Cleric", level: 50}
   ]
 
   calcDuration: -> super()+1+@spellPower
 
-  fleePercent: -> 50
+  damageMultiplier: -> -1
 
   determineTargets: ->
-    @targetAllEnemies()
+    @targetAll()
 
   init: ->
-    message = "%casterName begins playing \"%spellName!\""
+    message = "%casterName cast %spellName!"
     @broadcast @caster, message
 
   tick: (player) ->
-    message = "%targetName is terrified by %casterName's \"%spellName!\""
+    message = "%targetName is still under the effects of %casterName's \"%spellName!\""
     @broadcast player, message
 
   uncast: (player) ->
@@ -34,4 +34,4 @@ class FleeInTerror extends Spell
       doSpellUncast: @uncast
       "combat.round.start": @tick
 
-module.exports = exports = FleeInTerror
+module.exports = exports = Tranquility
