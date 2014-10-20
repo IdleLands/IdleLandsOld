@@ -1,36 +1,46 @@
-# wis
-"ringlet" wis=1
+# con
+"Dogduster" con=350
 
 # int
 "wire" int=2
+"Blood of the Victims" int=275
+
+# wis
+"ringlet" wis=1
 
 # int / wis
+"thimble" int=1  wis=4 
 "band" int=2 wis=2
 "ring" int=4 wis=1
-"thimble" wis=4 int=1
-"knuckle" wis=3 str=7
+"tape" int=6 wis=25
 "poison touch" int=15 wis=10 poison=1
-"tape" wis=25 int=6
-"knuckleduster" wis=20 str=25
 "uncut nails" int=40 wis=10
-"fingerblades" int=30 str=30 luck=1
-"miniature world" wis=50 int=60 luck=3
-"fingerpuppet" wis=100 int=65
-"painted nails" wis=200 int=150
-"vine ring" wis=250 int=50 dex=50
-"Egregiously Long Nails" wis=175 int=100 dex=-25
-"Blood of the Victims" int=275
-"Ring of Slow Digestion" wis=300 int=50 luck=5
-"Family Jewels" wis=207 int=207
+"fingerpuppet" int=65 wis=100
+"painted nails" int=150 wis=200
+"Family Jewels" int=207 wis=207
 "Thickly Twisted Wire" int=250 wis=200
 "Magnetic Gloves" int=300 wis=200
 "Midas Touch" int=300 wis=300
-"Wolverine" str=300 int=150 wis=150
 "Black Hole" int=400 wis=350
-"Ring of Death and Life" int=500 wis=500 crit=1 luck=15
 
-# con
-"Dogduster" con=350
+# str/wis
+"knuckle" str=7 wis=3
+"knuckleduster" str=25 wis=20
+
+# dex/int/wis
+"Egregiously Long Nails" dex=-25 int=100 wis=175 
+"vine ring" dex=50 int=50 wis=250 
+
+# int/luck/str
+"fingerblades" int=30 luck=1 str=30
+
+# int/luck/wis
+"Ring of Slow Digestion" int=50 luck=5 wis=300
+"miniature world" int=60 luck=3 wis=50
+"Ring of Death and Life" int=500 luck=15 wis=500 crit=1 
+
+# int/str/wis
+"Wolverine" int=150 str=300 wis=150
 
 # idle-class
 "Rebellious Ring of the Idling Gods" int=1500 wis=1500 con=1000 dex=1000
