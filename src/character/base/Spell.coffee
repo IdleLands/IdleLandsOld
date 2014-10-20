@@ -204,6 +204,10 @@ class Spell
     @caster[@stat][@oper] _.result @, 'cost'
     @chance = new (require "chance")()
 
+    premsg = @caster.messages?[@__proto__.constructor.name]
+    message = "<#{@caster.name}> #{premsg}"
+    @broadcast @caster, message if premsg
+
     console.error "ERROR NO CASTER FOR #{@name}" if not @caster
 
 Spell::Element =
