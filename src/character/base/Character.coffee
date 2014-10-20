@@ -2,6 +2,7 @@
 RestrictedNumber = require "restricted-number"
 EventEmitter2 = require("eventemitter2").EventEmitter2
 _ = require "underscore"
+q = require "q"
 Personality = require "./Personality"
 Constants = require "../../system/Constants"
 
@@ -83,10 +84,15 @@ class Character extends EventEmitter2
       Personality::createPersonality personality, @
 
   addPersonality: (newPersonality) ->
-    return no if not Personality::doesPersonalityExist newPersonality
+    defer = q.defer()
+    if not Personality::doesPersonalityExist newPersonality
+      defer.reject {isSuccess: no, message: "You already have that personality set!"}
+      return defer
 
     potentialPersonality = Personality::getPersonality newPersonality
-    return no if not ('canUse' of potentialPersonality) or not potentialPersonality.canUse @
+    if not ('canUse' of potentialPersonality) or not potentialPersonality.canUse @
+      defer.reject {isSuccess: no, message: "You can't use that personality yet!"}
+      return defer
 
     if not @personalityStrings
       @personalityStrings = []
@@ -99,14 +105,24 @@ class Character extends EventEmitter2
     @personalities = _.uniq @personalities
     @personalityStrings = _.uniq @personalityStrings
 
-    @personalityStrings.join ", "
+    personalityString = @personalityStrings.join ", "
+
+    defer.resolve {isSuccess: yes, message: "Your personality settings have been updated successfully! Personalities are now: #{personalityString or "none"}"}
+    defer
 
   removePersonality: (oldPersonality) ->
-    return no if not @hasPersonality oldPersonality
+    defer = q.defer()
+    if not @hasPersonality oldPersonality
+      defer.reject {isSuccess: no, message: "You don't have that personality set!"}
+      return defer
+
     @personalityStrings = _.without @personalityStrings, oldPersonality
     @rebuildPersonalityList()
 
-    @personalityStrings.join ", "
+    personalityString = @personalityStrings.join ", "
+
+    defer.resolve {isSuccess: yes, message: "Your personality settings have been updated successfully! Personalities are now: #{personalityString or "none"}"}
+    defer
 
   hasPersonality: (personality) ->
     return no if not @personalityStrings

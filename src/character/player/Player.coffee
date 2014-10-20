@@ -5,6 +5,7 @@ MessageCreator = require "../../system/MessageCreator"
 Constants = require "../../system/Constants"
 Equipment = require "../../item/Equipment"
 _ = require "underscore"
+q = require "q"
 Personality = require "../base/Personality"
 
 PushBullet = require "pushbullet"
@@ -50,7 +51,11 @@ class Player extends Character
     ]
 
   setPushbulletKey: (key) ->
+    defer = q.defer()
+    console.log "PBDEFER",defer
     @pushbulletApiKey = key
+    defer.resolve {isSuccess: yes, message: "Your PushBullet API key has been #{if key then "added" else "removed"} successfully."}
+    defer
 
   pushbulletSend: (message) ->
     pushbullet = new PushBullet @pushbulletApiKey if @pushbulletApiKey
@@ -61,7 +66,8 @@ class Player extends Character
         pushbullet.note device.iden, 'IdleLands', message, (e, res) ->
 
   manageOverflow: (option, slot) ->
-    maxOverflow = Constants.defaults.player.maxOverflow
+    defer = q.defer()
+
     @overflow = [] if not @overflow
 
     cleanOverflow = =>
@@ -69,56 +75,60 @@ class Player extends Character
 
     switch option
       when "add"
-        return false if not (slot in ["body","feet","finger","hands","head","legs","neck","mainhand","offhand","charm"])
-        return false if @overflow.length is maxOverflow
-
-        currentItem = _.findWhere @equipment, {type: slot}
-
-        @overflow.push currentItem
-        @equipment = _.without @equipment, currentItem
-        @equipment.push new Equipment {type: slot, name: "empty"}
-
-        return true
+        @addOverflow slot, defer
 
       when "swap"
-        return false if not @overflow[slot]
-
-        current = _.findWhere @equipment, {type: @overflow[slot].type}
-        inOverflow = @overflow[slot]
-
-        @equipment = _.without @equipment, current
-        @equipment.push inOverflow
-
-        @overflow[slot] = current
-
+        @swapOverflow slot, defer
         cleanOverflow()
-        return true
 
       when "sell"
-        curItem = @overflow[slot]
-        console.log curItem
-        return false if (not curItem) or (curItem.name is "empty")
-
-        salePrice = Math.max 2, @calcGoldGain Math.round curItem.score()*@calc.itemSellMultiplier curItem
-        @gainGold salePrice
-
-        @overflow[slot] = null
+        @sellOverflow slot, defer
         cleanOverflow()
 
-        return salePrice
+    defer
 
-      when "list"
-        listItems = ""
-        for slotNum in [0..@maxOverflow]
-          if not @overflow[slotNum]
-            listItems += "no slot"
-          else
-            listItems += "#{@overflow[slotNum].name} (#{@overflow[slotNum].type})"
-          if slotNum < @maxOverflow
-            listItems += ", "
-        return listItems
+  addOverflow:  (slot, defer) ->
+    if not (slot in ["body","feet","finger","hands","head","legs","neck","mainhand","offhand","charm"])
+      defer.reject {isSuccess: no, message: "That slot is invalid."}
+      return
 
-      else return false
+    if @overflow.length is Constants.defaults.player.maxOverflow
+      defer.reject {isSuccess: no, message: "Your inventory is currently full!"}
+      return
+
+    currentItem = _.findWhere @equipment, {type: slot}
+
+    @overflow.push currentItem
+    @equipment = _.without @equipment, currentItem
+    @equipment.push new Equipment {type: slot, name: "empty"}
+    defer.resolve {isSuccess: yes, message: "Successfully added #{currentItem.name} to your inventory."}
+
+  swapOverflow: (slot, defer) ->
+    if not @overflow[slot]
+      defer.reject {isSuccess: no, message: "You don't have anything in that inventory slot."}
+      return
+
+    current = _.findWhere @equipment, {type: @overflow[slot].type}
+    inOverflow = @overflow[slot]
+
+    @equipment = _.without @equipment, current
+    @equipment.push inOverflow
+
+    @overflow[slot] = current
+
+    defer.resolve {isSuccess: yes, message: "Successfully swapped #{current.name} into the #{slot} slot."}
+
+  sellOverflow: (slot, defer) ->
+    curItem = @overflow[slot]
+    if (not curItem) or (curItem.name is "empty")
+      defer.reject {isSuccess: yes, message: "That item is not able to be sold!"}
+      return
+
+    salePrice = Math.max 2, @calcGoldGain Math.round curItem.score()*@calc.itemSellMultiplier curItem
+    @gainGold salePrice
+
+    @overflow[slot] = null
+    defer.resolve {isSuccess: yes, message: "Successfully sold #{curItem.name} for #{salePrice} gold."}
 
   handleTrainerOnTile: (tile) ->
     return if @isBusy or @stepCooldown > 0
@@ -298,7 +308,10 @@ class Player extends Character
     if @gender then @gender else "male"
 
   setGender: (newGender) ->
+    defer = q.defer()
     @gender = newGender.substring 0,9
+    defer.resolve {isSuccess: yes, message: "Your gender is now #{@gender}."}
+    defer
 
   score: ->
     @calc.partyScore()
@@ -360,8 +373,11 @@ class Player extends Character
     @playerManager.addForAnalytics @
 
   setString: (type, val = '') ->
+    defer = q.defer()
     @messages = {} if not @messages
     @messages[type] = val.substring 0, 99
+    defer.resolve {isSuccess: yes, message: "Successfully updated your string settings. String \"#{sType}\" is now: #{if newString then newString else 'empty!'}"}
+    defer
 
   checkAchievements: (silent = no) ->
     oldAchievements = _.compact _.clone @achievements

@@ -158,7 +158,7 @@ module.exports = (Module) ->
           , DELAY_INTERVAL/arr.length*i, arr[i]
 
       @interval = setInterval =>
-        doActionPerMember @userIdentsList, @IdleWrapper.api.game.nextAction
+        doActionPerMember @userIdentsList, @IdleWrapper.api.player.nextAction
       , DELAY_INTERVAL
 
     watchIdleFiles: ->
@@ -250,16 +250,6 @@ module.exports = (Module) ->
       registerCommand = (origin, route) =>
         [bot, name] = [origin.bot, route.params.name]
 
-        name = name.trim()
-        
-        if name.length < 2
-          @reply origin, "You have to make your name above 2 characters!"
-          return
-
-        if name.length > 20
-          @reply origin, "You have to keep your name under 20 characters!"
-          return
-
         bot.userManager.getUsername origin, (e, username) =>
           if not username
             @reply origin, "You must be logged in to services play this game!"
@@ -271,14 +261,12 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          @IdleWrapper.api.player.auth.register
+          (@IdleWrapper.api.player.auth.register
             identifier: identifier
             name: name
-          , null, (status) =>
-            if not status.success
-              @reply origin, "You're already registered a character to that ident!"
-            else if status.message
-              @reply origin, status.message
+          ).then (res) =>
+            console.log res
+            @reply origin, res.message
 
       @addRoute "idle-register :name", registerCommand
       @addRoute "register :name", registerCommand
@@ -327,7 +315,7 @@ module.exports = (Module) ->
         y = parseInt y
         @IdleWrapper.api.gm.teleport.map.mass map, x, y
 
-      @addRoute "idle-personality :action(remove|add) :personality", (origin, route) =>
+      @addRoute "idle-personality :action(add|remove) :personality", (origin, route) =>
         [bot, action, personality] = [origin.bot, route.params.action, route.params.personality]
         bot.userManager.getUsername origin, (e, username) =>
           if not username
@@ -336,11 +324,9 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          personalityString = @IdleWrapper.api.player.personality[action] identifier, personality
-          if not personalityString
-            @reply origin, "Could not #{action} the personality \"#{personality}\""
-          else
-            @reply origin, "Successfully updated your personality settings. Personalities are now: #{personalityString or "none"}"
+          (@IdleWrapper.api.player.personality[action] identifier, personality)
+          .then (res) =>
+            @reply origin, res.message
 
       stringFunc = (origin, route) =>
         [bot, action, sType, string] = [origin.bot, route.params.action, route.params.type, route.params.string]
@@ -351,8 +337,9 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          newString = @IdleWrapper.api.player.string[action] identifier, sType, string
-          @reply origin, "Successfully updated your string settings. String \"#{sType}\" is now: #{if newString then newString else 'empty!'}"
+          (@IdleWrapper.api.player.string[action] identifier, sType, string)
+          .then (res) =>
+            @reply origin, res.message
 
       @addRoute "idle-string :action(add) :type :string", stringFunc
       @addRoute "idle-string :action(remove) :type", stringFunc
@@ -366,8 +353,9 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          @IdleWrapper.api.player.pushbullet[action] identifier, string
-          @reply origin, "Successfully updated your pushbullet settings."
+          (@IdleWrapper.api.player.pushbullet[action] identifier, string)
+          .then (res) =>
+            @reply origin, res.message
 
       @addRoute "idle-pushbullet :action(add) :string", pushbulletFunc
       @addRoute "idle-pushbullet :action(remove)", pushbulletFunc
@@ -388,10 +376,11 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          newGender = @IdleWrapper.api.player.gender identifier, gender
-          @reply origin, "Your gender is now #{newGender}."
+          @IdleWrapper.api.player.gender identifier, gender
+          .then (ret) =>
+            @reply origin, ret.message
 
-      @addRoute "idle-inventory :action(swap|remove|add) :slot", (origin, route) =>
+      @addRoute "idle-inventory :action(swap|sell|add) :slot", (origin, route) =>
         [action, slot] = [route.params.action, route.params.slot]
         slot = parseInt slot if action isnt "add"
 
@@ -402,15 +391,9 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          response = @IdleWrapper.api.player.overflow[action] identifier, slot
-
-          if response > 1
-            @reply origin, "Your item sold for #{response} gold!"
-          else if response
-            @reply origin, "Your inventory has been updated."
-          else
-            @reply origin, "Your inventory has not been updated. Something may have went wrong!"
-
+          (@IdleWrapper.api.player.overflow[action] identifier, slot)
+          .then (res) =>
+            @reply origin, res.message
 
       @initialize()
 

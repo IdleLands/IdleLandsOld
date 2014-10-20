@@ -16,6 +16,7 @@ GMCommands = require "./GMCommands"
 Party = require "../event/Party"
 Battle = require "../event/Battle"
 World = require "../map/World"
+q = require "q"
 
 _ = require "underscore"
 chance = (new require "chance")()
@@ -217,7 +218,10 @@ class Game
     @broadcast MessageCreator.genericMessage text
 
   nextAction: (identifier) ->
+    defer = q.defer()
     @playerManager.playerTakeTurn identifier
+    defer.resolve {isSuccess: yes, message: "Turn taken successfully."}
+    defer
 
   doCodeUpdate: ->
 

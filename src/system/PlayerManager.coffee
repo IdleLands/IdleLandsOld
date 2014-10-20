@@ -41,9 +41,17 @@ class PlayerManager
       callback player
 
   addPlayer: (identifier, suppress = no) ->
-    return if _.findWhere @players, {identifier: identifier} or identifier of @playerHash
+    defer = Q.defer()
+
+    if _.findWhere @players, {identifier: identifier} or identifier of @playerHash
+      defer.reject {isSuccess: no, message: "Player not found."}
+      return defer
+
     @retrievePlayer identifier, (player) =>
-      return if not player
+      if not player
+        defer.reject {isSuccess: no, message: "Player not found."}
+        return
+
       player.isOnline = yes
       @players.push player
       @playerHash[identifier] = player
@@ -51,10 +59,18 @@ class PlayerManager
 
       @players = _.uniq @players
 
+      defer.resolve {isSuccess: yes, message: "Successful login."}
+
+    defer
+
   removePlayer: (identifier) ->
 
-    player = _.findWhere @players, {identifier, identifier}
-    return if not player
+    defer = Q.defer()
+
+    player = _.findWhere @players, {identifier: identifier}
+    if not player
+      defer.reject {isSuccess: no, message: "Player not found."}
+      return
 
     player.isOnline = no
     @savePlayer player
@@ -65,8 +81,33 @@ class PlayerManager
     delete @playerHash[identifier]
 
     @game.broadcast "#{name} has left #{Constants.gameName}!"
+    defer.resolve {isSuccess: yes, message: "Player successfully logged out."}
+
+    defer
 
   registerPlayer: (options, middleware, callback) ->
+
+    isSuccess = yes
+
+    defer = Q.defer()
+
+    options.name = options.name.trim()
+
+    if options.name.length < 2
+      defer.reject {isSuccess: no, message: "You have to make your name above 2 characters!"}
+      console.log 'test1'
+      isSuccess = no
+
+    if options.name.length > 20
+      defer.reject {isSuccess: no, message: "You have to keep your name under 20 characters!"}
+      console.log 'test2'
+      isSuccess = no
+
+    console.log "fail", defer
+
+    return defer if not isSuccess
+
+    console.log "success"
 
     playerObject = new Player options
     playerObject.playerManager = @
@@ -78,7 +119,9 @@ class PlayerManager
 
     @db.insert saveObj, (iErr) =>
       if iErr
-        console.error "Player creation error: #{iErr}", playerObject if callback?
+        message = "Player creation error: #{iErr} (you probably already registered a character to that ident)."
+        console.error message, playerObject if callback?
+        defer.reject {isSuccess: no, message: message}
         callback?(iErr)
         return
 
@@ -88,7 +131,11 @@ class PlayerManager
 
       @beginWatchingPlayerStatistics playerObject
 
+      defer.resolve {isSuccess: yes, message: "Welcome #{options.name} to #{Constants.gameName}!"}
+
       callback?({ success: true, name: options.name })
+
+    defer
 
   buildPlayerSaveObject: (player) ->
     calc = player.calc.base

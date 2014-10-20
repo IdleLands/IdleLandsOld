@@ -168,8 +168,9 @@ interactiveSession = ->
           line = RegExp.$2
 
         broadcast "Evaluating `#{line}`"
-        result = eval(line)
+        result = eval line
         broadcast result
+        result.then? (res) -> broadcast res.message
         variables['lc'] = line if result?
       catch error
         console.error error.stack

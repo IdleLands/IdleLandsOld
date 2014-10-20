@@ -56,43 +56,65 @@ class API
   # Invoked either automatically (by means of taking a turn), or when a player issues a command
   @player =
     nextAction: (identifier) =>
-      @gameInstance.nextAction identifier
+      defer = @gameInstance.nextAction identifier
+      defer.promise
 
     gender: (identifier, newGender) =>
-      @gameInstance.playerManager.getPlayerById(identifier)?.setGender newGender
+      defer = @gameInstance.playerManager.getPlayerById(identifier)?.setGender newGender
+      defer.promise
 
     auth:
-      register: (options, middleware, callback) =>
-        @gameInstance.playerManager.registerPlayer options, middleware, callback
+      register: (options) =>
+        defer = @gameInstance.playerManager.registerPlayer options
+        defer.promise
+
       login: (identifier, suppress) =>
-        @gameInstance.playerManager.addPlayer identifier, suppress
+        defer = @gameInstance.playerManager.addPlayer identifier, suppress
+        defer.promise
+
       logout: (identifier) =>
-        @gameInstance.playerManager.removePlayer identifier
-
-    personality:
-      add: (identifier, personality) =>
-        @gameInstance.playerManager.getPlayerById(identifier)?.addPersonality personality
-      remove: (identifier, personality) =>
-        @gameInstance.playerManager.getPlayerById(identifier)?.removePersonality personality
-
-    string:
-      add: (identifier, stringType, string) =>
-        @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType, string
-      remove: (identifier, stringType) =>
-        @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType
-
-    pushbullet:
-      add: (identifier, apiKey) =>
-        @gameInstance.playerManager.getPlayerById(identifier)?.setPushbulletKey apiKey
-      remove: (identifier) =>
-        @gameInstance.playerManager.getPlayerById(identifier)?.setPushbulletKey ''
+        defer = @gameInstance.playerManager.removePlayer identifier
+        defer.promise
 
     overflow:
       add: (identifier, slot) =>
-        @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "add", slot
-      remove: (identifier, slot) =>
-        @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "sell", slot
+        defer = @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "add", slot
+        defer.promise
+
+      sell: (identifier, slot) =>
+        defer = @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "sell", slot
+        defer.promise
+
       swap: (identifier, slot) =>
-        @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "swap", slot
+        defer = @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "swap", slot
+        defer.promise
+
+    personality:
+      add: (identifier, personality) =>
+        console.log @gameInstance.playerManager.getPlayerById(identifier), identifier
+        defer = @gameInstance.playerManager.getPlayerById(identifier)?.addPersonality personality
+        defer.promise
+
+      remove: (identifier, personality) =>
+        defer = @gameInstance.playerManager.getPlayerById(identifier)?.removePersonality personality
+        defer.promise
+
+    pushbullet:
+      add: (identifier, apiKey) =>
+        defer = @gameInstance.playerManager.getPlayerById(identifier)?.setPushbulletKey apiKey
+        defer.promise
+
+      remove: (identifier) =>
+        defer = @gameInstance.playerManager.getPlayerById(identifier)?.setPushbulletKey ''
+        defer.promise
+
+    string:
+      add: (identifier, stringType, string) =>
+        defer = @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType, string
+        defer.promise
+
+      remove: (identifier, stringType) =>
+        defer = @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType
+        defer.promise
 
 module.exports = exports = API
