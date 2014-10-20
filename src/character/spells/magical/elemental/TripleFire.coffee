@@ -5,13 +5,14 @@ class TripleFire extends Spell
   name: "triple fire"
   @element = TripleFire::element = Spell::Element.fire
   @tiers = TripleFire::tiers = [
-    {name: "triple fire", spellPower: 1, cost: 650, class: "Mage", level: 10}
-    {name: "quadruple fire", spellPower: 2, cost: 900, class: "Mage", level: 40}
+    {name: "double fire", spellPower: 1, cost: 350, class: "Mage", level: 10}
+    {name: "triple fire", spellPower: 2, cost: 650, class: "Mage", level: 30}
+    {name: "quadruple fire", spellPower: 3, cost: 900, class: "Mage", level: 50}
   ]
 
   determineTargets: ->
     # 1 spellPower = 1 additional target
-    @targetSomeEnemies size: (3 + @spellPower - 1), guaranteeSize: yes
+    @targetSomeEnemies size: (2 + @spellPower - 1), guaranteeSize: yes
 
   calcDamage: ->
     # 1 spellPower = 20% base damage
