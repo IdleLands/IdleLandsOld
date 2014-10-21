@@ -4,7 +4,11 @@ Monster = require "../character/npc/Monster"
 Generator = require "./Generator"
 Constants = require "./Constants"
 Party = require "../event/Party"
+Personality = require "../character/base/Personality"
 chance = new (require "chance")()
+
+requireDir = require "require-dir"
+personalities = requireDir "../character/personalities", recurse: yes
 
 class MonsterGenerator extends Generator
   constructor: (@game) ->
@@ -35,6 +39,12 @@ class MonsterGenerator extends Generator
       return if monster.calc.totalItemScore() > maxScore
       item = @game.equipmentGenerator.generateItem type
       monster.equip item if monster.canEquip item
+
+    personalityCount = chance.integer min: 0, max: 2
+
+    newPersonalities = _.sample (_.keys personalities), personalityCount
+
+    (monster._addPersonality pers, Personality::getPersonality pers) for pers in newPersonalities
 
     monster
 

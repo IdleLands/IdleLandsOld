@@ -83,6 +83,18 @@ class Character extends EventEmitter2
     @personalities = _.map @personalityStrings, (personality) =>
       Personality::createPersonality personality, @
 
+  _addPersonality: (newPersonality, potentialPersonality) ->
+    if not @personalityStrings
+      @personalityStrings = []
+      @personalities = []
+
+    @personalityStrings.push newPersonality
+
+    @personalities.push new potentialPersonality @
+
+    @personalities = _.uniq @personalities
+    @personalityStrings = _.uniq @personalityStrings
+
   addPersonality: (newPersonality) ->
     defer = q.defer()
     if not Personality::doesPersonalityExist newPersonality
@@ -94,16 +106,7 @@ class Character extends EventEmitter2
       defer.resolve {isSuccess: no, message: "You can't use that personality yet!"}
       return defer
 
-    if not @personalityStrings
-      @personalityStrings = []
-      @personalities = []
-
-    @personalityStrings.push newPersonality
-
-    @personalities.push new potentialPersonality @
-
-    @personalities = _.uniq @personalities
-    @personalityStrings = _.uniq @personalityStrings
+    @_addPersonality newPersonality, potentialPersonality
 
     personalityString = @personalityStrings.join ", "
 
