@@ -8,7 +8,8 @@ Personality = require "../character/base/Personality"
 chance = new (require "chance")()
 
 requireDir = require "require-dir"
-personalities = requireDir "../character/personalities", recurse: yes
+personalities = _.keys requireDir "../character/personalities", recurse: yes
+classes = _.keys requireDir "../character/classes", recurse: yes
 
 class MonsterGenerator extends Generator
   constructor: (@game) ->
@@ -24,6 +25,8 @@ class MonsterGenerator extends Generator
     if not baseMonster.level
       console.error "GENERATE ERROR, NO LEVEL: ",baseMonster
       return
+      
+    baseMonster.class = _.sample classes if baseMonster.class is 'Random'
 
     monster = new Monster baseMonster
 
@@ -42,7 +45,7 @@ class MonsterGenerator extends Generator
 
     personalityCount = chance.integer min: 0, max: 2
 
-    newPersonalities = _.sample (_.keys personalities), personalityCount
+    newPersonalities = _.sample personalities, personalityCount
 
     (monster._addPersonality pers, Personality::getPersonality pers) for pers in newPersonalities
 
