@@ -60,8 +60,8 @@ class GuildManager
       callback guilds
 
   sendInvite: (sender, invitee) ->
-    return -1 if (not sender.guild) or invitee.guild? or (not @checkAdmin sender) or
-      (_.contains @guildHash[sender.guild].invites, invitee.identifier) or
+    return -1 if (not invitee) or (not sender.guild) or invitee.guild? or
+      (not @checkAdmin sender) or (_.contains @guildHash[sender.guild].invites, invitee.identifier) or
       @guildHash[sender.guild].maxInvited()
     @invites[invitee.identifier] = [] if not @invites[invitee.identifier]
     @invites[invitee.identifier].push sender.guild
