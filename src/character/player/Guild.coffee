@@ -42,7 +42,7 @@ class Guild
     @save()
 
   invitesLeft: ->
-    return @cap() - (@members.length + @invites.length)
+    @cap() - (@members.length + @invites.length)
 
   avgLevel: ->
     (_.reduce @members, ((total, member) -> total + (@guildManager.game.playerManager.getPlayerById member.identifier).level.getValue()), 0, @)/@members.length

@@ -19,7 +19,7 @@ class GuildManager
     @loadAllGuilds()
 
   createGuild: (player, name, callback) ->
-    return -1 if (player.guild?) or player.gold.getValue() < 100000
+    return -1 if (player.guild?) or player.gold.getValue() < Constants.defaults.game.guildCreateCost
     guildObject = new Guild {name: name, leader: player.identifier}
     guildObject.guildManager = @
     guildObject.__proto__ = Guild.prototype
@@ -34,7 +34,7 @@ class GuildManager
       @guildHash[name] = guildObject
       @guilds.push guildObject
       player.guild = name
-      player.gold.sub 100000
+      player.gold.sub Constants.defaults.game.guildCreateCost
       player.save()
       callback?({ success: true, name: options.name })
     return guildObject.name
@@ -67,7 +67,7 @@ class GuildManager
     @invites[invitee.identifier].push sender.guild
     @guildHash[sender.guild].invites.push invitee.identifier
     @guildHash[sender.guild].save()
-    return @guildHash[sender.guild].invitesLeft()
+    @guildHash[sender.guild].invitesLeft()
 
   manageInvite: (invitee, accepted, guildName) ->
     return -1 if (not _.contains @invites[invitee.identifier], guildName) or
