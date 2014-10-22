@@ -41,8 +41,8 @@ class Guild
     (_.findWhere @members, {identifier: memberId}).isAdmin = no
     @save()
 
-  maxInvited: ->
-    return (@members.length + @invites.length) >= @cap()
+  invitesLeft: ->
+    return @cap() - (@members.length + @invites.length)
 
   avgLevel: ->
     (_.reduce @members, ((total, member) -> total + (@guildManager.game.playerManager.getPlayerById member.identifier).level.getValue()), 0, @)/@members.length

@@ -62,11 +62,12 @@ class GuildManager
   sendInvite: (sender, invitee) ->
     return -1 if (not invitee) or (not sender.guild) or invitee.guild? or
       (not @checkAdmin sender) or (_.contains @guildHash[sender.guild].invites, invitee.identifier) or
-      @guildHash[sender.guild].maxInvited()
+      (not @guildHash[sender.guild].invitesLeft())
     @invites[invitee.identifier] = [] if not @invites[invitee.identifier]
     @invites[invitee.identifier].push sender.guild
     @guildHash[sender.guild].invites.push invitee.identifier
     @guildHash[sender.guild].save()
+    return @guildHash[sender.guild].invitesLeft()
 
   manageInvite: (invitee, accepted, guildName) ->
     return -1 if (not _.contains @invites[invitee.identifier], guildName) or
