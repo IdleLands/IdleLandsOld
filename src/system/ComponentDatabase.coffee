@@ -65,7 +65,7 @@ class ComponentDatabase
 
     @insertMonster parameters
 
-  parseItemString: (str, type) ->
+  parseItemString: (str, type, retObj = no) ->
     return if (_.str.isBlank str) or _.str.contains str, "#"
     str = _.str.clean str
     [name, parameters] = [str.split("\"")[1], str.split("\"")[2]?.trim()]
@@ -79,6 +79,8 @@ class ComponentDatabase
     .reduce (cur, prev) ->
       _.extend prev, cur
     , { name: name, type: type }
+
+    return parameters if retObj
 
     @insertItem parameters, ->
 

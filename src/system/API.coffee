@@ -61,6 +61,11 @@ class API
       unban: (name, callback) =>
         @gameInstance.playerManager.unbanPlayer name, callback
 
+    player:
+      createItem: (playerName, type, itemString) =>
+        player = @gameInstance.playerManager.getPlayerByName playerName
+        @gameInstance.gmCommands.createItemFor player, type, itemString
+
   # Invoked either automatically (by means of taking a turn), or when a player issues a command
   @player =
     nextAction: (identifier) =>

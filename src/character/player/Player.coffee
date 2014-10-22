@@ -87,6 +87,12 @@ class Player extends Character
 
     defer
 
+  forceIntoOverflow: (item) ->
+
+    # no params = no problems
+    do @manageOverflow
+    @overflow.push item
+
   addOverflow:  (slot, defer) ->
     if not (slot in ["body","feet","finger","hands","head","legs","neck","mainhand","offhand","charm"])
       defer.resolve {isSuccess: no, message: "That slot is invalid."}

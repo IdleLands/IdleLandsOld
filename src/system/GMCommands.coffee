@@ -1,6 +1,7 @@
 
 MessageCreator = require "./MessageCreator"
 _ = require "underscore"
+Equipment = require "../item/Equipment"
 
 teleports = require "../../config/teleports.json"
 
@@ -34,6 +35,14 @@ class GMCommands
 
   lookupLocation: (name) ->
     @locations[name]
+
+  createItemFor: (player, type, itemParams) ->
+
+    params = @game.componentDatabase.parseItemString itemParams, type, yes
+    item = new Equipment params
+    item.itemClass = 'custom'
+
+    player.forceIntoOverflow item
 
   locations: _.extend {},
     teleports.towns,

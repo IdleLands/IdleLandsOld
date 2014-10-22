@@ -44,6 +44,7 @@ module.exports = (Module) ->
       "event.item.pro":             c.purple
       "event.item.idle":            c.bold.rainbow
       "event.item.godly":           c.white.bgblack
+      "event.item.custom":          c.white.bgblue
       "event.finditem.scoreboost":  c.bold
       "event.finditem.perceived":   c.bold
       "event.finditem.real":        c.bold
@@ -313,6 +314,10 @@ module.exports = (Module) ->
         x = parseInt x
         y = parseInt y
         @IdleWrapper.api.gm.teleport.map.mass map, x, y
+
+      @addRoute 'idle-itemgen ":player" :type *"', (origin, route) =>
+        [playerName, itemType, itemData] = [route.params.player, route.params.type, route.splats[0]]
+        @IdleWrapper.api.gm.player.createItem playerName, itemType, itemData
 
       @addRoute "idle-personality :action(add|remove) :personality", (origin, route) =>
         [bot, action, personality] = [origin.bot, route.params.action, route.params.personality]

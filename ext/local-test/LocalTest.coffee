@@ -87,6 +87,7 @@ colorMap =
   "event.item.pro":             colors.white
   "event.item.idle":            colors.cyan
   "event.item.godly":           colors.cyanBright
+  "event.item.custom":          colors.cyanBright
   "event.finditem.scoreboost":  colors.bold
   "event.finditem.perceived":   colors.bold
   "event.finditem.real":        colors.bold
