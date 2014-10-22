@@ -1,6 +1,7 @@
 
 AchievementManager = require "./AchievementManager"
 PlayerManager = require "./PlayerManager"
+GuildManager = require "./GuildManager"
 EventHandler = require "./EventHandler"
 MonsterGenerator = require "./MonsterGenerator"
 MessageCreator = require "./MessageCreator"
@@ -31,6 +32,7 @@ class Game
     @spellManager = new SpellManager @
     @eventHandler = new EventHandler @
     @playerManager = new PlayerManager @
+    @guildManager = new GuildManager @
     @componentDatabase = new ComponentDatabase @
     @globalEventHandler = new GlobalEventHandler @
     @equipmentGenerator = new EquipmentGenerator @
