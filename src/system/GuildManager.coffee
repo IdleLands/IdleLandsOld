@@ -55,7 +55,7 @@ class GuildManager
         @guildHash[guild.name] = guild), @
 
   retrieveAllGuilds: (callback) ->
-    @db.find {}, (e, guilds) =>
+    @db.find {}, (e, guilds) ->
       console.error e if e
       callback guilds
 
@@ -104,7 +104,7 @@ class GuildManager
     return -1 if @guildHash[player.guild].leader isnt player.identifier
     guild = @guildHash[player.guild]
     _.each guild.invites, ((identifier) -> @invites[identifier] = _.without @invites[identifier], player.guild), @
-    _.each guild.members, ((member) -> 
+    _.each guild.members, ((member) ->
       (@game.playerManager.getPlayerById member.identifier).guild = null
       (@game.playerManager.getPlayerById member.identifier).save()), @
     @guilds = _.reject @guilds, {name: guild.name}
