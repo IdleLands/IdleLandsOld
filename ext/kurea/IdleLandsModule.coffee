@@ -315,7 +315,7 @@ module.exports = (Module) ->
         y = parseInt y
         @IdleWrapper.api.gm.teleport.map.mass map, x, y
 
-      @addRoute 'idle-itemgen ":player" :type *', (origin, route) =>
+      @addRoute 'idle-itemgen ":player" :type *', "idle.game.gm", (origin, route) =>
         [playerName, itemType, itemData] = [route.params.player, route.params.type, route.splats[0]]
         @IdleWrapper.api.gm.player.createItem playerName, itemType, itemData
 
