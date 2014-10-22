@@ -191,7 +191,7 @@ class EventHandler
     callback true
 
   doItem: (event, player, callback) ->
-    item = (_.sample player.equipment)
+    item = @pickValidItem player
     stat = @pickBlessStat item
     return callback false if not stat
 
@@ -324,7 +324,7 @@ class EventHandler
     callback true
 
   doFlipStat: (event, player, callback) ->
-    item = (_.sample player.equipment)
+    item = @pickValidItem player
     stat = @pickStatPresentOnItem item
 
     return callback false if not stat or item[stat] is 0
@@ -365,6 +365,13 @@ class EventHandler
     zeroStats = _.filter (_.keys item), (stat) -> item[stat] is 0
     statsMissing = _.intersection base, zeroStats
     _.sample statsMissing
+
+  pickValidItem: (player) ->
+    items = player.equipment
+    forsaken = _.findWhere items, {forsaken: 1}
+    return forsaken if forsaken
+    nonSacred = _.reject items, (item) -> item.sacred
+    _.sample nonSacred
 
   pickBlessStat: (item) ->
     chances = [1, 5, 10, 20, 100]

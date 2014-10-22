@@ -71,6 +71,8 @@ class Equipment
     deadeye: 20
     defense: 20
     glowing: 20
+    sacred: -100
+    forsaken: 100
 
   @defaults =
     itemClass: "basic"
