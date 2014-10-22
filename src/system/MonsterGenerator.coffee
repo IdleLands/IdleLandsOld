@@ -25,7 +25,7 @@ class MonsterGenerator extends Generator
     if not baseMonster.level
       console.error "GENERATE ERROR, NO LEVEL: ",baseMonster
       return
-      
+
     baseMonster.class = _.sample classes if baseMonster.class is 'Random'
 
     monster = new Monster baseMonster

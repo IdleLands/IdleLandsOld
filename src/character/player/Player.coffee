@@ -53,7 +53,8 @@ class Player extends Character
   setPushbulletKey: (key) ->
     defer = q.defer()
     @pushbulletApiKey = key
-    defer.resolve {isSuccess: yes, message: "Your PushBullet API key has been #{if key then "added" else "removed"} successfully."}
+    @pushbulletSend "This is a test for Idle Lands" if key
+    defer.resolve {isSuccess: yes, message: "Your PushBullet API key has been #{if key then "added" else "removed"} successfully. You should also have gotten a test message!"}
     defer
 
   pushbulletSend: (message) ->
