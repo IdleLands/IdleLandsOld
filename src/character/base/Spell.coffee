@@ -123,11 +123,11 @@ class Spell
 
   prepareCast: ->
     enemies = @determineTargets()
+    enemies = [enemies] if not _.isArray enemies
     targets = @caster.calc.magicalAttackTargets enemies, @baseTargets
     @affect targets
 
-  affect: (affected = []) ->
-    @affected = if affected and not _.isArray affected then [affected] else affected
+  affect: (@affected = []) ->
     battleInstance = @caster.party.currentBattle
 
     (@bindings.doSpellInit.apply @, []) if 'doSpellInit' of @bindings
@@ -167,7 +167,6 @@ class Spell
         (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
 
   decrementTurns: (player) ->
-    #console.log "turns",@caster.name, player.name, @name, @turns[player.name]
     if --@turns[player.name] <= 0
       @unaffect player
 
