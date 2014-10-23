@@ -310,7 +310,7 @@
 "Ziltoid's Touch" int=350 str=350 silver=1 offense=1 defense=1 dancing=1
 "MadCatz Tournament Edition Arcade Stick" int=595 str=200
 "book: 49 shades of idling" str=375 int=375
-"Book: 50 Shadows over Idletopia" str=400 int=400
+"Book: 50 Shadows over Idliathlia" str=400 int=400
 "book: 28 days idlier" str=425 int=425
 
 # hybrid str / agi
