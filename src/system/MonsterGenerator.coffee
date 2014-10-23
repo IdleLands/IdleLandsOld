@@ -53,6 +53,7 @@ class MonsterGenerator extends Generator
 
   generateMonsterAtScore: (targetScore = 100, tolerance = 0.1) ->
     testMonster = (monster) ->
+      return false if not monster
       baseScore = monster.calc.totalItemScore()
       flux = baseScore * tolerance
       baseScore-flux <= targetScore <= baseScore+flux
