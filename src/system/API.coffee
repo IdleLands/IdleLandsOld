@@ -129,4 +129,42 @@ class API
         defer = @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType
         pickValidPromise defer?.promise
 
+    guild:
+      create: (identifier, guildName, callback) =>
+        player = @gameInstance.playerManager.getPlayerById identifier
+        @gameInstance.guildManager.createGuild player, guildName, callback
+
+      isAdmin: (identifier) =>
+        @gameInstance.guildManager.checkAdmin (@gameInstance.playerManager.getPlayerById identifier)
+
+      sendInvite: (sendId, invId) =>
+        sender = @gameInstance.playerManager.getPlayerById sendId
+        invitee = @gameInstance.playerManager.getPlayerById invId
+        @gameInstance.guildManager.sendInvite sender, invitee
+
+      manageInvite: (invId, accepted, guildName) =>
+        invitee = @gameInstance.playerManager.getPlayerById invId
+        @gameInstance.guildManager.manageInvite invitee, accepted, guildName
+
+      promote: (leaderId, memberId) =>
+        guild = (@gameInstance.playerManager.getPlayerById leaderId).guild
+        @gameInstance.guildManager.guildHash[guild].promote leaderId, memberId
+
+      demote: (leaderId, memberId) =>
+        guild = (@gameInstance.playerManager.getPlayerById leaderId).guild
+        @gameInstance.guildManager.guildHash[guild].demote leaderId, memberId
+
+      disband: (identifier) =>
+        player = @gameInstance.playerManager.getPlayerById identifier
+        @gameInstance.guildManager.disband player
+
+      leave: (identifier) =>
+        player = @gameInstance.playerManager.getPlayerById identifier
+        @gameInstance.guildManager.leaveGuild player
+
+      kick: (adminId, playerId) =>
+        admin = @gameInstance.playerManager.getPlayerById adminId
+        player = @gameInstance.playerManager.getPlayerById playerId
+        @gameInstance.guildManager.kickPlayer admin, player
+
 module.exports = exports = API
