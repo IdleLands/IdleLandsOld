@@ -4,6 +4,7 @@ RestrictedNumber = require "restricted-number"
 MessageCreator = require "../../system/MessageCreator"
 Constants = require "../../system/Constants"
 _ = require "underscore"
+q = require "q"
 
 Chance = require "chance"
 chance = new Chance Math.random
@@ -18,28 +19,50 @@ class Guild
     @invites = []
 
   add: (player) ->
+    defer = q.defer()
     return if player.guild?
     @members.push {identifier: player.identifier, isAdmin: no}
     player.guild = @name
     player.save()
     @save()
+    defer
 
   remove: (player) ->
     return -1 if not _.findWhere @members, {identifier: player.identifier}
-    @members = _.reject @members, {identifier: player.identifier}
+    @members = _.reject @members, (member) -> member.identifier is player.identifier
     player.guild = null
     player.save()
     @save()
 
-  promote: (leaderId, memberId) ->
-    return -1 if leaderId isnt @leader or not (_.findWhere @members, {identifier: memberId})
-    (_.findWhere @members, {identifier: memberId}).isAdmin = yes
+  promote: (leaderId, memberName) ->
+    defer = q.defer()
+
+    member = @guildManager.game.playerManager.getPlayerByName memberName
+
+    if leaderId isnt @leader or not member
+      defer.resolve {isSuccess: no, message: "You can't do that!"}
+      return defer
+
+    member.isAdmin = yes
     @save()
 
-  demote: (leaderId, memberId) ->
-    return -1 if leaderId isnt @leader or not (_.findWhere @members, {identifier: memberId})
-    (_.findWhere @members, {identifier: memberId}).isAdmin = no
+    defer.resolve {isSuccess: yes, message: "Successfully promoted #{member.name}."}
+
+    defer
+
+  demote: (leaderId, memberName) ->
+    defer = q.defer()
+    member = @guildManager.game.playerManager.getPlayerByName memberName
+
+    if leaderId isnt @leader or not member
+      defer.resolve {isSuccess: no, message: "You can't do that!"}
+      return defer
+
+    member.isAdmin = no
     @save()
+    defer.resolve {isSuccess: yes, message: "Successfully demoted #{member.name}."}
+
+    defer
 
   invitesLeft: ->
     @cap() - (@members.length + @invites.length)

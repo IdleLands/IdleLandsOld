@@ -131,40 +131,37 @@ class API
 
     guild:
       create: (identifier, guildName, callback) =>
-        player = @gameInstance.playerManager.getPlayerById identifier
-        @gameInstance.guildManager.createGuild player, guildName, callback
+        defer = @gameInstance.guildManager.createGuild identifier, guildName, callback
+        pickValidPromise defer?.promise
 
-      isAdmin: (identifier) =>
-        @gameInstance.guildManager.checkAdmin (@gameInstance.playerManager.getPlayerById identifier)
-
-      sendInvite: (sendId, invId) =>
-        sender = @gameInstance.playerManager.getPlayerById sendId
-        invitee = @gameInstance.playerManager.getPlayerById invId
-        @gameInstance.guildManager.sendInvite sender, invitee
+      sendInvite: (sendId, invName) =>
+        defer = @gameInstance.guildManager.sendInvite sendId, invName
+        pickValidPromise defer?.promise
 
       manageInvite: (invId, accepted, guildName) =>
-        invitee = @gameInstance.playerManager.getPlayerById invId
-        @gameInstance.guildManager.manageInvite invitee, accepted, guildName
+        defer = @gameInstance.guildManager.manageInvite invId, accepted, guildName
+        pickValidPromise defer?.promise
 
-      promote: (leaderId, memberId) =>
+      promote: (leaderId, memberName) =>
         guild = (@gameInstance.playerManager.getPlayerById leaderId).guild
-        @gameInstance.guildManager.guildHash[guild].promote leaderId, memberId
+        defer = @gameInstance.guildManager.guildHash[guild].promote leaderId, memberName
+        pickValidPromise defer?.promise
 
-      demote: (leaderId, memberId) =>
+      demote: (leaderId, memberName) =>
         guild = (@gameInstance.playerManager.getPlayerById leaderId).guild
-        @gameInstance.guildManager.guildHash[guild].demote leaderId, memberId
+        defer = @gameInstance.guildManager.guildHash[guild].demote leaderId, memberName
+        pickValidPromise defer?.promise
 
       disband: (identifier) =>
-        player = @gameInstance.playerManager.getPlayerById identifier
-        @gameInstance.guildManager.disband player
+        defer = @gameInstance.guildManager.disband identifier
+        pickValidPromise defer?.promise
 
       leave: (identifier) =>
-        player = @gameInstance.playerManager.getPlayerById identifier
-        @gameInstance.guildManager.leaveGuild player
+        defer = @gameInstance.guildManager.leaveGuild identifier
+        pickValidPromise defer?.promise
 
-      kick: (adminId, playerId) =>
-        admin = @gameInstance.playerManager.getPlayerById adminId
-        player = @gameInstance.playerManager.getPlayerById playerId
-        @gameInstance.guildManager.kickPlayer admin, player
+      kick: (adminId, playerName) =>
+        defer = @gameInstance.guildManager.kickPlayer adminId, playerName
+        pickValidPromise defer?.promise
 
 module.exports = exports = API
