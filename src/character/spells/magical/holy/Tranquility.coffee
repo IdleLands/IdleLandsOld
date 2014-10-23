@@ -3,9 +3,10 @@ Spell = require "../../../base/Spell"
 
 class Tranquility extends Spell
   name: "tranquility"
+  stack: "intensity"
   @element = Tranquility::element = Spell::Element.holy
   @tiers = Tranquility::tiers = [
-    {name: "tranquility", spellPower: 1, cost: 125, class: "Cleric", level: 50}
+    {name: "tranquility", spellPower: 1, cost: 2000, class: "Cleric", level: 50}
   ]
 
   calcDuration: -> super()+1+@spellPower
