@@ -294,7 +294,7 @@ class EventHandler
     return if not player.party
 
     monsterParty = @game.monsterGenerator.generateMonsterParty party.score()
-    return if monsterParty.players.length is 0
+    return if not monsterParty or monsterParty.players.length is 0
 
     @game.startBattle [monsterParty, player.party], event
     player.emit "event.monsterbattle", player

@@ -70,6 +70,6 @@ class MonsterGenerator extends Generator
 
     (monsters.push @generateMonsterAtScore (targetScore/monsterCount), tolerance) for x in [1..monsterCount]
 
-    new Party @game, monsters
+    new Party @game, monsters if monsters.length > 0
 
 module.exports = exports = MonsterGenerator
