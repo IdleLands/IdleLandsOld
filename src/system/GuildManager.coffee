@@ -50,7 +50,7 @@ class GuildManager
     guildObject = new Guild {name: name, leader: player.identifier}
     guildObject.guildManager = @
     guildObject.__proto__ = Guild.prototype
-    guildObject.members.push {identifier: player.identifier, isAdmin: yes}
+    guildObject.members.push {identifier: player.identifier, name: player.name, isAdmin: yes}
     saveObj = @buildGuildSaveObject guildObject
 
     @db.insert saveObj, (iErr) =>
@@ -131,6 +131,7 @@ class GuildManager
       if accepted
         @guildHash[guildName].add invitee
         @clearInvites invitee
+
       @guildHash[guildName].save()
 
       defer.resolve {isSuccess: no, message: "Guild invite was resolved successfully."}
