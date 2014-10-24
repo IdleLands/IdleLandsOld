@@ -140,7 +140,7 @@ class Spell
       if not player
         console.error "INVALID PLAYER for #{@baseName}"
         return
-        
+
       @baseTurns[player.name] = @turns[player.name] = turns[player.name] = @calcDuration player
       battleInstance.emitEvents "skill.use", "skill.used", @caster, player, skill: @
       battleInstance.emitEvents "skill.#{@determineType()}.use", "skill.#{@determineType()}.used", @caster, player, skill: @
