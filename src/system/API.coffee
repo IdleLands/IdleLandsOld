@@ -130,11 +130,11 @@ class API
         pickValidPromise defer?.promise
 
     guild:
-      create: (identifier, guildName, callback) =>
-        defer = @gameInstance.guildManager.createGuild identifier, guildName, callback
+      create: (identifier, guildName) =>
+        defer = @gameInstance.guildManager.createGuild identifier, guildName
         pickValidPromise defer?.promise
 
-      sendInvite: (sendId, invName) =>
+      invite: (sendId, invName) =>
         defer = @gameInstance.guildManager.sendInvite sendId, invName
         pickValidPromise defer?.promise
 
@@ -152,16 +152,16 @@ class API
         defer = @gameInstance.guildManager.guildHash[guild].demote leaderId, memberName
         pickValidPromise defer?.promise
 
+      kick: (adminId, playerName) =>
+        defer = @gameInstance.guildManager.kickPlayer adminId, playerName
+        pickValidPromise defer?.promise
+
       disband: (identifier) =>
         defer = @gameInstance.guildManager.disband identifier
         pickValidPromise defer?.promise
 
       leave: (identifier) =>
         defer = @gameInstance.guildManager.leaveGuild identifier
-        pickValidPromise defer?.promise
-
-      kick: (adminId, playerName) =>
-        defer = @gameInstance.guildManager.kickPlayer adminId, playerName
         pickValidPromise defer?.promise
 
 module.exports = exports = API

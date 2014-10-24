@@ -399,6 +399,64 @@ module.exports = (Module) ->
           .then (res) =>
             @reply origin, res.message
 
+      @addRoute "idle-guild create :guildName", (origin, route) =>
+        [guildName] = [route.params.guildName]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to create a guild!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.guild.create identifier, guildName)
+          .then (res) =>
+            @reply origin, res.message
+
+      @addRoute "idle-guild :action(invite|promote|demote|kick) :playerName", (origin, route) =>
+        [action, playerName] = [route.params.action, route.params.playerName]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to administer a guild!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.guild[action] identifier, playerName)
+          .then (res) =>
+            @reply origin, res.message
+
+      @addRoute "idle-guild :action(leave|disband)", (origin, route) =>
+
+        [action] = [route.params.action]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to manage your guild status!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.guild[action] identifier, playerName)
+          .then (res) =>
+            @reply origin, res.message
+
+      @addRoute "idle-guild invite :action(accept|deny) :guildName", (origin, route) =>
+        [action, guildName] = [route.params.action, route.params.guildName]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to join a guild!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+          accepted = action is "accept"
+
+          (@IdleWrapper.api.player.guild.manageInvite identifier, accepted, guildName)
+          .then (res) =>
+            @reply origin, res.message
+
       @initialize()
 
       #@on "notice", (bot, sender, channel, message) =>
