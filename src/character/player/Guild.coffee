@@ -24,7 +24,7 @@ class Guild
     @members.push {identifier: player.identifier, isAdmin: no, name: player.name}
     player.guild = @name
     player.save()
-    @save()
+    @avgLevel()
     defer
 
   remove: (player) ->
@@ -32,7 +32,7 @@ class Guild
     @members = _.reject @members, (member) -> member.identifier is player.identifier
     player.guild = null
     player.save()
-    @save()
+    @avgLevel()
 
   promote: (leaderId, memberName) ->
     defer = q.defer()
@@ -68,13 +68,20 @@ class Guild
     @invitesAvailable = @cap() - (@members.length + @invites.length)
 
   avgLevel: ->
-    @level = Math.round (_.reduce @members, ((total, member) -> total + (@guildManager.game.playerManager.getPlayerById member.identifier).level.getValue()), 0, @)/@members.length
 
-  cap: -> 1 + 3*Math.floor @avgLevel()/5
+    query = [
+      {$group: {_id: '$guild', level: {$avg:'$level.__current'}  }}
+      {$match: {_id: @name}}
+    ]
+
+    @guildManager.game.playerManager.db.aggregate query, (e, result) =>
+      @level = Math.round result[0].level
+      @save()
+
+  cap: -> 1 + 3*Math.floor (@level or 1)/5
 
   save: ->
     return if not @guildManager
-    @avgLevel()
     @invitesLeft()
     @guildManager.saveGuild @
     

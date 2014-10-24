@@ -41,6 +41,8 @@
     "cli-color": "~0.3.2",
     "irc-colors": "~1.1.0",
     "roman-numerals": "~0.3.2",
-    "pushbullet": "~1.4.0"
+    "pushbullet": "~1.4.0",
+    "express": "~4.10.0",
+    "body-parser": "~1.9.1"
   }
 }

@@ -85,6 +85,11 @@ class DatabaseWrapper
     Q.when @databaseReady, =>
       @db.ensureIndex data, callback
 
+  aggregate: (query, callback) =>
+    if databaseEngine is 'mongo'
+      Q.when @databaseReady, =>
+        @db.aggregate query, callback
+
   # Sorts documents by given properties to compare.
   # Each property in the object should either be
   # 1 for ascending or -1 for descending order.
