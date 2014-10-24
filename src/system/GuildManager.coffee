@@ -23,6 +23,8 @@ class GuildManager
     defer = Q.defer()
     player = @game.playerManager.getPlayerById identifier
 
+    cleanedName = name.trim()
+
     if not player
       defer.resolve {isSuccess: no, message: "That player does not exist!"}
       return defer
@@ -31,7 +33,11 @@ class GuildManager
       defer.resolve {isSuccess: no, message: "You're already in a guild (#{player.guild.name})!"}
       return defer
 
-    if name.length > 50
+    if cleanedName.length < 3
+      defer.resolve {isSuccess: no, message: "Your guild name has to be at least 3 characters!"}
+      return
+
+    if cleanedName.length > 50
       defer.resolve {isSuccess: no, message: "You can't have a guild name larger than 50 characters!"}
       return defer
 
