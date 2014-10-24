@@ -68,7 +68,7 @@ class Guild
     @invitesAvailable = @cap() - (@members.length + @invites.length)
 
   avgLevel: ->
-    @level = (_.reduce @members, ((total, member) -> total + (@guildManager.game.playerManager.getPlayerById member.identifier).level.getValue()), 0, @)/@members.length
+    @level = Math.round (_.reduce @members, ((total, member) -> total + (@guildManager.game.playerManager.getPlayerById member.identifier).level.getValue()), 0, @)/@members.length
 
   cap: -> 1 + 3*Math.floor @avgLevel()/5
 
