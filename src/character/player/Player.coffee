@@ -377,8 +377,8 @@ class Player extends Character
     @xp.maximum = @levelUpXpCalc @level.getValue()
     @xp.toMinimum()
     @recalculateStats()
-    @emit "player.level.up", @
     @playerManager.game.eventHandler.broadcastEvent message, @ if not suppress
+    @emit "player.level.up", @
 
     @playerManager.addForAnalytics @
 
