@@ -30,7 +30,7 @@ class GuildManager
       return defer
 
     if player.guild
-      defer.resolve {isSuccess: no, message: "You're already in a guild (#{player.guild.name})!"}
+      defer.resolve {isSuccess: no, message: "You're already in a guild (#{player.guild})!"}
       return defer
 
     if cleanedName.length < 3
@@ -66,7 +66,10 @@ class GuildManager
       player.gold.sub goldCost
       player.save()
       callback?({ success: true, name: options.name })
-      defer.resolve {isSuccess: yes, message: "You've successfully founded the guild #{name}!"}
+
+      message = "%player has founded the guild %guildName!"
+      @game.eventHandler.broadcastEvent message, player, guildName: name
+      defer.resolve {isSuccess: yes, message: "You've successfully founded the guild \"#{name}!\""}
 
     defer
 
@@ -190,6 +193,8 @@ class GuildManager
 
     guild = @guildHash[player.guild]
     _.each guild.invites, (identifier) => @invites[identifier] = _.without @invites[identifier], player.guild
+
+    # online players
     _.each guild.members, (member) =>
       player = @game.playerManager.getPlayerById member.identifier
 
@@ -197,6 +202,7 @@ class GuildManager
       player.guild = null
       player.save()
 
+    # offline players
     @game.playerManager.db.update {guild: @name}, {$set: {guild: null}}
 
     @guilds = _.reject @guilds, (guildTest) -> guild.name is guildTest.name

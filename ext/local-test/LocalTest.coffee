@@ -112,6 +112,7 @@ colorMap =
   "event.spellName":            colors.bold.underline
   "event.targetName":           colors.bold
   "event.achievement":          colors.bold
+  "event.guildName":            colors.bold.underline
 
 ## API call functions ##
 loadIdle = ->

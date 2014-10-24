@@ -69,6 +69,7 @@ module.exports = (Module) ->
       "event.spellName":            c.underline
       "event.targetName":           c.bold
       "event.achievement":          c.underline
+      "event.guildName":            c.underline
 
     loadIdle: (stopIfLoaded) ->
       @buildUserList()

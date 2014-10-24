@@ -73,10 +73,10 @@ class EventHandler
       @doEventForPlayer player.name, 'party', doBossBattle
 
   # sendMessage = no implies that you're forwarding the original message to multiple people
-  broadcastEvent: (message, player, extra, sendMessage = yes) ->
+  broadcastEvent: (message, player, extra = {}, sendMessage = yes) ->
     if sendMessage
       message = MessageCreator.doStringReplace message, player, extra
-      @game.broadcast MessageCreator.genericMessage message if sendMessage
+      @game.broadcast MessageCreator.genericMessage message
 
     stripped = MessageCreator._replaceMessageColors message
 
