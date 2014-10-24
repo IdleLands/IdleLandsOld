@@ -31,6 +31,10 @@ class GuildManager
       defer.resolve {isSuccess: no, message: "You're already in a guild (#{player.guild.name})!"}
       return defer
 
+    if name.length > 50
+      defer.resolve {isSuccess: no, message: "You can't have a guild name larger than 50 characters!"}
+      return defer
+
     goldCost = Constants.defaults.game.guildCreateCost
 
     if player.gold.getValue() < goldCost
