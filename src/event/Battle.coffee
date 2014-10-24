@@ -186,8 +186,6 @@ class Battle
       @emitEvents "deflect", "deflected", target, player
       return
 
-    @emitEvents "target", "targeted", player, target
-
     maxDamage = player.calc.damage()
     damage = chance.integer {min: player.calc.minDamage(), max: maxDamage}
 
@@ -204,8 +202,6 @@ class Battle
     weapon = _.findWhere player.equipment, {type: "mainhand"}
     message += ", and #{if damage is maxDamage then "CRITICALLY " else ""}hit with %hisher <event.item.#{weapon.itemClass}>#{weapon.getName()}</event.item.#{weapon.itemClass}> for <damage.hp>#{realDamage}</damage.hp> HP #{damageType}"
 
-    @emitEvents "attack", "attacked", player, target
-    @emitEvents "critical", "criticalled", player, target if damage is maxDamage
     @takeStatFrom player, target, damage, "physical", "hp"
     @checkBattleEffects player, target
 
@@ -219,6 +215,9 @@ class Battle
 
     sendBattleMessage message, player
 
+    @emitEvents "target", "targeted", player, target
+    @emitEvents "attack", "attacked", player, target
+    @emitEvents "critical", "criticalled", player, target if damage is maxDamage
     (@emitEvents "kill", "killed", player, target, {dead: target}) if fatal
 
   doMagicalAttack: (player, spellClass) ->
