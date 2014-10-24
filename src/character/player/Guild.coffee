@@ -65,15 +65,17 @@ class Guild
     defer
 
   invitesLeft: ->
-    @cap() - (@members.length + @invites.length)
+    @invitesAvailable = @cap() - (@members.length + @invites.length)
 
   avgLevel: ->
-    (_.reduce @members, ((total, member) -> total + (@guildManager.game.playerManager.getPlayerById member.identifier).level.getValue()), 0, @)/@members.length
+    @level = (_.reduce @members, ((total, member) -> total + (@guildManager.game.playerManager.getPlayerById member.identifier).level.getValue()), 0, @)/@members.length
 
   cap: -> 1 + 3*Math.floor @avgLevel()/5
 
   save: ->
     return if not @guildManager
+    @avgLevel()
+    @invitesLeft()
     @guildManager.saveGuild @
     
 module.exports = exports = Guild
