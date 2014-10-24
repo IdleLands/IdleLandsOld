@@ -189,10 +189,16 @@ class GuildManager
       return defer
 
     guild = @guildHash[player.guild]
-    _.each guild.invites, ((identifier) -> @invites[identifier] = _.without @invites[identifier], player.guild), @
-    _.each guild.members, ((member) ->
-      (@game.playerManager.getPlayerById member.identifier).guild = null
-      (@game.playerManager.getPlayerById member.identifier).save()), @
+    _.each guild.invites, (identifier) => @invites[identifier] = _.without @invites[identifier], player.guild
+    _.each guild.members, (member) =>
+      player = @game.playerManager.getPlayerById member.identifier
+
+      return if not player
+      player.guild = null
+      player.save()
+
+    @game.playerManager.db.update {guild: @name}, {$set: {guild: null}}
+
     @guilds = _.reject @guilds, (guildTest) -> guild.name is guildTest.name
     delete @guildHash[guild.name]
     @db.remove {name: guild.name}
