@@ -21,7 +21,7 @@ class Guild
   add: (player) ->
     defer = q.defer()
     return if player.guild?
-    @members.push {identifier: player.identifier, isAdmin: no}
+    @members.push {identifier: player.identifier, isAdmin: no, name: player.name}
     player.guild = @name
     player.save()
     @save()
