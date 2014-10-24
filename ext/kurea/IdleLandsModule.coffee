@@ -438,7 +438,7 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          (@IdleWrapper.api.player.guild[action] identifier, playerName)
+          (@IdleWrapper.api.player.guild[action] identifier)
           .then (res) =>
             @reply origin, res.message
 
