@@ -57,6 +57,51 @@
                  "width":0,
                  "x":96,
                  "y":320
+                }, 
+                {
+                 "gid":104,
+                 "height":0,
+                 "name":"ToVocalnus",
+                 "properties":
+                    {
+                     "movementType":"teleport",
+                     "toLoc":"vocalnus"
+                    },
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":32,
+                 "y":512
+                }, 
+                {
+                 "gid":104,
+                 "height":0,
+                 "name":"ToVocalnus",
+                 "properties":
+                    {
+                     "movementType":"teleport",
+                     "toLoc":"vocalnus"
+                    },
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":1232,
+                 "y":112
+                }, 
+                {
+                 "gid":104,
+                 "height":0,
+                 "name":"ToVocalnus",
+                 "properties":
+                    {
+                     "movementType":"teleport",
+                     "toLoc":"vocalnus"
+                    },
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":736,
+                 "y":672
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -89,7 +134,22 @@
         }, 
         {
          "firstgid":37,
-         "image":"..\/..\/..\/..\/..\/kurea\/src\/modules\/IdleLands\/assets\/img\/tiles.png",
+         "image":"..\/..\/..\/img\/tiles.png",
+         "imageheight":64,
+         "imagewidth":144,
+         "margin":0,
+         "name":"tiles",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tileheight":16,
+         "tilewidth":16
+        }, 
+        {
+         "firstgid":73,
+         "image":"..\/..\/..\/..\/..\/..\/Documents\/Webstorm\/kurea\/src\/modules\/IdleLands\/assets\/img\/tiles.png",
          "imageheight":64,
          "imagewidth":144,
          "margin":0,
