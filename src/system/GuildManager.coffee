@@ -95,10 +95,10 @@ class GuildManager
     defer = Q.defer()
 
     defer.resolve {isSuccess: no, message: "You didn't specify a valid invitation target!"} if not invitee
-    defer.resolve {isSuccess: no, message: "You aren't part of a guild!"} if not sender.guild
-    defer.resolve {isSuccess: no, message: "That person already has a guild!"} if invitee.guild
+    defer.resolve {isSuccess: no, message: "You aren't part of a guild!"} if not sender?.guild
+    defer.resolve {isSuccess: no, message: "That person already has a guild!"} if invitee?.guild
     defer.resolve {isSuccess: no, message: "You're not an admin in that guild!"} if not @checkAdmin sender
-    defer.resolve {isSuccess: no, message: "You've already invited that person!"} if _.contains @guildHash[sender.guild]?.invites, invitee.identifier
+    defer.resolve {isSuccess: no, message: "You've already invited that person!"} if _.contains @guildHash[sender.guild]?.invites, invitee?.identifier
     defer.resolve {isSuccess: no, message: "You don't have any available invites!"} if not @guildHash[sender.guild]?.invitesLeft()
 
     resolved = defer.promise.inspect().state is "fulfilled"
@@ -108,8 +108,7 @@ class GuildManager
       @invites[invitee.identifier].push sender.guild
       @guildHash[sender.guild].invites.push invitee.identifier
       @guildHash[sender.guild].save()
-      @guildHash[sender.guild].invitesLeft()
-      defer.resolve {isSuccess: yes, message: "Successfully sent an invite to #{invName}!"}
+      defer.resolve {isSuccess: yes, message: "Successfully sent an invite to #{invName}! You have #{@guildHash[sender.guild].invitesLeft()} invites remaining."}
 
     defer
 
