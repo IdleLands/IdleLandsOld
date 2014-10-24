@@ -442,7 +442,7 @@ module.exports = (Module) ->
           .then (res) =>
             @reply origin, res.message
 
-      @addRoute "idle-guild invite :action(accept|deny) :guildName", (origin, route) =>
+      @addRoute "idle-guild manage-invite :action(accept|deny) :guildName", (origin, route) =>
         [action, guildName] = [route.params.action, route.params.guildName]
 
         origin.bot.userManager.getUsername origin, (e, username) =>
