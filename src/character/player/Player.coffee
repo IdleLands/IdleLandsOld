@@ -378,9 +378,15 @@ class Player extends Character
     @xp.toMinimum()
     @recalculateStats()
     @playerManager.game.eventHandler.broadcastEvent message, @ if not suppress
+    @recalcGuildLevel()
     @emit "player.level.up", @
 
     @playerManager.addForAnalytics @
+
+  recalcGuildLevel: ->
+    return if not @guild
+
+    @playerManager.game.guildManager.guildHash[@guild].avgLevel()
 
   setString: (type, val = '') ->
     defer = q.defer()
