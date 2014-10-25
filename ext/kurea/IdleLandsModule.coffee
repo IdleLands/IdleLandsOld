@@ -458,6 +458,20 @@ module.exports = (Module) ->
           .then (res) =>
             @reply origin, res.message
 
+      @addRoute "idle-secure :action(setPassword|authenticate) :password", (origin, route) =>
+        [action, password] = [route.params.action, route.params.password]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to set a password!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.auth[action] identifier, password)
+          .then (res) =>
+            @reply origin, res.message
+
       @initialize()
 
       #@on "notice", (bot, sender, channel, message) =>
