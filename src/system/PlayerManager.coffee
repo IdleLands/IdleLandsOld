@@ -7,6 +7,8 @@ RestrictedNumber = require "restricted-number"
 Q = require "q"
 MessageCreator = require "./MessageCreator"
 Constants = require "./Constants"
+bcrypt = require "bcrypt-nodejs"
+crypto = require "crypto"
 
 class PlayerManager
 
@@ -40,11 +42,65 @@ class PlayerManager
       player.playerManager = @
       callback player
 
+  hashPassword: (password) ->
+    bcrypt.hashSync password
+
+  storePasswordFor: (identifier, password) ->
+    defer = Q.defer()
+
+    password = password.trim()
+
+    if password.length < 3
+      defer.resolve {isSuccess: no, message: "Please use a password > 3 characters."}
+      return defer
+
+    player = @playerHash[identifier]
+
+    if not player
+      defer.resolve {isSuccess: no, message: "You're not logged in!"}
+      return defer
+
+    player.password = @hashPassword password
+
+    defer.resolve {isSuccess: yes, message: "Your password has been set! Extraneous spaces at be beginning and end have been removed!"}
+
+    defer
+
+  checkOnlyPassword: (identifier, password) ->
+
+    defer = Q.defer()
+    player = @playerHash[identifier]
+
+    if not player
+      defer.resolve {isSuccess: no, message: "You're not currently logged in, so you can't auth via password."}
+      return defer
+
+    @db.findOne {identifier: identifier}, (e, player) =>
+      console.error e if e
+
+      if not player
+        defer.resolve {isSuccess: no, message: "Authentication failure (player doesn't exist)."}
+        return
+
+      if not bcrypt.compareSync password, player.password
+        defer.resolve {isSuccess: no, message: "Authentication failure (bad password)."}
+        return
+
+      defer.resolve {isSuccess: yes, message: "Authentication success."}
+
+      player.tempSecureToken = @generateTempToken()
+
+    defer
+
+  generateTempToken: ->
+    crypto.randomBytes 48
+      .toString 'hex'
+
   addPlayer: (identifier, suppress = no) ->
     defer = Q.defer()
 
     if _.findWhere @players, {identifier: identifier} or identifier of @playerHash
-      defer.resolve {isSuccess: no, message: "Player not found."}
+      defer.resolve {isSuccess: no, message: "Player already logged in."}
       return defer
 
     @retrievePlayer identifier, (player) =>
@@ -79,6 +135,7 @@ class PlayerManager
 
     @players = _.reject @players, (player) -> player.identifier is identifier
     delete @playerHash[identifier]
+    @playerHash[identifier] = null
 
     @game.broadcast "#{name} has left #{Constants.gameName}!"
     defer.resolve {isSuccess: yes, message: "Player successfully logged out."}
@@ -99,6 +156,10 @@ class PlayerManager
 
     if options.name.length > 20
       defer.resolve {isSuccess: no, message: "You have to keep your name under 20 characters!"}
+      isSuccess = no
+
+    if not options.identifier
+      defer.resolve {isSuccess: no, message: "You have to send a unique identifier for this player!"}
       isSuccess = no
 
     return defer if not isSuccess
@@ -134,7 +195,7 @@ class PlayerManager
   buildPlayerSaveObject: (player) ->
     calc = player.calc.base
     calcStats = player.calc.statCache
-    ret = _.omit player, 'playerManager', 'party', 'personalities', 'calc', 'spellsAffectedBy', 'fled', '_events', 'profession', 'stepCooldown', '_id', 'pushbullet'
+    ret = _.omit player, 'tempSecureToken', 'playerManager', 'party', 'personalities', 'calc', 'spellsAffectedBy', 'fled', '_events', 'profession', 'stepCooldown', '_id', 'pushbullet'
     ret._baseStats = calc
     ret._statCache = calcStats
     ret
@@ -151,8 +212,14 @@ class PlayerManager
       console.error "Save error: #{e}" if e
 
   playerTakeTurn: (identifier) ->
-    return if not identifier or not (identifier of @playerHash)
-    @playerHash[identifier].takeTurn()
+    defer = Q.defer()
+    if not identifier or not (identifier of @playerHash)
+      defer.resolve {isSuccess: no, message: "You're not logged in!"}
+      return defer
+
+    playerData = buildPlayerSaveObject @playerHash[identifier].takeTurn()
+    defer.resolve {isSuccess: yes, message: "Turn taken.", data: playerData}
+    defer
 
   registerLoadAllPlayersHandler: (@playerLoadHandler) ->
     console.log "Registered AllPlayerLoad handler."

@@ -342,6 +342,7 @@ class Player extends Character
     @possiblyDoEvent()
     @possiblyLeaveParty()
     @save()
+    @
 
   save: ->
     return if not @playerManager

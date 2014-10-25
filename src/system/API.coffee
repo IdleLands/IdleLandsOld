@@ -85,6 +85,16 @@ class API
         defer = @gameInstance.playerManager.addPlayer identifier, suppress
         pickValidPromise defer?.promise
 
+      loginWithPassword: (identifier, password, suppress) =>
+
+      createPassword: (identifier, password) =>
+        defer = @gameInstance.playerManager.storePasswordFor identifier, password
+        pickValidPromise defer?.promise
+
+      authenticate: (identifier, password) =>
+        defer = @gameInstance.playerManager.checkOnlyPassword identifier, password
+        pickValidPromise defer?.promise
+
       logout: (identifier) =>
         defer = @gameInstance.playerManager.removePlayer identifier
         pickValidPromise defer?.promise
