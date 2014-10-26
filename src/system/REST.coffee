@@ -13,15 +13,17 @@ express = require "express"
 app = express()
 
 bodyParser = require "body-parser"
+cors = require "cors"
 
 # express config
+app.use cors()
 app.use bodyParser.json()
 app.use bodyParser.urlencoded extended: no
 
-app.all "/*", (req, res, next) ->
-  res.header "Access-Control-Allow-Origin", "*"
-  res.header "Access-Control-Allow-Headers", "X-Requested-With"
-  next()
+#app.all "/*", (req, res, next) ->
+#  res.header "Access-Control-Allow-Origin", "*"
+#  res.header "Access-Control-Allow-Headers", "X-Requested-With"
+#  next()
 
 router = express.Router()
 
