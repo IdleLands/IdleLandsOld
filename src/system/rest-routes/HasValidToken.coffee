@@ -1,3 +1,5 @@
+API = require "../API"
+
 module.exports = (req, res, next) ->
   {identifier, token} = req.body
   API.player.auth.isTokenValid identifier, token
