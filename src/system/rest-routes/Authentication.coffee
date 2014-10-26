@@ -12,7 +12,10 @@ router
 # register
 .put charCreateTimeout.prevent, (req, res) ->
   API.player.auth.register req.body
-  .then (resp) -> res.json resp
+  .then (resp) ->
+    console.log resp
+    req.brute.reset() if not resp.isSuccess
+    res.json resp
 
 # logout
 .delete hasValidToken, (req, res) ->

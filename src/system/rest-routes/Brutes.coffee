@@ -23,7 +23,7 @@ CharCreateTimer = new brute store,
   proxyDepth: 1
   minWait: 24*60*60*1000
   maxWait: 24*60*60*1000
-  attachResetToRequest: no
+  attachResetToRequest: yes
   refreshTimeoutOnRequest: no
   lifetime: 24*60*60
   failCallback: (req, res) -> res.json {isSuccess: no, message: "You can only create a new character once per day!"}

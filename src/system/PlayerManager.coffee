@@ -142,8 +142,9 @@ class PlayerManager
 
   registerPlayer: (options) ->
 
-    options.name = options.name.trim()
+    options.name = options.name?.trim()
 
+    return Q {isSuccess: no, message: "You need a name for your character!"} if not options.name
     return Q {isSuccess: no, message: "You have to make your name above 2 characters!"} if options.name.length < 2
     return Q {isSuccess: no, message: "You have to keep your name under 20 characters!"} if options.name.length > 20
     return Q {isSuccess: no, message: "You have to send a unique identifier for this player!"} if not options.identifier
