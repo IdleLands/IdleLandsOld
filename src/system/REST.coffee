@@ -57,7 +57,6 @@ router = express.Router()
   DEL     /player/manage/string       | ACTION: REMOVE  | REQUEST: {identifier, type, token}      | RETURN: {message, isSuccess}
 ###
 
-require("./rest-routes/Authentication")(router)
 require("./rest-routes/ManageGender")(router)
 require("./rest-routes/ManageInventory")(router)
 require("./rest-routes/ManagePersonality")(router)
@@ -66,6 +65,7 @@ require("./rest-routes/TurnAction")(router)
 
 # init
 app.use "/", router
+app.use "/player/auth", require("./rest-routes/Authentication")
 
 # error catching
 process.on 'uncaughtException', (e) ->
