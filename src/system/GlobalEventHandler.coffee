@@ -28,7 +28,7 @@ class GlobalEventHandler
     callback true
 
   doBattle: ->
-    @game.componentDatabase.getRandomEvent 'battle', (e, event) =>
+    @game.componentDatabase.getRandomEvent 'battle', (e, event = {}) =>
       event.player = @game.playerManager.randomPlayer()
       @game.startBattle [], event
 

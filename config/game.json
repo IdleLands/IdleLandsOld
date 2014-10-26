@@ -110,6 +110,9 @@
             "defaultPartyLeavePercent": 0.1,
             "defaultItemFindModifier": 7,
             "maxOverflow": 3
+        },
+        "api": {
+            "turnDelaySeconds": 10
         }
     }
 }

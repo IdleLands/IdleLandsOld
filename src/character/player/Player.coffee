@@ -5,7 +5,7 @@ MessageCreator = require "../../system/MessageCreator"
 Constants = require "../../system/Constants"
 Equipment = require "../../item/Equipment"
 _ = require "underscore"
-q = require "q"
+Q = require "q"
 Personality = require "../base/Personality"
 
 PushBullet = require "pushbullet"
@@ -51,11 +51,9 @@ class Player extends Character
     ]
 
   setPushbulletKey: (key) ->
-    defer = q.defer()
     @pushbulletApiKey = key
     @pushbulletSend "This is a test for Idle Lands" if key
-    defer.resolve {isSuccess: yes, message: "Your PushBullet API key has been #{if key then "added" else "removed"} successfully. You should also have gotten a test message!"}
-    defer
+    Q {isSuccess: yes, message: "Your PushBullet API key has been #{if key then "added" else "removed"} successfully. You should also have gotten a test message!"}
 
   pushbulletSend: (message) ->
     pushbullet = new PushBullet @pushbulletApiKey if @pushbulletApiKey
@@ -66,7 +64,7 @@ class Player extends Character
         pushbullet.note device.iden, 'IdleLands', message, (e, res) ->
 
   manageOverflow: (option, slot) ->
-    defer = q.defer()
+    defer = Q.defer()
 
     @overflow = [] if not @overflow
 
@@ -85,7 +83,7 @@ class Player extends Character
         @sellOverflow slot, defer
         cleanOverflow()
 
-    defer
+    defer.promise
 
   forceIntoOverflow: (item) ->
 
@@ -318,10 +316,8 @@ class Player extends Character
     if @gender then @gender else "male"
 
   setGender: (newGender) ->
-    defer = q.defer()
     @gender = newGender.substring 0,9
-    defer.resolve {isSuccess: yes, message: "Your gender is now #{@gender}."}
-    defer
+    Q {isSuccess: yes, message: "Your gender is now #{@gender}."}
 
   score: ->
     @calc.partyScore()
@@ -390,11 +386,9 @@ class Player extends Character
     @playerManager.game.guildManager.guildHash[@guild].avgLevel()
 
   setString: (type, val = '') ->
-    defer = q.defer()
     @messages = {} if not @messages
     @messages[type] = val.substring 0, 99
-    defer.resolve {isSuccess: yes, message: "Successfully updated your string settings. String \"#{type}\" is now: #{if val then val else 'empty!'}"}
-    defer
+    Q {isSuccess: yes, message: "Successfully updated your string settings. String \"#{type}\" is now: #{if val then val else 'empty!'}"}
 
   checkAchievements: (silent = no) ->
     oldAchievements = _.compact _.clone @achievements

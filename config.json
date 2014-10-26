@@ -1,4 +1,6 @@
 {
     "storage": "mongo",
-    "storageURL": "localhost:27017"
+    "storageURL": "localhost:27017",
+    "useREST": true,
+    "restPort": 80
 }

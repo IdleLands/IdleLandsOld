@@ -25,4 +25,4 @@ module.exports = (grunt) ->
     grunt.log.write msg
 
   grunt.registerTask 'default', [ 'coffeelint' ]
-  grunt.registerTask 'dev', [ 'watch' ]
+  grunt.registerTask 'dev', [ 'coffeelint', 'watch' ]

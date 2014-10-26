@@ -1,17 +1,18 @@
 
-q = require "q"
-
-notLoggedIn = ->
-  defer = q.defer()
-  defer.resolve {isSuccess: no, message: "You aren't logged in!"}
-  defer.promise
-
-pickValidPromise = (test) ->
-  test ?= notLoggedIn()
+Q = require "q"
 
 class API
 
   @gameInstance: null
+
+  @validateIdentifier: (identifier) ->
+    defer = Q.defer()
+    player = @gameInstance.playerManager.getPlayerById identifier
+
+    defer.resolve {isSuccess: yes, player: player}
+    defer.resolve {isSuccess: no, message: "You aren't logged in!"}
+
+    defer.promise
 
   # Called on game initialization
   @game =
@@ -69,109 +70,141 @@ class API
   # Invoked either automatically (by means of taking a turn), or when a player issues a command
   @player =
     nextAction: (identifier) =>
-      defer = @gameInstance.nextAction identifier
-      pickValidPromise defer?.promise
+      @validateIdentifier identifier
+      .then (res) =>
+        @gameInstance.nextAction identifier if res.isSuccess
 
     gender: (identifier, newGender) =>
-      defer = @gameInstance.playerManager.getPlayerById(identifier)?.setGender newGender
-      pickValidPromise defer?.promise
+      @validateIdentifier identifier
+      .then (res) ->
+        res.player.setGender newGender if res.isSuccess
 
     auth:
       register: (options) =>
-        defer = @gameInstance.playerManager.registerPlayer options
-        pickValidPromise defer?.promise
+        @gameInstance.playerManager.registerPlayer options
 
       login: (identifier, suppress) =>
-        defer = @gameInstance.playerManager.addPlayer identifier, suppress
-        pickValidPromise defer?.promise
+        @validateIdentifier identifier
+        .then (res) =>
+          @gameInstance.playerManager.addPlayer identifier, suppress if res.isSuccess
 
-      loginWithPassword: (identifier, password, suppress) =>
+      loginWithPassword: (identifier, password) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          @gameInstance.playerManager.loginWithPassword identifier, password if res.isSuccess
 
-      createPassword: (identifier, password) =>
-        defer = @gameInstance.playerManager.storePasswordFor identifier, password
-        pickValidPromise defer?.promise
+      setPassword: (identifier, password) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          @gameInstance.playerManager.storePasswordFor identifier, password if res.isSuccess
 
       authenticate: (identifier, password) =>
-        defer = @gameInstance.playerManager.checkOnlyPassword identifier, password
-        pickValidPromise defer?.promise
+        @validateIdentifier identifier
+        .then (res) =>
+          @gameInstance.playerManager.checkPassword identifier, password, yes if res.isSuccess
 
       logout: (identifier) =>
-        defer = @gameInstance.playerManager.removePlayer identifier
-        pickValidPromise defer?.promise
+        @validateIdentifier identifier
+        .then (res) =>
+          @gameInstance.playerManager.removePlayer identifier if res.isSuccess
+
+      isTokenValid: (identifier, token) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          @gameInstance.playerManager.checkToken identifier, token if res.isSuccess
 
     overflow:
       add: (identifier, slot) =>
-        defer = @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "add", slot
-        pickValidPromise defer?.promise
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.manageOverflow "add", slot if res.isSuccess
 
       sell: (identifier, slot) =>
-        defer = @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "sell", slot
-        pickValidPromise defer?.promise
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.manageOverflow "sell", slot if res.isSuccess
 
       swap: (identifier, slot) =>
-        defer = @gameInstance.playerManager.getPlayerById(identifier)?.manageOverflow "swap", slot
-        pickValidPromise defer?.promise
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.manageOverflow "swap", slot if res.isSuccess
 
     personality:
       add: (identifier, personality) =>
-        defer = @gameInstance.playerManager.getPlayerById(identifier)?.addPersonality personality
-        pickValidPromise defer?.promise
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.addPersonality personality if res.isSuccess
 
       remove: (identifier, personality) =>
-        defer = @gameInstance.playerManager.getPlayerById(identifier)?.removePersonality personality
-        pickValidPromise defer?.promise
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.removePersonality personality if res.isSuccess
 
     pushbullet:
       set: (identifier, apiKey) =>
-        defer = @gameInstance.playerManager.getPlayerById(identifier)?.setPushbulletKey apiKey
-        pickValidPromise defer?.promise
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.setPushbulletKey apiKey if res.isSuccess
 
       remove: (identifier) =>
-        defer = @gameInstance.playerManager.getPlayerById(identifier)?.setPushbulletKey ''
-        pickValidPromise defer?.promise
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.setPushbulletKey '' if res.isSuccess
 
     string:
       add: (identifier, stringType, string) =>
-        defer = @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType, string
-        pickValidPromise defer?.promise
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.setString stringType, string if res.isSuccess
 
       remove: (identifier, stringType) =>
-        defer = @gameInstance.playerManager.getPlayerById(identifier)?.setString stringType
-        pickValidPromise defer?.promise
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.setString stringType if res.isSuccess
 
     guild:
       create: (identifier, guildName) =>
-        defer = @gameInstance.guildManager.createGuild identifier, guildName
-        pickValidPromise defer?.promise
+        @validateIdentifier identifier
+        .then (res) =>
+          @gameInstance.guildManager.createGuild identifier, guildName if res.isSuccess
 
-      invite: (sendId, invName) =>
-        defer = @gameInstance.guildManager.sendInvite sendId, invName
-        pickValidPromise defer?.promise
+      invite: (identifier, invName) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          @gameInstance.guildManager.sendInvite identifier, invName if res.isSuccess
 
-      manageInvite: (invId, accepted, guildName) =>
-        defer = @gameInstance.guildManager.manageInvite invId, accepted, guildName
-        pickValidPromise defer?.promise
+      manageInvite: (identifier, accepted, guildName) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          @gameInstance.guildManager.manageInvite identifier, accepted, guildName if res.isSuccess
 
-      promote: (leaderId, memberName) =>
-        guild = (@gameInstance.playerManager.getPlayerById leaderId).guild
-        defer = @gameInstance.guildManager.guildHash[guild].promote leaderId, memberName
-        pickValidPromise defer?.promise
+      promote: (identifier, memberName) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          return if not res.isSuccess
+          guild = res.player.guild
+          @gameInstance.guildManager.guildHash[guild].promote identifier, memberName if res.isSuccess
 
-      demote: (leaderId, memberName) =>
-        guild = (@gameInstance.playerManager.getPlayerById leaderId).guild
-        defer = @gameInstance.guildManager.guildHash[guild].demote leaderId, memberName
-        pickValidPromise defer?.promise
+      demote: (identifier, memberName) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          return if not res.isSuccess
+          guild = res.player.guild
+          @gameInstance.guildManager.guildHash[guild].demote identifier, memberName if res.isSuccess
 
-      kick: (adminId, playerName) =>
-        defer = @gameInstance.guildManager.kickPlayer adminId, playerName
-        pickValidPromise defer?.promise
+      kick: (identifier, playerName) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          @gameInstance.guildManager.kickPlayer identifier, playerName if res.isSuccess
 
       disband: (identifier) =>
-        defer = @gameInstance.guildManager.disband identifier
-        pickValidPromise defer?.promise
+        @validateIdentifier identifier
+        .then (res) =>
+          @gameInstance.guildManager.disband identifier if res.isSuccess
 
       leave: (identifier) =>
-        defer = @gameInstance.guildManager.leaveGuild identifier
-        pickValidPromise defer?.promise
+        @validateIdentifier identifier
+        .then (res) =>
+          @gameInstance.guildManager.leaveGuild identifier if res.isSuccess
 
 module.exports = exports = API

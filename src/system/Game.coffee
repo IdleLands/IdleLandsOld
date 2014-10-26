@@ -43,6 +43,8 @@ class Game
     @treasureFactory = new TreasureFactory @
     @world = new World()
 
+    require "./REST"
+
   registerBroadcastHandler: (@broadcastHandler, @broadcastContext) ->
     console.info "Registered broadcast handler."
     @broadcast "Initializing the Lands that Idle (#{Constants.gameName})."
@@ -220,10 +222,7 @@ class Game
     @broadcast MessageCreator.genericMessage text
 
   nextAction: (identifier) ->
-    defer = q.defer()
     @playerManager.playerTakeTurn identifier
-    defer.resolve {isSuccess: yes, message: "Turn taken successfully."}
-    defer
 
   doCodeUpdate: ->
 

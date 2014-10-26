@@ -2,7 +2,7 @@
 RestrictedNumber = require "restricted-number"
 EventEmitter2 = require("eventemitter2").EventEmitter2
 _ = require "underscore"
-q = require "q"
+Q = require "q"
 Personality = require "./Personality"
 Constants = require "../../system/Constants"
 
@@ -96,36 +96,29 @@ class Character extends EventEmitter2
     @personalityStrings = _.uniq @personalityStrings
 
   addPersonality: (newPersonality) ->
-    defer = q.defer()
     if not Personality::doesPersonalityExist newPersonality
-      defer.resolve {isSuccess: no, message: "You already have that personality set!"}
-      return defer
+      return Q {isSuccess: no, message: "You already have that personality set!"}
 
     potentialPersonality = Personality::getPersonality newPersonality
     if not ('canUse' of potentialPersonality) or not potentialPersonality.canUse @
-      defer.resolve {isSuccess: no, message: "You can't use that personality yet!"}
-      return defer
+      return Q {isSuccess: no, message: "You can't use that personality yet!"}
 
     @_addPersonality newPersonality, potentialPersonality
 
     personalityString = @personalityStrings.join ", "
 
-    defer.resolve {isSuccess: yes, message: "Your personality settings have been updated successfully! Personalities are now: #{personalityString or "none"}"}
-    defer
+    Q {isSuccess: yes, message: "Your personality settings have been updated successfully! Personalities are now: #{personalityString or "none"}"}
 
   removePersonality: (oldPersonality) ->
-    defer = q.defer()
     if not @hasPersonality oldPersonality
-      defer.resolve {isSuccess: no, message: "You don't have that personality set!"}
-      return defer
+      return Q {isSuccess: no, message: "You don't have that personality set!"}
 
     @personalityStrings = _.without @personalityStrings, oldPersonality
     @rebuildPersonalityList()
 
     personalityString = @personalityStrings.join ", "
 
-    defer.resolve {isSuccess: yes, message: "Your personality settings have been updated successfully! Personalities are now: #{personalityString or "none"}"}
-    defer
+    Q {isSuccess: yes, message: "Your personality settings have been updated successfully! Personalities are now: #{personalityString or "none"}"}
 
   hasPersonality: (personality) ->
     return no if not @personalityStrings
