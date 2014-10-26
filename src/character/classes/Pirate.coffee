@@ -56,7 +56,5 @@ class Pirate extends Class
     player.special.maximum = 0
     player.special.name = ""
     player.off "combat.battle.start", @events.battleStart
-    player.baseGoldGainPerCombat = 0
-    player.baseGoldGainPerOpponentLevel = 0
 
 module.exports = exports = Pirate
