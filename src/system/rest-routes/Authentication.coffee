@@ -1,5 +1,6 @@
 hasValidToken = require "./HasValidToken"
 API = require "../API"
+charCreateTimeout = require("./Brutes").CharCreateTimer
 
 module.exports = (router) ->
   # player routes
@@ -8,7 +9,7 @@ module.exports = (router) ->
   .route "/player"
 
   # register
-  .put  (req, res) ->
+  .put charCreateTimeout.prevent, (req, res) ->
     API.player.auth.register req.body
     .then (resp) -> res.json resp
 

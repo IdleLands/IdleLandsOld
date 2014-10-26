@@ -66,6 +66,7 @@ w = getWrapper = -> IdleWrapper
 
 api = -> w().api
 inst = -> api().gameInstance
+pm = -> inst().playerManager
 player = -> api().player
 game = -> api().game
 gm = -> api().gm

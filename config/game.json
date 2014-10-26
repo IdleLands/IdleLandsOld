@@ -112,7 +112,7 @@
             "maxOverflow": 3
         },
         "api": {
-            "turnDelaySeconds": 10
+            "autoLogoutTime": 30000
         }
     }
 }

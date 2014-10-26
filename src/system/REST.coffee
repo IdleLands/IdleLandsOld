@@ -13,9 +13,6 @@ express = require "express"
 app = express()
 
 bodyParser = require "body-parser"
-brute = require "express-brute"
-bruteMongo = require "express-brute-mongo"
-Mongo = require("mongodb").MongoClient
 
 # express config
 app.use bodyParser.json()
@@ -25,31 +22,6 @@ app.all "/", (req, res, next) ->
   res.header "Access-Control-Allow-Origin", "*"
   res.header "Access-Control-Allow-Headers", "X-Requested-With"
   next()
-
-# brute setup
-store = new bruteMongo (ready) ->
-  Mongo.connect "mongodb://127.0.0.1:27017/brute", (e, db) ->
-    ready db.collection "bruteforce-cache"
-
-turnTimeout = new brute store,
-  freeRetries: 0
-  proxyDepth: 1
-  minWait: 10*1000
-  maxWait: 10*1000
-  attachResetToRequest: no
-  refreshTimeoutOnRequest: no
-  lifetime: 10
-  failCallback: (req, res) -> res.json {isSuccess: no, message: "You can only have one turn every 10 seconds!"}
-
-charCreate = new brute store,
-  freeRetries: 0
-  proxyDepth: 1
-  minWait: 24*60*60*1000
-  maxWait: 24*60*60*1000
-  attachResetToRequest: no
-  refreshTimeoutOnRequest: no
-  lifetime: 24*60*60
-  failCallback: (req, res) -> res.json {isSuccess: no, message: "You can only create a new character once per day!"}
 
 router = express.Router()
 
@@ -84,12 +56,12 @@ router = express.Router()
   DEL     /player/manage/string       | ACTION: REMOVE  | REQUEST: {identifier, type, token}      | RETURN: {message, isSuccess}
 ###
 
-require("./rest-routes/Player")(router)
-require("./rest-routes/TurnAction")(router)
+require("./rest-routes/Authentication")(router)
 require("./rest-routes/ManageGender")(router)
 require("./rest-routes/ManageInventory")(router)
 require("./rest-routes/ManagePersonality")(router)
 require("./rest-routes/ManagePushbullet")(router)
+require("./rest-routes/TurnAction")(router)
 
 # init
 app.use "/", router

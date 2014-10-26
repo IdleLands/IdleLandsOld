@@ -86,7 +86,7 @@ class API
       login: (identifier, suppress) =>
         @validateIdentifier identifier
         .then (res) =>
-          @gameInstance.playerManager.addPlayer identifier, suppress if res.isSuccess
+          @gameInstance.playerManager.addPlayer identifier, suppress, no if res.isSuccess
 
       loginWithPassword: (identifier, password) =>
         @validateIdentifier identifier

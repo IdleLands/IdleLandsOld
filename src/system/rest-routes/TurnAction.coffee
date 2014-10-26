@@ -1,5 +1,6 @@
 hasValidToken = require "./HasValidToken"
 API = require "../API"
+turnTimeout = require("./Brutes").TurnTimeoutTimer
 
 module.exports = (router) ->
   router

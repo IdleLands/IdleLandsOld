@@ -87,10 +87,10 @@ class PlayerManager
     crypto.randomBytes 48
       .toString 'hex'
 
-  addPlayer: (identifier, suppress = no) ->
+  addPlayer: (identifier, suppress = no, autoLogout = yes) ->
     defer = Q.defer()
 
-    return Q {isSuccess: no, message: "Player already logged in."} if (_.findWhere @players, {identifier: identifier}) or identifier of @playerHash
+    return Q {isSuccess: no, message: "Player already logged in."} if @playerHash[identifier]
 
     @retrievePlayer identifier, (player) =>
       return defer.resolve {isSuccess: no, message: "Player not found."} if not player
@@ -102,6 +102,9 @@ class PlayerManager
 
       @players = _.uniq @players
       player.tempSecureToken = @generateTempToken()
+
+      player.cannotBeLoggedOut = not autoLogout
+      @handleAutoLogout player
 
       defer.resolve
         isSuccess: yes
@@ -180,7 +183,19 @@ class PlayerManager
     realCalc = _.omit player.calc, 'self'
     calc = realCalc.base
     calcStats = realCalc.statCache
-    badStats = ['playerManager', 'party', 'personalities', 'calc', 'spellsAffectedBy', 'fled', '_events', 'profession', 'stepCooldown', '_id', 'pushbullet']
+    badStats = ['cannotBeLoggedOut'
+                'autoLogoutId'
+                'playerManager'
+                'party'
+                'personalities'
+                'calc'
+                'spellsAffectedBy'
+                'fled'
+                '_events'
+                'profession'
+                'stepCooldown'
+                '_id'
+                'pushbullet']
     ret = _.omit player, badStats
     ret._baseStats = calc
     ret._statCache = calcStats
@@ -200,11 +215,19 @@ class PlayerManager
   playerTakeTurn: (identifier) ->
     return Q {isSuccess: no, message: "You're not logged in!"} if not identifier or not (identifier of @playerHash)
 
-    playerData = @buildPlayerSaveObject @playerHash[identifier].takeTurn()
+    player = @playerHash[identifier].takeTurn()
+    @handleAutoLogout player
+
+    playerData = @buildPlayerSaveObject player
     Q {isSuccess: yes, message: "Turn taken.", player: playerData}
 
   registerLoadAllPlayersHandler: (@playerLoadHandler) ->
     console.log "Registered AllPlayerLoad handler."
+
+  handleAutoLogout: (player) ->
+    return if player.cannotBeLoggedOut
+    clearTimeout player.autoLogoutId if player.autoLogoutId
+    player.autoLogoutId = setTimeout (@removePlayer.bind @, player.identifier), Constants.defaults.api.autoLogoutTime
 
   migratePlayer: (player) ->
     return if not player
