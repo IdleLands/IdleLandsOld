@@ -152,7 +152,7 @@ class API
           res.player.setPushbulletKey '' if res.isSuccess
 
     string:
-      add: (identifier, stringType, string) =>
+      set: (identifier, stringType, string) =>
         @validateIdentifier identifier
         .then (res) ->
           res.player.setString stringType, string if res.isSuccess

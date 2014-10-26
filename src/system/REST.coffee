@@ -13,9 +13,38 @@ express = require "express"
 app = express()
 
 bodyParser = require "body-parser"
+brute = require "express-brute"
+bruteMongo = require "express-brute-mongo"
+Mongo = require("mongodb").MongoClient
 
+# express config
 app.use bodyParser.json()
 app.use bodyParser.urlencoded extended: no
+
+# brute setup
+store = new bruteMongo (ready) ->
+  Mongo.connect "mongodb://127.0.0.1:27017/brute", (e, db) ->
+    ready db.collection "bruteforce-cache"
+
+turnTimeout = new brute store,
+  freeRetries: 0
+  proxyDepth: 1
+  minWait: 10*1000
+  maxWait: 10*1000
+  attachResetToRequest: no
+  refreshTimeoutOnRequest: no
+  lifetime: 10
+  failCallback: (req, res) -> res.json {isSuccess: no, message: "You can only have one turn every 10 seconds!"}
+
+charCreate = new brute store,
+  freeRetries: 0
+  proxyDepth: 1
+  minWait: 24*60*60*1000
+  maxWait: 24*60*60*1000
+  attachResetToRequest: no
+  refreshTimeoutOnRequest: no
+  lifetime: 24*60*60
+  failCallback: (req, res) -> res.json {isSuccess: no, message: "You can only create a new character once per day!"}
 
 router = express.Router()
 
@@ -64,41 +93,36 @@ router
 .route "/player"
 
 # register
-.put (req, res) ->
+.put  (req, res) ->
   API.player.auth.register req.body
-  .then (resp) ->
-    res.json resp
+  .then (resp) -> res.json resp
 
 # logout
 .delete hasValidToken, (req, res) ->
   {identifier} = req.body
   API.player.auth.logout identifier
-  .then (resp) ->
-    res.json resp
+  .then (resp) -> res.json resp
 
 # login
 .post (req, res) ->
   {identifier, password} = req.body
   API.player.auth.loginWithPassword identifier, password
-  .then (resp) ->
-    res.json resp
+  .then (resp) -> res.json resp
 
 # change pass
 .patch hasValidToken, (req, res) ->
   {identifier, password} = req.body
   API.player.auth.setPassword identifier, password
-  .then (resp) ->
-    res.json resp
+  .then (resp) -> res.json resp
 
-router.get "/", (req, res) -> res.send 'test'
-router.get "/test", (req, res) -> res.send 'test2'
-router.get "/test2", (req, res) -> res.send 'test2'
+router
 
-router.post "/", (req, res) ->
-  res.json req.body
-
-router.post "/test", (req, res) ->
-  res.json req.body
+# take turn
+.route "/player/action/turn"
+.post turnTimeout.prevent, hasValidToken, (req, res) ->
+  {identifier} = req.body
+  API.player.nextAction identifier
+  .then (resp) -> res.json resp
 
 app.use "/", router
 

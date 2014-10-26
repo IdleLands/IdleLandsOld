@@ -44,6 +44,8 @@
     "pushbullet": "~1.4.0",
     "express": "~4.10.0",
     "bcrypt-nodejs": "0.0.3",
-    "body-parser": "~1.9.1"
+    "body-parser": "~1.9.1",
+    "express-brute": "~0.5.1",
+    "express-brute-mongo": "~0.1.0"
   }
 }

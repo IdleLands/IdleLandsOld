@@ -346,7 +346,7 @@ module.exports = (Module) ->
           .then (res) =>
             @reply origin, res.message
 
-      @addRoute "idle-string :action(add) :type :string", stringFunc
+      @addRoute "idle-string :action(set) :type :string", stringFunc
       @addRoute "idle-string :action(remove) :type", stringFunc
 
       pushbulletFunc = (origin, route) =>

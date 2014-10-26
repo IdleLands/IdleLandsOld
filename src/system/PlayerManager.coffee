@@ -159,13 +159,19 @@ class PlayerManager
       if iErr
         message = "Player creation error: #{iErr} (you probably already registered a character to that ident, or that identifier is already taken)."
         return defer.resolve {isSuccess: no, message: message}
-        
+
       @game.broadcast MessageCreator.genericMessage "Welcome #{options.name} to #{Constants.gameName}!"
       @playerHash[options.identifier] = playerObject
       @players.push playerObject
 
       playerObject.tempSecureToken = @generateTempToken()
       @beginWatchingPlayerStatistics playerObject
+
+      if options.password
+        @storePasswordFor options.identifier, options.password
+        .then =>
+          @savePlayer playerObject
+
       defer.resolve {isSuccess: yes, message: "Welcome to #{Constants.gameName}, #{options.name}!", player: saveObj, token: playerObject.tempSecureToken}
 
     defer.promise
