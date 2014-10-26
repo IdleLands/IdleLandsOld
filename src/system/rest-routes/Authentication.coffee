@@ -7,6 +7,8 @@ router = (require "express").Router()
 # player routes
 router
 
+.route "/player/auth"
+
 # register
 .put charCreateTimeout.prevent, (req, res) ->
   API.player.auth.register req.body
