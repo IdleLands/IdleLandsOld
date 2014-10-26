@@ -10,8 +10,3 @@ module.exports = (router) ->
     {identifier, gender} = req.body
     API.player.gender identifier, gender
     .then (resp) -> res.json resp
-
-  .delete hasValidToken, (req, res) ->
-    {identifier} = req.body
-    API.player.gender identifier, ''
-    .then (resp) -> res.json resp
