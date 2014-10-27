@@ -86,7 +86,7 @@ class API
       login: (identifier, suppress) =>
         @validateIdentifier identifier
         .then (res) =>
-          @gameInstance.playerManager.addPlayer identifier, suppress, no if res.isSuccess
+          (@gameInstance.playerManager.addPlayer identifier, suppress, no) if res.isSuccess
           else res
 
       loginWithPassword: (identifier, password) =>
@@ -104,7 +104,7 @@ class API
       authenticate: (identifier, password) =>
         @validateIdentifier identifier
         .then (res) =>
-          @gameInstance.playerManager.checkPassword identifier, password, yes if res.isSuccess
+          (@gameInstance.playerManager.checkPassword identifier, password, yes) if res.isSuccess
           else res
 
       logout: (identifier) =>
