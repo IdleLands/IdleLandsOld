@@ -13,7 +13,6 @@ router
 .put charCreateTimeout.prevent, (req, res) ->
   API.player.auth.register req.body
   .then (resp) ->
-    console.log resp
     req.brute.reset() if not resp.isSuccess
     res.json resp
 

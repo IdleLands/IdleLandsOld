@@ -87,31 +87,37 @@ class API
         @validateIdentifier identifier
         .then (res) =>
           @gameInstance.playerManager.addPlayer identifier, suppress, no if res.isSuccess
+          else res
 
       loginWithPassword: (identifier, password) =>
         @validateIdentifier identifier
         .then (res) =>
           @gameInstance.playerManager.loginWithPassword identifier, password if res.isSuccess
+          else res
 
       setPassword: (identifier, password) =>
         @validateIdentifier identifier
         .then (res) =>
           @gameInstance.playerManager.storePasswordFor identifier, password if res.isSuccess
+          else res
 
       authenticate: (identifier, password) =>
         @validateIdentifier identifier
         .then (res) =>
           @gameInstance.playerManager.checkPassword identifier, password, yes if res.isSuccess
+          else res
 
       logout: (identifier) =>
         @validateIdentifier identifier
         .then (res) =>
           @gameInstance.playerManager.removePlayer identifier if res.isSuccess
+          else res
 
       isTokenValid: (identifier, token) =>
         @validateIdentifier identifier
         .then (res) =>
           @gameInstance.playerManager.checkToken identifier, token if res.isSuccess
+          else res
 
     overflow:
       add: (identifier, slot) =>
