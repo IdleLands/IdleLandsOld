@@ -124,7 +124,7 @@ class Player extends Character
 
     @overflow[slot] = current
 
-    defer.resolve {isSuccess: yes, message: "Successfully swapped #{current.name} into the #{slot} slot."}
+    defer.resolve {isSuccess: yes, message: "Successfully swapped #{current.name} with #{inOverflow.name} (slot #{slot})."}
 
   sellOverflow: (slot, defer) ->
     curItem = @overflow[slot]
