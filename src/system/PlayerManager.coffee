@@ -135,7 +135,7 @@ class PlayerManager
 
   loginWithPassword: (identifier, password) ->
 
-    return Q {isSuccess: no, code: 15, message: "You're already logged in elsewhere!"} if @playerHash[identifier]
+    return Q {isSuccess: no, code: 15, message: "You're already logged in elsewhere!", player: @playerHash[identifier]} if @playerHash[identifier]
 
     @checkPassword identifier, password
     .then (res) =>
