@@ -78,7 +78,7 @@ class Guild
       @level = Math.round result[0].level
       @save()
 
-  cap: -> 1 + (3*Math.floor (@level or 1)/5)
+  cap: -> 1 + (3*Math.floor ((@level or 1)/5))
 
   save: ->
     return if not @guildManager

@@ -66,13 +66,14 @@ class GuildManager
 
   loadAllGuilds: ->
     @retrieveAllGuilds (guilds) =>
-      _.each guilds, ((guild) ->
+      _.each guilds, (guild) =>
         return if _.findWhere @guilds, {name: guild.name}
         guild.__proto__ = Guild.prototype
         guild.guildManager = @
         guild.invitesLeft()
+        guild.avgLevel()
         @guilds.push guild
-        @guildHash[guild.name] = guild), @
+        @guildHash[guild.name] = guild
 
   retrieveAllGuilds: (callback) ->
     @db.find {}, (e, guilds) ->
@@ -82,6 +83,8 @@ class GuildManager
   sendInvite: (sendId, invName) ->
     sender = @game.playerManager.getPlayerById sendId
     invitee = @game.playerManager.getPlayerByName invName
+
+    sender.guild.invitesLeft()
 
     return Q {isSuccess: no, message: "You didn't specify a valid invitation target!"} if not invitee
     return Q {isSuccess: no, message: "You aren't part of a guild!"} if not sender?.guild
