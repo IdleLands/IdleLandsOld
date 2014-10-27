@@ -309,7 +309,7 @@
 "popsicle" str=630 int=400 ice=200 prone=1
 "Ziltoid's Touch" int=350 str=350 silver=1 offense=1 defense=1 dancing=1
 "MadCatz Tournament Edition Arcade Stick" int=595 str=200
-"book: 49 shades of idling" str=375 int=375
+"book: 49 shades of idlin'" str=375 int=375
 "Book: 50 Shadows over Idliathlia" str=400 int=400
 "book: 28 days idlier" str=425 int=425
 
