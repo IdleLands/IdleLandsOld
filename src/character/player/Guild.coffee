@@ -4,7 +4,7 @@ RestrictedNumber = require "restricted-number"
 MessageCreator = require "../../system/MessageCreator"
 Constants = require "../../system/Constants"
 _ = require "underscore"
-q = require "q"
+Q = require "q"
 
 Chance = require "chance"
 chance = new Chance Math.random
@@ -19,13 +19,12 @@ class Guild
     @invites = []
 
   add: (player) ->
-    defer = q.defer()
     return if player.guild?
     @members.push {identifier: player.identifier, isAdmin: no, name: player.name}
     player.guild = @name
     player.save()
     @avgLevel()
-    defer
+    Q()
 
   remove: (player) ->
     return -1 if not _.findWhere @members, {identifier: player.identifier}
@@ -35,34 +34,24 @@ class Guild
     @avgLevel()
 
   promote: (leaderId, memberName) ->
-    defer = q.defer()
-
     member = @guildManager.game.playerManager.getPlayerByName memberName
 
-    if leaderId isnt @leader or not member
-      defer.resolve {isSuccess: no, message: "You can't do that!"}
-      return defer
+    return Q {isSuccess: no, message: "You can't do that!"} if leaderId isnt @leader or not member
 
     member.isAdmin = yes
     @save()
 
-    defer.resolve {isSuccess: yes, message: "Successfully promoted #{member.name}."}
-
-    defer
+    Q {isSuccess: yes, message: "Successfully promoted #{member.name}."}
 
   demote: (leaderId, memberName) ->
-    defer = q.defer()
     member = @guildManager.game.playerManager.getPlayerByName memberName
 
-    if leaderId isnt @leader or not member
-      defer.resolve {isSuccess: no, message: "You can't do that!"}
-      return defer
+    return Q {isSuccess: no, message: "You can't do that!"} if leaderId isnt @leader or not member
 
     member.isAdmin = no
     @save()
-    defer.resolve {isSuccess: yes, message: "Successfully demoted #{member.name}."}
 
-    defer
+    Q {isSuccess: yes, message: "Successfully demoted #{member.name}."}
 
   invitesLeft: ->
     @invitesAvailable = @cap() - (@members.length + @invites.length)

@@ -76,8 +76,8 @@ class PlayerManager
       console.error e if e
 
       defer.resolve {isSuccess: no, message: "Authentication failure (player doesn't exist)."} if not player
-      defer.resolve {isSuccess: no, message: "You haven't set up a password yet!"} if not player.password
-      defer.resolve {isSuccess: no, message: "Authentication failure (bad password)."} if not bcrypt.compareSync password, player.password
+      defer.resolve {isSuccess: no, message: "You haven't set up a password yet!"} if not player?.password
+      defer.resolve {isSuccess: no, message: "Authentication failure (bad password)."} if not bcrypt.compareSync password, player?.password
 
       defer.resolve {isSuccess: yes, message: "Successful login. Welcome back!"}
 
@@ -304,7 +304,7 @@ class PlayerManager
     _.findWhere @players, {name: playerName}
 
   getPlayerById: (playerId) ->
-    _.findWhere @players, {identifier: playerId}
+    @playerHash[playerId]
 
   beginWatchingPlayerStatistics: (player) ->
 
