@@ -84,7 +84,7 @@ class GuildManager
     sender = @game.playerManager.getPlayerById sendId
     invitee = @game.playerManager.getPlayerByName invName
 
-    sender.guild.invitesLeft()
+    @guildHash[sender.guild].invitesLeft()
 
     return Q {isSuccess: no, message: "You didn't specify a valid invitation target!"} if not invitee
     return Q {isSuccess: no, message: "You aren't part of a guild!"} if not sender?.guild
