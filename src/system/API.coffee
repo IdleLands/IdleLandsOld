@@ -105,7 +105,6 @@ class API
           res
 
       isTokenValid: (identifier, token) =>
-        console.log identifier, token
         @validateIdentifier identifier
         .then (res) =>
           return (@gameInstance.playerManager.checkToken identifier, token) if res.isSuccess
