@@ -70,7 +70,7 @@ class GuildManager
         return if _.findWhere @guilds, {name: guild.name}
         guild.__proto__ = Guild.prototype
         guild.guildManager = @
-        guild.invitesAvailable()
+        guild.invitesLeft()
         @guilds.push guild
         @guildHash[guild.name] = guild), @
 
