@@ -49,37 +49,37 @@ class PlayerManager
     password = password.trim()
     player = @playerHash[identifier]
 
-    return Q {isSuccess: no, message: "Please use a password > 3 characters."} if password.length < 3
-    return Q {isSuccess: no, message: "You're not logged in!"} if not player
+    return Q {isSuccess: no, code: 1, message: "Please use a password > 3 characters."} if password.length < 3
+    return Q {isSuccess: no, code: 10, message: "You're not logged in!"} if not player
 
     player.password = @hashPassword password
 
-    Q {isSuccess: yes, message: "Your password has been set! Extraneous spaces at be beginning and end have been removed!"}
+    Q {isSuccess: yes, code: 17, message: "Your password has been set! Extraneous spaces at be beginning and end have been removed!"}
 
   checkToken: (identifier, token) ->
 
     player = @playerHash[identifier]
 
-    return Q {isSuccess: no, message: "You're not logged in!"} if not player
-    return Q {isSuccess: no, message: "That token isn't valid!"} if player?.tempSecureToken isnt token
+    return Q {isSuccess: no, code: 10, message: "You're not logged in!"} if not player
+    return Q {isSuccess: no, code: -1, message: "That token isn't valid!"} if player?.tempSecureToken isnt token
 
-    Q {isSuccess: yes, message: "Valid token. Carry on."}
+    Q {isSuccess: yes, code: 999999, message: "Valid token. Carry on."} #lol
 
   checkPassword: (identifier, password, isIRC = no) ->
 
     defer = Q.defer()
 
-    return Q {isSuccess: no, message: "You're not currently logged in, so you can't auth via password."} if isIRC and not @playerHash[identifier]
-    return Q {isSuccess: no, message: "You can't login without a password, silly!"} if not password
+    return Q {isSuccess: no, code: 12, message: "You're not currently logged in, so you can't auth via password."} if isIRC and not @playerHash[identifier]
+    return Q {isSuccess: no, code: 16, message: "You can't login without a password, silly!"} if not password
 
     @db.findOne {identifier: identifier}, (e, player) ->
       console.error e if e
 
-      defer.resolve {isSuccess: no, message: "Authentication failure (player doesn't exist)."} if not player
-      defer.resolve {isSuccess: no, message: "You haven't set up a password yet!"} if not player?.password
-      defer.resolve {isSuccess: no, message: "Authentication failure (bad password)."} if not bcrypt.compareSync password, player?.password
+      defer.resolve {isSuccess: no, code: 13, message: "Authentication failure (player doesn't exist)."} if not player
+      defer.resolve {isSuccess: no, code: 12, message: "You haven't set up a password yet!"} if not player?.password
+      defer.resolve {isSuccess: no, code: 14, message: "Authentication failure (bad password)."} if not bcrypt.compareSync password, player?.password
 
-      defer.resolve {isSuccess: yes, message: "Successful login. Welcome back!"}
+      defer.resolve {isSuccess: yes, code: 999999, message: "Successful login. Welcome back!"} #lol
 
     defer.promise
 
@@ -90,10 +90,10 @@ class PlayerManager
   addPlayer: (identifier, suppress = no, autoLogout = yes) ->
     defer = Q.defer()
 
-    return Q {isSuccess: no, message: "Player already logged in."} if @playerHash[identifier]
+    return Q {isSuccess: no, code: 15, message: "Player already logged in."} if @playerHash[identifier]
 
     @retrievePlayer identifier, (player) =>
-      return defer.resolve {isSuccess: no, message: "Player not found."} if not player
+      return defer.resolve {isSuccess: no, code: 13, message: "Player not found."} if not player
 
       player.isOnline = yes
       @players.push player
@@ -108,6 +108,7 @@ class PlayerManager
 
       defer.resolve
         isSuccess: yes
+        code: 18
         message: "Successful login. Welcome back to #{Constants.gameName}, #{player.name}!"
         token: player.tempSecureToken
         player: @buildPlayerSaveObject player
@@ -117,7 +118,7 @@ class PlayerManager
   removePlayer: (identifier) ->
 
     player = @playerHash[identifier]
-    return Q {isSuccess: no, message: "Player not found."} if not player
+    return Q {isSuccess: no, code: 13, message: "Player not found."} if not player
 
     player.isOnline = no
     player.tempSecureToken = null
@@ -130,11 +131,11 @@ class PlayerManager
     @playerHash[identifier] = null
 
     @game.broadcast "#{name} has left #{Constants.gameName}!"
-    Q {isSuccess: yes, message: "Player successfully logged out."}
+    Q {isSuccess: yes, code: 19, message: "Player successfully logged out."}
 
   loginWithPassword: (identifier, password) ->
 
-    return Q {isSuccess: no, message: "You're already logged in elsewhere!"} if @playerHash[identifier]
+    return Q {isSuccess: no, code: 15, message: "You're already logged in elsewhere!"} if @playerHash[identifier]
 
     @checkPassword identifier, password
     .then (res) =>
@@ -145,10 +146,10 @@ class PlayerManager
 
     options.name = options.name?.trim()
 
-    return Q {isSuccess: no, message: "You need a name for your character!"} if not options.name
-    return Q {isSuccess: no, message: "You have to make your name above 2 characters!"} if options.name.length < 2
-    return Q {isSuccess: no, message: "You have to keep your name under 20 characters!"} if options.name.length > 20
-    return Q {isSuccess: no, message: "You have to send a unique identifier for this player!"} if not options.identifier
+    return Q {isSuccess: no, code: 6, message: "You need a name for your character!"} if not options.name
+    return Q {isSuccess: no, code: 2, message: "You have to make your name above 2 characters!"} if options.name.length < 2
+    return Q {isSuccess: no, code: 3, message: "You have to keep your name under 20 characters!"} if options.name.length > 20
+    return Q {isSuccess: no, code: 4, message: "You have to send a unique identifier for this player!"} if not options.identifier
 
     defer = Q.defer()
 
@@ -161,9 +162,8 @@ class PlayerManager
     saveObj._events = {}
 
     @db.insert saveObj, (iErr) =>
-      if iErr
-        message = "Player creation error: #{iErr} (you probably already registered a character to that ident, or that identifier is already taken)."
-        return defer.resolve {isSuccess: no, message: message}
+
+      return Q {isSuccess: no, code: 5, message: "Player creation error: #{iErr} (you probably already registered a character to that ident, or that identifier is already taken)."} if iErr
 
       @game.broadcast MessageCreator.genericMessage "Welcome #{options.name} to #{Constants.gameName}!"
       @playerHash[options.identifier] = playerObject
@@ -178,7 +178,7 @@ class PlayerManager
         .then =>
           @savePlayer playerObject
 
-      defer.resolve {isSuccess: yes, message: "Welcome to #{Constants.gameName}, #{options.name}!", player: saveObj, token: playerObject.tempSecureToken}
+      defer.resolve {isSuccess: yes, code: 20, message: "Welcome to #{Constants.gameName}, #{options.name}!", player: saveObj, token: playerObject.tempSecureToken}
 
     defer.promise
 
@@ -216,13 +216,13 @@ class PlayerManager
       console.error "Save error: #{e}" if e
 
   playerTakeTurn: (identifier) ->
-    return Q {isSuccess: no, message: "You're not logged in!"} if not identifier or not (identifier of @playerHash)
+    return Q {isSuccess: no, code: 10, message: "You're not logged in!"} if not identifier or not (identifier of @playerHash)
 
     player = @playerHash[identifier].takeTurn()
     @handleAutoLogout player
 
     playerData = @buildPlayerSaveObject player
-    Q {isSuccess: yes, message: "Turn taken.", player: playerData}
+    Q {isSuccess: yes, code: 102, message: "Turn taken.", player: playerData}
 
   registerLoadAllPlayersHandler: (@playerLoadHandler) ->
     console.log "Registered AllPlayerLoad handler."

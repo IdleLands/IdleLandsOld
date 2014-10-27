@@ -16,7 +16,7 @@ TurnTimeoutTimer = new brute store,
   attachResetToRequest: no
   refreshTimeoutOnRequest: no
   lifetime: 10
-  failCallback: (req, res) -> res.json {isSuccess: no, message: "You can only have one turn every 10 seconds!"}
+  failCallback: (req, res) -> res.json {isSuccess: no, code: 100, message: "You can only have one turn every 10 seconds!"}
 
 CharCreateTimer = new brute store,
   freeRetries: 0
@@ -26,6 +26,6 @@ CharCreateTimer = new brute store,
   attachResetToRequest: yes
   refreshTimeoutOnRequest: no
   lifetime: 24*60*60
-  failCallback: (req, res) -> res.json {isSuccess: no, message: "You can only create a new character once per day!"}
+  failCallback: (req, res) -> res.json {isSuccess: no, code: 101, message: "You can only create a new character once per day!"}
 
 module.exports = {CharCreateTimer, TurnTimeoutTimer}

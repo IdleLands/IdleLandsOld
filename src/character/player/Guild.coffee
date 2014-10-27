@@ -36,22 +36,24 @@ class Guild
   promote: (leaderId, memberName) ->
     member = @guildManager.game.playerManager.getPlayerByName memberName
 
-    return Q {isSuccess: no, message: "You can't do that!"} if leaderId isnt @leader or not member
+    return Q {isSuccess: no, code: 50, message: "You're not the leader of your guild!"} if leaderId isnt @leader
+    return Q {isSuccess: no, code: 51, message: "That member does not exist!"} if not member
 
     member.isAdmin = yes
     @save()
 
-    Q {isSuccess: yes, message: "Successfully promoted #{member.name}."}
+    Q {isSuccess: yes, code: 67, message: "Successfully promoted #{member.name}."}
 
   demote: (leaderId, memberName) ->
     member = @guildManager.game.playerManager.getPlayerByName memberName
 
-    return Q {isSuccess: no, message: "You can't do that!"} if leaderId isnt @leader or not member
+    return Q {isSuccess: no, code: 50, message: "You're not the leader of your guild!"} if leaderId isnt @leader
+    return Q {isSuccess: no, code: 51, message: "That member does not exist!"} if not member
 
     member.isAdmin = no
     @save()
 
-    Q {isSuccess: yes, message: "Successfully demoted #{member.name}."}
+    Q {isSuccess: yes, code: 68, message: "Successfully demoted #{member.name}."}
 
   invitesLeft: ->
     @invitesAvailable = @cap() - (@members.length + @invites.length)

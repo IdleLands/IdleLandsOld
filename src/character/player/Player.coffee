@@ -53,7 +53,7 @@ class Player extends Character
   setPushbulletKey: (key) ->
     @pushbulletApiKey = key
     @pushbulletSend "This is a test for Idle Lands" if key
-    Q {isSuccess: yes, message: "Your PushBullet API key has been #{if key then "added" else "removed"} successfully. You should also have gotten a test message!"}
+    Q {isSuccess: yes, code: 99, message: "Your PushBullet API key has been #{if key then "added" else "removed"} successfully. You should also have gotten a test message!"}
 
   pushbulletSend: (message) ->
     pushbullet = new PushBullet @pushbulletApiKey if @pushbulletApiKey
@@ -93,28 +93,24 @@ class Player extends Character
 
   addOverflow:  (slot, defer) ->
     if not (slot in ["body","feet","finger","hands","head","legs","neck","mainhand","offhand","charm"])
-      defer.resolve {isSuccess: no, message: "That slot is invalid."}
-      return
+      return defer.resolve {isSuccess: no, code: 40, message: "That slot is invalid."}
 
     if @overflow.length is Constants.defaults.player.maxOverflow
-      defer.resolve {isSuccess: no, message: "Your inventory is currently full!"}
-      return
+      return defer.resolve {isSuccess: no, code: 41, message: "Your inventory is currently full!"}
 
     currentItem = _.findWhere @equipment, {type: slot}
 
     if currentItem.name is "empty"
-      defer.resolve {isSuccess: no, message: "You can't add empty items to your inventory!"}
-      return
+      return defer.resolve {isSuccess: no, code: 42, message: "You can't add empty items to your inventory!"}
 
     @overflow.push currentItem
     @equipment = _.without @equipment, currentItem
     @equipment.push new Equipment {type: slot, name: "empty"}
-    defer.resolve {isSuccess: yes, message: "Successfully added #{currentItem.name} to your inventory."}
+    defer.resolve {isSuccess: yes, code: 45, message: "Successfully added #{currentItem.name} to your inventory."}
 
   swapOverflow: (slot, defer) ->
     if not @overflow[slot]
-      defer.resolve {isSuccess: no, message: "You don't have anything in that inventory slot."}
-      return
+      return defer.resolve {isSuccess: no, code: 43, message: "You don't have anything in that inventory slot."}
 
     current = _.findWhere @equipment, {type: @overflow[slot].type}
     inOverflow = @overflow[slot]
@@ -124,19 +120,18 @@ class Player extends Character
 
     @overflow[slot] = current
 
-    defer.resolve {isSuccess: yes, message: "Successfully swapped #{current.name} with #{inOverflow.name} (slot #{slot})."}
+    defer.resolve {isSuccess: yes, code: 47, message: "Successfully swapped #{current.name} with #{inOverflow.name} (slot #{slot})."}
 
   sellOverflow: (slot, defer) ->
     curItem = @overflow[slot]
     if (not curItem) or (curItem.name is "empty")
-      defer.resolve {isSuccess: yes, message: "That item is not able to be sold!"}
-      return
+      return defer.resolve {isSuccess: yes, code: 44, message: "That item is not able to be sold!"}
 
     salePrice = Math.max 2, @calcGoldGain Math.round curItem.score()*@calc.itemSellMultiplier curItem
     @gainGold salePrice
 
     @overflow[slot] = null
-    defer.resolve {isSuccess: yes, message: "Successfully sold #{curItem.name} for #{salePrice} gold."}
+    defer.resolve {isSuccess: yes, code: 46, message: "Successfully sold #{curItem.name} for #{salePrice} gold."}
 
   handleTrainerOnTile: (tile) ->
     return if @isBusy or @stepCooldown > 0
@@ -317,7 +312,7 @@ class Player extends Character
 
   setGender: (newGender) ->
     @gender = newGender.substring 0,9
-    Q {isSuccess: yes, message: "Your gender is now #{@gender}."}
+    Q {isSuccess: yes, code: 97, message: "Your gender is now #{@gender}."}
 
   score: ->
     @calc.partyScore()
@@ -388,7 +383,7 @@ class Player extends Character
   setString: (type, val = '') ->
     @messages = {} if not @messages
     @messages[type] = val.substring 0, 99
-    Q {isSuccess: yes, message: "Successfully updated your string settings. String \"#{type}\" is now: #{if val then val else 'empty!'}"}
+    Q {isSuccess: yes, code: 95, message: "Successfully updated your string settings. String \"#{type}\" is now: #{if val then val else 'empty!'}"}
 
   checkAchievements: (silent = no) ->
     oldAchievements = _.compact _.clone @achievements

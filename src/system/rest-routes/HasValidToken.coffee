@@ -7,4 +7,4 @@ module.exports = (req, res, next) ->
     if resp.isSuccess
       next()
     else
-      res.json {isSuccess: no, message: "Token validation failed."}
+      res.json {isSuccess: no, code: -1, message: "Token validation failed."}

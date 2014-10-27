@@ -97,28 +97,28 @@ class Character extends EventEmitter2
 
   addPersonality: (newPersonality) ->
     if not Personality::doesPersonalityExist newPersonality
-      return Q {isSuccess: no, message: "You already have that personality set!"}
+      return Q {isSuccess: no, code: 30, message: "You already have that personality set!"}
 
     potentialPersonality = Personality::getPersonality newPersonality
     if not ('canUse' of potentialPersonality) or not potentialPersonality.canUse @
-      return Q {isSuccess: no, message: "You can't use that personality yet!"}
+      return Q {isSuccess: no, code: 31, message: "You can't use that personality yet!"}
 
     @_addPersonality newPersonality, potentialPersonality
 
     personalityString = @personalityStrings.join ", "
 
-    Q {isSuccess: yes, message: "Your personality settings have been updated successfully! Personalities are now: #{personalityString or "none"}"}
+    Q {isSuccess: yes, code: 33, message: "Your personality settings have been updated successfully! Personalities are now: #{personalityString or "none"}"}
 
   removePersonality: (oldPersonality) ->
     if not @hasPersonality oldPersonality
-      return Q {isSuccess: no, message: "You don't have that personality set!"}
+      return Q {isSuccess: no, code: 32, message: "You don't have that personality set!"}
 
     @personalityStrings = _.without @personalityStrings, oldPersonality
     @rebuildPersonalityList()
 
     personalityString = @personalityStrings.join ", "
 
-    Q {isSuccess: yes, message: "Your personality settings have been updated successfully! Personalities are now: #{personalityString or "none"}"}
+    Q {isSuccess: yes, code: 33, message: "Your personality settings have been updated successfully! Personalities are now: #{personalityString or "none"}"}
 
   hasPersonality: (personality) ->
     return no if not @personalityStrings
