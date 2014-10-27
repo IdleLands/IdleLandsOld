@@ -9,7 +9,7 @@ class API
     defer = Q.defer()
     player = @gameInstance.playerManager.getPlayerById identifier
 
-    defer.resolve {isSuccess: yes, player: player}
+    defer.resolve {isSuccess: yes, player: player} if player
     defer.resolve {isSuccess: no, message: "You aren't logged in!"}
 
     defer.promise
@@ -84,16 +84,10 @@ class API
         @gameInstance.playerManager.registerPlayer options
 
       login: (identifier, suppress) =>
-        @validateIdentifier identifier
-        .then (res) =>
-          return (@gameInstance.playerManager.addPlayer identifier, suppress, no) if res.isSuccess
-          res
+        @gameInstance.playerManager.addPlayer identifier, suppress, no
 
       loginWithPassword: (identifier, password) =>
-        @validateIdentifier identifier
-        .then (res) =>
-          return (@gameInstance.playerManager.loginWithPassword identifier, password) if res.isSuccess
-          res
+        @gameInstance.playerManager.loginWithPassword identifier, password
 
       setPassword: (identifier, password) =>
         @validateIdentifier identifier
@@ -102,10 +96,7 @@ class API
           res
 
       authenticate: (identifier, password) =>
-        @validateIdentifier identifier
-        .then (res) =>
-          return (@gameInstance.playerManager.checkPassword identifier, password, yes) if res.isSuccess
-          res
+        @gameInstance.playerManager.checkPassword identifier, password, yes
 
       logout: (identifier) =>
         @validateIdentifier identifier

@@ -138,7 +138,8 @@ class PlayerManager
 
     @checkPassword identifier, password
     .then (res) =>
-      @addPlayer identifier if res.isSuccess
+      return @addPlayer identifier if res.isSuccess
+      res
 
   registerPlayer: (options) ->
 
@@ -170,6 +171,7 @@ class PlayerManager
 
       playerObject.tempSecureToken = @generateTempToken()
       @beginWatchingPlayerStatistics playerObject
+      @handleAutoLogout playerObject
 
       if options.password
         @storePasswordFor options.identifier, options.password

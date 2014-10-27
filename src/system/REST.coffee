@@ -17,8 +17,8 @@ cors = require "cors"
 
 # express config
 app.use cors()
-app.use bodyParser.json()
 app.use bodyParser.urlencoded extended: no
+app.use bodyParser.json()
 
 ###
   /player
