@@ -7,29 +7,27 @@ router = (require "express").Router()
 # player routes
 router
 
-.route "/player/auth"
-
 # register
-.put charCreateTimeout.prevent, (req, res) ->
+.put "/player/auth/register", charCreateTimeout.prevent, (req, res) ->
   API.player.auth.register req.body
   .then (resp) ->
     req.brute.reset() if not resp.isSuccess
     res.json resp
 
 # logout
-.delete hasValidToken, (req, res) ->
+.post "/player/auth/logout", hasValidToken, (req, res) ->
   {identifier} = req.body
   API.player.auth.logout identifier
   .then (resp) -> res.json resp
 
 # login
-.post (req, res) ->
+.post "/player/auth/login", (req, res) ->
   {identifier, password} = req.body
   API.player.auth.loginWithPassword identifier, password
   .then (resp) -> res.json resp
 
 # change pass
-.patch hasValidToken, (req, res) ->
+.patch "/player/auth/password", hasValidToken, (req, res) ->
   {identifier, password} = req.body
   API.player.auth.setPassword identifier, password
   .then (resp) -> res.json resp

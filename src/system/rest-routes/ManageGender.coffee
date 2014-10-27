@@ -5,7 +5,7 @@ router = (require "express").Router()
 router
 # gender management
 .route "/player/manage/gender"
-.put hasValidToken, (req, res) ->
+.patch hasValidToken, (req, res) ->
   {identifier, gender} = req.body
   API.player.gender identifier, gender
   .then (resp) -> res.json resp

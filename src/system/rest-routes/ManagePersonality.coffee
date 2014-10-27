@@ -6,13 +6,12 @@ router = (require "express").Router()
 router
 
 # personality management
-.route "/player/manage/personality"
-.put hasValidToken, (req, res) ->
+.put "/player/manage/personality/add", hasValidToken, (req, res) ->
   {identifier, newPers} = req.body
   API.player.personality.add identifier, newPers
   .then (resp) -> res.json resp
 
-.delete hasValidToken, (req, res) ->
+.post "/player/manage/personality/remove", hasValidToken, (req, res) ->
   {identifier, oldPers} = req.body
   API.player.personality.remove identifier, oldPers
   .then (resp) -> res.json resp

@@ -177,10 +177,8 @@ class API
           @gameInstance.guildManager.manageInvite identifier, accepted, guildName if res.isSuccess
 
       promote: (identifier, memberName) =>
-        console.log 'attempting to promote',identifier,memberName
         @validateIdentifier identifier
         .then (res) =>
-          console.error res
           return if not res.isSuccess
           guild = res.player.guild
           @gameInstance.guildManager.guildHash[guild].promote identifier, memberName
