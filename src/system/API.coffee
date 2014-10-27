@@ -86,38 +86,38 @@ class API
       login: (identifier, suppress) =>
         @validateIdentifier identifier
         .then (res) =>
-          (@gameInstance.playerManager.addPlayer identifier, suppress, no) if res.isSuccess
-          else res
+          return (@gameInstance.playerManager.addPlayer identifier, suppress, no) if res.isSuccess
+          res
 
       loginWithPassword: (identifier, password) =>
         @validateIdentifier identifier
         .then (res) =>
-          @gameInstance.playerManager.loginWithPassword identifier, password if res.isSuccess
-          else res
+          return (@gameInstance.playerManager.loginWithPassword identifier, password) if res.isSuccess
+          res
 
       setPassword: (identifier, password) =>
         @validateIdentifier identifier
         .then (res) =>
-          @gameInstance.playerManager.storePasswordFor identifier, password if res.isSuccess
-          else res
+          return (@gameInstance.playerManager.storePasswordFor identifier, password) if res.isSuccess
+          res
 
       authenticate: (identifier, password) =>
         @validateIdentifier identifier
         .then (res) =>
-          (@gameInstance.playerManager.checkPassword identifier, password, yes) if res.isSuccess
-          else res
+          return (@gameInstance.playerManager.checkPassword identifier, password, yes) if res.isSuccess
+          res
 
       logout: (identifier) =>
         @validateIdentifier identifier
         .then (res) =>
-          @gameInstance.playerManager.removePlayer identifier if res.isSuccess
-          else res
+          return (@gameInstance.playerManager.removePlayer identifier) if res.isSuccess
+          res
 
       isTokenValid: (identifier, token) =>
         @validateIdentifier identifier
         .then (res) =>
-          @gameInstance.playerManager.checkToken identifier, token if res.isSuccess
-          else res
+          return (@gameInstance.playerManager.checkToken identifier, token) if res.isSuccess
+          res
 
     overflow:
       add: (identifier, slot) =>
