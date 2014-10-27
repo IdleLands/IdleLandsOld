@@ -36,6 +36,7 @@ class GuildManager
 
     guildObject = new Guild {name: name, leader: player.identifier}
     guildObject.guildManager = @
+    guildObject.invitesAvailable()
     guildObject.__proto__ = Guild.prototype
     guildObject.members.push {identifier: player.identifier, name: player.name, isAdmin: yes}
     saveObj = @buildGuildSaveObject guildObject
@@ -69,6 +70,7 @@ class GuildManager
         return if _.findWhere @guilds, {name: guild.name}
         guild.__proto__ = Guild.prototype
         guild.guildManager = @
+        guild.invitesAvailable()
         @guilds.push guild
         @guildHash[guild.name] = guild), @
 
