@@ -1,6 +1,6 @@
 
 Spell = require "../../../base/Spell"
-SandwichBuff = require "./SandwichBuff.coffee"
+SandwichBuff = require "./SandwichBuff"
 
 class Toasted extends Spell
   name: "Toasted"
@@ -15,11 +15,12 @@ class Toasted extends Spell
     super() + @minMax minStat, maxStat
 
   determineTargets: ->
-    @targetSomeEnemies size: @chance.integer({min: 1, max: 2})
+    @targetSomeEnemies size: @chance.integer({min: 1, max: 2}), guaranteeSize: yes
 
   cast: (player) ->
     buff = @game.spellManager.modifySpell new SandwichBuff @game, @caster
-    buff.affect player
+    buff.prepareCast player
+    
     @name = buff.name
     damage = @calcDamage()
     message = "%casterName made %targetName a %spellName."

@@ -121,8 +121,9 @@ class Spell
 
     @caster.party?.currentBattle?.takeHp @caster, player, damage, @determineType(), @, message
 
-  prepareCast: ->
-    enemies = @determineTargets()
+  prepareCast: (enemies = null) ->
+    enemies = @determineTargets() if not enemies
+
     enemies = [enemies] if not _.isArray enemies
     targets = @caster.calc.magicalAttackTargets enemies, @baseTargets
     @affect targets
