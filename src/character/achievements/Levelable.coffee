@@ -18,6 +18,7 @@ class Levelable extends Achievement
         desc: "Become level #{currentCheckValue}"
         reward: "+1 luck"
         luck: -> 1
+        type: "event"
 
       currentCheckValue += levelInterval
 

@@ -18,6 +18,7 @@ class Walkative extends Achievement
         desc: "Take #{currentCheckValue} steps"
         reward: "+1 xp"
         xp: -> 1
+        type: "event"
 
       currentCheckValue *= multiplier
 

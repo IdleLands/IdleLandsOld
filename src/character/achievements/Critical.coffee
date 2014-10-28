@@ -18,6 +18,7 @@ class Critical extends Achievement
         desc: "Perform #{currentCheckValue} critical hits"
         reward: "+1 crit"
         crit: -> 1
+        type: "combat"
 
       currentCheckValue *= multiplier
       level++

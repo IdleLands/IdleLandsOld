@@ -18,6 +18,7 @@ class Damaging extends Achievement
         desc: "Deal #{currentCheckValue} total damage"
         reward: "+#{level*10} STR"
         str: -> level*10
+        type: "combat"
 
       currentCheckValue *= multiplier
       level++

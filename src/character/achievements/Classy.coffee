@@ -23,6 +23,7 @@ class Classy extends Achievement
         name: "Classy: #{className}"
         desc: "Become a #{className}"
         reward: ""
+        type: "class"
 
       currentProto = classProtos[className].prototype
 

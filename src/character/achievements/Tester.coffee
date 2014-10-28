@@ -23,6 +23,7 @@ class Tester extends Achievement
         dex: (player) -> player.level.getValue() * 2
         agi: (player) -> player.level.getValue() * 2
         wis: (player) -> player.level.getValue() * 2
+        type: "special"
 
     achieved
 

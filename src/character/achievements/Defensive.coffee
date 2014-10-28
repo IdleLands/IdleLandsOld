@@ -18,6 +18,7 @@ class Defensive extends Achievement
         desc: "Receive #{currentCheckValue} total damage"
         reward: "+#{level*10} CON"
         con: -> level*10
+        type: "combat"
 
       currentCheckValue *= multiplier
       level++

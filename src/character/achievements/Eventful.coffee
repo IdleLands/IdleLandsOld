@@ -18,6 +18,7 @@ class Eventful extends Achievement
         desc: "Experience #{currentCheckValue} events"
         reward: "+#{(level*0.1).toFixed 1} itemFindRangeMultiplier"
         itemFindRangeMultiplier: -> level*0.1
+        type: "event"
 
       currentCheckValue *= multiplier
 

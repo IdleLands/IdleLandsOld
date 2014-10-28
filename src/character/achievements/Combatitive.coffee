@@ -19,6 +19,7 @@ class Combatitive extends Achievement
         reward: "+1 offense/defense"
         offense: -> 1
         defense: -> 1
+        type: "combat"
 
       currentCheckValue *= multiplier
       level++
