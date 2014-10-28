@@ -36,7 +36,7 @@ class GuildManager
 
     guildObject = new Guild {name: name, leader: player.identifier}
     guildObject.guildManager = @
-    guildObject.invitesAvailable()
+    guildObject.invitesLeft()
     guildObject.__proto__ = Guild.prototype
     guildObject.members.push {identifier: player.identifier, name: player.name, isAdmin: yes}
     saveObj = @buildGuildSaveObject guildObject
