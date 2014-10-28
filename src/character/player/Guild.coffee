@@ -69,6 +69,7 @@ class Guild
 
     @guildManager.game.playerManager.db.aggregate query, (e, result) =>
       @level = Math.round result[0].level
+      @invitesLeft()
       @save()
 
   cap: -> 1 + (3*Math.floor ((@level or 1)/5))

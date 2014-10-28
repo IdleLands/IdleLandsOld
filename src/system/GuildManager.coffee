@@ -36,7 +36,6 @@ class GuildManager
 
     guildObject = new Guild {name: name, leader: player.identifier}
     guildObject.guildManager = @
-    guildObject.invitesLeft()
     guildObject.__proto__ = Guild.prototype
     guildObject.members.push {identifier: player.identifier, name: player.name, isAdmin: yes}
     saveObj = @buildGuildSaveObject guildObject
@@ -50,6 +49,8 @@ class GuildManager
       player.guild = name
       player.gold.sub goldCost
       player.save()
+
+      guildObject.avgLevel()
 
       message = "%player has founded the guild %guildName!"
       @game.eventHandler.broadcastEvent message, player, guildName: name
