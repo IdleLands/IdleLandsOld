@@ -23,10 +23,10 @@ class Pirate extends Class
     item.con*2 +
     item.agi*1.5 +
     item.dex*1.5 +
-    item.luck*1.1 +
-    item.str +
-    item.int*0.7 +
-    item.wis*0.7
+    item.str -
+    item.int -
+    item.wis -
+    item.luck*0.2
 
   physicalAttackChance: -> -10
 
