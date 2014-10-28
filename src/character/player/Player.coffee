@@ -329,7 +329,8 @@ class Player extends Character
     @party.playerLeave @
 
   takeTurn: ->
-    @moveAction()
+    steps = Math.max 1, @calc.haste()
+    @moveAction() while steps-- isnt 0
     @possiblyDoEvent()
     @possiblyLeaveParty()
     @save()

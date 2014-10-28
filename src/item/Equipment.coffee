@@ -73,6 +73,7 @@ class Equipment
     glowing: 20
     sacred: -100
     forsaken: 100
+    haste: 300
 
   @defaults =
     itemClass: "basic"

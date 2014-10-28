@@ -199,6 +199,7 @@ class Character extends EventEmitter2
       crit:     -> Math.max 0, @self.calc.stat 'crit'
       dance:    -> 0 < @self.calc.stat 'dance'
       defense:  -> Math.max 0, @self.calc.stat 'defense'
+      haste:    -> Math.max 0, @self.calc.stat 'haste'
       prone:    -> 0 < @self.calc.stat 'prone'
       power:    -> 0 < @self.calc.stat 'power'
       offense:  -> Math.max 0, @self.calc.stat 'offense'

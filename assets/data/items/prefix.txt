@@ -236,7 +236,7 @@
 "transcendent" wis=250 agi=100
 "undulating" agi=100 wis=250
 "invisible" agi=150 dex=100
-"luminescent" int=250 dex=50
+"luminescent" int=250 dex=50 glowing=2
 "timeless" agi=100 con=200
 "ageless" wis=-100 wis=400
 "spaceless" wis=-100 int=400

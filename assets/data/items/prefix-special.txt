@@ -1,15 +1,33 @@
 "silver" silver=1
+
 "power" power=1
+
 "prone" prone=1
+
 "offensive" offense=1
+"slanderous" offense=2
+
 "defensive" defense=1
+"turtley" defense=2
+
 "deadeye" deadeye=1
+
 "vorpal" crit=1
+
 "dancing" dodge=1
+
 "glowing" glowing=1
+
+"hasty" haste=1
+"hastega-style" haste=2
+"uberhasted" haste=3
+
+"really slow" haste=-1
+"superduperslow" haste=-2
 
 "annihilating" crit=3 offense=3 prone=1 power=1 silver=1 vorpal=1
 "obliterated" crit=-3 offense=-3 defense=-3 prone=-1 power=-1
+"all messed up" crit=2 offense=-1 prone=1 power=-1 silver=1 vorpal=2 haste=1 deadeye=-1 defense=2
 
 "sacred" sacred=1
 "forsaken" forsaken=1

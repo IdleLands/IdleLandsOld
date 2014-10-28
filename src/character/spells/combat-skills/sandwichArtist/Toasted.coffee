@@ -20,7 +20,7 @@ class Toasted extends Spell
   cast: (player) ->
     buff = @game.spellManager.modifySpell new SandwichBuff @game, @caster
     buff.prepareCast player
-    
+
     @name = buff.name
     damage = @calcDamage()
     message = "%casterName made %targetName a %spellName."
