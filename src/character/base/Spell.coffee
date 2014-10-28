@@ -11,7 +11,7 @@ class Spell
   cost: @cost = 0
   tiers: @tiers = []
   spellPower: @spellPower = 1
-  stack: "duration"
+  stack: "intensity"
   bindings:
     doSpellCast: ->
     doSpellUncast: ->
@@ -150,7 +150,7 @@ class Spell
       else
         oldSpell = _.findWhere player.spellsAffectedBy, baseName: @baseName
         if oldSpell and @stack is "duration"
-          oldSpell.turns[player.name] = oldSpell.calcDuration player
+          oldSpell.turns[player.name] = @calcDuration player
           battleInstance.emitEvents "skill.duration.refresh", "skill.duration.refreshed", @caster, player, skill: oldSpell, turns: oldSpell.turns
 
         else
