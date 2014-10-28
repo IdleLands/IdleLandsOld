@@ -38,6 +38,7 @@ class Guild
 
     return Q {isSuccess: no, code: 50, message: "You're not the leader of your guild!"} if leaderId isnt @leader
     return Q {isSuccess: no, code: 51, message: "That member does not exist!"} if not member
+    return Q {isSuccess: no, code: 51, message: "That member is not in your guild!"} if member.guild isnt @name
 
     member.isAdmin = yes
     @save()
@@ -49,6 +50,7 @@ class Guild
 
     return Q {isSuccess: no, code: 50, message: "You're not the leader of your guild!"} if leaderId isnt @leader
     return Q {isSuccess: no, code: 51, message: "That member does not exist!"} if not member
+    return Q {isSuccess: no, code: 51, message: "That member is not in your guild!"} if member.guild isnt @name
 
     member.isAdmin = no
     @save()
