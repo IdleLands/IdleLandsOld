@@ -34,12 +34,12 @@ class SandwichAlly extends Spell
           message = "%targetName rated the %spellName a #{rating}. %casterName confiscates his cookie!"
           @broadcast player, message
           cookie = @game.spellManager.modifySpell new Cookie @game, @caster
-          cookie.affect @caster
+          cookie.prepareCast @caster
         else
           message = "%targetName rated the %spellName a 5, and gets a free cookie!"
           @broadcast player, message
           cookie = @game.spellManager.modifySpell new Cookie @game, @caster
-          cookie.affect player
+          cookie.prepareCast player
 
   constructor: (@game, @caster) ->
     super @game, @caster
