@@ -16,9 +16,9 @@ class Levelable extends Achievement
       achieved.push
         name: "Levelable #{toRoman level}"
         desc: "Become level #{currentCheckValue}"
-        reward: "+1 luck"
+        reward: "+1 LUCK"
         luck: -> 1
-        type: "event"
+        type: "progress"
 
       currentCheckValue += levelInterval
 
