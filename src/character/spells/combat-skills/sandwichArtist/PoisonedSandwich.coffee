@@ -22,7 +22,7 @@ class PoisonedSandwich extends Spell
 
   cast: (player) ->
     buff = @game.spellManager.modifySpell new SandwichBuff @game, @caster
-    buff.affect player
+    buff.prepareCast player
     buff.name = "poisoned #{buff.name}"
     @name = buff.name
     damage = @calcDamage()

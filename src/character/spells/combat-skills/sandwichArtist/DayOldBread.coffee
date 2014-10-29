@@ -25,7 +25,7 @@ class DayOldBread extends Spell
 
   cast: (player) ->
     buff = @game.spellManager.modifySpell new SandwichBuff @game, @caster
-    buff.affect player
+    buff.prepareCast player
     buff.name = "day-old #{buff.name}"
     @name = buff.name
     damage = @calcDamage()
