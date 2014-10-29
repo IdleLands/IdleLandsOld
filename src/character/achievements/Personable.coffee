@@ -17,6 +17,7 @@ class Personable extends Achievement
         desc: personality.desc
         reward: "Can now use personality \"#{personality.name}\""
         type: "personality"
+        _personality: personality.name
 
     achieved
 
