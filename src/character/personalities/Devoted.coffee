@@ -8,7 +8,7 @@ class Devoted extends Personality
     -100
 
   @canUse = (player) ->
-    player.statistics["player trainer speak"] >= 10
+    player.statistics["player profession change"] >= 10
 
   @desc = "Change class 10 times"
 
