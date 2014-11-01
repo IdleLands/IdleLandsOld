@@ -5,7 +5,7 @@ router = (require "express").Router()
 router
 
 # string management
-.put "/player/manage/string/add", hasValidToken, (req, res) ->
+.put "/player/manage/string/set", hasValidToken, (req, res) ->
   {identifier, type, msg} = req.body
   API.player.string.set identifier, type, msg
   .then (resp) -> res.json resp
