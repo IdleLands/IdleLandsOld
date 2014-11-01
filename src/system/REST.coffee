@@ -57,6 +57,7 @@ app.use "/", require "./rest-routes/ManageGender"
 app.use "/", require "./rest-routes/ManageInventory"
 app.use "/", require "./rest-routes/ManagePersonality"
 app.use "/", require "./rest-routes/ManagePushbullet"
+app.use "/", require "./rest-routes/ManageString"
 app.use "/", require "./rest-routes/TurnAction"
 
 # error catching
