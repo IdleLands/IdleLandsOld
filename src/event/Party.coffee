@@ -81,7 +81,7 @@ class Party
       else
         message = "<player.name>#{player.name}</player.name> has left <event.partyName>#{@name}</event.partyName>."
 
-      @game.eventHandler.broadcastEvent message, player
+      @game.eventHandler.broadcastEvent {message: message, player: player}
 
     player.party = null
 

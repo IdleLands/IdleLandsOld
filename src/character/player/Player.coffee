@@ -144,7 +144,7 @@ class Player extends Character
       @emit "player.trainer.isAlready", @, className
       @stepCooldown = 10
 
-    @playerManager.game.eventHandler.broadcastEvent message, @
+    @playerManager.game.eventHandler.broadcastEvent {message: message, player: @}
 
     if @professionName isnt className and (chance.bool likelihood: @calc.classChangePercent className)
       @playerManager.game.eventHandler.doYesNo {}, @, (result) =>
@@ -214,7 +214,7 @@ class Player extends Character
     @emit "explore.transfer", @, @map
     @emit "explore.transfer.#{dest.movementType}", @, @map
 
-    @playerManager.game.eventHandler.broadcastEvent message, @
+    @playerManager.game.eventHandler.broadcastEvent {message: message, player: @}
 
     @handleTile @getTileAt() if handleLoc
 
@@ -298,7 +298,7 @@ class Player extends Character
 
     message = "<player.name>#{@name}</player.name> is now a <player.class>#{to}</player.class>!"
 
-    @playerManager.game.eventHandler.broadcastEvent message, @ if not suppress
+    @playerManager.game.eventHandler.broadcastEvent {message: message, player: @} if not suppress
 
     @emit "player.profession.change", @, oldProfessionName, @professionName
 
@@ -370,7 +370,7 @@ class Player extends Character
     @xp.maximum = @levelUpXpCalc @level.getValue()
     @xp.toMinimum()
     @recalculateStats()
-    @playerManager.game.eventHandler.broadcastEvent message, @ if not suppress
+    @playerManager.game.eventHandler.broadcastEvent {message: message, player: @} if not suppress
     @recalcGuildLevel()
     @emit "player.level.up", @
 
@@ -384,6 +384,9 @@ class Player extends Character
   setString: (type, val = '') ->
     @messages = {} if not @messages
     @messages[type] = val.substring 0, 99
+    if not @messages[type]
+      delete @messages[type]
+      return Q {isSuccess: yes, code: 95, message: "Successfully updated your string settings. Removed string type \"#{type}.\""}
     Q {isSuccess: yes, code: 95, message: "Successfully updated your string settings. String \"#{type}\" is now: #{if val then val else 'empty!'}"}
 
   checkAchievements: (silent = no) ->
@@ -402,7 +405,7 @@ class Player extends Character
       @achievements.push achievement
       if not silent
         message = "<player.name>#{@name}</player.name> has achieved <event.achievement>#{achievementName}</event.achievement> (#{achievement.desc} | #{achievement.reward})"
-        @playerManager.game.eventHandler.broadcastEvent message, @ if not silent
+        @playerManager.game.eventHandler.broadcastEvent {message: message, player: @} if not silent
 
     @achievements = achieved
 

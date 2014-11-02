@@ -73,7 +73,8 @@ class EventHandler
       @doEventForPlayer player.name, 'party', doBossBattle
 
   # sendMessage = no implies that you're forwarding the original message to multiple people
-  broadcastEvent: (message, player, extra = {}, sendMessage = yes) ->
+  broadcastEvent: (options) ->
+    {message, player, extra, sendMessage, type} = options
     if sendMessage
       message = MessageCreator.doStringReplace message, player, extra
       @game.broadcast MessageCreator.genericMessage message
@@ -81,24 +82,25 @@ class EventHandler
     stripped = MessageCreator._replaceMessageColors message
 
     player.pushbulletSend stripped
-    @addEventToDb stripped, player
+    @addEventToDb stripped, player, type
 
     message
 
-  addEventToDb: (message, player) ->
+  addEventToDb: (message, player, type) ->
     @playerEventsDb.insert
       createdAt: new Date()
       player: player.name
       message: message
+      type: type
     , ->
 
   doYesNo: (event, player, callback) ->
     #player.emit "yesno"
     if chance.bool {likelihood: player.calculateYesPercent()}
-      (@broadcastEvent event.y, player) if event.y
+      (@broadcastEvent message: event.y, player: player) if event.y
       callback true
     else
-      (@broadcastEvent event.n, player) if event.n
+      (@broadcastEvent message: event.n, player: player) if event.n
       callback false
 
   doXp: (event, player, callback) ->
@@ -134,7 +136,7 @@ class EventHandler
 
     message = "#{event.remark} [%realXpxp, ~%percentXp%]"
 
-    @broadcastEvent message, player, extra
+    @broadcastEvent {message: message, player: player, extra: extra}
 
     player.gainXp boost
 
@@ -187,7 +189,7 @@ class EventHandler
 
     message = event.remark + " [%realGold gold]"
 
-    @broadcastEvent message, player, extra
+    @broadcastEvent {message: message, player: player, extra: extra}
     callback true
 
   doItem: (event, player, callback) ->
@@ -217,7 +219,7 @@ class EventHandler
     string = MessageCreator.doStringReplace event.remark, player, extra
     string += " [<event.blessItem.stat>#{stat}</event.blessItem.stat> <event.blessItem.value>#{start} -> #{end}</event.blessItem.value>]"
 
-    @broadcastEvent string, player
+    @broadcastEvent {message: string, player: player}
     player.emit "event.#{event.type}", player, item, boost
 
     callback true
@@ -241,7 +243,7 @@ class EventHandler
 
     totalString = "#{messageString} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (#{normalizedPerceivedScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
     
-    @broadcastEvent totalString, player, extra
+    @broadcastEvent {message: totalString, player: player, extra: extra}
     player.emit "event.findItem", player, item
 
   doItemEvent: (event, player, item, callback) ->
@@ -281,8 +283,8 @@ class EventHandler
       partyMembers: _.str.toSentence _.pluck newPartyPlayers, 'name'
       partyName: newParty.name
 
-    message = @broadcastEvent event.remark, player, extra
-    _.each newPartyPlayers, (newMember) => @broadcastEvent message, newMember, extra, no
+    message = @broadcastEvent {message: event.remark, player: player, extra: extra}
+    _.each newPartyPlayers, (newMember) => @broadcastEvent {message: message, player: newMember, extra: extra, sendMessage: no}
 
     callback true
 
@@ -318,7 +320,7 @@ class EventHandler
 
     string = "#{event.remark} [<event.enchant.stat>#{stat} = #{boost}</event.enchant.stat> | <event.enchant.boost>+#{item.enchantLevel} -> +#{++item.enchantLevel}</event.enchant.boost>]"
 
-    @broadcastEvent string, player, extra
+    @broadcastEvent {message: string, player: player, extra: extra}
     player.emit "event.enchant", player, item, item.enchantLevel
     
     callback true
@@ -341,7 +343,7 @@ class EventHandler
 
     string = "#{event.remark} [<event.flip.stat>#{stat}</event.flip.stat> <event.flip.value>#{start} -> #{end}</event.flip.value>]"
 
-    @broadcastEvent string, player, extra
+    @broadcastEvent {message: string, player: player, extra: extra}
     player.emit "event.#{event.type}", player, item, stat
 
     callback true
