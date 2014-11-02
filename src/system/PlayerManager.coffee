@@ -267,6 +267,8 @@ class PlayerManager
     player.isBusy = false
     player.loadCalc()
 
+    player.handleGuildStatus()
+
     player.calc.itemFindRange()
 
     if not player.equipment

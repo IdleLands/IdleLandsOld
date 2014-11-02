@@ -13,11 +13,16 @@ class GuildManager
   guildHash: {}
   invites: []
 
+  defer: Q.defer()
+
   constructor: (@game) ->
     @db = new Datastore "guilds", (db) ->
       db.ensureIndex { name: 1 }, { unique: true }, ->
 
     @loadAllGuilds()
+
+  waitForGuild: ->
+    @defer.promise
 
   createGuild: (identifier, name) ->
     defer = Q.defer()
@@ -73,6 +78,8 @@ class GuildManager
         guild.avgLevel()
         @guilds.push guild
         @guildHash[guild.name] = guild
+
+      @defer.resolve()
 
   retrieveAllGuilds: (callback) ->
     @db.find {}, (e, guilds) ->

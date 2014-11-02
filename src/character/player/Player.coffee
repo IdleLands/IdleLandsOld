@@ -63,6 +63,28 @@ class Player extends Character
       _.each res?.devices, (device) ->
         pushbullet.note device.iden, 'IdleLands', message, (e, res) ->
 
+  handleGuildStatus: ->
+
+    if not @guild
+      @guildStatus = -1
+
+    else if @guild
+      gm = @playerManager.game.guildManager
+
+      gm.waitForGuild().then ->
+        guild = gm.guildHash[@guild]
+
+        if guild.leader is @identifier
+          @guildStatus = 2
+          guild.leaderName = @name
+          guild.save()
+
+        else if _.findWhere guild.members, {identifier: @identifier, isAdmin: yes}
+          @guildStatus = 1
+
+        else
+          @guildStatus = 0
+          
   manageOverflow: (option, slot) ->
     defer = Q.defer()
 
