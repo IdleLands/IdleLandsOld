@@ -10,6 +10,6 @@ router
 .post turnTimeout.prevent, hasValidToken, (req, res) ->
   {identifier} = req.body
   API.player.nextAction identifier
-  .then (resp) -> res.json resp
+  .then (resp) -> res.send resp
 
 module.exports = router

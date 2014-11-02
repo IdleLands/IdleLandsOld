@@ -14,8 +14,10 @@ app = express()
 
 bodyParser = require "body-parser"
 cors = require "cors"
+compression = require "compression"
 
 # express config
+app.use compression {threshold: 128}
 app.use cors()
 app.use bodyParser.urlencoded extended: no
 app.use bodyParser.json()
@@ -58,7 +60,9 @@ app.use "/", require "./rest-routes/ManageInventory"
 app.use "/", require "./rest-routes/ManagePersonality"
 app.use "/", require "./rest-routes/ManagePushbullet"
 app.use "/", require "./rest-routes/ManageString"
+app.use "/", require "./rest-routes/Map"
 app.use "/", require "./rest-routes/TurnAction"
+app.use "/img", express.static __dirname + '/../../assets/img'
 
 # error catching
 process.on 'uncaughtException', (e) ->

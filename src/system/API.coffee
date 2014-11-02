@@ -23,6 +23,10 @@ class API
         @gameInstance.registerColors map
       playerLoadHandler: (handler) =>
         @gameInstance.playerManager.registerLoadAllPlayersHandler handler
+    content:
+      map: (mapName) =>
+        console.log mapName
+        @gameInstance.world.maps[mapName]
 
   # Invoked manually to either update or mess with the game
   @gm =
