@@ -75,6 +75,9 @@ class EventHandler
   # sendMessage = no implies that you're forwarding the original message to multiple people
   broadcastEvent: (options) ->
     {message, player, extra, sendMessage, type} = options
+    sendMessage = yes if _.isUndefined sendMessage
+    extra = {} if not extra
+
     if sendMessage
       message = MessageCreator.doStringReplace message, player, extra
       @game.broadcast MessageCreator.genericMessage message
