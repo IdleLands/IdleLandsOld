@@ -87,12 +87,18 @@ class EventHandler
     message
 
   addEventToDb: (message, player, type) ->
-    @playerEventsDb.insert
+
+    event =
       createdAt: new Date()
       player: player.name
       message: message
       type: type
-    , ->
+
+    player.recentEvents = [] if not player.recentEvents
+    player.recentEvents.push event
+    player.recentEvents.shift() if player.recentEvents.length > Constants.defaults.player.maxRecentEvents
+
+    @playerEventsDb.insert event, ->
 
   doYesNo: (event, player, callback) ->
     #player.emit "yesno"
