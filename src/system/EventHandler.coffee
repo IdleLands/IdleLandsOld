@@ -97,10 +97,10 @@ class EventHandler
   doYesNo: (event, player, callback) ->
     #player.emit "yesno"
     if chance.bool {likelihood: player.calculateYesPercent()}
-      (@broadcastEvent message: event.y, player: player) if event.y
+      (@broadcastEvent message: event.y, player: player, type: 'miscellaneous') if event.y
       callback true
     else
-      (@broadcastEvent message: event.n, player: player) if event.n
+      (@broadcastEvent message: event.n, player: player, type: 'miscellaneous') if event.n
       callback false
 
   doXp: (event, player, callback) ->
@@ -136,7 +136,7 @@ class EventHandler
 
     message = "#{event.remark} [%realXpxp, ~%percentXp%]"
 
-    @broadcastEvent {message: message, player: player, extra: extra}
+    @broadcastEvent {message: message, player: player, extra: extra, type: 'exp'}
 
     player.gainXp boost
 
@@ -189,7 +189,7 @@ class EventHandler
 
     message = event.remark + " [%realGold gold]"
 
-    @broadcastEvent {message: message, player: player, extra: extra}
+    @broadcastEvent {message: message, player: player, extra: extra, type: 'gold'}
     callback true
 
   doItem: (event, player, callback) ->
@@ -219,7 +219,7 @@ class EventHandler
     string = MessageCreator.doStringReplace event.remark, player, extra
     string += " [<event.blessItem.stat>#{stat}</event.blessItem.stat> <event.blessItem.value>#{start} -> #{end}</event.blessItem.value>]"
 
-    @broadcastEvent {message: string, player: player}
+    @broadcastEvent {message: string, player: player, type: 'item-mod'}
     player.emit "event.#{event.type}", player, item, boost
 
     callback true
@@ -243,7 +243,7 @@ class EventHandler
 
     totalString = "#{messageString} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (#{normalizedPerceivedScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
     
-    @broadcastEvent {message: totalString, player: player, extra: extra}
+    @broadcastEvent {message: totalString, player: player, extra: extra, type: 'item-find'}
     player.emit "event.findItem", player, item
 
   doItemEvent: (event, player, item, callback) ->
@@ -283,8 +283,8 @@ class EventHandler
       partyMembers: _.str.toSentence _.pluck newPartyPlayers, 'name'
       partyName: newParty.name
 
-    message = @broadcastEvent {message: event.remark, player: player, extra: extra}
-    _.each newPartyPlayers, (newMember) => @broadcastEvent {message: message, player: newMember, extra: extra, sendMessage: no}
+    message = @broadcastEvent {message: event.remark, player: player, extra: extra, type: 'party'}
+    _.each newPartyPlayers, (newMember) => @broadcastEvent {message: message, player: newMember, extra: extra, sendMessage: no, type: 'party'}
 
     callback true
 
@@ -320,7 +320,7 @@ class EventHandler
 
     string = "#{event.remark} [<event.enchant.stat>#{stat} = #{boost}</event.enchant.stat> | <event.enchant.boost>+#{item.enchantLevel} -> +#{++item.enchantLevel}</event.enchant.boost>]"
 
-    @broadcastEvent {message: string, player: player, extra: extra}
+    @broadcastEvent {message: string, player: player, extra: extra, type: 'item-enchant'}
     player.emit "event.enchant", player, item, item.enchantLevel
     
     callback true
@@ -343,7 +343,7 @@ class EventHandler
 
     string = "#{event.remark} [<event.flip.stat>#{stat}</event.flip.stat> <event.flip.value>#{start} -> #{end}</event.flip.value>]"
 
-    @broadcastEvent {message: string, player: player, extra: extra}
+    @broadcastEvent {message: string, player: player, extra: extra, type: 'item-switcheroo'}
     player.emit "event.#{event.type}", player, item, stat
 
     callback true

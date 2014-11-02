@@ -53,7 +53,7 @@ class GuildManager
       guildObject.avgLevel()
 
       message = "%player has founded the guild %guildName!"
-      @game.eventHandler.broadcastEvent {message: message, player: player, extra: {guildName: name}}
+      @game.eventHandler.broadcastEvent {message: message, player: player, extra: {guildName: name}, type: 'guild'}
       defer.resolve {isSuccess: yes, code: 69, message: "You've successfully founded the guild \"#{name}!\""}
 
     defer.promise
