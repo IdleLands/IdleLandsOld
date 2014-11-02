@@ -84,7 +84,7 @@ class Player extends Character
 
         else
           @guildStatus = 0
-          
+
   manageOverflow: (option, slot) ->
     defer = Q.defer()
 

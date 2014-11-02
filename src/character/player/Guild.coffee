@@ -22,6 +22,7 @@ class Guild
     return if player.guild?
     @members.push {identifier: player.identifier, isAdmin: no, name: player.name}
     player.guild = @name
+    player.guildStatus = 0
     player.save()
     @avgLevel()
     Q()
@@ -30,6 +31,7 @@ class Guild
     return -1 if not _.findWhere @members, {identifier: player.identifier}
     @members = _.reject @members, (member) -> member.identifier is player.identifier
     player.guild = null
+    player.guildStatus = -1
     player.save()
     @avgLevel()
 
@@ -41,6 +43,7 @@ class Guild
     return Q {isSuccess: no, code: 51, message: "That member is not in your guild!"} if member.guild isnt @name
 
     member.isAdmin = yes
+    player.guildStatus = 1
     @save()
 
     Q {isSuccess: yes, code: 67, message: "Successfully promoted #{member.name}."}
@@ -53,6 +56,7 @@ class Guild
     return Q {isSuccess: no, code: 51, message: "That member is not in your guild!"} if member.guild isnt @name
 
     member.isAdmin = no
+    player.guildStatus = 0
     @save()
 
     Q {isSuccess: yes, code: 68, message: "Successfully demoted #{member.name}."}
