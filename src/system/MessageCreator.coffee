@@ -24,6 +24,7 @@ class MessageCreator
       "event.item.pro":             defaultReplaceFunction
       "event.item.idle":            defaultReplaceFunction
       "event.item.godly":           defaultReplaceFunction
+      "event.item.custom":           defaultReplaceFunction
       "event.finditem.scoreboost":  defaultReplaceFunction
       "event.finditem.perceived":   defaultReplaceFunction
       "event.finditem.real":        defaultReplaceFunction
