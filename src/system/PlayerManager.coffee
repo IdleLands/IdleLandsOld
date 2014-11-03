@@ -289,7 +289,7 @@ class PlayerManager
     else
       player.rebuildPersonalityList()
 
-    if not player.priorityPoints 
+    if not player.priorityPoints
       player.priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
 
     player.recalculateStats()

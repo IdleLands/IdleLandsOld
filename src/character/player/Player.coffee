@@ -442,7 +442,7 @@ class Player extends Character
     _.reduce @priorityPoints, ((total, stat) -> total + stat), 0
 
   addPriority:  (stat, points, defer) ->
-    if not @priorityPoints 
+    if not @priorityPoints
       @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
     if not (stat in ["dex", "str", "agi", "wis", "con", "int"])
       return defer.resolve {isSuccess: no, code: 103, message: "That stat is invalid."}
