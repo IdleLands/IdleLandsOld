@@ -23,7 +23,7 @@ class PKer extends Achievement
         wis: -> 5
         con: -> 5
         int: -> 5
-        wis: -> 5
+        str: -> 5
         luck: -> 1
         type: "combat"
 
