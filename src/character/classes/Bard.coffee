@@ -25,7 +25,7 @@ class Bard extends Class
     item.con*0.8 -
     item.str*0.8
 
-  physicalAttackChance: -> -20
+  physicalAttackChance: (player) -> if player.party and player.party.players.length > 1 then -20 else 20
 
   minDamage: (player) ->
     player.calc.damage()*0.10
