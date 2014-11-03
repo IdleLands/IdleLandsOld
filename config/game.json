@@ -110,7 +110,9 @@
             "defaultPartyLeavePercent": 0.1,
             "defaultItemFindModifier": 7,
             "maxOverflow": 3,
-            "maxRecentEvents": 10
+            "maxRecentEvents": 10,
+            "priorityTotal": 6,
+            "priorityScale": 0.3
         },
         "api": {
             "autoLogoutTime": 30000
