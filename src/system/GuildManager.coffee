@@ -52,6 +52,7 @@ class GuildManager
       @guildHash[name] = guildObject
       @guilds.push guildObject
       player.guild = name
+      player.handleGuildStatus()
       player.gold.sub goldCost
       player.save()
 
@@ -127,7 +128,7 @@ class GuildManager
     @invites[player.identifier] = []
 
   buildGuildSaveObject: (guild) ->
-    ret = _.omit guild, 'guildManager'
+    ret = _.omit guild, 'guildManager', '_id'
     ret.invites = []
     ret
 
