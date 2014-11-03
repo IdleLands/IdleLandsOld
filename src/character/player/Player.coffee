@@ -33,7 +33,7 @@ class Player extends Character
       @overflow = []
       @lastLogin = new Date()
       @gender = "male"
-
+      @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
       @calc.itemFindRange()
 
   generateBaseEquipment: ->
@@ -430,5 +430,29 @@ class Player extends Character
         @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'achievement'} if not silent
 
     @achievements = achieved
+
+  itemPriority: (item) ->
+    if not @priorityPoints
+      @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
+    ret = 0
+    ret += item[stat]*@priorityPoints[stat]*Constants.defaults.player.priorityScale for stat in ["dex", "str", "agi", "wis", "con", "int"]
+    ret
+
+  priorityTotal: ->
+    _.reduce @priorityPoints, ((total, stat) -> total + stat), 0
+
+  addPriority:  (stat, points, defer) ->
+    if not @priorityPoints
+      @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
+    if not (stat in ["dex", "str", "agi", "wis", "con", "int"])
+      return defer.resolve {isSuccess: no, code: 103, message: "That stat is invalid."}
+    if points > 0 and @priorityTotal() + points > Constants.defaults.player.priorityTotal
+      return defer.resolve {isSuccess: no, code: 104, message: "Not enough priority points remaining."}
+    if points < 0 and @priorityPoints[stat] + points < 0
+      return defer.resolve {isSuccess: no, code: 105, message: "Not enough priority points to remove."}
+    @priorityPoints[stat] += points
+    if points > 0
+      defer.resolve {isSuccess: yes, code: 106, message: "Successfully added #{points} to your #{stat} priority."}
+    else defer.resolve {isSuccess: yes, code: 107, message: "Successfully removed #{-points} from your #{stat} priority."}
 
 module.exports = exports = Player
