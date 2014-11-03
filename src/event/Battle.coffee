@@ -191,7 +191,7 @@ class Battle
 
     critRoll = chance.integer {min: 1, max: 10000}
 
-    if critRoll <= player.calc.criticalChance()
+    if critRoll <= player.calc.criticalChance() and not target.calc.aegis()
       damage = maxDamage
 
     damage = target.calcDamageTaken damage

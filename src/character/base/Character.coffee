@@ -196,6 +196,7 @@ class Character extends EventEmitter2
       stats: (stats) ->
         _.reduce stats, ((prev, stat) => prev+@stat stat), 0
 
+      aegis:    -> 0 < @self.calc.stat 'aegis'
       crit:     -> Math.max 0, @self.calc.stat 'crit'
       dance:    -> 0 < @self.calc.stat 'dance'
       defense:  -> Math.max 0, @self.calc.stat 'defense'
