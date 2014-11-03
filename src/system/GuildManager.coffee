@@ -52,7 +52,7 @@ class GuildManager
       @guildHash[name] = guildObject
       @guilds.push guildObject
       player.guild = name
-      player.handleGuildStatus()
+      player.guildStatus = 2
       player.gold.sub goldCost
       player.save()
 
