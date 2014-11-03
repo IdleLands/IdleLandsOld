@@ -71,19 +71,29 @@ class Player extends Character
     else if @guild
       gm = @playerManager.game.guildManager
 
+      console.error @name, @guild, "access 1"
       gm.waitForGuild().then ->
+        console.error @name, @guild, "access 2"
         guild = gm.guildHash[@guild]
+        console.error @name, @guild, "access 3"
 
         if guild.leader is @identifier
+          console.error @name, @guild, "access 4"
           @guildStatus = 2
           guild.leaderName = @name
           guild.save()
 
         else if _.findWhere guild.members, {identifier: @identifier, isAdmin: yes}
+          console.error @name, @guild, "access 5"
           @guildStatus = 1
 
         else
+          console.error @name, @guild, "access 6"
           @guildStatus = 0
+
+        console.error @name, @guild, "access 7"
+
+      console.error @name, @guild, "access 8"
 
   manageOverflow: (option, slot) ->
     defer = Q.defer()
