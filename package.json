@@ -30,7 +30,7 @@
     "q": "^1.0.1",
     "readdirp": "^1.1.0",
     "require-dir": "^0.1.0",
-    "restricted-number": "https://github.com/seiyria/restricted-number.git",
+    "restricted-number": "https://github.com/seiyria/restricted-number/tarball/master",
     "rimraf": "^2.2.8",
     "underscore": "^1.6.0",
     "underscore.string": "^2.3.3",
