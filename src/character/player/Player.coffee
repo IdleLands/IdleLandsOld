@@ -71,7 +71,7 @@ class Player extends Character
     else if @guild
       gm = @playerManager.game.guildManager
 
-      gm.waitForGuild().then ->
+      gm.waitForGuild().then =>
         guild = gm.guildHash[@guild]
 
         if guild.leader is @identifier
