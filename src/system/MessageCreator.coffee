@@ -85,12 +85,12 @@ class MessageCreator
       when '%himher'
         if gender is 'male' then 'him'
         else if gender is 'female' then 'her'
-        else 'theirs'
+        else 'them'
 
       when '%she'
         if gender is 'male' then 'he'
         else if gender is 'female' then 'she'
-        else 'it'
+        else 'they'
 
   #more types: combat, health, mana, special, announcement, event.gold, event.item, event.xp
 
