@@ -358,7 +358,7 @@ class EventHandler
     callback true
 
   ignoreKeys: ['_calcScore', 'enchantLevel']
-  specialStats: ['offense', 'defense', 'prone', 'power', 'silver', 'crit', 'dance', 'deadeye', 'glowing', 'vorpal']
+  specialStats: ['offense', 'defense', 'prone', 'power', 'silver', 'crit', 'dance', 'deadeye', 'glowing', 'vorpal', 'forsaken', 'sacred', 'aegis']
   t0: ['int', 'str', 'dex', 'con', 'wis', 'agi']
   t1: ['intPercent', 'strPercent', 'conPercent', 'wisPercent', 'agiPercent']
   t2: ['gold', 'xp', 'hp', 'mp']

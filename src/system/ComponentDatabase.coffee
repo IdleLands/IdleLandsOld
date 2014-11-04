@@ -153,6 +153,7 @@ class ComponentDatabase
     monster.class = "Monster" if not monster.class
     monster.level = 1 if not monster.level
     monster.zone = "none" if not monster.zone
+    @addMonsterToList monster
     @monstersDb.insert monster, ->
 
   insertString: (type, string) ->
