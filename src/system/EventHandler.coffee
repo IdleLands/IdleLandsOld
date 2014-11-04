@@ -44,7 +44,7 @@ class EventHandler
           @doFindItem event, player, callback
         when 'party'
           @doParty event, player, callback
-        when 'enchant'
+        when 'enchant', 'tinker'
           @doEnchant event, player, callback
         when 'flipStat'
           @doFlipStat event, player, callback
@@ -316,14 +316,18 @@ class EventHandler
     item = _.sample _.reject player.equipment, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel
 
     return callback false if (not item) or (item.name is "empty")
-    stat = @pickStatNotPresentOnItem item
 
-    boost = 10
+    if event.type is 'enchant'
+      stat = @pickStatNotPresentOnItem item
+      boost = 10
+    else
+      stat = @pickSpecialNotPresentOnItem item
+      boost = 1
 
     extra =
       item: "<event.item.#{item.itemClass}>#{item.getName()}</event.item.#{item.itemClass}>"
 
-    item[stat] += boost
+    item[stat] = boost
 
     item.enchantLevel = 0 if not item.enchantLevel or _.isNaN item.enchantLevel
 
@@ -375,6 +379,10 @@ class EventHandler
   pickStatNotPresentOnItem: (item, base = @allValidStats()) ->
     zeroStats = _.filter (_.keys item), (stat) -> item[stat] is 0
     statsMissing = _.intersection base, zeroStats
+    _.sample statsMissing
+
+  pickSpecialNotPresentOnItem: (item, base = @specialStats) ->
+    statsMissing = _.reject @specialStats, (stat) -> item[stat]?
     _.sample statsMissing
 
   pickValidItem: (player) ->
