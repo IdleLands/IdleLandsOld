@@ -21,11 +21,7 @@ class ComponentDatabase
     @monstersDb = new Datastore "monsters", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @analyticsDb = new Datastore "analytics", ->
 
-    @loadItems()
-    @loadIngredients()
-    @loadGrammar()
-    @loadMonsters()
-    @loadPartyNames()
+    @importAllData()
 
   loadGrammar: ->
     _.each ["nouns", "prepositions", "adjectives", "articles", "conjunctions"], (type) =>

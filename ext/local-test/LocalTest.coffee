@@ -202,4 +202,3 @@ do loadAllPlayers
 do watchIdleFiles
 do gameLoop
 do interactiveSession
-do IdleWrapper.api.gm.data.reload
