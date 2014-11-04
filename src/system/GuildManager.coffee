@@ -42,6 +42,7 @@ class GuildManager
     guildObject = new Guild {name: name, leader: player.identifier}
     guildObject.guildManager = @
     guildObject.__proto__ = Guild.prototype
+    guildObject.leaderName = player.name
     guildObject.members.push {identifier: player.identifier, name: player.name, isAdmin: yes}
     saveObj = @buildGuildSaveObject guildObject
 
