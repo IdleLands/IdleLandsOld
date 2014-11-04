@@ -27,7 +27,9 @@ class Player extends Character
       @x = 10
       @y = 10
       @map = 'Norkos'
-      @changeProfession "Generalist", yes
+
+      norkosClasses = ['Generalist', 'Mage', 'Fighter', 'Cleric']
+      @changeProfession (_.sample norkosClasses), yes
       @levelUp yes
       @generateBaseEquipment()
       @overflow = []
