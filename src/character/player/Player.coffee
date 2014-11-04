@@ -330,12 +330,15 @@ class Player extends Character
     Math.min 100, (Math.max 0, Constants.defaults.player.defaultYesPercent + @personalityReduce 'calculateYesPercentBonus')
 
   getGender: ->
-    if @gender then @gender else "male"
+    if @gender then @gender else "female"
 
   setGender: (newGender) ->
     @gender = newGender.substring 0,9
-    Q {isSuccess: yes, code: 97, message: "Your gender is now #{@gender}."}
+    Q {isSuccess: yes, code: 97, message: "Your gender is now #{if newGender then @gender else "indeterminate"}."}
 
+    
+    
+    
   score: ->
     @calc.partyScore()
 

@@ -36,7 +36,7 @@ app.use bodyParser.json()
 
   /player/manage
 
-  PATCH   /player/manage/gender             | REQUEST: {identifier, gender, token}    | RETURN: {message, isSuccess}
+  PUT   /player/manage/gender/set           | REQUEST: {identifier, gender, token}    | RETURN: {message, isSuccess}
 
   PUT     /player/manage/inventory/add      | REQUEST: {identifier, itemSlot, token}  | RETURN: {message, isSuccess}
   POST    /player/manage/inventory/sell     | REQUEST: {identifier, invSlot,  token}  | RETURN: {message, isSuccess}
@@ -59,6 +59,7 @@ app.use "/", require "./rest-routes/ManageGender"
 app.use "/", require "./rest-routes/ManageInventory"
 app.use "/", require "./rest-routes/ManagePersonality"
 app.use "/", require "./rest-routes/ManagePushbullet"
+app.use "/", require "./rest-routes/ManageGender"
 app.use "/", require "./rest-routes/ManageString"
 app.use "/", require "./rest-routes/Map"
 app.use "/", require "./rest-routes/TurnAction"
