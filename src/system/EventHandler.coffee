@@ -247,8 +247,8 @@ class EventHandler
 
     realScoreDiff = realScore-myRealScore
     perceivedScoreDiff = score-myScore
-    normalizedRealScore = if realScoreDiff > 0 then "+#{realScoreDiff}" else realScoreDiff
-    normalizedPerceivedScore = if perceivedScoreDiff > 0 then "+#{perceivedScoreDiff}" else perceivedScoreDiff
+    normalizedRealScore = Math.round (if realScoreDiff > 0 then "+#{realScoreDiff}" else realScoreDiff)
+    normalizedPerceivedScore = Math.round (if perceivedScoreDiff > 0 then "+#{perceivedScoreDiff}" else perceivedScoreDiff)
 
     totalString = "#{messageString} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (#{normalizedPerceivedScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
     
