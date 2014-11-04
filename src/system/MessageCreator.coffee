@@ -34,6 +34,8 @@ class MessageCreator
       "event.flip.value":           defaultReplaceFunction
       "event.enchant.boost":        defaultReplaceFunction
       "event.enchant.stat":         defaultReplaceFunction
+      "event.tinker.boost":         defaultReplaceFunction
+      "event.tinker.stat":          defaultReplaceFunction
       "event.transfer.destination": defaultReplaceFunction
       "event.transfer.from":        defaultReplaceFunction
       "player.class":               defaultReplaceFunction
