@@ -370,6 +370,9 @@ class PlayerManager
 
         when "event.treasurechest.find"
           addStat arguments[1], 1, "calculated treasure chests found"
+          
+        when "event.flipStat"
+          maxStat "calculated biggest switcharoo", arguments[3]
 
       event = @event.split(".").join " "
       player.statistics[event] = 1 if not (event of player.statistics) or _.isNaN player.statistics[event]

@@ -353,7 +353,7 @@ class EventHandler
     string = "#{event.remark} [<event.flip.stat>#{stat}</event.flip.stat> <event.flip.value>#{start} -> #{end}</event.flip.value>]"
 
     @broadcastEvent {message: string, player: player, extra: extra, type: 'item-switcheroo'}
-    player.emit "event.#{event.type}", player, item, stat
+    player.emit "event.flipStat", player, item, stat, val
 
     callback true
 
