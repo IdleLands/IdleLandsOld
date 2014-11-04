@@ -32,7 +32,7 @@ class Player extends Character
       @generateBaseEquipment()
       @overflow = []
       @lastLogin = new Date()
-      @gender = "male"
+      @gender = "female"
 
       @calc.itemFindRange()
 
