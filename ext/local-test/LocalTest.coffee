@@ -98,6 +98,8 @@ colorMap =
   "event.flip.value":           colors.bold
   "event.enchant.boost":        colors.bold
   "event.enchant.stat":         colors.bold
+  "event.tinker.boost":         colors.bold
+  "event.tinker.stat":          colors.bold
   "event.transfer.destination": colors.bold
   "event.transfer.from":        colors.bold
   "player.class":               colors.bold

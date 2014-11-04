@@ -54,6 +54,8 @@ module.exports = (Module) ->
       "event.flip.value":           c.bold
       "event.enchant.boost":        c.bold
       "event.enchant.stat":         c.bold
+      "event.tinker.boost":         c.bold
+      "event.tinker.stat":          c.bold
       "event.transfer.destination": c.bold
       "event.transfer.from":        c.bold
       "player.class":               c.italic
