@@ -333,7 +333,7 @@ class Player extends Character
     if @gender then @gender else "female"
 
   setGender: (newGender) ->
-    @gender = newGender.substring 0,9
+    @gender = newGender.substring 0,15
     Q {isSuccess: yes, code: 97, message: "Your gender is now #{if newGender then @gender else "indeterminate"}."}
 
     
