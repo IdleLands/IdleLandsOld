@@ -235,20 +235,20 @@ class EventHandler
 
   doItemEquip: (player, item, messageString) ->
     myItem = _.findWhere player.equipment, {type: item.type}
-    score = player.calc.itemScore item
-    myScore = player.calc.itemScore myItem
-    realScore = item.score()
-    myRealScore = myItem.score()
+    score = (player.calc.itemScore item).toFixed 1
+    myScore = (player.calc.itemScore myItem).toFixed 1
+    realScore = item.score().toFixed 1
+    myRealScore = myItem.score().toFixed 1
 
     player.equip item
 
     extra =
       item: "<event.item.#{item.itemClass}>#{item.getName()}</event.item.#{item.itemClass}>"
 
-    realScoreDiff = realScore-myRealScore
-    perceivedScoreDiff = score-myScore
-    normalizedRealScore = Math.round (if realScoreDiff > 0 then "+#{realScoreDiff}" else realScoreDiff)
-    normalizedPerceivedScore = Math.round (if perceivedScoreDiff > 0 then "+#{perceivedScoreDiff}" else perceivedScoreDiff)
+    realScoreDiff = (realScore-myRealScore).toFixed 1
+    perceivedScoreDiff = (score-myScore).toFixed 1
+    normalizedRealScore = if realScoreDiff > 0 then "+#{realScoreDiff}" else realScoreDiff
+    normalizedPerceivedScore = if perceivedScoreDiff > 0 then "+#{perceivedScoreDiff}" else perceivedScoreDiff
 
     totalString = "#{messageString} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (#{normalizedPerceivedScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
     
