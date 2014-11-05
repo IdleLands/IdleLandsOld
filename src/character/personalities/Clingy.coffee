@@ -6,6 +6,8 @@ class Clingy extends Personality
 
   partyLeavePercent: -> -100
 
+  eventModifier: (player, event) -> if event.type is "party" then 100
+
   @canUse = (player) ->
     player.statistics["player party join"] >= 250
 
