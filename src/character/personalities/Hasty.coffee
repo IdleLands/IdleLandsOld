@@ -9,7 +9,7 @@ class Hasty extends Personality
   defense: -> -2
 
   @canUse = (player) ->
-    hoursPlayed = (Math.abs player.registrationDate-(new Date())) / 60 * 60 * 1000
+    hoursPlayed = (Math.abs player.registrationDate.getTime()-Date.now()) / 36e5
     hoursPlayed >= 2
 
   @desc = "Play for 2 hours"
