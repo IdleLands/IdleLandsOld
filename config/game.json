@@ -22,6 +22,11 @@
             "max": 11500
         },
         {
+            "type": "tinker",
+            "min": 1,
+            "max": 18000
+        },
+        {
             "type": "flipStat",
             "min": 1,
             "max": 25000
@@ -110,7 +115,9 @@
             "defaultPartyLeavePercent": 0.1,
             "defaultItemFindModifier": 7,
             "maxOverflow": 3,
-            "maxRecentEvents": 10
+            "maxRecentEvents": 10,
+            "priorityTotal": 6,
+            "priorityScale": 0.3
         },
         "api": {
             "autoLogoutTime": 30000

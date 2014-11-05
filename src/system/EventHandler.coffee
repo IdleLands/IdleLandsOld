@@ -44,7 +44,7 @@ class EventHandler
           @doFindItem event, player, callback
         when 'party'
           @doParty event, player, callback
-        when 'enchant'
+        when 'enchant', 'tinker'
           @doEnchant event, player, callback
         when 'flipStat'
           @doFlipStat event, player, callback
@@ -235,18 +235,18 @@ class EventHandler
 
   doItemEquip: (player, item, messageString) ->
     myItem = _.findWhere player.equipment, {type: item.type}
-    score = player.calc.itemScore item
-    myScore = player.calc.itemScore myItem
-    realScore = item.score()
-    myRealScore = myItem.score()
+    score = (player.calc.itemScore item).toFixed 1
+    myScore = (player.calc.itemScore myItem).toFixed 1
+    realScore = item.score().toFixed 1
+    myRealScore = myItem.score().toFixed 1
 
     player.equip item
 
     extra =
       item: "<event.item.#{item.itemClass}>#{item.getName()}</event.item.#{item.itemClass}>"
 
-    realScoreDiff = realScore-myRealScore
-    perceivedScoreDiff = score-myScore
+    realScoreDiff = (realScore-myRealScore).toFixed 1
+    perceivedScoreDiff = (score-myScore).toFixed 1
     normalizedRealScore = if realScoreDiff > 0 then "+#{realScoreDiff}" else realScoreDiff
     normalizedPerceivedScore = if perceivedScoreDiff > 0 then "+#{perceivedScoreDiff}" else perceivedScoreDiff
 
@@ -316,14 +316,18 @@ class EventHandler
     item = _.sample _.reject player.equipment, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel
 
     return callback false if (not item) or (item.name is "empty")
-    stat = @pickStatNotPresentOnItem item
 
-    boost = 10
+    if event.type is 'enchant'
+      stat = @pickStatNotPresentOnItem item
+      boost = 10
+    else
+      stat = @pickSpecialNotPresentOnItem item
+      boost = 1
 
     extra =
       item: "<event.item.#{item.itemClass}>#{item.getName()}</event.item.#{item.itemClass}>"
 
-    item[stat] += boost
+    item[stat] = boost
 
     item.enchantLevel = 0 if not item.enchantLevel or _.isNaN item.enchantLevel
 
@@ -358,7 +362,7 @@ class EventHandler
     callback true
 
   ignoreKeys: ['_calcScore', 'enchantLevel']
-  specialStats: ['offense', 'defense', 'prone', 'power', 'silver', 'crit', 'dance', 'deadeye', 'glowing', 'vorpal']
+  specialStats: ['offense', 'defense', 'prone', 'power', 'silver', 'crit', 'dance', 'deadeye', 'glowing', 'vorpal', 'forsaken', 'sacred', 'aegis']
   t0: ['int', 'str', 'dex', 'con', 'wis', 'agi']
   t1: ['intPercent', 'strPercent', 'conPercent', 'wisPercent', 'agiPercent']
   t2: ['gold', 'xp', 'hp', 'mp']
@@ -375,6 +379,10 @@ class EventHandler
   pickStatNotPresentOnItem: (item, base = @allValidStats()) ->
     zeroStats = _.filter (_.keys item), (stat) -> item[stat] is 0
     statsMissing = _.intersection base, zeroStats
+    _.sample statsMissing
+
+  pickSpecialNotPresentOnItem: (item, base = @specialStats) ->
+    statsMissing = _.reject @specialStats, (stat) -> item[stat]?
     _.sample statsMissing
 
   pickValidItem: (player) ->

@@ -310,7 +310,7 @@ class Character extends EventEmitter2
 
       itemScore: (item) ->
         baseValue = item.score()
-        Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue
+        (Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue) + @self.itemPriority item
 
       totalItemScore: ->
         _.reduce @self.equipment, ((prev, item) -> prev+item.score()), 0
