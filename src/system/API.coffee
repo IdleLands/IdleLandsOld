@@ -78,10 +78,16 @@ class API
       .then (res) =>
         @gameInstance.nextAction identifier if res.isSuccess
 
-    gender: (identifier, newGender) =>
-      @validateIdentifier identifier
-      .then (res) ->
-        res.player.setGender newGender if res.isSuccess
+    gender:
+      set: (identifier, newGender) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.setGender newGender if res.isSuccess
+
+      remove: (identifier) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.setGender '' if res.isSuccess
 
     auth:
       register: (options) =>
