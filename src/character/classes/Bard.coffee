@@ -4,11 +4,11 @@ MessageCreator = require "../../system/MessageCreator"
 
 class Bard extends Class
 
-  baseHp: 30
+  baseHp: 50
   baseHpPerLevel: 10
   baseHpPerCon: 6
 
-  baseMp: 10
+  baseMp: 100
   baseMpPerLevel: 3
   baseMpPerInt: 5
 

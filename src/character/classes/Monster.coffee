@@ -3,11 +3,11 @@ Class = require "./../base/Class"
 
 class Monster extends Class
 
-  baseHp: 50
+  baseHp: 100
   baseHpPerLevel: 4
   baseHpPerCon: 4
 
-  baseMp: 50
+  baseMp: 100
   baseMpPerLevel: 4
   baseMpPerInt: 4
 

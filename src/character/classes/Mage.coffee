@@ -7,7 +7,7 @@ class Mage extends Class
   baseHpPerLevel: 5
   baseHpPerCon: 4
 
-  baseMp: 10
+  baseMp: 200
   baseMpPerLevel: 4
   baseMpPerInt: 6
 

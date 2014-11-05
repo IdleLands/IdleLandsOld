@@ -3,7 +3,7 @@ Class = require "./../base/Class"
 
 class Rogue extends Class
 
-  baseHp: 30
+  baseHp: 70
   baseHpPerLevel: 10
   baseHpPerCon: 6
 

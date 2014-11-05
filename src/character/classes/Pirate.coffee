@@ -8,7 +8,7 @@ class Pirate extends Class
   baseHpPerLevel: 15
   baseHpPerCon: 10
 
-  baseMp: 10
+  baseMp: 100
   baseMpPerLevel: 3
   baseMpPerInt: 5
 

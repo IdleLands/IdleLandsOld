@@ -3,7 +3,7 @@ Class = require "./../base/Class"
 
 class Fighter extends Class
 
-  baseHp: 70
+  baseHp: 120
   baseHpPerLevel: 20
   baseHpPerCon: 8
 

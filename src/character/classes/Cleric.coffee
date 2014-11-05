@@ -7,7 +7,7 @@ class Cleric extends Class
   baseHpPerLevel: 12
   baseHpPerCon: 5
 
-  baseMp: 8
+  baseMp: 150
   baseMpPerLevel: 3
   baseMpPerInt: 2
 

@@ -7,7 +7,7 @@ class SandwichArtist extends Class
   baseHpPerLevel: 12
   baseHpPerCon: 5
 
-  baseMp: 10
+  baseMp: 100
   baseMpPerLevel: 3
   baseMpPerInt: 5
 
