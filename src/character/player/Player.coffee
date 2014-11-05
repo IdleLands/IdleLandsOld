@@ -34,7 +34,7 @@ class Player extends Character
       @generateBaseEquipment()
       @overflow = []
       @lastLogin = new Date()
-      @gender = "male"
+      @gender = "female"
       @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
       @calc.itemFindRange()
 
@@ -332,12 +332,15 @@ class Player extends Character
     Math.min 100, (Math.max 0, Constants.defaults.player.defaultYesPercent + @personalityReduce 'calculateYesPercentBonus')
 
   getGender: ->
-    if @gender then @gender else "male"
+    if @gender then @gender else "female"
 
   setGender: (newGender) ->
-    @gender = newGender.substring 0,9
-    Q {isSuccess: yes, code: 97, message: "Your gender is now #{@gender}."}
+    @gender = newGender.substring 0,15
+    Q {isSuccess: yes, code: 97, message: "Your gender is now #{if newGender then @gender else "indeterminate"}."}
 
+    
+    
+    
   score: ->
     @calc.partyScore()
 
