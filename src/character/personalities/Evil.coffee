@@ -4,7 +4,7 @@ Personality = require "../base/Personality"
 class Evil extends Personality
   constructor: ->
 
-  alignment: -> -10
+  alignment: -> -5
 
   @canUse = -> yes
 
