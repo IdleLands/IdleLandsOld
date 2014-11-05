@@ -111,7 +111,7 @@ class PlayerManager
         code: 18
         message: "Successful login. Welcome back to #{Constants.gameName}, #{player.name}!"
         token: player.tempSecureToken
-        player: @buildPlayerSaveObject player
+        player: player.buildRESTObject()
 
     defer.promise
 
@@ -135,7 +135,7 @@ class PlayerManager
 
   loginWithPassword: (identifier, password) ->
 
-    return Q {isSuccess: no, code: 15, message: "You're already logged in elsewhere!", player: @buildPlayerSaveObject @playerHash[identifier]} if @playerHash[identifier]
+    return Q {isSuccess: no, code: 15, message: "You're already logged in elsewhere!", player: @playerHash[identifier].buildRESTObject()} if @playerHash[identifier]
 
     @checkPassword identifier, password
     .then (res) =>
@@ -221,8 +221,7 @@ class PlayerManager
     player = @playerHash[identifier].takeTurn()
     @handleAutoLogout player
 
-    playerData = @buildPlayerSaveObject player
-    Q {isSuccess: yes, code: 102, message: "Turn taken.", player: playerData}
+    Q {isSuccess: yes, code: 102, message: "Turn taken.", player: player.buildRESTObject()}
 
   registerLoadAllPlayersHandler: (@playerLoadHandler) ->
     console.log "Registered AllPlayerLoad handler."

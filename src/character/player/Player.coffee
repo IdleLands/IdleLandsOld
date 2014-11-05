@@ -387,6 +387,9 @@ class Player extends Character
 
     @levelUp() if @xp.atMax()
 
+  buildRESTObject: ->
+    @playerManager.buildPlayerSaveObject @
+
   levelUp: (suppress = no) ->
     return if not @playerManager or @level.getValue() is @level.maximum
     @level.add 1
