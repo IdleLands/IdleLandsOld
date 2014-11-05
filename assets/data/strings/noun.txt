@@ -21,6 +21,7 @@ Darkness
 Death
 Donuts
 Drillers
+Dungeoneers
 Gamblers
 Escapers
 Explorers
@@ -50,10 +51,12 @@ Laboratories
 Ladykillers
 Lollerskaters
 Maids
+Maeles
 Masters
 Meerkats
 Narwhals
 Nazis
+Norkos
 Numberphiles
 Officers
 Pacifists
@@ -67,6 +70,9 @@ Representatives
 Roflcopters
 Rustlers
 Ruses
+Sheep
+Shepards
+Servants
 SexManiacs
 Singularity
 Sprockets
@@ -83,6 +89,7 @@ Trolls
 Tryhards
 Twats
 Water
+Waterloo
 Watchers
 Weenies
 Whales

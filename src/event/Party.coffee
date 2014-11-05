@@ -21,32 +21,8 @@ class Party
   getPartyName: ->
     if @players.length > 1 then @name else @players[0].name
 
-  genNullPartyName: ->
-    "The Null Party #{chance.integer min: 1, max: 1000}"
-
   pickPartyName: ->
-    return @genNullPartyName() if not Party::partyGrammar?
-    format = _.sample Party::partyGrammar
-    return @genNullPartyName() if not format?
-    arr =  format.split(" ")
-    _.str.clean (_.reduce arr, (sentence, word) ->
-      repl = null
-      switch (word.trim())
-        when '%noun%'
-          repl = _.sample Party::nouns
-        when '%preposition%'
-          repl = _.sample Party::prepositions
-        when '%article%'
-          repl = _.sample Party::articles
-        when '%adjective%'
-          repl = _.sample Party::adjectives
-        when '%conjunction%'
-          repl = _.sample Party::conjunctions
-        else
-          repl = word.trim()
-      sentence.push(repl?.trim())
-      return sentence
-    ,[]).join(" ").trim()
+    @game.componentDatabase.generateStringFromGrammar _.sample @game.componentDatabase.generatorCache.partyGrammar
 
   addGlobally: ->
     if not @game.parties

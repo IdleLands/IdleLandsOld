@@ -178,7 +178,7 @@ interactiveSession = ->
         result.then? (res) -> broadcast res.message
         variables['lc'] = line if result?
       catch error
-        console.error error.stack
+        console.error error
       
       cli.prompt()
   

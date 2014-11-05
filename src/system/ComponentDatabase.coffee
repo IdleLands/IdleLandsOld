@@ -12,44 +12,31 @@ class ComponentDatabase
   itemStats: {}
   ingredientStats: {}
   monsters: []
+  generatorCache: {}
 
   constructor: (@game) ->
     @eventsDb = new Datastore "events", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @itemsDb = new Datastore "items", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @ingredientsDb = new Datastore "items", (db) -> db.ensureIndex {random: '2dsphere'}, ->
-    @stringsDb = new Datastore "strings", (db) -> db.ensureIndex {random: '2dsphere'}, ->
-    @monstersDb = new Datastore "monsters", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @analyticsDb = new Datastore "analytics", ->
 
     @importAllData()
 
-  loadGrammar: ->
-    _.each ["nouns", "prepositions", "adjectives", "articles", "conjunctions"], (type) =>
-      @stringsDb.find
-        type: type
-      , (e, docs) ->
-        console.log e if e
-        Party::[type] = _.pluck docs, 'data'
+  generateStringFromGrammar: (grammar) ->
+    grammarPieces = grammar.split " "
+    _.map grammarPieces, (piece) =>
+      return piece if not _.str.include piece, "%"
+      item = _.str.trim piece, "%"
+      _.sample @generatorCache[item]
+    .join " "
 
-  loadPartyNames: ->
-    @stringsDb.find
-      type: "party"
-    , (e, docs) ->
-      console.log e if e
-      Party::partyNames = _.pluck docs, 'data'
-    @stringsDb.find
-      type: "partyGrammar"
-    , (e, docs) ->
-      console.log e if e
-      Party::partyGrammar = _.pluck docs, 'data'
+  _parseInitialArgs: (string) ->
+    return [] if (_.str.isBlank string) or _.str.contains string, "#"
+    string = _.str.clean string
+    [string.split("\"")[1], string.split("\"")[2]?.trim()]
 
-  parseMonsterString: (str) ->
-    return if (_.str.isBlank str) or _.str.contains str, "#"
-    str = _.str.clean str
-    [name, parameters] = [str.split("\"")[1], str.split("\"")[2]?.trim()]
-    return if not parameters
-
-    parameters = _.map (parameters.split ' '), (item) ->
+  _parseParameters: (baseObj, parameters) ->
+    _.map (parameters.split ' '), (item) ->
       arr = item.split '='
       retval = {}
       testVal = parseInt arr[1]
@@ -57,43 +44,33 @@ class ComponentDatabase
       retval
     .reduce (cur, prev) ->
       _.extend prev, cur
-    , { name: name }
+    , baseObj
+
+  parseMonsterString: (str) ->
+    return if not _.str.contains str, "level"
+
+    [name, parameters] = @_parseInitialArgs str
+    return if not parameters
+
+    parameters = @_parseParameters {name: name}, parameters
 
     @insertMonster parameters
 
   parseItemString: (str, type, retObj = no) ->
-    return if (_.str.isBlank str) or _.str.contains str, "#"
-    str = _.str.clean str
-    [name, parameters] = [str.split("\"")[1], str.split("\"")[2]?.trim()]
+    [name, parameters] = @_parseInitialArgs str
     return if not parameters
 
-    parameters = _.map (parameters.split ' '), (item) ->
-      arr = item.split '='
-      retval = {}
-      retval[arr[0]] = (parseInt arr[1]) ? null
-      retval
-    .reduce (cur, prev) ->
-      _.extend prev, cur
-    , { name: name, type: type }
+    parameters = @_parseParameters { name: name, type: type }, parameters
 
     return parameters if retObj
 
-    @insertItem parameters, ->
+    @insertItem parameters
 
   parseIngredientString: (str, type) ->
-    return if (_.str.isBlank str) or _.str.contains str, "#"
-    str = _.str.clean str
-    [name, parameters] = [str.split("\"")[1], str.split("\"")[2]?.trim()]
+    [name, parameters] = @_parseInitialArgs str
     return if not parameters
 
-    parameters = _.map (parameters.split ' '), (item) ->
-      arr = item.split '='
-      retval = {}
-      retval[arr[0]] = (parseInt arr[1]) ? null
-      retval
-    .reduce (cur, prev) ->
-      _.extend prev, cur
-    , { name: name, type: type }
+    parameters = @_parseParameters { name: name, type: type }, parameters
 
     @insertIngredient parameters, ->
 
@@ -101,52 +78,42 @@ class ComponentDatabase
     @itemsDb.remove {}, {}, ->
     @ingredientsDb.remove {}, {}, ->
     @eventsDb.remove {}, {}, ->
-    @stringsDb.remove {}, {}, ->
-    @monstersDb.remove {}, {}, ->
 
-    itemstream = readdirp {root: "#{__dirname}/../../assets/data/items", fileFilter: "*.txt"}
-    itemstream
-    .on "warn", (e) -> console.log "importAllData warning: #{e}"
-    .on "error", (e) -> console.log "importAllData error: #{e}"
-    .on "data", (entry) =>
+    stream = (path, callback) ->
+      objStream = readdirp {root: path, fileFilter: "*.txt"}
+      objStream
+      .on "warn", (e) -> console.log "importAllData warning: #{e}"
+      .on "error", (e) -> console.log "importAllData error: #{e}"
+      .on "data", callback
+
+    basePath = "#{__dirname}/../../assets/data"
+
+    me = @
+
+    stream "#{basePath}/items", (entry) ->
       type = entry.name.split(".")[0]
-      fs.readFile entry.fullPath, {}, (e, data) =>
-        _.each data.toString().split("\n"), (line) => @parseItemString line, type
+      fs.readFile entry.fullPath, {}, (e, data) ->
+        _.each data.toString().split("\n"), (line) -> me.parseItemString line, type
 
-    ingredientstream = readdirp {root: "#{__dirname}/../../assets/data/ingredients", fileFilter: "*.txt"}
-    ingredientstream
-    .on "warn", (e) -> console.log "importAllData warning: #{e}"
-    .on "error", (e) -> console.log "importAllData error: #{e}"
-    .on "data", (entry) =>
+    stream "#{basePath}/ingredients", (entry) ->
       type = entry.name.split(".")[0]
-      fs.readFile entry.fullPath, {}, (e, data) =>
-        _.each data.toString().split("\n"), (line) => @parseIngredientString line, type
+      fs.readFile entry.fullPath, {}, (e, data) ->
+        _.each data.toString().split("\n"), (line) -> me.parseIngredientString line, type
 
-    eventstream = readdirp {root: "#{__dirname}/../../assets/data/events", fileFilter: "*.txt"}
-    eventstream
-    .on "warn", (e) -> console.log "importAllData warning: #{e}"
-    .on "error", (e) -> console.log "importAllData error: #{e}"
-    .on "data", (entry) =>
+    stream "#{basePath}/events", (entry) ->
       type = entry.name.split(".")[0]
-      fs.readFile entry.fullPath, {}, (e, data) =>
-        _.each data.toString().split("\n"), (line) => @insertStatic type, line
+      fs.readFile entry.fullPath, {}, (e, data) ->
+        _.each data.toString().split("\n"), (line) -> me.insertStatic type, line
 
-    stringstream = readdirp {root: "#{__dirname}/../../assets/data/strings", fileFilter: "*.txt"}
-    stringstream
-    .on "warn", (e) -> console.log "importAllData warning: #{e}"
-    .on "error", (e) -> console.log "importAllData error: #{e}"
-    .on "data", (entry) =>
+    stream "#{basePath}/strings", (entry) ->
       type = entry.name.split(".")[0]
-      fs.readFile entry.fullPath, {}, (e, data) =>
-        _.each data.toString().split("\n"), (line) => @insertString type, line
+      fs.readFile entry.fullPath, {}, (e, data) ->
+        _.each data.toString().split("\n"), (line) -> me.insertString type, line
 
-    monsterstream = readdirp {root: "#{__dirname}/../../assets/data/monsters", fileFilter: "*.txt"}
-    monsterstream
-    .on "warn", (e) -> console.log "importAllData warning: #{e}"
-    .on "error", (e) -> console.log "importAllData error: #{e}"
-    .on "data", (entry) =>
-      fs.readFile entry.fullPath, {}, (e, data) =>
-        _.each data.toString().split("\n"), (line) => @parseMonsterString line
+    stream "#{basePath}/monsters/", (entry) ->
+      fs.readFile entry.fullPath, {}, (e, data) ->
+        arr = data.toString().split("\n")
+        _.each arr, (line) -> me.parseMonsterString line
 
   insertMonster: (monster) ->
     monster.random = [Math.random(), 0]
@@ -154,24 +121,11 @@ class ComponentDatabase
     monster.level = 1 if not monster.level
     monster.zone = "none" if not monster.zone
     @addMonsterToList monster
-    @monstersDb.insert monster, ->
 
   insertString: (type, string) ->
     return if not string
-    @stringsDb.insert
-      type: type
-      data: string
-      random: [Math.random(), 0]
-    , ->
-
-  insertYesNo: (question, y, n) ->
-    @eventsDb.insert
-      type: 'yesno'
-      question: question
-      y: y
-      n: n
-      random: [Math.random(), 0]
-    , ->
+    @generatorCache[type] = [] if not @generatorCache[type]
+    @generatorCache[type].push string
 
   insertStatic: (type, remark) ->
     return if not remark
@@ -185,12 +139,14 @@ class ComponentDatabase
     copy = _.extend {}, object
     delete copy.name
     query = [ copy, {name: object.name} ]
-    @itemsDb.findOne { $or: query }, (e, doc) =>
+    @ingredientsDb.findOne { $or: query }, (e, doc) =>
 
       if doc?.name is object.name
         duplicateCallback {name: doc.name}
+        console.error "DUPLICATE INGREDIENT NAME: #{doc.name}"
         return
       else if doc
+        console.error "DUPLICATE INGREDIENT STATS: #{doc.name}"
         duplicateCallback {stats: true}
         return
 
@@ -203,17 +159,17 @@ class ComponentDatabase
     object.random = [Math.random(), 0]
     @itemsDb.insert object, ->
 
-  insertItem: (object, duplicateCallback) ->
+  insertItem: (object) ->
     copy = _.extend {}, object
     delete copy.name
     query = [ copy, {name: object.name} ]
     @itemsDb.findOne { $or: query }, (e, doc) =>
 
       if doc?.name is object.name
-        duplicateCallback {name: doc.name}
+        console.error "DUPLICATE ITEM NAME: #{doc.name}"
         return
       else if doc
-        duplicateCallback {stats: true}
+        console.error "DUPLICATE ITEM STATS: #{doc.name}"
         return
 
       @addItem object
@@ -235,18 +191,6 @@ class ComponentDatabase
             coordinates: [Math.random(), 0]
     , callback
 
-  findEvent: (query, callback) ->
-    @eventsDb.findOne query, callback
-
-  removeEvent: (id, callback) ->
-    @eventsDb.remove
-      _id: ObjectID id
-    , callback
-
-  loadItems: ->
-    @itemsDb.find {}, (e, docs) =>
-      _.forEach docs, @addItemToHash.bind @
-
   addItemToHash: (object) ->
     copy = _.extend {}, object
 
@@ -255,10 +199,6 @@ class ComponentDatabase
 
     @itemStats[copy.type].push copy
 
-  loadIngredients: ->
-    @ingredientsDb.find {}, (e, docs) =>
-      _.forEach docs, @addIngredientToHash.bind @
-
   addIngredientToHash: (object) ->
     copy = _.extend {}, object
 
@@ -266,10 +206,6 @@ class ComponentDatabase
       @ingredientStats[copy.type] = []
 
     @ingredientStats[copy.type].push copy
-
-  loadMonsters: ->
-    @monstersDb.find {}, (e, docs) =>
-      _.each docs, @addMonsterToList.bind @
 
   addMonsterToList: (monster) ->
     @monsters.push monster

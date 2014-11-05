@@ -1,0 +1,4 @@
+The %adjective% %battleTitle% %preposition% %noun%
+The %battleTitle% %preposition% %noun%
+The %adjective% %battleTitle% %preposition% %article% %noun%
+The %battleTitle% %preposition% %article% %noun%
