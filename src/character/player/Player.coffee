@@ -107,6 +107,8 @@ class Player extends Character
         @sellOverflow slot, defer
         cleanOverflow()
 
+    @recalculateStats()
+
     defer.promise
 
   forceIntoOverflow: (item) ->
