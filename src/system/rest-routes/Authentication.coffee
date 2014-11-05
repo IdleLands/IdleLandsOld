@@ -1,6 +1,7 @@
 hasValidToken = require "./HasValidToken"
 API = require "../API"
 charCreateTimeout = require("./Brutes").CharCreateTimer
+loginRequestTimeout = require("./Brutes").LoginRequestTimer
 
 router = (require "express").Router()
 
@@ -21,7 +22,7 @@ router
   .then (resp) -> res.json resp
 
 # login
-.post "/player/auth/login", (req, res) ->
+.post "/player/auth/login", loginRequestTimeout, (req, res) ->
   {identifier, password} = req.body
   API.player.auth.loginWithPassword identifier, password
   .then (resp) -> res.json resp

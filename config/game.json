@@ -120,7 +120,7 @@
             "priorityScale": 0.3
         },
         "api": {
-            "autoLogoutTime": 30000
+            "autoLogoutTime": 60000
         }
     }
 }
