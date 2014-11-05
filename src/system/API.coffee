@@ -146,6 +146,7 @@ class API
         @validateIdentifier identifier
         .then (res) ->
           res.player.addPriority stat, points if res.isSuccess
+
       remove: (identifier, stat, points) =>
         @validateIdentifier identifier
         .then (res) ->

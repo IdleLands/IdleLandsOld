@@ -365,6 +365,19 @@ module.exports = (Module) ->
       @addRoute "idle-pushbullet :action(set) :string", pushbulletFunc
       @addRoute "idle-pushbullet :action(remove)", pushbulletFunc
 
+      @addRoute "idle-priority :action(add|remove) :stat :points", (origin, route) =>
+        [bot, action, stat, points] = [origin.bot, route.params.action, route.params.stat, route.params.points]
+        bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to change your priority settings!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.priority[action] identifier, stat, points)
+          .then (res) =>
+            @reply origin, res.message
+
       @addRoute "idle-add all-data", "idle.game.owner", (origin, route) =>
         @reply origin, "Re-initializing all modifier/event/etc data from disk."
         @IdleWrapper.api.gm.data.reload()

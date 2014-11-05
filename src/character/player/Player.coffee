@@ -443,18 +443,30 @@ class Player extends Character
   priorityTotal: ->
     _.reduce @priorityPoints, ((total, stat) -> total + stat), 0
 
-  addPriority:  (stat, points, defer) ->
+  addPriority:  (stat, points) ->
     if not @priorityPoints
       @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
+
+    points = if _.isNumber points then points else parseInt points
+    points = Math.round points
+
+    if points is 0
+      return Q {isSuccess: no, code: 110, message: "You didn't specify a valid priority point amount."}
+
     if not (stat in ["dex", "str", "agi", "wis", "con", "int"])
-      return defer.resolve {isSuccess: no, code: 103, message: "That stat is invalid."}
+      return Q {isSuccess: no, code: 111, message: "That stat is invalid."}
+
     if points > 0 and @priorityTotal() + points > Constants.defaults.player.priorityTotal
-      return defer.resolve {isSuccess: no, code: 104, message: "Not enough priority points remaining."}
+      return Q {isSuccess: no, code: 112, message: "Not enough priority points remaining."}
+
     if points < 0 and @priorityPoints[stat] + points < 0
-      return defer.resolve {isSuccess: no, code: 105, message: "Not enough priority points to remove."}
+      return Q {isSuccess: no, code: 112, message: "Not enough priority points to remove."}
+
     @priorityPoints[stat] += points
     if points > 0
-      defer.resolve {isSuccess: yes, code: 106, message: "Successfully added #{points} to your #{stat} priority."}
-    else defer.resolve {isSuccess: yes, code: 107, message: "Successfully removed #{-points} from your #{stat} priority."}
+      return Q {isSuccess: yes, code: 113, message: "Successfully added #{points} to your #{stat} priority."}
+
+    else
+      return Q {isSuccess: yes, code: 113, message: "Successfully removed #{-points} from your #{stat} priority."}
 
 module.exports = exports = Player
