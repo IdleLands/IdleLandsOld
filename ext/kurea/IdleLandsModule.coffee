@@ -396,7 +396,7 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          @IdleWrapper.api.player.gender identifier, gender
+          @IdleWrapper.api.player.gender.set identifier, gender
           .then (ret) =>
             @reply origin, ret.message
 
