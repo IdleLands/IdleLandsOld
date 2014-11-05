@@ -113,6 +113,7 @@
 "strange goo"               zone=cave level=1 str=1 agi=-1 wis=-2
 "space anemone"             zone=cave level=20 str=300 agi=-200 int=-500
 "tiny alien"                zone=cave class=Rogue level=28 str=200 agi=300 dex=240 int=400
+"group of lizards in a trenchcoat" zone=cave class=Jester level=50 luck=1000
 
 # undead entities
 "olde zombie"               zone=town level=5 int=-10 str=-10 dex=-10 con=-10 agi=-10 wis=10
