@@ -147,6 +147,16 @@ class API
         .then (res) ->
           res.player.removePersonality personality if res.isSuccess
 
+    priority:
+      add: (identifier, stat, points) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.addPriority stat, points if res.isSuccess
+      remove: (identifier, stat, points) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.addPriority stat, -points if res.isSuccess
+
     pushbullet:
       set: (identifier, apiKey) =>
         @validateIdentifier identifier
