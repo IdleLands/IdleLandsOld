@@ -7,8 +7,8 @@ class Chaotic extends Personality
   alignment: -> -10
 
   @canUse = (player) ->
-    daysPlayed = (Math.abs player.registrationDate.getTime()-Date.now()) / 24 * 36e5
-    daysPlayed >= 7
+    hoursPlayed = (Math.abs player.registrationDate.getTime()-Date.now()) / 36e5
+    hoursPlayed >= (7 * 24)
 
   @desc = "Play for 1 week"
 
