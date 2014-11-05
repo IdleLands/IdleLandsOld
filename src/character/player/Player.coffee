@@ -34,7 +34,7 @@ class Player extends Character
       @generateBaseEquipment()
       @overflow = []
       @lastLogin = new Date()
-      @gender = "female"
+      @gender = "male"
       @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
       @calc.itemFindRange()
 
@@ -130,7 +130,7 @@ class Player extends Character
     @overflow.push currentItem
     @equipment = _.without @equipment, currentItem
     @equipment.push new Equipment {type: slot, name: "empty"}
-    defer.resolve {isSuccess: yes, code: 45, message: "Successfully added #{currentItem.name} to your inventory."}
+    defer.resolve {isSuccess: yes, code: 45, message: "Successfully added #{currentItem.name} to your inventory in slot #{@overflow.length-1}.", player: @buildRESTObject()}
 
   swapOverflow: (slot, defer) ->
     if not @overflow[slot]
@@ -144,7 +144,7 @@ class Player extends Character
 
     @overflow[slot] = current
 
-    defer.resolve {isSuccess: yes, code: 47, message: "Successfully swapped #{current.name} with #{inOverflow.name} (slot #{slot})."}
+    defer.resolve {isSuccess: yes, code: 47, message: "Successfully swapped #{current.name} with #{inOverflow.name} (slot #{slot}).", player: @buildRESTObject()}
 
   sellOverflow: (slot, defer) ->
     curItem = @overflow[slot]
@@ -155,7 +155,7 @@ class Player extends Character
     @gainGold salePrice
 
     @overflow[slot] = null
-    defer.resolve {isSuccess: yes, code: 46, message: "Successfully sold #{curItem.name} for #{salePrice} gold."}
+    defer.resolve {isSuccess: yes, code: 46, message: "Successfully sold #{curItem.name} for #{salePrice} gold.", player: @buildRESTObject()}
 
   handleTrainerOnTile: (tile) ->
     return if @isBusy or @stepCooldown > 0
@@ -332,15 +332,12 @@ class Player extends Character
     Math.min 100, (Math.max 0, Constants.defaults.player.defaultYesPercent + @personalityReduce 'calculateYesPercentBonus')
 
   getGender: ->
-    if @gender then @gender else "female"
+    if @gender then @gender else "male"
 
   setGender: (newGender) ->
-    @gender = newGender.substring 0,15
-    Q {isSuccess: yes, code: 97, message: "Your gender is now #{if newGender then @gender else "indeterminate"}."}
+    @gender = newGender.substring 0,9
+    Q {isSuccess: yes, code: 97, message: "Your gender is now #{@gender}."}
 
-    
-    
-    
   score: ->
     @calc.partyScore()
 
