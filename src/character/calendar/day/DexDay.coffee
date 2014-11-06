@@ -5,7 +5,7 @@ class DexDay extends TimePeriod
 
   constructor: ->
   
-  @name = "Day of Dexterity"
+  @dateName = "Day of Dexterity"
   @desc = "5% dex boost"
 
   @dexPercent: -> 5

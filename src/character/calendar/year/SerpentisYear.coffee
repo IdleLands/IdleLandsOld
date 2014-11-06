@@ -5,7 +5,7 @@ class SerpentisYear extends TimePeriod
 
   constructor: ->
   
-  @name = "Year of Serpentis"
+  @dateName = "Year of Serpentis"
   @desc = "Water and Physical boost"
 
   @water: -> 200

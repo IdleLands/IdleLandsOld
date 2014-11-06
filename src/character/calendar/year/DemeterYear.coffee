@@ -5,7 +5,7 @@ class DemeterYear extends TimePeriod
 
   constructor: ->
 
-  @name = "Year of Demeter"
+  @dateName = "Year of Demeter"
   @desc = "Heal and Earth boost"
   
   @heal: -> 200

@@ -5,7 +5,7 @@ class LuckDay extends TimePeriod
 
   constructor: ->
   
-  @name = "Day of Luck"
+  @dateName = "Day of Luck"
   @desc = "5% luck boost"
 
   @luckPercent: -> 5

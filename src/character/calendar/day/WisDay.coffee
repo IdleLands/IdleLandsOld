@@ -5,7 +5,7 @@ class WisDay extends TimePeriod
 
   constructor: ->
   
-  @name = "Day of Wisdom"
+  @dateName = "Day of Wisdom"
   @desc = "5% wis boost"
 
   @wisPercent: -> 5

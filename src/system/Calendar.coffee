@@ -20,7 +20,6 @@ class Calendar
       days = 525 + days
     @date[2] += days
     @date = @cleanDate @date
-    @dateEffects = getDateEffects()
 
   cleanDate: (date) ->
     if date[2] > 14
@@ -43,5 +42,9 @@ Calendar::getDateEffects = ->
     timePeriods.month["#{@monthOrder[@date[1]]}Month"],
     timePeriods.day["#{@dayOrder[@date[2]]}Day"]
   ]
+
+Calendar::getDateName = ->
+  date = @getDateEffects()
+  "#{date[0].dateName}, #{date[1].dateName}, #{date[2].dateName}"
 
 module.exports = exports = Calendar

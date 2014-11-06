@@ -5,7 +5,7 @@ class HephaestusMonth extends TimePeriod
 
   constructor: ->
   
-  @name = "Month of Hephaestus"
+  @dateName = "Month of Hephaestus"
   @desc = "Fire boost"
 
   @fire: -> 50

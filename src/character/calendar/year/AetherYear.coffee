@@ -5,7 +5,7 @@ class AetherYear extends TimePeriod
 
   constructor: ->
   
-  @name = "Year of Aether"
+  @dateName = "Year of Aether"
   @desc = "Energy and Thunder boost"
 
   @energy: -> 200

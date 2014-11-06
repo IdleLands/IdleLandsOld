@@ -5,7 +5,7 @@ class EarthDay extends TimePeriod
 
   constructor: ->
   
-  @name = "Day of the Earth"
+  @dateName = "Day of the Earth"
   @desc = "Boost to all elemental magic"
 
   @fire: -> 25

@@ -5,7 +5,7 @@ class UranusYear extends TimePeriod
 
   constructor: ->
 
-  @name = "Year of Uranus"
+  @dateName = "Year of Uranus"
   @desc = "Ice and holy boost"
   
   @ice: -> 200

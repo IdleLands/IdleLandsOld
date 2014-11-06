@@ -5,7 +5,7 @@ class EvilDay extends TimePeriod
 
   constructor: ->
   
-  @name = "Day of Evil"
+  @dateName = "Day of Evil"
   @desc = "Stat boost for evil-aligned characters"
 
   @dexPercent: (character) -> -character.calc.alignment()

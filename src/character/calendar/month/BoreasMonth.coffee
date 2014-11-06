@@ -5,7 +5,7 @@ class BoreasMonth extends TimePeriod
 
   constructor: ->
   
-  @name = "Month of Boreas"
+  @dateName = "Month of Boreas"
   @desc = "Ice boost"
 
   @ice: -> 50

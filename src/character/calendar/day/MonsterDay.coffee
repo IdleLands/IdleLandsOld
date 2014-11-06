@@ -5,7 +5,7 @@ class MonsterDay extends TimePeriod
 
   constructor: ->
   
-  @name = "Day of Monsters"
+  @dateName = "Day of Monsters"
   @desc = "10% boost to monster stats"
 
   @dexPercent: (character) -> 10 if not character.playerManager

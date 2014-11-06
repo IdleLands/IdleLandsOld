@@ -5,7 +5,7 @@ class GaiaMonth extends TimePeriod
 
   constructor: ->
   
-  @name = "Month of Gaia"
+  @dateName = "Month of Gaia"
   @desc = "Earth boost"
 
   @earth: -> 50

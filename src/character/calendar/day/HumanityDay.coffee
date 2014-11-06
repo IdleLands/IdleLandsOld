@@ -5,7 +5,7 @@ class HumanityDay extends TimePeriod
 
   constructor: ->
   
-  @name = "Day of Humanity"
+  @dateName = "Day of Humanity"
   @desc = "10% boost to player stats"
 
   @dexPercent: (character) -> 10 if character.playerManager

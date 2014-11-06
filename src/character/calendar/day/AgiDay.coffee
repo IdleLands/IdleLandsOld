@@ -5,7 +5,7 @@ class AgiDay extends TimePeriod
 
   constructor: ->
   
-  @name = "Day of Agility"
+  @dateName = "Day of Agility"
   @desc = "5% agi boost"
 
   @agiPercent: -> 5

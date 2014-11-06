@@ -5,7 +5,7 @@ class ZeusMonth extends TimePeriod
 
   constructor: ->
   
-  @name = "Month of Zeus"
+  @dateName = "Month of Zeus"
   @desc = "Physical boost"
 
   @physical: -> 50

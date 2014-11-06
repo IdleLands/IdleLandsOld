@@ -5,7 +5,7 @@ class CronoMonth extends TimePeriod
 
   constructor: ->
   
-  @name = "Month of Crono"
+  @dateName = "Month of Crono"
   @desc = "Healing boost"
 
   @heal: -> 50

@@ -5,7 +5,7 @@ class CharismaDay extends TimePeriod
 
   constructor: ->
   
-  @name = "Day of Charisma"
+  @dateName = "Day of Charisma"
   @desc = "15% shop price reduction"
 
   @shopPercent: -> -15

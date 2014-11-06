@@ -5,7 +5,7 @@ class HermesMonth extends TimePeriod
 
   constructor: ->
   
-  @name = "Month of Hermes"
+  @dateName = "Month of Hermes"
   @desc = "Thunder boost"
 
   @thunder: -> 50

@@ -5,7 +5,7 @@ class StrDay extends TimePeriod
 
   constructor: ->
   
-  @name = "Day of Strength"
+  @dateName = "Day of Strength"
   @desc = "5% str boost"
 
   @strPercent: -> 5

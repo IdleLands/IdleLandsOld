@@ -5,7 +5,7 @@ class GoodDay extends TimePeriod
 
   constructor: ->
   
-  @name = "Day of Good"
+  @dateName = "Day of Good"
   @desc = "Stat boost for good-aligned characters"
 
   @dexPercent: (character) -> character.calc.alignment()

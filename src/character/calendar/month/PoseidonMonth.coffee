@@ -5,7 +5,7 @@ class PoseidonMonth extends TimePeriod
 
   constructor: ->
   
-  @name = "Month of Poseidon"
+  @dateName = "Month of Poseidon"
   @desc = "Water boost"
 
   @water: -> 50
