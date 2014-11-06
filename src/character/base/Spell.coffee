@@ -190,7 +190,7 @@ class Spell
       casterName: @caster.name
 
     newMessage = MessageCreator.doStringReplace message, @caster, extra
-    @game.broadcast MessageCreator.genericMessage newMessage+" [<spell.turns>#{@turns[target.name]}</spell.turns> turns]" if (@turns[target.name] > 0 and @turns[target.name] isnt @baseTurns[target.name]) and (not @suppressed)
+    @game.currentBattle?.broadcast newMessage+" [<spell.turns>#{@turns[target.name]}</spell.turns> turns]" if (@turns[target.name] > 0 and @turns[target.name] isnt @baseTurns[target.name]) and (not @suppressed)
 
   broadcast: (target, message) ->
     extra =
@@ -199,7 +199,7 @@ class Spell
       casterName: @caster.name
 
     newMessage = MessageCreator.doStringReplace message, @caster, extra
-    @game.broadcast MessageCreator.genericMessage newMessage if not @suppressed and not target.fled
+    @game.currentBattle?.broadcast  newMessage if not @suppressed and not target.fled
 
   constructor: (@game, @caster, @forcedTargets = null) ->
     @baseName = @name
@@ -210,7 +210,7 @@ class Spell
 
     premsg = @caster.messages?[@__proto__.constructor.name]
     message = "<#{@caster.name}> #{premsg}"
-    @broadcast @caster, message if premsg
+    @game.currentBattle?.broadcast @caster, message if premsg
 
     console.error "ERROR NO CASTER FOR #{@name}" if not @caster
 

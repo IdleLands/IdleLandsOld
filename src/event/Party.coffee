@@ -22,7 +22,7 @@ class Party
     if @players.length > 1 then @name else @players[0].name
 
   pickPartyName: ->
-    @game.componentDatabase.generateStringFromGrammar _.sample @game.componentDatabase.generatorCache.partyGrammar
+    @game.componentDatabase.generatePartyName()
 
   addGlobally: ->
     if not @game.parties

@@ -97,8 +97,8 @@ class MessageCreator
 
   #more types: combat, health, mana, special, announcement, event.gold, event.item, event.xp
 
-  @doStringReplace: (string, player, extra = {}) ->
-    gender = player.getGender()
+  @doStringReplace: (string, player = {}, extra = {}) ->
+    gender = player?.getGender()
     string = _.str.clean string
 
     (string = string.split("%#{key}").join (if key is "item" then val else "<event.#{key}>#{val}</event.#{key}>")) for key, val of extra

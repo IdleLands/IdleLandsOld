@@ -1,6 +1,7 @@
 
 MessageCreator = require "../system/MessageCreator"
 Player = require "../character/player/Player"
+BattleCache = require "./BattleCache"
 
 _ = require "underscore"
 _.str = require "underscore.string"
@@ -20,6 +21,8 @@ class Battle
 
     return if @isBad
 
+    @battleCache = new BattleCache @game, @parties
+    @game.currentBattle = @
     @initializePlayers()
     @beginTakingTurns()
 
@@ -95,6 +98,11 @@ class Battle
     _.map @parties, (party) =>
       "#{(@getAllPlayersInPartyStatStrings party).join ', '}"
 
+  broadcast: (message, player = {}) ->
+    @battleCache.addMessage message
+    message = MessageCreator.genericMessage message, player
+    @game.broadcast message
+
   playersAlive: ->
     parties = _.uniq _.pluck @turnOrder, 'party'
     aliveParties = _.reduce parties, (alive, party) ->
@@ -112,7 +120,7 @@ class Battle
       @turnPosition = @turnPosition or 0
 
       if @turnPosition is 0
-        @game.broadcast MessageCreator.genericMessage "ROUND STATUS: #{@getAllStatStrings().join ' VS '}"
+        @broadcast "ROUND STATUS: #{@getAllStatStrings().join ' VS '}"
         @emitEventToAll "round.start", @turnOrder
 
       @emitEventToAll "turn.start", player
@@ -129,11 +137,11 @@ class Battle
     return if player.hp.atMin() or player.fled
     if player.calc.cantAct() > 0
       affectingCauses = player.calc.cantActMessages()
-      @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace "#{_.str.toSentence affectingCauses}!", player
+      @broadcast "#{_.str.toSentence affectingCauses}!", player
       return
 
     if chance.bool {likelihood: player.calc.fleePercent()}
-      @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace "<player.name>#{player.name}</player.name> has fled from combat!", player
+      @broadcast "<player.name>#{player.name}</player.name> has fled from combat!", player
       player.fled = true
       @emitEventToAll "flee", player
       return
@@ -154,18 +162,18 @@ class Battle
 
     return if not target
 
+    battleMessage = (message, player) =>
+      @broadcast MessageCreator.doStringReplace message, player
+
     message = "<player.name>#{player.name}</player.name> is #{if isCounter then "COUNTER-" else ""}attacking <player.name>#{target.name}</player.name>"
 
     [dodgeMin, dodgeMax] = [-target.calc.dodge(), player.calc.beatDodge()]
 
     dodgeChance = chance.integer {min: dodgeMin, max: Math.max dodgeMin+1, dodgeMax}
 
-    sendBattleMessage = (message, player) =>
-      @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace message, player
-
     if dodgeChance <= 0
       message += ", but <player.name>#{target.name}</player.name> dodged!"
-      sendBattleMessage message, target
+      battleMessage message, target
       @emitEvents "dodge", "dodged", target, player
       return
 
@@ -175,14 +183,14 @@ class Battle
 
     if -(target.calc.stat 'luck') <= hitChance <= 0
       message += ", but <player.name>#{player.name}</player.name> missed!"
-      sendBattleMessage message, target
+      battleMessage message, target
       @emitEvents "miss", "missed", player, target
       return
 
     if hitChance < -(target.calc.stat 'luck')
       deflectItem = _.sample target.equipment
       message += ", but <player.name>#{target.name}</player.name> deflected it with %hisher <event.item.#{deflectItem.itemClass}>#{deflectItem.getName()}</event.item.#{deflectItem.itemClass}>!"
-      sendBattleMessage message, target
+      battleMessage message, target
       @emitEvents "deflect", "deflected", target, player
       return
 
@@ -213,7 +221,7 @@ class Battle
     else
       message += "!"
 
-    sendBattleMessage message, player
+    battleMessage message, player
 
     @emitEvents "target", "targeted", player, target
     @emitEvents "attack", "attacked", player, target
@@ -250,7 +258,7 @@ class Battle
     @emitEventToAll "battle.end", @turnOrder
     randomWinningPlayer = _.sample(_.filter @turnOrder, (player) -> (not player.hp.atMin()) and (not player.fled))
     if not randomWinningPlayer
-      @game.broadcast MessageCreator.genericMessage "Everyone died! The battle was a tie! You get nothing!"
+      @broadcast "Everyone died! The battle was a tie! You get nothing!"
       @cleanUp()
       return
 
@@ -263,10 +271,13 @@ class Battle
     @emitEventsTo "party.lose", @losingPlayers, @winningParty.players
     @emitEventsTo "party.win",  @winningParty.players, @losingPlayers
 
-    @game.broadcast MessageCreator.genericMessage "The battle was won by <event.partyName>#{winnerName}</event.partyName>."
+    @broadcast "The battle was won by <event.partyName>#{winnerName}</event.partyName>."
 
     @divvyXp()
     @cleanUp()
+
+    @battleCache.finalize()
+    @game.currentBattle = null
 
   divvyXp: ->
     deadVariables = {}
@@ -297,7 +308,7 @@ class Battle
 
       xpMap[player] = xpGain
 
-    @game.broadcast MessageCreator.genericMessage (_.str.toSentence winMessages)+"!" if winMessages.length > 0
+    @broadcast (_.str.toSentence winMessages)+"!" if winMessages.length > 0
 
     _.each @winningParty.players, (player) ->
       player.gainXp xpMap[player]
@@ -316,7 +327,7 @@ class Battle
         player.gainGold goldGain
         winMessages.push "<player.name>#{player.name}</player.name> gained <event.gold>#{goldGain}</event.gold> gold"
 
-    @game.broadcast MessageCreator.genericMessage (_.str.toSentence winMessages)+"!" if winMessages.length > 0
+    @broadcast (_.str.toSentence winMessages)+"!" if winMessages.length > 0
 
     # end winning
 
@@ -334,7 +345,7 @@ class Battle
       loseMessages.push "<player.name>#{player.name}</player.name> lost <event.xp>#{xpLoss}</event.xp>xp [<event.xp>#{pct}</event.xp>%]"
       xpMap[player] = xpLoss
 
-    @game.broadcast MessageCreator.genericMessage (_.str.toSentence loseMessages)+"!" if loseMessages.length > 0
+    @broadcast (_.str.toSentence loseMessages)+"!" if loseMessages.length > 0
 
     _.each deadVariables.deadPlayers, (player) ->
       player.gainXp -xpMap[player]
@@ -353,7 +364,7 @@ class Battle
         player.gainGold -goldLoss
         loseMessages.push "<player.name>#{player.name}</player.name> lost <event.gold>#{goldLoss}</event.gold> gold"
 
-    @game.broadcast MessageCreator.genericMessage (_.str.toSentence loseMessages)+"!" if loseMessages.length > 0
+    @broadcast (_.str.toSentence loseMessages)+"!" if loseMessages.length > 0
 
     # end losing
 
@@ -399,7 +410,7 @@ class Battle
       damage: Math.abs damage
 
     message = MessageCreator.doStringReplace message, attacker, extra
-    @game.broadcast MessageCreator.genericMessage message if message and typeof message is "string"
+    @broadcast message if message and typeof message is "string"
 
   emitEventToAll: (event, data) ->
     _.forEach @turnOrder, (player) ->

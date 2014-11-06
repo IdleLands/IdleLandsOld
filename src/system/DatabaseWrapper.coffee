@@ -81,9 +81,9 @@ class DatabaseWrapper
         docs.forEach (doc) ->
           callback e, doc
 
-  ensureIndex: (data, callback) =>
+  ensureIndex: (data, index) =>
     Q.when @databaseReady, =>
-      @db.ensureIndex data, callback
+      @db.ensureIndex data, index, ->
 
   aggregate: (query, callback) =>
     if databaseEngine is 'mongo'

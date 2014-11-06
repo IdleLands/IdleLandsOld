@@ -18,9 +18,19 @@ class ComponentDatabase
     @eventsDb = new Datastore "events", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @itemsDb = new Datastore "items", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @ingredientsDb = new Datastore "items", (db) -> db.ensureIndex {random: '2dsphere'}, ->
+    @battleDb = new Datastore "battles", (db) -> db.ensureIndex {started: 1}, {expireAfterSeconds: 7200}, ->
     @analyticsDb = new Datastore "analytics", ->
 
     @importAllData()
+
+  insertBattle: (battle) ->
+    @battleDb.insert battle, ->
+
+  generatePartyName: ->
+    @generateStringFromGrammar _.sample @generatorCache.partyGrammar
+
+  generateBattleName: ->
+    @generateStringFromGrammar _.sample @generatorCache.battleGrammar
 
   generateStringFromGrammar: (grammar) ->
     grammarPieces = grammar.split " "
