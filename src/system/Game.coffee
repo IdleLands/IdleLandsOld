@@ -10,6 +10,7 @@ EquipmentGenerator = require "./EquipmentGenerator"
 SandwichGenerator = require "./SandwichGenerator"
 ShopGenerator = require "./ShopGenerator"
 GlobalEventHandler = require "./GlobalEventHandler"
+Calendar = require "./Calendar"
 BossFactory = require "../event/BossFactory"
 TreasureFactory = require "../event/TreasureFactory"
 SpellManager = require "./SpellManager"
@@ -36,6 +37,7 @@ class Game
     @guildManager = new GuildManager @
     @componentDatabase = new ComponentDatabase @
     @globalEventHandler = new GlobalEventHandler @
+    @calendar = new Calendar @
     @equipmentGenerator = new EquipmentGenerator @
     @monsterGenerator = new MonsterGenerator @
     @achievementManager = new AchievementManager @
