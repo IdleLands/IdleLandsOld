@@ -49,6 +49,8 @@ class MonsterGenerator extends Generator
 
     (monster._addPersonality pers, Personality::getPersonality pers) for pers in newPersonalities
 
+    monster.calendar = @game.calendar
+
     monster
 
   generateMonsterAtScore: (targetScore = 100, tolerance = 0.1) ->
