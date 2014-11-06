@@ -1,4 +1,4 @@
-There's a huge sale at Ceiling-Mart, annamed %player is invited, for only %shopGold gold! Buy now!
+There's a huge sale at Ceiling-Mart, and %player is invited, for only %shopGold gold! Buy now!
 Their little-known Aunt Sally finally sent %player their birthday present - but it's only a coupon! The item still costs %shopGold gold.
 %player travels to the secret shop in order to grab a new, shiny piece of loot. They'll need to fork up %shopGold gold for it.
 Using some high explosives, %player blows up a crack in the wall and finds an old man within a hidden cave! Buy somethin', will ya, for %shopGold gold!
