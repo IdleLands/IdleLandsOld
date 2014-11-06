@@ -3,12 +3,15 @@ Personality = require "../base/Personality"
 Constants = require "../../system/Constants"
 _ = require "underscore"
 
+slay = (player, enemies) ->
+  targets = _.filter enemies, (enemy) -> enemy.professionName in Constants.classCategorization.medic
+  { probability: 300, result: targets }
+
 class MedicSlayer extends Personality
   constructor: ->
 
-  physicalAttackTargets: (player, enemies) ->
-    targets = _.filter enemies, (enemy) -> enemy.professionName in Constants.classCategorization.medic
-    { probability: 300, result: targets }
+  physicalAttackTargets: slay
+  magicalAttackTargets: slay
 
   @canUse = (player) ->
 
