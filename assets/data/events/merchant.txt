@@ -1,9 +1,9 @@
-There's a huge sale at Ceiling-Mart, and %player is invited, for only %shopGold gold! Buy now!
+There's a huge sale at Ceiling-Mart, annamed %player is invited, for only %shopGold gold! Buy now!
 Their little-known Aunt Sally finally sent %player their birthday present - but it's only a coupon! The item still costs %shopGold gold.
 %player travels to the secret shop in order to grab a new, shiny piece of loot. They'll need to fork up %shopGold gold for it.
 Using some high explosives, %player blows up a crack in the wall and finds an old man within a hidden cave! Buy somethin', will ya, for %shopGold gold!
 %player goes down to the drugstore. There aren't any drugs, but there is a fancy-looking item for %shopGold gold.
 %player runs into a money-grubbing raccoon, who offers them a powerful item, at the "low" cost of %shopGold gold. What a "deal"!
 The TV's showing off a sweet-looking item! %player better pick up the phone in the next ten minutes, the price is just %shopGold gold!
-A new store's opened near by, but all they accept is beans. %playername doesn't have any beans, but they could exchange %shopGold gold for just enough to get that sweet new item!
+A new store's opened near by, but all they accept is beans. %player doesn't have any beans, but they could exchange %shopGold gold for just enough to get that sweet new item!
 %player's stopped by a road-side food stand. Not only do they have great burgers, but they're even selling some equipment for %shopGold gold!
