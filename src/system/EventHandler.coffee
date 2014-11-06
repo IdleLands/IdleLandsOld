@@ -42,6 +42,8 @@ class EventHandler
           @doItem event, player, callback
         when 'findItem'
           @doFindItem event, player, callback
+        when 'merchant'
+          @doMerchant event, player, callback
         when 'party'
           @doParty event, player, callback
         when 'enchant', 'tinker'
@@ -273,6 +275,34 @@ class EventHandler
       value = Math.floor item.score() * multiplier
       player.gainGold value
       player.emit "player.sellItem", player, item, value
+      callback false
+
+  doMerchant: (event, player, callback) ->
+    shop = @game.shopGenerator.generateShop player
+    extra =
+      item: "<event.item.#{shop.item.itemClass}>#{shop.item.getName()}</event.item.#{shop.item.itemClass}>"
+      gold: player.gold.getValue()
+      shopGold: shop.price
+    string = MessageCreator.doStringReplace event.remark, player, extra
+    @broadcastEvent {message: string, player: player, type: 'shop'}
+
+    myItem = _.findWhere player.equipment, {type: shop.item.type}
+    return callback false if not myItem
+    score = player.calc.itemScore shop.item
+    myScore = player.calc.itemScore myItem
+
+    if player.gold.getValue() < shop.price
+      string = MessageCreator.doStringReplace "Unfortunately, %player only has %gold gold, and walked away in disappointment.", player, extra
+      @broadcastEvent {message: string, player: player, type: 'shop-fail'}
+      callback false
+    else if score > myScore
+      string = MessageCreator.doStringReplace "%player gladly buys %item for %shopGold gold! What a deal!", player, extra
+      @doItemEquip player, shop.item, string
+      player.gold.sub shop.price
+      callback true
+    else
+      string = MessageCreator.doStringReplace "However, %player decides that %item is useless and leaves in a huff!", player, extra
+      @broadcastEvent {message: string, player: player, type: 'shop-fail'}
       callback false
 
   doFindItem: (event, player, callback) ->

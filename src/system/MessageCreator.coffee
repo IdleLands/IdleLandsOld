@@ -15,6 +15,7 @@ class MessageCreator
       "event.damage":               defaultReplaceFunction
       "event.gold":                 defaultReplaceFunction
       "event.realGold":             defaultReplaceFunction
+      "event.shopGold":             defaultReplaceFunction
       "event.xp":                   defaultReplaceFunction
       "event.realXp":               defaultReplaceFunction
       "event.percentXp":            defaultReplaceFunction
