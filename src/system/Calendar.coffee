@@ -1,8 +1,6 @@
 
 requireDir = require "require-dir"
 timePeriods = requireDir "../character/calendar", recurse: yes
-#month = requireDir "../character/calendar/month"
-#day = requireDir "../character/calendar/day"
 
 _ = require "underscore"
 
