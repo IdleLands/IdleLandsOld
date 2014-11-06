@@ -10,8 +10,8 @@ class Calendar
     @date = [0, 0, 0]
     @yearOrder = ['Aether', 'Hades', 'Demeter', 'Serpentis', 'Uranus']
     @monthOrder = ['Hephaestus', 'Boreas', 'Crono', 'Poseidon', 'Hermes', 'Gaia', 'Zeus']
-    @dayOrder = ['Str', 'Earth', 'Humanity', 'Evil', 'Monster',
-                 'Good', 'Int', 'Luck', 'Dex', 'Monster',
+    @dayOrder = ['Str', 'Earth', 'Humanity', 'Evil', 'Charisma',
+                 'Good', 'Int', 'Monster', 'Luck', 'Dex', 
                  'Agi', 'Calamity', 'Wis', 'Con', 'Monster']
 
   advance: (days) ->
