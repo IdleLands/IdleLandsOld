@@ -6,7 +6,7 @@ class HadesYear extends TimePeriod
   constructor: ->
 
   @dateName = "Year of Hades"
-  @desc = "Fire and Dark boost"  
+  @desc = "Fire and Dark boost"
 
   @fire: -> 200
   @firePercent: -> 14
