@@ -19,7 +19,7 @@
         {
             "type": "merchant",
             "min": 1,
-            "max": 5000
+            "max": 3000
         },
         {
             "type": "enchant",
