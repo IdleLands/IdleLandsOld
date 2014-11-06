@@ -8,6 +8,7 @@ MessageCreator = require "./MessageCreator"
 ComponentDatabase = require "./ComponentDatabase"
 EquipmentGenerator = require "./EquipmentGenerator"
 SandwichGenerator = require "./SandwichGenerator"
+ShopGenerator = require "./ShopGenerator"
 GlobalEventHandler = require "./GlobalEventHandler"
 BossFactory = require "../event/BossFactory"
 TreasureFactory = require "../event/TreasureFactory"
@@ -39,6 +40,7 @@ class Game
     @monsterGenerator = new MonsterGenerator @
     @achievementManager = new AchievementManager @
     @sandwichGenerator = new SandwichGenerator @
+    @shopGenerator = new ShopGenerator @
     @bossFactory = new BossFactory @
     @treasureFactory = new TreasureFactory @
     @world = new World()

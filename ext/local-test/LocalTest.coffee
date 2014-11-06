@@ -79,6 +79,7 @@ colorMap =
   "event.damage":               colors.red
   "event.gold":                 colors.yellowBright
   "event.realGold":             colors.yellowBright
+  "event.shopGold":             colors.yellowBright
   "event.xp":                   colors.green
   "event.realXp":               colors.green
   "event.percentXp":            colors.green
