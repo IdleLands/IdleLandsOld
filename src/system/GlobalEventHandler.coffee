@@ -25,6 +25,9 @@ class GlobalEventHandler
       when 'cataclysm'
         do @doCataclysm
 
+      when 'advanceDate'
+        do @doAdvanceDate
+
     callback true
 
   doBattle: ->
@@ -35,5 +38,9 @@ class GlobalEventHandler
   doCataclysm: ->
     cata = new cataclysms[_.sample _.keys cataclysms] @game
     do cata.go
+
+  doAdvanceDate: ->
+    @game.calendar.advance 1
+    @game.broadcast "It is now the #{@game.calendar.getDateName()}."
 
 module.exports = exports = GlobalEventHandler

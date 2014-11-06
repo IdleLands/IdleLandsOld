@@ -8,6 +8,10 @@
         {
             "type": "cataclysm",
             "duration": 4800
+        },
+        {
+            "type": "advanceDate",
+            "duration": 600
         }
     ],
     "eventRates": [

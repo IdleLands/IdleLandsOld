@@ -5,6 +5,7 @@ _ = require "underscore"
 Q = require "q"
 Personality = require "./Personality"
 Constants = require "../../system/Constants"
+Calendar = require "../../system/Calendar"
 
 class Character extends EventEmitter2
 
@@ -65,6 +66,8 @@ class Character extends EventEmitter2
     .concat @personalities ? []
     .concat @spellsAffectedBy ? []
     .concat @achievements ? []
+    .concat @playerManager?.game.calendar.getDateEffects()
+    .concat @calendar?.game.calendar.getDateEffects()
 
     _.reduce array, (combined, iter) ->
       applied = if _.isFunction iter?[appFunctionName] then iter?[appFunctionName]?.apply iter, args else iter?[appFunctionName]
