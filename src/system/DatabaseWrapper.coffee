@@ -48,7 +48,7 @@ class DatabaseWrapper
   remove: (query, options, callback) =>
     Q.when @databaseReady, =>
       if databaseEngine is 'mongo'
-        @db.remove query, {w:0}
+        @db.remove query, {w:0}, callback
       else
         @db.remove query, options, callback
 

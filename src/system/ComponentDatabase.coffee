@@ -94,9 +94,27 @@ class ComponentDatabase
     @insertIngredient parameters, ->
 
   importAllData: ->
+
+    basePath = "#{__dirname}/../../assets/data"
+    me = @
+
     @itemsDb.remove {}, {}, ->
+      stream "#{basePath}/items", (entry) ->
+        type = entry.name.split(".")[0]
+        fs.readFile entry.fullPath, {}, (e, data) ->
+          _.each data.toString().split("\n"), (line) -> me.parseItemString line, type
+
     @ingredientsDb.remove {}, {}, ->
+      stream "#{basePath}/ingredients", (entry) ->
+        type = entry.name.split(".")[0]
+        fs.readFile entry.fullPath, {}, (e, data) ->
+          _.each data.toString().split("\n"), (line) -> me.parseIngredientString line, type
+
     @eventsDb.remove {}, {}, ->
+      stream "#{basePath}/events", (entry) ->
+        type = entry.name.split(".")[0]
+        fs.readFile entry.fullPath, {}, (e, data) ->
+          _.each data.toString().split("\n"), (line) -> me.insertStatic type, line
 
     stream = (path, callback) ->
       objStream = readdirp {root: path, fileFilter: "*.txt"}
@@ -104,25 +122,6 @@ class ComponentDatabase
       .on "warn", (e) -> console.log "importAllData warning: #{e}"
       .on "error", (e) -> console.log "importAllData error: #{e}"
       .on "data", callback
-
-    basePath = "#{__dirname}/../../assets/data"
-
-    me = @
-
-    stream "#{basePath}/items", (entry) ->
-      type = entry.name.split(".")[0]
-      fs.readFile entry.fullPath, {}, (e, data) ->
-        _.each data.toString().split("\n"), (line) -> me.parseItemString line, type
-
-    stream "#{basePath}/ingredients", (entry) ->
-      type = entry.name.split(".")[0]
-      fs.readFile entry.fullPath, {}, (e, data) ->
-        _.each data.toString().split("\n"), (line) -> me.parseIngredientString line, type
-
-    stream "#{basePath}/events", (entry) ->
-      type = entry.name.split(".")[0]
-      fs.readFile entry.fullPath, {}, (e, data) ->
-        _.each data.toString().split("\n"), (line) -> me.insertStatic type, line
 
     stream "#{basePath}/strings", (entry) ->
       type = entry.name.split(".")[0]
@@ -162,10 +161,10 @@ class ComponentDatabase
 
       if doc?.name is object.name
         duplicateCallback {name: doc.name}
-        #console.error "DUPLICATE INGREDIENT NAME: #{doc.name}"
+        console.error "DUPLICATE INGREDIENT NAME: #{doc.name}"
         return
       else if doc
-        #console.error "DUPLICATE INGREDIENT STATS: #{doc.name}"
+        console.error "DUPLICATE INGREDIENT STATS: #{doc.name}"
         duplicateCallback {stats: true}
         return
 
@@ -185,10 +184,10 @@ class ComponentDatabase
     @itemsDb.findOne { $or: query }, (e, doc) =>
 
       if doc?.name is object.name
-        #console.error "DUPLICATE ITEM NAME: #{doc.name}"
+        console.error "DUPLICATE ITEM NAME: #{doc.name}"
         return
       else if doc
-        #console.error "DUPLICATE ITEM STATS: #{doc.name}"
+        console.error "DUPLICATE ITEM STATS: #{doc.name}"
         return
 
       @addItem object
