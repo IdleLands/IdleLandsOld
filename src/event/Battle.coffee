@@ -137,7 +137,8 @@ class Battle
     return if player.hp.atMin() or player.fled
     if player.calc.cantAct() > 0
       affectingCauses = player.calc.cantActMessages()
-      @broadcast "#{_.str.toSentence affectingCauses}!", player
+      message = MessageCreator.doStringReplace "#{_.str.toSentence affectingCauses}!", player
+      @broadcast message
       return
 
     if chance.bool {likelihood: player.calc.fleePercent()}
