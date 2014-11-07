@@ -7,6 +7,8 @@ router
 .route "/game/battle"
 .post (req, res) ->
   {battleId} = req.body
-  res.json API.game.content.battle battleId
+  API.game.content.battle battleId
+  .then (resp) ->
+    res.json resp
 
 module.exports = router
