@@ -148,7 +148,6 @@ interactiveSession = ->
   readline = require 'readline'
 
   cli = readline.createInterface process.stdin, process.stdout, null
-  variables = {}
 
   cli.on 'line', (line) ->
     clearInterval interval
