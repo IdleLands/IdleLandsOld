@@ -185,10 +185,10 @@ class ComponentDatabase
     @itemsDb.findOne { $or: query }, (e, doc) =>
 
       if doc?.name is object.name
-        console.error "DUPLICATE ITEM NAME: #{doc.name}"
+        #console.error "DUPLICATE ITEM NAME: #{doc.name}"
         return
       else if doc
-        console.error "DUPLICATE ITEM STATS: #{doc.name}"
+        #console.error "DUPLICATE ITEM STATS: #{doc.name}"
         return
 
       @addItem object
