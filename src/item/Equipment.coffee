@@ -4,7 +4,7 @@ class Equipment
 
   constructor: (options) ->
     _.extend @, _.defaults options, Equipment.defaults
-    @_baseScore = @score()
+    @_baseScore = ~~@score()
     @foundAt = new Date()
     @itemClass = options.itemClass if options.itemClass
     #console.error "ERROR in equipment constructor, name=#{@name}, type=#{@type}" if not @name or not @type
@@ -12,10 +12,10 @@ class Equipment
   score: ->
     ret = 0
     for attr, mult of Equipment.multipliers
-      ret += @[attr]*mult if attr of @
+      ret += @[attr]*mult if attr of @ and @[attr]
 
     ret = parseInt ret
-    @_calcScore = ret
+    ~~@_calcScore = ret
 
   getName: ->
     if @enchantLevel then "+#{@enchantLevel} #{@name}" else @name
