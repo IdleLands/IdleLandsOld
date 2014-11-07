@@ -20,14 +20,17 @@ class Constants
     tank: ['Fighter', 'Barbarian', 'Pirate']
     dps: ['Mage', 'Rogue']
 
-  @pickRandomNormalEvent = ->
-    _.sample @eventRates
+  @pickRandomNormalEvent = (player) ->
+    if player.party
+      _.sample @eventRates
+    else
+      _.sample (_.reject @eventRates, (event) -> event.party?)
 
-  @pickRandomNormalEventType = ->
-    @pickRandomNormalEvent().type
+  @pickRandomNormalEventType = (player) ->
+    @pickRandomNormalEvent(player).type
 
   @pickRandomEvent = (player) ->
-    event = @pickRandomNormalEvent()
+    event = @pickRandomNormalEvent player
     eventMod = player.calc.eventModifier event
     prob = (chance.integer {min: 0, max: event.max})
     return event.type if prob <= (event.min+eventMod+(Math.max 1, player.calc.luckBonus()))

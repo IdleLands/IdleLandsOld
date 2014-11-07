@@ -16,8 +16,9 @@ class EventHandler
   constructor: (@game) ->
     @playerEventsDb = new Datastore "playerEvents", (db) -> db.ensureIndex {createdAt: 1}, {expiresAfterSeconds: 7200}, ->
 
-  doEventForPlayer: (playerName, eventType = Constants.pickRandomNormalEventType(), callback) ->
+  doEventForPlayer: (playerName, eventType = null, callback) ->
     player = @game.playerManager.getPlayerByName playerName
+    eventType = Constants.pickRandomNormalEventType(player) if not eventType
     if not player
       console.error "Attempting to do event #{eventType} for #{playerName}, but player was not there."
       return callback?()
@@ -36,8 +37,12 @@ class EventHandler
           @doYesNo event, player, callback
         when 'blessXp', 'forsakeXp'
           @doXp event, player, callback
+        when 'blessXpParty'
+          @doXpParty event, player, callback
         when 'blessGold', 'forsakeGold'
           @doGold event, player, callback
+        when 'blessGoldParty'
+          @doGoldParty event, player, callback
         when 'blessItem', 'forsakeItem'
           @doItem event, player, callback
         when 'findItem'
@@ -155,6 +160,26 @@ class EventHandler
 
     callback true
 
+  doXpParty: (event, player, callback) ->
+    if not event.remark
+      console.error "XP EVENT FAILURE", event
+      return callback false
+
+    extra =
+      partyName: player.party.name
+
+    @broadcastEvent {message: event.remark, player: player, extra: extra, type: 'exp'}
+
+    if event.type is "blessXpParty"
+      event.remark = "%player gained %xpxp!"
+    else
+      event.remark = "%player lost %xpxp!"
+
+    for member in player.party.players
+      @doXp event, member, callback
+
+    callback true
+
   doGold: (event, player, callback) ->
     if not event.remark
       console.error "GOLD EVENT FAILURE", event
@@ -201,6 +226,26 @@ class EventHandler
     message = event.remark + " [%realGold gold]"
 
     @broadcastEvent {message: message, player: player, extra: extra, type: 'gold'}
+    callback true
+
+  doGoldParty: (event, player, callback) ->
+    if not event.remark
+      console.error "GOLD EVENT FAILURE", event
+      return callback false
+
+    extra =
+      partyName: player.party.name
+
+    @broadcastEvent {message: event.remark, player: player, extra: extra, type: 'gold'}
+
+    if event.type is "blessGoldParty"
+      event.remark = "%player gained %gold gold!"
+    else
+      event.remark = "%player lost %gold gold!"
+
+    for member in player.party.players
+      @doGold event, member, callback
+
     callback true
 
   doItem: (event, player, callback) ->
