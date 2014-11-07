@@ -8,6 +8,10 @@
         {
             "type": "cataclysm",
             "duration": 4800
+        },
+        {
+            "type": "advanceDate",
+            "duration": 600
         }
     ],
     "eventRates": [
@@ -52,6 +56,12 @@
             "max": 650
         },
         {
+            "type": "blessXpParty",
+            "min": 1,
+            "max": 650,
+            "party": 1
+        },
+        {
             "type": "forsakeXp",
             "min": 1,
             "max": 1500
@@ -60,6 +70,12 @@
             "type": "blessGold",
             "min": 1,
             "max": 2000
+        },
+        {
+            "type": "blessGoldParty",
+            "min": 1,
+            "max": 2000,
+            "party": 1
         },
         {
             "type": "forsakeGold",
@@ -84,6 +100,12 @@
             "minPercent": 3,
             "maxPercent": 15
         },
+        "blessXpParty": {
+            "fail": 1,
+            "flux": 1.5,
+            "minPercent": 3,
+            "maxPercent": 15
+        },
         "forsakeXp": {
             "fail": -2,
             "flux": 2.5,
@@ -91,6 +113,9 @@
             "maxPercent": -20
         },
         "blessGold": {
+            "amount": [1, 60, 100, 400, 1000, 1300]
+        },
+        "blessGoldParty": {
             "amount": [1, 60, 100, 400, 1000, 1300]
         },
         "forsakeGold": {
