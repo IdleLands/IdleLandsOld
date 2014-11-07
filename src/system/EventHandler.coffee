@@ -319,6 +319,7 @@ class EventHandler
     else
       multiplier = player.calc.itemSellMultiplier item
       value = Math.floor item.score() * multiplier
+      console.error multiplier, value, item.score(), item if _.isNaN value
       player.gainGold value
       player.emit "player.sellItem", player, item, value
       callback false
