@@ -6,7 +6,7 @@ Mongo = require("mongodb").MongoClient
 # brute setup
 store = new bruteMongo (ready) ->
   Mongo.connect "mongodb://127.0.0.1:27017/brute", (e, db) ->
-    ready db.collection "bruteforce-cache"
+    ready db.collection "bruteforcecache"
 
 TenSecondTimeout = (msg) ->
   new brute store,

@@ -2,8 +2,6 @@ Map = require "./Map"
 _ = require "underscore"
 fs = require "fs"
 
-Datastore = require "../system/DatabaseWrapper"
-
 class World
 
   maps: {}
