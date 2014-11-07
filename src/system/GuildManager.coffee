@@ -85,7 +85,7 @@ class GuildManager
 
   retrieveAllGuilds: (callback) ->
     @db.find {}, (e, guilds) ->
-      console.error e if e
+      console.error "CANT GET GUILDS",e,e.stack if e
       callback guilds
 
   sendInvite: (sendId, invName) ->

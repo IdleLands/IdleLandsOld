@@ -310,7 +310,7 @@ class Player extends Character
       @stepCooldown--
 
     catch e
-      console.error e,e.message
+      console.error "BAD LOCATION",e,e.message
       @x = @y = 10
       @map = "Norkos"
 

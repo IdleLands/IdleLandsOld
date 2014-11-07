@@ -229,6 +229,6 @@ class ComponentDatabase
     @monsters.push monster
 
   insertNewAnalyticsPoint: (player) ->
-    @analyticsDb.insert player, (e) -> console.error e if e
+    @analyticsDb.insert player, (e) -> console.error "ANALYTICS ERROR",e,e.stack if e
 
 module.exports = exports = ComponentDatabase

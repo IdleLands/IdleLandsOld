@@ -33,7 +33,7 @@ class PlayerManager
 
   retrievePlayer: (identifier, callback) ->
     @db.findOne {identifier: identifier}, (e, player) =>
-      console.error e if e
+      console.error "BAD FINDING PLAYER #{identifier}",e,e.stack if e
       if not player or player.banned or (_.findWhere @players, {identifier: identifier})
         callback?()
         return
@@ -73,7 +73,7 @@ class PlayerManager
     return Q {isSuccess: no, code: 16, message: "You can't login without a password, silly!"} if not password
 
     @db.findOne {identifier: identifier}, (e, player) ->
-      console.error e if e
+      console.error "BAD CHECK PASSWORD",e,e.stack if e
 
       defer.resolve {isSuccess: no, code: 13, message: "Authentication failure (player doesn't exist)."} if not player
       defer.resolve {isSuccess: no, code: 12, message: "You haven't set up a password yet!"} if not player?.password

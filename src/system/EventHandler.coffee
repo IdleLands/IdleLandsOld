@@ -27,7 +27,7 @@ class EventHandler
 
   doEvent: (eventType, player, callback = null) ->
     @game.componentDatabase.getRandomEvent eventType, (e, event) =>
-      console.error e if e
+      console.error "CANT GET EVENT",e,e.stack if e
       return if not event or not player
 
       callback = (res) -> if res then player.emit "event", event
@@ -319,7 +319,6 @@ class EventHandler
     else
       multiplier = player.calc.itemSellMultiplier item
       value = Math.floor item.score() * multiplier
-      console.error multiplier, value, item.score(), item if _.isNaN value
       player.gainGold value
       player.emit "player.sellItem", player, item, value
       callback false

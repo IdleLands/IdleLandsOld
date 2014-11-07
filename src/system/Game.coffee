@@ -231,7 +231,7 @@ class Game
   doCodeUpdate: ->
 
     require("git-pull") "#{__dirname}/../", (e, consoleOutput) ->
-      console.error e if e
+      console.error "BAD UPDATE",e if e
       console.log consoleOutput
       process.exit 0
 
