@@ -5,6 +5,7 @@ _ = require "underscore"
 Q = require "q"
 Personality = require "./Personality"
 Constants = require "../../system/Constants"
+chance = new (require "chance")()
 
 class Character extends EventEmitter2
 
