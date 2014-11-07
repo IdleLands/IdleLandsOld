@@ -8,7 +8,18 @@ store = new bruteMongo (ready) ->
   Mongo.connect "mongodb://127.0.0.1:27017/brute", (e, db) ->
     ready db.collection "bruteforcecache"
 
-TenSecondTimeout = (msg) ->
+#TenSecondTimeout = (msg) ->
+#  new brute store,
+#    freeRetries: 0
+#    proxyDepth: 1
+#    minWait: 10*1000
+#    maxWait: 10*1000
+#    attachResetToRequest: no
+#    refreshTimeoutOnRequest: no
+#    lifetime: 10
+#    failCallback: (req, res) -> res.json {isSuccess: no, code: 100, message: msg}
+
+TurnTimeoutTimer =
   new brute store,
     freeRetries: 0
     proxyDepth: 1
@@ -17,10 +28,17 @@ TenSecondTimeout = (msg) ->
     attachResetToRequest: no
     refreshTimeoutOnRequest: no
     lifetime: 10
-    failCallback: (req, res) -> res.json {isSuccess: no, code: 100, message: msg}
-
-TurnTimeoutTimer = TenSecondTimeout "You can only have one turn every 10 seconds!"
-MapRequestTimer = TenSecondTimeout "You can only request a map every 10 seconds!"
+    failCallback: (req, res) -> res.json {isSuccess: no, code: 100, message: "You can only have one turn every 10 seconds!"}
+MapRequestTimer =
+  new brute store,
+    freeRetries: 0
+    proxyDepth: 1
+    minWait: 10*1000
+    maxWait: 10*1000
+    attachResetToRequest: no
+    refreshTimeoutOnRequest: no
+    lifetime: 10
+    failCallback: (req, res) -> res.json {isSuccess: no, code: 100, message: "You can only request a map every 10 seconds!"}
 
 LoginRequestTimer = new brute store,
   freeRetries: 3
