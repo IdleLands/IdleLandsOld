@@ -160,24 +160,10 @@ interactiveSession = ->
       do gameLoop
     else
       try
-      # Replace variables with values from hash
-        _.each Object.keys(variables), (variable) ->
-          regex = new RegExp "%#{variable}%", 'g'
-          line = line.replace regex, variables[variable]
-
-        # Match if user tried to assign a variable
-        line.match /%(\w*)%=(.*)/
-
-        # Assign variables to hash table
-        if RegExp.$1 and RegExp.$2
-          variables[RegExp.$1] = RegExp.$2
-          line = RegExp.$2
-
         broadcast "Evaluating `#{line}`"
         result = eval line
         broadcast result
-        result.then? (res) -> broadcast res.message
-        variables['lc'] = line if result?
+        result?.then? (res) -> broadcast res.message
       catch error
         console.error error.name, error.message, error.stack
       
