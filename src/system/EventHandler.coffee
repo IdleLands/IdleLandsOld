@@ -87,17 +87,18 @@ class EventHandler
     stripped = MessageCreator._replaceMessageColors message
 
     player.pushbulletSend stripped
-    @addEventToDb stripped, player, type
+    @addEventToDb stripped, player, type, extra
 
     message
 
-  addEventToDb: (message, player, type) ->
+  addEventToDb: (message, player, type, extra = {}) ->
 
     event =
       createdAt: new Date()
       player: player.name
       message: message
       type: type
+      extra: extra
 
     player.recentEvents = [] if not player.recentEvents
     player.recentEvents.push event

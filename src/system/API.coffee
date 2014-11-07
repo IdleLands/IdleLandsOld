@@ -25,8 +25,9 @@ class API
         @gameInstance.playerManager.registerLoadAllPlayersHandler handler
     content:
       map: (mapName) =>
-        console.log mapName
         @gameInstance.world.maps[mapName]
+      battle: (battleId) =>
+        @gameInstance.componentDatabase.retrieveBattle battleId
 
   # Invoked manually to either update or mess with the game
   @gm =

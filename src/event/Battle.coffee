@@ -276,8 +276,20 @@ class Battle
     @divvyXp()
     @cleanUp()
 
-    @battleCache.finalize()
+    @battleCache.finalize @notifyParticipants.bind @
     @game.currentBattle = null
+
+  notifyParticipants: (e, docs) ->
+
+    _.chain(@turnOrder)
+    .filter (entity) -> entity instanceof Player
+    .each (player) =>
+      @game.eventHandler.broadcastEvent
+        sendMessage: no
+        extra: {battleId: docs[0]._id}
+        player: player
+        message: "#{@battleCache.name} has occurred!"
+        type: "combat"
 
   divvyXp: ->
     deadVariables = {}

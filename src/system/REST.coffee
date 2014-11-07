@@ -55,6 +55,7 @@ app.use bodyParser.json()
 
 # init
 app.use "/", require "./rest-routes/Authentication"
+app.use "/", require "./rest-routes/Battle"
 app.use "/", require "./rest-routes/ManageGender"
 app.use "/", require "./rest-routes/ManageInventory"
 app.use "/", require "./rest-routes/ManagePersonality"

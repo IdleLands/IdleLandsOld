@@ -18,7 +18,7 @@ class BattleCache
   addMessage: (message) ->
     @messages.push message
 
-  finalize: ->
-    @game.componentDatabase.insertBattle (_.omit @, "game")
+  finalize: (callback) ->
+    @game.componentDatabase.insertBattle (_.omit @, "game"), callback
 
 module.exports = exports = BattleCache
