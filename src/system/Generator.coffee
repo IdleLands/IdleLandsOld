@@ -13,6 +13,10 @@ class Generator
         if _.isNumber baseItem[attr]
           baseItem[attr] += prop[attr]
         else
+          if not baseItem[attr]
+            console.error "bad item attribute", baseItem, attr
+            console.error new Error().stack
+
           baseItem[attr].maximum += prop[attr]
       else
         baseItem[attr] = if _.isNaN prop[attr] then true else prop[attr]

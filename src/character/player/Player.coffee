@@ -370,8 +370,7 @@ class Player extends Character
   gainGold: (gold) ->
     if _.isNaN gold
       console.error "BAD GOLD VALUE GOTTEN SOMEHOW"
-      err = new Error()
-      console.error err.stack
+      console.error new Error().stack
 
       gold = 1
 
