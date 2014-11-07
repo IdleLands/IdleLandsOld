@@ -40,4 +40,4 @@ CharCreateTimer = new brute store,
   lifetime: 24*60*60
   failCallback: (req, res) -> res.json {isSuccess: no, code: 101, message: "You can only create a new character once per day!"}
 
-module.exports = {CharCreateTimer, TurnTimeoutTimer, MapRequestTimer, LoginRequestTimer, BattleRequestTimer}
+module.exports = {CharCreateTimer, TurnTimeoutTimer, MapRequestTimer, LoginRequestTimer}
