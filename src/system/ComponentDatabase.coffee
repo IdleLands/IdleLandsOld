@@ -162,10 +162,10 @@ class ComponentDatabase
 
       if doc?.name is object.name
         duplicateCallback {name: doc.name}
-        console.error "DUPLICATE INGREDIENT NAME: #{doc.name}"
+        #console.error "DUPLICATE INGREDIENT NAME: #{doc.name}"
         return
       else if doc
-        console.error "DUPLICATE INGREDIENT STATS: #{doc.name}"
+        #console.error "DUPLICATE INGREDIENT STATS: #{doc.name}"
         duplicateCallback {stats: true}
         return
 
