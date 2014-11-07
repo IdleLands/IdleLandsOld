@@ -4,7 +4,7 @@ Constants = require "../../system/Constants"
 _ = require "underscore"
 
 slay = (player, enemies) ->
-  targets = _.filter enemies, (enemy) -> enemy.professionName in Constants.classCategorization.medic
+  targets = _.filter enemies.result, (enemy) -> enemy.professionName in Constants.classCategorization.medic
   { probability: 300, result: targets }
 
 class MedicSlayer extends Personality

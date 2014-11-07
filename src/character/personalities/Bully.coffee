@@ -4,9 +4,7 @@ Constants = require "../../system/Constants"
 _ = require "underscore"
 
 slay = (player, enemies) ->
-  targets = _.sortBy enemies, (enemy) -> enemy.hp?.getValue()
-  console.error enemies if targets.length is 0
-  return {probability:0, result: []} if targets.length is 0
+  targets = _.sortBy enemies.result, (enemy) -> enemy.hp.getValue()
   { probability: 200, result: [targets[0]] }
 
 class Bully extends Personality

@@ -41,6 +41,6 @@ class GlobalEventHandler
 
   doAdvanceDate: ->
     @game.calendar.advance 1
-    @game.broadcast "It is now the #{@game.calendar.getDateName()}."
+    @game.broadcast ">>> CALENDAR: It is now the #{@game.calendar.getDateName()}."
 
 module.exports = exports = GlobalEventHandler
