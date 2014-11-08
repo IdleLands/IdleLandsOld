@@ -7,6 +7,8 @@ Equipment = require "../../item/Equipment"
 _ = require "underscore"
 Q = require "q"
 Personality = require "../base/Personality"
+requireDir = require "require-dir"
+regions = requireDir "../regions"
 
 PushBullet = require "pushbullet"
 
@@ -276,6 +278,9 @@ class Player extends Character
   getTileAt: (x = @x, y = @y) ->
     lookAtTile = @playerManager.game.world.maps[@map].getTile.bind @playerManager.game.world.maps[@map]
     lookAtTile x,y
+
+  getRegion: () ->
+    regions[@getTileAt().region.replace(/\s/g, '')]
 
   moveAction: ->
     [newLoc, dir] = @pickRandomTile()
