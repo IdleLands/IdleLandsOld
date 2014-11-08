@@ -6,6 +6,7 @@ Mongo = require("mongodb").MongoClient
 # brute setup
 store = new bruteMongo (ready) ->
   Mongo.connect "mongodb://127.0.0.1:27017/brute", (e, db) ->
+    throw e if e
     ready db.collection "bruteforcecache"
 
 #TenSecondTimeout = (msg) ->
@@ -29,6 +30,7 @@ TurnTimeoutTimer =
     refreshTimeoutOnRequest: no
     lifetime: 10
     failCallback: (req, res) -> res.json {isSuccess: no, code: 100, message: "You can only have one turn every 10 seconds!"}
+
 MapRequestTimer =
   new brute store,
     freeRetries: 0

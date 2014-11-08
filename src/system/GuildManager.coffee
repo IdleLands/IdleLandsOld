@@ -156,7 +156,7 @@ class GuildManager
     return Q {isSuccess: no, code: 61, message: "You aren't a guild administrator!"} if not @checkAdmin admin
     return Q {isSuccess: no, code: 66, message: "You can't kick another administrator!"} if @checkAdmin player
 
-    @guildHash[player.guild].remove player if not resolved
+    @guildHash[player.guild].remove player
 
     Q {isSuccess: yes, code: 73, message: "You've kicked #{player.name} successfully."}
 
