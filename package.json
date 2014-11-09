@@ -48,6 +48,7 @@
     "express-brute": "~0.5.1",
     "cors": "~2.5.0",
     "compression": "~1.2.0",
-    "express-brute-redis": "0.0.1"
+    "express-brute-redis": "0.0.1",
+    "express-brute-mongo": "~0.1.0"
   }
 }

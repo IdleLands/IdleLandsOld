@@ -1,19 +1,19 @@
 
 brute = require "express-brute"
-bruteRedis = require "express-brute-redis"
+#bruteRedis = require "express-brute-redis"
+#
+#store = new bruteRedis
+#  host: '127.0.0.1'
+#  port: 6379
 
-store = new bruteRedis
-  host: '127.0.0.1'
-  port: 6379
-  
-#bruteMongo = require "express-brute-mongo"
-#Mongo = require("mongodb").MongoClient
+bruteMongo = require "express-brute-mongo"
+Mongo = require("mongodb").MongoClient
 
 # brute setup
-#store = new bruteMongo (ready) ->
-#  Mongo.connect "mongodb://127.0.0.1:27017/brute", (e, db) ->
-#    throw e if e
-#    ready db.collection "bruteforcecache"
+store = new bruteMongo (ready) ->
+  Mongo.connect "mongodb://127.0.0.1:27017/brute", (e, db) ->
+    throw e if e
+    ready db.collection "bruteforcecache"
 
 #TenSecondTimeout = (msg) ->
 #  new brute store,
