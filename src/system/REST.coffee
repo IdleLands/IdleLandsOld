@@ -6,6 +6,7 @@ return if not useREST
 
 API = require "./API"
 
+http = require "http"
 fallbackPort = 3001
 port = config.restPort or fallbackPort
 
@@ -74,6 +75,7 @@ process.on 'uncaughtException', (e) ->
     app.listen fallbackPort
 
 # spin it up
-app.listen port
+http.createServer(app).listen 80
+http.createServer(app).listen 443
 
 console.log "REST API started (port #{port})."
