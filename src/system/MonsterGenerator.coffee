@@ -43,11 +43,15 @@ class MonsterGenerator extends Generator
       item = @game.equipmentGenerator.generateItem type
       monster.equip item if monster.canEquip item
 
+    monster.personalities = []
+
     personalityCount = chance.integer min: 0, max: 2
 
     newPersonalities = _.sample personalities, personalityCount
 
     (monster._addPersonality pers, Personality::getPersonality pers) for pers in newPersonalities
+
+    monster.personalities.push {alignment: chance.integer({min: -20, max: 20})}
 
     monster.calendar = @game.calendar
 
