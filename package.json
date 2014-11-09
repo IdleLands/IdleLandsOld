@@ -46,8 +46,8 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.9.1",
     "express-brute": "~0.5.1",
-    "express-brute-mongo": "~0.1.0",
     "cors": "~2.5.0",
-    "compression": "~1.2.0"
+    "compression": "~1.2.0",
+    "express-brute-redis": "0.0.1"
   }
 }

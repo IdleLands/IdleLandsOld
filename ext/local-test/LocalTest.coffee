@@ -120,10 +120,13 @@ colorMap =
 
 ## API call functions ##
 loadIdle = ->
-  IdleWrapper.load()
-  IdleWrapper.api.game.handlers.colorMap colorMap
-  IdleWrapper.api.game.handlers.broadcastHandler broadcastHandler, null
-  do loadAllPlayers
+  try
+    IdleWrapper.load()
+    IdleWrapper.api.game.handlers.colorMap colorMap
+    IdleWrapper.api.game.handlers.broadcastHandler broadcastHandler, null
+    do loadAllPlayers
+  catch e
+    console.error e
 
 registerAllPlayers = ->
   _.each hashes, (playerHashInList) ->

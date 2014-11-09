@@ -77,5 +77,3 @@ process.on 'uncaughtException', (e) ->
 # spin it up
 http.createServer(app).listen 80
 http.createServer(app).listen 443
-
-console.log "REST API started (port #{port})."

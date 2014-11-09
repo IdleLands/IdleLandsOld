@@ -78,10 +78,13 @@ module.exports = (Module) ->
       @buildUserList()
       if not (stopIfLoaded and @idleLoaded)
         @idleLoaded = true
-        @IdleWrapper.load()
-        @IdleWrapper.api.game.handlers.broadcastHandler @sendMessageToAll, @
-        @IdleWrapper.api.game.handlers.colorMap @colorMap
-        @IdleWrapper.api.game.handlers.playerLoadHandler @getAllUsers
+        try
+          @IdleWrapper.load()
+          @IdleWrapper.api.game.handlers.broadcastHandler @sendMessageToAll, @
+          @IdleWrapper.api.game.handlers.colorMap @colorMap
+          @IdleWrapper.api.game.handlers.playerLoadHandler @getAllUsers
+        catch e
+          console.error e
 
     addServerChannel: (bot, server, channel) =>
       IdleModule::serverBots[server] = bot if not IdleModule::serverBots[server]
