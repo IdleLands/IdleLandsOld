@@ -143,7 +143,7 @@ class ComponentDatabase
   insertString: (type, string) ->
     return if not string
     @generatorCache[type] = [] if not @generatorCache[type]
-    @generatorCache[type].push string
+    @generatorCache[type].push _.str.trim string
 
   insertStatic: (type, remark) ->
     return if not remark
