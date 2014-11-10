@@ -341,7 +341,7 @@ class EventHandler
       string = MessageCreator.doStringReplace "Unfortunately, %player only has %gold gold, and walked away in disappointment.", player, extra
       @broadcastEvent {message: string, player: player, type: 'shop-fail'}
       callback false
-    else if score > myScore
+    else if score > myScore and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
       string = MessageCreator.doStringReplace "%player gladly buys %item for %shopGold gold! What a deal!", player, extra
       @doItemEquip player, shop.item, string
       player.gold.sub shop.price
