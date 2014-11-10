@@ -136,7 +136,11 @@ class Character extends EventEmitter2
 
   calcDamageTaken: (baseDamage) ->
     multiplier = @calc.damageMultiplier()
-    (baseDamage - @calc.damageReduction()) * multiplier
+    if baseDamage > 0
+      damage = (baseDamage - @calc.damageReduction()) * multiplier
+      damage = 0 if damage < 0
+      damage
+    else baseDamage*multiplier
 
   canEquip: (item) ->
     current = _.findWhere @equipment, {type: item.type}
