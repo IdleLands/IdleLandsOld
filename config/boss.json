@@ -108,7 +108,7 @@
 		},
     "Black Dragon King": {
         "respawn": 10800,
-        "availableScore": 1000,
+        "availableScore": 2400,
         "stats": {
             "class": "Monster",
             "hp": 21200,
