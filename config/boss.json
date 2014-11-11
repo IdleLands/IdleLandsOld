@@ -120,5 +120,67 @@
         "items": [
             { "name": "Ward of the Black Dragon King", "dropPercent": 60 }
         ]
+		},
+    "Child Minotaur": {
+        "respawn": 10800,
+        "availableScore": 2500,
+        "stats": {
+            "class": "Fighter",
+            "hp": 5120,
+            "level": 20,
+            "str": 300,
+            "dex": 250,
+            "agi": 275
+        },
+        "items": [
+            { "name": "Oversized Locket", "dropPercent": 60 }
+        ]
+    		},
+    "Sibling Minotaur": {
+        "respawn": 10800,
+        "availableScore": 4000,
+        "stats": {
+            "class": "Fighter",
+            "hp": 13745,
+            "level": 25,
+            "str": 575,
+            "dex": 545,
+            "agi": 350,
+	    "con": 50
+        },
+        "items": [
+            { "name": "Hand-Me-Down Battleaxe", "dropPercent": 65 }
+        ]
+   		 },
+    "Elder Minotaur": {
+        "respawn": 10800,
+        "availableScore": 6000,
+        "stats": {
+            "class": "Mage",
+            "hp": 12580,
+            "level": 30,
+            "int": 1100,
+            "wis": 990,
+	    "agi": 50
+        },
+        "items": [
+            { "name": "Wizard Hat with Horns", "dropPercent": 70 }
+        ]
+    		},
+    "King Minotaur": {
+        "respawn": 10800,
+        "availableScore": 11400,
+        "stats": {
+            "class": "Barbarian",
+            "hp": 21000,
+            "level": 40,
+            "str": 2100,
+            "dex": 750,
+            "con": 1200,
+	    "agi": 100
+        },
+        "items": [
+            { "name": "King Minotaur's Axe", "dropPercent": 85 }
+        ]
 		}
-    }
+}
