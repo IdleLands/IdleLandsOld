@@ -23,4 +23,24 @@
         "wis": 100,
         "defense": 1
     }
-}
+	"Wardens Gavel": {
+        "type": "mainhand",
+        "str": 1200,
+        "con": 400,
+        "agi": 200,
+        "haste": 2
+		}
+	"Super Shuriken": {
+        "type": "mainhand",
+        "agi": 500,
+        "dex": 400,
+        "int": 100,
+        "crit": 1
+		}
+	"Staff of the Prophet": {
+        "type": "mainhand",
+        "agi": 180,
+        "dex": 200,
+        "int": 100,
+        "sacred": 1
+	}
