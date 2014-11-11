@@ -11,7 +11,10 @@
             "str": 300
         },
         "items": [
-            { "name": "Goblin Lord Shortsword", "dropPercent": 95 }
+            {
+                "name": "Goblin Lord Shortsword",
+                "dropPercent": 95
+            }
         ]
     },
     "Mummy Lord": {
@@ -26,7 +29,10 @@
             "str": 300
         },
         "items": [
-            { "name": "Mummy Lord Greatsword", "dropPercent": 85 }
+            {
+                "name": "Mummy Lord Greatsword",
+                "dropPercent": 85
+            }
         ]
     },
     "Lizard King": {
@@ -42,9 +48,12 @@
             "int": 300
         },
         "items": [
-            { "name": "Lizard King Staff", "dropPercent": 80 }
+            {
+                "name": "Lizard King Staff",
+                "dropPercent": 80
+            }
         ]
-	},
+    },
     "Warden of Norkos": {
         "respawn": 10800,
         "availableScore": 3200,
@@ -58,9 +67,12 @@
             "int": 100
         },
         "items": [
-            { "name": "Wardens Gavel", "dropPercent": 95 }
+            {
+                "name": "Wardens Gavel",
+                "dropPercent": 95
+            }
         ]
-	},
+    },
     "Super Ninja Gaiden": {
         "respawn": 10800,
         "availableScore": 2400,
@@ -73,9 +85,12 @@
             "agi": 1500
         },
         "items": [
-            { "name": "Super Shuriken", "dropPercent": 80 }
+            {
+                "name": "Super Shuriken",
+                "dropPercent": 80
+            }
         ]
-		},
+    },
     "Emeriss the Guardian": {
         "respawn": 10800,
         "availableScore": 2400,
@@ -85,9 +100,12 @@
             "level": 20,
             "int": 400,
             "wis": 450,
-            "agi": 50	
+            "agi": 50
         },
         "items": [
-            { "name": "Staff of the Prophet", "dropPercent": 80 }
+            {
+                "name": "Staff of the Prophet",
+                "dropPercent": 80
+            }
+        ]
     }
-}
