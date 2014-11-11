@@ -1200,7 +1200,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "width":250,
          "x":0,
          "y":0
