@@ -81,11 +81,11 @@
         "availableScore": 2400,
         "stats": {
             "class": "Mage",
-            "hp": 14740,
+            "hp": 7370,
             "level": 20,
             "int": 400,
             "wis": 450,
-            "agi": 50
+            "agi": 50	
         },
         "items": [
             { "name": "Staff of the Prophet", "dropPercent": 80 }
