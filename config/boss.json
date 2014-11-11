@@ -11,7 +11,10 @@
             "str": 300
         },
         "items": [
-            { "name": "Goblin Lord Shortsword", "dropPercent": 95 }
+            {
+                "name": "Goblin Lord Shortsword",
+                "dropPercent": 95
+            }
         ]
     },
     "Mummy Lord": {
@@ -26,7 +29,10 @@
             "str": 300
         },
         "items": [
-            { "name": "Mummy Lord Greatsword", "dropPercent": 85 }
+            {
+                "name": "Mummy Lord Greatsword",
+                "dropPercent": 85
+            }
         ]
     },
     "Lizard King": {
@@ -42,7 +48,62 @@
             "int": 300
         },
         "items": [
-            { "name": "Lizard King Staff", "dropPercent": 80 }
+            {
+                "name": "Lizard King Staff",
+                "dropPercent": 80
+            }
         ]
+    },
+    "Warden of Norkos": {
+        "respawn": 10800,
+        "availableScore": 3200,
+        "stats": {
+            "class": "Barbarian",
+            "hp": 34762,
+            "mp": 1000,
+            "level": 60,
+            "con": 3200,
+            "str": 3600,
+            "int": 100
+        },
+        "items": [
+            {
+                "name": "Wardens Gavel",
+                "dropPercent": 95
+            }
+        ]
+    },
+    "Super Ninja Gaiden": {
+        "respawn": 10800,
+        "availableScore": 2400,
+        "stats": {
+            "class": "Rogue",
+            "hp": 14740,
+            "level": 30,
+            "con": 400,
+            "dex": 1600,
+            "agi": 1500
+        },
+        "items": [
+            {
+                "name": "Super Shuriken",
+                "dropPercent": 80
+            }
+        ]
+    },
+    "Emeriss the Guardian": {
+        "respawn": 10800,
+        "availableScore": 2400,
+        "stats": {
+            "class": "Mage",
+            "hp": 7370,
+            "level": 20,
+            "int": 400,
+            "wis": 450,
+            "agi": 50
+        },
+        "items": [
+            { "name": "Staff of the Prophet", "dropPercent": 80 }
+        ]
+		}
     }
-}
