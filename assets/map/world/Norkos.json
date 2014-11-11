@@ -902,6 +902,20 @@
                  "width":0,
                  "x":752,
                  "y":2160
+                }, 
+                {
+                 "gid":26,
+                 "height":0,
+                 "name":"Emeriss the Guardian",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Boss",
+                 "visible":true,
+                 "width":0,
+                 "x":1648,
+                 "y":784
                 }],
          "opacity":1,
          "type":"objectgroup",

@@ -257,6 +257,20 @@
                  "width":0,
                  "x":240,
                  "y":368
+                }, 
+                {
+                 "gid":26,
+                 "height":0,
+                 "name":"Warden of Norkos",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Boss",
+                 "visible":true,
+                 "width":0,
+                 "x":432,
+                 "y":272
                 }],
          "opacity":1,
          "type":"objectgroup",

@@ -279,7 +279,7 @@ class Player extends Character
     lookAtTile = @playerManager.game.world.maps[@map].getTile.bind @playerManager.game.world.maps[@map]
     lookAtTile x,y
 
-  getRegion: () ->
+  getRegion: ->
     regions[@getTileAt().region.replace(/\s/g, '')]
 
   moveAction: ->
@@ -315,7 +315,7 @@ class Player extends Character
       @stepCooldown--
 
     catch e
-      console.error "BAD LOCATION",e,e.message
+      console.error "BAD LOCATION",e,e.message,e.stack
       @x = @y = 10
       @map = "Norkos"
 

@@ -1050,6 +1050,20 @@
                  "width":0,
                  "x":400,
                  "y":208
+                }, 
+                {
+                 "gid":26,
+                 "height":0,
+                 "name":"Super Ninja Gaiden",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Boss",
+                 "visible":true,
+                 "width":0,
+                 "x":400,
+                 "y":32
                 }],
          "opacity":1,
          "type":"objectgroup",
