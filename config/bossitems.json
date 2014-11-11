@@ -43,5 +43,12 @@
         "dex": 200,
         "int": 100,
         "sacred": 1
+    },
+    "Moonlight Signet": {
+        "type": "finger",
+        "agi": 100,
+        "dex": 100,
+        "int": 45,
+        "vorpal": 1
     }
 }
