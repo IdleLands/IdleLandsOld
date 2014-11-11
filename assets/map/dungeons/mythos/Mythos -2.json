@@ -23,6 +23,7 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
          "height":50,
          "name":"Interactables",
          "objects":[
@@ -38,6 +39,7 @@
                      "map":"Norkos",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -52,6 +54,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Trainer",
                  "visible":true,
                  "width":0,
@@ -67,6 +70,7 @@
                      "movementType":"teleport",
                      "toLoc":"vocalnus"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -82,6 +86,7 @@
                      "movementType":"teleport",
                      "toLoc":"vocalnus"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -97,11 +102,27 @@
                      "movementType":"teleport",
                      "toLoc":"vocalnus"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
                  "x":736,
                  "y":672
+                }, 
+                {
+                 "gid":26,
+                 "height":0,
+                 "name":"Black Dragon King",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Boss",
+                 "visible":true,
+                 "width":0,
+                 "x":736,
+                 "y":560
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -115,6 +136,7 @@
     {
      "name":"norkos"
     },
+ "renderorder":"right-down",
  "tileheight":16,
  "tilesets":[
         {
@@ -149,7 +171,7 @@
         }, 
         {
          "firstgid":73,
-         "image":"..\/..\/..\/..\/..\/..\/Documents\/Webstorm\/kurea\/src\/modules\/IdleLands\/assets\/img\/tiles.png",
+         "image":"..\/..\/..\/img\/tiles.png",
          "imageheight":64,
          "imagewidth":144,
          "margin":0,
