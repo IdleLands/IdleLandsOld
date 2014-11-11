@@ -68,6 +68,7 @@
             "class": "Rogue",
             "hp": 14740,
             "level": 30,
+			"str": 1500,
             "con": 400,
             "dex": 1600,
             "agi": 1500
@@ -82,6 +83,7 @@
         "stats": {
             "class": "Mage",
             "hp": 7370,
+			"mp": 4000,
             "level": 20,
             "int": 400,
             "wis": 450,

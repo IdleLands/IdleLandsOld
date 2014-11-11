@@ -57,5 +57,12 @@
         "dex": 100,
         "con": 300,
         "aegis": 1
+	},
+    "Flame Polished Gauntlets": {
+        "type": "hands",
+        "str": 300,
+        "con": 200,
+		"fire": 10000
+        
 	}
 }
