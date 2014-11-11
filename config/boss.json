@@ -100,10 +100,25 @@
             "level": 10,
             "agi": 50,
             "dex": 75,
-            "stre": 100
+            "str": 100
         },
         "items": [
             { "name": "Moonlight Signet", "dropPercent": 80 }
+        ]
+		},
+    "Black Dragon King": {
+        "respawn": 10800,
+        "availableScore": 1000,
+        "stats": {
+            "class": "Monster",
+            "hp": 21200,
+            "level": 40,
+            "str": 1800,
+            "dex": 1750,
+            "con": 1000
+        },
+        "items": [
+            { "name": "Ward of the Black Dragon King", "dropPercent": 60 }
         ]
 		}
     }

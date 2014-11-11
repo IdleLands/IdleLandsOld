@@ -50,5 +50,11 @@
         "dex": 100,
         "int": 45,
         "vorpal": 1
-    }
+    },
+    "Ward of the Black Dragon King": {
+        "type": "offhand",
+        "str": 200,
+        "dex": 100,
+        "con": 300,
+        "aegis": 1
 }
