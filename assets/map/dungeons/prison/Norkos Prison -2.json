@@ -360,8 +360,8 @@
                  "type":"Boss",
                  "visible":true,
                  "width":0,
-                 "x":352.5,
-                 "y":256.5
+                 "x":352,
+                 "y":256
                 }],
          "opacity":1,
          "type":"objectgroup",
