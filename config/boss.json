@@ -103,9 +103,7 @@
             "agi": 50
         },
         "items": [
-            {
-                "name": "Staff of the Prophet",
-                "dropPercent": 80
-            }
+            { "name": "Staff of the Prophet", "dropPercent": 80 }
         ]
+		}
     }
