@@ -57,5 +57,33 @@
         "dex": 100,
         "con": 300,
         "aegis": 1
-	}
+    },
+    "Oversized Locket": {
+        "type": "neck",
+        "str": 200,
+        "dex": 100,
+        "con": 300,
+        "silver": 1
+    },
+    "Hand-Me-Down Battleaxe": {
+        "type": "mainhand",
+        "str": 275,
+        "dex": 100,
+        "con": 25,
+        "offense": 1,
+        "defense": 1
+    },
+    "Wizard Hat with Horns": {
+        "type": "head",
+        "int": 700,
+        "wis": 250,
+        "aegis": 1
+    },
+    "King Minotaur's Axe": {
+        "type": "mainhand",
+        "str": 625,
+        "con": 500,
+        "vorpal": 1,
+        "power": 1
+    }
 }
