@@ -11,10 +11,7 @@
             "str": 300
         },
         "items": [
-            {
-                "name": "Goblin Lord Shortsword",
-                "dropPercent": 95
-            }
+            { "name": "Goblin Lord Shortsword", "dropPercent": 95 }
         ]
     },
     "Mummy Lord": {
@@ -29,10 +26,7 @@
             "str": 300
         },
         "items": [
-            {
-                "name": "Mummy Lord Greatsword",
-                "dropPercent": 85
-            }
+            { "name": "Mummy Lord Greatsword", "dropPercent": 85 }
         ]
     },
     "Lizard King": {
@@ -48,10 +42,7 @@
             "int": 300
         },
         "items": [
-            {
-                "name": "Lizard King Staff",
-                "dropPercent": 80
-            }
+            { "name": "Lizard King Staff", "dropPercent": 80 }
         ]
     },
     "Warden of Norkos": {
@@ -67,10 +58,7 @@
             "int": 100
         },
         "items": [
-            {
-                "name": "Wardens Gavel",
-                "dropPercent": 95
-            }
+            { "name": "Wardens Gavel", "dropPercent": 95 }
         ]
     },
     "Super Ninja Gaiden": {
@@ -85,10 +73,7 @@
             "agi": 1500
         },
         "items": [
-            {
-                "name": "Super Shuriken",
-                "dropPercent": 80
-            }
+            { "name": "Super Shuriken", "dropPercent": 80 }
         ]
     },
     "Emeriss the Guardian": {
@@ -104,6 +89,21 @@
         },
         "items": [
             { "name": "Staff of the Prophet", "dropPercent": 80 }
+        ]
+	},
+    "Trustee Rakshasha": {
+        "respawn": 10800,
+        "availableScore": 1000,
+        "stats": {
+            "class": "Monster",
+            "hp": 7370,
+            "level": 10,
+            "agi": 50,
+            "dex": 75,
+            "stre": 100
+        },
+        "items": [
+            { "name": "Moonlight Signet", "dropPercent": 80 }
         ]
 		}
     }
