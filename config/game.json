@@ -98,19 +98,19 @@
             "fail": 1,
             "flux": 1.5,
             "minPercent": 3,
-            "maxPercent": 15
+            "maxPercent": 9
         },
         "blessXpParty": {
             "fail": 1,
             "flux": 1.5,
-            "minPercent": 3,
-            "maxPercent": 15
+            "minPercent": 1,
+            "maxPercent": 5
         },
         "forsakeXp": {
             "fail": -2,
             "flux": 2.5,
             "minPercent": -8,
-            "maxPercent": -20
+            "maxPercent": -15
         },
         "blessGold": {
             "amount": [1, 60, 100, 400, 1000, 1300]
