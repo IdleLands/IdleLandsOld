@@ -4,9 +4,9 @@ Personality = require "../base/Personality"
 class TreasureHunter extends Personality
   constructor: ->
 
-  xpPercent: -> -25
+  xpPercent: -> -50
 
-  goldPercent: -> -25
+  goldPercent: -> -50
 
   itemFindRangeMultiplier: (player) -> player.level.getValue()*0.05
 
