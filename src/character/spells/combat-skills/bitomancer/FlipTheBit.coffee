@@ -6,9 +6,7 @@ class FlipTheBit extends Spell
   @element = FlipTheBit::element = Spell::Element.physical
   @stat = FlipTheBit::stat = "special"
   @tiers = FlipTheBit::tiers = [
-    {name: "Flip the Bit", spellPower: 1, cost: 450, class: "Bitomancer", level: 30}
-    {name: "Flip the Bit", spellPower: 1, cost: 1000, class: "Bitomancer", level: 50}
-    {name: "Flip the Bit", spellPower: 1, cost: 2000, class: "Bitomancer", level: 70}
+    {name: "Flip the Bit", spellPower: 1, cost: ((caster) -> Math.floor(caster.special.maximum/2)), class: "Bitomancer", level: 30}
   ]
 
   determineTargets: ->
