@@ -74,10 +74,10 @@ class API
 
   # Invoked either automatically (by means of taking a turn), or when a player issues a command
   @player =
-    nextAction: (identifier) =>
+    takeTurn: (identifier) =>
       @validateIdentifier identifier
       .then (res) =>
-        @gameInstance.nextAction identifier if res.isSuccess
+        @gameInstance.playerManager.playerTakeTurn identifier if res.isSuccess
 
     gender:
       set: (identifier, newGender) =>

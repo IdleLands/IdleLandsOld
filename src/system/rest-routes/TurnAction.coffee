@@ -9,7 +9,7 @@ router
 .route "/player/action/turn"
 .post turnTimeout.prevent, hasValidToken, (req, res) ->
   {identifier} = req.body
-  API.player.nextAction identifier
+  API.player.takeTurn identifier
   .then (resp) -> res.send resp
 
 module.exports = router

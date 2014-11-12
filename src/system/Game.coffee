@@ -225,9 +225,6 @@ class Game
     player.y = y
     @broadcast MessageCreator.genericMessage text
 
-  nextAction: (identifier) ->
-    @playerManager.playerTakeTurn identifier
-
   doCodeUpdate: ->
 
     require("git-pull") "#{__dirname}/../", (e, consoleOutput) ->
