@@ -31,10 +31,11 @@
 "ratdog"                zone=town level=24 agi=210 dex=210 str=210
 "batcat"                zone=town level=26 int=250 str=40 con=20 wis=200
 "catdog"                zone=town level=28 int=350 str=60 dex=350
-"red-eyed programmer"   zone=town level=30 class=Mage int=400 con=150
+"street magician"       zone=town level=30 class=Mage int=400 con=150
+"red-eyed programmer"   zone=town level=32 class=Bitomancer int=300 dex=150 agi=150
 "serial killer"         zone=town level=35 class=Rogue str=325 dex=325 con=50 int=50
 "metalhead"             zone=town level=40 str=550 dex=550 con=350
-"hivemind"              zone=town level=50 int=600 con=600 wis=600
+"hivemind"              zone=town level=50 class=Bitomancer int=600 con=600 wis=600
 "internetizen"          zone=town level=60 class=Bard wis=1500 int=1500
 
 # alliterate creatures
@@ -55,6 +56,7 @@
 "goofy gopher"              zone=town   level=48    wis=300 int=3000 luck=40 agi=200
 "slippery seal"             zone=town   level=52    agi=2000
 "gelatinous jabberwocky"    zone=forest level=56    agi=500 dex=500 con=1000
+"disgruntled developer"     zone=town   level=58    class=Bitomancer agi=500 dex=500 int=1500
 "diaphanous drake"          zone=forest level=60
 "ornery ocelot"             zone=forest level=64
 "gory giraffe"              zone=forest level=68
@@ -94,6 +96,7 @@
 "viper"                     zone=forest level=13 str=100 dex=100
 "pig"                       zone=forest level=14 class=Fighter str=150 dex=150 prone=1
 "generic insect"            zone=forest level=15 dex=190 agi=150
+"code monkey"               zone=forest level=18 class=Bitomancer int=200 dex=100
 "owl"                       zone=forest level=21 class=Cleric wis=300
 "random pokemon"            zone=forest level=22 str=80 dex=80 wis=80 con=80
 "skag"                      zone=forest level=23 str=100 dex=100 con=100 agi=100 prone=1
@@ -113,6 +116,7 @@
 "strange goo"               zone=cave level=1 str=1 agi=-1 wis=-2
 "space anemone"             zone=cave level=20 str=300 agi=-200 int=-500
 "tiny alien"                zone=cave class=Rogue level=28 str=200 agi=300 dex=240 int=400
+"basement hacker"           zone=cave class=Bitomancer level=32 dex=200 agi=300 int=600
 "group of lizards in a trenchcoat" zone=cave class=Jester level=50 luck=1000
 
 # undead entities
@@ -150,6 +154,7 @@
 "incubus"                   zone=other level=63
 "succubus"                  zone=other level=69
 "deity avatar"              zone=other level=75
+"anonymous"                 zone=other level=75 class=Bitomancer
 "demigod"                   zone=other level=81
 "incubator"                 zone=other level=120
 
@@ -217,6 +222,7 @@
 "sandwich artist"       zone=forest level=10 class=SandwichArtist dex=70 str=30 wis=60
 "archer"                zone=forest level=11 class=Archer
 "pirate"                zone=forest level=12 class=Fighter
+"bitomancer"            zone=forest level=13 class=Bitomancer int=100 agi=20
 
 # gnomish beings
 "gnome"                 zone=forest level=13
