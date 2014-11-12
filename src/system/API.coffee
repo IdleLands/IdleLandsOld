@@ -79,6 +79,14 @@ class API
       .then (res) =>
         @gameInstance.nextAction identifier if res.isSuccess
 
+    getRESTObject: (identifier) =>
+      @validateIdentifier identifier
+      .then (res) =>
+          res.player.buildRESTObject() if res.isSuccess
+
+    getAllIdents: =>
+      @gameInstance.playerManager.getAllIdents()
+
     gender:
       set: (identifier, newGender) =>
         @validateIdentifier identifier

@@ -144,7 +144,7 @@ gameLoop = ->
       , DELAY_INTERVAL/arr.length*i, arr[i]
 	  
   interval = setInterval =>
-    doActionPerMember hashes, IdleWrapper.api.player.nextAction
+    doActionPerMember IdleWrapper.api.player.getAllIdents(), IdleWrapper.api.player.nextAction
   , DELAY_INTERVAL
   
 interactiveSession = ->
