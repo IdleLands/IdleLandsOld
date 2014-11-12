@@ -310,6 +310,11 @@ class PlayerManager
   getPlayerById: (playerId) ->
     @playerHash[playerId]
 
+  getAllIdents: ->
+    idents = []
+    idents.push player.identifier for player in @players
+    idents
+
   beginWatchingPlayerStatistics: (player) ->
 
     maxStat = (stat, val) ->
