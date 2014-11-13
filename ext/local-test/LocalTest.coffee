@@ -136,6 +136,11 @@ loadAllPlayers = ->
   _.each hashes, (playerHash) ->
     IdleWrapper.api.player.auth.login playerHash
 
+adjustSpeed = ->
+  clearInterval IdleWrapper.api.gameInstance.playerManager.interval
+  IdleWrapper.api.gameInstance.playerManager.DELAY_INTERVAL = DELAY_INTERVAL
+  IdleWrapper.api.gameInstance.playerManager.beginGameLoop()
+
 gameLoop = ->
   doActionPerMember = (arr, action) ->
     for i in [0...arr.length]
@@ -154,12 +159,14 @@ interactiveSession = ->
 
   cli.on 'line', (line) ->
     clearInterval IdleWrapper.api.gameInstance.playerManager.interval
+    clearInterval interval
     cli.setPrompt "halted: c to continue> "
 
     if line is ""
       cli.prompt()
     else if line is "c"
       do IdleWrapper.api.gameInstance.playerManager.beginGameLoop()
+      do gameLoop
     else
       try
         broadcast "Evaluating `#{line}`"
@@ -191,5 +198,6 @@ do loadIdle
 do registerAllPlayers
 do loadAllPlayers
 do watchIdleFiles
+do adjustSpeed
 do gameLoop
 do interactiveSession
