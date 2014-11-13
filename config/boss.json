@@ -183,22 +183,22 @@
             { "name": "King Minotaur's Axe", "dropPercent": 85 }
         ]
 		},
-+    "Lucifer the Flame-Born": {
-+        "respawn": 10800,
-+        "availableScore": 2400,
-+        "stats": {
-+            "class": "Monster",
-+            "hp": 23200,
+    "Lucifer the Flame-Born": {
+        "respawn": 10800,
+        "availableScore": 2400,
+        "stats": {
+            "class": "Monster",
+            "hp": 23200,
              "mp": 28200
-+            "level": 40,
-+            "str": 1800,
-+            "int": 1750,
+            "level": 40,
+            "str": 1800,
+            "int": 1750,
              "wis": 1450,
-+            "con": 900
-+			"fire": 10000
-+        },
-+        "items": [
-+            { "name": "Flame Polished Gauntlets", "dropPercent": 80 }
-+        ]
+            "con": 900
+			"fire": 10000
+        },
+        "items": [
+            { "name": "Flame Polished Gauntlets", "dropPercent": 80 }
+        ]
         }
 }
