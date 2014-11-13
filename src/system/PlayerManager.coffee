@@ -23,20 +23,20 @@ class PlayerManager
       db.update {}, {$set:{isOnline: no}}, {multi: yes}, ->
 
     @interval = null
+    @DELAY_INTERVAL = 10000
     @beginGameLoop()
 
   beginGameLoop: ->
-    DELAY_INTERVAL = 10000
 
     doActionPerMember = (arr, action) ->
       for i in [0...arr.length]
         setTimeout (player, i) ->
           action player
-        , DELAY_INTERVAL/arr.length*i, arr[i]
+        , @DELAY_INTERVAL/arr.length*i, arr[i]
 
     @interval = setInterval =>
       (doActionPerMember @players, ((player) -> player.takeTurn())) if @players.length > 0
-    , DELAY_INTERVAL
+    , @DELAY_INTERVAL
 
   randomPlayer: ->
     _.sample @players
