@@ -189,12 +189,12 @@
         "stats": {
             "class": "Monster",
             "hp": 23200,
-             "mp": 28200,
+            "mp": 28200,
             "level": 40,
             "str": 1800,
             "int": 1750,
-             "wis": 1450,
-            "con": 900
+            "wis": 1450,
+            "con": 900,
 			"fire": 10000
         },
         "items": [
