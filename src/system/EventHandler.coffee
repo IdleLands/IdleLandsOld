@@ -207,7 +207,7 @@ class EventHandler
     @broadcastEvent {message: "#{event.remark} #{message}.", player: player, extra: extra, type: 'exp'}
 
     for member in player.party.players
-      @broadcastEvent {message: "#{event.remark} #{message}.", player: player, extra: extra, sendMessage: no, type: 'exp'} if member isnt player
+      @broadcastEvent {message: "#{event.remark} #{message}.", player: member, extra: extra, sendMessage: no, type: 'exp'} if member isnt player
 
     callback true
 
@@ -319,7 +319,7 @@ class EventHandler
     @broadcastEvent {message: "#{event.remark} #{message}.", player: player, extra: extra, type: 'gold'}
 
     for member in player.party.players
-      @broadcastEvent {message: "#{event.remark} #{message}.", player: player, extra: extra, sendMessage: no, type: 'gold'} if member isnt player
+      @broadcastEvent {message: "#{event.remark} #{message}.", player: member, extra: extra, sendMessage: no, type: 'gold'} if member isnt player
 
     callback true
 
