@@ -16,13 +16,13 @@ class EquipmentGenerator extends Generator
 
     item = new Equipment baseItem
 
-    if chance.integer({min: 0, max: 2}) is 1
+    if chance.integer({min: 0, max: 4}) is 1
       @mergePropInto item, _.sample itemList['prefix']
-      (@mergePropInto item,  _.sample itemList['prefix']) until chance.integer({min: 0, max: 11**(i = (i+1) or 0)}) > 1+generatorBonus
+      (@mergePropInto item,  _.sample itemList['prefix']) until chance.integer({min: 0, max: 15**(i = (i+1) or 0)}) > 1+generatorBonus
 
-    (@mergePropInto item,  _.sample itemList['prefix-special']) if chance.integer({min: 0, max: 65}) <= 0+generatorBonus
+    (@mergePropInto item,  _.sample itemList['prefix-special']) if chance.integer({min: 0, max: 120}) <= 0+generatorBonus
 
-    (@mergePropInto item,  _.sample itemList['suffix']) if chance.integer({min: 0, max: 25}) <= 0+generatorBonus
+    (@mergePropInto item,  _.sample itemList['suffix']) if chance.integer({min: 0, max: 85}) <= 0+generatorBonus
 
     item.type = type
 
