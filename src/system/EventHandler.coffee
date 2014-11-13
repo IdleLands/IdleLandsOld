@@ -199,15 +199,15 @@ class EventHandler
         message.push "<player.name>#{member.name}</player.name> gained <event.xp>#{Math.abs boost}</event.xp>xp [~<event.xp>#{+(percent).toFixed 3}</event.xp>%]"
       else message.push "<player.name>#{member.name}</player.name> lost <event.xp>#{Math.abs boost}</event.xp>xp [~<event.xp>#{+(percent).toFixed 3}</event.xp>%]"
 
-    message = MessageCreator.genericMessage _.str.toSentenceSerial message
-
     extra =
       partyName: player.party.name
 
-    @broadcastEvent {message: "#{event.remark} #{message}.", player: player, extra: extra, type: 'exp'}
+    message = "#{MessageCreator.doStringReplace event.remark, player, extra} #{_.str.toSentenceSerial message}."
+
+    @broadcastEvent {message: message, player: player, extra: extra, type: 'exp'}
 
     for member in player.party.players
-      @broadcastEvent {message: "#{event.remark} #{message}.", player: member, extra: extra, sendMessage: no, type: 'exp'} if member isnt player
+      @broadcastEvent {message: message, player: member, extra: extra, sendMessage: no, type: 'exp'} if member isnt player
 
     callback true
 
@@ -311,15 +311,15 @@ class EventHandler
         message.push "<player.name>#{member.name}</player.name> gained <event.gold>#{Math.abs boost}</event.gold> gold [<event.gold>#{boost}</event.gold> gold]"
       else message.push "<player.name>#{member.name}</player.name> lost <event.gold>#{Math.abs boost}</event.gold> gold [<event.gold>#{boost}</event.gold> gold]"
 
-    message = MessageCreator.genericMessage _.str.toSentenceSerial message
-
     extra =
       partyName: player.party.name
 
-    @broadcastEvent {message: "#{event.remark} #{message}.", player: player, extra: extra, type: 'gold'}
+    message = "#{MessageCreator.doStringReplace event.remark, player, extra} #{_.str.toSentenceSerial message}."
+
+    @broadcastEvent {message: message, player: player, extra: extra, type: 'gold'}
 
     for member in player.party.players
-      @broadcastEvent {message: "#{event.remark} #{message}.", player: member, extra: extra, sendMessage: no, type: 'gold'} if member isnt player
+      @broadcastEvent {message: message, player: member, extra: extra, sendMessage: no, type: 'gold'} if member isnt player
 
     callback true
 
