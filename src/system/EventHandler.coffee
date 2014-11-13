@@ -166,18 +166,48 @@ class EventHandler
       console.error "XP EVENT FAILURE", event
       return callback false
 
+    message = []
+    for member in player.party.players
+      boost = 0
+      percent = 0
+
+      if (chance.bool {likelihood: player.calculateYesPercent()})
+        percent = Constants.eventEffects[event.type].fail
+        boost = Math.floor member.xp.maximum * (percent/100)
+      else
+        min = Constants.eventEffects[event.type].minPercent
+        max = Constants.eventEffects[event.type].maxPercent
+        flux = Constants.eventEffects[event.type].flux
+        step = member.level.maximum / (max - min)
+        steps = Math.floor ((member.level.maximum - member.level.getValue()) / step)
+
+        fluxed = chance.floating {min: -flux, max: flux, fixed: 3}
+
+        percent = min + steps + fluxed
+
+        boost = Math.floor member.xp.maximum * (percent/100)
+
+      boost = member.calcXpGain boost
+      member.gainXp boost
+      extra =
+        xp: Math.abs boost
+        realXp: boost
+        percentXp: +(percent).toFixed 3
+      member.emit "event.#{event.type}", member, extra
+
+      if event.type is "blessXpParty"
+        message.push "<player.name>#{member.name}</player.name> gained <event.xp>#{Math.abs boost}</event.xp>xp [~<event.xp>#{+(percent).toFixed 3}</event.xp>%]"
+      else message.push "<player.name>#{member.name}</player.name> lost <event.xp>#{Math.abs boost}</event.xp>xp [~<event.xp>#{+(percent).toFixed 3}</event.xp>%]"
+
+    message = MessageCreator.genericMessage _.str.toSentenceSerial message
+
     extra =
       partyName: player.party.name
 
-    @broadcastEvent {message: event.remark, player: player, extra: extra, type: 'exp'}
-
-    if event.type is "blessXpParty"
-      event.remark = "%player gained %xpxp!"
-    else
-      event.remark = "%player lost %xpxp!"
+    @broadcastEvent {message: "#{event.remark} #{message}.", player: player, extra: extra, type: 'exp'}
 
     for member in player.party.players
-      @doXp event, member, callback
+      @broadcastEvent {message: "#{event.remark} #{message}.", player: player, extra: extra, sendMessage: no, type: 'exp'} if member isnt player
 
     callback true
 
@@ -237,15 +267,59 @@ class EventHandler
     extra =
       partyName: player.party.name
 
-    @broadcastEvent {message: event.remark, player: player, extra: extra, type: 'gold'}
+    message = []
+    for member in player.party.players
+      goldTiers = Constants.eventEffects[event.type].amount
+      curGold = member.gold.getValue()
 
-    if event.type is "blessGoldParty"
-      event.remark = "%player gained %gold gold!"
-    else
-      event.remark = "%player lost %gold gold!"
+      boost = 0
+      for i in [0...goldTiers.length]
+        if curGold < Math.abs goldTiers[i]
+          highVal = if not goldTiers[i-1] then 100 else goldTiers[i-1]
+          lowVal = if not goldTiers[i] then 1 else goldTiers[i]
+
+          min = Math.min highVal, lowVal
+          max = Math.max highVal, lowVal
+          boost = chance.integer {min: min, max: max}
+          break
+
+      if not boost
+        val = _.last goldTiers
+        min = Math.min val, 0
+        max = Math.max val, 1
+        boost = chance.integer min: min, max: max
+
+      if _.isNaN boost
+        console.error "BOOST PRE-CALC IS NaN"
+        boost = 1
+
+      boost = member.calcGoldGain boost
+
+      if _.isNaN boost
+        console.error "BOOST POST-CALC IS NaN"
+        boost = 1
+
+      extra =
+        gold: Math.abs boost
+        realGold: boost
+
+      member.gainGold boost
+
+      member.emit "event.#{event.type}", member, extra
+
+      if event.type is "blessGoldParty"
+        message.push "<player.name>#{member.name}</player.name> gained <event.gold>#{Math.abs boost}</event.gold> gold [<event.gold>#{boost}</event.gold> gold]"
+      else message.push "<player.name>#{member.name}</player.name> lost <event.gold>#{Math.abs boost}</event.gold> gold [<event.gold>#{boost}</event.gold> gold]"
+
+    message = MessageCreator.genericMessage _.str.toSentenceSerial message
+
+    extra =
+      partyName: player.party.name
+
+    @broadcastEvent {message: "#{event.remark} #{message}.", player: player, extra: extra, type: 'gold'}
 
     for member in player.party.players
-      @doGold event, member, callback
+      @broadcastEvent {message: "#{event.remark} #{message}.", player: player, extra: extra, sendMessage: no, type: 'gold'} if member isnt player
 
     callback true
 
