@@ -22,6 +22,22 @@ class PlayerManager
 
       db.update {}, {$set:{isOnline: no}}, {multi: yes}, ->
 
+    @interval = null
+    @beginGameLoop()
+
+  beginGameLoop: ->
+    DELAY_INTERVAL = 10000
+
+    doActionPerMember = (arr, action) ->
+      for i in [0...arr.length]
+        setTimeout (player, i) ->
+          action player
+        , DELAY_INTERVAL/arr.length*i, arr[i]
+
+    @interval = setInterval =>
+      (doActionPerMember @players, ((player) -> player.takeTurn())) if @players.length > 0
+    , DELAY_INTERVAL
+
   randomPlayer: ->
     _.sample @players
 
@@ -218,7 +234,7 @@ class PlayerManager
   playerTakeTurn: (identifier) ->
     return Q {isSuccess: no, code: 10, message: "You're not logged in!"} if not identifier or not (identifier of @playerHash)
 
-    player = @playerHash[identifier].takeTurn()
+    player = @playerHash[identifier]
     @handleAutoLogout player
 
     Q {isSuccess: yes, code: 102, message: "Turn taken.", player: player.buildRESTObject()}

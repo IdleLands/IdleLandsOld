@@ -142,9 +142,9 @@ gameLoop = ->
       setTimeout (player, i) ->
         action player
       , DELAY_INTERVAL/arr.length*i, arr[i]
-	  
-  interval = setInterval =>
-    doActionPerMember hashes, IdleWrapper.api.player.nextAction
+
+  interval = setInterval ->
+    doActionPerMember hashes, IdleWrapper.api.player.takeTurn
   , DELAY_INTERVAL
   
 interactiveSession = ->
@@ -153,13 +153,13 @@ interactiveSession = ->
   cli = readline.createInterface process.stdin, process.stdout, null
 
   cli.on 'line', (line) ->
-    clearInterval interval
+    clearInterval IdleWrapper.api.gameInstance.playerManager.interval
     cli.setPrompt "halted: c to continue> "
 
     if line is ""
       cli.prompt()
     else if line is "c"
-      do gameLoop
+      do IdleWrapper.api.gameInstance.playerManager.beginGameLoop()
     else
       try
         broadcast "Evaluating `#{line}`"

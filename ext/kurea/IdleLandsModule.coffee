@@ -166,12 +166,12 @@ module.exports = (Module) ->
           , DELAY_INTERVAL/arr.length*i, arr[i]
 
       @interval = setInterval =>
-        doActionPerMember @userIdentsList, @IdleWrapper.api.player.nextAction
+        doActionPerMember @userIdentsList, @IdleWrapper.api.player.takeTurn
       , DELAY_INTERVAL
 
     watchIdleFiles: ->
       loadFunction = _.debounce (=>@loadIdle()), 100
-      watch idlePath, {}, () =>
+      watch idlePath, {}, () ->
         files = finder.from(idlePath).findFiles("*.coffee")
 
         _.forEach files, (file) ->
