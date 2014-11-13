@@ -189,7 +189,7 @@
         "stats": {
             "class": "Monster",
             "hp": 23200,
-             "mp": 28200
+             "mp": 28200,
             "level": 40,
             "str": 1800,
             "int": 1750,
