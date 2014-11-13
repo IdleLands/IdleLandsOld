@@ -404,25 +404,40 @@ class EventHandler
       gold: player.gold.getValue()
       shopGold: shop.price
     string = MessageCreator.doStringReplace event.remark, player, extra
-    @broadcastEvent {message: string, player: player, type: 'shop'}
 
     myItem = _.findWhere player.equipment, {type: shop.item.type}
     return callback false if not myItem
+
     score = player.calc.itemScore shop.item
     myScore = player.calc.itemScore myItem
 
     if player.gold.getValue() < shop.price
-      string = MessageCreator.doStringReplace "Unfortunately, %player only has %gold gold, and walked away in disappointment.", player, extra
-      @broadcastEvent {message: string, player: player, type: 'shop-fail'}
+      response = MessageCreator.doStringReplace "Unfortunately, %player only has %gold gold, and walked away in disappointment.", player, extra
+      @broadcastEvent {message: "#{string} #{response}", player: player, type: 'shop'}
       callback false
     else if score > myScore and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
-      string = MessageCreator.doStringReplace "%player gladly buys %item for %shopGold gold! What a deal!", player, extra
-      @doItemEquip player, shop.item, string
+      response = MessageCreator.doStringReplace "%player gladly buys %item for %shopGold gold! What a deal!", player, extra
+
+      score = score.toFixed 1
+      myScore = myScore.toFixed 1
+      realScore = shop.item.score().toFixed 1
+      myRealScore = myItem.score().toFixed 1
+
+      player.equip shop.item
+
+      realScoreDiff = (realScore-myRealScore).toFixed 1
+      perceivedScoreDiff = (score-myScore).toFixed 1
+      normalizedRealScore = if realScoreDiff > 0 then "+#{realScoreDiff}" else realScoreDiff
+      normalizedPerceivedScore = if perceivedScoreDiff > 0 then "+#{perceivedScoreDiff}" else perceivedScoreDiff
+
+      totalString = "#{string} #{response} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (#{normalizedPerceivedScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
+      @broadcastEvent {message: totalString, player: player, extra: extra, type: 'shop'}
+      player.emit "event.merchant", player, extra
       player.gold.sub shop.price
       callback true
     else
-      string = MessageCreator.doStringReplace "However, %player decides that %item is useless and leaves in a huff!", player, extra
-      @broadcastEvent {message: string, player: player, type: 'shop-fail'}
+      response = MessageCreator.doStringReplace "However, %player decides that %item is useless and leaves in a huff!", player, extra
+      @broadcastEvent {message: "#{string} #{response}", player: player, type: 'shop'}
       callback false
 
   doFindItem: (event, player, callback) ->
