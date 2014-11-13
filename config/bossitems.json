@@ -88,7 +88,7 @@
     },
     "Flame Polished Gauntlets": {
         "type": "hands",
-        "str": 300,
+        "int": 350,
         "con": 190,
 		"fire": 10000
         
