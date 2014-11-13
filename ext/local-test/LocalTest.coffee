@@ -143,7 +143,7 @@ gameLoop = ->
         action player
       , DELAY_INTERVAL/arr.length*i, arr[i]
 
-  interval = setInterval =>
+  interval = setInterval ->
     doActionPerMember hashes, IdleWrapper.api.player.takeTurn
   , DELAY_INTERVAL
   

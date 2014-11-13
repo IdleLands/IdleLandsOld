@@ -171,7 +171,7 @@ module.exports = (Module) ->
 
     watchIdleFiles: ->
       loadFunction = _.debounce (=>@loadIdle()), 100
-      watch idlePath, {}, () =>
+      watch idlePath, {}, () ->
         files = finder.from(idlePath).findFiles("*.coffee")
 
         _.forEach files, (file) ->
