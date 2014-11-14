@@ -155,7 +155,8 @@ class PlayerManager
 
     @checkPassword identifier, password
     .then (res) =>
-      return defer.resolve {isSuccess: yes, code: 15, message: "This is a duplicate login session.", player: @playerHash[identifier].buildRESTObject()} if @playerHash[identifier]
+      player = @playerHash[identifier]
+      return defer.resolve {isSuccess: yes, code: 15, message: "This is a duplicate login session.", player: player.buildRESTObject(), token: player.tempSecureToken} if @playerHash[identifier]
       return @addPlayer identifier if res.isSuccess
       res
 
