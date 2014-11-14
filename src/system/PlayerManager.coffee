@@ -151,12 +151,15 @@ class PlayerManager
 
   loginWithPassword: (identifier, password) ->
 
-    return Q {isSuccess: no, code: 15, message: "You're already logged in elsewhere!", player: @playerHash[identifier].buildRESTObject()} if @playerHash[identifier]
+    defer = Q.defer()
 
     @checkPassword identifier, password
     .then (res) =>
+      return defer.resolve {isSuccess: no, code: 15, message: "You're already logged in elsewhere!", player: @playerHash[identifier].buildRESTObject()} if @playerHash[identifier]
       return @addPlayer identifier if res.isSuccess
       res
+
+    defer.promise
 
   registerPlayer: (options) ->
 
