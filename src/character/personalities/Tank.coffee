@@ -5,7 +5,7 @@ class Tank extends Personality
   constructor: ->
 
   classChangePercent: (potential) ->
-    -100 if not (@isTank potential)
+    -100 if not Personality::isTank potential
 
   @canUse = (player) ->
     player.statistics["calculated total damage received"] >= 200000
