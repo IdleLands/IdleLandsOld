@@ -85,5 +85,12 @@
         "con": 500,
         "vorpal": 1,
         "power": 1
-    }
+    },
+    "Flame Polished Gauntlets": {
+        "type": "hands",
+        "int": 350,
+        "con": 190,
+		"fire": 10000
+        
+	}
 }
