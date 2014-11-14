@@ -26,6 +26,8 @@ class Mage extends Class
 
   physicalAttackChance: -> -25
 
+  mpregen: (player) -> Math.floor(player.mp.maximum*0.05)
+
   minDamage: ->
     1
 

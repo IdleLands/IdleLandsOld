@@ -137,6 +137,10 @@ class Battle
 
   takeTurn: (player) ->
     return if player.hp.atMin() or player.fled
+
+    player.hp.add player.calc.stat "hpregen"
+    player.mp.add player.calc.stat "mpregen"
+
     if player.calc.cantAct() > 0
       affectingCauses = player.calc.cantActMessages()
       message = MessageCreator.doStringReplace "#{_.str.toSentence affectingCauses}!", player

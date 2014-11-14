@@ -39,6 +39,8 @@ class Equipment
 
     hp: 0.5
     mp: 0.2
+    hpregen: 1
+    mpregen: 0.4
 
     luck: 5.5
 
@@ -59,6 +61,8 @@ class Equipment
 
     hpPercent: 5
     mpPercent: 3
+    hpregenPercent: 10
+    mpregenPercent: 6
 
     enchantLevel: -25
 
