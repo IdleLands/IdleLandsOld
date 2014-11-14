@@ -150,6 +150,21 @@
                  "width":0,
                  "x":1488,
                  "y":576
+                }, 
+                {
+                 "gid":26,
+                 "height":0,
+                 "name":"Sky Dragon of Vocalnus",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Boss",
+                 "visible":true,
+                 "width":0,
+                 "x":16,
+                 "y":496
                 }],
          "opacity":1,
          "type":"objectgroup",
