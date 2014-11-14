@@ -101,7 +101,7 @@ class Character extends EventEmitter2
 
   addPersonality: (newPersonality) ->
     if not Personality::doesPersonalityExist newPersonality
-      return Q {isSuccess: no, code: 30, message: "You already have that personality set!"}
+      return Q {isSuccess: no, code: 30, message: "That personality doesn't exist (they're case sensitive)!"}
 
     potentialPersonality = Personality::getPersonality newPersonality
     if not ('canUse' of potentialPersonality) or not potentialPersonality.canUse @
