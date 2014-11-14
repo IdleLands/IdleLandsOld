@@ -182,7 +182,7 @@ class PlayerManager
 
     @db.insert saveObj, (iErr) =>
 
-      return Q {isSuccess: no, code: 5, message: "Player creation error: #{iErr} (you probably already registered a character to that ident, or that identifier is already taken)."} if iErr
+      return defer.resolve {isSuccess: no, code: 5, message: "Player creation error: #{iErr} (you probably already registered a character to that ident, that identifier is already taken, or that name is taken)."} if iErr
 
       @game.broadcast MessageCreator.genericMessage "Welcome #{options.name} to #{Constants.gameName}!"
       @playerHash[options.identifier] = playerObject
