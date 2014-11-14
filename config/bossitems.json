@@ -106,5 +106,12 @@
         "dex": 300,
 		"defense": 1
         
+	},
+    "Useless Feather": {
+        "type": "charm",
+        "luck": -50,
+        "dex": 1,
+		"defense": 1
+        
 	}
 }
