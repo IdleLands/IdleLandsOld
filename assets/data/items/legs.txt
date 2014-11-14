@@ -44,7 +44,7 @@
 "Hoverchair" agi=215 con=500 
 "Black Bar" agi=400 con=100
 "Full Monty" agi=400 con=400
-"Greaves of Null and All" agi=500 con=500 pietyPercent=50
+"Greaves of Null and All" agi=500 con=500
 
 # agi / wis
 "Granny's Pantaloons" agi=100 wis=75

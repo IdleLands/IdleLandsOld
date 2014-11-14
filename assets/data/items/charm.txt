@@ -52,7 +52,7 @@
 "Everburn" int=350 wis=300 fire=100
 "Faithful Pet Wolf" int=300 wis=450
 "Mask de Smith" int=377 wis=400 
-"Magnitude Pocketwatch" int=500 wis=500 sentimentalityPercent=20
+"Magnitude Pocketwatch" int=500 wis=500
 
 # luck/wis
 "bauble"  luck=1 wis=7

@@ -8,7 +8,7 @@
 "kite shield" con=20
 "aegis" con=37 aegis=1
 "turtle shell" con=59 defense=1
-"Holy Arms" con=777 piety=400
+"Holy Arms" con=777
 
 # str / con
 "girdle" str=1 con=2
@@ -53,7 +53,7 @@
 "clock" con=35 agi=20
 
 # wis / str
-"upvote" wis=200 piety=50 str=-50
+"upvote" wis=200 str=-50
 
 # 3-stat
 "pie plate" dex=5 con=-3 agi=4

@@ -257,7 +257,7 @@
 "sunstone" str=300 con=100
 "moonstone" wis=150 con=250
 "runestone" dex=150 con=250
-"orichalcum" piety=5
+"orichalcum" con=200 strPercent=10 dexPercent=10 intPercent=10
 "godstone" strPercent=5 intPercent=5 conPercent=5
 "demonstone" wisPercent=5 agiPercent=5 dexPercent=5
 "redstone" fire=100 intPercent=10 luckPercent=5
@@ -292,3 +292,7 @@
 "smart" mp=100
 "intelligentual" mp=1000
 "superdupermagical" mp=10000
+
+"sentimental" sentimentality=100
+"emotionally bound" sentimentality=200
+"inseparable" sentimentality=500

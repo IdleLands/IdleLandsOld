@@ -76,6 +76,8 @@ class Equipment
     forsaken: 100
     haste: 300
 
+    sentimentality: 0.4
+
   @defaults =
     itemClass: "basic"
     str: 0

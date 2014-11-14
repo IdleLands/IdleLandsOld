@@ -98,7 +98,7 @@
 "eight-by-four" str=208
 "bastardsword" str=214
 "party cannon" str=220
-"muramasa" str=226 piety=250 silver=1
+"muramasa" str=226 silver=1
 "bloodsword" str=232 power=1 vorpal=1
 "sleepsword" str=238
 "flaming arrow" str=244 fire=50
@@ -216,7 +216,7 @@
 "d8" int=104
 "reflector" int=105
 "knitting needles" int=107
-"king of hearts" int=109 offense=1 sentimentality=10
+"king of hearts" int=109 offense=1 sentimentality=100
 "queen of clubs" int=111 offense=1
 "jack of diamonds" int=113 offense=1
 "chunk of ice" int=115 ice=50 offense=1
@@ -275,7 +275,7 @@
 "Nuclear Reactor" int=1200 firePercent=10
 "Absolute Zero Chamber" int=1300 icePercent=10
 "Masterball" int=1400 deadeye=1
-"Staff of Infinity" int=1500 offense=1 sentimentalityPercent=25
+"Staff of Infinity" int=1500 offense=1 sentimentality=25
 
 # hybrid int / str
 "cupcake" int=3 str=3
@@ -293,9 +293,9 @@
 "blazier" fire=300 str=110 int=70
 "swordcane" str=150 int=50 luck=11
 "sunsword" str=170 int=55
-"murasame" str=218 int=60 piety=250
-"masamune" str=235 int=80 silver=1 piety=500
-"mythblade" str=90 int=267 piety=150
+"murasame" str=218 int=60
+"masamune" str=235 int=80 silver=1
+"mythblade" str=90 int=267
 "flametongue" str=100 int=305 fire=150
 "icebrand" str=110 int=305 ice=80
 "mjollnir" str=335 int=200 thunder=150
