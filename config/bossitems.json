@@ -99,5 +99,12 @@
         "wis": 300,
 		"forsaken": 1
         
+	},
+    "Nimbus Cloud Mace": {
+        "type": "mainhand",
+        "agi": 200,
+        "dex": 300,
+		"defense": 1
+        
 	}
 }
