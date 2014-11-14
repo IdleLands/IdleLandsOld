@@ -237,23 +237,5 @@
         "items": [
             { "name": "Nimbus Cloud Mace", "dropPercent": 80 }
         ]
-        },
-    "dChicken Solver": {
-        "respawn": 600,
-        "availableScore": 2400,
-        "stats": {
-            "class": "cleric",
-            "hp": 40000,
-            "mp": 28200,
-            "level": 1,
-            "str": 1800,
-			"wis": 1500,
-			"int": 1400,
-			"con": 1000
-            
-        },
-        "items": [
-            { "name": "Useless Feather", "dropPercent": 10 }
-        ]
         }
 }
