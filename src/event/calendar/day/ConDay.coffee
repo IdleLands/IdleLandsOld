@@ -1,12 +1,12 @@
 
-TimePeriod = require "../../base/TimePeriod"
+TimePeriod = require "../../TimePeriod"
 
 class ConDay extends TimePeriod
 
   constructor: ->
   
   @dateName = "Day of Vitality"
-  @desc = "5% con boost"
+  @desc = "+5% CON"
 
   @conPercent: -> 5
 

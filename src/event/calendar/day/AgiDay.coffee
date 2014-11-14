@@ -1,12 +1,12 @@
 
-TimePeriod = require "../../base/TimePeriod"
+TimePeriod = require "../../TimePeriod"
 
 class AgiDay extends TimePeriod
 
   constructor: ->
   
   @dateName = "Day of Agility"
-  @desc = "5% agi boost"
+  @desc = "+5% AGI"
 
   @agiPercent: -> 5
 

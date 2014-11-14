@@ -1,12 +1,12 @@
 
-TimePeriod = require "../../base/TimePeriod"
+TimePeriod = require "../../TimePeriod"
 
 class StrDay extends TimePeriod
 
   constructor: ->
   
   @dateName = "Day of Strength"
-  @desc = "5% str boost"
+  @desc = "+5% STR"
 
   @strPercent: -> 5
 

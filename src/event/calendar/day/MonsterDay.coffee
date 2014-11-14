@@ -1,12 +1,12 @@
 
-TimePeriod = require "../../base/TimePeriod"
+TimePeriod = require "../../TimePeriod"
 
 class MonsterDay extends TimePeriod
 
   constructor: ->
   
   @dateName = "Day of Monsters"
-  @desc = "10% boost to monster stats"
+  @desc = "+10% all monster stats"
 
   @dexPercent: (character) -> 10 if not character.playerManager
   @strPercent: (character) -> 10 if not character.playerManager

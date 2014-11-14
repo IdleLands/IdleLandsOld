@@ -1,12 +1,12 @@
 
-TimePeriod = require "../../base/TimePeriod"
+TimePeriod = require "../../TimePeriod"
 
 class WisDay extends TimePeriod
 
   constructor: ->
   
   @dateName = "Day of Wisdom"
-  @desc = "5% wis boost"
+  @desc = "+5% WIS"
 
   @wisPercent: -> 5
 

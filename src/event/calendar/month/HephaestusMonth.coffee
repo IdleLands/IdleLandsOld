@@ -1,5 +1,5 @@
 
-TimePeriod = require "../../base/TimePeriod"
+TimePeriod = require "../../TimePeriod"
 
 class HephaestusMonth extends TimePeriod
 
