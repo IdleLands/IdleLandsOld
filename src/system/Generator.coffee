@@ -10,13 +10,15 @@ class Generator
     for attr,val of prop
       continue if (not _.isNumber val) or _.isEmpty attr
       if attr of baseItem
-        if _.isNumber baseItem[attr]
-          baseItem[attr] += prop[attr]
-        else
-          if not baseItem[attr]
-            console.error "bad item attribute", baseItem, attr
-            console.error new Error().stack
 
+        if not baseItem[attr]
+          baseItem[attr] = 1
+          baseItem[attr] += prop[attr]
+
+        else if _.isNumber baseItem[attr]
+          baseItem[attr] += prop[attr]
+
+        else
           baseItem[attr].maximum += prop[attr]
       else
         baseItem[attr] = if _.isNaN prop[attr] then true else prop[attr]

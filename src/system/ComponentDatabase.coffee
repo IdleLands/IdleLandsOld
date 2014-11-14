@@ -59,7 +59,7 @@ class ComponentDatabase
       arr = item.split '='
       retval = {}
       testVal = parseInt arr[1]
-      retval[arr[0]] = if _.isNaN testVal then arr[1] else testVal
+      retval[arr[0]] = if _.isNaN testVal then 1 else testVal
       retval
     .reduce (cur, prev) ->
       _.extend prev, cur

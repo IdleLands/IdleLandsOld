@@ -186,7 +186,7 @@
 "orange creamsicle" int=47 ice=10
 "chinese finger trap" int=49 prone=1
 "flip-phone" int=51
-"crosier" int=53 silver
+"crosier" int=53 silver=1
 "subway sub" int=57 luck=7
 "rod" int=59
 "scepter" int=61
