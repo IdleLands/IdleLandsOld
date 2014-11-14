@@ -27,6 +27,8 @@ class Barbarian extends Class
   physicalAttackChance: (player) ->
     if player.special.getValue() > 70 then 30 else 5
 
+  hpregen: (player) -> Math.floor(player.hp.maximum*0.05)
+
   minDamage: (player) ->
     player.calc.damage()*0.40
 

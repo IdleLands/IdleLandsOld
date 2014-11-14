@@ -18,8 +18,8 @@
 "fighter" dex=30
 "kraken" str=5
 "fabulous fish" int=30 wis=10
-"dragon" strPercent=4 agiPercent=3
-"unicorn" intPercent=3 agiPercent=4
+"dragon" strPercent=4 agiPercent=3 hpregen=200
+"unicorn" intPercent=3 agiPercent=4 mpregen=200
 "pixie" wisPercent=3 intPercent=3 luck=1
 "pie" wis=42
 "cake" dex=42
@@ -46,6 +46,7 @@
 "moon" intPercent=5 agiPercent=2
 "sun" strPercent=5 dexPercent=2
 "stars" wisPercent=5 conPercent=2
+"ascetic" hpregen=400 mpregen=400
 "karmic koala" luck=120
 "lucid lynx" dex=10 agi=100
 "corrupt" str=100 int=50 con=-30

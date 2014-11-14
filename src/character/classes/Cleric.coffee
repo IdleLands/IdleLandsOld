@@ -26,6 +26,8 @@ class Cleric extends Class
 
   physicalAttackChance: -> -10
 
+  mpregen: (player) -> Math.floor(player.mp.maximum*0.05)
+
   minDamage: (player) ->
     player.calc.damage()*0.15
 

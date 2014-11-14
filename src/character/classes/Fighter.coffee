@@ -25,6 +25,8 @@ class Fighter extends Class
     item.agi*0.2 -
     item.wis*0.8
 
+  hpregen: (player) -> Math.floor(player.hp.maximum*0.05)
+
   minDamage: (player) ->
     player.calc.damage()*0.50
 

@@ -296,3 +296,9 @@
 "sentimental" sentimentality=100
 "emotionally bound" sentimentality=200
 "inseparable" sentimentality=500
+
+"channelling" mpregen=500 mpregenPercent=10
+"tearforged" mpregen=1000 mpregenPercent=20
+
+"regenerating" hpregen=500 hpregenPercent=10
+"bloodforged" hpregen=1000 hpregenPercent=20
