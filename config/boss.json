@@ -242,7 +242,7 @@
         "respawn": 600,
         "availableScore": 2400,
         "stats": {
-            "class": "jester",
+            "class": "Jester",
             "hp": 40000,
             "mp": 28200,
             "level": 1,
