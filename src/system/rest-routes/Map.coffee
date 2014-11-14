@@ -8,6 +8,6 @@ router
 .route "/game/map"
 .post mapTimeout.prevent, (req, res) ->
   {map} = req.body
-  res.json API.game.content.map map
+  res.json {isSuccess: yes, code: 103, message: "Map retrieved successfully.", map: API.game.content.map map}
 
 module.exports = router
