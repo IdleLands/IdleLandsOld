@@ -23,6 +23,7 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
          "height":60,
          "name":"Interactables",
          "objects":[
@@ -38,6 +39,7 @@
                      "map":"Norkos",
                      "movementType":"descend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -56,6 +58,7 @@
                      "map":"Norkos",
                      "movementType":"descend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -73,6 +76,7 @@
                      "map":"Mythos -1",
                      "movementType":"fall"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -91,6 +95,7 @@
                      "map":"Norkos",
                      "movementType":"descend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -109,6 +114,7 @@
                      "map":"Norkos",
                      "movementType":"descend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -123,11 +129,27 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Treasure",
                  "visible":true,
                  "width":0,
                  "x":16,
                  "y":528
+                }, 
+                {
+                 "gid":26,
+                 "height":0,
+                 "name":"Gryffyndor House Representative",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Boss",
+                 "visible":true,
+                 "width":0,
+                 "x":1488,
+                 "y":576
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -137,6 +159,7 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
          "height":60,
          "name":"Regions",
          "objects":[
@@ -147,6 +170,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":608,
@@ -160,6 +184,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":240,
@@ -173,6 +198,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":912,
@@ -186,6 +212,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":96,
@@ -204,6 +231,7 @@
     {
      "name":"norkos"
     },
+ "renderorder":"right-down",
  "tileheight":16,
  "tilesets":[
         {

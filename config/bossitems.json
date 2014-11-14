@@ -92,5 +92,12 @@
         "con": 190,
 		"fire": 10000
         
+	},
+    "Gryffyndor Sword": {
+        "type": "mainhand",
+        "int": 350,
+        "wis": 300,
+		"forsaken": 1
+        
 	}
 }

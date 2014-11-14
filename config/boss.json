@@ -68,6 +68,7 @@
             "class": "Rogue",
             "hp": 14740,
             "level": 30,
+			"str": 1800,
             "con": 400,
             "dex": 1600,
             "agi": 1500
@@ -187,7 +188,7 @@
         "respawn": 10800,
         "availableScore": 2400,
         "stats": {
-            "class": "Monster",
+            "class": "Mage",
             "hp": 23200,
             "mp": 28200,
             "level": 40,
@@ -199,6 +200,24 @@
         },
         "items": [
             { "name": "Flame Polished Gauntlets", "dropPercent": 80 }
+        ]
+        },
+    "Gryffyndor House Representative": {
+        "respawn": 10800,
+        "availableScore": 2400,
+        "stats": {
+            "class": "Monster",
+            "hp": 23200,
+            "mp": 28200,
+            "level": 40,
+            "str": 1800,
+			"dex": 1500,
+			"agi": 1400,
+			"con": 1000
+            
+        },
+        "items": [
+            { "name": "Gryffyndor Sword", "dropPercent": 80 }
         ]
         }
 }
