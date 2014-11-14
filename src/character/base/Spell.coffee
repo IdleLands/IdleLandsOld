@@ -26,8 +26,17 @@ class Spell
       .reject (member) -> member.hp.atMax()
       .value()
 
+  deadPartyMembers = @deadPartyMembers = (player) ->
+    return [] if not player.party
+    _.chain player.party.players
+    .filter (member) -> member.hp.atMin()
+    .value()
+
   @areAnyPartyMembersBelowMaxHealth = (player) ->
     gpmbmh(player).length > 0
+
+  @areAnyPartyMembersDead = (player) ->
+    deadPartyMembers(player).length > 0
 
   ## / utility chooser functions
 
@@ -139,7 +148,7 @@ class Spell
 
     _.each @affected, (player) =>
       if not player
-        console.error "INVALID PLAYER for #{@baseName}"
+        console.error "INVALID PLAYER for #{@baseName}: ", player
         return
 
       @baseTurns[player.name] = @turns[player.name] = turns[player.name] = @calcDuration player

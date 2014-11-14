@@ -5,14 +5,18 @@ class Revive extends Spell
   name: "revive"
   @element = Revive::element = Spell::Element.heal
   @tiers = Revive::tiers = [
-    {name: "revive", spellPower: 1, cost: 500, class: "Cleric", level: 20}
+    {name: "revive", spellPower: 1, cost: 500, class: "Cleric", level: 30}
+    {name: "ressurrect", spellPower: 2, cost: 2500, class: "Cleric", level: 50}
   ]
+
+  @canChoose = (caster) ->
+    Spell.areAnyPartyMembersDead caster
 
   determineTargets: ->
     @targetAllAllies includeDead: yes, includeLiving: no
 
   calcDamage: ->
-    super() + 25
+    super() + (25 * @spellPower)
 
   cast: (player) ->
     damage = @calcDamage()
