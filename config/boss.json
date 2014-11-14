@@ -68,6 +68,7 @@
             "class": "Rogue",
             "hp": 14740,
             "level": 30,
+			"str": 1800,
             "con": 400,
             "dex": 1600,
             "agi": 1500
