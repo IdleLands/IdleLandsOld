@@ -110,7 +110,7 @@
     "Useless Feather": {
         "type": "charm",
         "luck": -50,
-        "dex": 1,
+        "dex": 2,
 		"defense": 1
         
 	}

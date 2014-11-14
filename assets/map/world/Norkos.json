@@ -608,7 +608,7 @@
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
-                 "x":688,
+                 "x":576,
                  "y":432
                 }, 
                 {
@@ -990,6 +990,21 @@
                  "width":0,
                  "x":368,
                  "y":240
+                }, 
+                {
+                 "gid":35,
+                 "height":0,
+                 "name":"NorkosDungeonEntranceFall",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":800,
+                 "y":432
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1215,7 +1230,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "width":250,
          "x":0,
          "y":0
