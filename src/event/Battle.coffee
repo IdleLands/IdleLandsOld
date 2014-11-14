@@ -34,9 +34,7 @@ class Battle
         return
       party.currentBattle = @
 
-  initializePlayers: ->
-    @calculateTurnOrder()
-
+  fixStats: ->
     _.each @turnOrder, (player) ->
       player.recalculateStats()
 
@@ -54,6 +52,10 @@ class Battle
       catch e
         console.error e
         console.error "FAILED TO SET HP ???? #{player.name}"
+
+  initializePlayers: ->
+    @calculateTurnOrder()
+    @fixStats()
 
   calculateTurnOrder: ->
     playerList = _.reduce @parties, ((prev, party) -> prev.concat party.players), []
@@ -390,6 +392,7 @@ class Battle
       party.disband()
 
     @game.inBattle = false
+    @fixStats()
 
   takeHp: (attacker, defender, damage, type, spell, message) ->
     @takeStatFrom attacker, defender, damage, type, "hp", spell, message
