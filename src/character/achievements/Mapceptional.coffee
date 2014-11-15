@@ -7,6 +7,7 @@ class Mapceptional extends Achievement
 
   getAllAchievedFor: (player) ->
     baseStat = player.statistics['calculated map changes']
+    return [] if not baseStat
 
     possibilities = [
       {mapName: "Norkos +1", reward: "+20 CON", con: -> 20}
