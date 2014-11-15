@@ -84,8 +84,8 @@ colorMap =
   "event.realXp":               colors.green
   "event.percentXp":            colors.green
   "event.item.newbie":          colors.whiteBright
-  "event.item.Normal":          colors.black
-  "event.item.basic":           colors.black
+  "event.item.Normal":          colors.whiteBright
+  "event.item.basic":           colors.whiteBright
   "event.item.pro":             colors.white
   "event.item.idle":            colors.cyan
   "event.item.godly":           colors.cyanBright
