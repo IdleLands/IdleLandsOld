@@ -31,7 +31,8 @@ class Monster extends Character
 
     try
       toClass = new (require "../classes/#{newClass}")()
-    catch
+    catch e
+      console.error "COULD NOT MAKE MONSTER OF CLASS #{newClass}", e.stack
       toClass = new (require "../classes/Monster")()
       toClassName = "Monster"
 
