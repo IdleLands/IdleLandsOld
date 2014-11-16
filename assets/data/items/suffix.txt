@@ -85,4 +85,4 @@
 "phoenix" strPercent=6 intPercent=6 agiPercent=6
 "deity" intPercent=10 conPercent=20
 "Creator" intPercent=10 strPercent=10 dexPercent=10 conPercent=10 wisPercent=10 agiPercent=10 luckPercent=10
-"Idleness" luck=600
+"Idleness" luck=400 sentimentality=5000
