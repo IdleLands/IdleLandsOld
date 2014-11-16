@@ -282,7 +282,7 @@ class Player extends Character
   getRegion: ->
     regions[@getTileAt().region.replace(/\s/g, '')]
 
-  moveAction: ->
+  moveAction: (currentStep) ->
     [newLoc, dir] = @pickRandomTile()
 
     try
@@ -313,6 +313,8 @@ class Player extends Character
       @handleTile tile
 
       @stepCooldown--
+
+      @gainXp @calcXpGain 10 if currentStep < 5
 
     catch e
       console.error "BAD LOCATION",e,e.message,e.stack
@@ -362,7 +364,7 @@ class Player extends Character
 
   takeTurn: ->
     steps = Math.max 1, @calc.haste()
-    @moveAction() while steps-- isnt 0
+    @moveAction steps while steps-- isnt 0
     @possiblyDoEvent()
     @possiblyLeaveParty()
     @save()
