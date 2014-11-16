@@ -44,6 +44,15 @@ class GMCommands
 
     player.forceIntoOverflow item
 
+  arrangeBattle: (playerList) ->
+    teams = []
+    for team in playerList
+      newTeam = []
+      for playerName in team
+        newTeam.push @game.playerManager.getPlayerByName playerName
+      teams.push newTeam
+    @game.arrangeBattle teams
+
   locations: _.extend {},
     teleports.towns,
     teleports.bosses,
