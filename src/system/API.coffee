@@ -72,6 +72,9 @@ class API
         player = @gameInstance.playerManager.getPlayerByName playerName
         @gameInstance.gmCommands.createItemFor player, type, itemString
 
+    arrangeBattle: (names) =>
+      @gameInstance.gmCommands.arrangeBattle names
+
   # Invoked either automatically (by means of taking a turn), or when a player issues a command
   @player =
     takeTurn: (identifier) =>

@@ -219,6 +219,26 @@ class Game
 
     startBattle parties if tryBattle parties
 
+  arrangeBattle: (teams) ->
+    return if teams.length <= 1
+    modified = _.flatten teams
+    if (_.uniq modified).length < modified.length
+      console.error "ERROR: BATTLE FORMATION BLOCKED DUE TO ONE PLAYER BEING DEFINED MULTIPLE TIMES"
+      return no
+
+    parties = []
+    for team in teams
+      playerList = []
+      for player in team
+        player.party?.playerLeave player, yes
+        playerList.push player
+      newParty = new Party @, playerList
+      parties.push newParty
+
+    @inBattle = true
+    new Battle @,parties
+    return yes
+
   teleport: (player, map, x, y, text) ->
     player.map = map
     player.x = x
