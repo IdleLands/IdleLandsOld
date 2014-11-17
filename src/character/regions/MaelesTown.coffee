@@ -4,10 +4,13 @@ Region = require "../base/Region"
 class MaelesTown extends Region
 
   constructor: ->
-  
-  @desc = "Strength boost and cheaper shopping"
+
+  @name = "Maeles Town"
+  @desc = "Strength boost and artisan shops"
 
   @strPercent: -> 10
-  @shopPercent: -> -10
+  @shopMult: -> 2
+  @shopSlots: -> 2
+  @shopQuality: -> 1.5
 
 module.exports = exports = MaelesTown

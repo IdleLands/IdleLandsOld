@@ -362,11 +362,33 @@ class Player extends Character
     return if not chance.bool {likelihood: @calc.partyLeavePercent()}
     @party.playerLeave @
 
+  checkShop: ->
+    @shop = null if @shop and ((not @getRegion()?.shopSlots()) or (@getRegion()?.name isnt @shop.region))
+    @shop = @playerManager.game.shopGenerator.regionShop @ if not @shop and @getRegion().shopSlots()
+
+  buyShop: (slot) ->
+    if not @shop.slots[slot]
+      return Q {isSuccess: no, code: 123, message: "The shop doesn't have an item in slot #{slot}."}
+    if @shop.slots[slot].price > @gold.getValue()
+      return Q {isSuccess: no, code: 124, message: "That item costs #{@shop.slots[slot].price} gold, but you only have #{@gold.getValue()} gold."}
+
+    @gold.sub @shop.slots[slot].price
+
+    current = _.findWhere @equipment, {type: @shop.slots[slot].item.type}
+    @equipment = _.without @equipment, current
+    @equipment.push @shop.slots[slot].item
+    @shop.slots[slot] = null
+    @shop.slots = _.compact @shop.slots
+    @save
+
+    Q {isSuccess: yes, code: 125, message: "Successfully purchased #{shop.slots[slot].item.name} for #{shop.slots[slot].price} gold.", player: @buildRESTObject()}
+
   takeTurn: ->
     steps = Math.max 1, @calc.haste()
     @moveAction steps while steps-- isnt 0
     @possiblyDoEvent()
     @possiblyLeaveParty()
+    @checkShop()
     @save()
     @
 

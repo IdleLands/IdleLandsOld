@@ -229,4 +229,10 @@ class API
         .then (res) =>
           @gameInstance.guildManager.leaveGuild identifier if res.isSuccess
 
+    shop:
+      buy: (identifier, slot) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.buyShop slot if res.isSuccess
+      
 module.exports = exports = API

@@ -24,6 +24,7 @@ class GMCommands
 
     playerTile = player.getTileAt()
     player.handleTile playerTile
+    player.checkShop()
 
   massTeleportLocation: (locationTitle) ->
     location = @lookupLocation locationTitle

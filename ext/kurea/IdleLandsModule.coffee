@@ -419,6 +419,21 @@ module.exports = (Module) ->
           .then (res) =>
             @reply origin, res.message
 
+      @addRoute "idle-shop buy :slot", (origin, route) =>
+        [slot] = [route.params.slot]
+        slot = parseInt slot
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to buy from a shop!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.shop.buy identifier, slot)
+          .then (res) =>
+            @reply origin, res.message
+
       @addRoute "idle-guild create :guildName", (origin, route) =>
         [guildName] = [route.params.guildName]
 
