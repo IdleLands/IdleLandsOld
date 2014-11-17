@@ -189,8 +189,8 @@
         "bitomancer": {
             "map": "Minotaur Maze -3",
             "formalName": "the Bitomancer Trainer",
-            "x": 23,
-            "y": 2
+            "x": 22,
+            "y": 1
         },
         "monster": {
             "map": "Mythos -2",
