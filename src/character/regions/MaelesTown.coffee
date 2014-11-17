@@ -4,7 +4,8 @@ Region = require "../base/Region"
 class MaelesTown extends Region
 
   constructor: ->
-  
+
+  @name = "Maeles Town"
   @desc = "Strength boost and artisan shops"
 
   @strPercent: -> 10

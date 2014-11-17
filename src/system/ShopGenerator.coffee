@@ -20,8 +20,10 @@ class ShopGenerator extends Generator
     shop
 
   regionShop: (player) ->
-    shop = []
+    shop = {}
+    shop.slots = []
     region = player.getRegion()
+    shop.region = region.name
     for i in [0...region.shopSlots()]
       item = @generateItem player
       item = @generateItem player while item.score() > player.calc.itemFindRange()*Constants.defaults.game.shopRangeBoost*region.shopQuality()
@@ -30,7 +32,7 @@ class ShopGenerator extends Generator
                 (1 + player.calc.stat('shopPercent')/100))
       price = 1 if price <= 0
       price *= 7 # gouge the players for gold, muhahaha
-      shop[i] = {item: item, price: price}
+      shop.slots[i] = {item: item, price: price}
     shop
 
   generateItem: (player) ->
