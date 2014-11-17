@@ -5,7 +5,7 @@ class DPS extends Personality
   constructor: ->
 
   classChangePercent: (potential) ->
-    -100 if not Personality::isDPS potential
+    -100 if not Personality.isDPS potential
 
   @canUse = (player) ->
     player.statistics["calculated total damage given"] >= 500000

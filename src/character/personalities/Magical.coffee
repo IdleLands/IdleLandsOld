@@ -17,7 +17,7 @@ class Magical extends Personality
     - item.dex*1.5
 
   classChangePercent: (potential) ->
-    -100 if not Personality::isPhysical potential
+    -100 if not Personality.isMagical potential
     
   @canUse = (player) ->
     player.statistics["event findItem"] >= 50
