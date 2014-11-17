@@ -23,7 +23,6 @@
          "y":0
         }, 
         {
-         "draworder":"topdown",
          "height":0,
          "name":"Interactables",
          "objects":[
@@ -35,7 +34,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -50,7 +48,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -65,7 +62,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -80,7 +76,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -95,7 +90,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -110,7 +104,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -125,7 +118,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -140,7 +132,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -155,7 +146,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -170,7 +160,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -185,7 +174,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -200,7 +188,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -215,7 +202,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -230,7 +216,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -245,7 +230,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -260,7 +244,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -275,7 +258,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -290,7 +272,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -305,7 +286,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -320,7 +300,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -335,7 +314,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -350,7 +328,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -365,7 +342,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -380,7 +356,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -395,7 +370,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -410,7 +384,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -425,7 +398,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -440,7 +412,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -458,7 +429,6 @@
                      "map":"Minotaur Maze -3",
                      "movementType":"desend"
                     },
-                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -476,7 +446,6 @@
                      "map":"Minotaur Maze -3",
                      "movementType":"descend"
                     },
-                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -494,7 +463,6 @@
                      "map":"Minotaur Maze -1",
                      "movementType":"ascend"
                     },
-                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -509,7 +477,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -524,7 +491,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"Boss",
                  "visible":true,
                  "width":0,
@@ -543,7 +509,6 @@
     {
 
     },
- "renderorder":"right-down",
  "tileheight":16,
  "tilesets":[
         {
