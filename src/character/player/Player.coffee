@@ -366,6 +366,22 @@ class Player extends Character
     @shop = @playerManager.game.shopGenerator.regionShop @ if not @shop and @getRegion().shopSlots()
     @shop = null if @shop and not @getRegion()?.shopSlots()
 
+  buyShop: (slot, defer) ->
+    if not @shop[slot]
+      return defer.resolve {isSuccess: no, code: 123, message: "The shop doesn't have an item in slot #{slot}."}
+    if @shop[slot].price > @gold.getValue()
+      return defer.resolve {isSuccess: no, code: 124, message: "That item costs #{@shop[slot].price} gold, but you only have #{@gold.getValue()} gold."}
+
+    @gold.sub @shop[slot].price
+
+    current = _.findWhere @equipment, {type: @shop[slot].item.type}
+    @equipment = _.without @equipment, current
+    @equipment.push @shop[slot].item
+    @shop[slot] = null
+    @shop = _.compact @shop
+
+    defer.resolve {isSuccess: yes, code: 125, message: "Successfully purchased #{shop[slot].item.name} for #{shop[slot].price} gold.", player: @buildRESTObject()}
+
   takeTurn: ->
     steps = Math.max 1, @calc.haste()
     @moveAction steps while steps-- isnt 0
