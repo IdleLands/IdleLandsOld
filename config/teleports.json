@@ -75,6 +75,12 @@
             "formalName": "the Norkos Prison entrance",
             "x": 92,
             "y": 11
+        },
+        "minotaur": {
+            "map": "Norkos",
+            "formalName": "the Minotaur Maze entrance",
+            "x": 139,
+            "y": 65
         }
     },
     "trainers": {
@@ -113,6 +119,12 @@
             "formalName": "the Mage Trainer",
             "x": 47,
             "y": 23
+        },
+        "bitomancer": {
+            "map": "Minotaur Maze -3",
+            "formalName": "the Bitomancer Trainer",
+            "x": 23,
+            "y": 2
         },
         "monster": {
             "map": "Mythos -2",
