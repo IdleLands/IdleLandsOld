@@ -228,8 +228,8 @@
                  "name":"ToNorkos",
                  "properties":
                     {
-                     "destx":"177",
-                     "desty":"115",
+                     "destx":"139",
+                     "desty":"65",
                      "map":"Norkos",
                      "movementType":"Ascend"
                     },

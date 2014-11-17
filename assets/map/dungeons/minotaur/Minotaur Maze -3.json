@@ -500,6 +500,21 @@
                  "width":0,
                  "x":80,
                  "y":464
+                }, 
+                {
+                 "gid":25,
+                 "height":0,
+                 "name":"Bitomancer",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Trainer",
+                 "visible":true,
+                 "width":0,
+                 "x":352,
+                 "y":32
                 }],
          "opacity":1,
          "type":"objectgroup",
