@@ -362,11 +362,16 @@ class Player extends Character
     return if not chance.bool {likelihood: @calc.partyLeavePercent()}
     @party.playerLeave @
 
+  checkShop: ->
+    @shop = @playerManager.game.shopGenerator.regionShop @ if not @shop and @getRegion().shopSlots()
+    @shop = null if @shop and not @getRegion()?.shopSlots()
+
   takeTurn: ->
     steps = Math.max 1, @calc.haste()
     @moveAction steps while steps-- isnt 0
     @possiblyDoEvent()
     @possiblyLeaveParty()
+    @checkShop()
     @save()
     @
 

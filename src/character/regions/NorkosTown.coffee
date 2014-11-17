@@ -9,5 +9,8 @@ class NorkosTown extends Region
 
   @luck: -> 5
   @shopPercent: -> -10
+  @shopMult: -> 1
+  @shopSlots: -> 4
+  @shopQuality: -> 1
 
 module.exports = exports = NorkosTown
