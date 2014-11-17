@@ -40,7 +40,7 @@
         },
         "lucifer": {
             "map": "Norkos",
-            "formalName": "the Lucifer the Flame-Born",
+            "formalName": "Lucifer the Flame-Born",
             "x": 236,
             "y": 41
         },
@@ -52,7 +52,7 @@
         },
         "trustee": {
             "map": "Norkos Prison -2",
-            "formalName": "the Trustee Rakshasha",
+            "formalName": "Trustee Rakshasha",
             "x": 22,
             "y": 16
 		},
@@ -69,14 +69,14 @@
             "y": 36
 		},
         "skydragon": {
-            "map": "the Vocalnus",
-            "formalName": "Sky Dragon of Vocalnus",
+            "map": "Vocalnus",
+            "formalName": "the Sky Dragon of Vocalnus",
             "x": 1,
             "y": 31
 		},
         "gaiden": {
             "map": "Maeles Dungeon -3",
-            "formalName": "the Super Ninja Gaiden",
+            "formalName": "Super Ninja Gaiden",
             "x": 25,
             "y": 2
 		},
@@ -87,20 +87,20 @@
             "y": 42
 		},
         "siblingminotaur": {
-            "map": "the Minotaur Maze -2",
-            "formalName": "Sibling Minotaur",
+            "map": "Minotaur Maze -2",
+            "formalName": "the Sibling Minotaur",
             "x": 2,
             "y": 33
 		},
         "elderminotaur": {
-            "map": "the Minotaur Maze -3",
-            "formalName": "Elder Minotaur",
+            "map": "Minotaur Maze -3",
+            "formalName": "the Elder Minotaur",
             "x": 5,
             "y": 29
 		},
         "kingminotaur": {
-            "map": "the Minotaur Maze -4",
-            "formalName": "King Minotaur",
+            "map": "Minotaur Maze -4",
+            "formalName": "the King Minotaur",
             "x": 23,
             "y": 25
 		}		
