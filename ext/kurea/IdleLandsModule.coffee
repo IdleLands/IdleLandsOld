@@ -421,6 +421,7 @@ module.exports = (Module) ->
 
       @addRoute "idle-shop buy :slot", (origin, route) =>
         [slot] = [route.params.slot]
+        slot = parseInt slot
 
         origin.bot.userManager.getUsername origin, (e, username) =>
           if not username

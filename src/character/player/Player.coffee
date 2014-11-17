@@ -366,11 +366,11 @@ class Player extends Character
     @shop = null if @shop and ((not @getRegion()?.shopSlots()) or (@getRegion()?.name isnt @shop.region))
     @shop = @playerManager.game.shopGenerator.regionShop @ if not @shop and @getRegion().shopSlots()
 
-  buyShop: (slot, defer) ->
+  buyShop: (slot) ->
     if not @shop.slots[slot]
-      return defer.resolve {isSuccess: no, code: 123, message: "The shop doesn't have an item in slot #{slot}."}
+      return Q {isSuccess: no, code: 123, message: "The shop doesn't have an item in slot #{slot}."}
     if @shop.slots[slot].price > @gold.getValue()
-      return defer.resolve {isSuccess: no, code: 124, message: "That item costs #{@shop.slots[slot].price} gold, but you only have #{@gold.getValue()} gold."}
+      return Q {isSuccess: no, code: 124, message: "That item costs #{@shop.slots[slot].price} gold, but you only have #{@gold.getValue()} gold."}
 
     @gold.sub @shop.slots[slot].price
 
@@ -381,7 +381,7 @@ class Player extends Character
     @shop.slots = _.compact @shop.slots
     @save
 
-    defer.resolve {isSuccess: yes, code: 125, message: "Successfully purchased #{shop.slots[slot].item.name} for #{shop.slots[slot].price} gold.", player: @buildRESTObject()}
+    Q {isSuccess: yes, code: 125, message: "Successfully purchased #{shop.slots[slot].item.name} for #{shop.slots[slot].price} gold.", player: @buildRESTObject()}
 
   takeTurn: ->
     steps = Math.max 1, @calc.haste()
