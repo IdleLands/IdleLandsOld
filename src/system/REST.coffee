@@ -43,6 +43,8 @@ app.use bodyParser.json()
   POST    /player/manage/inventory/sell     | REQUEST: {identifier, invSlot,  token}  | RETURN: {message, isSuccess}
   PATCH   /player/manage/inventory/swap     | REQUEST: {identifier, invSlot,  token}  | RETURN: {message, isSuccess}
 
+  POST    /player/manage/shop/buy           | REQUEST: {identifier, invSlot,  token}  | RETURN: {message, isSuccess}
+
   PUT     /player/manage/personality/add    | REQUEST: {identifier, newPers, token}   | RETURN: {message, isSuccess}
   POST    /player/manage/personality/remove | REQUEST: {identifier, oldPers, token}   | RETURN: {message, isSuccess}
 
@@ -59,6 +61,7 @@ app.use "/", require "./rest-routes/Authentication"
 app.use "/", require "./rest-routes/Battle"
 app.use "/", require "./rest-routes/ManageGender"
 app.use "/", require "./rest-routes/ManageInventory"
+app.use "/", require "./rest-routes/ManageShop"
 app.use "/", require "./rest-routes/ManagePersonality"
 app.use "/", require "./rest-routes/ManagePriority"
 app.use "/", require "./rest-routes/ManagePushbullet"
