@@ -364,7 +364,7 @@ class Player extends Character
 
   checkShop: ->
     @shop = null if @shop and ((not @getRegion()?.shopSlots()) or (@getRegion()?.name isnt @shop.region))
-    @shop = @playerManager.game.shopGenerator.regionShop @ if not @shop and @getRegion().shopSlots()
+    @shop = @playerManager.game.shopGenerator.regionShop @ if not @shop and @getRegion()?.shopSlots()
 
   buyShop: (slot) ->
     if not @shop.slots[slot]
