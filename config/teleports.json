@@ -37,7 +37,73 @@
             "formalName": "the Lizard King",
             "x": 4,
             "y": 4
-        }
+        },
+        "lucifer": {
+            "map": "Norkos",
+            "formalName": "Lucifer the Flame-Born",
+            "x": 236,
+            "y": 41
+        },
+        "blackdragon": {
+            "map": "Mythos -2",
+            "formalName": "Black Dragon King",
+            "x": 46,
+            "y": 41
+        },
+        "trustee": {
+            "map": "Norkos Prison -2",
+            "formalName": "Trustee Rakshasha",
+            "x": 22,
+            "y": 16
+		},
+        "warden": {
+            "map": "Norkos Dungeon -10",
+            "formalName": "Warden of Norkos",
+            "x": 27,
+            "y": 17
+		},
+        "griffin": {
+            "map": "Vocalnus",
+            "formalName": "Gryffyndor House Representative",
+            "x": 93,
+            "y": 36
+		},
+        "skydragon": {
+            "map": "Vocalnus",
+            "formalName": "Sky Dragon of Vocalnus",
+            "x": 1,
+            "y": 31
+		},
+        "gaiden": {
+            "map": "Maeles Dungeon -3",
+            "formalName": "Super Ninja Gaiden",
+            "x": 25,
+            "y": 2
+		},
+        "childminotaur": {
+            "map": "Minotaur Maze -1",
+            "formalName": "Child Minotaur",
+            "x": 10,
+            "y": 42
+		},
+        "siblingminotaur": {
+            "map": "Minotaur Maze -2",
+            "formalName": "Sibling Minotaur",
+            "x": 2,
+            "y": 33
+		},
+        "elderminotaur": {
+            "map": "Minotaur Maze -3",
+            "formalName": "Elder Minotaur",
+            "x": 5,
+            "y": 29
+		},
+        "kingminotaur": {
+            "map": "Minotaur Maze -4",
+            "formalName": "King Minotaur",
+            "x": 23,
+            "y": 25
+		}		
     },
     "dungeons": {
         "norkosdungeon": {
