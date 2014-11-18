@@ -335,7 +335,7 @@ class EventHandler
     if (chance.bool {likelihood: player.calc.eventFumble()})
       boost = Constants.eventEffects[event.type].amount
     else
-      boost = Math.floor Math.abs(val) / Constants.eventEffects[event.type].percent
+      boost = Math.floor(Math.abs(val)*Constants.eventEffects[event.type].percent/100)
 
     extra =
       item: "<event.item.#{item.itemClass}>#{item.getName()}</event.item.#{item.itemClass}>"
