@@ -379,7 +379,7 @@ class Player extends Character
     @equipment.push @shop.slots[slot].item
     @shop.slots[slot] = null
     @shop.slots = _.compact @shop.slots
-    @save
+    @save()
 
     Q {isSuccess: yes, code: 125, message: "Successfully purchased #{shop.slots[slot].item.name} for #{shop.slots[slot].price} gold.", player: @buildRESTObject()}
 
