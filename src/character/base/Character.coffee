@@ -192,13 +192,8 @@ class Character extends EventEmitter2
         @statCache[stat] = baseVal = @self.personalityReduce stat, [@self, @base[stat]], @base[stat]
         @statCache[pct] = percent = @self.personalityReduce pct, [@self, @base[pct]], @base[pct]
 
-        newValue = Math.floor baseVal/percent
-        newValue = if _.isFinite newValue then newValue else 0
-
-        newValue = 0 if not ignoreNegative and newValue < 0
-
-        combinedVal = baseVal+newValue
-        combinedVal = 0 if _.isNaN combinedVal
+        combinedVal = baseVal*(1+percent/100)
+        combinedVal = 0 if _.isNaN combinedVal or (not ignoreNegative and combinedVal < 0)
         combinedVal
 
       stats: (stats) ->
