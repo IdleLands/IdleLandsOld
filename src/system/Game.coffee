@@ -86,7 +86,7 @@ class Game
         @broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.remark, event.player
 
       @inBattle = true
-      @battle = new Battle @,parties
+      new Battle @,parties
 
     tryBattle = (parties) =>
       return if parties.length <= 1
@@ -236,7 +236,7 @@ class Game
       parties.push newParty
 
     @inBattle = true
-    @battle = new Battle @,parties
+    new Battle @,parties
     return yes
 
   teleport: (player, map, x, y, text) ->

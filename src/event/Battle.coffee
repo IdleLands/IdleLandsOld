@@ -11,6 +11,7 @@ chance = (new require "chance")()
 class Battle
   constructor: (@game, @parties, @suppress = Constants.defaults.battle.suppress, @battleUrl = Constants.defaults.battle.showUrl) ->
     return if @parties.length < 2
+    @game.battle = @
     @startBattle()
 
     return if @isBad

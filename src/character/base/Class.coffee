@@ -97,9 +97,9 @@ class Class extends Personality
   load: (player) ->
     @chance = new (require "chance")()
     player.on "combat.self.kill", @events.killSpeakEvent = ->
-      player.playerManager.game.battle.broadcast "<#{player.name}> #{player.messages.kill}" if player.messages?.kill
+      player.playerManager.game.battle?.broadcast "<#{player.name}> #{player.messages.kill}" if player.messages?.kill
     player.on "combat.self.killed", @events.deathSpeakEvent = ->
-      player.playerManager.game.battle.broadcast "<#{player.name}> #{player.messages.death}" if player.messages?.death
+      player.playerManager.game.battle?.broadcast "<#{player.name}> #{player.messages.death}" if player.messages?.death
   
   unload: (player) ->
     player.off "combat.self.kill", @events.killSpeakEvent
