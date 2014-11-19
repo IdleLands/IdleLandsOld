@@ -153,6 +153,11 @@
         },
         "api": {
             "autoLogoutTime": 60000
+        },
+        "battle": {
+          "suppress": 0,
+          "showUrl": 0,
+          "urlFormat": "http://idle.land/s/battles/%name"
         }
     }
 }
