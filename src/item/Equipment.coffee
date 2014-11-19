@@ -70,6 +70,7 @@ class Equipment
 
     crit: 20
     dodge: 20
+    aegis: 20
     prone: 20
     power: 20
     silver: 20
