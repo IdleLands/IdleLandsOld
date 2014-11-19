@@ -25,13 +25,16 @@ class Battle
     @battleCache = new BattleCache @game, @parties
     @game.currentBattle = @
     @initializePlayers()
+    @link = Constants.defaults.battle.urlFormat.replace /%name/g, @battleCache.name.split(' ').join("%20")
+    @playerNames = @getAllPlayerNames()
     @startMessage() if @suppress
     @beginTakingTurns()
 
   startMessage: ->
     if @battleUrl
-      @broadcast "A battle has occurred involving #{@getAllPlayerNames()}. Check it out here: #{Constants.defaults.battle.urlFormat.replace /%name/g, (@battleCache.name.replace /\s/g, "%20")}", {}, yes, no
-    else @broadcast "#{@getAllStatStrings().join ' VS '}", {}, yes, no
+      message = ">>> BATTLE: #{@battleCache.name} has occurred involving #{@playerNames}. Check it out here: #{@link}"
+    else message = "#{@getAllStatStrings().join ' VS '}"
+    @broadcast message, {}, yes, no
 
   setupParties: ->
     _.each @parties, (party) =>
@@ -308,10 +311,11 @@ class Battle
     .each (player) =>
       @game.eventHandler.broadcastEvent
         sendMessage: no
-        extra: {battleId: docs[0]._id}
+        extra: {battleId: docs[0]._id, linkTitle: @battleCache.name}
         player: player
-        message: "#{@battleCache.name} has occurred!"
+        message: ">>> BATTLE: #{@battleCache.name} has occurred involving #{@playerNames}. Check it out here: #{@link}"
         type: "combat"
+        link: @link
 
   divvyXp: ->
     deadVariables = {}

@@ -81,7 +81,7 @@ class EventHandler
 
   # sendMessage = no implies that you're forwarding the original message to multiple people
   broadcastEvent: (options) ->
-    {message, player, extra, sendMessage, type} = options
+    {message, player, extra, sendMessage, type, link} = options
     sendMessage = yes if _.isUndefined sendMessage
     extra = {} if not extra
 
@@ -91,7 +91,9 @@ class EventHandler
 
     stripped = MessageCreator._replaceMessageColors message
 
-    player.pushbulletSend stripped
+    if link
+      player.pushbulletSend extra.linkTitle, link
+    else player.pushbulletSend stripped
     @addEventToDb stripped, player, type, extra
 
     message

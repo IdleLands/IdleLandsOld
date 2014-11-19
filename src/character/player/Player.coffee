@@ -59,13 +59,16 @@ class Player extends Character
     @pushbulletSend "This is a test for Idle Lands" if key
     Q {isSuccess: yes, code: 99, message: "Your PushBullet API key has been #{if key then "added" else "removed"} successfully. You should also have gotten a test message!"}
 
-  pushbulletSend: (message) ->
+  pushbulletSend: (message, link = null) ->
     pushbullet = new PushBullet @pushbulletApiKey if @pushbulletApiKey
     return if not pushbullet
 
     pushbullet.devices (e, res) ->
       _.each res?.devices, (device) ->
-        pushbullet.note device.iden, 'IdleLands', message, (e, res) ->
+        if link
+          pushbullet.link device.iden, message, link (e, res) ->
+        else
+          pushbullet.note device.iden, 'IdleLands', message, (e, res) ->
 
   handleGuildStatus: ->
 
