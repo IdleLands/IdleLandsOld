@@ -2,13 +2,14 @@
 MessageCreator = require "../system/MessageCreator"
 Player = require "../character/player/Player"
 BattleCache = require "./BattleCache"
+Constants = require "../system/Constants"
 
 _ = require "underscore"
 _.str = require "underscore.string"
 chance = (new require "chance")()
 
 class Battle
-  constructor: (@game, @parties) ->
+  constructor: (@game, @parties, @suppress = Constants.defaults.battle.suppress, @battleUrl = Constants.defaults.battle.showUrl) ->
     return if @parties.length < 2
     @startBattle()
 
@@ -24,7 +25,16 @@ class Battle
     @battleCache = new BattleCache @game, @parties
     @game.currentBattle = @
     @initializePlayers()
+    @link = Constants.defaults.battle.urlFormat.replace /%name/g, @battleCache.name.split(' ').join("%20")
+    @playerNames = @getAllPlayerNames()
+    @startMessage() if @suppress
     @beginTakingTurns()
+
+  startMessage: ->
+    if @battleUrl
+      message = ">>> BATTLE: #{@battleCache.name} has occurred involving #{@playerNames}. Check it out here: #{@link}"
+    else message = "#{@getAllStatStrings().join ' VS '}"
+    @broadcast message, {}, yes, no
 
   setupParties: ->
     _.each @parties, (party) =>
@@ -92,6 +102,13 @@ class Battle
 
     string
 
+  getAllPlayerNames: ->
+    names = _.map @parties, (party) => @getAllPlayersInPartyNames party
+    _.str.toSentenceSerial _.flatten names
+
+  getAllPlayersInPartyNames: (party) ->
+    _.map party.players, (player) -> "<player.name>#{player.name}</player.name>"
+
   getAllPlayersInPartyStatStrings: (party) ->
     _.map party.players, (player) =>
       @stringifyStats player, @getRelevantStats player
@@ -100,8 +117,9 @@ class Battle
     _.map @parties, (party) =>
       "#{(@getAllPlayersInPartyStatStrings party).join ', '}"
 
-  broadcast: (message, player = {}) ->
-    @battleCache.addMessage message
+  broadcast: (message, player = {}, ignoreSuppress = no, postToCache = yes) ->
+    @battleCache.addMessage message if postToCache
+    return if @suppress and not ignoreSuppress
     message = MessageCreator.genericMessage message, player
     @game.broadcast message
 
@@ -265,7 +283,7 @@ class Battle
     @emitEventToAll "battle.end", @turnOrder
     randomWinningPlayer = _.sample(_.filter @turnOrder, (player) -> (not player.hp.atMin()) and (not player.fled))
     if not randomWinningPlayer
-      @broadcast "Everyone died! The battle was a tie! You get nothing!"
+      @broadcast "Everyone died! The battle was a tie! You get nothing!", {}, not @battleUrl
       @cleanUp()
       return
 
@@ -278,7 +296,7 @@ class Battle
     @emitEventsTo "party.lose", @losingPlayers, @winningParty.players
     @emitEventsTo "party.win",  @winningParty.players, @losingPlayers
 
-    @broadcast "The battle was won by <event.partyName>#{winnerName}</event.partyName>."
+    @broadcast "The battle was won by <event.partyName>#{winnerName}</event.partyName>.", {}, not @battleUrl
 
     @divvyXp()
     @cleanUp()
@@ -293,10 +311,11 @@ class Battle
     .each (player) =>
       @game.eventHandler.broadcastEvent
         sendMessage: no
-        extra: {battleId: docs[0]._id}
+        extra: {battleId: docs[0]._id, linkTitle: @battleCache.name}
         player: player
-        message: "#{@battleCache.name} has occurred!"
+        message: ">>> BATTLE: #{@battleCache.name} has occurred involving #{@playerNames}. Check it out here: #{@link}"
         type: "combat"
+        link: @link
 
   divvyXp: ->
     deadVariables = {}
@@ -327,7 +346,7 @@ class Battle
 
       xpMap[player] = xpGain
 
-    @broadcast (_.str.toSentence winMessages)+"!" if winMessages.length > 0
+    @broadcast (_.str.toSentence winMessages)+"!", {}, not @battleUrl if winMessages.length > 0
 
     _.each @winningParty.players, (player) ->
       player.gainXp xpMap[player]
@@ -346,7 +365,7 @@ class Battle
         player.gainGold goldGain
         winMessages.push "<player.name>#{player.name}</player.name> gained <event.gold>#{goldGain}</event.gold> gold"
 
-    @broadcast (_.str.toSentence winMessages)+"!" if winMessages.length > 0
+    @broadcast (_.str.toSentence winMessages)+"!", {}, not @battleUrl if winMessages.length > 0
 
     # end winning
 
@@ -364,7 +383,7 @@ class Battle
       loseMessages.push "<player.name>#{player.name}</player.name> lost <event.xp>#{xpLoss}</event.xp>xp [<event.xp>#{pct}</event.xp>%]"
       xpMap[player] = xpLoss
 
-    @broadcast (_.str.toSentence loseMessages)+"!" if loseMessages.length > 0
+    @broadcast (_.str.toSentence loseMessages)+"!", {}, not @battleUrl if loseMessages.length > 0
 
     _.each deadVariables.deadPlayers, (player) ->
       player.gainXp -xpMap[player]
@@ -383,7 +402,7 @@ class Battle
         player.gainGold -goldLoss
         loseMessages.push "<player.name>#{player.name}</player.name> lost <event.gold>#{goldLoss}</event.gold> gold"
 
-    @broadcast (_.str.toSentence loseMessages)+"!" if loseMessages.length > 0
+    @broadcast (_.str.toSentence loseMessages)+"!", {}, not @battleUrl if loseMessages.length > 0
 
     # end losing
 
