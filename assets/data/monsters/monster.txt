@@ -3,6 +3,7 @@
 "chunk of meat"         level=4
 "blob of meat"          level=10
 "blob"                  level=17
+"toilet paper master"   level=20 class=SandwichArtist dex=500 str=500 wis=-500
 "bean"                  level=23
 "blob of blobs"         level=27
 "blob of beans"         level=30
