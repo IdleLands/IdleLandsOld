@@ -37,7 +37,7 @@ class EquipmentGenerator extends Generator
     itemClass = "basic"
     itemClass = "pro" if item.name.toLowerCase() isnt item.name
     itemClass = "idle" if item.name.toLowerCase().indexOf("idle") isnt -1 or item.name.toLowerCase().indexOf("idling") isnt -1
-    itemClass = "godly" if item.score() > 5000
+    itemClass = "godly" if item.score() > 7500
 
     itemClass
 
