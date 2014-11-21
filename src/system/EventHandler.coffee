@@ -122,6 +122,13 @@ class EventHandler
       (@broadcastEvent message: event.n, player: player, type: 'miscellaneous') if event.n
       callback false
 
+  ###*
+    * This event handles both the blessXp and forsakeXp aliases.
+    *
+    * @name xp
+    * @category Player
+    * @package Events
+  ###
   doXp: (event, player, callback) ->
     if not event.remark
       console.error "XP EVENT FAILURE", event
@@ -163,6 +170,13 @@ class EventHandler
 
     callback true
 
+  ###*
+    * This event handles both the blessXp and forsakeXp aliases for parties.
+    *
+    * @name xp
+    * @category Party
+    * @package Events
+  ###
   doXpParty: (event, player, callback) ->
     if not event.remark
       console.error "XP EVENT FAILURE", event
@@ -213,6 +227,13 @@ class EventHandler
 
     callback true
 
+  ###*
+    * This event handles both the blessGold and forsakeGold aliases.
+    *
+    * @name gold
+    * @category Player
+    * @package Events
+  ###
   doGold: (event, player, callback) ->
     if not event.remark
       console.error "GOLD EVENT FAILURE", event
@@ -261,6 +282,13 @@ class EventHandler
     @broadcastEvent {message: message, player: player, extra: extra, type: 'gold'}
     callback true
 
+  ###*
+    * This event handles both the blessGold and forsakeGold aliases for a party.
+    *
+    * @name gold
+    * @category Party
+    * @package Events
+  ###
   doGoldParty: (event, player, callback) ->
     if not event.remark
       console.error "GOLD EVENT FAILURE", event
@@ -325,6 +353,13 @@ class EventHandler
 
     callback true
 
+  ###*
+    * This event handles being able to find and equip items, or selling them.
+    *
+    * @name findItem
+    * @category Player
+    * @package Events
+  ###
   doItem: (event, player, callback) ->
     item = @pickValidItem player
     stat = @pickBlessStat item
@@ -399,6 +434,13 @@ class EventHandler
       player.emit "player.sellItem", player, item, value
       callback false
 
+  ###*
+    * This event handles purchasing an item for the player from a wandering merchant.
+    *
+    * @name merchant
+    * @category Player
+    * @package Events
+  ###
   doMerchant: (event, player, callback) ->
     shop = @game.shopGenerator.generateShop player
     extra =
@@ -448,6 +490,13 @@ class EventHandler
 
     @doItemEvent event, player, item, callback
 
+  ###*
+    * This event handles creating a party for the player.
+    *
+    * @name party
+    * @category Player
+    * @package Events
+  ###
   doParty: (event, player, callback) ->
     return callback false if player.party or @game.inBattle
     newParty = @game.createParty player
@@ -464,6 +513,13 @@ class EventHandler
 
     callback true
 
+  ###*
+    * This event handles building a monster encounter for a player.
+    *
+    * @name battle
+    * @category Player
+    * @package Events
+  ###
   doMonsterBattle: (event, player, callback) ->
     event.player = player
 
@@ -479,6 +535,13 @@ class EventHandler
 
     callback true
 
+  ###*
+    * This event handles both the enchant and tinker aliases.
+    *
+    * @name enchant
+    * @category Player
+    * @package Events
+  ###
   doEnchant: (event, player, callback) ->
     item = _.sample _.reject player.equipment, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel
 
@@ -505,6 +568,13 @@ class EventHandler
     
     callback true
 
+  ###*
+    * This event handles the dreaded switcheroo - flipStat - event.
+    *
+    * @name xp
+    * @category Player
+    * @package Events
+  ###
   doFlipStat: (event, player, callback) ->
     item = @pickValidItem player
     stat = @pickStatPresentOnItem item

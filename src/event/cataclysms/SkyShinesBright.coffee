@@ -2,6 +2,13 @@
 Cataclysm = require "../Cataclysm"
 _ = require "underscore"
 
+###*
+  * This cataclysm gives you some brightening experiences.
+  *
+  * @name SkyShinesBright
+  * @category Cataclysms
+  * @package Events
+###
 class SkyShinesBright extends Cataclysm
   constructor: (game) ->
     super game, "skybrightshine"

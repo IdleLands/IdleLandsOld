@@ -1,6 +1,20 @@
 
 TimePeriod = require "../../TimePeriod"
 
+###*
+  * The Monster day increases all stats for monsters.
+  *
+  * @name Monster Day
+  * @effect +10% DEX (Only applies to monsters)
+  * @effect +10% STR (Only applies to monsters)
+  * @effect +10% INT (Only applies to monsters)
+  * @effect +10% WIS (Only applies to monsters)
+  * @effect +10% AGI (Only applies to monsters)
+  * @effect +10% CON (Only applies to monsters)
+  * @effect +10% LUCK (Only applies to monsters)
+  * @category Day
+  * @package Calendar
+###
 class MonsterDay extends TimePeriod
 
   constructor: ->

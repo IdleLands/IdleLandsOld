@@ -6,6 +6,20 @@ class Heartbleed extends Spell
   stat: @stat = "special"
   @element = Heartbleed::element = Spell::Element.physical
   @tiers = Heartbleed::tiers = [
+    ###*
+      * This skill does a small amount of damage and leaves a mean DoT on the target, which does 7% hp / round.
+      *
+      * @name heartbleed
+      * @requirement {class} Rogue
+      * @requirement {Stamina} 15
+      * @requirement {level} 3
+      * @prerequisite {used-skill} chain stab
+      * @minDamage 0.2*[str+dex]/2
+      * @maxDamage 0.5*[str+dex]/2
+      * @duration 2 rounds
+      * @category Rogue
+      * @package Spells
+    ###
     {name: "heartbleed", spellPower: 1, cost: 15, class: "Rogue", level: 15}
   ]
 

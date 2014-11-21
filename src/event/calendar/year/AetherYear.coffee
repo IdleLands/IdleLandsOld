@@ -1,6 +1,17 @@
 
 TimePeriod = require "../../TimePeriod"
 
+###*
+  * The Aether year increases energy and thunder.
+  *
+  * @name Aether Year
+  * @effect +200 energy
+  * @effect +14% energy
+  * @effect +200 thunder
+  * @effect +14% thunder
+  * @category Year
+  * @package Calendar
+###
 class AetherYear extends TimePeriod
 
   constructor: ->

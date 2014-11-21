@@ -5,6 +5,18 @@ class Cure extends Spell
   name: "cure"
   @element = Cure::element = Spell::Element.heal
   @tiers = Cure::tiers = [
+    ###*
+      * This spell cures one ally.
+      *
+      * @name cure
+      * @requirement {class} Cleric
+      * @requirement {mp} 50
+      * @requirement {level} 5
+      * @minDamage [wis/4]
+      * @maxDamage [wis]
+      * @category Cleric
+      * @package Spells
+    ###
     {name: "cure", spellPower: 1, cost: 50, class: "Cleric", level: 5}
   ]
 

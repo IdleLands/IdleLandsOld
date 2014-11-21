@@ -2,11 +2,23 @@
 Spell = require "../../../base/Spell"
 
 class DeathGlare extends Spell
-  name: "Death Glare"
-  @element = DeathGlare ::element = Spell::Element.physical
+  name: "death glare"
+  @element = DeathGlare::element = Spell::Element.physical
   @stat = DeathGlare::stat = "hp"
   @tiers = DeathGlare::tiers = [
-    {name: "Death Glare", spellPower: 1, cost: 200, class: "Pirate", level: 7}
+    ###*
+      * This spell lowers the strength of an enemy based on the number of bottles the player has.
+      *
+      * @name death glare
+      * @requirement {class} Pirate
+      * @requirement {hp} 350
+      * @requirement {level} 7
+      * @effect -20+[3*[11-Bottles/9]]% STR
+      * @duration 4-[Bottles/33] rounds
+      * @category Pirate
+      * @package Spells
+    ###
+    {name: "death glare", spellPower: 1, cost: 200, class: "Pirate", level: 7}
   ]
 
   calcDuration: (player) ->

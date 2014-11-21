@@ -1,6 +1,24 @@
 
 Class = require "./../base/Class"
 
+###*
+  * This class is a damaging class. It can use skills to stun or attack multiple times.
+  *
+  * @name Fighter
+  * @physical
+  * @tank
+  * @itemScore str*1.1 + con*0.8 + dex*0.3 - agi*0.2 - wis*0.8
+  * @statPerLevel {str} 3
+  * @statPerLevel {dex} 2
+  * @statPerLevel {con} 3
+  * @statPerLevel {int} 2
+  * @statPerLevel {wis} 1
+  * @statPerLevel {agi} 2
+  * @minDamage 50%
+  * @hpregen 5%
+  * @category Classes
+  * @package Player
+###
 class Fighter extends Class
 
   baseHp: 120

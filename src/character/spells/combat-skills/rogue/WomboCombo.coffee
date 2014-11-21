@@ -6,6 +6,20 @@ class WomboCombo extends Spell
   stat: @stat = "special"
   @element = WomboCombo::element = Spell::Element.physical
   @tiers = WomboCombo::tiers = [
+    ###*
+      * This skill hits multiple times for a moderate amount of damage.
+      *
+      * @name wombo combo
+      * @requirement {class} Rogue
+      * @requirement {Stamina} 25
+      * @requirement {level} 25
+      * @prerequisite {used-skill} chain stab
+      * @prerequisite {used-skill} heartbleed
+      * @minDamage 0.45*[str+dex]/2
+      * @maxDamage 0.50*[str+dex]/2
+      * @category Rogue
+      * @package Spells
+    ###
     {name: "wombo combo", spellPower: 1, cost: 25, class: "Rogue", level: 25}
   ]
 

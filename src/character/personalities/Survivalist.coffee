@@ -1,6 +1,16 @@
 
 Personality = require "../base/Personality"
 
+###*
+  * This personality makes you attempt to flee combat at lower hp values.
+  *
+  * @name Survivalist
+  * @prerequisite Experience 25 cataclysms
+  * @effect -10% xp
+  * @effect Flee when hp <= 10%
+  * @category Personalities
+  * @package Player
+###
 class Survivalist extends Personality
   constructor: ->
 

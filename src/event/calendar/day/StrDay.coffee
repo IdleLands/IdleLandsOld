@@ -1,6 +1,14 @@
 
 TimePeriod = require "../../TimePeriod"
 
+###*
+  * The STR day increases strength.
+  *
+  * @name STR Day
+  * @effect +5% STR
+  * @category Day
+  * @package Calendar
+###
 class StrDay extends TimePeriod
 
   constructor: ->

@@ -1,6 +1,17 @@
 
 Personality = require "../base/Personality"
 
+###*
+  * This personality makes you move faster around the world, at the cost of combat statistics.
+  *
+  * @name Hasty
+  * @prerequisite Play for 2 hours
+  * @effect +2 haste
+  * @effect -2 offense
+  * @effect -2 defense
+  * @category Personalities
+  * @package Player
+###
 class Hasty extends Personality
   constructor: ->
 

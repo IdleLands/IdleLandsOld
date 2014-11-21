@@ -14,11 +14,11 @@ class Constants
 
   @classCategorization =
     physical: ['Fighter', 'Generalist', 'Barbarian', 'Rogue', 'Jester', 'Pirate', 'Monster']
-    magical: ['Mage', 'Cleric', 'Bard', 'SandwichArtist']
-    support: ['Bard', 'SandwichArtist']
+    magical: ['Mage', 'Cleric', 'Bard', 'SandwichArtist', 'Bitomancer']
+    support: ['Bard', 'SandwichArtist', 'Generalist']
     medic: ['Cleric', 'SandwichArtist']
     tank: ['Fighter', 'Barbarian', 'Pirate']
-    dps: ['Mage', 'Rogue']
+    dps: ['Mage', 'Rogue', 'Bitomancer']
 
   @pickRandomNormalEvent = (player) ->
     if player.party

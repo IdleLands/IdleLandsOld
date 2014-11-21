@@ -2,8 +2,8 @@
 Spell = require "../../../base/Spell"
 
 class DrunkenFrenzy extends Spell
-  name: "Drunken Frenzy"
-  @element = DrunkenFrenzy ::element = Spell::Element.physical
+  name: "drunken frenzy"
+  @element = DrunkenFrenzy::element = Spell::Element.physical
 
   determineTargets: ->
     @targetSomeEnemies size: 1

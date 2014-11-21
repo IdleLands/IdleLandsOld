@@ -1,6 +1,15 @@
 
 TimePeriod = require "../../TimePeriod"
 
+###*
+  * The Poseidon month increases water.
+  *
+  * @name Poseidon Month
+  * @effect +50 water
+  * @effect +5% water
+  * @category Month
+  * @package Calendar
+###
 class PoseidonMonth extends TimePeriod
 
   constructor: ->

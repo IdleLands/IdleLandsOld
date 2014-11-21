@@ -4,11 +4,23 @@ DrunkenFrenzy = require "./DrunkenFrenzy.coffee"
 DrunkenStupor = require "./DrunkenStupor.coffee"
 
 class GrogDance extends Spell
-  name: "Grog Dance"
-  @element = GrogDance ::element = Spell::Element.physical
+  name: "grog dance"
+  @element = GrogDance::element = Spell::Element.physical
   @stat = GrogDance::stat = "hp"
   @tiers = GrogDance::tiers = [
-    {name: "Grog Dance", spellPower: 1, cost: 600, class: "Pirate", level: 15}
+    ###*
+      * This spell sharply increases the casters dex based on how many bottles are remaining.
+      *
+      * @name grog dance
+      * @requirement {class} Pirate
+      * @requirement {hp} 600
+      * @requirement {level} 15
+      * @effect +[99-Bottles]% DEX
+      * @duration 2
+      * @category Pirate
+      * @package Spells
+    ###
+    {name: "grog dance", spellPower: 1, cost: 600, class: "Pirate", level: 15}
   ]
 
   calcDuration: (player) -> super()+2

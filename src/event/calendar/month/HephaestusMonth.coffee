@@ -1,6 +1,15 @@
 
 TimePeriod = require "../../TimePeriod"
 
+###*
+  * The Hephaestus month increases fire.
+  *
+  * @name Hephaestus Month
+  * @effect +50 fire
+  * @effect +5% fire
+  * @category Month
+  * @package Calendar
+###
 class HephaestusMonth extends TimePeriod
 
   constructor: ->

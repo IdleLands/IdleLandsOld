@@ -1,6 +1,14 @@
 
 Personality = require "../base/Personality"
 
+###*
+  * This personality makes you never change classes, unless the resulting class is considered Support.
+  *
+  * @name Support
+  * @prerequisite Use 100 duration skills.
+  * @category Personalities
+  * @package Player
+###
 class Support extends Personality
   constructor: ->
 

@@ -7,6 +7,21 @@ class SavageStab extends Spell
   stat: @stat = "special"
   @element = SavageStab::element = Spell::Element.physical
   @tiers = SavageStab::tiers = [
+    ###*
+      * This skill does very little damage, but leaves every combat effect available on the target.
+      * Currently, it will only prone the target. Poison and other effects may happen later.
+      *
+      * @name savage stab
+      * @requirement {class} Rogue
+      * @requirement {Stamina} 30
+      * @requirement {level} 45
+      * @prerequisite {used-skill} wombo combo
+      * @prerequisite {used-skill} heartbleed
+      * @minDamage 0.05*[str+dex]/2
+      * @maxDamage 0.15*[str+dex]/2
+      * @category Rogue
+      * @package Spells
+    ###
     {name: "savage stab", spellPower: 1, cost: 30, class: "Rogue", level: 45}
   ]
 

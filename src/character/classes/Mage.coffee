@@ -1,6 +1,23 @@
 
 Class = require "./../base/Class"
 
+###*
+  * This class is an offensive magical class. They use their numerous fireballs to burn their opponents into submission.
+  *
+  * @name Mage
+  * @magical
+  * @dps
+  * @itemScore int*1.4 + con*0.4 - str*0.8 - dex*0.3
+  * @statPerLevel {str} 1
+  * @statPerLevel {dex} 1
+  * @statPerLevel {con} 2
+  * @statPerLevel {int} 5
+  * @statPerLevel {wis} 2
+  * @statPerLevel {agi} 2
+  * @mpregen 5%
+  * @category Classes
+  * @package Player
+###
 class Mage extends Class
 
   baseHp: 25

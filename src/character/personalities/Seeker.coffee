@@ -1,6 +1,16 @@
 
 Personality = require "../base/Personality"
 
+###*
+  * This personality makes it so you both gain and lose more XP, at the cost of gold.
+  *
+  * @name Greedy
+  * @prerequisite Gain xp 100000 times
+  * @effect +15% xp
+  * @effect -15% gold
+  * @category Personalities
+  * @package Player
+###
 class Seeker extends Personality
   constructor: ->
 

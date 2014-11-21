@@ -2,6 +2,15 @@
 Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
 
+###*
+  * This achievement is earned by performing a lot of critical hits.
+  *
+  * @name Critical
+  * @prerequisite Perform 500*[10*[n-1]+1] critical hits.
+  * @reward +1 crit
+  * @category Achievements
+  * @package Player
+###
 class Critical extends Achievement
 
   getAllAchievedFor: (player) ->

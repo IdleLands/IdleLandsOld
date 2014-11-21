@@ -6,6 +6,18 @@ class Toasted extends Spell
   name: "Toasted"
   @element = Toasted::element = Spell::Element.fire
   @tiers = Toasted::tiers = [
+    ###*
+      * This skill burns up to 2 opponents. It also feeds them a sandwich, but it's most likely burnt to a crisp.
+      *
+      * @name Toasted
+      * @requirement {class} SandwichArtist
+      * @requirement {mp} 50
+      * @requirement {level} 1
+      * @minDamage dex/6
+      * @minDamage dex/4
+      * @category SandwichArtist
+      * @package Spells
+    ###
     {name: "Toasted", spellPower: 1, cost: 50, class: "SandwichArtist", level: 1}
   ]
   

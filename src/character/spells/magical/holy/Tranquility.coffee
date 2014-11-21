@@ -6,6 +6,17 @@ class Tranquility extends Spell
   stack: "intensity"
   @element = Tranquility::element = Spell::Element.holy
   @tiers = Tranquility::tiers = [
+    ###*
+      * This spell prevents all damage from happening for a few rounds.
+      *
+      * @name tranquility
+      * @requirement {class} Cleric
+      * @requirement {mp} 2000
+      * @requirement {level} 50
+      * @effect no damage
+      * @category Cleric
+      * @package Spells
+    ###
     {name: "tranquility", spellPower: 1, cost: 2000, class: "Cleric", level: 50}
   ]
 

@@ -1,6 +1,20 @@
 
 TimePeriod = require "../../TimePeriod"
 
+###*
+  * The Good day increases all stats for all good aligned entities - monsters and players alike. It lowers those stats for evil players.
+  *
+  * @name Good Day
+  * @effect +alignment% DEX
+  * @effect +alignment% STR
+  * @effect +alignment% INT
+  * @effect +alignment% WIS
+  * @effect +alignment% AGI
+  * @effect +alignment% CON
+  * @effect +alignment% LUCK
+  * @category Day
+  * @package Calendar
+###
 class GoodDay extends TimePeriod
 
   constructor: ->

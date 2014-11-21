@@ -199,18 +199,164 @@ class Character extends EventEmitter2
       stats: (stats) ->
         _.reduce stats, ((prev, stat) => prev+@stat stat), 0
 
+      ###*
+        * Aegis prevents critical hits.
+        *
+        * @name aegis
+        * @combat
+        * @stacks no
+        * @category Equipment Effects
+        * @package Item
+      ###
       aegis:    -> 0 < @self.calc.stat 'aegis'
+
+      ###*
+        * Crit adds a bonus to your critical chance.
+        *
+        * @name crit
+        * @combat
+        * @stacks yes (Stacking formula is 100/crit point)
+        * @category Equipment Effects
+        * @package Item
+      ###
       crit:     -> Math.max 0, @self.calc.stat 'crit'
+
+      ###*
+        * Dance doubles your base dodge chance.
+        *
+        * @name dance
+        * @combat
+        * @stacks no
+        * @category Equipment Effects
+        * @package Item
+      ###
       dance:    -> 0 < @self.calc.stat 'dance'
+
+      ###*
+        * Defense adds a +10% boost to all of your defensive calculations.
+        *
+        * @name defense
+        * @combat
+        * @stacks yes (Stacking formula is 10%/defense point)
+        * @category Equipment Effects
+        * @package Item
+      ###
       defense:  -> Math.max 0, @self.calc.stat 'defense'
+
+      ###*
+        * Haste allows you to take one additional step per point of haste. You only gain xp for your first 5 steps.
+        *
+        * @name haste
+        * @stacks yes (Stacking formula is +1 step/haste point)
+        * @category Equipment Effects
+        * @package Item
+      ###
       haste:    -> Math.max 0, @self.calc.stat 'haste'
+
+      ###*
+        * Prone gives you the opportunity to stun an opponent when you physically hit them. The chance of a stun happening is 15%.
+        *
+        * @name prone
+        * @combat
+        * @stacks no
+        * @category Equipment Effects
+        * @package Item
+      ###
       prone:    -> 0 < @self.calc.stat 'prone'
+
+      ###*
+        * Power adds a flat +10% to maximum damage possible.
+        *
+        * @name power
+        * @combat
+        * @stacks no
+        * @category Equipment Effects
+        * @package Item
+      ###
       power:    -> 0 < @self.calc.stat 'power'
+
+      ###*
+        * Offense adds a +10% boost for each of your offensive calculations.
+        *
+        * @name offense
+        * @combat
+        * @stacks yes (Stacking formula is 10%/offense point)
+        * @category Equipment Effects
+        * @package Item
+      ###
       offense:  -> Math.max 0, @self.calc.stat 'offense'
+
+      ###*
+        * Glowing adds +5% to each of your combat calculations. It's pretty crazy.
+        *
+        * @name glowing
+        * @combat
+        * @stacks yes (Stacking formula is 5%/glowing point)
+        * @category Equipment Effects
+        * @package Item
+      ###
       glowing:  -> Math.max 0, @self.calc.stat 'glowing'
-      deadeye:  -> Math.max 0, @self.calc.stat 'deadeye'
+
+      ###*
+        * Deadeye doubles your chance to overcome the opponents dodge roll.
+        *
+        * @name deadeye
+        * @combat
+        * @stacks no
+        * @category Equipment Effects
+        * @package Item
+      ###
+      deadeye:  -> 0 < Math.max 0, @self.calc.stat 'deadeye'
+
+      ###*
+        * Silver increases your minimum damage range by +10%.
+        *
+        * @name silver
+        * @combat
+        * @stacks no
+        * @category Equipment Effects
+        * @package Item
+      ###
       silver:   -> 0 < @self.calc.stat 'silver'
+
+      ###*
+        * Vorpal increases your minimum and maximum damage by +50%
+        *
+        * @name vorpal
+        * @combat
+        * @stacks no
+        * @category Equipment Effects
+        * @package Item
+      ###
       vorpal:   -> 0 < @self.calc.stat 'vorpal'
+
+      ###*
+        * Forsaken makes it so every blessItem, flipStat, or forsakeItem hits this item. In the event that
+        * there are multiple forsaken items in your inventory, one will be chosen at random.
+        *
+        * @name forsaken
+        * @stacks no
+        * @category Equipment Effects
+        * @package Item
+      ###
+
+      ###*
+        * Sacred makes it so there is no chance of this item being hit by blessItem, flipStat, or forsakeItem.
+        *
+        * @name sacred
+        * @stacks no
+        * @category Equipment Effects
+        * @package Item
+      ###
+
+      ###*
+        * Sentimentality does nothing except take up valuable equipment score.
+        *
+        * @name sentimentality.
+        * @stacks no
+        * @category Equipment Effects
+        * @package Item
+      ###
 
       boosts: (stats, baseValue) ->
         Math.floor _.reduce stats, (prev, stat) =>

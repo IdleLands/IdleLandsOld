@@ -1,0 +1,22 @@
+{
+  "language": "coffee",
+  "glob": "+(src|ext)/**/*.coffee",
+  "arrayTags": [
+    "example",
+    "reward",
+    "prerequisite",
+    "statPerLevel",
+    "effect",
+    "requirement"
+  ],
+  "json": "config/*.json",
+  "outputOnly": true,
+  "templateOptions": {
+    "page": {
+      "pageName": "IdleLands"
+    },
+    "content": {
+      "sourceLink": "https://github.com/IdleLands/IdleLands/tree/master/%filePath#L%lineNumber-L%endLineNumber"
+    }
+  }
+}

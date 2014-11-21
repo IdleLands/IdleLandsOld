@@ -3,10 +3,22 @@ Spell = require "../../../base/Spell"
 _ = require "underscore"
 
 class FoodFight extends Spell
-  name: "Food Fight"
+  name: "food fight"
   @element = FoodFight::element = Spell::Element.physical
   @tiers = FoodFight::tiers = [
-    {name: "Food Fight", spellPower: 1, cost: 400, class: "SandwichArtist", level: 15}
+    ###*
+      * This skill does some damage. It targets 2-10 people.
+      *
+      * @name food fight
+      * @requirement {class} SandwichArtist
+      * @requirement {mp} 400
+      * @requirement {level} 15
+      * @minDamage [dex/6]
+      * @maxDamage [dex/4]
+      * @category SandwichArtist
+      * @package Spells
+    ###
+    {name: "food fight", spellPower: 1, cost: 400, class: "SandwichArtist", level: 15}
   ]
 
   calcDuration: (player) -> super()+3

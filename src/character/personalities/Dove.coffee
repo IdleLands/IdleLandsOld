@@ -1,6 +1,15 @@
 
 Personality = require "../base/Personality"
 
+###*
+  * This personality makes you less likely to get into combat.
+  *
+  * @name Dove
+  * @prerequisite Enter 10 battles
+  * @effect Less likely to get into battles
+  * @category Personalities
+  * @package Player
+###
 class Dove extends Personality
   constructor: ->
 

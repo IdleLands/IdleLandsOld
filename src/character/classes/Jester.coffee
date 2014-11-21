@@ -1,6 +1,22 @@
 
 Class = require "./../base/Class"
 
+###*
+  * This class is a very lucky class. It uses its luck to affect everything. It also gets a bonus to having all events happen more often.
+  *
+  * @name Jester
+  * @physical
+  * @itemScore luck*5 + luckPercent*5 (Note, all other stats are ignored except for special stats like offense, defense, etc)
+  * @statPerLevel {str} 0
+  * @statPerLevel {dex} 0
+  * @statPerLevel {con} 0
+  * @statPerLevel {int} 0
+  * @statPerLevel {wis} 0
+  * @statPerLevel {agi} 0
+  * @statPerLevel {luck} 4
+  * @category Classes
+  * @package Player
+###
 class Jester extends Class
 
   baseHp: 30

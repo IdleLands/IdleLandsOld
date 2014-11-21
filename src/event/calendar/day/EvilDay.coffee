@@ -1,6 +1,20 @@
 
 TimePeriod = require "../../TimePeriod"
 
+###*
+  * The Evil day increases all stats for all evil aligned entities - monsters and players alike. It lowers those stats for good players.
+  *
+  * @name Evil Day
+  * @effect +alignment% DEX
+  * @effect +alignment% STR
+  * @effect +alignment% INT
+  * @effect +alignment% WIS
+  * @effect +alignment% AGI
+  * @effect +alignment% CON
+  * @effect +alignment% LUCK
+  * @category Day
+  * @package Calendar
+###
 class EvilDay extends TimePeriod
 
   constructor: ->

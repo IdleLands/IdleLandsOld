@@ -7,6 +7,14 @@ slay = (player, enemies) ->
   targets = _.filter enemies.result, (enemy) -> enemy.professionName in Constants.classCategorization.tank
   { probability: 300, result: targets }
 
+###*
+  * This personality makes you more likely to target Tank-type classes.
+  *
+  * @name TankSlayer
+  * @prerequisite Kill 10 Tank classes
+  * @category Personalities
+  * @package Player
+###
 class TankSlayer extends Personality
   constructor: ->
 

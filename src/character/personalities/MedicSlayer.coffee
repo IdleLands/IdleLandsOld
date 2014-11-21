@@ -7,6 +7,14 @@ slay = (player, enemies) ->
   targets = _.filter enemies.result, (enemy) -> enemy.professionName in Constants.classCategorization.medic
   { probability: 300, result: targets }
 
+###*
+  * This personality makes you more likely to target Medic-type classes.
+  *
+  * @name MedicSlayer
+  * @prerequisite Kill 10 Medic classes
+  * @category Personalities
+  * @package Player
+###
 class MedicSlayer extends Personality
   constructor: ->
 

@@ -2,16 +2,29 @@
 Spell = require "../../../base/Spell"
 
 class Resume extends Spell
-  name: "Resume"
+  name: "résumé"
   @element = Resume::element = Spell::Element.physical
   @tiers = Resume::tiers = [
-    {name: "Resume", spellPower: 1, cost: 10, class: "SandwichArtist", level: 1}
+    ###*
+      * This skill attempts to give a resume to a target, assuming the caster has <=25% HP. Resumes can be accepted or rejected.
+      * The outcome can mean gaining or losing gold.
+      *
+      * @name resume
+      * @requirement {class} SandwichArtist
+      * @requirement {mp} 10
+      * @requirement {level} 1
+      * @duration 1 round
+      * @effect {if-rejected} STUN
+      * @category SandwichArtist
+      * @package Spells
+    ###
+    {name: "résumé", spellPower: 1, cost: 10, class: "SandwichArtist", level: 1}
   ]
   @canChoose = (player) -> (player.hp.asPercent() <= 25)
 
   cantAct: -> @resumeRejected
 
-  cantActMessages: -> "#{@caster.name} is still fuming about the resume %heshe gave to %player!"
+  cantActMessages: -> "#{@caster.name} is still fuming about the résumé %heshe gave to %player!"
 
   calcDuration: -> super()+1
 

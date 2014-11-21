@@ -2,6 +2,24 @@
 _ = require "underscore"
 Class = require "./../base/Class"
 
+###*
+  * This class is a debuffing magical class. It uses Bitrate to stun and destroy its foes.
+  *
+  * @name Bitomancer
+  * @special Bitrate
+  * @magical
+  * @dps
+  * @itemScore int*1.4 + dex*0.8 + agi*0.8 - con*0.9 - str*0.9
+  * @statPerLevel {str} 1
+  * @statPerLevel {dex} 3
+  * @statPerLevel {con} 1
+  * @statPerLevel {int} 4
+  * @statPerLevel {wis} 3
+  * @statPerLevel {agi} 1
+  * @minDamage 30%
+  * @category Classes
+  * @package Player
+###
 class Bitomancer extends Class
 
   baseHp: 70
@@ -29,7 +47,7 @@ class Bitomancer extends Class
   physicalAttackChance: (player) -> -15
 
   minDamage: (player) ->
-    player.calc.damage()*0.40
+    player.calc.damage()*0.30
 
   maxBandwidth: (player) ->
     56*Math.floor(Math.pow(player.level.getValue(),2)/100)

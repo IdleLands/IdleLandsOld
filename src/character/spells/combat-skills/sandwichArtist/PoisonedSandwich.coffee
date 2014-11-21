@@ -3,10 +3,23 @@ Spell = require "../../../base/Spell"
 SandwichBuff = require "./SandwichBuff.coffee"
 
 class PoisonedSandwich extends Spell
-  name: "Poisoned Sandwich"
+  name: "poisoned sandwich"
   @element = PoisonedSandwich::element = Spell::Element.physical
   @tiers = PoisonedSandwich::tiers = [
-    {name: "Poisoned Sandwich", spellPower: 1, cost: 200, class: "SandwichArtist", level: 10}
+    ###*
+      * This skill does some damage over time to 1-2 targets.
+      *
+      * @name poisoned sandwich
+      * @requirement {class} SandwichArtist
+      * @requirement {mp} 200
+      * @requirement {level} 10
+      * @duration 1+[con<250]+[con<500] round[s]
+      * @minDamage [dex/6]
+      * @maxDamage [dex/4]
+      * @category SandwichArtist
+      * @package Spells
+    ###
+    {name: "poisoned sandwich", spellPower: 1, cost: 200, class: "SandwichArtist", level: 10}
   ]
 
 # Duration 1 at con >500, 2 at con 251-500, 3 at con <= 250

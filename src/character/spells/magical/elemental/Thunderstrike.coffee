@@ -5,6 +5,19 @@ class Thunderstrike extends Spell
   name: "thunderstrike"
   @element = Thunderstrike::element = Spell::Element.thunder
   @tiers = Thunderstrike::tiers = [
+    ###*
+      * This spell has a delayed effect on striking, but does more damage the longer it takes.
+      *
+      * @name thunderstrike
+      * @requirement {class} Mage
+      * @requirement {mp} 375
+      * @requirement {level} 7
+      * @minDamage [int*0.25*rounds]
+      * @maxDamage [int*0.40*rounds-1]
+      * @duration [1-3] rounds
+      * @category Mage
+      * @package Spells
+    ###
     {name: "thunderstrike", spellPower: 1, cost: 375, class: "Mage", level: 7}
   ]
 

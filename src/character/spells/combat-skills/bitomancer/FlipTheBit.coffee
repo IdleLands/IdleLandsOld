@@ -2,11 +2,21 @@
 Spell = require "../../../base/Spell"
 
 class FlipTheBit extends Spell
-  name: "Flip the Bit"
+  name: "flip the bit"
   @element = FlipTheBit::element = Spell::Element.physical
   @stat = FlipTheBit::stat = "special"
   @tiers = FlipTheBit::tiers = [
-    {name: "Flip the Bit", spellPower: 1, cost: ((caster) -> Math.floor(caster.special.maximum/2)), class: "Bitomancer", level: 30}
+    ###*
+      * This spell flips an enemies HP with their MP
+      *
+      * @name flip the bit
+      * @requirement {class} Bitomancer
+      * @requirement {Bitrate} 50%
+      * @requirement {level} 30
+      * @category Bitomancer
+      * @package Spells
+    ###
+    {name: "flip the bit", spellPower: 1, cost: ((caster) -> Math.floor(caster.special.maximum/2)), class: "Bitomancer", level: 30}
   ]
 
   determineTargets: ->

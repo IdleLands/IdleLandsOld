@@ -3,6 +3,21 @@ Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
 _ = require "underscore"
 
+###*
+  * This achievement is earned by killing unique players.
+  *
+  * @name PKer
+  * @prerequisite Kill 10*[10*[n-1]+1] unique players.
+  * @reward +5 STR
+  * @reward +5 AGI
+  * @reward +5 CON
+  * @reward +5 DEX
+  * @reward +5 INT
+  * @reward +5 WIS
+  * @reward +1 LUCK
+  * @category Achievements
+  * @package Player
+###
 class PKer extends Achievement
 
   getAllAchievedFor: (player) ->

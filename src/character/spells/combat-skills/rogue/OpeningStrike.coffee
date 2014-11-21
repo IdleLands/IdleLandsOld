@@ -6,6 +6,18 @@ class OpeningStrike extends Spell
   stat: @stat = "special"
   @element = OpeningStrike::element = Spell::Element.physical
   @tiers = OpeningStrike::tiers = [
+    ###*
+      * This skill does a moderate amount of damage, but starts the combo for the Rogue.
+      *
+      * @name opening strike
+      * @requirement {class} Rogue
+      * @requirement {Stamina} 10
+      * @requirement {level} 1
+      * @minDamage 0.5*[str+dex]/2
+      * @maxDamage 0.75*[str+dex]/2
+      * @category Rogue
+      * @package Spells
+    ###
     {name: "opening strike", spellPower: 1, cost: 10, class: "Rogue", level: 1}
   ]
 

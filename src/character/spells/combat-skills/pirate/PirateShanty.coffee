@@ -3,18 +3,31 @@ Spell = require "../../../base/Spell"
 DrunkenStupor = require "./DrunkenStupor.coffee"
 
 class PirateShanty extends Spell
-  name: "Pirate Shanty"
-  @element = PirateShanty ::element = Spell::Element.physical
+  name: "pirate shanty"
+  @element = PirateShanty::element = Spell::Element.physical
   @stat = PirateShanty::stat = "hp"
   @tiers = PirateShanty::tiers = [
-    {name: "Pirate Shanty", spellPower: 1, cost: 100, class: "Pirate", level: 1}
+    ###*
+      * This song buffs the STR of all of the casters allies.
+      *
+      * @name pirate shanty
+      * @requirement {class} Pirate
+      * @requirement {hp} 100
+      * @requirement {level} 1
+      * @effect +20+[3*[11-Bottles/9]]% STR
+      * @duration 5-[Bottles/33] rounds
+      * @category Pirate
+      * @package Spells
+    ###
+    {name: "pirate shanty", spellPower: 1, cost: 100, class: "Pirate", level: 1}
   ]
 
   calcDuration: (player) ->
-    switch
-      when @caster.special.lte 33 then super()+4
-      when @caster.special.lte 66 then super()+3
-      else super()+2
+    caster = @caster
+    super() + switch
+      when caster.special.lte 33 then 4
+      when caster.special.lte 66 then 3
+      else 2
   
   strPercent: (player) -> 20 + 3*Math.floor(11 - player.special.getValue()/9)
 

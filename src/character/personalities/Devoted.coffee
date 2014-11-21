@@ -1,6 +1,20 @@
 
 Personality = require "../base/Personality"
 
+###*
+  * This personality makes you never change classes.
+  *
+  * @name Devoted
+  * @prerequisite Change classes 10 times
+  * @effect +5% STR
+  * @effect +5% DEX
+  * @effect +5% CON
+  * @effect +5% AGI
+  * @effect +5% INT
+  * @effect +5% WIS
+  * @category Personalities
+  * @package Player
+###
 class Devoted extends Personality
   constructor: ->
 

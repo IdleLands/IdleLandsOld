@@ -1,6 +1,17 @@
 
 Personality = require "../base/Personality"
 
+###*
+  * This personality attempts to prevent you from fleeing from combat.
+  *
+  * @name Brave
+  * @prerequisite Flee combat once
+  * @effect -100 fleePercent
+  * @effect +5% STR
+  * @effect +10% XP loss at end of combat
+  * @category Personalities
+  * @package Player
+###
 class Brave extends Personality
   constructor: ->
 

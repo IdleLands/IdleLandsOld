@@ -3,6 +3,16 @@ Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
 _ = require "underscore"
 
+###*
+  * This achievement is earned by killing a lot of bosses.
+  *
+  * @name Dominus
+  * @prerequisite Kill 10*[10*[n-1]+1] bosses.
+  * @reward +5 AGI
+  * @reward +5 DEX
+  * @category Achievements
+  * @package Player
+###
 class Dominus extends Achievement
 
   getAllAchievedFor: (player) ->

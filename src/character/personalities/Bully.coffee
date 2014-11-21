@@ -7,6 +7,17 @@ slay = (player, enemies) ->
   targets = _.sortBy enemies.result, (enemy) -> enemy.hp.getValue()
   { probability: 200, result: [targets[0]] }
 
+###*
+  * This personality makes you target the weakest enemy when possible.
+  *
+  * @name Bully
+  * @prerequisite Attack 75 times
+  * @effect +5% STR
+  * @effect -5% INT
+  * @effect -5% WIS
+  * @category Personalities
+  * @package Player
+###
 class Bully extends Personality
   constructor: ->
 

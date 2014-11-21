@@ -2,6 +2,15 @@
 Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
 
+###*
+  * This achievement is earned by doing a lot of damage.
+  *
+  * @name Damaging
+  * @prerequisite Give 1000*[10*[n-1]+1] damage.
+  * @reward +[achievementLevel*10] STR
+  * @category Achievements
+  * @package Player
+###
 class Damaging extends Achievement
 
   getAllAchievedFor: (player) ->

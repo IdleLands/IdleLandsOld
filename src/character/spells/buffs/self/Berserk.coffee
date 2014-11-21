@@ -5,6 +5,16 @@ class Berserk extends Spell
   name: "berserk"
   @element = Berserk::element = Spell::Element.buff
   @tiers = Berserk::tiers = [
+    ###*
+      * This spell increases Rage.
+      *
+      * @name berserk
+      * @requirement {class} Barbarian
+      * @requirement {level} 1
+      * @effect +15 Rage
+      * @category Barbarian
+      * @package Spells
+    ###
     {name: "berserk", spellPower: 1, cost: 0, class: "Barbarian", level: 1}
   ]
 

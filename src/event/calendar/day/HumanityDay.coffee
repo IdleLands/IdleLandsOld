@@ -1,6 +1,20 @@
 
 TimePeriod = require "../../TimePeriod"
 
+###*
+  * The Humanity day increases all stats for players.
+  *
+  * @name Humanity Day
+  * @effect +10% DEX (Only applies to players)
+  * @effect +10% STR (Only applies to players)
+  * @effect +10% INT (Only applies to players)
+  * @effect +10% WIS (Only applies to players)
+  * @effect +10% AGI (Only applies to players)
+  * @effect +10% CON (Only applies to players)
+  * @effect +10% LUCK (Only applies to players)
+  * @category Day
+  * @package Calendar
+###
 class HumanityDay extends TimePeriod
 
   constructor: ->

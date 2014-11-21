@@ -3,8 +3,8 @@ Spell = require "../../../base/Spell"
 _ = require "underscore"
 
 class DrunkenStupor extends Spell
-  name: "Drunken Stupor"
-  @element = DrunkenStupor ::element = Spell::Element.physical
+  name: "drunken stupor"
+  @element = DrunkenStupor::element = Spell::Element.physical
 
   determineTargets: -> @caster
 

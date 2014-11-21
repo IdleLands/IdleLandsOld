@@ -2,6 +2,15 @@
 Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
 
+###*
+  * This achievement is earned by experiencing a lot of events.
+  *
+  * @name Eventful
+  * @prerequisite Experience 10*[10*[n-1]+1] events.
+  * @reward +[achievementLevel*0.1] itemFindRangeMultiplier
+  * @category Achievements
+  * @package Player
+###
 class Eventful extends Achievement
 
   getAllAchievedFor: (player) ->

@@ -3,10 +3,24 @@ Spell = require "../../../base/Spell"
 SandwichBuff = require "./SandwichBuff.coffee"
 
 class DayOldBread extends Spell
-  name: "Day-Old Bread"
+  name: "day-old bread"
   @element = DayOldBread::element = Spell::Element.physical
   @tiers = DayOldBread::tiers = [
-    {name: "Day-Old Bread", spellPower: 1, cost: 50, class: "SandwichArtist", level: 5}
+    ###*
+      * This skill does some damage, and stuns for a turn. It targets 1-2 enemies.
+      *
+      * @name day-old bread
+      * @requirement {class} SandwichArtist
+      * @requirement {mp} 50
+      * @requirement {level} 5
+      * @minDamage [dex/8]
+      * @maxDamage [dex/6]
+      * @duration 1 round
+      * @effect STUN
+      * @category SandwichArtist
+      * @package Spells
+    ###
+    {name: "day-old bread", spellPower: 1, cost: 50, class: "SandwichArtist", level: 5}
   ]
 
   cantAct: -> 1

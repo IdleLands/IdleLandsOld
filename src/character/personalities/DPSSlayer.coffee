@@ -7,6 +7,14 @@ slay = (player, enemies) ->
   targets = _.filter enemies.result, (enemy) -> enemy.professionName in Constants.classCategorization.dps
   { probability: 300, result: targets }
 
+###*
+  * This personality makes you more likely to target DPS-type classes.
+  *
+  * @name DPSSlayer
+  * @prerequisite Kill 10 DPS classes
+  * @category Personalities
+  * @package Player
+###
 class DPSSlayer extends Personality
   constructor: ->
 
