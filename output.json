@@ -1915,7 +1915,7 @@
             },
             "name": {
                 "name": "name",
-                "basicInfo": "sentimentality."
+                "basicInfo": "sentimentality"
             },
             "stacks": {
                 "name": "stacks",
@@ -9405,7 +9405,7 @@
             },
             "name": {
                 "name": "name",
-                "basicInfo": "xp"
+                "basicInfo": "flipStat"
             },
             "category": {
                 "name": "category",
@@ -9417,11 +9417,11 @@
             }
         }
     ],
-    "startTime": 1416608234792,
-    "endTime": 1416608234840,
+    "startTime": 1416608895344,
+    "endTime": 1416608895389,
     "git": {
-        "short": "18b21cc",
-        "long": "18b21cc27cda140d1eed18658dd610200eb0f058",
+        "short": "fc3fe56",
+        "long": "fc3fe56592e2d0845183241d9ec0c06e49a3c74c",
         "branch": "master",
         "tag": "0.5.0"
     },
