@@ -352,7 +352,7 @@ class Character extends EventEmitter2
       ###*
         * Sentimentality does nothing except take up valuable equipment score.
         *
-        * @name sentimentality.
+        * @name sentimentality
         * @stacks no
         * @category Equipment Effects
         * @package Item
