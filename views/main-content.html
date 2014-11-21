@@ -1,0 +1,177 @@
+
+<nav class="navbar navbar-default" bs-collapse>
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" bs-collapse-toggle>
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ng-bind="config.options.page.pageName" ui-sref="root">Doks</a>
+        </div>
+        <div bs-collapse-target>
+            <ul class="nav navbar-nav">
+                <li ng-repeat="category in categories" class="item" ng-class="{active: urlParams.category === category}">
+                    <a ui-sref="hasCategory({category: category})">{{category}}</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-if="config.options.page.showGitHubBadges">
+                <li>
+                    <a><iframe src="http://ghbtns.com/github-btn.html?user=kellyirc&repo=doks&type=watch&count=true"
+                               allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></a>
+                </li>
+                <li>
+                    <a><iframe src="http://ghbtns.com/github-btn.html?user=kellyirc&repo=doks&type=fork&count=true"
+                            allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <ui-select on-select="doFilter($item)" ng-model="searchValue" class="searchbox" bs-affix data-offset-top="-15" ng-if="config.options.nav.useSearchBar">
+                        <ui-select-match placeholder="Search doks...">{{$select.selected.name}}</ui-select-match>
+                        <ui-select-choices repeat="dok in data.parsed | filter: $select.search">
+
+                            <div ng-if="isCategory(dok)">
+                                <span ng-bind-html="dok[config.keys.category].basicInfo | highlight: $select.search"></span>
+                            </div>
+
+                            <div ng-if="!isCategory(dok)">
+                                <span ng-bind-html="dok[config.keys.subType].basicInfo | highlight: $select.search"></span>
+                                <br>
+                                <small ng-bind-html="dok[config.keys.category].basicInfo | highlight: $select.search"></small>
+                                <span>&rarr;</span>
+                                <small ng-bind-html="dok[config.keys.mainType].basicInfo | highlight: $select.search"></small>
+                            </div>
+
+                        </ui-select-choices>
+                    </ui-select>
+
+                </div>
+            </div>
+            <div class="row hidden-xs hidden-sm">
+                <div class="col-md-12">
+                    <div class="panel panel-default" bs-affix data-offset-top="-71">
+                        <div class="panel-heading">Navigate Doks</div>
+                        <div class="panel-body nav-container" ng-class="{'no-padding-top': config.options.nav.categorySeparate || config.options.nav.mainTypeRight}">
+
+                            <div ng-repeat="category in orderedData" ng-hide="urlParams.category && category._name !== urlParams.category">
+                                <ng-include src="'nav-template'" ng-init="mainObj = category" ng-class="{'special-category': config.options.nav.categorySeparate}"></ng-include>
+
+                                <div ng-repeat="mainType in category._children track by $index"  ng-hide="urlParams.mainType && mainType._name !== urlParams.mainType">
+                                    <ng-include src="'nav-template'" ng-hide="urlParams.subType" ng-init="mainObj = mainType" ng-class="{'text-right special-main-type': config.options.nav.mainTypeRight}"></ng-include>
+
+                                    <div ng-repeat="mainObj in mainType._children" ng-hide="urlParams.subType && mainObj[config.keys.subType].basicInfo !== urlParams.subType">
+                                        <ng-include src="'nav-template'"></ng-include>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12" ncy-breadcrumb></div>
+            </div>
+            <div class="row">
+                <div ng-repeat="category in orderedData" ng-hide="urlParams.category && category._name !== urlParams.category">
+
+                    <div ng-repeat="mainType in category._children track by $index" ng-hide="urlParams.mainType && mainType._name !== urlParams.mainType">
+                        <ng-include src="'item-template'" ng-hide="urlParams.subType" ng-init="mainObj = mainType"></ng-include>
+
+                        <div ng-repeat="mainObj in mainType._children" ng-hide="urlParams.subType && mainObj[config.keys.subType].basicInfo !== urlParams.subType">
+                            <ng-include src="'item-template'"></ng-include>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="nav-template">
+    <div class="nav-item" ng-hide="mainObj === mainType && !mainObj[config.keys.subType]">
+        <span ng-if="!urlParams.category" class="nav-category-link">
+            <a ui-sref="hasCategory({
+                category: category._name
+            })">{{category._name}}</a>
+            <span class="right-arrow" ng-hide="mainObj === category">&rarr;</span>
+        </span>
+        <span ng-if="!urlParams.mainType" ng-hide="mainObj === category" class="nav-main-type-link">
+            <a ui-sref="hasMainType({
+                category: category._name,
+                mainType: mainType._name
+            })">{{mainType._name}}</a>
+            <span class="right-arrow">&rarr;</span>
+        </span>
+        <span class="nav-sub-type-link">
+            <a ui-sref="hasSubType({
+                category: category._name,
+                mainType: mainType._name,
+                subType:  mainObj[config.keys.subType].basicInfo
+            })">{{mainObj[config.keys.subType].basicInfo}}</a>
+        </span>
+    </div>
+</script>
+
+<script type="text/ng-template" id="item-template">
+    <div class="panel panel-default" ng-hide="mainObj === mainType && !mainObj[config.keys.subType]">
+
+        <div class="panel-heading">
+            <span class="content-heading category" ng-if="!urlParams.category">
+                <span>{{category._name}}</span>
+                <span class="right-arrow">&rarr;</span>
+            </span>
+
+            <span class="content-heading main-type" ng-if="!urlParams.mainType && mainObj !== mainType">
+                <span>{{mainType._name}}</span>
+                <span class="right-arrow">&rarr;</span>
+            </span>
+
+            <span class="content-heading sub-type">
+                <span>{{mainObj[config.keys.subType].basicInfo}}</span>
+            </span>
+
+            <span class="pull-right label label-default file-label" ng-if="config.options.content.showFileLabels">
+                <a ng-if="config.options.content.sourceLink" target="_blank" ng-href="{{getLinkFromData(mainObj)}}">
+                    <span>{{mainObj.fileName}}</span>#<span>{{mainObj.lineNumber}}</span>
+                </a>
+                <span ng-if="!config.options.content.sourceLink">
+                    <span>{{mainObj.fileName}}</span>#<span>{{mainObj.lineNumber}}</span>
+                </span>
+            </span>
+        </div>
+
+        <div class="panel-body">
+            <div class="row" ng-if="mainObj.desc">
+                <div class="col-md-12">
+                    {{mainObj.desc.basicInfo}}
+                </div>
+            </div>
+            <div class="row more-padding-top">
+                <div class="col-md-12">
+                    <ul class="no-prefix">
+                        <li ng-repeat="tag in mainObj._props track by $index" class="tag-data">
+                            <div class="tag-simple-properties">
+                                <span class="tag-data-symbol"></span><span>{{tag.name}}</span>
+                                <span class="tag-data-type badge badge-default" ng-if="tag.value && tag.value.type">({{tag.value.type}})</span>
+                                <span class="tag-data-basic" ng-if="!_.isUndefined(tag.value.basicInfo)">{{tag.value.basicInfo}}</span>
+                            </div>
+                            <p class="tag-desc-item" ng-if="tag.value.extendedInfo">{{tag.value.extendedInfo}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

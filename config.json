@@ -1,0 +1,23 @@
+{
+    "keys": {
+        "category": "package",
+        "mainType": "category",
+        "subType": "name"
+    },
+    "options": {
+        "page": {
+            "pageName": "IdleLands",
+            "favicon": "favicon.ico",
+            "showGitHubBadges": true
+        },
+        "nav": {
+            "categorySeparate": false,
+            "mainTypeRight": false,
+            "useSearchBar": true
+        },
+        "content": {
+            "showFileLabels": true,
+            "sourceLink": "https://github.com/IdleLands/IdleLands/tree/master/%filePath#L%lineNumber-L%endLineNumber"
+        }
+    }
+}

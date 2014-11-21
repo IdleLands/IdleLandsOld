@@ -1,0 +1,72 @@
+.nav-container {
+    max-height: 650px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+ul.no-prefix {
+    list-style-type: none;
+    padding-left: 10px;
+}
+
+.more-padding-top {
+    padding-top: 15px;
+}
+
+.tag-simple-properties {
+    font-family: monospace;
+}
+
+.tag-data .tag-data-symbol:before {
+    content: "@";
+}
+
+.tag-desc-item {
+    padding-left: 20px;
+}
+
+.searchbox {
+    margin-bottom: 20px;
+    z-index: 20;
+}
+
+.searchbox .form-control {
+    height: 36px;
+}
+
+.label-default.file-label a {
+    text-decoration: underline;
+    color: #fff;
+    cursor: pointer;
+}
+
+.nav-container .special-main-type:first-child .nav-item {
+    /*margin-top: -15px;*/
+}
+
+.no-padding-top {
+    padding-top: 0;
+}
+
+.special-category .nav-item {
+    background-color: #bbb;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 15px;
+}
+
+.special-main-type .nav-item {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-right: 15px;
+}
+
+.special-main-type .nav-item a {
+    /*color: #fff;*/
+}
+
+.special-main-type .nav-main-type-link, .special-main-type .nav-category-link {
+    display: none;
+}
