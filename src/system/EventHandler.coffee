@@ -571,7 +571,7 @@ class EventHandler
   ###*
     * This event handles the dreaded switcheroo - flipStat - event.
     *
-    * @name xp
+    * @name flipStat
     * @category Player
     * @package Events
   ###
