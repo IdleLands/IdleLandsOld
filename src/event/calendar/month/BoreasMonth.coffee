@@ -1,7 +1,7 @@
 
 TimePeriod = require "../../TimePeriod"
 
-###*
+`/**
   * The Boreas month increases ice.
   *
   * @name Boreas Month
@@ -9,7 +9,7 @@ TimePeriod = require "../../TimePeriod"
   * @effect +5% ice
   * @category Month
   * @package Calendar
-###
+*/`
 class BoreasMonth extends TimePeriod
 
   constructor: ->

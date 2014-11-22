@@ -1,7 +1,7 @@
 
 Class = require "./../base/Class"
 
-###*
+`/**
   * This class is a healing class. It has some powerful damaging spells, but mostly focuses on helping allies.
   *
   * @name Cleric
@@ -18,7 +18,7 @@ Class = require "./../base/Class"
   * @mpregen 5%
   * @category Classes
   * @package Player
-###
+*/`
 class Cleric extends Class
 
   baseHp: 40

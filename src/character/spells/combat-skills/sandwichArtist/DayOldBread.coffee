@@ -6,7 +6,7 @@ class DayOldBread extends Spell
   name: "day-old bread"
   @element = DayOldBread::element = Spell::Element.physical
   @tiers = DayOldBread::tiers = [
-    ###*
+    `/**
       * This skill does some damage, and stuns for a turn. It targets 1-2 enemies.
       *
       * @name day-old bread
@@ -19,7 +19,7 @@ class DayOldBread extends Spell
       * @effect STUN
       * @category SandwichArtist
       * @package Spells
-    ###
+    */`
     {name: "day-old bread", spellPower: 1, cost: 50, class: "SandwichArtist", level: 5}
   ]
 

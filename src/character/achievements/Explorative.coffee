@@ -3,7 +3,7 @@ Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
 _ = require "underscore"
 
-###*
+`/**
   * This achievement is earned by exploring unique maps.
   *
   * @name Explorative
@@ -13,7 +13,7 @@ _ = require "underscore"
   * @reward +1 haste (This only applies once for every 5 levels of Explorative.)
   * @category Achievements
   * @package Player
-###
+*/`
 class Explorative extends Achievement
 
   getAllAchievedFor: (player) ->

@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality makes you more likely to use skills. For some classes, this means they will always use skills until
   * they run out of casting capability.
   *
@@ -10,7 +10,7 @@ Personality = require "../base/Personality"
   * @effect -50% physical attack chance
   * @category Personalities
   * @package Player
-###
+*/`
 class Explosive extends Personality
   constructor: ->
 

@@ -2,13 +2,13 @@
 Cataclysm = require "../Cataclysm"
 _ = require "underscore"
 
-###*
+`/**
   * This cataclysm runs a random event on every player. Hope you're good at roulette.
   *
   * @name Fatehand
   * @category Cataclysms
   * @package Events
-###
+*/`
 class Fatehand extends Cataclysm
   constructor: (game) ->
     super game, "fatehand"

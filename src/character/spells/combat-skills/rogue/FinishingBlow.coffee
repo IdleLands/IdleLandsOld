@@ -9,7 +9,7 @@ class FinishingBlow extends Spell
   @restrictions =
     "Rogue": 38
   @tiers = FinishingBlow::tiers = [
-    ###*
+    `/**
       * This skill does a massive amount of damage, and finishes the rogue combo.
       *
       * @name finishing blow
@@ -22,7 +22,7 @@ class FinishingBlow extends Spell
       * @maxDamage 2.5*[str+dex]/2
       * @category Rogue
       * @package Spells
-    ###
+    */`
     {name: "finishing blow", spellPower: 1, cost: 30, class: "Rogue", level: 38}
   ]
 

@@ -5,7 +5,7 @@ class Resume extends Spell
   name: "résumé"
   @element = Resume::element = Spell::Element.physical
   @tiers = Resume::tiers = [
-    ###*
+    `/**
       * This skill attempts to give a resume to a target, assuming the caster has <=25% HP. Resumes can be accepted or rejected.
       * The outcome can mean gaining or losing gold.
       *
@@ -17,7 +17,7 @@ class Resume extends Spell
       * @effect {if-rejected} STUN
       * @category SandwichArtist
       * @package Spells
-    ###
+    */`
     {name: "résumé", spellPower: 1, cost: 10, class: "SandwichArtist", level: 1}
   ]
   @canChoose = (player) -> (player.hp.asPercent() <= 25)

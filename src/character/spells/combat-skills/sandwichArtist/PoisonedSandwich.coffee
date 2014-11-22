@@ -6,7 +6,7 @@ class PoisonedSandwich extends Spell
   name: "poisoned sandwich"
   @element = PoisonedSandwich::element = Spell::Element.physical
   @tiers = PoisonedSandwich::tiers = [
-    ###*
+    `/**
       * This skill does some damage over time to 1-2 targets.
       *
       * @name poisoned sandwich
@@ -18,7 +18,7 @@ class PoisonedSandwich extends Spell
       * @maxDamage [dex/4]
       * @category SandwichArtist
       * @package Spells
-    ###
+    */`
     {name: "poisoned sandwich", spellPower: 1, cost: 200, class: "SandwichArtist", level: 10}
   ]
 

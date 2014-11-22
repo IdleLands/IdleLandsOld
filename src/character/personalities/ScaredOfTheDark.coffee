@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality makes you scared of the dark. Scaredy cat.
   *
   * @name ScaredOfTheDark
@@ -10,7 +10,7 @@ Personality = require "../base/Personality"
   * @effect +100% chance to go up stairs
   * @category Personalities
   * @package Player
-###
+*/`
 class ScaredOfTheDark extends Personality
 
   constructor: ->

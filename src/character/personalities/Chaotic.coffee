@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality makes you Chaotic-aligned.
   *
   * @name Chaotic
@@ -9,7 +9,7 @@ Personality = require "../base/Personality"
   * @effect -10 alignment
   * @category Personalities
   * @package Player
-###
+*/`
 class Chaotic extends Personality
   constructor: ->
 

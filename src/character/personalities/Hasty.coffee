@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality makes you move faster around the world, at the cost of combat statistics.
   *
   * @name Hasty
@@ -11,7 +11,7 @@ Personality = require "../base/Personality"
   * @effect -2 defense
   * @category Personalities
   * @package Player
-###
+*/`
 class Hasty extends Personality
   constructor: ->
 

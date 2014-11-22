@@ -6,7 +6,7 @@ class ZeroDay extends Spell
   @element = ZeroDay::element = Spell::Element.physical
   @stat = ZeroDay::stat = "special"
   @tiers = ZeroDay::tiers = [
-    ###*
+    `/**
       * This spell lowers the targets available damage output.
       *
       * @name zero-day threat
@@ -17,9 +17,9 @@ class ZeroDay extends Spell
       * @duration 2 rounds
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "zero-day threat", spellPower: 0.2, cost: 100, class: "Bitomancer", level: 20}
-    ###*
+    `/**
       * This spell lowers the targets available damage output.
       *
       * @name zero-day attack
@@ -30,9 +30,9 @@ class ZeroDay extends Spell
       * @duration 2 rounds
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "zero-day attack", spellPower: 0.5, cost: 400, class: "Bitomancer", level: 40}
-    ###*
+    `/**
       * This spell lowers the targets available damage output.
       *
       * @name zero-day assault
@@ -43,7 +43,7 @@ class ZeroDay extends Spell
       * @duration 2 rounds
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "zero-day assault", spellPower: 0.7, cost: 1000, class: "Bitomancer", level: 60}
   ]
 

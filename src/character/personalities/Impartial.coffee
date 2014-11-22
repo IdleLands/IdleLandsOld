@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality makes you more likely to leave parties.
   *
   * @name Impartial
@@ -9,7 +9,7 @@ Personality = require "../base/Personality"
   * @effect +50 partyLeavePercent
   * @category Personalities
   * @package Player
-###
+*/`
 class Impartial extends Personality
   constructor: ->
 

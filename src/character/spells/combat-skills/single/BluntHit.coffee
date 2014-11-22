@@ -5,7 +5,7 @@ class BluntHit extends Spell
   name: "blunt hit"
   @element = BluntHit::element = Spell::Element.physical
   @tiers = BluntHit::tiers = [
-    ###*
+    `/**
       * This skill stuns an opponent and does a bit of damage to them.
       *
       * @name blunt hit
@@ -18,7 +18,7 @@ class BluntHit extends Spell
       * @effect STUN
       * @category Fighter
       * @package Spells
-    ###
+    */`
     {name: "blunt hit", spellPower: 1, cost: 100, class: "Fighter", level: 13}
   ]
 

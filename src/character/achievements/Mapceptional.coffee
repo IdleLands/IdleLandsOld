@@ -3,7 +3,7 @@ Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
 _ = require "underscore"
 
-###*
+`/**
   * This achievement is earned by exploring certain maps.
   *
   * @name Mapceptional
@@ -11,7 +11,7 @@ _ = require "underscore"
   * @reward Varies per special map.
   * @category Achievements
   * @package Player
-###
+*/`
 class Mapceptional extends Achievement
 
   getAllAchievedFor: (player) ->

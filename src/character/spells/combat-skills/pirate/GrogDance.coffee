@@ -8,7 +8,7 @@ class GrogDance extends Spell
   @element = GrogDance::element = Spell::Element.physical
   @stat = GrogDance::stat = "hp"
   @tiers = GrogDance::tiers = [
-    ###*
+    `/**
       * This spell sharply increases the casters dex based on how many bottles are remaining.
       *
       * @name grog dance
@@ -19,7 +19,7 @@ class GrogDance extends Spell
       * @duration 2
       * @category Pirate
       * @package Spells
-    ###
+    */`
     {name: "grog dance", spellPower: 1, cost: 600, class: "Pirate", level: 15}
   ]
 

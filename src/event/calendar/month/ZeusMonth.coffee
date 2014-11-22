@@ -1,7 +1,7 @@
 
 TimePeriod = require "../../TimePeriod"
 
-###*
+`/**
   * The Zeus month increases physical spells.
   *
   * @name Zeus Month
@@ -9,7 +9,7 @@ TimePeriod = require "../../TimePeriod"
   * @effect +5% physical
   * @category Month
   * @package Calendar
-###
+*/`
 class ZeusMonth extends TimePeriod
 
   constructor: ->

@@ -2,7 +2,7 @@
 Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
 
-###*
+`/**
   * This achievement is earned by receiving a lot of damage.
   *
   * @name Defensive
@@ -10,7 +10,7 @@ Achievement = require "../base/Achievement"
   * @reward +[achievementLevel*10] CON
   * @category Achievements
   * @package Player
-###
+*/`
 class Defensive extends Achievement
 
   getAllAchievedFor: (player) ->

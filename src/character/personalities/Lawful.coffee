@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality makes you Lawful-aligned.
   *
   * @name Lawful
@@ -9,7 +9,7 @@ Personality = require "../base/Personality"
   * @effect +10 alignment
   * @category Personalities
   * @package Player
-###
+*/`
 class Lawful extends Personality
   constructor: ->
 

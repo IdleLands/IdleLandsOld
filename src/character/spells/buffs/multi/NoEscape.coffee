@@ -5,7 +5,7 @@ class NoEscape extends Spell
   name: "No Escape"
   @element = NoEscape::element = Spell::Element.buff
   @tiers = NoEscape::tiers = [
-    ###*
+    `/**
       * This spell buffs the agi and dex of your allies.
       *
       * @name No Escape
@@ -17,7 +17,7 @@ class NoEscape extends Spell
       * @duration 3 rounds
       * @category Bard
       * @package Spells
-    ###
+    */`
     {name: "No Escape", spellPower: 1, cost: 300, class: "Bard", level: 5}
   ]
 

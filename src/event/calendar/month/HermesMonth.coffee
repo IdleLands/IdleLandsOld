@@ -1,7 +1,7 @@
 
 TimePeriod = require "../../TimePeriod"
 
-###*
+`/**
   * The Hermes month increases thunder.
   *
   * @name Hermes Month
@@ -9,7 +9,7 @@ TimePeriod = require "../../TimePeriod"
   * @effect +5% thunder
   * @category Month
   * @package Calendar
-###
+*/`
 class HermesMonth extends TimePeriod
 
   constructor: ->

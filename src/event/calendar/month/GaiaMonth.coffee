@@ -1,7 +1,7 @@
 
 TimePeriod = require "../../TimePeriod"
 
-###*
+`/**
   * The Gaia month increases earth.
   *
   * @name Gaia Month
@@ -9,7 +9,7 @@ TimePeriod = require "../../TimePeriod"
   * @effect +5% earth
   * @category Month
   * @package Calendar
-###
+*/`
 class GaiaMonth extends TimePeriod
 
   constructor: ->

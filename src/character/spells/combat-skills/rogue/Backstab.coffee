@@ -6,7 +6,7 @@ class BackStab extends Spell
   stat: @stat = "special"
   @element = BackStab::element = Spell::Element.physical
   @tiers = BackStab::tiers = [
-    ###*
+    `/**
       * This skill does a lot of damage to a player. It's not very nice.
       *
       * @name backstab
@@ -18,7 +18,7 @@ class BackStab extends Spell
       * @maxDamage 1.1*[str+dex]/2
       * @category Rogue
       * @package Spells
-    ###
+    */`
     {name: "backstab", spellPower: 1, cost: 15, class: "Rogue", level: 8}
   ]
 

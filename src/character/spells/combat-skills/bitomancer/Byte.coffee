@@ -6,7 +6,7 @@ class Byte extends Spell
   @element = Byte::element = Spell::Element.physical
   @stat = Byte::stat = "special"
   @tiers = Byte::tiers = [
-    ###*
+    `/**
       * This spell leeches some health from an enemy.
       *
       * @name byte
@@ -17,9 +17,9 @@ class Byte extends Spell
       * @maxDamage [int/4]
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "byte", spellPower: 1, cost: 5, class: "Bitomancer", level: 1}
-    ###*
+    `/**
       * This spell leeches some health from an enemy.
       *
       * @name kilobyte
@@ -30,9 +30,9 @@ class Byte extends Spell
       * @maxDamage [int/4]*1.4
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "kilobyte", spellPower: 1.4, cost: 20, class: "Bitomancer", level: 17}
-    ###*
+    `/**
       * This spell leeches some health from an enemy.
       *
       * @name megabyte
@@ -43,9 +43,9 @@ class Byte extends Spell
       * @maxDamage [int/4]*2
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "megabyte", spellPower: 2, cost: 80, class: "Bitomancer", level: 33}
-    ###*
+    `/**
       * This spell leeches some health from an enemy.
       *
       * @name gigabyte
@@ -56,9 +56,9 @@ class Byte extends Spell
       * @maxDamage [int/4]*2.8
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "gigabyte", spellPower: 2.8, cost: 160, class: "Bitomancer", level: 53}
-    ###*
+    `/**
       * This spell leeches some health from an enemy.
       *
       * @name terabyte
@@ -69,7 +69,7 @@ class Byte extends Spell
       * @maxDamage [int/4]*4
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "terabyte", spellPower: 4, cost: 320, class: "Bitomancer", level: 76}
   ]
 

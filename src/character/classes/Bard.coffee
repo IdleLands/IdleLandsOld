@@ -2,7 +2,7 @@
 Class = require "./../base/Class"
 MessageCreator = require "../../system/MessageCreator"
 
-###*
+`/**
   * This class is a very supportive class. They sing their songs to buff their allies.
   * If they have no allies, they are more likely to be an offensive force.
   *
@@ -19,7 +19,7 @@ MessageCreator = require "../../system/MessageCreator"
   * @minDamage 10%
   * @category Classes
   * @package Player
-###
+*/`
 class Bard extends Class
 
   baseHp: 50

@@ -1,7 +1,7 @@
 
 Class = require "./../base/Class"
 
-###*
+`/**
   * This class is a damaging class. It can use skills to stun or attack multiple times.
   *
   * @name Fighter
@@ -18,7 +18,7 @@ Class = require "./../base/Class"
   * @hpregen 5%
   * @category Classes
   * @package Player
-###
+*/`
 class Fighter extends Class
 
   baseHp: 120

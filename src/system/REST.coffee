@@ -24,6 +24,7 @@ app.use bodyParser.urlencoded extended: no
 app.use bodyParser.json()
 
 ###
+
   /player
 
   PUT     /player/auth/register             | REQUEST: {name, identifier, password}   | RETURN: {message, isSuccess, player, token}

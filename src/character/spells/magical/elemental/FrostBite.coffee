@@ -6,7 +6,7 @@ class FrostBite extends Spell
   name: "frostbite"
   @element = FrostBite::element = Spell::Element.ice
   @tiers = FrostBite::tiers = [
-    ###*
+    `/**
       * This spell does some damage, and has a small chance to stun for a few rounds afterwards.
       *
       * @name frostbite
@@ -19,7 +19,7 @@ class FrostBite extends Spell
       * effect {25%-chance} STUN
       * @category Mage
       * @package Spells
-    ###
+    */`
     {name: "frostbite", spellPower: 100, cost: 100, class: "Mage", level: 4}
   ]
 

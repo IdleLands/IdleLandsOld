@@ -2,7 +2,7 @@
 _ = require "underscore"
 Class = require "./../base/Class"
 
-###*
+`/**
   * This class is a debuffing magical class. It uses Bitrate to stun and destroy its foes.
   *
   * @name Bitomancer
@@ -19,7 +19,7 @@ Class = require "./../base/Class"
   * @minDamage 30%
   * @category Classes
   * @package Player
-###
+*/`
 class Bitomancer extends Class
 
   baseHp: 70

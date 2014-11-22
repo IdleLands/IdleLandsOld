@@ -5,7 +5,7 @@ class CureGroup extends Spell
   name: "cure group"
   @element = CureGroup::element = Spell::Element.heal
   @tiers = CureGroup::tiers = [
-    ###*
+    `/**
       * This spell cures your whole group.
       *
       * @name cure group
@@ -16,7 +16,7 @@ class CureGroup extends Spell
       * @maxDamage [wis/1.5]
       * @category Cleric
       * @package Spells
-    ###
+    */`
     {name: "cure group", spellPower: 1, cost: ((caster) -> if caster.party then caster.party.players.length * 50 else 50), class: "Cleric", level: 15}
   ]
 

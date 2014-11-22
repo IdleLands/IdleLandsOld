@@ -1,7 +1,7 @@
 
 Class = require "./../base/Class"
 
-###*
+`/**
   * This class does a little bit of everything. They have an attack skill that attacks all opponents, a defensive skill, and a healing skill.
   *
   * @name Generalist
@@ -16,7 +16,7 @@ Class = require "./../base/Class"
   * @minDamage 35%
   * @category Classes
   * @package Player
-###
+*/`
 class Generalist extends Class
 
   baseHp: 50

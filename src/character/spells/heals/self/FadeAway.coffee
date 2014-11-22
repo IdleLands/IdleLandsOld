@@ -6,7 +6,7 @@ class FadeAway extends Spell
   name: "fade away"
   @element = FadeAway::element = Spell::Element.heal
   @tiers = FadeAway::tiers = [
-    ###*
+    `/**
       * This spell recovers some stamina. Only selectable if you have <=25% hp.
       *
       * @name fade away
@@ -15,7 +15,7 @@ class FadeAway extends Spell
       * @effect +30 Stamina
       * @category Rogue
       * @package Spells
-    ###
+    */`
     {name: "fade away", spellPower: 1, cost: 0, class: "Rogue", level: 10}
   ]
 

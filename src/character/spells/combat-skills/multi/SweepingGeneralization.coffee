@@ -5,7 +5,7 @@ class SweepingGeneralization extends Spell
   name: "sweeping generalization"
   @element = SweepingGeneralization::element = Spell::Element.physical
   @tiers = SweepingGeneralization::tiers = [
-    ###*
+    `/**
       * This skill attacks all enemies with a sweeping generalization.
       *
       * @name sweeping generalization
@@ -16,7 +16,7 @@ class SweepingGeneralization extends Spell
       * @maxDamage [str+dex]/2
       * @category Generalist
       * @package Spells
-    ###
+    */`
     {name: "sweeping generalization", spellPower: 1, cost: 350, class: "Generalist", level: 5}
   ]
 

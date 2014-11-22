@@ -2,7 +2,7 @@
 Class = require "./../base/Class"
 RestrictedNumber = require "restricted-number"
 
-###*
+`/**
   * This class is very rambunctious, and often throws bottles at foes.
   *
   * @name Pirate
@@ -19,7 +19,7 @@ RestrictedNumber = require "restricted-number"
   * @minDamage 15%
   * @category Classes
   * @package Player
-###
+*/`
 class Pirate extends Class
 
   baseHp: 150

@@ -3,7 +3,7 @@ Achievement = require "../base/Achievement"
 Personality = require "../base/Personality"
 _ = require "underscore"
 
-###*
+`/**
   * This achievement was earned by participating in IdleLands Alpha.
   *
   * @name α Test Subject
@@ -19,7 +19,7 @@ _ = require "underscore"
   * @reward +[playerLevel*2] WIS
   * @category Achievements
   * @package Player
-###
+*/`
 class Tester extends Achievement
 
   getAllAchievedFor: (player) ->

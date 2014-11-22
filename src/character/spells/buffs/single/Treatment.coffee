@@ -5,7 +5,7 @@ class Treatment extends Spell
   name: "treatment"
   @element = Treatment::element = Spell::Element.heal & Spell::Element.buff
   @tiers = Treatment::tiers = [
-    ###*
+    `/**
       * This spell heals a certain percentage of health over time.
       *
       * @name treatment
@@ -16,7 +16,7 @@ class Treatment extends Spell
       * @duration 3 rounds
       * @category Generalist
       * @package Spells
-    ###
+    */`
     {name: "treatment", spellPower: 1, cost: 450, class: "Generalist", level: 7}
   ]
 

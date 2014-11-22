@@ -1,7 +1,7 @@
 
 TimePeriod = require "../../TimePeriod"
 
-###*
+`/**
   * The Serpentis year increases water and physical.
   *
   * @name Serpentis Year
@@ -11,7 +11,7 @@ TimePeriod = require "../../TimePeriod"
   * @effect +14% physical
   * @category Year
   * @package Calendar
-###
+*/`
 class SerpentisYear extends TimePeriod
 
   constructor: ->

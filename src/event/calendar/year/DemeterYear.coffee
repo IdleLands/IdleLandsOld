@@ -1,7 +1,7 @@
 
 TimePeriod = require "../../TimePeriod"
 
-###*
+`/**
   * The Demeter year increases healing and earth.
   *
   * @name Demeter Year
@@ -11,7 +11,7 @@ TimePeriod = require "../../TimePeriod"
   * @effect +14% heal
   * @category Year
   * @package Calendar
-###
+*/`
 class DemeterYear extends TimePeriod
 
   constructor: ->

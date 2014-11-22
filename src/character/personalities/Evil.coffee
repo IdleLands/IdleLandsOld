@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality makes you Evil-aligned.
   *
   * @name Evil
@@ -9,7 +9,7 @@ Personality = require "../base/Personality"
   * @effect -5 alignment
   * @category Personalities
   * @package Player
-###
+*/`
 class Evil extends Personality
   constructor: ->
 

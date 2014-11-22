@@ -6,7 +6,7 @@ class DDoS extends Spell
   @element = DDoS::element = Spell::Element.physical
   @stat = DDoS::stat = "special"
   @tiers = DDoS::tiers = [
-    ###*
+    `/**
       * This spell stuns and lowers some stats for one enemy.
       *
       * @name DDoS attack
@@ -19,9 +19,9 @@ class DDoS extends Spell
       * @duration 1 round
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "DDoS attack", spellPower: 1, cost: 300, class: "Bitomancer", level: 30}
-    ###*
+    `/**
       * This spell stuns and lowers some stats for one enemy.
       *
       * @name persistent DDoS attack
@@ -34,7 +34,7 @@ class DDoS extends Spell
       * @duration 2 rounds
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "persistent DDoS attack", spellPower: 2, cost: 1000, class: "Bitomancer", level: 60}
   ]
 

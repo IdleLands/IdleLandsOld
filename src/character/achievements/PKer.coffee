@@ -3,7 +3,7 @@ Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
 _ = require "underscore"
 
-###*
+`/**
   * This achievement is earned by killing unique players.
   *
   * @name PKer
@@ -17,7 +17,7 @@ _ = require "underscore"
   * @reward +1 LUCK
   * @category Achievements
   * @package Player
-###
+*/`
 class PKer extends Achievement
 
   getAllAchievedFor: (player) ->

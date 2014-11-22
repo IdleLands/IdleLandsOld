@@ -2,7 +2,7 @@
 Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
 
-###*
+`/**
   * This achievement is earned by performing a lot of critical hits.
   *
   * @name Critical
@@ -10,7 +10,7 @@ Achievement = require "../base/Achievement"
   * @reward +1 crit
   * @category Achievements
   * @package Player
-###
+*/`
 class Critical extends Achievement
 
   getAllAchievedFor: (player) ->

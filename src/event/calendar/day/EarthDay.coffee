@@ -1,7 +1,7 @@
 
 TimePeriod = require "../../TimePeriod"
 
-###*
+`/**
   * The Earth day increases all elemental stats.
   *
   * @name Earth Day
@@ -17,7 +17,7 @@ TimePeriod = require "../../TimePeriod"
   * @effect +3% thunder
   * @category Day
   * @package Calendar
-###
+*/`
 class EarthDay extends TimePeriod
 
   constructor: ->

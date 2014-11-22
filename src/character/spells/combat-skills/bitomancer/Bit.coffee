@@ -6,7 +6,7 @@ class Bit extends Spell
   @element = Bit::element = Spell::Element.physical
   @stat = Bit::stat = "special"
   @tiers = Bit::tiers = [
-    ###*
+    `/**
       * This spell does some damage to an enemy.
       *
       * @name bit
@@ -17,9 +17,9 @@ class Bit extends Spell
       * @maxDamage [int/2]
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "bit", spellPower: 1, cost: 5, class: "Bitomancer", level: 1}
-    ###*
+    `/**
       * This spell does some damage to an enemy.
       *
       * @name kilobit
@@ -30,9 +30,9 @@ class Bit extends Spell
       * @maxDamage [int/2]*1.4
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "kilobit", spellPower: 1.4, cost: 20, class: "Bitomancer", level: 17}
-    ###*
+    `/**
       * This spell does some damage to an enemy.
       *
       * @name megabit
@@ -43,9 +43,9 @@ class Bit extends Spell
       * @maxDamage [int/2]*2
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "megabit", spellPower: 2, cost: 80, class: "Bitomancer", level: 33}
-    ###*
+    `/**
       * This spell does some damage to an enemy.
       *
       * @name gigabit
@@ -56,9 +56,9 @@ class Bit extends Spell
       * @maxDamage [int/2]*2.8
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "gigabit", spellPower: 2.8, cost: 160, class: "Bitomancer", level: 53}
-    ###*
+    `/**
       * This spell does some damage to an enemy.
       *
       * @name terabit
@@ -69,7 +69,7 @@ class Bit extends Spell
       * @maxDamage [int/2]*4
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "terabit", spellPower: 4, cost: 320, class: "Bitomancer", level: 76}
   ]
 

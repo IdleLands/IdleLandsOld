@@ -2,13 +2,13 @@
 Cataclysm = require "../Cataclysm"
 _ = require "underscore"
 
-###*
+`/**
   * This cataclysm runs every positive event on every player. See, it's not so bad, now is it?
   *
   * @name HopeRays
   * @category Cataclysms
   * @package Events
-###
+*/`
 class HopeRays extends Cataclysm
   constructor: (game) ->
     super game, "hoperays"

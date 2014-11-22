@@ -1,14 +1,14 @@
 
 TimePeriod = require "../../TimePeriod"
 
-###*
+`/**
   * The CON day increases constitution.
   *
   * @name CON Day
   * @effect +5% CON
   * @category Day
   * @package Calendar
-###
+*/`
 class ConDay extends TimePeriod
 
   constructor: ->

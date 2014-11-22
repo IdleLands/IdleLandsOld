@@ -1,7 +1,7 @@
 
 TimePeriod = require "../../TimePeriod"
 
-###*
+`/**
   * The Hades year increases fire and dark.
   *
   * @name Hades Year
@@ -11,7 +11,7 @@ TimePeriod = require "../../TimePeriod"
   * @effect +14% dark
   * @category Year
   * @package Calendar
-###
+*/`
 class HadesYear extends TimePeriod
 
   constructor: ->

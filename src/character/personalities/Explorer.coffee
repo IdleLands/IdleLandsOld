@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality affords you better explorer traits to navigate the world, at the cost of stats.
   *
   * @name Explorer
@@ -19,7 +19,7 @@ Personality = require "../base/Personality"
   * @effect +50% chance to use a teleport
   * @category Personalities
   * @package Player
-###
+*/`
 class Explorer extends Personality
 
   constructor: (player) ->

@@ -2,7 +2,7 @@
 Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
 
-###*
+`/**
   * This achievement is earned by walking a lot.
   *
   * @name Walkative
@@ -11,7 +11,7 @@ Achievement = require "../base/Achievement"
   * @reward +1 haste (This only applies once for every 5 levels of Walkative.)
   * @category Achievements
   * @package Player
-###
+*/`
 class Walkative extends Achievement
 
   getAllAchievedFor: (player) ->

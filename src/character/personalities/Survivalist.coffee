@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality makes you attempt to flee combat at lower hp values.
   *
   * @name Survivalist
@@ -10,7 +10,7 @@ Personality = require "../base/Personality"
   * @effect Flee when hp <= 10%
   * @category Personalities
   * @package Player
-###
+*/`
 class Survivalist extends Personality
   constructor: ->
 

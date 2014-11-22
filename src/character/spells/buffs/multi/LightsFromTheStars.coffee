@@ -5,7 +5,7 @@ class LightsFromTheStars extends Spell
   name: "Lights from the Stars"
   @element = LightsFromTheStars::element = Spell::Element.buff
   @tiers = LightsFromTheStars::tiers = [
-    ###*
+    `/**
       * This spell buffs the int and wis of your allies.
       *
       * @name Lights from the Stars
@@ -17,7 +17,7 @@ class LightsFromTheStars extends Spell
       * @duration 3 rounds
       * @category Bard
       * @package Spells
-    ###
+      */`
     {name: "Lights from the Stars", spellPower: 1, cost: 300, class: "Bard", level: 10}
   ]
 

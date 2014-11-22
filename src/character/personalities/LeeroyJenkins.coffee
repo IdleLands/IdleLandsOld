@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality makes you charge into battle, like a famous WoW veteran.
   *
   * @name LeeroyJenkins
@@ -12,7 +12,7 @@ Personality = require "../base/Personality"
   * @effect +20% AGI
   * @category Personalities
   * @package Player
-###
+*/`
 class LeeroyJenkins extends Personality
   constructor: ->
 

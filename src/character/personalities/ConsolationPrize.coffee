@@ -3,7 +3,7 @@ Personality = require "../base/Personality"
 chance = new (require "chance")()
 MessageCreator = require "../../system/MessageCreator"
 
-###*
+`/**
   * This personality allows you to occasionally revive immediately after dying.
   *
   * @name ConsolationPrize
@@ -12,7 +12,7 @@ MessageCreator = require "../../system/MessageCreator"
   * @effect +5% revive chance
   * @category Personalities
   * @package Player
-###
+*/`
 class ConsolationPrize extends Personality
 
   constructor: (player) ->

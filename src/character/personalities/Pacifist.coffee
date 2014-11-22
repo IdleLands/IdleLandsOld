@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality makes you very likely to flee combat.
   *
   * @name Pacifist
@@ -10,7 +10,7 @@ Personality = require "../base/Personality"
   * @effect +5% xp
   * @category Personalities
   * @package Player
-###
+*/`
 class Pacifist extends Personality
   constructor: ->
 

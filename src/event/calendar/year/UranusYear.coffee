@@ -1,7 +1,7 @@
 
 TimePeriod = require "../../TimePeriod"
 
-###*
+`/**
   * The Uranus year increases ice and holy.
   *
   * @name Uranus Year
@@ -11,7 +11,7 @@ TimePeriod = require "../../TimePeriod"
   * @effect +14% ice
   * @category Year
   * @package Calendar
-###
+*/`
 class UranusYear extends TimePeriod
 
   constructor: ->

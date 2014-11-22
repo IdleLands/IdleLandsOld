@@ -7,7 +7,7 @@ class PirateShanty extends Spell
   @element = PirateShanty::element = Spell::Element.physical
   @stat = PirateShanty::stat = "hp"
   @tiers = PirateShanty::tiers = [
-    ###*
+    `/**
       * This song buffs the STR of all of the casters allies.
       *
       * @name pirate shanty
@@ -18,7 +18,7 @@ class PirateShanty extends Spell
       * @duration 5-[Bottles/33] rounds
       * @category Pirate
       * @package Spells
-    ###
+    */`
     {name: "pirate shanty", spellPower: 1, cost: 100, class: "Pirate", level: 1}
   ]
 

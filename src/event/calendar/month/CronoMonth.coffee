@@ -1,7 +1,7 @@
 
 TimePeriod = require "../../TimePeriod"
 
-###*
+`/**
   * The Crono month increases healing.
   *
   * @name Crono Month
@@ -9,7 +9,7 @@ TimePeriod = require "../../TimePeriod"
   * @effect +5% heal
   * @category Month
   * @package Calendar
-###
+*/`
 class CronoMonth extends TimePeriod
 
   constructor: ->

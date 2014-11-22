@@ -6,7 +6,7 @@ class NinetyNineBottles extends Spell
   @element = NinetyNineBottles::element = Spell::Element.physical
   @stat = NinetyNineBottles::stat = "hp"
   @tiers = NinetyNineBottles::tiers = [
-    ###*
+    `/**
       * This spell throws bottles at the opponent. Generally, people don't like that.
       *
       * @name 99 Bottles of Ale
@@ -16,7 +16,7 @@ class NinetyNineBottles extends Spell
       * @minDamage ???
       * @category Pirate
       * @package Spells
-    ###
+    */`
     {name: "99 Bottles of Ale", spellPower: 1, cost: 1200, class: "Pirate", level: 25}
   ]
 

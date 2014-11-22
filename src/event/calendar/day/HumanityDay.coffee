@@ -1,7 +1,7 @@
 
 TimePeriod = require "../../TimePeriod"
 
-###*
+`/**
   * The Humanity day increases all stats for players.
   *
   * @name Humanity Day
@@ -14,7 +14,7 @@ TimePeriod = require "../../TimePeriod"
   * @effect +10% LUCK (Only applies to players)
   * @category Day
   * @package Calendar
-###
+*/`
 class HumanityDay extends TimePeriod
 
   constructor: ->

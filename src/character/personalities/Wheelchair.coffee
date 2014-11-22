@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality makes it so you are less likely to go up stairs, and slightly less likely to go down stairs.
   *
   * @name Wheelchair
@@ -10,7 +10,7 @@ Personality = require "../base/Personality"
   * @effect -40% chance to go down stairs
   * @category Personalities
   * @package Player
-###
+*/`
 class Wheelchair extends Personality
 
   constructor: ->

@@ -6,7 +6,7 @@ class FoodFight extends Spell
   name: "food fight"
   @element = FoodFight::element = Spell::Element.physical
   @tiers = FoodFight::tiers = [
-    ###*
+    `/**
       * This skill does some damage. It targets 2-10 people.
       *
       * @name food fight
@@ -17,7 +17,7 @@ class FoodFight extends Spell
       * @maxDamage [dex/4]
       * @category SandwichArtist
       * @package Spells
-    ###
+    */`
     {name: "food fight", spellPower: 1, cost: 400, class: "SandwichArtist", level: 15}
   ]
 

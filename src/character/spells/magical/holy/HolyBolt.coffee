@@ -5,7 +5,7 @@ class HolyBolt extends Spell
   name: "holy bolt"
   @element = HolyBolt::element = Spell::Element.holy
   @tiers = HolyBolt::tiers = [
-    ###*
+    `/**
       * This is a basic damaging spell.
       *
       * @name holy bolt
@@ -16,9 +16,9 @@ class HolyBolt extends Spell
       * @maxDamage [wis]
       * @category Cleric
       * @package Spells
-    ###
+    */`
     {name: "holy bolt", spellPower: 1, cost: 125, class: "Cleric", level: 5}
-    ###*
+    `/**
       * This is a basic damaging spell.
       *
       * @name divine bolt
@@ -29,9 +29,9 @@ class HolyBolt extends Spell
       * @maxDamage [wis]*2
       * @category Cleric
       * @package Spells
-    ###
+    */`
     {name: "divine bolt", spellPower: 2, cost: 250, class: "Cleric", level: 30}
-    ###*
+    `/**
       * This is a basic damaging spell.
       *
       * @name celestial bolt
@@ -42,7 +42,7 @@ class HolyBolt extends Spell
       * @maxDamage [wis]*4
       * @category Cleric
       * @package Spells
-    ###
+    */`
     {name: "celestial bolt", spellPower: 4, cost: 500, class: "Cleric", level: 55}
   ]
 

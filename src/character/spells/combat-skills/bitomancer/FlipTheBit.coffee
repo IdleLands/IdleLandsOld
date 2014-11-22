@@ -6,7 +6,7 @@ class FlipTheBit extends Spell
   @element = FlipTheBit::element = Spell::Element.physical
   @stat = FlipTheBit::stat = "special"
   @tiers = FlipTheBit::tiers = [
-    ###*
+    `/**
       * This spell flips an enemies HP with their MP
       *
       * @name flip the bit
@@ -15,7 +15,7 @@ class FlipTheBit extends Spell
       * @requirement {level} 30
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "flip the bit", spellPower: 1, cost: ((caster) -> Math.floor(caster.special.maximum/2)), class: "Bitomancer", level: 30}
   ]
 

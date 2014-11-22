@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality makes you move more erratically, and act generally silly.
   *
   * @name Drunk
@@ -14,7 +14,7 @@ Personality = require "../base/Personality"
   * @effect +5% AGI
   * @category Personalities
   * @package Player
-###
+*/`
 class Drunk extends Personality
   constructor: ->
 

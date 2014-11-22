@@ -6,7 +6,7 @@ class ChainStab extends Spell
   stat: @stat = "special"
   @element = ChainStab::element = Spell::Element.physical
   @tiers = ChainStab::tiers = [
-    ###*
+    `/**
       * This skill does a small amount of damage, but can repeat itself.
       *
       * @name chain stab
@@ -20,7 +20,7 @@ class ChainStab extends Spell
       * @maxDamage 0.5*[str+dex]/2
       * @category Rogue
       * @package Spells
-    ###
+    */`
     {name: "chain stab", spellPower: 1, cost: 10, class: "Rogue", level: 3}
   ]
 

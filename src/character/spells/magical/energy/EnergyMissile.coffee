@@ -5,7 +5,7 @@ class EnergyMissile extends Spell
   name: "energy missile"
   @element = EnergyMissile::element = Spell::Element.energy
   @tiers = EnergyMissile::tiers = [
-    ###*
+    `/**
       * This is a basic damaging spell.
       *
       * @name energy missile
@@ -16,9 +16,9 @@ class EnergyMissile extends Spell
       * @maxDamage [int]
       * @category Mage
       * @package Spells
-    ###
+    */`
     {name: "energy missile", spellPower: 1, cost: 150, class: "Mage", level: 1}
-    ###*
+    `/**
       * This is a basic damaging spell.
       *
       * @name energy blast
@@ -29,9 +29,9 @@ class EnergyMissile extends Spell
       * @maxDamage [int]*2
       * @category Mage
       * @package Spells
-    ###
+    */`
     {name: "energy blast", spellPower: 2, cost: 450, class: "Mage", level: 26}
-    ###*
+    `/**
       * This is a basic damaging spell.
       *
       * @name astral flare
@@ -42,7 +42,7 @@ class EnergyMissile extends Spell
       * @maxDamage [int]*4
       * @category Mage
       * @package Spells
-    ###
+    */`
     {name: "astral flare", spellPower: 4, cost: 2400, class: "Mage", level: 51}
   ]
 

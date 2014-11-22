@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality makes you never change classes, unless the resulting class is considered Physical.
   *
   * @name Physical
@@ -13,7 +13,7 @@ Personality = require "../base/Personality"
   * @effect -10% WIS
   * @category Personalities
   * @package Player
-###
+*/`
 class Physical extends Personality
   constructor: ->
 

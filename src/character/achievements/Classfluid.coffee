@@ -3,7 +3,7 @@ Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
 _ = require "underscore"
 
-###*
+`/**
   * This achievement is earned by becoming a unique number of classes.
   *
   * @name Classfluid
@@ -12,7 +12,7 @@ _ = require "underscore"
   * @reward +2% WIS
   * @category Achievements
   * @package Player
-###
+*/`
 class Classfluid extends Achievement
 
   getAllAchievedFor: (player) ->

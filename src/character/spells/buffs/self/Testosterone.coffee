@@ -4,7 +4,7 @@ class Testosterone extends Spell
   name: "testosterone"
   @element = Testosterone::element = Spell::Element.buff
   @tiers = Testosterone::tiers = [
-    ###*
+    `/**
       * This spell buffs the strength of the caster dramatically.
       *
       * @name Testosterone
@@ -15,7 +15,7 @@ class Testosterone extends Spell
       * @duration 4 rounds
       * @category Fighter
       * @package Spells
-    ###
+    */`
     {name: "testosterone", spellPower: 1, cost: 300, class: "Fighter", level: 4}
   ]
 

@@ -1,7 +1,7 @@
 
 Class = require "./../base/Class"
 
-###*
+`/**
   * This class makes lunch for its allies and foes alike. It is a true savior, but watch out for the poison.
   *
   * @name SandwichArtist
@@ -18,7 +18,7 @@ Class = require "./../base/Class"
   * @minDamage 15%
   * @category Classes
   * @package Player
-###
+*/`
 class SandwichArtist extends Class
 
   baseHp: 40

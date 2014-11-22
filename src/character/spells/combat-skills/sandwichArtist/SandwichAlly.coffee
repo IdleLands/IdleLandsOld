@@ -7,7 +7,7 @@ class SandwichAlly extends Spell
   name: "Sandwich Ally"
   @element = SandwichAlly::element = Spell::Element.physical
   @tiers = SandwichAlly::tiers = [
-    ###*
+    `/**
       * This skill feeds an ally. As for what that means, that depends on the sandwich made.
       *
       * @name Sandwich Ally
@@ -18,7 +18,7 @@ class SandwichAlly extends Spell
       * @minHeal dex/1.5
       * @category SandwichArtist
       * @package Spells
-    ###
+    */`
     {name: "Sandwich Ally", spellPower: 1, cost: 200, class: "SandwichArtist", level: 10}
   ]
 

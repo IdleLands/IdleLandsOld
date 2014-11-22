@@ -5,7 +5,7 @@ class EnergyShield extends Spell
   name: "energy shield"
   @element = EnergyShield::element = Spell::Element.buff
   @tiers = EnergyShield::tiers = [
-    ###*
+    `/**
       * This spell reduces incoming damage for a period of time.
       *
       * @name energy shield
@@ -16,9 +16,9 @@ class EnergyShield extends Spell
       * @duration 13 rounds
       * @category Mage
       * @package Spells
-    ###
+    */`
     {name: "energy shield",       spellPower: 2,  cost: 300,   class: "Mage", level: 4}
-    ###*
+    `/**
       * This spell reduces incoming damage for a period of time.
       *
       * @name energy buckler
@@ -29,9 +29,9 @@ class EnergyShield extends Spell
       * @duration 11 rounds
       * @category Mage
       * @package Spells
-    ###
+    */`
     {name: "energy buckler",      spellPower: 4,  cost: 1000,  class: "Mage", level: 29}
-    ###*
+    `/**
       * This spell reduces incoming damage for a period of time.
       *
       * @name energy towershield
@@ -42,9 +42,9 @@ class EnergyShield extends Spell
       * @duration 9 rounds
       * @category Mage
       * @package Spells
-    ###
+    */`
     {name: "energy towershield",  spellPower: 6,  cost: 2300,  class: "Mage", level: 54}
-    ###*
+    `/**
       * This spell reduces incoming damage for a period of time.
       *
       * @name energy omegashield
@@ -55,9 +55,9 @@ class EnergyShield extends Spell
       * @duration 5 rounds
       * @category Mage
       * @package Spells
-    ###
+    */`
     {name: "energy omegashield",  spellPower: 10, cost: 3900,  class: "Mage", level: 79}
-    ###*
+    `/**
       * This spell reduces incoming damage for a period of time.
       *
       * @name energy barrier
@@ -68,9 +68,9 @@ class EnergyShield extends Spell
       * @duration 14 rounds
       * @category Generalist
       * @package Spells
-    ###
+    */`
     {name: "energy barrier",      spellPower: 1,  cost: 400,   class: "Generalist", level: 10}
-    ###*
+    `/**
       * This spell reduces incoming damage for a period of time.
       *
       * @name energy field
@@ -81,9 +81,9 @@ class EnergyShield extends Spell
       * @duration 13 rounds
       * @category Generalist
       * @package Spells
-    ###
+    */`
     {name: "energy field",        spellPower: 2,  cost: 800,   class: "Generalist", level: 25}
-    ###*
+    `/**
       * This spell reduces incoming damage for a period of time.
       *
       * @name energy wall
@@ -94,9 +94,9 @@ class EnergyShield extends Spell
       * @duration 12 rounds
       * @category Generalist
       * @package Spells
-    ###
+    */`
     {name: "energy wall",         spellPower: 3,  cost: 1200,  class: "Generalist", level: 40}
-    ###*
+    `/**
       * This spell reduces incoming damage for a period of time.
       *
       * @name energy barricade
@@ -107,7 +107,7 @@ class EnergyShield extends Spell
       * @duration 11 rounds
       * @category Generalist
       * @package Spells
-    ###
+    */`
     {name: "energy barricade",    spellPower: 4,  cost: 1600,  class: "Generalist", level: 55}
   ]
 

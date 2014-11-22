@@ -2,7 +2,7 @@
 Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
 
-###*
+`/**
   * This achievement is earned by achieving certain levels.
   *
   * @name Levelable
@@ -10,7 +10,7 @@ Achievement = require "../base/Achievement"
   * @reward +1 LUCK
   * @category Achievements
   * @package Player
-###
+*/`
 class Levelable extends Achievement
 
   getAllAchievedFor: (player) ->

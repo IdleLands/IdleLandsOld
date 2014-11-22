@@ -1,7 +1,7 @@
 
 Class = require "./../base/Class"
 
-###*
+`/**
   * This is the default class for all monsters in the game if not specified otherwise. It was added to the game for players
   * for funsies.
   *
@@ -15,7 +15,7 @@ Class = require "./../base/Class"
   * @statPerLevel {agi} 4
   * @category Classes
   * @package Player
-###
+*/`
 class Monster extends Class
 
   baseHp: 100

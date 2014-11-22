@@ -1,7 +1,7 @@
 
 Class = require "./../base/Class"
 
-###*
+`/**
   * This class performs many deadly combos on its foes. Beware the finishing blow.
   *
   * @name Rogue
@@ -18,7 +18,7 @@ Class = require "./../base/Class"
   * @minDamage 37%
   * @category Classes
   * @package Player
-###
+*/`
 class Rogue extends Class
 
   baseHp: 70

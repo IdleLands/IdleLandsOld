@@ -7,14 +7,14 @@ slay = (player, enemies) ->
   targets = _.filter enemies.result, (enemy) -> enemy.professionName in Constants.classCategorization.support
   { probability: 300, result: targets }
 
-###*
+`/**
   * This personality makes you more likely to target Support-type classes.
   *
   * @name SupportSlayer
   * @prerequisite Kill 10 Support classes
   * @category Personalities
   * @package Player
-###
+*/`
 class SupportSlayer extends Personality
   constructor: ->
 

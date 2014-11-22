@@ -3,7 +3,7 @@ Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
 _ = require "underscore"
 
-###*
+`/**
   * This achievement is obtained when creating a character. It only lasts for 3 days, so idle wisely.
   *
   * @name Beginners Luck
@@ -11,7 +11,7 @@ _ = require "underscore"
   * @reward +50 LUCK
   * @category Achievements
   * @package Player
-###
+*/`
 class BeginnersLuck extends Achievement
 
   getAllAchievedFor: (player) ->

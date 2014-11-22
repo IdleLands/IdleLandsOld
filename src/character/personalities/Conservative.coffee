@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality makes you use skills far less.
   *
   * @name Conservative
@@ -9,7 +9,7 @@ Personality = require "../base/Personality"
   * @effect +40% physical attack chance
   * @category Personalities
   * @package Player
-###
+*/`
 class Conservative extends Personality
   constructor: ->
 

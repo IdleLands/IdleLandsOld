@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality attempts to prevent you from fleeing from combat.
   *
   * @name Brave
@@ -11,7 +11,7 @@ Personality = require "../base/Personality"
   * @effect +10% XP loss at end of combat
   * @category Personalities
   * @package Player
-###
+*/`
 class Brave extends Personality
   constructor: ->
 

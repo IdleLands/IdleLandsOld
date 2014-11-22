@@ -1,7 +1,7 @@
 
 Class = require "./../base/Class"
 
-###*
+`/**
   * This class is a very lucky class. It uses its luck to affect everything. It also gets a bonus to having all events happen more often.
   *
   * @name Jester
@@ -16,7 +16,7 @@ Class = require "./../base/Class"
   * @statPerLevel {luck} 4
   * @category Classes
   * @package Player
-###
+*/`
 class Jester extends Class
 
   baseHp: 30

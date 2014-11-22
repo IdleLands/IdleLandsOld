@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality makes it so you find more, powerful items.
   *
   * @name TreasureHunter
@@ -11,7 +11,7 @@ Personality = require "../base/Personality"
   * @effect +[level/20] itemFindRangeMultiplier
   * @category Personalities
   * @package Player
-###
+*/`
 class TreasureHunter extends Personality
   constructor: ->
 

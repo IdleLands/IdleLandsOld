@@ -6,7 +6,7 @@ class DeathGlare extends Spell
   @element = DeathGlare::element = Spell::Element.physical
   @stat = DeathGlare::stat = "hp"
   @tiers = DeathGlare::tiers = [
-    ###*
+    `/**
       * This spell lowers the strength of an enemy based on the number of bottles the player has.
       *
       * @name death glare
@@ -17,7 +17,7 @@ class DeathGlare extends Spell
       * @duration 4-[Bottles/33] rounds
       * @category Pirate
       * @package Spells
-    ###
+    */`
     {name: "death glare", spellPower: 1, cost: 200, class: "Pirate", level: 7}
   ]
 

@@ -5,7 +5,7 @@ class DoubleTap extends Spell
   name: "double tap"
   @element = DoubleTap::element = Spell::Element.physical
   @tiers = DoubleTap::tiers = [
-    ###*
+    `/**
       * This skill makes the caster attack twice.
       *
       * @name double tap
@@ -14,9 +14,9 @@ class DoubleTap extends Spell
       * @requirement {level} 1
       * @category Fighter
       * @package Spells
-    ###
+    */`
     {name: "double tap", spellPower: 1, cost: 450, class: "Fighter", level: 1}
-    ###*
+    `/**
       * This skill makes the caster attack thrice.
       *
       * @name triple tap
@@ -25,7 +25,7 @@ class DoubleTap extends Spell
       * @requirement {level} 51
       * @category Fighter
       * @package Spells
-    ###
+    */`
     {name: "triple tap", spellPower: 2, cost: 600, class: "Fighter", level: 51}
   ]
 

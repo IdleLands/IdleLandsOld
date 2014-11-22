@@ -5,7 +5,7 @@ class FleeInTerror extends Spell
   name: "Flee In Terror"
   @element = FleeInTerror::element = Spell::Element.energy
   @tiers = FleeInTerror::tiers = [
-    ###*
+    `/**
       * This spell causes the enemies to want to flee.
       *
       * @name Flee In Terror
@@ -16,7 +16,7 @@ class FleeInTerror extends Spell
       * @duration 2 rounds
       * @category Bard
       * @package Spells
-    ###
+    */`
     {name: "Flee In Terror", spellPower: 1, cost: 2000, class: "Bard", level: 50}
   ]
 

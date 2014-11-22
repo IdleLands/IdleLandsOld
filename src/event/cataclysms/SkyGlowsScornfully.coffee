@@ -2,13 +2,13 @@
 Cataclysm = require "../Cataclysm"
 _ = require "underscore"
 
-###*
+`/**
   * This cataclysm forsakes your experiences.
   *
   * @name SkyGlowsScornfully
   * @category Cataclysms
   * @package Events
-###
+*/`
 class SkyGlowsScornfully extends Cataclysm
   constructor: (game) ->
     super game, "skyscornglow"

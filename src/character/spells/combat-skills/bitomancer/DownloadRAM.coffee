@@ -6,7 +6,7 @@ class DownloadRAM extends Spell
   @element = DownloadRAM::element = Spell::Element.physical
   @stat = DownloadRAM::stat = "special"
   @tiers = DownloadRAM::tiers = [
-    ###*
+    `/**
       * This spell forces the caster to download more ram, modifying their stats.
       *
       * @name single-channel RAM
@@ -18,9 +18,9 @@ class DownloadRAM extends Spell
       * @effect +10% AGI
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "single-channel RAM", spellPower: 10, cost: 25, class: "Bitomancer", level: 10}
-    ###*
+    `/**
       * This spell forces the caster to download more ram, modifying their stats.
       *
       * @name dual-channel RAM
@@ -32,9 +32,9 @@ class DownloadRAM extends Spell
       * @effect +20% AGI
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "dual-channel RAM", spellPower: 20, cost: 100, class: "Bitomancer", level: 20}
-    ###*
+    `/**
       * This spell forces the caster to download more ram, modifying their stats.
       *
       * @name triple-channel RAM
@@ -46,9 +46,9 @@ class DownloadRAM extends Spell
       * @effect +30% AGI
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "triple-channel RAM", spellPower: 30, cost: 300, class: "Bitomancer", level: 40}
-    ###*
+    `/**
       * This spell forces the caster to download more ram, modifying their stats.
       *
       * @name quad-channel RAM
@@ -60,7 +60,7 @@ class DownloadRAM extends Spell
       * @effect +50% AGI
       * @category Bitomancer
       * @package Spells
-    ###
+    */`
     {name: "quad-channel RAM", spellPower: 50, cost: 500, class: "Bitomancer", level: 70}
   ]
 

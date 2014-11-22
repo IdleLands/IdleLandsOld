@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 
-###*
+`/**
   * This personality makes it so you both gain and lose more gold, at the cost of XP.
   *
   * @name Greedy
@@ -10,7 +10,7 @@ Personality = require "../base/Personality"
   * @effect -15% xp
   * @category Personalities
   * @package Player
-###
+*/`
 class Greedy extends Personality
   constructor: ->
 

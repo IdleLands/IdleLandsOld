@@ -3,7 +3,7 @@ Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
 _ = require "underscore"
 
-###*
+`/**
   * This achievement is earned by killing a unique number of bosses.
   *
   * @name Bossy
@@ -12,7 +12,7 @@ _ = require "underscore"
   * @reward +2% DEX
   * @category Achievements
   * @package Player
-###
+*/`
 class Bossy extends Achievement
 
   getAllAchievedFor: (player) ->

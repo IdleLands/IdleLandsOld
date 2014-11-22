@@ -5,7 +5,7 @@ class Fortify extends Spell
   name: "fortify"
   @element = Fortify::element = Spell::Element.buff
   @tiers = Fortify::tiers = [
-    ###*
+    `/**
       * This spell buffs the max HP of the caster.
       *
       * @name Fortify
@@ -16,7 +16,7 @@ class Fortify extends Spell
       * @duration 7 rounds
       * @category Generalist
       * @package Spells
-    ###
+    */`
     {name: "fortify", spellPower: 1, cost: 300, class: "Generalist", level: 15}
   ]
 

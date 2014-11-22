@@ -5,7 +5,7 @@ class OurHeartsIgnite extends Spell
   name: "Our Hearts Ignite"
   @element = OurHeartsIgnite::element = Spell::Element.buff
   @tiers = OurHeartsIgnite::tiers = [
-    ###*
+    `/**
       * This spell buffs the str and con of your allies.
       *
       * @name Our Hearts Ignite
@@ -17,7 +17,7 @@ class OurHeartsIgnite extends Spell
       * @duration 3 rounds
       * @category Bard
       * @package Spells
-    ###
+    */`
     {name: "Our Hearts Ignite", spellPower: 1, cost: 300, class: "Bard", level: 1}
   ]
 
