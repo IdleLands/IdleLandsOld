@@ -200,14 +200,14 @@ class Character extends EventEmitter2
         _.reduce stats, ((prev, stat) => prev+@stat stat), 0
 
       #`/**
-      #  * Aegis prevents critical hits.
-      #  *
-      #  * @name aegis
-      #  * @combat
-      #  * @stacks no
-      #  * @category Equipment Effects
-      #  * @package Item
-      #  */`
+      # * Aegis prevents critical hits.
+      # *
+      # * @name aegis
+      # * @combat
+      # * @stacks no
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
       aegis: -> 0 < @self.calc.stat 'aegis'
 
       #`/**

@@ -1,5 +1,5 @@
 {
-  "language": "js",
+  "language": "escapedCoffee",
   "glob": "+(src|ext)/**/*.coffee",
   "arrayTags": [
     "example",
