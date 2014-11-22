@@ -15,6 +15,8 @@ module.exports = (grunt) ->
       options:
         max_line_length:
           level: 'ignore'
+        no_backticks:
+          level: 'ignore'
 
     watch:
       dist:
