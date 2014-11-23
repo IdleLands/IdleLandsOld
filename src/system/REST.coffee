@@ -23,6 +23,10 @@ app.use cors()
 app.use bodyParser.urlencoded extended: no
 app.use bodyParser.json()
 
+app.use (req, res, next) ->
+  res.header "Access-Control-Allow-Origin", "*"
+  next()
+
 ###
 
   /player
