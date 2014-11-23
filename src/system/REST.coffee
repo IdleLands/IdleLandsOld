@@ -23,10 +23,6 @@ app.use cors()
 app.use bodyParser.urlencoded extended: no
 app.use bodyParser.json()
 
-app.use (req, res, next) ->
-  res.header "Access-Control-Allow-Origin", "*"
-  next()
-
 ###
 
   /player
@@ -75,6 +71,12 @@ app.use "/", require "./rest-routes/ManageString"
 app.use "/", require "./rest-routes/Map"
 app.use "/", require "./rest-routes/TurnAction"
 app.use "/img", express.static __dirname + '/../../assets/img'
+
+app.use (req, res, next) ->
+  res.header "Access-Control-Allow-Origin", "*"
+  res.header "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS"
+  res.header "Access-Control-Allow-Headers", "X-Requested-With,Content-Type,Cache-Control"
+  next()
 
 # error catching
 process.on 'uncaughtException', (e) ->
