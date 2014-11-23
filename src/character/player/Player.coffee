@@ -203,6 +203,8 @@ class Player extends Character
     if not dest.movementType
       console.error "ERROR. No dest.movementType at #{@x},#{@y} in #{@map}"
       return
+      
+    dest.movementType = dest.movementType.toLowerCase()
 
     eventToTest = "#{dest.movementType}Chance"
 
