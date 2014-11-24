@@ -14,7 +14,7 @@ class Battle
     @game.battle = @
     @startBattle()
 
-    return if @isBad
+    return @cleanUpGlobals() if @isBad
 
     @endBattle()
 
@@ -153,6 +153,7 @@ class Battle
       if @turnPosition is @turnOrder.length
         @emitEventToAll "round.end", @turnOrder
         @turnPosition = 0
+
 
   takeTurn: (player) ->
     return if player.hp.atMin() or player.fled
@@ -415,8 +416,12 @@ class Battle
 
       party.disband()
 
-    @game.inBattle = false
+    @cleanUpGlobals()
     @fixStats()
+
+  cleanUpGlobals: ->
+    @game.battle = null
+    @game.inBattle = false
 
   takeHp: (attacker, defender, damage, type, spell, message) ->
     @takeStatFrom attacker, defender, damage, type, "hp", spell, message

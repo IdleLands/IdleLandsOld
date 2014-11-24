@@ -95,8 +95,9 @@ class Spell
   ## / targetting functions
 
   calcTier: (player) ->
-    return if @tiers.length == 0
-    spellTier = _.reject @tiers, (tier) -> (tier.level > player.level.getValue()) or (player.professionName != tier.class)
+    tiers = _.compact @tiers
+    return if tiers.length is 0
+    spellTier = _.reject tiers, (tier) -> (tier.level > player.level.getValue()) or (player.professionName != tier.class)
     spellTier = _.max spellTier, (tier) -> tier.level
     @name = spellTier.name
     @spellPower = spellTier.spellPower
