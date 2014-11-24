@@ -2,7 +2,7 @@
 TimePeriod = require "../../TimePeriod"
 
 `/**
-  * The Calamity day lowers luck/
+  * The Calamity day lowers luck.
   *
   * @name Calamity
   * @effect -5% LUCK
