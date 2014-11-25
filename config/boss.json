@@ -14,6 +14,21 @@
             { "name": "Goblin Lord Shortsword", "dropPercent": 95 }
         ]
     },
+    "Cluckin' Chicken": {
+        "respawn": 4200,
+        "availableScore": 1500,
+        "stats": {
+            "class": "Fighter",
+            "hp": 3000,
+            "level": 1,
+            "con": 100,
+            "dex": 100,
+            "str": 100
+        },
+        "items": [
+            { "name": "dSolver's Feather", "dropPercent": 85 }
+        ]
+    },
     "Mummy Lord": {
         "respawn": 7200,
         "availableScore": 1500,
@@ -56,7 +71,7 @@
             "con": 3500,
             "str": 3900,
             "int": 100,
-			"luck": 2000,
+			"luck": 800,
 			"thunder": 10000
         },
         "items": [
