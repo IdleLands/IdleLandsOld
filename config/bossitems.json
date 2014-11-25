@@ -106,5 +106,15 @@
         "dex": 300,
 		"defense": 1
         
-	}
+	},
+    "Useless Chicken Feather": {
+        "type": "mainhand",
+        "str": -100,
+        "agi": -50,
+        "dex": -25,
+		"luck": 5,
+        "prone": 1,
+        "silver": 1,
+        "offense": -1
+    }
 }
