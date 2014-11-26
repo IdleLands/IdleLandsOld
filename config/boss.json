@@ -68,11 +68,11 @@
             "hp": 72468,
             "mp": 1000,
             "level": 60,
-            "con": 3500,
+            "con": 1000,
             "str": 3900,
             "int": 100,
 			"luck": 800,
-			"thunder": 10000
+			"thunder": 2000
         },
         "items": [
             { "name": "Wardens Gavel", "dropPercent": 95 }
