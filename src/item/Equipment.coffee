@@ -39,8 +39,8 @@ class Equipment
 
     hp: 0.5
     mp: 0.2
-    hpregen: 1
-    mpregen: 0.4
+    hpregen: 4
+    mpregen: 2
 
     luck: 5.5
 
