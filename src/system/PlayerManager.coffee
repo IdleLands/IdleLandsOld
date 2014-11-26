@@ -279,6 +279,8 @@ class PlayerManager
     _.forEach ['hp', 'mp', 'special', 'level', 'xp', 'gold'], (item) ->
       player[item] = loadRN player[item]
 
+    player.level.maximum = 200
+
     player.__proto__ = Player.prototype
 
     player.wildcard = yes

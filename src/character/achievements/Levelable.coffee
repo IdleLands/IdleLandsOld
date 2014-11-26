@@ -20,7 +20,7 @@ class Levelable extends Achievement
     levelInterval = 5
     achieved = []
 
-    while baseStat >= currentCheckValue
+    while baseStat >= currentCheckValue and currentCheckValue <= 100
       level = currentCheckValue / levelInterval
       achieved.push
         name: "Levelable #{toRoman level}"

@@ -139,7 +139,7 @@ class EventHandler
 
     if (chance.bool {likelihood: player.calculateYesPercent()})
       percent = Constants.eventEffects[event.type].fail
-      boost = Math.floor player.xp.maximum * (percent/100)
+      boost = if player.level.getValue() < 100 then Math.floor player.xp.maximum * (percent/100) else 1
     else
       min = Constants.eventEffects[event.type].minPercent
       max = Constants.eventEffects[event.type].maxPercent
@@ -151,7 +151,7 @@ class EventHandler
 
       percent = min + steps + fluxed
 
-      boost = Math.floor player.xp.maximum * (percent/100)
+      boost = if player.level.getValue() < 100 then Math.floor player.xp.maximum * (percent/100) else player.level.getValue()
 
     boost = player.calcXpGain boost
 
@@ -189,7 +189,7 @@ class EventHandler
 
       if (chance.bool {likelihood: player.calculateYesPercent()})
         percent = Constants.eventEffects[event.type].fail
-        boost = Math.floor member.xp.maximum * (percent/100)
+        boost = if player.level.getValue() < 100 then Math.floor player.xp.maximum * (percent/100) else 1
       else
         min = Constants.eventEffects[event.type].minPercent
         max = Constants.eventEffects[event.type].maxPercent
@@ -201,7 +201,7 @@ class EventHandler
 
         percent = min + steps + fluxed
 
-        boost = Math.floor member.xp.maximum * (percent/100)
+        boost = if player.level.getValue() < 100 then Math.floor player.xp.maximum * (percent/100) else player.level.getValue()
 
       boost = member.calcXpGain boost
       member.gainXp boost
