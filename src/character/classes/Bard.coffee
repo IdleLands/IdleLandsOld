@@ -37,6 +37,8 @@ class Bard extends Class
   baseIntPerLevel: 3
   baseWisPerLevel: 3
 
+  baseGoldGainPerCombat: 1000
+
   itemScore: (player, item) ->
     item.int*1.4 +
     item.wis*1.4 -
@@ -49,23 +51,6 @@ class Bard extends Class
     player.calc.damage()*0.10
 
   events: {}
-
-  load: (player) ->
-    super player
-
-    player.on "combat.party.win", @events.partyWin = ->
-      return if player.isMonster
-      goldBonus = player.calcGoldGain 1000
-      player.gainGold goldBonus
-      extra =
-        player: player.name
-
-      message = "A stunning performance by %player netted #{goldBonus} gold from the audience!"
-      message = MessageCreator.doStringReplace message, player, extra
-      player.playerManager.game.broadcast MessageCreator.genericMessage message
-
-  unload: (player) ->
-    player.off "combat.party.win", @events.partyWin
 
 
 module.exports = exports = Bard
