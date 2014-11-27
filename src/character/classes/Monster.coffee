@@ -2,7 +2,7 @@
 Class = require "./../base/Class"
 
 `/**
-  * This is the default class for all monsters in the game if not specified otherwise. It was added to the game for players
+  * This is one of the default classes for all monsters in the game if not specified otherwise. It was added to the game for players
   * for funsies.
   *
   * @name Monster

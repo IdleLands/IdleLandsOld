@@ -27,6 +27,17 @@ class DoubleTap extends Spell
       * @package Spells
     */`
     {name: "triple tap", spellPower: 2, cost: 600, class: "Fighter", level: 51}
+    `/**
+     * This skill makes the caster attack twice.
+     *
+     * @name double tap
+     * @requirement {class} MagicalMonster
+     * @requirement {mp} 1000
+     * @requirement {level} 25
+     * @category MagicalMonster
+     * @package Spells
+     */`
+    {name: "double tap", spellPower: 1, cost: 1000, class: "MagicalMonster", level: 25}
   ]
 
   cast: (player) ->

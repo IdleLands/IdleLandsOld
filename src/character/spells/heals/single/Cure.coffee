@@ -12,12 +12,25 @@ class Cure extends Spell
       * @requirement {class} Cleric
       * @requirement {mp} 50
       * @requirement {level} 5
-      * @minDamage [wis/4]
-      * @maxDamage [wis]
+      * @minDamage 1.5*[wis/4]
+      * @maxDamage 1.5*[wis]
       * @category Cleric
       * @package Spells
     */`
-    {name: "cure", spellPower: 1, cost: 50, class: "Cleric", level: 5}
+    {name: "cure", spellPower: 1.5, cost: 50, class: "Cleric", level: 5}
+    `/**
+     * This spell cures one ally.
+     *
+     * @name cure
+     * @requirement {class} MagicalMonster
+     * @requirement {mp} 100
+     * @requirement {level} 10
+     * @minDamage [wis/4]
+     * @maxDamage [wis]
+     * @category MagicalMonster
+     * @package Spells
+     */`
+    {name: "cure", spellPower: 1, cost: 100, class: "MagicalMonster", level: 10}
   ]
 
   @canChoose = (caster) ->
@@ -29,7 +42,7 @@ class Cure extends Spell
   calcDamage: ->
     minStat = (@caster.calc.stat 'wis')/4
     maxStat = @caster.calc.stat 'wis'
-    super() + @minMax minStat, maxStat
+    super() + @spellPower * @minMax minStat, maxStat
 
   cast: (player) ->
     damage = @calcDamage()
