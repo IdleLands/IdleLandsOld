@@ -28,6 +28,7 @@ class Cleric extends Class
   baseMp: 150
   baseMpPerLevel: 3
   baseMpPerInt: 2
+  baseMpPerWis: 4
 
   baseConPerLevel: 2
   baseDexPerLevel: 1
