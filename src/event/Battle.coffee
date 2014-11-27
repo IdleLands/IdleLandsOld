@@ -325,8 +325,8 @@ class Battle
     deadVariables.numDead = deadVariables.deadPlayers.length
     deadVariables.deadPlayerTotalXp = _.reduce deadVariables.deadPlayers, ((prev, player) -> prev + player.xp.maximum), 0
     deadVariables.deadPlayerAverageXP = deadVariables.deadPlayerTotalXp / deadVariables.numDead
-    deadVariables.winningParty = _.where @winningParty, {fled: false}
-    combatWinners = deadVariables.winningParty
+    deadVariables.winningParty =  @winningParty
+    combatWinners = _.where deadVariables.winningParty.players, {fled: false}
 
     winMessages = []
     loseMessages = []
@@ -334,7 +334,7 @@ class Battle
     xpMap = {}
 
     # winning player xp distribution
-    _.each combatWinners.players, (player) ->
+    _.each combatWinners, (player) ->
       return if player.isMonster
       basePct = chance.integer min: 1, max: 6
       basePctValue = Math.floor player.xp.maximum * (basePct/100)
@@ -358,7 +358,7 @@ class Battle
 
     winMessages = []
 
-    _.each combatWinners.players, (player) ->
+    _.each combatWinners, (player) ->
       return if player.isMonster
 
       goldGain = player.personalityReduce 'combatEndGoldGain', [player, deadVariables]
