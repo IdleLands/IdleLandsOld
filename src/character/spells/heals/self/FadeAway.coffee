@@ -13,6 +13,7 @@ class FadeAway extends Spell
       * @requirement {class} Rogue
       * @requirement {level} 10
       * @element heal
+      * @targets {self}
       * @effect +30 Stamina
       * @category Rogue
       * @package Spells

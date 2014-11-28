@@ -15,6 +15,7 @@ class PirateShanty extends Spell
       * @requirement {hp} 100
       * @requirement {level} 1
       * @element physical
+      * @targets {ally} all
       * @effect +20+[3*[11-Bottles/9]]% STR
       * @duration 5-[Bottles/33] rounds
       * @category Pirate

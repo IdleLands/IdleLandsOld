@@ -14,6 +14,7 @@ class FlipTheBit extends Spell
       * @requirement {Bitrate} 50%
       * @requirement {level} 30
       * @element physical
+      * @targets {enemy} 1
       * @category Bitomancer
       * @package Spells
     */`

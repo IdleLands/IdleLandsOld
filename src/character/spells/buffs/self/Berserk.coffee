@@ -11,6 +11,8 @@ class Berserk extends Spell
       * @name berserk
       * @requirement {class} Barbarian
       * @requirement {level} 1
+      * @element buff
+      * @targets {self}
       * @effect +15 Rage
       * @category Barbarian
       * @package Spells

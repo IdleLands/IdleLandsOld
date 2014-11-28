@@ -14,6 +14,7 @@ class Resume extends Spell
       * @requirement {mp} 10
       * @requirement {level} 1
       * @element physical
+      * @targets {enemy} 1
       * @duration 1 round
       * @effect {if-rejected} STUN
       * @category SandwichArtist

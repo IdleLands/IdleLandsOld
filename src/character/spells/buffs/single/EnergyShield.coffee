@@ -12,6 +12,8 @@ class EnergyShield extends Spell
       * @requirement {class} Mage
       * @requirement {mp} 300
       * @requirement {level} 4
+      * @element buff
+      * @targets {ally} 1
       * @effect -200 damage
       * @duration 13 rounds
       * @category Mage
@@ -25,6 +27,8 @@ class EnergyShield extends Spell
       * @requirement {class} Mage
       * @requirement {mp} 1000
       * @requirement {level} 29
+      * @element buff
+      * @targets {ally} 1
       * @effect -800 damage
       * @duration 11 rounds
       * @category Mage
@@ -38,6 +42,8 @@ class EnergyShield extends Spell
       * @requirement {class} Mage
       * @requirement {mp} 2300
       * @requirement {level} 54
+      * @element buff
+      * @targets {ally} 1
       * @effect -1800 damage
       * @duration 9 rounds
       * @category Mage
@@ -51,6 +57,8 @@ class EnergyShield extends Spell
       * @requirement {class} Mage
       * @requirement {mp} 3900
       * @requirement {level} 79
+      * @element buff
+      * @targets {ally} 1
       * @effect -5000 damage
       * @duration 5 rounds
       * @category Mage
@@ -64,6 +72,8 @@ class EnergyShield extends Spell
       * @requirement {class} Generalist
       * @requirement {mp} 400
       * @requirement {level} 10
+      * @element buff
+      * @targets {ally} 1
       * @effect -50 damage
       * @duration 14 rounds
       * @category Generalist
@@ -77,6 +87,8 @@ class EnergyShield extends Spell
       * @requirement {class} Generalist
       * @requirement {mp} 800
       * @requirement {level} 25
+      * @element buff
+      * @targets {ally} 1
       * @effect -200 damage
       * @duration 13 rounds
       * @category Generalist
@@ -90,6 +102,8 @@ class EnergyShield extends Spell
       * @requirement {class} Generalist
       * @requirement {mp} 1200
       * @requirement {level} 40
+      * @element buff
+      * @targets {ally} 1
       * @effect -450 damage
       * @duration 12 rounds
       * @category Generalist
@@ -103,6 +117,8 @@ class EnergyShield extends Spell
       * @requirement {class} Generalist
       * @requirement {mp} 1600
       * @requirement {level} 55
+      * @element buff
+      * @targets {ally} 1
       * @effect -800 damage
       * @duration 11 rounds
       * @category Generalist

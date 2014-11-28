@@ -14,6 +14,7 @@ class DayOldBread extends Spell
       * @requirement {mp} 50
       * @requirement {level} 5
       * @element physical
+      * @targets {enemy} 1-2
       * @minDamage [dex/8]
       * @maxDamage [dex/6]
       * @duration 1 round

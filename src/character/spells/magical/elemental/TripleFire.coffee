@@ -13,6 +13,7 @@ class TripleFire extends Spell
       * @requirement {mp} 350
       * @requirement {level} 10
       * @element fire
+      * @targets {enemy} 1-2 (This spell will fail subsequent hits if all valid targets are dead.)
       * @minDamage [int*0.2]
       * @maxDamage [int*0.4]
       * @category Mage
@@ -27,6 +28,7 @@ class TripleFire extends Spell
       * @requirement {mp} 650
       * @requirement {level} 30
       * @element fire
+      * @targets {enemy} 1-3 (This spell will fail subsequent hits if all valid targets are dead.)
       * @minDamage [int*0.2*2]
       * @maxDamage [int*0.4*2]
       * @category Mage
@@ -41,6 +43,7 @@ class TripleFire extends Spell
       * @requirement {mp} 900
       * @requirement {level} 50
       * @element fire
+      * @targets {enemy} 1-4 (This spell will fail subsequent hits if all valid targets are dead.)
       * @minDamage [int*0.2*3]
       * @maxDamage [int*0.4*3]
       * @category Mage

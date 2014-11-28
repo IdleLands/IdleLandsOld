@@ -14,6 +14,7 @@ class DownloadRAM extends Spell
       * @requirement {Bitrate} 25
       * @requirement {level} 10
       * @element physical
+      * @targets {enemy} 1
       * @effect -10% INT
       * @effect +10% DEX
       * @effect +10% AGI
@@ -29,6 +30,7 @@ class DownloadRAM extends Spell
       * @requirement {Bitrate} 100
       * @requirement {level} 20
       * @element physical
+      * @targets {enemy} 1
       * @effect -20% INT
       * @effect +20% DEX
       * @effect +20% AGI
@@ -44,6 +46,7 @@ class DownloadRAM extends Spell
       * @requirement {Bitrate} 300
       * @requirement {level} 40
       * @element physical
+      * @targets {enemy} 1
       * @effect -30% INT
       * @effect +30% DEX
       * @effect +30% AGI
@@ -59,6 +62,7 @@ class DownloadRAM extends Spell
       * @requirement {Bitrate} 500
       * @requirement {level} 70
       * @element physical
+      * @targets {enemy} 1
       * @effect -50% INT
       * @effect +50% DEX
       * @effect +50% AGI

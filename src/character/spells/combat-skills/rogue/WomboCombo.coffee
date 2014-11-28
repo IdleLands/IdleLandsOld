@@ -14,6 +14,7 @@ class WomboCombo extends Spell
       * @requirement {Stamina} 25
       * @requirement {level} 25
       * @element physical
+      * @targets {enemy} 1
       * @prerequisite {used-skill} chain stab
       * @prerequisite {used-skill} heartbleed
       * @minDamage 0.45*[str+dex]/2

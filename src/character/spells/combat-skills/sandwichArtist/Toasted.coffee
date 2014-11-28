@@ -14,6 +14,7 @@ class Toasted extends Spell
       * @requirement {mp} 50
       * @requirement {level} 1
       * @element fire
+      * @targets {enemy} 1-2
       * @minDamage dex/6
       * @minDamage dex/4
       * @category SandwichArtist

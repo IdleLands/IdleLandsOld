@@ -13,6 +13,7 @@ class FleeInTerror extends Spell
       * @requirement {mp} 2000
       * @requirement {level} 50
       * @element energy
+      * @targets {enemy} all
       * @effect +50% flee chance
       * @duration 2 rounds
       * @category Bard

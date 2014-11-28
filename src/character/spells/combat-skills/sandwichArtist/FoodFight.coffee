@@ -14,6 +14,7 @@ class FoodFight extends Spell
       * @requirement {mp} 400
       * @requirement {level} 15
       * @element physical
+      * @targets {all} 2-10
       * @minDamage [dex/6]
       * @maxDamage [dex/4]
       * @category SandwichArtist

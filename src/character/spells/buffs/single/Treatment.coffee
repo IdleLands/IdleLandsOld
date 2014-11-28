@@ -12,6 +12,8 @@ class Treatment extends Spell
       * @requirement {class} Generalist
       * @requirement {mp} 450
       * @requirement {level} 7
+      * @element heal, buff
+      * @targets {ally} 1
       * @effect +15% hp
       * @duration 3 rounds
       * @category Generalist

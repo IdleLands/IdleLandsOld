@@ -14,6 +14,7 @@ class Tranquility extends Spell
       * @requirement {mp} 2000
       * @requirement {level} 50
       * @element holy
+      * @targets {all}
       * @effect no damage
       * @category Cleric
       * @package Spells

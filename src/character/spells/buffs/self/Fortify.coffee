@@ -12,6 +12,8 @@ class Fortify extends Spell
       * @requirement {class} Generalist
       * @requirement {mp} 300
       * @requirement {level} 15
+      * @element buff
+      * @targets {self}
       * @effect +20% hp
       * @duration 7 rounds
       * @category Generalist

@@ -14,6 +14,7 @@ class BackStab extends Spell
       * @requirement {Stamina} 15
       * @requirement {level} 8
       * @element physical
+      * @targets {enemy} 1
       * @prerequisite {used-skill} opening strike
       * @minDamage 0.8*[str+dex]/2
       * @maxDamage 1.1*[str+dex]/2

@@ -16,6 +16,7 @@ class SavageStab extends Spell
       * @requirement {Stamina} 30
       * @requirement {level} 45
       * @element physical
+      * @targets {enemy} 1
       * @prerequisite {used-skill} wombo combo
       * @prerequisite {used-skill} heartbleed
       * @minDamage 0.05*[str+dex]/2

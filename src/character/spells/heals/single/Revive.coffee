@@ -13,6 +13,7 @@ class Revive extends Spell
       * @requirement {mp} 500
       * @requirement {level} 30
       * @element heal
+      * @targets {ally} 1
       * @effect resurrect at 25% hp
       * @category Cleric
       * @package Spells
@@ -26,6 +27,7 @@ class Revive extends Spell
       * @requirement {mp} 2500
       * @requirement {level} 50
       * @element heal
+      * @targets {ally} 1
       * @effect resurrect at 50% hp
       * @category Cleric
       * @package Spells

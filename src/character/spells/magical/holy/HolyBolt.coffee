@@ -13,6 +13,7 @@ class HolyBolt extends Spell
       * @requirement {mp} 125
       * @requirement {level} 5
       * @element holy
+      * @targets {enemy} 1
       * @minDamage [wis/4]
       * @maxDamage [wis]
       * @category Cleric
@@ -27,6 +28,7 @@ class HolyBolt extends Spell
       * @requirement {mp} 250
       * @requirement {level} 30
       * @element holy
+      * @targets {enemy} 1
       * @minDamage [wis/4]*2
       * @maxDamage [wis]*2
       * @category Cleric
@@ -41,6 +43,7 @@ class HolyBolt extends Spell
       * @requirement {mp} 500
       * @requirement {level} 55
       * @element holy
+      * @targets {enemy} 1
       * @minDamage [wis/4]*4
       * @maxDamage [wis]*4
       * @category Cleric

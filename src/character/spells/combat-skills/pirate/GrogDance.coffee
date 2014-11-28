@@ -16,6 +16,7 @@ class GrogDance extends Spell
       * @requirement {hp} 600
       * @requirement {level} 15
       * @element physical
+      * @targets {self}
       * @effect +[99-Bottles]% DEX
       * @duration 2
       * @category Pirate

@@ -15,6 +15,7 @@ class SandwichAlly extends Spell
       * @requirement {mp} 200
       * @requirement {level} 10
       * @element physical
+      * @targets {ally} 1
       * @minHeal dex/5
       * @minHeal dex/1.5
       * @category SandwichArtist

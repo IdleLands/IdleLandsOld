@@ -14,6 +14,7 @@ class DDoS extends Spell
       * @requirement {Bitrate} 300
       * @requirement {level} 30
       * @element physical
+      * @targets {enemy} 1
       * @effect -25% STR
       * @effect -25% AGI
       * @effect STUN
@@ -30,6 +31,7 @@ class DDoS extends Spell
       * @requirement {Bitrate} 1000
       * @requirement {level} 60
       * @element physical
+      * @targets {enemy} 1
       * @effect -50% STR
       * @effect -50% AGI
       * @effect STUN

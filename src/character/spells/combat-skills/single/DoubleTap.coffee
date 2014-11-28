@@ -12,6 +12,7 @@ class DoubleTap extends Spell
       * @requirement {class} Fighter
       * @requirement {mp} 450
       * @requirement {level} 1
+      * @targets {enemy} 1
       * @element physical
       * @category Fighter
       * @package Spells
@@ -24,6 +25,7 @@ class DoubleTap extends Spell
       * @requirement {class} Fighter
       * @requirement {mp} 600
       * @requirement {level} 51
+      * @targets {enemy} 1
       * @element physical
       * @category Fighter
       * @package Spells
@@ -36,6 +38,7 @@ class DoubleTap extends Spell
      * @requirement {class} MagicalMonster
      * @requirement {mp} 1000
      * @requirement {level} 25
+     * @targets {enemy} 1
      * @element physical
      * @category MagicalMonster
      * @package Spells

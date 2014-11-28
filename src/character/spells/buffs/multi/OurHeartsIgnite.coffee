@@ -12,6 +12,8 @@ class OurHeartsIgnite extends Spell
       * @requirement {class} Bard
       * @requirement {mp} 300
       * @requirement {level} 1
+      * @element buff
+      * @targets {ally} all
       * @effect +[caster.int/4] str
       * @effect +[caster.wis/4] con
       * @duration 3 rounds

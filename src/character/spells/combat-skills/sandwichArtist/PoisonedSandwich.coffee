@@ -14,6 +14,7 @@ class PoisonedSandwich extends Spell
       * @requirement {mp} 200
       * @requirement {level} 10
       * @element physical
+      * @targets {enemy} 1-2
       * @duration 1+[con<250]+[con<500] round[s]
       * @minDamage [dex/6]
       * @maxDamage [dex/4]

@@ -12,6 +12,8 @@ class LightsFromTheStars extends Spell
       * @requirement {class} Bard
       * @requirement {mp} 300
       * @requirement {level} 10
+      * @element buff
+      * @targets {ally} all
       * @effect +[caster.int/4] int
       * @effect +[caster.wis/4] wis
       * @duration 3 rounds

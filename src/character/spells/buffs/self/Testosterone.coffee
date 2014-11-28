@@ -11,6 +11,8 @@ class Testosterone extends Spell
       * @requirement {class} Fighter
       * @requirement {mp} 300
       * @requirement {level} 4
+      * @element buff
+      * @targets {self}
       * @effect +35% STR
       * @duration 4 rounds
       * @category Fighter

@@ -14,6 +14,7 @@ class NinetyNineBottles extends Spell
       * @requirement {hp} 1200
       * @requirement {level} 25
       * @element physical
+      * @targets {enemy} 1
       * @minDamage ???
       * @category Pirate
       * @package Spells

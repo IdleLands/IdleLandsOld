@@ -12,6 +12,8 @@ class BoarStrength extends Spell
       * @requirement {class} Cleric
       * @requirement {mp} 300
       * @requirement {level} 4
+      * @element buff
+      * @targets {ally} 1
       * @effect +15% STR
       * @duration 4 rounds
       * @category Cleric
@@ -25,6 +27,8 @@ class BoarStrength extends Spell
       * @requirement {class} Cleric
       * @requirement {mp} 500
       * @requirement {level} 29
+      * @element buff
+      * @targets {ally} 1
       * @effect +30% STR
       * @duration 4 rounds
       * @category Cleric
@@ -38,6 +42,8 @@ class BoarStrength extends Spell
       * @requirement {class} Cleric
       * @requirement {mp} 700
       * @requirement {level} 54
+      * @element buff
+      * @targets {ally} 1
       * @effect +60% STR
       * @duration 4 rounds
       * @category Cleric
@@ -51,6 +57,8 @@ class BoarStrength extends Spell
       * @requirement {class} Cleric
       * @requirement {mp} 900
       * @requirement {level} 79
+      * @element buff
+      * @targets {ally} 1
       * @effect +120% STR
       * @duration 4 rounds
       * @category Cleric

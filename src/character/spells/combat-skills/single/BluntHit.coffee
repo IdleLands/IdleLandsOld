@@ -13,6 +13,7 @@ class BluntHit extends Spell
       * @requirement {mp} 100
       * @requirement {level} 13
       * @element physical
+      * @targets {enemy} 1
       * @minDamage str/6
       * @minDamage str/4
       * @duration 1 round
