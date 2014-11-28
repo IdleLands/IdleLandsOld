@@ -13,6 +13,7 @@ class DeathGlare extends Spell
       * @requirement {class} Pirate
       * @requirement {hp} 350
       * @requirement {level} 7
+      * @element physical
       * @effect -20+[3*[11-Bottles/9]]% STR
       * @duration 4-[Bottles/33] rounds
       * @category Pirate

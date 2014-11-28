@@ -12,6 +12,7 @@ class TripleFire extends Spell
       * @requirement {class} Mage
       * @requirement {mp} 350
       * @requirement {level} 10
+      * @element fire
       * @minDamage [int*0.2]
       * @maxDamage [int*0.4]
       * @category Mage
@@ -25,6 +26,7 @@ class TripleFire extends Spell
       * @requirement {class} Mage
       * @requirement {mp} 650
       * @requirement {level} 30
+      * @element fire
       * @minDamage [int*0.2*2]
       * @maxDamage [int*0.4*2]
       * @category Mage
@@ -38,6 +40,7 @@ class TripleFire extends Spell
       * @requirement {class} Mage
       * @requirement {mp} 900
       * @requirement {level} 50
+      * @element fire
       * @minDamage [int*0.2*3]
       * @maxDamage [int*0.4*3]
       * @category Mage

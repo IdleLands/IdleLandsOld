@@ -12,6 +12,7 @@ class Thunderstrike extends Spell
       * @requirement {class} Mage
       * @requirement {mp} 375
       * @requirement {level} 7
+      * @element thunder
       * @minDamage [int*0.25*rounds]
       * @maxDamage [int*0.40*rounds-1]
       * @duration [1-3] rounds

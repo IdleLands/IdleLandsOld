@@ -13,6 +13,7 @@ class WomboCombo extends Spell
       * @requirement {class} Rogue
       * @requirement {Stamina} 25
       * @requirement {level} 25
+      * @element physical
       * @prerequisite {used-skill} chain stab
       * @prerequisite {used-skill} heartbleed
       * @minDamage 0.45*[str+dex]/2

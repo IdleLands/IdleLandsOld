@@ -13,6 +13,7 @@ class Bit extends Spell
       * @requirement {class} Bitomancer
       * @requirement {Bitrate} 5
       * @requirement {level} 1
+      * @element physical
       * @minDamage [int/6]
       * @maxDamage [int/2]
       * @category Bitomancer
@@ -26,6 +27,7 @@ class Bit extends Spell
       * @requirement {class} Bitomancer
       * @requirement {Bitrate} 20
       * @requirement {level} 17
+      * @element physical
       * @minDamage [int/6]*1.4
       * @maxDamage [int/2]*1.4
       * @category Bitomancer
@@ -39,6 +41,7 @@ class Bit extends Spell
       * @requirement {class} Bitomancer
       * @requirement {Bitrate} 80
       * @requirement {level} 33
+      * @element physical
       * @minDamage [int/6]*2
       * @maxDamage [int/2]*2
       * @category Bitomancer
@@ -52,6 +55,7 @@ class Bit extends Spell
       * @requirement {class} Bitomancer
       * @requirement {Bitrate} 160
       * @requirement {level} 53
+      * @element physical
       * @minDamage [int/6]*2.8
       * @maxDamage [int/2]*2.8
       * @category Bitomancer
@@ -65,6 +69,7 @@ class Bit extends Spell
       * @requirement {class} Bitomancer
       * @requirement {Bitrate} 320
       * @requirement {level} 76
+      * @element physical
       * @minDamage [int/6]*4
       * @maxDamage [int/2]*4
       * @category Bitomancer

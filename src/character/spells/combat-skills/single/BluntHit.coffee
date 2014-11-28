@@ -12,6 +12,7 @@ class BluntHit extends Spell
       * @requirement {class} Fighter
       * @requirement {mp} 100
       * @requirement {level} 13
+      * @element physical
       * @minDamage str/6
       * @minDamage str/4
       * @duration 1 round

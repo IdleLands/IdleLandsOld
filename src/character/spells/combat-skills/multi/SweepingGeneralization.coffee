@@ -12,6 +12,7 @@ class SweepingGeneralization extends Spell
       * @requirement {class} Generalist
       * @requirement {mp} 350
       * @requirement {level} 5
+      * @element physical
       * @minDamage 1.7*[str+dex]/4
       * @maxDamage 1.7*[str+dex]/2
       * @category Generalist
@@ -25,6 +26,7 @@ class SweepingGeneralization extends Spell
      * @requirement {class} MagicalMonster
      * @requirement {mp} 600
      * @requirement {level} 15
+     * @element physical
      * @minDamage 1.3*[str+dex]/4
      * @maxDamage 1.3*[str+dex]/2
      * @category MagicalMonster

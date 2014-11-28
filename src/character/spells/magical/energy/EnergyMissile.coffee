@@ -12,6 +12,7 @@ class EnergyMissile extends Spell
       * @requirement {class} Mage
       * @requirement {mp} 150
       * @requirement {level} 1
+      * @element energy
       * @minDamage [int/4]
       * @maxDamage [int]
       * @category Mage
@@ -25,6 +26,7 @@ class EnergyMissile extends Spell
       * @requirement {class} Mage
       * @requirement {mp} 450
       * @requirement {level} 26
+      * @element energy
       * @minDamage [int/4]*2
       * @maxDamage [int]*2
       * @category Mage
@@ -38,6 +40,7 @@ class EnergyMissile extends Spell
       * @requirement {class} Mage
       * @requirement {mp} 2400
       * @requirement {level} 51
+      * @element energy
       * @minDamage [int/4]*4
       * @maxDamage [int]*4
       * @category Mage
@@ -51,6 +54,7 @@ class EnergyMissile extends Spell
      * @requirement {class} MagicalMonster
      * @requirement {mp} 250
      * @requirement {level} 1
+     * @element energy
      * @minDamage 1.5*[int/4]
      * @maxDamage 1.5*[int]
      * @category MagicalMonster

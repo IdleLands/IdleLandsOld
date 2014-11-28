@@ -13,6 +13,7 @@ class DDoS extends Spell
       * @requirement {class} Bitomancer
       * @requirement {Bitrate} 300
       * @requirement {level} 30
+      * @element physical
       * @effect -25% STR
       * @effect -25% AGI
       * @effect STUN
@@ -28,6 +29,7 @@ class DDoS extends Spell
       * @requirement {class} Bitomancer
       * @requirement {Bitrate} 1000
       * @requirement {level} 60
+      * @element physical
       * @effect -50% STR
       * @effect -50% AGI
       * @effect STUN

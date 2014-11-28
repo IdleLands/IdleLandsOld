@@ -13,6 +13,7 @@ class OpeningStrike extends Spell
       * @requirement {class} Rogue
       * @requirement {Stamina} 10
       * @requirement {level} 1
+      * @element physical
       * @minDamage 0.5*[str+dex]/2
       * @maxDamage 0.75*[str+dex]/2
       * @category Rogue

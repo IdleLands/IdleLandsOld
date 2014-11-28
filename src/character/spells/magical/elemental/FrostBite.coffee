@@ -13,6 +13,7 @@ class FrostBite extends Spell
       * @requirement {class} Mage
       * @requirement {mp} 100
       * @requirement {level} 5
+      * @element ice
       * @minDamage [int/6]
       * @maxDamage [int/4]
       * @duration 3 rounds

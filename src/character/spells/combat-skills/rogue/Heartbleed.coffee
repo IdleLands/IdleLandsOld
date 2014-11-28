@@ -13,6 +13,7 @@ class Heartbleed extends Spell
       * @requirement {class} Rogue
       * @requirement {Stamina} 15
       * @requirement {level} 3
+      * @element physical
       * @prerequisite {used-skill} chain stab
       * @minDamage 0.2*[str+dex]/2
       * @maxDamage 0.5*[str+dex]/2

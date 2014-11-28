@@ -13,6 +13,7 @@ class ZeroDay extends Spell
       * @requirement {class} Bitomancer
       * @requirement {Bitrate} 100
       * @requirement {level} 20
+      * @element physical
       * @effect -20% damage
       * @duration 2 rounds
       * @category Bitomancer
@@ -26,6 +27,7 @@ class ZeroDay extends Spell
       * @requirement {class} Bitomancer
       * @requirement {Bitrate} 400
       * @requirement {level} 40
+      * @element physical
       * @effect -50% damage
       * @duration 2 rounds
       * @category Bitomancer
@@ -39,6 +41,7 @@ class ZeroDay extends Spell
       * @requirement {class} Bitomancer
       * @requirement {Bitrate} 1000
       * @requirement {level} 60
+      * @element physical
       * @effect -70% damage
       * @duration 2 rounds
       * @category Bitomancer

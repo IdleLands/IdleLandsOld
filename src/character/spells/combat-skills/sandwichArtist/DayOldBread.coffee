@@ -13,6 +13,7 @@ class DayOldBread extends Spell
       * @requirement {class} SandwichArtist
       * @requirement {mp} 50
       * @requirement {level} 5
+      * @element physical
       * @minDamage [dex/8]
       * @maxDamage [dex/6]
       * @duration 1 round

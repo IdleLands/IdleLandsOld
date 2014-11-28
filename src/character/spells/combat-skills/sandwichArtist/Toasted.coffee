@@ -13,6 +13,7 @@ class Toasted extends Spell
       * @requirement {class} SandwichArtist
       * @requirement {mp} 50
       * @requirement {level} 1
+      * @element fire
       * @minDamage dex/6
       * @minDamage dex/4
       * @category SandwichArtist

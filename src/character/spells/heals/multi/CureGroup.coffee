@@ -12,6 +12,7 @@ class CureGroup extends Spell
       * @requirement {class} Cleric
       * @requirement {mp} [partyMembers*50]
       * @requirement {level} 15
+      * @element heal
       * @minDamage [wis/5]
       * @maxDamage [wis/1.5]
       * @category Cleric

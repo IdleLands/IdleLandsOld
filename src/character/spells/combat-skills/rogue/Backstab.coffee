@@ -13,6 +13,7 @@ class BackStab extends Spell
       * @requirement {class} Rogue
       * @requirement {Stamina} 15
       * @requirement {level} 8
+      * @element physical
       * @prerequisite {used-skill} opening strike
       * @minDamage 0.8*[str+dex]/2
       * @maxDamage 1.1*[str+dex]/2

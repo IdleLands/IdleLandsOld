@@ -12,6 +12,7 @@ class Cure extends Spell
       * @requirement {class} Cleric
       * @requirement {mp} 50
       * @requirement {level} 5
+      * @element heal
       * @minDamage 1.5*[wis/4]
       * @maxDamage 1.5*[wis]
       * @category Cleric
@@ -25,6 +26,7 @@ class Cure extends Spell
      * @requirement {class} MagicalMonster
      * @requirement {mp} 100
      * @requirement {level} 10
+     * @element heal
      * @minDamage [wis/4]
      * @maxDamage [wis]
      * @category MagicalMonster

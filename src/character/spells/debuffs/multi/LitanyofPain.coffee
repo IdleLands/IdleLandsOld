@@ -12,6 +12,7 @@ class LitanyOfPain extends Spell
       * @requirement {class} Bard
       * @requirement {mp} 300
       * @requirement {level} 15
+      * @element energy
       * @minDamage [int/5]
       * @maxDamage [int/2]
       * @duration 3 rounds
@@ -26,6 +27,7 @@ class LitanyOfPain extends Spell
       * @requirement {class} Bard
       * @requirement {mp} 600
       * @requirement {level} 40
+      * @element energy
       * @minDamage [int/5]*2
       * @maxDamage [int/2]*2
       * @duration 4 rounds

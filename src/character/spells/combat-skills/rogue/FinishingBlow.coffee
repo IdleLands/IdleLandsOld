@@ -16,6 +16,7 @@ class FinishingBlow extends Spell
       * @requirement {class} Rogue
       * @requirement {Stamina} 30
       * @requirement {level} 38
+      * @element physical
       * @prerequisite {used-skill} savage stab
       * @prerequisite {used-skill} wombo combo
       * @minDamage 2.0*[str+dex]/2

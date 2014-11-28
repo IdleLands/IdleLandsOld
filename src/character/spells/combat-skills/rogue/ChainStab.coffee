@@ -13,6 +13,7 @@ class ChainStab extends Spell
       * @requirement {class} Rogue
       * @requirement {Stamina} 10
       * @requirement {level} 3
+      * @element physical
       * @prerequisite {used-skill} chain stab
       * @prerequisite {used-skill} opening strike
       * @prerequisite {used-skill} backstab
