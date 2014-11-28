@@ -1503,8 +1503,8 @@
             }
         },
         {
-            "lineNumber": 202,
-            "endLineNumber": 210,
+            "lineNumber": 203,
+            "endLineNumber": 211,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1532,8 +1532,8 @@
             }
         },
         {
-            "lineNumber": 213,
-            "endLineNumber": 221,
+            "lineNumber": 214,
+            "endLineNumber": 222,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1562,8 +1562,8 @@
             }
         },
         {
-            "lineNumber": 224,
-            "endLineNumber": 232,
+            "lineNumber": 225,
+            "endLineNumber": 233,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1591,8 +1591,8 @@
             }
         },
         {
-            "lineNumber": 235,
-            "endLineNumber": 243,
+            "lineNumber": 236,
+            "endLineNumber": 244,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1621,8 +1621,8 @@
             }
         },
         {
-            "lineNumber": 246,
-            "endLineNumber": 253,
+            "lineNumber": 247,
+            "endLineNumber": 254,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1648,8 +1648,8 @@
             }
         },
         {
-            "lineNumber": 256,
-            "endLineNumber": 264,
+            "lineNumber": 257,
+            "endLineNumber": 265,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1677,8 +1677,8 @@
             }
         },
         {
-            "lineNumber": 267,
-            "endLineNumber": 275,
+            "lineNumber": 268,
+            "endLineNumber": 276,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1706,8 +1706,8 @@
             }
         },
         {
-            "lineNumber": 278,
-            "endLineNumber": 286,
+            "lineNumber": 279,
+            "endLineNumber": 287,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1736,8 +1736,8 @@
             }
         },
         {
-            "lineNumber": 289,
-            "endLineNumber": 297,
+            "lineNumber": 290,
+            "endLineNumber": 298,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1766,8 +1766,8 @@
             }
         },
         {
-            "lineNumber": 300,
-            "endLineNumber": 308,
+            "lineNumber": 301,
+            "endLineNumber": 309,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1795,8 +1795,8 @@
             }
         },
         {
-            "lineNumber": 311,
-            "endLineNumber": 319,
+            "lineNumber": 312,
+            "endLineNumber": 320,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1824,8 +1824,8 @@
             }
         },
         {
-            "lineNumber": 322,
-            "endLineNumber": 330,
+            "lineNumber": 323,
+            "endLineNumber": 331,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1853,8 +1853,8 @@
             }
         },
         {
-            "lineNumber": 333,
-            "endLineNumber": 341,
+            "lineNumber": 334,
+            "endLineNumber": 342,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1879,8 +1879,8 @@
             }
         },
         {
-            "lineNumber": 343,
-            "endLineNumber": 350,
+            "lineNumber": 344,
+            "endLineNumber": 351,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1905,8 +1905,8 @@
             }
         },
         {
-            "lineNumber": 352,
-            "endLineNumber": 359,
+            "lineNumber": 353,
+            "endLineNumber": 360,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1932,7 +1932,7 @@
         },
         {
             "lineNumber": 4,
-            "endLineNumber": 25,
+            "endLineNumber": 27,
             "filePath": "src/character/classes/Barbarian.coffee",
             "fileName": "Barbarian.coffee",
             "statPerLevel": [
@@ -1977,13 +1977,22 @@
             },
             "special": {
                 "name": "special",
-                "basicInfo": "Rage"
+                "basicInfo": "Rage",
+                "extendedInfo": "The Barbarian gets Rage so they can power themselves up while they get beaten up."
             },
             "physical": {
                 "name": "physical"
             },
             "tank": {
                 "name": "tank"
+            },
+            "hp": {
+                "name": "hp",
+                "basicInfo": "200+[level*25]+[con*10]"
+            },
+            "mp": {
+                "name": "mp",
+                "basicInfo": "0level*-10]+[int*-5]"
             },
             "itemScore": {
                 "name": "itemScore",
@@ -2008,7 +2017,7 @@
         },
         {
             "lineNumber": 5,
-            "endLineNumber": 22,
+            "endLineNumber": 24,
             "filePath": "src/character/classes/Bard.coffee",
             "fileName": "Bard.coffee",
             "statPerLevel": [
@@ -2057,6 +2066,14 @@
             "support": {
                 "name": "support"
             },
+            "hp": {
+                "name": "hp",
+                "basicInfo": "50+[level*10]+[con*6]"
+            },
+            "mp": {
+                "name": "mp",
+                "basicInfo": "100+[level*3]+[int*5]"
+            },
             "itemScore": {
                 "name": "itemScore",
                 "basicInfo": "int*1.4 + wis*1.4 - con*0.8 - str*0.8"
@@ -2076,7 +2093,7 @@
         },
         {
             "lineNumber": 5,
-            "endLineNumber": 22,
+            "endLineNumber": 24,
             "filePath": "src/character/classes/Bitomancer.coffee",
             "fileName": "Bitomancer.coffee",
             "statPerLevel": [
@@ -2121,13 +2138,22 @@
             },
             "special": {
                 "name": "special",
-                "basicInfo": "Bitrate"
+                "basicInfo": "Bitrate",
+                "extendedInfo": "The Bitomancer gets a certain Bitrate with which to virtually assault their opponents."
             },
             "magical": {
                 "name": "magical"
             },
             "dps": {
                 "name": "dps"
+            },
+            "hp": {
+                "name": "hp",
+                "basicInfo": "70+[level*12]+[con*7]"
+            },
+            "mp": {
+                "name": "mp",
+                "basicInfo": "70+[level*3]+[int*3]"
             },
             "itemScore": {
                 "name": "itemScore",
@@ -2148,7 +2174,7 @@
         },
         {
             "lineNumber": 4,
-            "endLineNumber": 21,
+            "endLineNumber": 23,
             "filePath": "src/character/classes/Cleric.coffee",
             "fileName": "Cleric.coffee",
             "statPerLevel": [
@@ -2197,6 +2223,14 @@
             "support": {
                 "name": "support"
             },
+            "hp": {
+                "name": "hp",
+                "basicInfo": "40+[level*12]+[con*5]"
+            },
+            "mp": {
+                "name": "mp",
+                "basicInfo": "150+[level*3]+[int*2]+[wis*4]"
+            },
             "itemScore": {
                 "name": "itemScore",
                 "basicInfo": "int*0.7 + wis*1.5 - str*0.4 - dex*0.4"
@@ -2220,7 +2254,7 @@
         },
         {
             "lineNumber": 4,
-            "endLineNumber": 21,
+            "endLineNumber": 23,
             "filePath": "src/character/classes/Fighter.coffee",
             "fileName": "Fighter.coffee",
             "statPerLevel": [
@@ -2269,6 +2303,14 @@
             "tank": {
                 "name": "tank"
             },
+            "hp": {
+                "name": "hp",
+                "basicInfo": "120+[level*20]+[con*8]"
+            },
+            "mp": {
+                "name": "mp",
+                "basicInfo": "2+[level*2]+[int*1]"
+            },
             "itemScore": {
                 "name": "itemScore",
                 "basicInfo": "str*1.1 + con*0.8 + dex*0.3 - agi*0.2 - wis*0.8"
@@ -2292,7 +2334,7 @@
         },
         {
             "lineNumber": 4,
-            "endLineNumber": 19,
+            "endLineNumber": 21,
             "filePath": "src/character/classes/Generalist.coffee",
             "fileName": "Generalist.coffee",
             "statPerLevel": [
@@ -2341,6 +2383,14 @@
             "support": {
                 "name": "support"
             },
+            "hp": {
+                "name": "hp",
+                "basicInfo": "50+[level*15]+[con*6]"
+            },
+            "mp": {
+                "name": "mp",
+                "basicInfo": "50+[level*2]+[int*2]"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "35%"
@@ -2356,7 +2406,7 @@
         },
         {
             "lineNumber": 4,
-            "endLineNumber": 19,
+            "endLineNumber": 21,
             "filePath": "src/character/classes/Jester.coffee",
             "fileName": "Jester.coffee",
             "statPerLevel": [
@@ -2407,6 +2457,14 @@
             "physical": {
                 "name": "physical"
             },
+            "hp": {
+                "name": "hp",
+                "basicInfo": "30+[level*10]+[con*9]"
+            },
+            "mp": {
+                "name": "mp",
+                "basicInfo": "0"
+            },
             "itemScore": {
                 "name": "itemScore",
                 "basicInfo": "luck*5 + luckPercent*5",
@@ -2423,7 +2481,7 @@
         },
         {
             "lineNumber": 4,
-            "endLineNumber": 20,
+            "endLineNumber": 22,
             "filePath": "src/character/classes/Mage.coffee",
             "fileName": "Mage.coffee",
             "statPerLevel": [
@@ -2472,6 +2530,14 @@
             "dps": {
                 "name": "dps"
             },
+            "hp": {
+                "name": "hp",
+                "basicInfo": "25+[level*5]+[con*4]"
+            },
+            "mp": {
+                "name": "mp",
+                "basicInfo": "200+[level*4]+[int*6]"
+            },
             "itemScore": {
                 "name": "itemScore",
                 "basicInfo": "int*1.4 + con*0.4 - str*0.8 - dex*0.3"
@@ -2491,7 +2557,72 @@
         },
         {
             "lineNumber": 4,
-            "endLineNumber": 18,
+            "endLineNumber": 20,
+            "filePath": "src/character/classes/MagicalMonster.coffee",
+            "fileName": "MagicalMonster.coffee",
+            "statPerLevel": [
+                {
+                    "name": "statPerLevel",
+                    "type": "str",
+                    "basicInfo": "2"
+                },
+                {
+                    "name": "statPerLevel",
+                    "type": "dex",
+                    "basicInfo": "2"
+                },
+                {
+                    "name": "statPerLevel",
+                    "type": "con",
+                    "basicInfo": "2"
+                },
+                {
+                    "name": "statPerLevel",
+                    "type": "int",
+                    "basicInfo": "2"
+                },
+                {
+                    "name": "statPerLevel",
+                    "type": "wis",
+                    "basicInfo": "2"
+                },
+                {
+                    "name": "statPerLevel",
+                    "type": "agi",
+                    "basicInfo": "2"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This is one of the default classes for all monsters in the game if not specified otherwise. It was added to the game for players for funsies."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "MagicalMonster"
+            },
+            "magical": {
+                "name": "magical"
+            },
+            "hp": {
+                "name": "hp",
+                "basicInfo": "50+[level*2]+[con*2]"
+            },
+            "mp": {
+                "name": "mp",
+                "basicInfo": "50+[level*2]+[int*2]"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Classes"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Player"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 20,
             "filePath": "src/character/classes/Monster.coffee",
             "fileName": "Monster.coffee",
             "statPerLevel": [
@@ -2528,7 +2659,7 @@
             ],
             "desc": {
                 "name": "desc",
-                "basicInfo": "This is the default class for all monsters in the game if not specified otherwise. It was added to the game for players for funsies."
+                "basicInfo": "This is one of the default classes for all monsters in the game if not specified otherwise. It was added to the game for players for funsies."
             },
             "name": {
                 "name": "name",
@@ -2536,6 +2667,14 @@
             },
             "physical": {
                 "name": "physical"
+            },
+            "hp": {
+                "name": "hp",
+                "basicInfo": "100+[level*4]+[con*4]"
+            },
+            "mp": {
+                "name": "mp",
+                "basicInfo": "100+[level*4]+[int*4]"
             },
             "category": {
                 "name": "category",
@@ -2548,7 +2687,7 @@
         },
         {
             "lineNumber": 5,
-            "endLineNumber": 22,
+            "endLineNumber": 24,
             "filePath": "src/character/classes/Pirate.coffee",
             "fileName": "Pirate.coffee",
             "statPerLevel": [
@@ -2599,7 +2738,16 @@
             },
             "special": {
                 "name": "special",
-                "basicInfo": "Bottles"
+                "basicInfo": "Bottles",
+                "extendedInfo": "The Pirate gets 99 bottles, so they can sing many songs while drinking many bottles."
+            },
+            "hp": {
+                "name": "hp",
+                "basicInfo": "150+[level*15]+[con*10]"
+            },
+            "mp": {
+                "name": "mp",
+                "basicInfo": "100+[level*3]+[int*5]"
             },
             "itemScore": {
                 "name": "itemScore",
@@ -2620,7 +2768,7 @@
         },
         {
             "lineNumber": 4,
-            "endLineNumber": 21,
+            "endLineNumber": 23,
             "filePath": "src/character/classes/Rogue.coffee",
             "fileName": "Rogue.coffee",
             "statPerLevel": [
@@ -2669,9 +2817,18 @@
             "dps": {
                 "name": "dps"
             },
+            "hp": {
+                "name": "hp",
+                "basicInfo": "70+[level*10]+[con*6]"
+            },
+            "mp": {
+                "name": "mp",
+                "basicInfo": "[level*1]+[int*1]"
+            },
             "special": {
                 "name": "special",
-                "basicInfo": "Stamina"
+                "basicInfo": "Stamina",
+                "extendedInfo": "The Rogue gets 100 stamina with which they can use skills that combo their foes."
             },
             "itemScore": {
                 "name": "itemScore",
@@ -2692,7 +2849,7 @@
         },
         {
             "lineNumber": 4,
-            "endLineNumber": 21,
+            "endLineNumber": 23,
             "filePath": "src/character/classes/SandwichArtist.coffee",
             "fileName": "SandwichArtist.coffee",
             "statPerLevel": [
@@ -2743,6 +2900,14 @@
             },
             "support": {
                 "name": "support"
+            },
+            "hp": {
+                "name": "hp",
+                "basicInfo": "40+[level*12]+[con*5]"
+            },
+            "mp": {
+                "name": "mp",
+                "basicInfo": "100+[level*3]+[int*5]"
             },
             "itemScore": {
                 "name": "itemScore",
@@ -4183,8 +4348,184 @@
             }
         },
         {
+            "lineNumber": 4,
+            "endLineNumber": 11,
+            "filePath": "src/character/regions/DangerousCaveArea.coffee",
+            "fileName": "DangerousCaveArea.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "Battles are more frequent."
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This region makes battles more frequent. Beware!"
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Dangerous Cave Area"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Norkos"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "World Regions"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 11,
+            "filePath": "src/character/regions/MaelesCaveArea.coffee",
+            "fileName": "MaelesCaveArea.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+10% STR"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This region gives you more strength. Hoo-ah!"
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Maeles Cave Area"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Norkos"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "World Regions"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 12,
+            "filePath": "src/character/regions/MaelesTown.coffee",
+            "fileName": "MaelesTown.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+5% STR"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "Shop quality boost"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This region gives you strength and makes shops have better results."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Maeles Town"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Norkos"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "World Regions"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 11,
+            "filePath": "src/character/regions/NorkosFisheriesArea.coffee",
+            "fileName": "NorkosFisheriesArea.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+10% DEX"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This region grants a boost to dexterity."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Norkos Fisheries Area"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Norkos"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "World Regions"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 12,
+            "filePath": "src/character/regions/NorkosTown.coffee",
+            "fileName": "NorkosTown.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+5 LUCK"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "Shops are cheaper"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This region grants you a luck boost and makes shops cheaper."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Norkos Town"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Norkos"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "World Regions"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 11,
+            "filePath": "src/character/regions/NorkosVolcanoArea.coffee",
+            "fileName": "NorkosVolcanoArea.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+250 fire"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This region grants a boost to fire damage."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Norkos Volcano Area"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Norkos"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "World Regions"
+            }
+        },
+        {
             "lineNumber": 8,
-            "endLineNumber": 20,
+            "endLineNumber": 22,
             "filePath": "src/character/spells/buffs/multi/LightsFromTheStars.coffee",
             "fileName": "LightsFromTheStars.coffee",
             "effect": [
@@ -4222,6 +4563,15 @@
                 "name": "name",
                 "basicInfo": "Lights from the Stars"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "all"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "3 rounds"
@@ -4237,7 +4587,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 20,
+            "endLineNumber": 22,
             "filePath": "src/character/spells/buffs/multi/NoEscape.coffee",
             "fileName": "NoEscape.coffee",
             "effect": [
@@ -4275,6 +4625,15 @@
                 "name": "name",
                 "basicInfo": "No Escape"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "all"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "3 rounds"
@@ -4290,7 +4649,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 20,
+            "endLineNumber": 22,
             "filePath": "src/character/spells/buffs/multi/OurHeartsIgnite.coffee",
             "fileName": "OurHeartsIgnite.coffee",
             "effect": [
@@ -4328,6 +4687,15 @@
                 "name": "name",
                 "basicInfo": "Our Hearts Ignite"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "all"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "3 rounds"
@@ -4343,7 +4711,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 17,
+            "endLineNumber": 19,
             "filePath": "src/character/spells/buffs/self/Berserk.coffee",
             "fileName": "Berserk.coffee",
             "effect": [
@@ -4372,6 +4740,14 @@
                 "name": "name",
                 "basicInfo": "berserk"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "self"
+            },
             "category": {
                 "name": "category",
                 "basicInfo": "Barbarian"
@@ -4383,7 +4759,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 19,
+            "endLineNumber": 21,
             "filePath": "src/character/spells/buffs/self/Fortify.coffee",
             "fileName": "Fortify.coffee",
             "effect": [
@@ -4417,6 +4793,14 @@
                 "name": "name",
                 "basicInfo": "Fortify"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "self"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "7 rounds"
@@ -4432,7 +4816,7 @@
         },
         {
             "lineNumber": 7,
-            "endLineNumber": 18,
+            "endLineNumber": 20,
             "filePath": "src/character/spells/buffs/self/Testosterone.coffee",
             "fileName": "Testosterone.coffee",
             "effect": [
@@ -4466,6 +4850,14 @@
                 "name": "name",
                 "basicInfo": "Testosterone"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "self"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "4 rounds"
@@ -4481,7 +4873,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 19,
+            "endLineNumber": 21,
             "filePath": "src/character/spells/buffs/single/BoarStrength.coffee",
             "fileName": "BoarStrength.coffee",
             "effect": [
@@ -4515,6 +4907,15 @@
                 "name": "name",
                 "basicInfo": "boar strength"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "4 rounds"
@@ -4529,8 +4930,8 @@
             }
         },
         {
-            "lineNumber": 21,
-            "endLineNumber": 32,
+            "lineNumber": 23,
+            "endLineNumber": 36,
             "filePath": "src/character/spells/buffs/single/BoarStrength.coffee",
             "fileName": "BoarStrength.coffee",
             "effect": [
@@ -4564,6 +4965,15 @@
                 "name": "name",
                 "basicInfo": "demon strength"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "4 rounds"
@@ -4578,8 +4988,8 @@
             }
         },
         {
-            "lineNumber": 34,
-            "endLineNumber": 45,
+            "lineNumber": 38,
+            "endLineNumber": 51,
             "filePath": "src/character/spells/buffs/single/BoarStrength.coffee",
             "fileName": "BoarStrength.coffee",
             "effect": [
@@ -4613,6 +5023,15 @@
                 "name": "name",
                 "basicInfo": "dragon strength"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "4 rounds"
@@ -4627,8 +5046,8 @@
             }
         },
         {
-            "lineNumber": 47,
-            "endLineNumber": 58,
+            "lineNumber": 53,
+            "endLineNumber": 66,
             "filePath": "src/character/spells/buffs/single/BoarStrength.coffee",
             "fileName": "BoarStrength.coffee",
             "effect": [
@@ -4662,6 +5081,15 @@
                 "name": "name",
                 "basicInfo": "titan strength"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "4 rounds"
@@ -4677,7 +5105,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 19,
+            "endLineNumber": 21,
             "filePath": "src/character/spells/buffs/single/EnergyShield.coffee",
             "fileName": "EnergyShield.coffee",
             "effect": [
@@ -4711,6 +5139,15 @@
                 "name": "name",
                 "basicInfo": "energy shield"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "13 rounds"
@@ -4725,8 +5162,8 @@
             }
         },
         {
-            "lineNumber": 21,
-            "endLineNumber": 32,
+            "lineNumber": 23,
+            "endLineNumber": 36,
             "filePath": "src/character/spells/buffs/single/EnergyShield.coffee",
             "fileName": "EnergyShield.coffee",
             "effect": [
@@ -4760,6 +5197,15 @@
                 "name": "name",
                 "basicInfo": "energy buckler"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "11 rounds"
@@ -4774,8 +5220,8 @@
             }
         },
         {
-            "lineNumber": 34,
-            "endLineNumber": 45,
+            "lineNumber": 38,
+            "endLineNumber": 51,
             "filePath": "src/character/spells/buffs/single/EnergyShield.coffee",
             "fileName": "EnergyShield.coffee",
             "effect": [
@@ -4809,6 +5255,15 @@
                 "name": "name",
                 "basicInfo": "energy towershield"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "9 rounds"
@@ -4823,8 +5278,8 @@
             }
         },
         {
-            "lineNumber": 47,
-            "endLineNumber": 58,
+            "lineNumber": 53,
+            "endLineNumber": 66,
             "filePath": "src/character/spells/buffs/single/EnergyShield.coffee",
             "fileName": "EnergyShield.coffee",
             "effect": [
@@ -4858,6 +5313,15 @@
                 "name": "name",
                 "basicInfo": "energy omegashield"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "5 rounds"
@@ -4872,8 +5336,8 @@
             }
         },
         {
-            "lineNumber": 60,
-            "endLineNumber": 71,
+            "lineNumber": 68,
+            "endLineNumber": 81,
             "filePath": "src/character/spells/buffs/single/EnergyShield.coffee",
             "fileName": "EnergyShield.coffee",
             "effect": [
@@ -4907,6 +5371,15 @@
                 "name": "name",
                 "basicInfo": "energy barrier"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "14 rounds"
@@ -4921,8 +5394,8 @@
             }
         },
         {
-            "lineNumber": 73,
-            "endLineNumber": 84,
+            "lineNumber": 83,
+            "endLineNumber": 96,
             "filePath": "src/character/spells/buffs/single/EnergyShield.coffee",
             "fileName": "EnergyShield.coffee",
             "effect": [
@@ -4956,6 +5429,15 @@
                 "name": "name",
                 "basicInfo": "energy field"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "13 rounds"
@@ -4970,8 +5452,8 @@
             }
         },
         {
-            "lineNumber": 86,
-            "endLineNumber": 97,
+            "lineNumber": 98,
+            "endLineNumber": 111,
             "filePath": "src/character/spells/buffs/single/EnergyShield.coffee",
             "fileName": "EnergyShield.coffee",
             "effect": [
@@ -5005,6 +5487,15 @@
                 "name": "name",
                 "basicInfo": "energy wall"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "12 rounds"
@@ -5019,8 +5510,8 @@
             }
         },
         {
-            "lineNumber": 99,
-            "endLineNumber": 110,
+            "lineNumber": 113,
+            "endLineNumber": 126,
             "filePath": "src/character/spells/buffs/single/EnergyShield.coffee",
             "fileName": "EnergyShield.coffee",
             "effect": [
@@ -5054,6 +5545,15 @@
                 "name": "name",
                 "basicInfo": "energy barricade"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "11 rounds"
@@ -5069,7 +5569,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 19,
+            "endLineNumber": 21,
             "filePath": "src/character/spells/buffs/single/Treatment.coffee",
             "fileName": "Treatment.coffee",
             "effect": [
@@ -5103,6 +5603,15 @@
                 "name": "name",
                 "basicInfo": "treatment"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "heal, buff"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "3 rounds"
@@ -5118,7 +5627,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 20,
+            "endLineNumber": 22,
             "filePath": "src/character/spells/combat-skills/bitomancer/Bit.coffee",
             "fileName": "Bit.coffee",
             "requirement": [
@@ -5146,6 +5655,15 @@
                 "name": "name",
                 "basicInfo": "bit"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int/6]"
@@ -5164,8 +5682,8 @@
             }
         },
         {
-            "lineNumber": 22,
-            "endLineNumber": 33,
+            "lineNumber": 24,
+            "endLineNumber": 37,
             "filePath": "src/character/spells/combat-skills/bitomancer/Bit.coffee",
             "fileName": "Bit.coffee",
             "requirement": [
@@ -5193,6 +5711,15 @@
                 "name": "name",
                 "basicInfo": "kilobit"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int/6]*1.4"
@@ -5211,8 +5738,8 @@
             }
         },
         {
-            "lineNumber": 35,
-            "endLineNumber": 46,
+            "lineNumber": 39,
+            "endLineNumber": 52,
             "filePath": "src/character/spells/combat-skills/bitomancer/Bit.coffee",
             "fileName": "Bit.coffee",
             "requirement": [
@@ -5240,6 +5767,15 @@
                 "name": "name",
                 "basicInfo": "megabit"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int/6]*2"
@@ -5258,8 +5794,8 @@
             }
         },
         {
-            "lineNumber": 48,
-            "endLineNumber": 59,
+            "lineNumber": 54,
+            "endLineNumber": 67,
             "filePath": "src/character/spells/combat-skills/bitomancer/Bit.coffee",
             "fileName": "Bit.coffee",
             "requirement": [
@@ -5287,6 +5823,15 @@
                 "name": "name",
                 "basicInfo": "gigabit"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int/6]*2.8"
@@ -5305,8 +5850,8 @@
             }
         },
         {
-            "lineNumber": 61,
-            "endLineNumber": 72,
+            "lineNumber": 69,
+            "endLineNumber": 82,
             "filePath": "src/character/spells/combat-skills/bitomancer/Bit.coffee",
             "fileName": "Bit.coffee",
             "requirement": [
@@ -5334,6 +5879,15 @@
                 "name": "name",
                 "basicInfo": "terabit"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int/6]*4"
@@ -5353,7 +5907,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 20,
+            "endLineNumber": 22,
             "filePath": "src/character/spells/combat-skills/bitomancer/Byte.coffee",
             "fileName": "Byte.coffee",
             "requirement": [
@@ -5381,6 +5935,15 @@
                 "name": "name",
                 "basicInfo": "byte"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int/8]"
@@ -5399,8 +5962,8 @@
             }
         },
         {
-            "lineNumber": 22,
-            "endLineNumber": 33,
+            "lineNumber": 24,
+            "endLineNumber": 37,
             "filePath": "src/character/spells/combat-skills/bitomancer/Byte.coffee",
             "fileName": "Byte.coffee",
             "requirement": [
@@ -5428,6 +5991,15 @@
                 "name": "name",
                 "basicInfo": "kilobyte"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int/8]*1.4"
@@ -5446,8 +6018,8 @@
             }
         },
         {
-            "lineNumber": 35,
-            "endLineNumber": 46,
+            "lineNumber": 39,
+            "endLineNumber": 52,
             "filePath": "src/character/spells/combat-skills/bitomancer/Byte.coffee",
             "fileName": "Byte.coffee",
             "requirement": [
@@ -5475,6 +6047,15 @@
                 "name": "name",
                 "basicInfo": "megabyte"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int/8]*2"
@@ -5493,8 +6074,8 @@
             }
         },
         {
-            "lineNumber": 48,
-            "endLineNumber": 59,
+            "lineNumber": 54,
+            "endLineNumber": 67,
             "filePath": "src/character/spells/combat-skills/bitomancer/Byte.coffee",
             "fileName": "Byte.coffee",
             "requirement": [
@@ -5522,6 +6103,15 @@
                 "name": "name",
                 "basicInfo": "gigabyte"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int/8]*2.8"
@@ -5540,8 +6130,8 @@
             }
         },
         {
-            "lineNumber": 61,
-            "endLineNumber": 72,
+            "lineNumber": 69,
+            "endLineNumber": 82,
             "filePath": "src/character/spells/combat-skills/bitomancer/Byte.coffee",
             "fileName": "Byte.coffee",
             "requirement": [
@@ -5569,6 +6159,15 @@
                 "name": "name",
                 "basicInfo": "terabyte"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int/8]*4"
@@ -5588,7 +6187,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 22,
+            "endLineNumber": 24,
             "filePath": "src/character/spells/combat-skills/bitomancer/DDoS.coffee",
             "fileName": "DDoS.coffee",
             "effect": [
@@ -5630,6 +6229,15 @@
                 "name": "name",
                 "basicInfo": "DDoS attack"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "1 round"
@@ -5644,8 +6252,8 @@
             }
         },
         {
-            "lineNumber": 24,
-            "endLineNumber": 37,
+            "lineNumber": 26,
+            "endLineNumber": 41,
             "filePath": "src/character/spells/combat-skills/bitomancer/DDoS.coffee",
             "fileName": "DDoS.coffee",
             "effect": [
@@ -5687,6 +6295,15 @@
                 "name": "name",
                 "basicInfo": "persistent DDoS attack"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "2 rounds"
@@ -5702,7 +6319,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 21,
+            "endLineNumber": 23,
             "filePath": "src/character/spells/combat-skills/bitomancer/DownloadRAM.coffee",
             "fileName": "DownloadRAM.coffee",
             "effect": [
@@ -5744,6 +6361,15 @@
                 "name": "name",
                 "basicInfo": "single-channel RAM"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "category": {
                 "name": "category",
                 "basicInfo": "Bitomancer"
@@ -5754,8 +6380,8 @@
             }
         },
         {
-            "lineNumber": 23,
-            "endLineNumber": 35,
+            "lineNumber": 25,
+            "endLineNumber": 39,
             "filePath": "src/character/spells/combat-skills/bitomancer/DownloadRAM.coffee",
             "fileName": "DownloadRAM.coffee",
             "effect": [
@@ -5797,6 +6423,15 @@
                 "name": "name",
                 "basicInfo": "dual-channel RAM"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "category": {
                 "name": "category",
                 "basicInfo": "Bitomancer"
@@ -5807,8 +6442,8 @@
             }
         },
         {
-            "lineNumber": 37,
-            "endLineNumber": 49,
+            "lineNumber": 41,
+            "endLineNumber": 55,
             "filePath": "src/character/spells/combat-skills/bitomancer/DownloadRAM.coffee",
             "fileName": "DownloadRAM.coffee",
             "effect": [
@@ -5850,6 +6485,15 @@
                 "name": "name",
                 "basicInfo": "triple-channel RAM"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "category": {
                 "name": "category",
                 "basicInfo": "Bitomancer"
@@ -5860,8 +6504,8 @@
             }
         },
         {
-            "lineNumber": 51,
-            "endLineNumber": 63,
+            "lineNumber": 57,
+            "endLineNumber": 71,
             "filePath": "src/character/spells/combat-skills/bitomancer/DownloadRAM.coffee",
             "fileName": "DownloadRAM.coffee",
             "effect": [
@@ -5903,6 +6547,15 @@
                 "name": "name",
                 "basicInfo": "quad-channel RAM"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "category": {
                 "name": "category",
                 "basicInfo": "Bitomancer"
@@ -5914,7 +6567,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 18,
+            "endLineNumber": 20,
             "filePath": "src/character/spells/combat-skills/bitomancer/FlipTheBit.coffee",
             "fileName": "FlipTheBit.coffee",
             "requirement": [
@@ -5942,6 +6595,15 @@
                 "name": "name",
                 "basicInfo": "flip the bit"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "category": {
                 "name": "category",
                 "basicInfo": "Bitomancer"
@@ -5953,7 +6615,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 20,
+            "endLineNumber": 22,
             "filePath": "src/character/spells/combat-skills/bitomancer/ZeroDay.coffee",
             "fileName": "ZeroDay.coffee",
             "effect": [
@@ -5987,6 +6649,15 @@
                 "name": "name",
                 "basicInfo": "zero-day threat"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "2 rounds"
@@ -6001,8 +6672,8 @@
             }
         },
         {
-            "lineNumber": 22,
-            "endLineNumber": 33,
+            "lineNumber": 24,
+            "endLineNumber": 37,
             "filePath": "src/character/spells/combat-skills/bitomancer/ZeroDay.coffee",
             "fileName": "ZeroDay.coffee",
             "effect": [
@@ -6036,6 +6707,15 @@
                 "name": "name",
                 "basicInfo": "zero-day attack"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "2 rounds"
@@ -6050,8 +6730,8 @@
             }
         },
         {
-            "lineNumber": 35,
-            "endLineNumber": 46,
+            "lineNumber": 39,
+            "endLineNumber": 52,
             "filePath": "src/character/spells/combat-skills/bitomancer/ZeroDay.coffee",
             "fileName": "ZeroDay.coffee",
             "effect": [
@@ -6085,6 +6765,15 @@
                 "name": "name",
                 "basicInfo": "zero-day assault"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "2 rounds"
@@ -6100,7 +6789,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 19,
+            "endLineNumber": 21,
             "filePath": "src/character/spells/combat-skills/multi/SweepingGeneralization.coffee",
             "fileName": "SweepingGeneralization.coffee",
             "requirement": [
@@ -6128,13 +6817,22 @@
                 "name": "name",
                 "basicInfo": "sweeping generalization"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "all"
+            },
             "minDamage": {
                 "name": "minDamage",
-                "basicInfo": "[str+dex]/4"
+                "basicInfo": "1.7*[str+dex]/4"
             },
             "maxDamage": {
                 "name": "maxDamage",
-                "basicInfo": "[str+dex]/2"
+                "basicInfo": "1.7*[str+dex]/2"
             },
             "category": {
                 "name": "category",
@@ -6146,8 +6844,64 @@
             }
         },
         {
+            "lineNumber": 23,
+            "endLineNumber": 36,
+            "filePath": "src/character/spells/combat-skills/multi/SweepingGeneralization.coffee",
+            "fileName": "SweepingGeneralization.coffee",
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "MagicalMonster"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "600"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This skill attacks all enemies with a sweeping generalization."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "sweepo generalizo"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "all"
+            },
+            "minDamage": {
+                "name": "minDamage",
+                "basicInfo": "1.3*[str+dex]/4"
+            },
+            "maxDamage": {
+                "name": "maxDamage",
+                "basicInfo": "1.3*[str+dex]/2"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "MagicalMonster"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
             "lineNumber": 9,
-            "endLineNumber": 20,
+            "endLineNumber": 22,
             "filePath": "src/character/spells/combat-skills/pirate/DeathGlare.coffee",
             "fileName": "DeathGlare.coffee",
             "effect": [
@@ -6181,6 +6935,15 @@
                 "name": "name",
                 "basicInfo": "death glare"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "4-[Bottles/33] rounds"
@@ -6196,7 +6959,7 @@
         },
         {
             "lineNumber": 11,
-            "endLineNumber": 22,
+            "endLineNumber": 24,
             "filePath": "src/character/spells/combat-skills/pirate/GrogDance.coffee",
             "fileName": "GrogDance.coffee",
             "effect": [
@@ -6230,6 +6993,14 @@
                 "name": "name",
                 "basicInfo": "grog dance"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "self"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "2"
@@ -6245,7 +7016,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 19,
+            "endLineNumber": 21,
             "filePath": "src/character/spells/combat-skills/pirate/NinetyNineBottles.coffee",
             "fileName": "NinetyNineBottles.coffee",
             "requirement": [
@@ -6273,6 +7044,15 @@
                 "name": "name",
                 "basicInfo": "99 Bottles of Ale"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "???"
@@ -6288,7 +7068,7 @@
         },
         {
             "lineNumber": 10,
-            "endLineNumber": 21,
+            "endLineNumber": 23,
             "filePath": "src/character/spells/combat-skills/pirate/PirateShanty.coffee",
             "fileName": "PirateShanty.coffee",
             "effect": [
@@ -6322,6 +7102,15 @@
                 "name": "name",
                 "basicInfo": "pirate shanty"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "all"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "5-[Bottles/33] rounds"
@@ -6337,7 +7126,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 21,
+            "endLineNumber": 23,
             "filePath": "src/character/spells/combat-skills/rogue/Backstab.coffee",
             "fileName": "Backstab.coffee",
             "prerequisite": [
@@ -6372,6 +7161,15 @@
                 "name": "name",
                 "basicInfo": "backstab"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "0.8*[str+dex]/2"
@@ -6391,7 +7189,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 23,
+            "endLineNumber": 25,
             "filePath": "src/character/spells/combat-skills/rogue/ChainStab.coffee",
             "fileName": "ChainStab.coffee",
             "prerequisite": [
@@ -6436,6 +7234,15 @@
                 "name": "name",
                 "basicInfo": "chain stab"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "0.3*[str+dex]/2"
@@ -6455,7 +7262,7 @@
         },
         {
             "lineNumber": 12,
-            "endLineNumber": 25,
+            "endLineNumber": 27,
             "filePath": "src/character/spells/combat-skills/rogue/FinishingBlow.coffee",
             "fileName": "FinishingBlow.coffee",
             "prerequisite": [
@@ -6495,6 +7302,15 @@
                 "name": "name",
                 "basicInfo": "finishing blow"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "2.0*[str+dex]/2"
@@ -6514,7 +7330,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 22,
+            "endLineNumber": 24,
             "filePath": "src/character/spells/combat-skills/rogue/Heartbleed.coffee",
             "fileName": "Heartbleed.coffee",
             "prerequisite": [
@@ -6549,6 +7365,15 @@
                 "name": "name",
                 "basicInfo": "heartbleed"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "0.2*[str+dex]/2"
@@ -6572,7 +7397,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 20,
+            "endLineNumber": 22,
             "filePath": "src/character/spells/combat-skills/rogue/OpeningStrike.coffee",
             "fileName": "OpeningStrike.coffee",
             "requirement": [
@@ -6600,6 +7425,15 @@
                 "name": "name",
                 "basicInfo": "opening strike"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "0.5*[str+dex]/2"
@@ -6619,7 +7453,7 @@
         },
         {
             "lineNumber": 10,
-            "endLineNumber": 24,
+            "endLineNumber": 26,
             "filePath": "src/character/spells/combat-skills/rogue/SavageStab.coffee",
             "fileName": "SavageStab.coffee",
             "prerequisite": [
@@ -6659,6 +7493,15 @@
                 "name": "name",
                 "basicInfo": "savage stab"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "0.05*[str+dex]/2"
@@ -6678,7 +7521,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 22,
+            "endLineNumber": 24,
             "filePath": "src/character/spells/combat-skills/rogue/WomboCombo.coffee",
             "fileName": "WomboCombo.coffee",
             "prerequisite": [
@@ -6718,6 +7561,15 @@
                 "name": "name",
                 "basicInfo": "wombo combo"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "0.45*[str+dex]/2"
@@ -6737,7 +7589,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 22,
+            "endLineNumber": 24,
             "filePath": "src/character/spells/combat-skills/sandwichArtist/DayOldBread.coffee",
             "fileName": "DayOldBread.coffee",
             "effect": [
@@ -6771,6 +7623,15 @@
                 "name": "name",
                 "basicInfo": "day-old bread"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1-2"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[dex/8]"
@@ -6794,7 +7655,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 20,
+            "endLineNumber": 22,
             "filePath": "src/character/spells/combat-skills/sandwichArtist/FoodFight.coffee",
             "fileName": "FoodFight.coffee",
             "requirement": [
@@ -6822,6 +7683,15 @@
                 "name": "name",
                 "basicInfo": "food fight"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "all",
+                "basicInfo": "2-10"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[dex/6]"
@@ -6841,7 +7711,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 21,
+            "endLineNumber": 23,
             "filePath": "src/character/spells/combat-skills/sandwichArtist/PoisonedSandwich.coffee",
             "fileName": "PoisonedSandwich.coffee",
             "requirement": [
@@ -6869,6 +7739,15 @@
                 "name": "name",
                 "basicInfo": "poisoned sandwich"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1-2"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "1+[con<250]+[con<500] round[s]"
@@ -6892,7 +7771,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 20,
+            "endLineNumber": 22,
             "filePath": "src/character/spells/combat-skills/sandwichArtist/Resume.coffee",
             "fileName": "Resume.coffee",
             "effect": [
@@ -6927,6 +7806,15 @@
                 "name": "name",
                 "basicInfo": "resume"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "1 round"
@@ -6942,7 +7830,7 @@
         },
         {
             "lineNumber": 10,
-            "endLineNumber": 21,
+            "endLineNumber": 23,
             "filePath": "src/character/spells/combat-skills/sandwichArtist/SandwichAlly.coffee",
             "fileName": "SandwichAlly.coffee",
             "requirement": [
@@ -6970,6 +7858,15 @@
                 "name": "name",
                 "basicInfo": "Sandwich Ally"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "minHeal": {
                 "name": "minHeal",
                 "basicInfo": "dex/1.5"
@@ -6985,7 +7882,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 20,
+            "endLineNumber": 22,
             "filePath": "src/character/spells/combat-skills/sandwichArtist/Toasted.coffee",
             "fileName": "Toasted.coffee",
             "requirement": [
@@ -7013,6 +7910,15 @@
                 "name": "name",
                 "basicInfo": "Toasted"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "fire"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1-2"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "dex/4"
@@ -7028,7 +7934,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 21,
+            "endLineNumber": 23,
             "filePath": "src/character/spells/combat-skills/single/BluntHit.coffee",
             "fileName": "BluntHit.coffee",
             "effect": [
@@ -7062,6 +7968,15 @@
                 "name": "name",
                 "basicInfo": "blunt hit"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "str/4"
@@ -7081,7 +7996,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 17,
+            "endLineNumber": 19,
             "filePath": "src/character/spells/combat-skills/single/DoubleTap.coffee",
             "fileName": "DoubleTap.coffee",
             "requirement": [
@@ -7109,6 +8024,15 @@
                 "name": "name",
                 "basicInfo": "double tap"
             },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
             "category": {
                 "name": "category",
                 "basicInfo": "Fighter"
@@ -7119,8 +8043,8 @@
             }
         },
         {
-            "lineNumber": 19,
-            "endLineNumber": 28,
+            "lineNumber": 21,
+            "endLineNumber": 32,
             "filePath": "src/character/spells/combat-skills/single/DoubleTap.coffee",
             "fileName": "DoubleTap.coffee",
             "requirement": [
@@ -7148,6 +8072,15 @@
                 "name": "name",
                 "basicInfo": "triple tap"
             },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
             "category": {
                 "name": "category",
                 "basicInfo": "Fighter"
@@ -7158,8 +8091,56 @@
             }
         },
         {
+            "lineNumber": 34,
+            "endLineNumber": 45,
+            "filePath": "src/character/spells/combat-skills/single/DoubleTap.coffee",
+            "fileName": "DoubleTap.coffee",
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "MagicalMonster"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "1000"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "25"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This skill makes the caster attack twice."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "double tap"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "MagicalMonster"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
             "lineNumber": 8,
-            "endLineNumber": 19,
+            "endLineNumber": 21,
             "filePath": "src/character/spells/debuffs/multi/FleeInTerror.coffee",
             "fileName": "FleeInTerror.coffee",
             "effect": [
@@ -7193,6 +8174,15 @@
                 "name": "name",
                 "basicInfo": "Flee In Terror"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "energy"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "all"
+            },
             "duration": {
                 "name": "duration",
                 "basicInfo": "2 rounds"
@@ -7208,7 +8198,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 20,
+            "endLineNumber": 22,
             "filePath": "src/character/spells/debuffs/multi/LitanyofPain.coffee",
             "fileName": "LitanyofPain.coffee",
             "requirement": [
@@ -7236,6 +8226,15 @@
                 "name": "name",
                 "basicInfo": "Litany of Pain"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "energy"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "all"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int/5]"
@@ -7258,8 +8257,8 @@
             }
         },
         {
-            "lineNumber": 22,
-            "endLineNumber": 34,
+            "lineNumber": 24,
+            "endLineNumber": 38,
             "filePath": "src/character/spells/debuffs/multi/LitanyofPain.coffee",
             "fileName": "LitanyofPain.coffee",
             "requirement": [
@@ -7287,6 +8286,15 @@
                 "name": "name",
                 "basicInfo": "Hymn of Torment"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "energy"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "all"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int/5]*2"
@@ -7310,7 +8318,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 19,
+            "endLineNumber": 21,
             "filePath": "src/character/spells/heals/multi/CureGroup.coffee",
             "fileName": "CureGroup.coffee",
             "requirement": [
@@ -7338,6 +8346,15 @@
                 "name": "name",
                 "basicInfo": "cure group"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "heal"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "all"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[wis/5]"
@@ -7357,7 +8374,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 18,
+            "endLineNumber": 20,
             "filePath": "src/character/spells/heals/self/FadeAway.coffee",
             "fileName": "FadeAway.coffee",
             "effect": [
@@ -7386,6 +8403,14 @@
                 "name": "name",
                 "basicInfo": "fade away"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "heal"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "self"
+            },
             "category": {
                 "name": "category",
                 "basicInfo": "Rogue"
@@ -7397,7 +8422,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 19,
+            "endLineNumber": 21,
             "filePath": "src/character/spells/heals/single/Cure.coffee",
             "fileName": "Cure.coffee",
             "requirement": [
@@ -7425,13 +8450,22 @@
                 "name": "name",
                 "basicInfo": "cure"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "heal"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
-                "basicInfo": "[wis/4]"
+                "basicInfo": "1.5*[wis/4]"
             },
             "maxDamage": {
                 "name": "maxDamage",
-                "basicInfo": "[wis]"
+                "basicInfo": "1.5*[wis]"
             },
             "category": {
                 "name": "category",
@@ -7443,8 +8477,64 @@
             }
         },
         {
+            "lineNumber": 23,
+            "endLineNumber": 36,
+            "filePath": "src/character/spells/heals/single/Cure.coffee",
+            "fileName": "Cure.coffee",
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "MagicalMonster"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "100"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "10"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This spell cures one ally."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "cure"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "heal"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
+            "minDamage": {
+                "name": "minDamage",
+                "basicInfo": "[wis/4]"
+            },
+            "maxDamage": {
+                "name": "maxDamage",
+                "basicInfo": "[wis]"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "MagicalMonster"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
             "lineNumber": 8,
-            "endLineNumber": 18,
+            "endLineNumber": 20,
             "filePath": "src/character/spells/heals/single/Revive.coffee",
             "fileName": "Revive.coffee",
             "effect": [
@@ -7478,6 +8568,15 @@
                 "name": "name",
                 "basicInfo": "revive"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "heal"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "category": {
                 "name": "category",
                 "basicInfo": "Cleric"
@@ -7488,8 +8587,8 @@
             }
         },
         {
-            "lineNumber": 20,
-            "endLineNumber": 30,
+            "lineNumber": 22,
+            "endLineNumber": 34,
             "filePath": "src/character/spells/heals/single/Revive.coffee",
             "fileName": "Revive.coffee",
             "effect": [
@@ -7523,6 +8622,15 @@
                 "name": "name",
                 "basicInfo": "resurrect"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "heal"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
             "category": {
                 "name": "category",
                 "basicInfo": "Cleric"
@@ -7534,7 +8642,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 22,
+            "endLineNumber": 24,
             "filePath": "src/character/spells/magical/elemental/FrostBite.coffee",
             "fileName": "FrostBite.coffee",
             "requirement": [
@@ -7562,6 +8670,15 @@
                 "name": "name",
                 "basicInfo": "frostbite"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "ice"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int/6]"
@@ -7585,7 +8702,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 20,
+            "endLineNumber": 22,
             "filePath": "src/character/spells/magical/elemental/Thunderstrike.coffee",
             "fileName": "Thunderstrike.coffee",
             "requirement": [
@@ -7613,6 +8730,15 @@
                 "name": "name",
                 "basicInfo": "thunderstrike"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "thunder"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int*0.25*rounds]"
@@ -7636,7 +8762,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 19,
+            "endLineNumber": 21,
             "filePath": "src/character/spells/magical/elemental/TripleFire.coffee",
             "fileName": "TripleFire.coffee",
             "requirement": [
@@ -7664,6 +8790,16 @@
                 "name": "name",
                 "basicInfo": "double fire"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "fire"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1-2",
+                "extendedInfo": "This spell will fail subsequent hits if all valid targets are dead."
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int*0.2]"
@@ -7682,8 +8818,8 @@
             }
         },
         {
-            "lineNumber": 21,
-            "endLineNumber": 32,
+            "lineNumber": 23,
+            "endLineNumber": 36,
             "filePath": "src/character/spells/magical/elemental/TripleFire.coffee",
             "fileName": "TripleFire.coffee",
             "requirement": [
@@ -7711,6 +8847,16 @@
                 "name": "name",
                 "basicInfo": "triple fire"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "fire"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1-3",
+                "extendedInfo": "This spell will fail subsequent hits if all valid targets are dead."
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int*0.2*2]"
@@ -7729,8 +8875,8 @@
             }
         },
         {
-            "lineNumber": 34,
-            "endLineNumber": 45,
+            "lineNumber": 38,
+            "endLineNumber": 51,
             "filePath": "src/character/spells/magical/elemental/TripleFire.coffee",
             "fileName": "TripleFire.coffee",
             "requirement": [
@@ -7758,6 +8904,16 @@
                 "name": "name",
                 "basicInfo": "quadruple fire"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "fire"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1-4",
+                "extendedInfo": "This spell will fail subsequent hits if all valid targets are dead."
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int*0.2*3]"
@@ -7777,7 +8933,7 @@
         },
         {
             "lineNumber": 8,
-            "endLineNumber": 19,
+            "endLineNumber": 21,
             "filePath": "src/character/spells/magical/energy/EnergyMissile.coffee",
             "fileName": "EnergyMissile.coffee",
             "requirement": [
@@ -7805,6 +8961,15 @@
                 "name": "name",
                 "basicInfo": "energy missile"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "energy"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int/4]"
@@ -7823,8 +8988,8 @@
             }
         },
         {
-            "lineNumber": 21,
-            "endLineNumber": 32,
+            "lineNumber": 23,
+            "endLineNumber": 36,
             "filePath": "src/character/spells/magical/energy/EnergyMissile.coffee",
             "fileName": "EnergyMissile.coffee",
             "requirement": [
@@ -7852,6 +9017,15 @@
                 "name": "name",
                 "basicInfo": "energy blast"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "energy"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int/4]*2"
@@ -7870,8 +9044,8 @@
             }
         },
         {
-            "lineNumber": 34,
-            "endLineNumber": 45,
+            "lineNumber": 38,
+            "endLineNumber": 51,
             "filePath": "src/character/spells/magical/energy/EnergyMissile.coffee",
             "fileName": "EnergyMissile.coffee",
             "requirement": [
@@ -7899,6 +9073,14 @@
                 "name": "name",
                 "basicInfo": "astral flare"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "energy"
+            },
+            "targets": {
+                "name": "targets",
+                "basicInfo": "one enemy"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[int/4]*4"
@@ -7917,8 +9099,63 @@
             }
         },
         {
+            "lineNumber": 53,
+            "endLineNumber": 66,
+            "filePath": "src/character/spells/magical/energy/EnergyMissile.coffee",
+            "fileName": "EnergyMissile.coffee",
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "MagicalMonster"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "250"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This is a basic damaging spell."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "energy prod"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "energy"
+            },
+            "targets": {
+                "name": "targets",
+                "basicInfo": "one enemy"
+            },
+            "minDamage": {
+                "name": "minDamage",
+                "basicInfo": "1.5*[int/4]"
+            },
+            "maxDamage": {
+                "name": "maxDamage",
+                "basicInfo": "1.5*[int]"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "MagicalMonster"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
             "lineNumber": 8,
-            "endLineNumber": 19,
+            "endLineNumber": 21,
             "filePath": "src/character/spells/magical/holy/HolyBolt.coffee",
             "fileName": "HolyBolt.coffee",
             "requirement": [
@@ -7946,6 +9183,15 @@
                 "name": "name",
                 "basicInfo": "holy bolt"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "holy"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[wis/4]"
@@ -7964,8 +9210,8 @@
             }
         },
         {
-            "lineNumber": 21,
-            "endLineNumber": 32,
+            "lineNumber": 23,
+            "endLineNumber": 36,
             "filePath": "src/character/spells/magical/holy/HolyBolt.coffee",
             "fileName": "HolyBolt.coffee",
             "requirement": [
@@ -7993,6 +9239,15 @@
                 "name": "name",
                 "basicInfo": "divine bolt"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "holy"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[wis/4]*2"
@@ -8011,8 +9266,8 @@
             }
         },
         {
-            "lineNumber": 34,
-            "endLineNumber": 45,
+            "lineNumber": 38,
+            "endLineNumber": 51,
             "filePath": "src/character/spells/magical/holy/HolyBolt.coffee",
             "fileName": "HolyBolt.coffee",
             "requirement": [
@@ -8040,6 +9295,15 @@
                 "name": "name",
                 "basicInfo": "celestial bolt"
             },
+            "element": {
+                "name": "element",
+                "basicInfo": "holy"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
             "minDamage": {
                 "name": "minDamage",
                 "basicInfo": "[wis/4]*4"
@@ -8059,7 +9323,7 @@
         },
         {
             "lineNumber": 9,
-            "endLineNumber": 19,
+            "endLineNumber": 21,
             "filePath": "src/character/spells/magical/holy/Tranquility.coffee",
             "fileName": "Tranquility.coffee",
             "effect": [
@@ -8092,6 +9356,14 @@
             "name": {
                 "name": "name",
                 "basicInfo": "tranquility"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "holy"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "all"
             },
             "category": {
                 "name": "category",
@@ -8143,7 +9415,7 @@
             ],
             "desc": {
                 "name": "desc",
-                "basicInfo": "The Calamity day lowers luck/"
+                "basicInfo": "The Calamity day lowers luck."
             },
             "name": {
                 "name": "name",
@@ -9417,11 +10689,11 @@
             }
         }
     ],
-    "startTime": 1416608895344,
-    "endTime": 1416608895389,
+    "startTime": 1417140583001,
+    "endTime": 1417140583053,
     "git": {
-        "short": "fc3fe56",
-        "long": "fc3fe56592e2d0845183241d9ec0c06e49a3c74c",
+        "short": "928ed08",
+        "long": "928ed087d40e14dab2eba8a638cae1531d647d97",
         "branch": "master",
         "tag": "0.5.0"
     },
@@ -9442,6 +10714,24 @@
                     {
                         "name": "Goblin Lord Shortsword",
                         "dropPercent": 95
+                    }
+                ]
+            },
+            "Cluckin' Chicken": {
+                "respawn": 4200,
+                "availableScore": 1500,
+                "stats": {
+                    "class": "Fighter",
+                    "hp": 3000,
+                    "level": 1,
+                    "con": 100,
+                    "dex": 100,
+                    "str": 100
+                },
+                "items": [
+                    {
+                        "name": "dSolver's Feather",
+                        "dropPercent": 85
                     }
                 ]
             },
@@ -9487,12 +10777,14 @@
                 "availableScore": 3200,
                 "stats": {
                     "class": "Barbarian",
-                    "hp": 34762,
+                    "hp": 72468,
                     "mp": 1000,
                     "level": 60,
-                    "con": 3200,
-                    "str": 3600,
-                    "int": 100
+                    "con": 1000,
+                    "str": 3900,
+                    "int": 100,
+                    "luck": 800,
+                    "thunder": 2000
                 },
                 "items": [
                     {
@@ -9815,6 +11107,16 @@
                 "agi": 200,
                 "dex": 300,
                 "defense": 1
+            },
+            "dSolver's Feather": {
+                "type": "mainhand",
+                "str": -100,
+                "agi": -50,
+                "dex": -25,
+                "luck": 5,
+                "prone": 1,
+                "silver": 1,
+                "offense": -1
             }
         },
         "chests.json": {
