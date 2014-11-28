@@ -14,7 +14,7 @@ class Constants
 
   @classCategorization =
     physical: ['Fighter', 'Generalist', 'Barbarian', 'Rogue', 'Jester', 'Pirate', 'Monster']
-    magical: ['Mage', 'Cleric', 'Bard', 'SandwichArtist', 'Bitomancer']
+    magical: ['Mage', 'Cleric', 'Bard', 'SandwichArtist', 'Bitomancer', 'MagicalMonster']
     support: ['Bard', 'SandwichArtist', 'Generalist']
     medic: ['Cleric', 'SandwichArtist']
     tank: ['Fighter', 'Barbarian', 'Pirate']
