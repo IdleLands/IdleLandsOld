@@ -1,6 +1,14 @@
 
 Region = require "../base/Region"
 
+`/**
+ * This region grants a boost to dexterity.
+ *
+ * @name Norkos Fisheries Area
+ * @effect +10% DEX
+ * @category Norkos
+ * @package World Regions
+ */`
 class NorkosFisheriesArea extends Region
 
   constructor: ->

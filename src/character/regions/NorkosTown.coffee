@@ -1,6 +1,15 @@
 
 Region = require "../base/Region"
 
+`/**
+ * This region grants you a luck boost and makes shops cheaper.
+ *
+ * @name Norkos Town
+ * @effect +5 LUCK
+ * @effect Shops are cheaper
+ * @category Norkos
+ * @package World Regions
+ */`
 class NorkosTown extends Region
 
   constructor: ->
