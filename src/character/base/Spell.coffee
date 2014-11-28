@@ -125,7 +125,7 @@ class Spell
       targetName: player.name
       spellName: @name
 
-    damage = player.calcDamageTaken damage
+    damage = Math.round player.calcDamageTaken damage
 
     message = MessageCreator.doStringReplace message, @caster, extra
 
