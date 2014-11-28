@@ -7,6 +7,8 @@ Class = require "./../base/Class"
   * @name Cleric
   * @magical
   * @support
+  * @hp 40+[level*12]+[con*5]
+  * @mp 150+[level*3]+[int*2]+[wis*4]
   * @itemScore int*0.7 + wis*1.5 - str*0.4 - dex*0.4
   * @statPerLevel {str} 2
   * @statPerLevel {dex} 1

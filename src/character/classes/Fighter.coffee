@@ -7,6 +7,8 @@ Class = require "./../base/Class"
   * @name Fighter
   * @physical
   * @tank
+  * @hp 120+[level*20]+[con*8]
+  * @mp 2+[level*2]+[int*1]
   * @itemScore str*1.1 + con*0.8 + dex*0.3 - agi*0.2 - wis*0.8
   * @statPerLevel {str} 3
   * @statPerLevel {dex} 2

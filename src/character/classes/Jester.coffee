@@ -6,6 +6,8 @@ Class = require "./../base/Class"
   *
   * @name Jester
   * @physical
+  * @hp 30+[level*10]+[con*9]
+  * @mp 0
   * @itemScore luck*5 + luckPercent*5 (Note, all other stats are ignored except for special stats like offense, defense, etc)
   * @statPerLevel {str} 0
   * @statPerLevel {dex} 0

@@ -8,6 +8,8 @@ Class = require "./../base/Class"
   * @physical
   * @medic
   * @support
+  * @hp 40+[level*12]+[con*5]
+  * @mp 100+[level*3]+[int*5]
   * @itemScore dex*2 + str*0.8 - int*0.5
   * @statPerLevel {str} 3
   * @statPerLevel {dex} 5

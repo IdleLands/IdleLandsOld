@@ -8,7 +8,9 @@ RestrictedNumber = require "restricted-number"
   * @name Pirate
   * @physical
   * @tank
-  * @special Bottles
+  * @special Bottles (The Pirate gets 99 bottles, so they can sing many songs while drinking many bottles.)
+  * @hp 150+[level*15]+[con*10]
+  * @mp 100+[level*3]+[int*5]
   * @itemScore con*2 + agi*1.5 + dex*1.5 - int - wis - luck*0.2
   * @statPerLevel {str} 2
   * @statPerLevel {dex} 2

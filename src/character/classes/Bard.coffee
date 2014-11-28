@@ -9,6 +9,8 @@ MessageCreator = require "../../system/MessageCreator"
   * @name Bard
   * @magical
   * @support
+  * @hp 50+[level*10]+[con*6]
+  * @mp 100+[level*3]+[int*5]
   * @itemScore int*1.4 + wis*1.4 - con*0.8 - str*0.8
   * @statPerLevel {str} 1
   * @statPerLevel {dex} 1

@@ -7,6 +7,8 @@ Class = require "./../base/Class"
   *
   * @name MagicalMonster
   * @magical
+  * @hp 50+[level*2]+[con*2]
+  * @mp 50+[level*2]+[int*2]
   * @statPerLevel {str} 2
   * @statPerLevel {dex} 2
   * @statPerLevel {con} 2

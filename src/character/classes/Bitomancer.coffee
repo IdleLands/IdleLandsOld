@@ -6,9 +6,11 @@ Class = require "./../base/Class"
   * This class is a debuffing magical class. It uses Bitrate to stun and destroy its foes.
   *
   * @name Bitomancer
-  * @special Bitrate
+  * @special Bitrate (The Bitomancer gets a certain Bitrate with which to virtually assault their opponents.)
   * @magical
   * @dps
+  * @hp 70+[level*12]+[con*7]
+  * @mp 70+[level*3]+[int*3]
   * @itemScore int*1.4 + dex*0.8 + agi*0.8 - con*0.9 - str*0.9
   * @statPerLevel {str} 1
   * @statPerLevel {dex} 3

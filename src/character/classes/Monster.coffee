@@ -7,6 +7,8 @@ Class = require "./../base/Class"
   *
   * @name Monster
   * @physical
+  * @hp 100+[level*4]+[con*4]
+  * @mp 100+[level*4]+[int*4]
   * @statPerLevel {str} 4
   * @statPerLevel {dex} 4
   * @statPerLevel {con} 4

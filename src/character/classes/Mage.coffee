@@ -7,6 +7,8 @@ Class = require "./../base/Class"
   * @name Mage
   * @magical
   * @dps
+  * @hp 25+[level*5]+[con*4]
+  * @mp 200+[level*4]+[int*6]
   * @itemScore int*1.4 + con*0.4 - str*0.8 - dex*0.3
   * @statPerLevel {str} 1
   * @statPerLevel {dex} 1

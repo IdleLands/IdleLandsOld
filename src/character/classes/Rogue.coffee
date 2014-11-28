@@ -7,7 +7,9 @@ Class = require "./../base/Class"
   * @name Rogue
   * @physical
   * @dps
-  * @special Stamina
+  * @hp 70+[level*10]+[con*6]
+  * @mp [level*1]+[int*1]
+  * @special Stamina (The Rogue gets 100 stamina with which they can use skills that combo their foes.)
   * @itemScore con*2 + agi*1.5 + dex*1.5 - int - wis - luck*0.2
   * @statPerLevel {str} 2
   * @statPerLevel {dex} 4

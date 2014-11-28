@@ -8,9 +8,11 @@ Class = require "./../base/Class"
   * bulky nature. They also take half damage on physical attacks.
   *
   * @name Barbarian
-  * @special Rage
+  * @special Rage (The Barbarian gets Rage so they can power themselves up while they get beaten up.)
   * @physical
   * @tank
+  * @hp 200+[level*25]+[con*10]
+  * @mp 0level*-10]+[int*-5]
   * @itemScore con*2 + str*2 - wis - int
   * @statPerLevel {str} 6
   * @statPerLevel {dex} 2
