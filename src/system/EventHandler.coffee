@@ -11,6 +11,9 @@ Battle = require "../event/Battle"
 
 Party = require "../event/Party"
 
+requireDir = require "require-dir"
+allEvents = requireDir "../event/singles"
+
 class EventHandler
 
   constructor: (@game) ->
@@ -37,11 +40,11 @@ class EventHandler
           @doYesNo event, player, callback
         when 'blessXp', 'forsakeXp'
           @doXp event, player, callback
-        when 'blessXpParty'
+        when 'blessXpParty', 'forsakeXpParty'
           @doXpParty event, player, callback
         when 'blessGold', 'forsakeGold'
           @doGold event, player, callback
-        when 'blessGoldParty'
+        when 'blessGoldParty', 'forsakeGoldParty'
           @doGoldParty event, player, callback
         when 'blessItem', 'forsakeItem'
           @doItem event, player, callback
@@ -113,37 +116,15 @@ class EventHandler
 
     @playerEventsDb.insert event, ->
 
-  doYesNo: (event, player, callback) ->
-    #player.emit "yesno"
-    if chance.bool {likelihood: player.calculateYesPercent()}
-      (@broadcastEvent message: event.y, player: player, type: 'miscellaneous') if event.y
-      callback true
-    else
-      (@broadcastEvent message: event.n, player: player, type: 'miscellaneous') if event.n
-      callback false
-
-  `/**
-    * This event handles both the blessXp and forsakeXp aliases.
-    *
-    * @name xp
-    * @category Player
-    * @package Events
-  */`
-  doXp: (event, player, callback) ->
-    if not event.remark
-      console.error "XP EVENT FAILURE", event
-      return callback false
-
-    boost = 0
-    percent = 0
-
+  calcXpEventGain: (eventType, player) ->
     if (chance.bool {likelihood: player.calculateYesPercent()})
-      percent = Constants.eventEffects[event.type].fail
-      boost = if player.level.getValue() < 100 then Math.floor player.xp.maximum * (percent/100) else 1
+      percent = Constants.eventEffects[eventType].fail
+      if player.level.getValue() < 100 then Math.floor player.xp.maximum * (percent/100) else 1
+
     else
-      min = Constants.eventEffects[event.type].minPercent
-      max = Constants.eventEffects[event.type].maxPercent
-      flux = Constants.eventEffects[event.type].flux
+      min = Constants.eventEffects[eventType].minPercent
+      max = Constants.eventEffects[eventType].maxPercent
+      flux = Constants.eventEffects[eventType].flux
       step = player.level.maximum / (max - min)
       steps = Math.floor ((player.level.maximum - player.level.getValue()) / step)
 
@@ -151,95 +132,11 @@ class EventHandler
 
       percent = min + steps + fluxed
 
-      boost = if player.level.getValue() < 100 then Math.floor player.xp.maximum * (percent/100) else player.level.getValue()
+      if player.level.getValue() < 100 then Math.floor player.xp.maximum * (percent/100) else player.level.getValue()
 
-    boost = player.calcXpGain boost
+  calcGoldEventGain: (eventType, player) ->
 
-    extra =
-      xp: Math.abs boost
-      realXp: boost
-      percentXp: +(percent).toFixed 3
-
-    message = "#{event.remark} [%realXpxp, ~%percentXp%]"
-
-    @broadcastEvent {message: message, player: player, extra: extra, type: 'exp'}
-
-    player.gainXp boost
-
-    player.emit "event.#{event.type}", player, extra
-
-    callback true
-
-  `/**
-    * This event handles both the blessXp and forsakeXp aliases for parties.
-    *
-    * @name xp
-    * @category Party
-    * @package Events
-  */`
-  doXpParty: (event, player, callback) ->
-    if not event.remark
-      console.error "XP EVENT FAILURE", event
-      return callback false
-
-    message = []
-    for member in player.party.players
-      boost = 0
-      percent = 0
-
-      if (chance.bool {likelihood: player.calculateYesPercent()})
-        percent = Constants.eventEffects[event.type].fail
-        boost = if player.level.getValue() < 100 then Math.floor player.xp.maximum * (percent/100) else 1
-      else
-        min = Constants.eventEffects[event.type].minPercent
-        max = Constants.eventEffects[event.type].maxPercent
-        flux = Constants.eventEffects[event.type].flux
-        step = member.level.maximum / (max - min)
-        steps = Math.floor ((member.level.maximum - member.level.getValue()) / step)
-
-        fluxed = chance.floating {min: -flux, max: flux, fixed: 3}
-
-        percent = min + steps + fluxed
-
-        boost = if player.level.getValue() < 100 then Math.floor player.xp.maximum * (percent/100) else player.level.getValue()
-
-      boost = member.calcXpGain boost
-      member.gainXp boost
-      extra =
-        xp: Math.abs boost
-        realXp: boost
-        percentXp: +(percent).toFixed 3
-      member.emit "event.#{event.type}", member, extra
-
-      if event.type is "blessXpParty"
-        message.push "<player.name>#{member.name}</player.name> gained <event.xp>#{Math.abs boost}</event.xp>xp [~<event.xp>#{+(percent).toFixed 3}</event.xp>%]"
-      else message.push "<player.name>#{member.name}</player.name> lost <event.xp>#{Math.abs boost}</event.xp>xp [~<event.xp>#{+(percent).toFixed 3}</event.xp>%]"
-
-    extra =
-      partyName: player.party.name
-
-    message = "#{MessageCreator.doStringReplace event.remark, player, extra} #{_.str.toSentenceSerial message}."
-
-    @broadcastEvent {message: message, player: player, extra: extra, type: 'exp'}
-
-    for member in player.party.players
-      @broadcastEvent {message: message, player: member, extra: extra, sendMessage: no, type: 'exp'} if member isnt player
-
-    callback true
-
-  `/**
-    * This event handles both the blessGold and forsakeGold aliases.
-    *
-    * @name gold
-    * @category Player
-    * @package Events
-  */`
-  doGold: (event, player, callback) ->
-    if not event.remark
-      console.error "GOLD EVENT FAILURE", event
-      return callback false
-
-    goldTiers = Constants.eventEffects[event.type].amount
+    goldTiers = Constants.eventEffects[eventType].amount
     curGold = player.gold.getValue()
 
     boost = 0
@@ -259,15 +156,97 @@ class EventHandler
       max = Math.max val, 1
       boost = chance.integer min: min, max: max
 
-    if _.isNaN boost
-      console.error "BOOST PRE-CALC IS NaN"
-      boost = 1
+    boost
 
-    boost = player.calcGoldGain boost
+  doYesNo: (event, player, callback) ->
+    #player.emit "yesno"
+    if chance.bool {likelihood: player.calculateYesPercent()}
+      (@broadcastEvent message: event.y, player: player, type: 'miscellaneous') if event.y
+      callback true
+    else
+      (@broadcastEvent message: event.n, player: player, type: 'miscellaneous') if event.n
+      callback false
 
-    if _.isNaN boost
-      console.error "BOOST POST-CALC IS NaN"
-      boost = 1
+  `/**
+    * This event handles both the blessXp and forsakeXp aliases.
+    *
+    * @name xp
+    * @category Player
+    * @package Events
+  */`
+  doXp: (event, player) ->
+    if not event.remark
+      console.error "XP EVENT FAILURE", event
+      return callback false
+
+    boost = player.calcXpGain @calcXpEventGain event.type, player
+
+    extra =
+      xp: Math.abs boost
+      realXp: boost
+      percentXp: +(boost/player.xp.maximum*100).toFixed 3
+
+    message = "#{event.remark} [%realXpxp, ~%percentXp%]"
+
+    @broadcastEvent {message: message, player: player, extra: extra, type: 'exp'}
+
+    player.gainXp boost
+
+    player.emit "event.#{event.type}", player, extra
+
+  `/**
+    * This event handles both the blessXp and forsakeXp aliases for parties.
+    *
+    * @name xp
+    * @category Party
+    * @package Events
+  */`
+  doXpParty: (event, player) ->
+    if not event.remark
+      console.error "XP EVENT FAILURE", event
+      return
+
+    message = []
+    for member in (player.party?.players or [player])
+      boost = member.calcXpGain @calcXpEventGain event.type, member
+      member.gainXp boost
+
+      percent = boost/player.xp.maximum*100
+
+      extra =
+        xp: Math.abs boost
+        realXp: boost
+        percentXp: +(boost/player.xp.maximum*100).toFixed 3
+
+      member.emit "event.#{event.type}", member, extra
+
+      if event.type is "blessXpParty"
+        message.push "<player.name>#{member.name}</player.name> gained <event.xp>#{Math.abs boost}</event.xp>xp [~<event.xp>#{+(percent).toFixed 3}</event.xp>%]"
+      else message.push "<player.name>#{member.name}</player.name> lost <event.xp>#{Math.abs boost}</event.xp>xp [~<event.xp>#{+(percent).toFixed 3}</event.xp>%]"
+
+    extra =
+      partyName: player.party.name
+
+    message = "#{MessageCreator.doStringReplace event.remark, player, extra} #{_.str.toSentenceSerial message}."
+
+    @broadcastEvent {message: message, player: player, extra: extra, type: 'exp'}
+
+    for member in player.party.players
+      @broadcastEvent {message: message, player: member, extra: extra, sendMessage: no, type: 'exp'} if member isnt player
+
+  `/**
+    * This event handles both the blessGold and forsakeGold aliases.
+    *
+    * @name gold
+    * @category Player
+    * @package Events
+  */`
+  doGold: (event, player) ->
+    if not event.remark
+      console.error "GOLD EVENT FAILURE", event
+      return
+
+    boost = player.calcGoldGain @calcGoldEventGain event.type, player
 
     extra =
       gold: Math.abs boost
@@ -280,7 +259,6 @@ class EventHandler
     message = event.remark + " [%realGold gold]"
 
     @broadcastEvent {message: message, player: player, extra: extra, type: 'gold'}
-    callback true
 
   `/**
     * This event handles both the blessGold and forsakeGold aliases for a party.
@@ -298,36 +276,8 @@ class EventHandler
       partyName: player.party.name
 
     message = []
-    for member in player.party.players
-      goldTiers = Constants.eventEffects[event.type].amount
-      curGold = member.gold.getValue()
-
-      boost = 0
-      for i in [0...goldTiers.length]
-        if curGold < Math.abs goldTiers[i]
-          highVal = if not goldTiers[i-1] then 100 else goldTiers[i-1]
-          lowVal = if not goldTiers[i] then 1 else goldTiers[i]
-
-          min = Math.min highVal, lowVal
-          max = Math.max highVal, lowVal
-          boost = chance.integer {min: min, max: max}
-          break
-
-      if not boost
-        val = _.last goldTiers
-        min = Math.min val, 0
-        max = Math.max val, 1
-        boost = chance.integer min: min, max: max
-
-      if _.isNaN boost
-        console.error "BOOST PRE-CALC IS NaN"
-        boost = 1
-
-      boost = member.calcGoldGain boost
-
-      if _.isNaN boost
-        console.error "BOOST POST-CALC IS NaN"
-        boost = 1
+    for member in (player.party?.players or [player])
+      boost = player.calcGoldGain @calcGoldEventGain event.type, player
 
       extra =
         gold: Math.abs boost
