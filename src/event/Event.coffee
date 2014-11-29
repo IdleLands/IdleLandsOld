@@ -1,6 +1,12 @@
 
+chance = new (require "chance")()
+MessageCreator = require "../system/MessageCreator"
+Constants = require "../system/Constants"
+
+_ = require "underscore"
+
 class Event
-  constructor: (@event, @player) ->
+  constructor: (@game, @event, @player) ->
 
   # sendMessage = no implies that you're forwarding the original message to multiple people
   broadcastEvent: (options) ->
@@ -34,7 +40,7 @@ class Event
     player.recentEvents.push event
     player.recentEvents.shift() if player.recentEvents.length > Constants.defaults.player.maxRecentEvents
 
-    @playerEventsDb.insert event, ->
+    @game.eventHandler.playerEventsDb.insert event, ->
 
   calcXpEventGain: (eventType, player) ->
     if (chance.bool {likelihood: player.calculateYesPercent()})

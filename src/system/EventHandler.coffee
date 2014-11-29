@@ -1,5 +1,4 @@
-Chance = require "chance"
-chance = new Chance()
+chance = new (require "chance")()
 
 _ = require "underscore"
 _.str = require "underscore.string"
@@ -39,7 +38,8 @@ class EventHandler
         when 'yesno'
           @doYesNo event, player, callback
         when 'blessXp', 'forsakeXp'
-          @doXp event, player, callback
+          (new allEvents.XpEvent @game, event, player).go()
+
         when 'blessXpParty', 'forsakeXpParty'
           @doXpParty event, player, callback
         when 'blessGold', 'forsakeGold'
@@ -177,7 +177,7 @@ class EventHandler
   doXp: (event, player) ->
     if not event.remark
       console.error "XP EVENT FAILURE", event
-      return callback false
+      return
 
     boost = player.calcXpGain @calcXpEventGain event.type, player
 
@@ -267,10 +267,10 @@ class EventHandler
     * @category Party
     * @package Events
   */`
-  doGoldParty: (event, player, callback) ->
+  doGoldParty: (event, player) ->
     if not event.remark
       console.error "GOLD EVENT FAILURE", event
-      return callback false
+      return
 
     extra =
       partyName: player.party.name
@@ -301,8 +301,6 @@ class EventHandler
     for member in player.party.players
       @broadcastEvent {message: message, player: member, extra: extra, sendMessage: no, type: 'gold'} if member isnt player
 
-    callback true
-
   `/**
     * This event handles being able to find and equip items, or selling them.
     *
@@ -310,10 +308,10 @@ class EventHandler
     * @category Player
     * @package Events
   */`
-  doItem: (event, player, callback) ->
+  doItem: (event, player) ->
     item = @pickValidItem player
     stat = @pickBlessStat item
-    return callback false if not stat
+    return if not stat
 
     val = item[stat] ? 0
 
@@ -330,7 +328,7 @@ class EventHandler
     start = val
     end = val+boost
 
-    return callback false if start is end
+    return if start is end
 
     item[stat] = end
 
@@ -339,8 +337,6 @@ class EventHandler
 
     @broadcastEvent {message: string, player: player, type: 'item-mod'}
     player.emit "event.#{event.type}", player, item, boost
-
-    callback true
 
   doItemEquip: (player, item, messageString) ->
     myItem = _.findWhere player.equipment, {type: item.type}
@@ -364,9 +360,9 @@ class EventHandler
     @broadcastEvent {message: totalString, player: player, extra: extra, type: 'item-find'}
     player.emit "event.findItem", player, item
 
-  doItemEvent: (event, player, item, callback) ->
+  doItemEvent: (event, player, item) ->
     myItem = _.findWhere player.equipment, {type: item.type}
-    return callback false if not myItem
+    return if not myItem
     score = player.calc.itemScore item
     myScore = player.calc.itemScore myItem
     realScore = item.score()
@@ -375,14 +371,12 @@ class EventHandler
 
     if score > myScore and realScore < player.calc.itemFindRange()*rangeBoost and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
       @doItemEquip player, item, event.remark
-      callback true
 
     else
       multiplier = player.calc.itemSellMultiplier item
       value = Math.floor item.score() * multiplier
       player.gainGold value
       player.emit "player.sellItem", player, item, value
-      callback false
 
   `/**
     * This event handles purchasing an item for the player from a wandering merchant.
@@ -391,7 +385,7 @@ class EventHandler
     * @category Player
     * @package Events
   */`
-  doMerchant: (event, player, callback) ->
+  doMerchant: (event, player) ->
     shop = @game.shopGenerator.generateShop player
     extra =
       item: "<event.item.#{shop.item.itemClass}>#{shop.item.getName()}</event.item.#{shop.item.itemClass}>"
@@ -400,7 +394,7 @@ class EventHandler
     string = MessageCreator.doStringReplace event.remark, player, extra
 
     myItem = _.findWhere player.equipment, {type: shop.item.type}
-    return callback false if not myItem
+    return if not myItem
 
     score = player.calc.itemScore shop.item
     myScore = player.calc.itemScore myItem
@@ -408,7 +402,7 @@ class EventHandler
     if player.gold.getValue() < shop.price
       response = MessageCreator.doStringReplace "Unfortunately, %player only has %gold gold, and walked away in disappointment.", player, extra
       @broadcastEvent {message: "#{string} #{response}", player: player, type: 'shop'}
-      callback false
+
     else if score > myScore and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
       response = MessageCreator.doStringReplace "%player gladly buys %item for %shopGold gold! What a deal!", player, extra
 
@@ -428,17 +422,16 @@ class EventHandler
       @broadcastEvent {message: totalString, player: player, extra: extra, type: 'shop'}
       player.emit "event.merchant", player, extra
       player.gold.sub shop.price
-      callback true
+
     else
       response = MessageCreator.doStringReplace "However, %player decides that %item is useless and leaves in a huff!", player, extra
       @broadcastEvent {message: "#{string} #{response}", player: player, type: 'shop'}
-      callback false
 
-  doFindItem: (event, player, callback) ->
+  doFindItem: (event, player) ->
     item = @game.equipmentGenerator.generateItem null, player.calc.luckBonus()
     return if not item
 
-    @doItemEvent event, player, item, callback
+    @doItemEvent event, player, item
 
   `/**
     * This event handles creating a party for the player.
@@ -447,10 +440,10 @@ class EventHandler
     * @category Player
     * @package Events
   */`
-  doParty: (event, player, callback) ->
-    return callback false if player.party or @game.inBattle
+  doParty: (event, player) ->
+    return if player.party or @game.inBattle
     newParty = @game.createParty player
-    return callback false if not newParty?.name
+    return if not newParty?.name
 
     newPartyPlayers = _.without newParty.players, player
 
@@ -461,8 +454,6 @@ class EventHandler
     message = @broadcastEvent {message: event.remark, player: player, extra: extra, type: 'party'}
     _.each newPartyPlayers, (newMember) => @broadcastEvent {message: message, player: newMember, extra: extra, sendMessage: no, type: 'party'}
 
-    callback true
-
   `/**
     * This event handles building a monster encounter for a player.
     *
@@ -470,7 +461,7 @@ class EventHandler
     * @category Player
     * @package Events
   */`
-  doMonsterBattle: (event, player, callback) ->
+  doMonsterBattle: (event, player) ->
     event.player = player
 
     new Party @game, player if not player.party
@@ -483,8 +474,6 @@ class EventHandler
     @game.startBattle [monsterParty, player.party], event
     player.emit "event.monsterbattle", player
 
-    callback true
-
   `/**
     * This event handles both the enchant and tinker aliases.
     *
@@ -492,10 +481,10 @@ class EventHandler
     * @category Player
     * @package Events
   */`
-  doEnchant: (event, player, callback) ->
+  doEnchant: (event, player) ->
     item = _.sample _.reject player.equipment, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel
 
-    return callback false if (not item) or (item.name is "empty")
+    return if (not item) or (item.name is "empty")
 
     if event.type is 'enchant'
       stat = @pickStatNotPresentOnItem item
@@ -515,8 +504,6 @@ class EventHandler
 
     @broadcastEvent {message: string, player: player, extra: extra, type: 'item-enchant'}
     player.emit "event.#{event.type}", player, item, item.enchantLevel
-    
-    callback true
 
   `/**
     * This event handles the dreaded switcheroo - flipStat - event.
@@ -525,11 +512,11 @@ class EventHandler
     * @category Player
     * @package Events
   */`
-  doFlipStat: (event, player, callback) ->
+  doFlipStat: (event, player) ->
     item = @pickValidItem player
     stat = @pickStatPresentOnItem item
 
-    return callback false if not stat or item[stat] is 0
+    return if not stat or item[stat] is 0
 
     val = item[stat] ? 0
 
@@ -545,8 +532,6 @@ class EventHandler
 
     @broadcastEvent {message: string, player: player, extra: extra, type: 'item-switcheroo'}
     player.emit "event.flipStat", player, item, stat, val
-
-    callback true
 
   ignoreKeys: ['_calcScore', 'enchantLevel']
   specialStats: ['offense', 'defense', 'prone', 'power', 'silver', 'crit', 'dance', 'deadeye', 'glowing', 'vorpal', 'forsaken', 'sacred', 'aegis']
