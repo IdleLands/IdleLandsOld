@@ -55,6 +55,7 @@ class API
       reload: =>
         @gameInstance.componentDatabase.importAllData()
       setPassword: (identifier, password) =>
+        @gameInstance.playerManager.storePasswordFor identifier, password
 
     event:
       single: (player, eventType, callback) =>
