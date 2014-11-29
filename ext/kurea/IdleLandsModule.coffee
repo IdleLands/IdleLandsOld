@@ -335,6 +335,15 @@ module.exports = (Module) ->
           @reply origin, "Your event is done." if did
           @reply origin, "Your event failed (something weird went wrong)." if not did
 
+      `/**
+        * Reset a password for a player.
+        *
+        * @gmOnly
+        * @syntax !idle-resetpassword "identifier" "newPassword"
+        * @example !idle-resetpassword "local-server/Danret" "my new awesome password"
+        * @category IRC Commands
+        * @package Client
+      */`
       @addRoute 'idle-resetpassword ":identifier" ":newPassword"', "idle.game.gm", (origin, route) =>
         [identifier, password] = [route.params.identifier, route.params.newPassword]
         @gameInstance.playerManager.storePasswordFor identifier, password
