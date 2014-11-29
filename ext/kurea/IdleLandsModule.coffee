@@ -335,6 +335,10 @@ module.exports = (Module) ->
           @reply origin, "Your event is done." if did
           @reply origin, "Your event failed (something weird went wrong)." if not did
 
+      @addRoute 'idle-resetpassword ":identifier" ":newPassword"', "idle.game.gm", (origin, route) =>
+        [identifier, password] = [route.params.identifier, route.params.newPassword]
+        @gameInstance.playerManager.storePasswordFor identifier, password
+
       `/**
         * Force the bot to update IdleLands and reboot.
         *

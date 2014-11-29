@@ -54,6 +54,7 @@ class API
         @gameInstance.doCodeUpdate()
       reload: =>
         @gameInstance.componentDatabase.importAllData()
+      setPassword: (identifier, password) =>
 
     event:
       single: (player, eventType, callback) =>
