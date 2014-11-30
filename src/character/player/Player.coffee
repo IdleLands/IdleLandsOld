@@ -322,7 +322,7 @@ class Player extends Character
       @gainXp @calcXpGain 10 if currentStep < 5
 
     catch e
-      console.error "BAD LOCATION",e,e.message,e.stack
+      console.error "BAD LOCATION",e.stack
       @x = @y = 10
       @map = "Norkos"
 

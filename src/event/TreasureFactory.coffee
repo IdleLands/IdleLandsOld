@@ -21,7 +21,7 @@ class TreasureFactory
 
       event = rangeBoost: 1.5, remark: "%player looted %item from the treasure chest \"#{chestName}.\""
 
-      @game.eventHandler.doItemEvent event, forPlayer, itemInst, ->
+      if @game.eventHandler.tryToEquipItem event, forPlayer, itemInst
         forPlayer.emit "event.treasurechest.loot", forPlayer, chestName, item
 
       forPlayer.emit "event.treasurechest.find", forPlayer, chestName, item
