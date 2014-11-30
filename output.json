@@ -148,6 +148,37 @@
             "endLineNumber": 346,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
+            "example": [
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-resetpassword \"local-server/Danret\" \"my new awesome password\""
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Reset a password for a player."
+            },
+            "gmOnly": {
+                "name": "gmOnly"
+            },
+            "syntax": {
+                "name": "syntax",
+                "basicInfo": "!idle-resetpassword \"identifier\" \"newPassword\""
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "IRC Commands"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Client"
+            }
+        },
+        {
+            "lineNumber": 351,
+            "endLineNumber": 359,
+            "filePath": "ext/kurea/IdleLandsModule.coffee",
+            "fileName": "IdleLandsModule.coffee",
             "desc": {
                 "name": "desc",
                 "basicInfo": "Force the bot to update IdleLands and reboot."
@@ -173,8 +204,8 @@
             }
         },
         {
-            "lineNumber": 350,
-            "endLineNumber": 358,
+            "lineNumber": 363,
+            "endLineNumber": 371,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "desc": {
@@ -202,8 +233,8 @@
             }
         },
         {
-            "lineNumber": 363,
-            "endLineNumber": 371,
+            "lineNumber": 376,
+            "endLineNumber": 384,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "desc": {
@@ -231,8 +262,8 @@
             }
         },
         {
-            "lineNumber": 376,
-            "endLineNumber": 385,
+            "lineNumber": 389,
+            "endLineNumber": 398,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -266,8 +297,8 @@
             }
         },
         {
-            "lineNumber": 390,
-            "endLineNumber": 399,
+            "lineNumber": 403,
+            "endLineNumber": 412,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -301,8 +332,8 @@
             }
         },
         {
-            "lineNumber": 406,
-            "endLineNumber": 415,
+            "lineNumber": 419,
+            "endLineNumber": 428,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -336,8 +367,8 @@
             }
         },
         {
-            "lineNumber": 420,
-            "endLineNumber": 429,
+            "lineNumber": 433,
+            "endLineNumber": 442,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -371,8 +402,8 @@
             }
         },
         {
-            "lineNumber": 436,
-            "endLineNumber": 445,
+            "lineNumber": 449,
+            "endLineNumber": 458,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -406,8 +437,8 @@
             }
         },
         {
-            "lineNumber": 450,
-            "endLineNumber": 459,
+            "lineNumber": 463,
+            "endLineNumber": 472,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -442,8 +473,8 @@
             }
         },
         {
-            "lineNumber": 486,
-            "endLineNumber": 495,
+            "lineNumber": 499,
+            "endLineNumber": 508,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -478,8 +509,8 @@
             }
         },
         {
-            "lineNumber": 512,
-            "endLineNumber": 521,
+            "lineNumber": 525,
+            "endLineNumber": 534,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -514,8 +545,8 @@
             }
         },
         {
-            "lineNumber": 525,
-            "endLineNumber": 534,
+            "lineNumber": 538,
+            "endLineNumber": 547,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -550,8 +581,8 @@
             }
         },
         {
-            "lineNumber": 548,
-            "endLineNumber": 556,
+            "lineNumber": 561,
+            "endLineNumber": 569,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -582,8 +613,8 @@
             }
         },
         {
-            "lineNumber": 570,
-            "endLineNumber": 580,
+            "lineNumber": 583,
+            "endLineNumber": 593,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -622,8 +653,8 @@
             }
         },
         {
-            "lineNumber": 596,
-            "endLineNumber": 604,
+            "lineNumber": 609,
+            "endLineNumber": 617,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -655,8 +686,8 @@
             }
         },
         {
-            "lineNumber": 620,
-            "endLineNumber": 628,
+            "lineNumber": 633,
+            "endLineNumber": 641,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -687,8 +718,8 @@
             }
         },
         {
-            "lineNumber": 643,
-            "endLineNumber": 654,
+            "lineNumber": 656,
+            "endLineNumber": 667,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -731,8 +762,8 @@
             }
         },
         {
-            "lineNumber": 669,
-            "endLineNumber": 678,
+            "lineNumber": 682,
+            "endLineNumber": 691,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -767,8 +798,8 @@
             }
         },
         {
-            "lineNumber": 694,
-            "endLineNumber": 703,
+            "lineNumber": 707,
+            "endLineNumber": 716,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -803,8 +834,8 @@
             }
         },
         {
-            "lineNumber": 719,
-            "endLineNumber": 728,
+            "lineNumber": 732,
+            "endLineNumber": 741,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -1509,6 +1540,36 @@
             "fileName": "Character.coffee",
             "desc": {
                 "name": "desc",
+                "basicInfo": "Absolute adds a static amount of damage to all of your attacks."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "absolute"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "yes",
+                "extendedInfo": "Stacking formula is +1 damage/absolute point"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 214,
+            "endLineNumber": 222,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
                 "basicInfo": "Aegis prevents critical hits."
             },
             "name": {
@@ -1532,8 +1593,8 @@
             }
         },
         {
-            "lineNumber": 214,
-            "endLineNumber": 222,
+            "lineNumber": 225,
+            "endLineNumber": 233,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1562,8 +1623,8 @@
             }
         },
         {
-            "lineNumber": 225,
-            "endLineNumber": 233,
+            "lineNumber": 236,
+            "endLineNumber": 244,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1591,8 +1652,37 @@
             }
         },
         {
-            "lineNumber": 236,
-            "endLineNumber": 244,
+            "lineNumber": 247,
+            "endLineNumber": 255,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Deadeye doubles your chance to overcome the opponents dodge roll."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "deadeye"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "no"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 258,
+            "endLineNumber": 266,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1621,123 +1711,8 @@
             }
         },
         {
-            "lineNumber": 247,
-            "endLineNumber": 254,
-            "filePath": "src/character/base/Character.coffee",
-            "fileName": "Character.coffee",
-            "desc": {
-                "name": "desc",
-                "basicInfo": "Haste allows you to take one additional step per point of haste. You only gain xp for your first 5 steps."
-            },
-            "name": {
-                "name": "name",
-                "basicInfo": "haste"
-            },
-            "stacks": {
-                "name": "stacks",
-                "basicInfo": "yes",
-                "extendedInfo": "Stacking formula is +1 step/haste point"
-            },
-            "category": {
-                "name": "category",
-                "basicInfo": "Equipment Effects"
-            },
-            "package": {
-                "name": "package",
-                "basicInfo": "Item"
-            }
-        },
-        {
-            "lineNumber": 257,
-            "endLineNumber": 265,
-            "filePath": "src/character/base/Character.coffee",
-            "fileName": "Character.coffee",
-            "desc": {
-                "name": "desc",
-                "basicInfo": "Prone gives you the opportunity to stun an opponent when you physically hit them. The chance of a stun happening is 15%."
-            },
-            "name": {
-                "name": "name",
-                "basicInfo": "prone"
-            },
-            "combat": {
-                "name": "combat"
-            },
-            "stacks": {
-                "name": "stacks",
-                "basicInfo": "no"
-            },
-            "category": {
-                "name": "category",
-                "basicInfo": "Equipment Effects"
-            },
-            "package": {
-                "name": "package",
-                "basicInfo": "Item"
-            }
-        },
-        {
-            "lineNumber": 268,
-            "endLineNumber": 276,
-            "filePath": "src/character/base/Character.coffee",
-            "fileName": "Character.coffee",
-            "desc": {
-                "name": "desc",
-                "basicInfo": "Power adds a flat +10% to maximum damage possible."
-            },
-            "name": {
-                "name": "name",
-                "basicInfo": "power"
-            },
-            "combat": {
-                "name": "combat"
-            },
-            "stacks": {
-                "name": "stacks",
-                "basicInfo": "no"
-            },
-            "category": {
-                "name": "category",
-                "basicInfo": "Equipment Effects"
-            },
-            "package": {
-                "name": "package",
-                "basicInfo": "Item"
-            }
-        },
-        {
-            "lineNumber": 279,
-            "endLineNumber": 287,
-            "filePath": "src/character/base/Character.coffee",
-            "fileName": "Character.coffee",
-            "desc": {
-                "name": "desc",
-                "basicInfo": "Offense adds a +10% boost for each of your offensive calculations."
-            },
-            "name": {
-                "name": "name",
-                "basicInfo": "offense"
-            },
-            "combat": {
-                "name": "combat"
-            },
-            "stacks": {
-                "name": "stacks",
-                "basicInfo": "yes",
-                "extendedInfo": "Stacking formula is 10%/offense point"
-            },
-            "category": {
-                "name": "category",
-                "basicInfo": "Equipment Effects"
-            },
-            "package": {
-                "name": "package",
-                "basicInfo": "Item"
-            }
-        },
-        {
-            "lineNumber": 290,
-            "endLineNumber": 298,
+            "lineNumber": 269,
+            "endLineNumber": 277,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1766,17 +1741,73 @@
             }
         },
         {
+            "lineNumber": 280,
+            "endLineNumber": 287,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Haste allows you to take one additional step per point of haste. You only gain xp for your first 5 steps."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "haste"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "yes",
+                "extendedInfo": "Stacking formula is +1 step/haste point"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 290,
+            "endLineNumber": 298,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Lethal makes all of your critical hits even more critical, so they deal 150% damage."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "lethal"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "no"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
             "lineNumber": 301,
             "endLineNumber": 309,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
                 "name": "desc",
-                "basicInfo": "Deadeye doubles your chance to overcome the opponents dodge roll."
+                "basicInfo": "Poison is a small DoT that does damage based on the attackers wisdom."
             },
             "name": {
                 "name": "name",
-                "basicInfo": "deadeye"
+                "basicInfo": "poison"
             },
             "combat": {
                 "name": "combat"
@@ -1797,6 +1828,153 @@
         {
             "lineNumber": 312,
             "endLineNumber": 320,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Power adds a flat +10% to maximum damage possible."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "power"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "no"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 323,
+            "endLineNumber": 331,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Prone gives you the opportunity to stun an opponent when you physically hit them. The chance of a stun happening is 15%."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "prone"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "no"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 334,
+            "endLineNumber": 342,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Offense adds a +10% boost for each of your offensive calculations."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "offense"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "yes",
+                "extendedInfo": "Stacking formula is 10%/offense point"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 345,
+            "endLineNumber": 353,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Royal adds +1% xp gain at the end of combat. It also can go negative, which lowers your xp gain cap at the end of combat!"
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "royal"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "yes",
+                "extendedInfo": "Stacking formula is 1%/royal point"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 356,
+            "endLineNumber": 364,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Shatter has a chance to destroy the opponents defenses for a few turns."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "shatter"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "no"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 367,
+            "endLineNumber": 375,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1824,8 +2002,96 @@
             }
         },
         {
-            "lineNumber": 323,
-            "endLineNumber": 331,
+            "lineNumber": 378,
+            "endLineNumber": 386,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Sturdy allows you to survive a fatal attack with 1 hp."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "sturdy"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "no"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 389,
+            "endLineNumber": 397,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Vampire is a DoT that returns health to the attacker. The duration is determined by how many points of vampire the caster has."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "vampire"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "yes",
+                "extendedInfo": "Stacking formula is 1 turn/vampire point"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 400,
+            "endLineNumber": 408,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Venom is a small DoT that does a static percentage of the victims health as damage."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "venom"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "no"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 411,
+            "endLineNumber": 419,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1853,8 +2119,8 @@
             }
         },
         {
-            "lineNumber": 334,
-            "endLineNumber": 342,
+            "lineNumber": 422,
+            "endLineNumber": 430,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1879,8 +2145,34 @@
             }
         },
         {
-            "lineNumber": 344,
-            "endLineNumber": 351,
+            "lineNumber": 432,
+            "endLineNumber": 439,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Limitless allows an item to exceed the enchantment level cap of 10."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "limitless"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "no"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 441,
+            "endLineNumber": 448,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1905,8 +2197,8 @@
             }
         },
         {
-            "lineNumber": 353,
-            "endLineNumber": 360,
+            "lineNumber": 450,
+            "endLineNumber": 457,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2443,7 +2735,7 @@
                 {
                     "name": "statPerLevel",
                     "type": "luck",
-                    "basicInfo": "4"
+                    "basicInfo": "13"
                 }
             ],
             "desc": {
@@ -3155,8 +3447,8 @@
             }
         },
         {
-            "lineNumber": 4,
-            "endLineNumber": 11,
+            "lineNumber": 5,
+            "endLineNumber": 12,
             "filePath": "src/character/personalities/DPS.coffee",
             "fileName": "DPS.coffee",
             "prerequisite": [
@@ -3724,8 +4016,8 @@
             }
         },
         {
-            "lineNumber": 4,
-            "endLineNumber": 16,
+            "lineNumber": 5,
+            "endLineNumber": 17,
             "filePath": "src/character/personalities/Magical.coffee",
             "fileName": "Magical.coffee",
             "prerequisite": [
@@ -3774,8 +4066,8 @@
             }
         },
         {
-            "lineNumber": 4,
-            "endLineNumber": 11,
+            "lineNumber": 5,
+            "endLineNumber": 12,
             "filePath": "src/character/personalities/Medic.coffee",
             "fileName": "Medic.coffee",
             "prerequisite": [
@@ -3896,8 +4188,8 @@
             }
         },
         {
-            "lineNumber": 4,
-            "endLineNumber": 16,
+            "lineNumber": 5,
+            "endLineNumber": 17,
             "filePath": "src/character/personalities/Physical.coffee",
             "fileName": "Physical.coffee",
             "prerequisite": [
@@ -4056,8 +4348,8 @@
             }
         },
         {
-            "lineNumber": 4,
-            "endLineNumber": 11,
+            "lineNumber": 5,
+            "endLineNumber": 12,
             "filePath": "src/character/personalities/Support.coffee",
             "fileName": "Support.coffee",
             "prerequisite": [
@@ -4150,8 +4442,8 @@
             }
         },
         {
-            "lineNumber": 4,
-            "endLineNumber": 11,
+            "lineNumber": 5,
+            "endLineNumber": 12,
             "filePath": "src/character/personalities/Tank.coffee",
             "fileName": "Tank.coffee",
             "prerequisite": [
@@ -10469,17 +10761,17 @@
             }
         },
         {
-            "lineNumber": 125,
-            "endLineNumber": 131,
-            "filePath": "src/system/EventHandler.coffee",
-            "fileName": "EventHandler.coffee",
+            "lineNumber": 6,
+            "endLineNumber": 12,
+            "filePath": "src/event/singles/EnchantEvent.coffee",
+            "fileName": "EnchantEvent.coffee",
             "desc": {
                 "name": "desc",
-                "basicInfo": "This event handles both the blessXp and forsakeXp aliases."
+                "basicInfo": "This event handles both the enchant and tinker aliases, which add new stats to an item."
             },
             "name": {
                 "name": "name",
-                "basicInfo": "xp"
+                "basicInfo": "Enchant"
             },
             "category": {
                 "name": "category",
@@ -10491,21 +10783,21 @@
             }
         },
         {
-            "lineNumber": 173,
-            "endLineNumber": 179,
-            "filePath": "src/system/EventHandler.coffee",
-            "fileName": "EventHandler.coffee",
+            "lineNumber": 4,
+            "endLineNumber": 10,
+            "filePath": "src/event/singles/FindItemEvent.coffee",
+            "fileName": "FindItemEvent.coffee",
             "desc": {
                 "name": "desc",
-                "basicInfo": "This event handles both the blessXp and forsakeXp aliases for parties."
+                "basicInfo": "This event handles equipping items, finding items, and selling items."
             },
             "name": {
                 "name": "name",
-                "basicInfo": "xp"
+                "basicInfo": "FindItem"
             },
             "category": {
                 "name": "category",
-                "basicInfo": "Party"
+                "basicInfo": "Player"
             },
             "package": {
                 "name": "package",
@@ -10513,17 +10805,39 @@
             }
         },
         {
-            "lineNumber": 230,
-            "endLineNumber": 236,
-            "filePath": "src/system/EventHandler.coffee",
-            "fileName": "EventHandler.coffee",
+            "lineNumber": 4,
+            "endLineNumber": 10,
+            "filePath": "src/event/singles/FlipStatEvent.coffee",
+            "fileName": "FlipStatEvent.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This event handles the dreaded switcheroo - flipStat - event."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Switcheroo"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Player"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Events"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 10,
+            "filePath": "src/event/singles/GoldEvent.coffee",
+            "fileName": "GoldEvent.coffee",
             "desc": {
                 "name": "desc",
                 "basicInfo": "This event handles both the blessGold and forsakeGold aliases."
             },
             "name": {
                 "name": "name",
-                "basicInfo": "gold"
+                "basicInfo": "Gold"
             },
             "category": {
                 "name": "category",
@@ -10535,17 +10849,17 @@
             }
         },
         {
-            "lineNumber": 285,
-            "endLineNumber": 291,
-            "filePath": "src/system/EventHandler.coffee",
-            "fileName": "EventHandler.coffee",
+            "lineNumber": 6,
+            "endLineNumber": 12,
+            "filePath": "src/event/singles/GoldPartyEvent.coffee",
+            "fileName": "GoldPartyEvent.coffee",
             "desc": {
                 "name": "desc",
                 "basicInfo": "This event handles both the blessGold and forsakeGold aliases for a party."
             },
             "name": {
                 "name": "name",
-                "basicInfo": "gold"
+                "basicInfo": "Gold"
             },
             "category": {
                 "name": "category",
@@ -10557,17 +10871,17 @@
             }
         },
         {
-            "lineNumber": 356,
-            "endLineNumber": 362,
-            "filePath": "src/system/EventHandler.coffee",
-            "fileName": "EventHandler.coffee",
+            "lineNumber": 8,
+            "endLineNumber": 14,
+            "filePath": "src/event/singles/ItemModEvent.coffee",
+            "fileName": "ItemModEvent.coffee",
             "desc": {
                 "name": "desc",
-                "basicInfo": "This event handles being able to find and equip items, or selling them."
+                "basicInfo": "This event handles blessing or forsaking items."
             },
             "name": {
                 "name": "name",
-                "basicInfo": "findItem"
+                "basicInfo": "ItemMod"
             },
             "category": {
                 "name": "category",
@@ -10579,10 +10893,10 @@
             }
         },
         {
-            "lineNumber": 437,
-            "endLineNumber": 443,
-            "filePath": "src/system/EventHandler.coffee",
-            "fileName": "EventHandler.coffee",
+            "lineNumber": 8,
+            "endLineNumber": 14,
+            "filePath": "src/event/singles/MerchantEvent.coffee",
+            "fileName": "MerchantEvent.coffee",
             "desc": {
                 "name": "desc",
                 "basicInfo": "This event handles purchasing an item for the player from a wandering merchant."
@@ -10601,10 +10915,32 @@
             }
         },
         {
-            "lineNumber": 493,
-            "endLineNumber": 499,
-            "filePath": "src/system/EventHandler.coffee",
-            "fileName": "EventHandler.coffee",
+            "lineNumber": 5,
+            "endLineNumber": 11,
+            "filePath": "src/event/singles/MonsterBattleEvent.coffee",
+            "fileName": "MonsterBattleEvent.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This event handles building a monster encounter for a player."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "MonsterBattle"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Player"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Events"
+            }
+        },
+        {
+            "lineNumber": 5,
+            "endLineNumber": 11,
+            "filePath": "src/event/singles/PartyEvent.coffee",
+            "fileName": "PartyEvent.coffee",
             "desc": {
                 "name": "desc",
                 "basicInfo": "This event handles creating a party for the player."
@@ -10623,17 +10959,17 @@
             }
         },
         {
-            "lineNumber": 516,
-            "endLineNumber": 522,
-            "filePath": "src/system/EventHandler.coffee",
-            "fileName": "EventHandler.coffee",
+            "lineNumber": 4,
+            "endLineNumber": 10,
+            "filePath": "src/event/singles/XpEvent.coffee",
+            "fileName": "XpEvent.coffee",
             "desc": {
                 "name": "desc",
-                "basicInfo": "This event handles building a monster encounter for a player."
+                "basicInfo": "This event handles both the blessXp and forsakeXp aliases."
             },
             "name": {
                 "name": "name",
-                "basicInfo": "battle"
+                "basicInfo": "XP"
             },
             "category": {
                 "name": "category",
@@ -10645,43 +10981,21 @@
             }
         },
         {
-            "lineNumber": 538,
-            "endLineNumber": 544,
-            "filePath": "src/system/EventHandler.coffee",
-            "fileName": "EventHandler.coffee",
+            "lineNumber": 6,
+            "endLineNumber": 12,
+            "filePath": "src/event/singles/XpPartyEvent.coffee",
+            "fileName": "XpPartyEvent.coffee",
             "desc": {
                 "name": "desc",
-                "basicInfo": "This event handles both the enchant and tinker aliases."
+                "basicInfo": "This event handles both the blessXp and forsakeXp aliases for parties."
             },
             "name": {
                 "name": "name",
-                "basicInfo": "enchant"
+                "basicInfo": "XP"
             },
             "category": {
                 "name": "category",
-                "basicInfo": "Player"
-            },
-            "package": {
-                "name": "package",
-                "basicInfo": "Events"
-            }
-        },
-        {
-            "lineNumber": 571,
-            "endLineNumber": 577,
-            "filePath": "src/system/EventHandler.coffee",
-            "fileName": "EventHandler.coffee",
-            "desc": {
-                "name": "desc",
-                "basicInfo": "This event handles the dreaded switcheroo - flipStat - event."
-            },
-            "name": {
-                "name": "name",
-                "basicInfo": "flipStat"
-            },
-            "category": {
-                "name": "category",
-                "basicInfo": "Player"
+                "basicInfo": "Party"
             },
             "package": {
                 "name": "package",
@@ -10689,11 +11003,11 @@
             }
         }
     ],
-    "startTime": 1417140583001,
-    "endTime": 1417140583053,
+    "startTime": 1417366742021,
+    "endTime": 1417366742072,
     "git": {
-        "short": "928ed08",
-        "long": "928ed087d40e14dab2eba8a638cae1531d647d97",
+        "short": "6c68285",
+        "long": "6c6828577572865c2af7b1c164d94d525dd5db74",
         "branch": "master",
         "tag": "0.5.0"
     },
