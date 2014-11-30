@@ -36,8 +36,8 @@
 "red-eyed programmer"   zone=town level=32 class=Bitomancer int=300 dex=150 agi=150
 "serial killer"         zone=town level=35 class=Rogue str=325 dex=325 con=50 int=50
 "metalhead"             zone=town level=40 str=550 dex=550 con=350
-"hivemind"              zone=town level=50 class=Bitomancer int=600 con=600 wis=600
-"internetizen"          zone=town level=60 class=Bard wis=1500 int=1500
+"hivemind"              zone=town level=50 class=Bitomancer int=2000 con=600 wis=600
+"internetizen"          zone=town level=60 class=Bard wis=3000 int=3000
 
 # alliterate creatures
 "energetic evangelist"      zone=town   level=4     class=Bard int=10 wis=10 luck=5
@@ -57,20 +57,20 @@
 "goofy gopher"              zone=town   level=48    wis=300 int=3000 luck=40 agi=200
 "slippery seal"             zone=town   level=52    agi=2000
 "gelatinous jabberwocky"    zone=forest level=56    agi=500 dex=500 con=1000
-"disgruntled developer"     zone=town   level=58    class=Bitomancer agi=500 dex=500 int=1500
-"diaphanous drake"          zone=forest level=60
-"ornery ocelot"             zone=forest level=64
-"gory giraffe"              zone=forest level=68
-"daring duck"               zone=town   level=72
-"horny hornet"              zone=town   level=76
-"malicious meerkat"         zone=town   level=80
-"never-narwhal"             zone=water  level=84
-"intrepid iguana"           zone=forest level=88
-"furious fawn"              zone=forest level=92
-"karmic koala"              zone=forest level=96
-"herping heron"             zone=forest level=100
-"derping deer"              zone=forest level=104
-"fascist fauna"             zone=forest level=120
+"disgruntled developer"     zone=town   level=58    class=Bitomancer agi=500 dex=1500 int=1500
+"diaphanous drake"          zone=forest level=60    str=3000 dex=3000 agi=1000
+"ornery ocelot"             zone=forest level=64    agi=5000 con=2000
+"gory giraffe"              zone=forest level=68    str=10000
+"daring duck"               zone=town   level=72    dex=3000 agi=3000 wis=-1000 int=-1000 con=2000
+"horny hornet"              zone=town   level=76    agi=20000
+"malicious meerkat"         zone=town   level=80    agi=4000 dex=4000 str=4000 con=1000
+"never-narwhal"             zone=water  level=84    str=10000 water=10000 dex=10000 agi=-2000
+"intrepid iguana"           zone=forest level=88    con=3000 dex=3000 agi=7000 str=2000
+"furious fawn"              zone=forest level=92    str=10000 dex=5000 con=5000
+"karmic koala"              zone=forest level=96    int=5000 agi=5000 con=5000 str=10000
+"herping heron"             zone=forest level=100   water=100000 int=30000
+"derping deer"              zone=forest level=104   agi=-4000 str=30000 dex=-2000 int=-1000 con=2000
+"fascist fauna"             zone=forest level=120   agi=3000 dex=3000 wis=3000 con=3000 luck=3000 int=3000 str=3000
 
 # water monsters
 "rubber duck"       zone=water level=1 str=1 dex=1
@@ -83,8 +83,8 @@
 "laser shark"       zone=water level=37 str=500 dex=500 agi=300
 "geoduck"           zone=water level=55 class=Druid con=1300 wis=1500 earth=500
 "jellyfish"         zone=water level=62 con=100 dex=1200 wis=300 agi=400 str=1500 poison=1
-"kraken"            zone=water level=87 class=Mage water=1000 int=4000 con=3000 hp=10000
-"hydra"             zone=swamp level=99 class=Fighter str=4000 con=4500 dex=3000 hp=100000
+"kraken"            zone=water level=87 class=Mage water=1000 int=4000 con=3000 hp=10000 dex=2000 wis=4000
+"hydra"             zone=swamp level=99 class=Fighter str=4500 con=4500 dex=3000 hp=100000 wis=5000
 
 # forest animals
 "mouse"                     zone=forest level=1 str=1 dodge=1
@@ -137,8 +137,8 @@
 "vampire"                   zone=town level=55 str=2000 int=1000 dex=1000
 "vampyre"                   zone=town level=55 class=Mage int=1000 fire=5000
 "abomination"               zone=town level=65 class=Barbarian str=2000 con=2000 dex=1000 agi=1000 hp=10000
-"wandering spirit"          zone=town level=75
-"vampiric gun-slinging samurai space pirate ninja robot schoolgirl" class=Random level=100
+"wandering spirit"          zone=town level=75 class=Rogue str=3000 dex=5000 agi=5000
+"vampiric gun-slinging samurai space pirate ninja robot schoolgirl" class=Random level=100 agi=2000 dex=2000 wis=2000 con=2000 luck=2000 int=2000 str=2000
 
 # extraplanar entities
 "satanist"                  zone=other level=3
@@ -155,9 +155,9 @@
 "incubus"                   zone=other level=63
 "succubus"                  zone=other level=69
 "deity avatar"              zone=other level=75
-"anonymous"                 zone=other level=75 class=Bitomancer
-"demigod"                   zone=other level=81
-"incubator"                 zone=other level=120
+"anonymous"                 zone=other level=77 class=Bitomancer str=4500 con=4500 int=2000
+"demigod"                   zone=other level=81 class=Random agi=1000 dex=1000 wis=1000 con=1000 luck=1000 int=1000 str=1000
+"incubator"                 zone=other level=120 class=Mage int=40000
 
 # other civilized beings
 "will-o-wisp"               level=3 hp=100
@@ -182,7 +182,7 @@
 "behemoth"                  level=70 hp=6500 prone=1 str=3000 con=1500 dex=1000
 "silver dragon"             level=75 hp=7000 class=Mage prone=1 thunder=1000
 "demogorgon"                level=85 hp=9000 prone=1
-"party-hat-wearing dragon"  level=105 hp=10000 class=Mage str=3000 fire=4000 agi=2000
+"party-hat-wearing dragon"  level=105 hp=10000 class=Mage str=6000 fire=4000 agi=2000 con=2000 wis=5000 prone=1 silver=1
 
 # ancient beings
 "laser cannon"                      level=35
