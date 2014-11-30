@@ -64,21 +64,21 @@ class Equipment
     hpregenPercent: 10
     mpregenPercent: 6
 
-    enchantLevel: -25
+    enchantLevel: -125
 
     luckPercent: 20
 
-    crit: 20
-    dodge: 20
-    aegis: 20
-    prone: 20
-    power: 20
-    silver: 20
-    deadeye: 20
-    defense: 20
-    glowing: 20
-    sacred: -100
-    forsaken: 100
+    crit: 100
+    dodge: 100
+    aegis: 100
+    prone: 100
+    power: 100
+    silver: 100
+    deadeye: 100
+    defense: 100
+    glowing: 100
+    sacred: -150
+    forsaken: 150
     haste: 300
     sturdy: 500
     lethal: 200
