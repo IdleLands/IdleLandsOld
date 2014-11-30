@@ -159,7 +159,7 @@ class Spell
         (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
       else
         oldSpell = _.findWhere player.spellsAffectedBy, baseName: @baseName
-        if oldSpell and @stack is "duration"
+        if false #oldSpell and @stack is "duration"
           oldSpell.turns[player.name] = @calcDuration player
           battleInstance.emitEvents "skill.duration.refresh", "skill.duration.refreshed", @caster, player, skill: oldSpell, turns: oldSpell.turns
 
@@ -209,7 +209,7 @@ class Spell
       casterName: @caster.name
 
     newMessage = MessageCreator.doStringReplace message, @caster, extra
-    @game.currentBattle?.broadcast  newMessage if not @suppressed and not target.fled
+    @game.currentBattle?.broadcast newMessage if not @suppressed and not target.fled
 
   constructor: (@game, @caster, @forcedTargets = null) ->
     @baseName = @name

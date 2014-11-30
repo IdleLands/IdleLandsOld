@@ -85,6 +85,8 @@ class Equipment
     sturdy: 400
     lethal: 200
     shatter: 400
+    poison: 200
+    #venom: 300
 
     sentimentality: 0.4
 

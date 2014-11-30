@@ -241,7 +241,6 @@ class Battle
     message += ", and #{if damage is maxDamage then "CRITICALLY " else ""}hit with %hisher <event.item.#{weapon.itemClass}>#{weapon.getName()}</event.item.#{weapon.itemClass}> for <damage.hp>#{realDamage}</damage.hp> HP #{damageType}"
 
     @takeStatFrom player, target, damage, "physical", "hp"
-    @checkBattleEffects player, target
 
     fatal = no
     if target.hp.atMin()
@@ -252,6 +251,8 @@ class Battle
       message += "!"
 
     battleMessage message, player
+
+    @checkBattleEffects player, target if not fatal
 
     @emitEvents "target", "targeted", player, target
     @emitEvents "attack", "attacked", player, target
@@ -267,6 +268,7 @@ class Battle
     effects = []
     effects.push "Prone"    if attacker.calc.prone() and chance.bool(likelihood: 15)
     effects.push "Shatter"  if attacker.calc.shatter() and chance.bool(likelihood: 10)
+    effects.push "Poison"   if attacker.calc.poison() and chance.bool(likelihood: 20)
     return if effects.length is 0
 
     @doBattleEffects effects, attacker, defender
@@ -277,6 +279,7 @@ class Battle
     eventMap =
       "Prone":   ['effect.prone', 'effect.proned']
       "Shatter": ['effect.shatter', 'effect.shattered']
+      "Poison":  ['effect.poison', 'effect.poisoned']
 
     _.each effects, (effect) =>
       spellProto = findSpell effect

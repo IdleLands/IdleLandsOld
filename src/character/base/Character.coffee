@@ -288,6 +288,17 @@ class Character extends EventEmitter2
       lethal:   -> 0 < @self.calc.stat 'lethal'
 
       #`/**
+      # * Poison is a small DoT that does damage based on the attackers wisdom.
+      # *
+      # * @name poison
+      # * @combat
+      # * @stacks no
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      poison:    -> 0 < @self.calc.stat 'poison'
+
+      #`/**
       # * Power adds a flat +10% to maximum damage possible.
       # *
       # * @name power
