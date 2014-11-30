@@ -1,5 +1,6 @@
 
 Personality = require "../base/Personality"
+Constants = require "../../system/Constants"
 
 `/**
   * This personality makes you never change classes, unless the resulting class is considered Support.
@@ -13,7 +14,7 @@ class Support extends Personality
   constructor: ->
 
   classChangePercent: (potential) ->
-    -100 if not Personality.isSupport potential
+    -100 if not Constants.isSupport potential
 
   @canUse = (player) ->
     player.statistics["combat self skill duration begin"] >= 100

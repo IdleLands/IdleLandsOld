@@ -1,5 +1,6 @@
 
 Personality = require "../base/Personality"
+Constants = require "../../system/Constants"
 
 `/**
   * This personality makes you never change classes, unless the resulting class is considered Physical.
@@ -30,7 +31,7 @@ class Physical extends Personality
     - item.wis*1.5
 
   classChangePercent: (potential) ->
-    -100 if not Personality.isPhysical potential
+    -100 if not Constants.isPhysical potential
 
   @canUse = (player) ->
     player.statistics["event findItem"] >= 50

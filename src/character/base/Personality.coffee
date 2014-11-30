@@ -6,24 +6,6 @@ Constants = require "../../system/Constants"
 
 class Personality
 
-  @isPhysical = (test) ->
-    test in Constants.classCategorization.physical
-
-  @isMagical = (test) ->
-    test in Constants.classCategorization.magical
-
-  @isMedic = (test) ->
-    test in Constants.classCategorization.medic
-
-  @isDPS = (test) ->
-    test in Constants.classCategorization.dps
-
-  @isTank = (test) ->
-    test in Constants.classCategorization.tank
-
-  @isSupport = (test) ->
-    test in Constants.classCategorization.support
-
   constructor: (player) ->
 
   unbind: (player) ->

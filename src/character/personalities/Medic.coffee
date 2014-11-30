@@ -1,5 +1,6 @@
 
 Personality = require "../base/Personality"
+Constants = require "../../system/Constants"
 
 `/**
   * This personality makes you never change classes, unless the resulting class is considered Medic.
@@ -13,7 +14,7 @@ class Medic extends Personality
   constructor: ->
 
   classChangePercent: (potential) ->
-    -100 if not Personality.isMedic potential
+    -100 if not Constants.isMedic potential
 
   @canUse = (player) ->
     player.statistics["calculated total heals given"] >= 50000

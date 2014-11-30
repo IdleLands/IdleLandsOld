@@ -4,7 +4,7 @@ Constants = require "../../system/Constants"
 _ = require "underscore"
 
 slay = (player, enemies) ->
-  targets = _.sortBy enemies.result, (enemy) -> enemy.hp.getValue()
+  targets = _.sortBy (_.compact enemies.result), (enemy) -> enemy.hp.getValue()
   { probability: 200, result: [targets[0]] }
 
 `/**

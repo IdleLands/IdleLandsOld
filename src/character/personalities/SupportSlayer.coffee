@@ -4,7 +4,7 @@ Constants = require "../../system/Constants"
 _ = require "underscore"
 
 slay = (player, enemies) ->
-  targets = _.filter enemies.result, (enemy) -> enemy.professionName in Constants.classCategorization.support
+  targets = _.filter enemies.result, (enemy) -> Constants.isSupport enemy.professionName
   { probability: 300, result: targets }
 
 `/**

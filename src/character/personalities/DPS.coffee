@@ -1,5 +1,6 @@
 
 Personality = require "../base/Personality"
+Constants = require "../../system/Constants"
 
 `/**
   * This personality makes you never change classes, unless the resulting class is considered DPS.
@@ -9,11 +10,12 @@ Personality = require "../base/Personality"
   * @category Personalities
   * @package Player
 */`
+
 class DPS extends Personality
   constructor: ->
 
   classChangePercent: (potential) ->
-    -100 if not Personality.isDPS potential
+    -100 if not Constants.isDPS potential
 
   @canUse = (player) ->
     player.statistics["calculated total damage given"] >= 500000

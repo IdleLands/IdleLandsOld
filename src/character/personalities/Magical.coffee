@@ -1,5 +1,6 @@
 
 Personality = require "../base/Personality"
+Constants = require "../../system/Constants"
 
 `/**
   * This personality makes you never change classes, unless the resulting class is considered Magical.
@@ -30,7 +31,7 @@ class Magical extends Personality
     - item.dex*1.5
 
   classChangePercent: (potential) ->
-    -100 if not Personality.isMagical potential
+    -100 if not Constants.isMagical potential
     
   @canUse = (player) ->
     player.statistics["event findItem"] >= 50

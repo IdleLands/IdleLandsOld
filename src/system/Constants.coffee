@@ -12,6 +12,24 @@ class Constants
   @globalEventTimers = config.globalEventTimers
   @defaults = config.defaults
 
+  @isPhysical = (test) ->
+    test in @classCategorization.physical
+
+  @isMagical = (test) ->
+    test in @classCategorization.magical
+
+  @isMedic = (test) ->
+    test in @classCategorization.medic
+
+  @isDPS = (test) ->
+    test in @classCategorization.dps
+
+  @isTank = (test) ->
+    test in @classCategorization.tank
+
+  @isSupport = (test) ->
+    test in @classCategorization.support
+
   @classCategorization =
     physical: ['Fighter', 'Generalist', 'Barbarian', 'Rogue', 'Jester', 'Pirate', 'Monster']
     magical: ['Mage', 'Cleric', 'Bard', 'SandwichArtist', 'Bitomancer', 'MagicalMonster']

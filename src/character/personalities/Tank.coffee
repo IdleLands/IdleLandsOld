@@ -1,5 +1,6 @@
 
 Personality = require "../base/Personality"
+Constants = require "../../system/Constants"
 
 `/**
   * This personality makes you never change classes, unless the resulting class is considered Tank.
@@ -13,7 +14,7 @@ class Tank extends Personality
   constructor: ->
 
   classChangePercent: (potential) ->
-    -100 if not Personality.isTank potential
+    -100 if not Constants.isTank potential
 
   @canUse = (player) ->
     player.statistics["calculated total damage received"] >= 200000
