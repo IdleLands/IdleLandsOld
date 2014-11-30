@@ -12,7 +12,7 @@ Constants = require "../../system/Constants"
  */`
 class EnchantEvent extends Event
   go: ->
-    item = _.sample _.reject @player.equipment, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel
+    item = _.sample _.reject @player.equipment, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel and not item.limitless
 
     return if (not item) or (item.name is "empty")
 

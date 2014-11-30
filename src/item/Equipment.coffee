@@ -79,8 +79,9 @@ class Equipment
     glowing: 100
     sacred: -150
     forsaken: 150
+    limitless: 500
     haste: 300
-    sturdy: 500
+    sturdy: 400
     lethal: 200
 
     sentimentality: 0.4

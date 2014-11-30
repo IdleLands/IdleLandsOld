@@ -35,3 +35,5 @@
 "lethal" lethal=1
 
 "sturdy" sturdy=1
+
+"limitless" limitless=1

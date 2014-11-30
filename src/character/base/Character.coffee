@@ -364,6 +364,15 @@ class Character extends EventEmitter2
       # */`
 
       #`/**
+      # * Limitless allows an item to exceed the enchantment level cap of 10.
+      # *
+      # * @name limitless
+      # * @stacks no
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+
+      #`/**
       # * Sacred makes it so there is no chance of this item being hit by blessItem, flipStat, or forsakeItem.
       # *
       # * @name sacred
