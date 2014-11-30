@@ -87,6 +87,7 @@ class Equipment
     shatter: 400
     poison: 200
     venom: 300
+    vampire: 350
 
     sentimentality: 0.4
 
