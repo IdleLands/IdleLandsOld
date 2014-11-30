@@ -437,6 +437,8 @@ class Battle
 
     damage -= defender.calc?.damageTaken attacker, damage, type, spell, damageType
 
+    canFireSturdy = defender.hp.gtePercent 10
+
     defender[damageType]?.sub damage
 
     if damageType is "hp"
@@ -444,6 +446,9 @@ class Battle
         @emitEvents "heal", "healed", attacker, defender, type: type, damage: damage
       else
         @emitEvents "damage", "damaged", attacker, defender, type: type, damage: damage
+
+      if defender.calc.sturdy() and defender.hp.atMin() and canFireSturdy
+        defender.hp.set 1
 
       if defender.hp.atMin()
         defender.clearAffectingSpells()

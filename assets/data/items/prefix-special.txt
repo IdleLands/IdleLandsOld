@@ -33,3 +33,5 @@
 "forsaken" forsaken=1
 
 "lethal" lethal=1
+
+"sturdy" sturdy=1

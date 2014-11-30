@@ -234,6 +234,17 @@ class Character extends EventEmitter2
       dance:    -> 0 < @self.calc.stat 'dance'
 
       #`/**
+      # * Deadeye doubles your chance to overcome the opponents dodge roll.
+      # *
+      # * @name deadeye
+      # * @combat
+      # * @stacks no
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      deadeye:  -> 0 < Math.max 0, @self.calc.stat 'deadeye'
+
+      #`/**
       # * Defense adds a +10% boost to all of your defensive calculations.
       # *
       # * @name defense
@@ -243,6 +254,17 @@ class Character extends EventEmitter2
       # * @package Item
       # */`
       defense:  -> Math.max 0, @self.calc.stat 'defense'
+
+      #`/**
+      # * Glowing adds +5% to each of your combat calculations. It's pretty crazy.
+      # *
+      # * @name glowing
+      # * @combat
+      # * @stacks yes (Stacking formula is 5%/glowing point)
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      glowing:  -> Math.max 0, @self.calc.stat 'glowing'
 
       #`/**
       # * Haste allows you to take one additional step per point of haste. You only gain xp for your first 5 steps.
@@ -266,17 +288,6 @@ class Character extends EventEmitter2
       lethal:   -> 0 < @self.calc.stat 'lethal'
 
       #`/**
-      # * Prone gives you the opportunity to stun an opponent when you physically hit them. The chance of a stun happening is 15%.
-      # *
-      # * @name prone
-      # * @combat
-      # * @stacks no
-      # * @category Equipment Effects
-      # * @package Item
-      # */`
-      prone:    -> 0 < @self.calc.stat 'prone'
-
-      #`/**
       # * Power adds a flat +10% to maximum damage possible.
       # *
       # * @name power
@@ -286,6 +297,17 @@ class Character extends EventEmitter2
       # * @package Item
       # */`
       power:    -> 0 < @self.calc.stat 'power'
+
+      #`/**
+      # * Prone gives you the opportunity to stun an opponent when you physically hit them. The chance of a stun happening is 15%.
+      # *
+      # * @name prone
+      # * @combat
+      # * @stacks no
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      prone:    -> 0 < @self.calc.stat 'prone'
 
       #`/**
       # * Offense adds a +10% boost for each of your offensive calculations.
@@ -299,28 +321,6 @@ class Character extends EventEmitter2
       offense:  -> Math.max 0, @self.calc.stat 'offense'
 
       #`/**
-      # * Glowing adds +5% to each of your combat calculations. It's pretty crazy.
-      # *
-      # * @name glowing
-      # * @combat
-      # * @stacks yes (Stacking formula is 5%/glowing point)
-      # * @category Equipment Effects
-      # * @package Item
-      # */`
-      glowing:  -> Math.max 0, @self.calc.stat 'glowing'
-
-      #`/**
-      # * Deadeye doubles your chance to overcome the opponents dodge roll.
-      # *
-      # * @name deadeye
-      # * @combat
-      # * @stacks no
-      # * @category Equipment Effects
-      # * @package Item
-      # */`
-      deadeye:  -> 0 < Math.max 0, @self.calc.stat 'deadeye'
-
-      #`/**
       # * Silver increases your minimum damage range by +10%.
       # *
       # * @name silver
@@ -330,6 +330,17 @@ class Character extends EventEmitter2
       # * @package Item
       # */`
       silver:   -> 0 < @self.calc.stat 'silver'
+
+      #`/**
+      # * Sturdy allows you to survive a fatal attack with 1 hp.
+      # *
+      # * @name sturdy
+      # * @combat
+      # * @stacks no
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      sturdy:  -> Math.max 0, @self.calc.stat 'sturdy'
 
       #`/**
       # * Vorpal increases your minimum and maximum damage by +50%

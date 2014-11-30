@@ -80,6 +80,8 @@ class Equipment
     sacred: -100
     forsaken: 100
     haste: 300
+    sturdy: 500
+    lethal: 200
 
     sentimentality: 0.4
 
