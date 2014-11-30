@@ -332,6 +332,17 @@ class Character extends EventEmitter2
       royal:  -> @self.calc.stat 'royal'
 
       #`/**
+      # * Shatter has a chance to destroy the opponents defenses for a few turns.
+      # *
+      # * @name shatter
+      # * @combat
+      # * @stacks no
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      shatter:   -> 0 < @self.calc.stat 'shatter'
+
+      #`/**
       # * Silver increases your minimum damage range by +10%.
       # *
       # * @name silver

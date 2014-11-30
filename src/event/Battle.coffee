@@ -265,7 +265,8 @@ class Battle
   checkBattleEffects: (attacker, defender) ->
 
     effects = []
-    effects.push "Prone" if attacker.calc.prone() and chance.bool(likelihood: 15)
+    effects.push "Prone"    if attacker.calc.prone() and chance.bool(likelihood: 15)
+    effects.push "Shatter"  if attacker.calc.shatter() and chance.bool(likelihood: 10)
     return if effects.length is 0
 
     @doBattleEffects effects, attacker, defender
@@ -274,7 +275,8 @@ class Battle
     findSpell = (name) => _.findWhere @game.spellManager.spells, name: name
 
     eventMap =
-      "Prone": ['effect.prone', 'effect.proned']
+      "Prone":   ['effect.prone', 'effect.proned']
+      "Shatter": ['effect.shatter', 'effect.shattered']
 
     _.each effects, (effect) =>
       spellProto = findSpell effect

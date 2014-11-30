@@ -40,3 +40,5 @@
 
 "royal" royal=1
 "usurped" royal=-1
+
+"shattering" shatter=1

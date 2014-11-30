@@ -84,6 +84,7 @@ class Equipment
     haste: 300
     sturdy: 400
     lethal: 200
+    shatter: 400
 
     sentimentality: 0.4
 
