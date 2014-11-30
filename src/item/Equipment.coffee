@@ -80,6 +80,7 @@ class Equipment
     sacred: -150
     forsaken: 150
     limitless: 500
+    royal: 200
     haste: 300
     sturdy: 400
     lethal: 200

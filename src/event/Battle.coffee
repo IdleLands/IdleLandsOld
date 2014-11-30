@@ -339,7 +339,7 @@ class Battle
     # winning player xp distribution
     _.each combatWinners, (player) ->
       return if player.isMonster
-      basePct = chance.integer min: 1, max: 6
+      basePct = chance.integer min: 1, max: Math.max 1, 6+player.calc.royal()
       basePctValue = Math.floor player.xp.maximum * (basePct/100)
 
       xpGain = player.personalityReduce 'combatEndXpGain', [player, deadVariables], basePctValue

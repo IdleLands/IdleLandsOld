@@ -321,6 +321,17 @@ class Character extends EventEmitter2
       offense:  -> Math.max 0, @self.calc.stat 'offense'
 
       #`/**
+      # * Royal adds +1% xp gain at the end of combat. It also can go negative, which lowers your xp gain cap at the end of combat!
+      # *
+      # * @name royal
+      # * @combat
+      # * @stacks yes (Stacking formula is 1%/royal point)
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      royal:  -> @self.calc.stat 'royal'
+
+      #`/**
       # * Silver increases your minimum damage range by +10%.
       # *
       # * @name silver

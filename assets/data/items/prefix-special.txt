@@ -37,3 +37,6 @@
 "sturdy" sturdy=1
 
 "limitless" limitless=1
+
+"royal" royal=1
+"usurped" royal=-1
