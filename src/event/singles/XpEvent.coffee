@@ -1,6 +1,13 @@
 
 Event = require "../Event"
 
+`/**
+ * This event handles both the blessXp and forsakeXp aliases.
+ *
+ * @name XP
+ * @category Player
+ * @package Events
+ */`
 class XpEvent extends Event
   go: ->
     if not @event.remark

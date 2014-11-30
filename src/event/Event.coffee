@@ -8,40 +8,6 @@ _ = require "underscore"
 class Event
   constructor: (@game, @event, @player) ->
 
-  # sendMessage = no implies that you're forwarding the original message to multiple people
-  broadcastEvent: (options) ->
-    {message, player, extra, sendMessage, type, link} = options
-    sendMessage = yes if _.isUndefined sendMessage
-    extra = {} if not extra
-
-    if sendMessage
-      message = MessageCreator.doStringReplace message, player, extra
-      @game.broadcast MessageCreator.genericMessage message
-
-    stripped = MessageCreator._replaceMessageColors message
-
-    if link
-      player.pushbulletSend extra.linkTitle, link
-    else player.pushbulletSend stripped
-    @addEventToDb stripped, player, type, extra
-
-    message
-
-  addEventToDb: (message, player, type, extra = {}) ->
-
-    event =
-      createdAt: new Date()
-      player: player.name
-      message: message
-      type: type
-      extra: extra
-
-    player.recentEvents = [] if not player.recentEvents
-    player.recentEvents.push event
-    player.recentEvents.shift() if player.recentEvents.length > Constants.defaults.player.maxRecentEvents
-
-    @game.eventHandler.playerEventsDb.insert event, ->
-
   calcXpEventGain: (eventType, player) ->
     if (chance.bool {likelihood: player.calculateYesPercent()})
       percent = Constants.eventEffects[eventType].fail
@@ -81,5 +47,56 @@ class Event
       min = Math.min val, 0
       max = Math.max val, 1
       boost = chance.integer min: min, max: max
+
+  ignoreKeys: ['_calcScore', 'enchantLevel']
+
+  specialStats: ['offense', 'defense', 'prone', 'power', 'silver', 'crit', 'dance', 'deadeye', 'glowing', 'vorpal', 'forsaken', 'sacred', 'aegis']
+
+  t0: ['int', 'str', 'dex', 'con', 'wis', 'agi']
+  t1: ['intPercent', 'strPercent', 'conPercent', 'wisPercent', 'agiPercent']
+  t2: ['gold', 'xp', 'hp', 'mp']
+  t3: ['goldPercent', 'xpPercent', 'hpPercent', 'mpPercent', 'luck']
+  t4: ['luckPercent']
+
+  allValidStats: -> @t0.concat @t1.concat @t2.concat @t3.concat @t4
+
+  pickStatPresentOnItem: (item, base = @allValidStats()) ->
+    nonZeroStats = _.reject (_.keys item), (stat) -> item[stat] is 0 or _.isNaN item[stat]
+    statsInBoth = _.intersection base, nonZeroStats
+    _.sample statsInBoth
+
+  pickStatNotPresentOnItem: (item, base = @allValidStats()) ->
+    zeroStats = _.filter (_.keys item), (stat) -> item[stat] is 0
+    statsMissing = _.intersection base, zeroStats
+    _.sample statsMissing
+
+  pickSpecialNotPresentOnItem: (item, base = @specialStats) ->
+    statsMissing = _.reject @specialStats, (stat) -> item[stat]?
+    _.sample statsMissing
+
+  pickValidItem: (player) ->
+    items = player.equipment
+    forsaken = _.findWhere items, {forsaken: 1}
+    return forsaken if forsaken
+    nonSacred = _.reject items, (item) -> item.sacred
+    _.sample nonSacred
+
+  pickBlessStat: (item) ->
+    chances = [1, 5, 10, 20, 100]
+    keys = [@t4, @t3, @t2, @t1, @t0]
+    validKeysToChoose = _.compact _.map keys, (keyList) =>
+      @pickStatPresentOnItem item, keyList
+
+    return '' if validKeysToChoose.length is 0
+
+    chances = chances[-validKeysToChoose.length..]
+
+    retStat = ''
+    for i in [0..validKeysToChoose.length]
+      if chance.bool {likelihood: chances[i]}
+        retStat = validKeysToChoose[i]
+        break
+
+    retStat
 
 module.exports = exports = Event
