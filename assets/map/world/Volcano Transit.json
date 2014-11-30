@@ -61,6 +61,24 @@
                  "width":0,
                  "x":192,
                  "y":32
+                }, 
+                {
+                 "gid":1,
+                 "height":0,
+                 "name":"ToFrigri",
+                 "properties":
+                    {
+                     "destName":"Frigri Outskirts",
+                     "destx":"236",
+                     "desty":"49",
+                     "map":"Norkos",
+                     "movementType":"descend"
+                    },
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":176,
+                 "y":192
                 }],
          "opacity":1,
          "type":"objectgroup",
