@@ -42,3 +42,5 @@
 "usurped" royal=-1
 
 "shattering" shatter=1
+
+"poisonous" poison=1
