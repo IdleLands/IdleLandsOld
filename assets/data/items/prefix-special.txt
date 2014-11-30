@@ -31,3 +31,5 @@
 
 "sacred" sacred=1
 "forsaken" forsaken=1
+
+"lethal" lethal=1

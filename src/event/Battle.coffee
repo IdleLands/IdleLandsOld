@@ -229,6 +229,9 @@ class Battle
     if critRoll <= player.calc.criticalChance() and not target.calc.aegis()
       damage = maxDamage
 
+    if damage is maxDamage and player.calc.lethal()
+      damage *= 1.5
+
     damage = target.calcDamageTaken damage
 
     damageType = if damage < 0 then "healing" else "damage"

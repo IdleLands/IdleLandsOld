@@ -255,6 +255,17 @@ class Character extends EventEmitter2
       haste:    -> Math.max 0, @self.calc.stat 'haste'
 
       #`/**
+      # * Lethal makes all of your critical hits even more critical, so they deal 150% damage.
+      # *
+      # * @name lethal
+      # * @combat
+      # * @stacks no
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      lethal:   -> 0 < @self.calc.stat 'lethal'
+
+      #`/**
       # * Prone gives you the opportunity to stun an opponent when you physically hit them. The chance of a stun happening is 15%.
       # *
       # * @name prone
