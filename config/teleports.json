@@ -1,5 +1,11 @@
 {
     "towns": {
+        "frigri": {
+            "map": "Norkos",
+            "formalName": "Frigri",
+            "x": 133,
+            "y": 160
+        },
         "norkos": {
             "map": "Norkos",
             "formalName": "Norkos",
