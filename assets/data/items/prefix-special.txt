@@ -42,5 +42,10 @@
 "usurped" royal=-1
 
 "shattering" shatter=1
+"rebuilding" shatter=-1
 
 "poisonous" poison=1
+"antidote-ing" poison=-1
+
+"venomous" venom=1
+"anti-venom" venom=-1

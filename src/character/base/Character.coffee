@@ -376,6 +376,17 @@ class Character extends EventEmitter2
       sturdy:  -> Math.max 0, @self.calc.stat 'sturdy'
 
       #`/**
+      # * Venom is a small DoT that does a static percentage of the victims health as damage.
+      # *
+      # * @name venom
+      # * @combat
+      # * @stacks no
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      venom:    -> 0 < @self.calc.stat 'venom'
+
+      #`/**
       # * Vorpal increases your minimum and maximum damage by +50%
       # *
       # * @name vorpal

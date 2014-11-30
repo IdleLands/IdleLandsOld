@@ -269,6 +269,7 @@ class Battle
     effects.push "Prone"    if attacker.calc.prone() and chance.bool(likelihood: 15)
     effects.push "Shatter"  if attacker.calc.shatter() and chance.bool(likelihood: 10)
     effects.push "Poison"   if attacker.calc.poison() and chance.bool(likelihood: 20)
+    effects.push "Venom"    if attacker.calc.venom() and chance.bool(likelihood: 5)
     return if effects.length is 0
 
     @doBattleEffects effects, attacker, defender
@@ -280,6 +281,7 @@ class Battle
       "Prone":   ['effect.prone', 'effect.proned']
       "Shatter": ['effect.shatter', 'effect.shattered']
       "Poison":  ['effect.poison', 'effect.poisoned']
+      "Venom":   ['effect.venom', 'effect.venomed']
 
     _.each effects, (effect) =>
       spellProto = findSpell effect
