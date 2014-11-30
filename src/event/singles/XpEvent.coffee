@@ -23,7 +23,7 @@ class XpEvent extends Event
 
     message = "#{@event.remark} [%realXpxp, ~%percentXp%]"
 
-    @broadcastEvent {message: message, player: @player, extra: extra, type: 'exp'}
+    @game.eventHandler.broadcastEvent {message: message, player: @player, extra: extra, type: 'exp'}
 
     @player.gainXp boost
 

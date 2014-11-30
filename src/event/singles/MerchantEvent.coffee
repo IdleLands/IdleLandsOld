@@ -30,7 +30,7 @@ class MerchantEvent extends Event
 
     if @player.gold.getValue() < shop.price
       response = MessageCreator.doStringReplace "Unfortunately, %player only has %gold gold, and walked away in disappointment.", @player, extra
-      @broadcastEvent {message: "#{string} #{response}", player: @player, type: 'shop'}
+      @game.eventHandler.broadcastEvent {message: "#{string} #{response}", player: @player, type: 'shop'}
 
     else if score > myScore and (chance.bool likelihood: @player.calc.itemReplaceChancePercent())
       response = MessageCreator.doStringReplace "%player gladly buys %item for %shopGold gold! What a deal!", @player, extra
@@ -48,12 +48,12 @@ class MerchantEvent extends Event
       normalizedPerceivedScore = if perceivedScoreDiff > 0 then "+#{perceivedScoreDiff}" else perceivedScoreDiff
 
       totalString = "#{string} #{response} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (#{normalizedPerceivedScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
-      @broadcastEvent {message: totalString, player: @player, extra: extra, type: 'shop'}
+      @game.eventHandler.broadcastEvent {message: totalString, player: @player, extra: extra, type: 'shop'}
       @player.emit "event.merchant", @player, extra
       @player.gold.sub shop.price
 
     else
       response = MessageCreator.doStringReplace "However, %player decides that %item is useless and leaves in a huff!", @player, extra
-      @broadcastEvent {message: "#{string} #{response}", player: @player, type: 'shop'}
+      @game.eventHandler.broadcastEvent {message: "#{string} #{response}", player: @player, type: 'shop'}
 
 module.exports = exports = MerchantEvent

@@ -26,6 +26,6 @@ class GoldEvent extends Event
 
     message = @event.remark + " [%realGold gold]"
 
-    @broadcastEvent {message: message, player: @player, extra: extra, type: 'gold'}
+    @game.eventHandler.broadcastEvent {message: message, player: @player, extra: extra, type: 'gold'}
 
 module.exports = exports = GoldEvent

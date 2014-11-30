@@ -40,7 +40,7 @@ class ItemModEvent extends Event
     string = MessageCreator.doStringReplace @event.remark, @player, extra
     string += " [<event.blessItem.stat>#{stat}</event.blessItem.stat> <event.blessItem.value>#{start} -> #{end}</event.blessItem.value>]"
 
-    @broadcastEvent {message: string, player: @player, type: 'item-mod'}
+    @game.eventHandler.broadcastEvent {message: string, player: @player, type: 'item-mod'}
     @player.emit "event.#{@event.type}", @player, item, boost
 
 module.exports = exports = ItemModEvent

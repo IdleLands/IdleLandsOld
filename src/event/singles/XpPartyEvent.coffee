@@ -39,10 +39,10 @@ class XpPartyEvent extends Event
 
     message = "#{MessageCreator.doStringReplace @event.remark, @player, extra} #{_.str.toSentenceSerial message}."
 
-    @broadcastEvent {message: message, player: @player, extra: extra, type: 'exp'}
+    @game.eventHandler.broadcastEvent {message: message, player: @player, extra: extra, type: 'exp'}
 
     for member in @player.party.players
-      @broadcastEvent {message: message, player: member, extra: extra, sendMessage: no, type: 'exp'} if member isnt @player
+      @game.eventHandler.broadcastEvent {message: message, player: member, extra: extra, sendMessage: no, type: 'exp'} if member isnt @player
 
 
 module.exports = exports = XpPartyEvent

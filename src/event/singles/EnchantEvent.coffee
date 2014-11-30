@@ -32,7 +32,7 @@ class EnchantEvent extends Event
 
     string = "#{@event.remark} [<event.enchant.stat>#{stat} = #{boost}</event.enchant.stat> | <event.enchant.boost>+#{item.enchantLevel} -> +#{++item.enchantLevel}</event.enchant.boost>]"
 
-    @broadcastEvent {message: string, player: @player, extra: extra, type: 'item-enchant'}
+    @game.eventHandler.broadcastEvent {message: string, player: @player, extra: extra, type: 'item-enchant'}
     @player.emit "event.#{@event.type}", @player, item, item.enchantLevel
 
 module.exports = exports = EnchantEvent

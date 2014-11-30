@@ -21,7 +21,7 @@ class PartyEvent extends Event
       partyMembers: _.str.toSentence _.pluck newPartyPlayers, 'name'
       partyName: newParty.name
 
-    message = @broadcastEvent {message: @event.remark, player: @player, extra: extra, type: 'party'}
-    _.each newPartyPlayers, (newMember) => @broadcastEvent {message: message, player: newMember, extra: extra, sendMessage: no, type: 'party'}
+    message = @game.eventHandler.broadcastEvent {message: @event.remark, player: @player, extra: extra, type: 'party'}
+    _.each newPartyPlayers, (newMember) => @game.eventHandler.broadcastEvent {message: message, player: newMember, extra: extra, sendMessage: no, type: 'party'}
 
 module.exports = exports = PartyEvent
