@@ -15,7 +15,7 @@ Class = require "./../base/Class"
   * @statPerLevel {int} 0
   * @statPerLevel {wis} 0
   * @statPerLevel {agi} 0
-  * @statPerLevel {luck} 4
+  * @statPerLevel {luck} 13
   * @category Classes
   * @package Player
 */`
@@ -35,7 +35,7 @@ class Jester extends Class
   baseStrPerLevel: 0
   baseIntPerLevel: 0
   baseWisPerLevel: 0
-  baseLuckPerLevel: 4
+  baseLuckPerLevel: 13
 
   itemScore: (player, item) ->
     item.luck*5 +
@@ -86,7 +86,7 @@ class Jester extends Class
 
   eventMod: (player) -> player.level.getValue()
   
-  fleePercent: (player) -> if (player.hasPersonality 'Drunk' and player.hasPersonality 'Brave') then 230 else if (player.hasPersonality 'Drunk' or player.hasPersonality 'Brave') then 130 else 30
+  fleePercent: (player) -> if (player.hasPersonality 'Drunk' and player.hasPersonality 'Brave') then 205 else if (player.hasPersonality 'Drunk' or player.hasPersonality 'Brave') then 105 else 5
 
   load: (player) ->
     super player
