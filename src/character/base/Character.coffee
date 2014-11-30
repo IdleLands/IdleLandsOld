@@ -201,6 +201,17 @@ class Character extends EventEmitter2
         _.reduce stats, ((prev, stat) => prev+@stat stat), 0
 
       #`/**
+      # * Absolute adds a static amount of damage to all of your attacks.
+      # *
+      # * @name absolute
+      # * @combat
+      # * @stacks yes (Stacking formula is +1 damage/absolute point)
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      absolute: -> Math.max 0, @self.calc.stat 'absolute'
+
+      #`/**
       # * Aegis prevents critical hits.
       # *
       # * @name aegis

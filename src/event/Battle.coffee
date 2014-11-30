@@ -446,6 +446,8 @@ class Battle
 
     damage -= defender.calc?.damageTaken attacker, damage, type, spell, damageType
 
+    damage += attacker.calc.absolute()
+
     canFireSturdy = defender.hp.gtePercent 10
 
     defender[damageType]?.sub damage

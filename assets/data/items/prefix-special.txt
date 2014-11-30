@@ -52,3 +52,7 @@
 
 "vampiric" vampire=1
 "garlic" vampire=-1
+
+"absolutely-charged" absolute=10
+"absolutely-powered" absolute=100
+"absolutely-destructive" absolute=100
