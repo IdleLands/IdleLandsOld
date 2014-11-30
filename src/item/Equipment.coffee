@@ -89,6 +89,8 @@ class Equipment
     venom: 300
     vampire: 350
 
+    sticky: 1000
+
     absolute: 7
 
     sentimentality: 0.4

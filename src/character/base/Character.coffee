@@ -456,6 +456,15 @@ class Character extends EventEmitter2
       # * @package Item
       # */`
 
+      #`/**
+      # * Sticky makes it harder to have your item be replaced (or easier, if you have negative sticky).
+      # *
+      # * @name sticky
+      # * @stacks yes
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+
       boosts: (stats, baseValue) ->
         Math.floor _.reduce stats, (prev, stat) =>
           switch stat

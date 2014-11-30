@@ -56,3 +56,8 @@
 "absolutely-charged" absolute=10
 "absolutely-powered" absolute=100
 "absolutely-destructive" absolute=100
+
+"sticky" sticky=1
+"supersticky" sticky=2
+"superdupersticky" sticky=3
+"greased up" sticky=-1

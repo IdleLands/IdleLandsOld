@@ -50,7 +50,32 @@ class Event
 
   ignoreKeys: ['_calcScore', 'enchantLevel']
 
-  specialStats: ['offense', 'defense', 'prone', 'power', 'silver', 'crit', 'dance', 'deadeye', 'glowing', 'vorpal', 'forsaken', 'sacred', 'aegis']
+  specialStats: [
+    'absolute'
+    'aegis'
+    'crit'
+    'dance'
+    'deadeye'
+    'defense'
+    'glowing'
+    'haste'
+    'lethal'
+    'poison'
+    'power'
+    'prone'
+    'offense'
+    'royal'
+    'shatter'
+    'silver'
+    'sturdy'
+    'vampire'
+    'venom'
+    'vorpal'
+    'forsaken'
+    'limitless'
+    'sacred'
+    'sentimentality'
+  ]
 
   t0: ['int', 'str', 'dex', 'con', 'wis', 'agi']
   t1: ['intPercent', 'strPercent', 'conPercent', 'wisPercent', 'agiPercent']
