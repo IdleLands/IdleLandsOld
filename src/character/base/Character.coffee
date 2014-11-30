@@ -376,6 +376,17 @@ class Character extends EventEmitter2
       sturdy:  -> Math.max 0, @self.calc.stat 'sturdy'
 
       #`/**
+      # * Vampire is a DoT that returns health to the attacker. The duration is determined by how many points of vampire the caster has.
+      # *
+      # * @name vampire
+      # * @combat
+      # * @stacks yes (Stacking formula is 1 turn/vampire point)
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      vampire:    -> Math.max 0, @self.calc.stat 'vampire'
+
+      #`/**
       # * Venom is a small DoT that does a static percentage of the victims health as damage.
       # *
       # * @name venom

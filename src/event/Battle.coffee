@@ -270,6 +270,7 @@ class Battle
     effects.push "Shatter"  if attacker.calc.shatter() and chance.bool(likelihood: 10)
     effects.push "Poison"   if attacker.calc.poison() and chance.bool(likelihood: 20)
     effects.push "Venom"    if attacker.calc.venom() and chance.bool(likelihood: 5)
+    effects.push "Vampire"  if attacker.calc.vampire() and chance.bool(likelihood: 10)
     return if effects.length is 0
 
     @doBattleEffects effects, attacker, defender
@@ -282,6 +283,7 @@ class Battle
       "Shatter": ['effect.shatter', 'effect.shattered']
       "Poison":  ['effect.poison', 'effect.poisoned']
       "Venom":   ['effect.venom', 'effect.venomed']
+      "Vampire": ['effect.vampire', 'effect.vampired']
 
     _.each effects, (effect) =>
       spellProto = findSpell effect

@@ -49,3 +49,6 @@
 
 "venomous" venom=1
 "anti-venom" venom=-1
+
+"vampiric" vampire=1
+"garlic" vampire=-1
