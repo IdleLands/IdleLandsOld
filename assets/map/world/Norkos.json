@@ -1860,6 +1860,20 @@
                  "width":0,
                  "x":3776,
                  "y":800
+                }, 
+                {
+                 "gid":26,
+                 "height":0,
+                 "name":"dChicken Problem Solver",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Boss",
+                 "visible":true,
+                 "width":0,
+                 "x":368,
+                 "y":240
                 }],
          "opacity":1,
          "type":"objectgroup",
