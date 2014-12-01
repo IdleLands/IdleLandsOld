@@ -12,7 +12,7 @@ class BossFactory
 
     return if ((new Date) - currentTimer) < respawnTimer * 1000
 
-    setAllItemClasses = "idle"
+    setAllItemClasses = "guardian"
 
     baseObj = BossInformation.bosses[name]
     statObj = baseObj.stats

@@ -8,7 +8,7 @@ class TreasureFactory
 
   createTreasure: (chestName, forPlayer) ->
 
-    setAllItemClasses = "idle"
+    setAllItemClasses = "guardian"
 
     treasureItems = TreasureInformation.chests[chestName].items
 
