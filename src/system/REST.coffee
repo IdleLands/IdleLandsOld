@@ -5,6 +5,7 @@ useREST = config.useREST
 return if not useREST
 
 _ = require "underscore"
+requireDir = require "require-dir"
 
 API = require "./API"
 
@@ -69,7 +70,6 @@ app.use (req, res, next) ->
   POST    /player/manage/string/remove      | REQUEST: {identifier, type, token}      | RETURN: {message, isSuccess}
 ###
 
-requireDir = require "require-dir"
 _.each (_.values requireDir "./rest-routes"), (router) ->
   app.use "/", router
 

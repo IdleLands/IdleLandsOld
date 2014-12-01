@@ -386,7 +386,7 @@ class Player extends Character
     @shop.slots = _.compact @shop.slots
     @save()
 
-    Q {isSuccess: yes, code: 125, message: "Successfully purchased #{shop.slots[slot].item.name} for #{shop.slots[slot].price} gold.", player: @buildRESTObject()}
+    Q {isSuccess: yes, code: 125, message: "Successfully purchased #{@shop.slots[slot].item.name} for #{@shop.slots[slot].price} gold.", player: @buildRESTObject()}
 
   takeTurn: ->
     steps = Math.max 1, @calc.haste()
