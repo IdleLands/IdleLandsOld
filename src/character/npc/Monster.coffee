@@ -25,9 +25,11 @@ class Monster extends Character
 
   getGender: -> @gender
 
-  setClassTo: (newClass = if chance.bool() then 'MagicalMonster' else 'Monster') ->
+  setClassTo: (newClass = 'Monster') ->
     toClass = null
     toClassName = newClass
+
+    (toClassName = if chance.bool() then 'MagicalMonster' else 'Monster') if toClassName is 'Monster'
 
     try
       toClass = new (require "../classes/#{newClass}")()
