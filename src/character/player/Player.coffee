@@ -377,6 +377,8 @@ class Player extends Character
     if @shop.slots[slot].price > @gold.getValue()
       return Q {isSuccess: no, code: 124, message: "That item costs #{@shop.slots[slot].price} gold, but you only have #{@gold.getValue()} gold."}
 
+    resolved = Q {isSuccess: yes, code: 125, message: "Successfully purchased #{@shop.slots[slot].item.name} for #{@shop.slots[slot].price} gold.", player: @buildRESTObject()}
+
     @gold.sub @shop.slots[slot].price
 
     current = _.findWhere @equipment, {type: @shop.slots[slot].item.type}
@@ -386,7 +388,7 @@ class Player extends Character
     @shop.slots = _.compact @shop.slots
     @save()
 
-    Q {isSuccess: yes, code: 125, message: "Successfully purchased #{@shop.slots[slot].item.name} for #{@shop.slots[slot].price} gold.", player: @buildRESTObject()}
+    resolved
 
   takeTurn: ->
     steps = Math.max 1, @calc.haste()
