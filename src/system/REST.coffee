@@ -4,6 +4,8 @@ useREST = config.useREST
 
 return if not useREST
 
+_ = require "underscore"
+
 API = require "./API"
 
 http = require "http"
@@ -67,20 +69,11 @@ app.use (req, res, next) ->
   POST    /player/manage/string/remove      | REQUEST: {identifier, type, token}      | RETURN: {message, isSuccess}
 ###
 
+requireDir = require "require-dir"
+_.each (_.values requireDir "./rest-routes"), (router) ->
+  app.use "/", router
 
 # init
-app.use "/", require "./rest-routes/Authentication"
-app.use "/", require "./rest-routes/Battle"
-app.use "/", require "./rest-routes/ManageGender"
-app.use "/", require "./rest-routes/ManageInventory"
-app.use "/", require "./rest-routes/ManageShop"
-app.use "/", require "./rest-routes/ManagePersonality"
-app.use "/", require "./rest-routes/ManagePriority"
-app.use "/", require "./rest-routes/ManagePushbullet"
-app.use "/", require "./rest-routes/ManageGender"
-app.use "/", require "./rest-routes/ManageString"
-app.use "/", require "./rest-routes/Map"
-app.use "/", require "./rest-routes/TurnAction"
 app.use "/img", express.static __dirname + '/../../assets/img'
 
 # error catching

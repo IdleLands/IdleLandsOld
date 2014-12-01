@@ -1,4 +1,4 @@
-hasValidToken = require "./HasValidToken"
+hasValidToken = require "./../rest-helpers/HasValidToken"
 API = require "../API"
 
 router = (require "express").Router()

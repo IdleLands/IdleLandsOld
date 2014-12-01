@@ -1,6 +1,6 @@
-hasValidToken = require "./HasValidToken"
+hasValidToken = require "./../rest-helpers/HasValidToken"
 API = require "../API"
-turnTimeout = require("./Brutes").TurnTimeoutTimer
+turnTimeout = require("./../rest-helpers/Brutes").TurnTimeoutTimer
 router = (require "express").Router()
 
 router

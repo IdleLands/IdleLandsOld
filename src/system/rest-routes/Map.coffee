@@ -1,5 +1,5 @@
 API = require "../API"
-mapTimeout = require("./Brutes").MapRequestTimer
+mapTimeout = require("./../rest-helpers/Brutes").MapRequestTimer
 router = (require "express").Router()
 
 router
