@@ -81,6 +81,7 @@
 "surströmming"      zone=water level=12 str=250 dex=35 agi=150
 "lutefisk"          zone=water level=15 str=310 dex=51 wis=-10
 "laser shark"       zone=water level=37 str=500 dex=500 agi=300
+"pistol shrimp"     zone=water level=40 class=Archer dex=700 agi=400
 "geoduck"           zone=water level=55 class=Druid con=1300 wis=1500 earth=500
 "jellyfish"         zone=water level=62 con=100 dex=1200 wis=300 agi=400 str=1500 poison=1
 "kraken"            zone=water level=87 class=Mage water=1000 int=4000 con=3000 hp=10000 dex=2000 wis=4000
@@ -177,7 +178,7 @@
 "golem"                     level=48 hp=4500
 "blue dragon"               level=49 hp=4700 class=Mage water=1000
 "phoenix"                   level=50 hp=5000 class=Mage fire=1000 int=1000 con=2000
-"gorgon"                    level=55 hp=5500 prone=1
+"gorgon"                    level=55 hp=5500 class=Archer prone=1
 "black dragon"              level=65 hp=6000 class=Mage prone=1 earth=1000 str=2000 con=1000 dex=500
 "behemoth"                  level=70 hp=6500 prone=1 str=3000 con=1500 dex=1000
 "silver dragon"             level=75 hp=7000 class=Mage prone=1 thunder=1000
@@ -198,6 +199,7 @@
 "hero"              level=37 class=Generalist
 "acolyte"           level=37 class=Cleric
 "conjuror"          level=37 class=Mage
+"sniper"            level=37 class=Archer
 "zephyr"            level=37
 "black knight"      level=37
 "black night"       level=38
@@ -238,6 +240,7 @@
 "gnome foodmaker"       zone=forest level=13 class=SandwichArtist dex=90 str=50
 "gnome swashbuckler"    zone=water  level=13 class=Pirate con=100 str=50
 "gnome bitwizard"       zone=forest level=13 class=Bitomancer int=100 agi=30 dex=50
+"gnome scout"           zone=forest level=13 class=Archer dex=100 agi=30 con=50
 "procrastination gnome" zone=forest level=1
 "garden gnome"          zone=town   level=1
 
@@ -255,6 +258,7 @@
 "human sandwich artist" zone=town level=18 class=SandwichArtist dex=480 str=300 wis=250
 "human buccaneer"       zone=town level=18 class=Pirate con=500 str=500
 "human bitomancer"      zone=town level=18 class=Bitomancer int=500 agi=250 dex=250
+"human archer"          zone=town level=18 class=Archer dex=500 agi=300 str=200
 "human professor"
 
 # kobold beings
@@ -270,6 +274,7 @@
 "kobold foodie"         zone=cave level=26 class=SandwichArtist dex=1000 wis=300 str=500
 "kobold privateer"      zone=water level=26 class=Pirate con=1000 str=750
 "kobold computerer"     zone=cave level=26 class=Bitomancer int=750 str=500
+"kobold ranger"         zone=cave level=26 class=Archer dex=750 agi=500
 
 # orcish beings
 "orc"                   zone=cave level=35
@@ -286,6 +291,7 @@
 "orc sandwich guy"      zone=cave level=35 class=SandwichArtist dex=1300 str=400 wis=200
 "orc drunkard"          zone=cave level=35 class=Pirate con=1000 str=500
 "orc technologist"      zone=cave level=35 class=Bitomancer int=1000 dex=500
+"orc stickflinger"      zone=cave level=35 class=Archer dex=1000 agi=500
 
 # skeletal beings
 "skeleton"              zone=cave level=41
@@ -300,6 +306,7 @@
 "skeleton enhungerer"   zone=cave level=41 class=SandwichArtist dex=1500 str=500 wis=-300
 "skeleton pirate"       zone=cave level=41 class=Pirate con=1350 str=550
 "skeleton bitmaster"    zone=cave level=41 class=Bitomancer int=1900
+"skeleton archer"       zone=cave level=41 class=Archer dex=1800
 
 # half-orc beings
 "half-orc"              zone=cave level=46
@@ -313,6 +320,7 @@
 "half-orc sandwicher"   zone=cave level=46 class=SandwichArtist dex=1500 str=300 wis=500
 "half-orc cave pirate"  zone=cave level=46 class=Pirate con=1500 str=700
 "half-orc byter"        zone=cave level=46 class=Bitomancer int=1500 dex=500 str=300
+"half-orc hunter"       zone=cave level=46 class=Archer dex=1700 agi=600
 
 # goblish beings
 "goblin"                zone=cave level=51
@@ -326,6 +334,7 @@
 "goblin foodmaker"      zone=cave level=51 class=SandwichArtist dex=2000 str=300 wis=200
 "goblin corsair"        zone=cave level=51 class=Pirate con=2000 str=750
 "goblin bitbitbit"      zone=cave level=51 class=Bitomancer int=1700 str=700 dex=200
+"goblin shooter"        zone=cave level=51 class=Archer dex=1700 agi=700 con=200
 
 # giant beings
 "giant"                 zone=cave level=57
@@ -341,6 +350,7 @@
 "half-kobold giant"     zone=cave level=57 class=Cleric wis=3000
 "half-giant giant"      zone=cave level=57 class=Jester luck=750
 "half-elf giant"        zone=cave level=57 class=SandwichArtist dex=3000
+"half-giant elf"        zone=cave level=57 class=Archer dex=3000
 "half-drunk giant"      zone=cave level=57 class=Pirate con=2000 str=1000
 
 # elvish beings
@@ -355,6 +365,7 @@
 "elf sandwich creator"  zone=town level=63 class=SandwichArtist
 "elf privateer"         zone=town level=63 class=Pirate
 "elf bitcaster"         zone=town level=63 class=Bitomancer
+"elf bowmaster"         zone=town level=63 class=Archer
 
 #etc
 
@@ -373,6 +384,7 @@
 "dwarf shadowdancer"    zone=town level=69 class=Rogue
 "dwarf shadow"          zone=town level=69
 "dwarf prince"          zone=town level=69 class=Bard
+"dwarf arbalest"        zone=town level=69 class=Archer
 
 # pygmy beings
 "pygmy"                 zone=cave level=76
