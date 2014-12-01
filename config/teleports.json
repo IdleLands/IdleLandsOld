@@ -148,11 +148,11 @@
             "x": 92,
             "y": 11
         },
-        "minotaur": {
+        "minotaurmaze": {
             "map": "Norkos",
             "formalName": "the Minotaur Maze entrance",
-            "x": 139,
-            "y": 65
+            "x": 238,
+            "y": 188
         }
     },
     "trainers": {
@@ -193,16 +193,22 @@
             "y": 23
         },
         "bitomancer": {
-            "map": "Minotaur Maze -3",
+            "map": "Norkos",
             "formalName": "the Bitomancer Trainer",
-            "x": 22,
-            "y": 1
+            "x": 165,
+            "y": 154
         },
         "monster": {
             "map": "Mythos -2",
             "formalName": "the Monster Trainer",
             "x": 6,
             "y": 19
+        },
+        "magicalmonster": {
+            "map": "Minotaur Maze -3",
+            "formalName": "the MagicalMonster Trainer",
+            "x": 22,
+            "y": 2
         },
         "pirate": {
             "map": "Norkos",
