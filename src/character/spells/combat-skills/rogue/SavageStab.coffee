@@ -9,7 +9,7 @@ class SavageStab extends Spell
   @tiers = SavageStab::tiers = [
     `/**
       * This skill does very little damage, but leaves every combat effect available on the target.
-      * Currently, it will only prone the target. Poison and other effects may happen later.
+      * Currently, it will inflict Prone, Poison, Venom, and Shatter on the target. It's pretty nasty.
       *
       * @name savage stab
       * @requirement {class} Rogue
