@@ -33,5 +33,7 @@ class Achievable extends Achievement
 
       currentCheckValue += killInterval
 
+    achieved
+
 
 module.exports = exports = Achievable
