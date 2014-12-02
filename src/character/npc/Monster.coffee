@@ -12,6 +12,8 @@ class Monster extends Character
     level = options.level
     super options
 
+    @level = new RestrictedNumber 0, 1000, 0
+
     @gender = chance.gender().toLowerCase()
 
     @level.set level
