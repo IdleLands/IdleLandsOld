@@ -8,7 +8,11 @@ class BossFactory
 
   createBoss: (name, forPlayer) ->
     currentTimer = BossInformation.timers[name]
-    respawnTimer = BossInformation.bosses[name].respawn or 3600
+
+    try
+      respawnTimer = BossInformation.bosses[name].respawn or 3600
+    catch e
+      console.log "INVALID BOSS RESPAWN/NAME: #{name}"
 
     return if ((new Date) - currentTimer) < respawnTimer * 1000
 

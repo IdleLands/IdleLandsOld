@@ -318,7 +318,7 @@ class Player extends Character
       @emit 'explore.walk', @
       @emit "explore.walk.#{tile.terrain or "void"}".toLowerCase(), @
 
-      console.error @x,@y,@map, "INVALID TILE" if not tile.terrain
+      console.error @x,@y,@map,tile.terrain,tile, "INVALID TILE" if not tile.terrain
 
       @handleTile tile
 
