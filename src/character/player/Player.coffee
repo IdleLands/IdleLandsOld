@@ -230,6 +230,7 @@ class Player extends Character
       @x = newLoc.x
       @y = newLoc.y
 
+    @oldRegion = @mapRegion
     @mapRegion = newLoc.region
 
     message = ""
@@ -309,12 +310,14 @@ class Player extends Character
 
         @emit 'explore.hit.wall', @
 
+      @oldRegion = @mapRegion
+      @mapRegion = tile.region
+
       @emit 'explore.walk', @
       @emit "explore.walk.#{tile.terrain or "void"}".toLowerCase(), @
 
       console.error @x,@y,@map, "INVALID TILE" if not tile.terrain
 
-      @mapRegion = tile.region
       @handleTile tile
 
       @stepCooldown--

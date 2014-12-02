@@ -351,6 +351,9 @@ class PlayerManager
       root[stat] = 0 if not (stat of root) or _.isNaN root[stat]
       root[stat] += val
 
+    handleRegion = (player) ->
+      (addStat player.mapRegion, 1, "calculated regions visited") if player.oldRegion and player.mapRegion and player.oldRegion isnt player.mapRegion
+
     player.onAny ->
       player.statistics = {} if not player.statistics
 
@@ -390,6 +393,10 @@ class PlayerManager
 
         when "explore.transfer"
           addStat arguments[1], 1, "calculated map changes"
+          handleRegion arguments[0]
+
+        when "explore.walk"
+          handleRegion arguments[0]
 
         when "event.bossbattle.win"
           addStat arguments[1], 1, "calculated boss kills"
