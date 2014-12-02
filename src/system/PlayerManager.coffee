@@ -162,6 +162,8 @@ class PlayerManager
         .then (res) =>
           player = @playerHash[identifier]
           return defer.resolve {isSuccess: yes, code: 15, message: "Successful login.", player: player.buildRESTObject(), token: player.tempSecureToken} if @playerHash[identifier]
+      else
+        return defer.resolve {isSuccess: no, code: res.code, message: res.message}
 
       res
 
