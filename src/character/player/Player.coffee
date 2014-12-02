@@ -463,12 +463,12 @@ class Player extends Character
     Q {isSuccess: yes, code: 95, message: "Successfully updated your string settings. String \"#{type}\" is now: #{if val then val else 'empty!'}"}
 
   checkAchievements: (silent = no) ->
-    oldAchievements = _.compact _.clone @achievements
+    @_oldAchievements = _.compact _.clone @achievements
     @achievements = []
 
     achieved = @playerManager.game.achievementManager.getAllAchievedFor @
 
-    stringCurrent = _.map oldAchievements, (achievement) -> achievement.name
+    stringCurrent = _.map @_oldAchievements, (achievement) -> achievement.name
     stringAll = _.map achieved, (achievement) -> achievement.name
 
     newAchievements = _.difference stringAll, stringCurrent

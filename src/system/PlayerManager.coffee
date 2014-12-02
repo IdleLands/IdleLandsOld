@@ -224,6 +224,7 @@ class PlayerManager
                 '_events'
                 'profession'
                 'stepCooldown'
+                '_oldAchievements'
                 '_id'
                 'pushbullet']
     ret = _.omit player, badStats

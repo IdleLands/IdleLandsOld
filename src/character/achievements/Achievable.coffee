@@ -15,7 +15,7 @@ _ = require "underscore"
 class Achievable extends Achievement
 
   getAllAchievedFor: (player) ->
-    baseStat = player.achievements?.length or 0
+    baseStat = player._oldAchievements?.length or 0
 
     currentCheckValue = 50
     killInterval = 50
