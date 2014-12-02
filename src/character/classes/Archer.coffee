@@ -1,5 +1,7 @@
 
 Class = require "./../base/Class"
+_ = require "underscore"
+MessageCreator = require "../../system/MessageCreator"
 
 `/**
   * The Archer is a physical debuff/dps class. Their Focus stat increases critical chance by up to 50%,
@@ -64,6 +66,14 @@ class Archer extends Class
     player.on "combat.battle.start", @events.combatStart = -> player.special.toMinimum()
     player.on "combat.round.start", @events.roundStart = -> player.special.add 10
     player.on "combat.self.damaged", @events.hitReceived = -> player.special.sub 7
+    player.on "combat.ally.flee", @events.allyFled = (fledPlayer) ->
+      fledPlayer.fled = false
+      message = "%casterName dragged %targetName back into combat with a grappling hook arrow!"
+      extra =
+        targetName: fledPlayer.name
+        casterName: player.name
+      newMessage = MessageCreator.doStringReplace message, player, extra
+      player.playerManager.game.currentBattle?.broadcast newMessage
 
   unload: (player) ->
     player.special.maximum = 0

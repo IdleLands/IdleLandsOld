@@ -15,7 +15,7 @@ class AntimagicArrow extends Spell
       * @requirement {Focus} 25
       * @requirement {level} 42
       * @element physical
-      * @targets {enemy} 1
+      * @targets {enemy} 1 (with most mp remaining)
       * @effect Drains mp
       * @minDamage 0.4*[wis+dex]
       * @maxDamage 0.8*[wis+dex]

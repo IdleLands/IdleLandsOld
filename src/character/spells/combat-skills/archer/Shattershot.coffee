@@ -16,7 +16,8 @@ class Shattershot extends Spell
       * @requirement {level} 35
       * @element physical
       * @targets {enemy} 1
-      * @effect shatter, prone
+      * @effect shatter
+      * @effect prone
       * @minDamage 0.75*[str+dex]
       * @maxDamage 1.5*[str+dex]
       * @category Archer

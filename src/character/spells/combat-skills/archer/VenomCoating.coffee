@@ -6,7 +6,7 @@ class VenomCoating extends Spell
   @element = VenomCoating::element = Spell::Element.physical
   @tiers = VenomCoating::tiers = [
     `/**
-      * This spell gives the caster poison and venom temporarily. Only used at low Focus.
+      * This spell gives one ally poison and venom temporarily. Only used at low Focus.
       *
       * @name VenomCoating
       * @requirement {class} Archer
@@ -14,8 +14,9 @@ class VenomCoating extends Spell
       * @requirement {level} 15
       * @requirement {Focus} < 40
       * @element physical
-      * @targets {self}
-      * @effect venom, poison
+      * @targets {ally} 1
+      * @effect venom
+      * @effect poison
       * @duration 4 rounds
       * @category Archer
       * @package Spells
@@ -23,24 +24,24 @@ class VenomCoating extends Spell
     {name: "venom coating", spellPower: 1, cost: 150, class: "Archer", level: 15}
   ]
 
-  @canChoose = (caster) -> (not (caster.calc.venom() or caster.calc.poison())) and caster.special.getValue() < 40
+  @canChoose = (caster) -> caster.special.getValue() < 40
 
   calcDuration: (player) -> super()+4
 
   venom: -> 1
   poison: -> 1
 
-  determineTargets: -> @caster
+  determineTargets: -> @targetSomeAllies()
 
   cast: (player) ->
-    message = "%casterName gives %hisher arrows a %spellName!"
+    message = "%casterName gives %targetName's weapon a %spellName!"
     @broadcast player, message
 
   tick: (player) ->
-    message = "%casterName's arrows are tipped with venom."
+    message = "%targetName's weapon is coated with venom."
 
   uncast: (player) ->
-    message = "%casterName's arrows lose their %spellName."
+    message = "%targetName's weapon loses its %spellName."
     @broadcast player, message
 
   constructor: (@game, @caster) ->
