@@ -27,6 +27,8 @@ class Drunk extends Personality
   conPercent: -> 5
   agiPercent: -> 5
 
+  drunk: -> 4
+
   @canUse = (player) ->
     player.level.getValue() >= 18
 

@@ -267,6 +267,16 @@ class Character extends EventEmitter2
       defense:  -> Math.max 0, @self.calc.stat 'defense'
 
       #`/**
+      # * Drunk changes your movements ever-so-slightly.
+      # *
+      # * @name drunk
+      # * @stacks yes
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      drunk:  -> Math.max 0, @self.calc.stat 'drunk'
+
+      #`/**
       # * Glowing adds +5% to each of your combat calculations. It's pretty crazy.
       # *
       # * @name glowing

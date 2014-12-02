@@ -277,7 +277,8 @@ class Player extends Character
     dir = randomDir()
     dir = randomDir() while dir in @ignoreDir
 
-    dir = if chance.bool {likelihood: if @hasPersonality 'Drunk' then 40 else 80} then @lastDir else dir
+    drunkAdjustedProb = Math.max 0, 80 - (@calc.drunk() * 10)
+    dir = if chance.bool {likelihood: drunkAdjustedProb} then @lastDir else dir
 
     [(@num2dir dir, @x, @y), dir]
 
@@ -294,7 +295,8 @@ class Player extends Character
     try
       tile = @getTileAt newLoc.x,newLoc.y
 
-      while (tile.blocked and chance.bool likelihood: if @hasPersonality 'Drunk' then 80 else 95)
+      drunkAdjustedProb = Math.max 0, 95 - (@calc.drunk() * 5)
+      while (tile.blocked and chance.bool likelihood: drunkAdjustedProb)
         [newLoc, dir] = @pickRandomTile()
         tile = @getTileAt newLoc.x, newLoc.y
 
