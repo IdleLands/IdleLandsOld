@@ -23,6 +23,7 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
          "height":250,
          "name":"Interactables",
          "objects":[
@@ -34,6 +35,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"SpawnPoint",
                  "visible":true,
                  "width":0,
@@ -52,6 +54,7 @@
                      "map":"Norkos +1",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -66,6 +69,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":0,
@@ -80,6 +84,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":0,
@@ -94,6 +99,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":0,
@@ -108,6 +114,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":0,
@@ -122,6 +129,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":0,
@@ -136,6 +144,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":0,
@@ -150,6 +159,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":0,
@@ -164,6 +174,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":0,
@@ -178,6 +189,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":0,
@@ -192,6 +204,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":0,
@@ -206,6 +219,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":0,
@@ -220,6 +234,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":0,
@@ -234,6 +249,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":0,
@@ -248,6 +264,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":0,
@@ -262,6 +279,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":0,
@@ -276,6 +294,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Door",
                  "visible":true,
                  "width":0,
@@ -293,6 +312,7 @@
                      "map":"Bard Island -1",
                      "movementType":"descend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -311,6 +331,7 @@
                      "map":"Norkos Dungeon -1",
                      "movementType":"descend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -329,6 +350,7 @@
                      "map":"Norkos +1",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -343,6 +365,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Trainer",
                  "visible":true,
                  "width":0,
@@ -361,6 +384,7 @@
                      "map":"Norkos Prison -1",
                      "movementType":"descend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -378,6 +402,7 @@
                      "map":"Norkos Boathouse -1",
                      "movementType":"descend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -396,6 +421,7 @@
                      "map":"Norkos Boathouse +1",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -414,6 +440,7 @@
                      "map":"Norkos Fisheries +1",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -431,6 +458,7 @@
                      "map":"Norkos Fisheries -1",
                      "movementType":"descend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -449,6 +477,7 @@
                      "map":"Norkos Fisheries +1",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -467,6 +496,7 @@
                      "map":"Norkos Fisheries +1",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -481,6 +511,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Trainer",
                  "visible":true,
                  "width":0,
@@ -495,6 +526,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -509,6 +541,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -523,6 +556,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -537,6 +571,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -551,6 +586,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Trainer",
                  "visible":true,
                  "width":0,
@@ -568,6 +604,7 @@
                      "map":"Norkos Dungeon -3",
                      "movementType":"fall"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -583,6 +620,7 @@
                      "movementType":"teleport",
                      "toLoc":"maeles"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -597,6 +635,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -611,6 +650,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -625,6 +665,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -639,6 +680,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -653,6 +695,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Trainer",
                  "visible":true,
                  "width":0,
@@ -667,6 +710,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Trainer",
                  "visible":true,
                  "width":0,
@@ -681,6 +725,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Trainer",
                  "visible":true,
                  "width":0,
@@ -695,6 +740,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Trainer",
                  "visible":true,
                  "width":0,
@@ -712,6 +758,7 @@
                      "map":"Volcano Transit",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -729,6 +776,7 @@
                      "map":"Volcano Transit",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -746,6 +794,7 @@
                      "map":"Vocalnus",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -764,6 +813,7 @@
                      "map":"Vocalnus",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -782,6 +832,7 @@
                      "map":"Vocalnus",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -799,6 +850,7 @@
                      "map":"Vocalnus",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -813,6 +865,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -831,6 +884,7 @@
                      "map":"Mythos -1",
                      "movementType":"descend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -849,6 +903,7 @@
                      "map":"Mythos -2",
                      "movementType":"descend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -866,6 +921,7 @@
                      "map":"Maeles Dungeon -1",
                      "movementType":"descend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -881,6 +937,7 @@
                      "movementType":"teleport",
                      "toLoc":"vocalnus"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -897,6 +954,7 @@
                      "movementType":"teleport",
                      "toLoc":"vocalnus"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -911,6 +969,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Boss",
                  "visible":true,
                  "width":0,
@@ -925,6 +984,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -939,6 +999,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -953,6 +1014,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -967,6 +1029,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -981,6 +1044,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -995,6 +1059,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1009,6 +1074,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1023,6 +1089,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1037,6 +1104,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1051,6 +1119,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1065,6 +1134,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1079,6 +1149,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1093,6 +1164,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1107,6 +1179,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1121,6 +1194,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1135,6 +1209,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1149,6 +1224,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1163,6 +1239,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1177,6 +1254,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1191,6 +1269,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1205,6 +1284,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1219,6 +1299,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1233,6 +1314,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1247,6 +1329,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1261,6 +1344,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1275,6 +1359,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1289,6 +1374,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1303,6 +1389,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1317,6 +1404,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1331,6 +1419,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1345,6 +1434,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1359,6 +1449,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1373,6 +1464,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1387,6 +1479,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1401,6 +1494,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1415,6 +1509,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1429,6 +1524,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1443,6 +1539,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1457,6 +1554,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1471,6 +1569,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1485,6 +1584,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1499,6 +1599,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1513,6 +1614,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1527,6 +1629,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1541,6 +1644,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1555,6 +1659,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1569,6 +1674,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1583,6 +1689,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1597,6 +1704,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1611,6 +1719,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1625,6 +1734,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1639,6 +1749,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1653,6 +1764,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1667,6 +1779,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1681,6 +1794,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1695,6 +1809,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1709,6 +1824,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1723,6 +1839,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1737,6 +1854,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1751,6 +1869,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1765,6 +1884,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1779,6 +1899,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1793,6 +1914,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1807,6 +1929,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1821,6 +1944,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -1838,6 +1962,7 @@
                      "map":"Volcano Transit",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -1852,6 +1977,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Boss",
                  "visible":true,
                  "width":0,
@@ -1867,6 +1993,7 @@
                      "movementType":"teleport",
                      "toLoc":"frigri"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -1883,6 +2010,7 @@
                      "movementType":"teleport",
                      "toLoc":"frigri"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -1899,6 +2027,7 @@
                      "movementType":"teleport",
                      "toLoc":"maeles"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -1915,6 +2044,7 @@
                      "movementType":"teleport",
                      "toLoc":"norkos"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -1929,6 +2059,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Trainer",
                  "visible":true,
                  "width":0,
@@ -1943,6 +2074,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Trainer",
                  "visible":true,
                  "width":0,
@@ -1960,6 +2092,7 @@
                      "map":"Minotaur Maze -1",
                      "movementType":"fall"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -1974,6 +2107,7 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
          "height":250,
          "name":"Regions",
          "objects":[
@@ -1984,6 +2118,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":224,
@@ -1997,6 +2132,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":1184,
@@ -2010,6 +2146,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":624,
@@ -2023,6 +2160,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":496,
@@ -2036,6 +2174,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":304,
@@ -2049,6 +2188,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":272,
@@ -2062,6 +2202,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":272,
@@ -2075,6 +2216,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":288,
@@ -2088,6 +2230,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":112,
@@ -2101,6 +2244,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":432,
@@ -2114,6 +2258,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":416,
@@ -2127,6 +2272,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":320,
@@ -2140,6 +2286,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":624,
@@ -2153,6 +2300,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":352,
@@ -2166,6 +2314,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":944,
@@ -2179,6 +2328,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":160,
@@ -2192,6 +2342,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":176,
@@ -2205,6 +2356,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":352,
@@ -2218,6 +2370,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":336,
@@ -2231,6 +2384,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":112,
@@ -2244,6 +2398,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":416,
@@ -2257,6 +2412,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":160,
@@ -2270,6 +2426,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":1328,
@@ -2283,6 +2440,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":816,
@@ -2296,6 +2454,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":1152,
@@ -2309,6 +2468,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":352,
@@ -2322,6 +2482,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":272,
@@ -2335,6 +2496,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":832,
@@ -2348,6 +2510,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":272,
@@ -2361,6 +2524,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":912,
@@ -2374,6 +2538,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":448,
@@ -2387,6 +2552,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":640,
@@ -2400,6 +2566,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":256,
@@ -2413,6 +2580,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":3568,
@@ -2426,6 +2594,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":96,
@@ -2434,7 +2603,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "width":250,
          "x":0,
          "y":0
@@ -2444,6 +2613,7 @@
     {
      "name":"norkos"
     },
+ "renderorder":"right-down",
  "tileheight":16,
  "tilesets":[
         {
