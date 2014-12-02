@@ -156,6 +156,12 @@
         }
     },
     "trainers": {
+        "archer": {
+            "map": "Norkos",
+            "formalName": "the Archer Trainer",
+            "x": 141,
+            "y": 146
+        },
         "barbarian": {
             "map": "Norkos",
             "formalName": "the Barbarian Trainer",
