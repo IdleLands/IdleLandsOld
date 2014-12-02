@@ -67,6 +67,7 @@ class Archer extends Class
     player.on "combat.round.start", @events.roundStart = -> player.special.add 10
     player.on "combat.self.damaged", @events.hitReceived = -> player.special.sub 7
     player.on "combat.ally.flee", @events.allyFled = (fledPlayer) ->
+      return if not fledPlayer.fled
       fledPlayer.fled = false
       message = "%casterName dragged %targetName back into combat with a grappling hook arrow!"
       extra =
