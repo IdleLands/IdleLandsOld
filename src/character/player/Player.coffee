@@ -75,13 +75,18 @@ class Player extends Character
     if not @guild
       @guildStatus = -1
 
-    else if @guild
+    else
       gm = @playerManager.game.guildManager
 
       gm.waitForGuild().then =>
         guild = gm.guildHash[@guild]
 
-        if guild.leader is @identifier
+      # In case the database update failed for an offline player
+        if not guild or not gm.findMember @name, @guild
+          @guild = null
+          @guildStatus = -1
+
+        else if playerGuild.leader is @identifier
           @guildStatus = 2
           guild.leaderName = @name
           guild.save()
