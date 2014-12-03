@@ -25,7 +25,7 @@ class Achievable extends Achievement
       level = currentCheckValue / killInterval
       item =
         name: "Achievable #{toRoman level}"
-        desc: "Achievable #{currentCheckValue} achievements"
+        desc: "Achieve #{currentCheckValue} achievements"
         reward: "+1 achievement"
         type: "progress"
 
