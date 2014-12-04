@@ -190,6 +190,8 @@ watchIdleFiles = ->
     _.each files, (file) ->
       delete require.cache[file]
 
+    clearInterval IdleWrapper.api.gameInstance.playerManager.interval
+    clearInterval interval
     loadFunction()
 #####################
 
