@@ -2441,6 +2441,62 @@
                  "width":0,
                  "x":1424,
                  "y":2352
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Mage's Tome",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":800,
+                 "y":400
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Cleric's Text",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":656,
+                 "y":400
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Fighter's Book",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":576,
+                 "y":400
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Generalist's Guidebook",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":144,
+                 "y":272
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2910,7 +2966,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "width":250,
          "x":0,
          "y":0

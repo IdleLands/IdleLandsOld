@@ -40,10 +40,11 @@ class DoubleTap extends Spell
      * @requirement {level} 25
      * @targets {enemy} 1
      * @element physical
+     * @prerequisite {collectible} Fighter's Manual
      * @category MagicalMonster
      * @package Spells
      */`
-    {name: "double tap", spellPower: 1, cost: 1000, class: "MagicalMonster", level: 25}
+    {name: "double tap", spellPower: 1, cost: 1000, class: "MagicalMonster", level: 25, collectibles: ["Fighter's Manual"]}
   ]
 
   cast: (player) ->

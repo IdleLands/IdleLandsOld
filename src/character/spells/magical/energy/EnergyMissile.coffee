@@ -58,13 +58,14 @@ class EnergyMissile extends Spell
      * @requirement {mp} 250
      * @requirement {level} 1
      * @element energy
+     * @prerequisite {collectible} Mage's Tome
      * @targets one enemy
      * @minDamage 1.5*[int/4]
      * @maxDamage 1.5*[int]
      * @category MagicalMonster
      * @package Spells
      */`
-    {name: "energy prod", spellPower: 1.5, cost: 250, class: "MagicalMonster", level: 5}
+    {name: "energy prod", spellPower: 1.5, cost: 250, class: "MagicalMonster", level: 5, collectibles: ["Mage's Tome"]}
   ]
 
   calcDamage: ->

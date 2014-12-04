@@ -28,13 +28,14 @@ class Cure extends Spell
      * @requirement {mp} 100
      * @requirement {level} 10
      * @element heal
+     * @prerequisite {collectible} Cleric's Text
      * @targets {ally} 1
      * @minDamage [wis/4]
      * @maxDamage [wis]
      * @category MagicalMonster
      * @package Spells
      */`
-    {name: "cure", spellPower: 1, cost: 100, class: "MagicalMonster", level: 10}
+    {name: "cure", spellPower: 1, cost: 100, class: "MagicalMonster", level: 10, collectibles: ["Cleric's Text"]}
   ]
 
   @canChoose = (caster) ->

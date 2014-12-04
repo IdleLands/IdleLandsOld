@@ -18,11 +18,22 @@ class SpellManager
     loadSpellObject spells
 
 SpellManager::getSpellsAvailableFor = (player) ->
+
+  hasCollectibles = (collectibles = []) ->
+    hasAll = yes
+
+    _.each collectibles, (collectible) ->
+      hasAll = no if not _.findWhere player.collectibles, {name: collectible}
+
+    hasAll
+
   _.filter @spells, (realSpell) ->
     # Check highest usable tier of each spell
     return no if realSpell.tiers.length is 0
 
-    spellTier = _.reject (_.compact realSpell.tiers), (tier) -> (tier.level > player.level.getValue()) or (player.professionName != tier.class)
+    spellTier = _.reject (_.compact realSpell.tiers), (tier) ->
+      (tier.level > player.level.getValue()) or (player.professionName isnt tier.class) or (not player.isMonster and not (hasCollectibles tier.collectibles))
+
     spellTier = _.max spellTier, (tier) -> tier.level
 
     return no if not spellTier
