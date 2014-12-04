@@ -41,10 +41,11 @@ class Guild
     # If the player is offline, update the database directly.
 
     player = @guildManager.game.playerManager.getPlayerByName(playerName)
-    player?.guild = null
-    player?.guildStatus = -1
-    player?.save()
-    @guildManager.game.playerManager.db.update {name: playerName}, {$set:{guild: null}}, {}, () ->
+    if player?
+      player.guild = null
+      player.guildStatus = -1
+      player.save()
+    else @guildManager.game.playerManager.db.update {name: playerName}, {$set:{guild: null}}, {}, () ->
     @avgLevel()
 
   promote: (leaderId, memberName) ->
