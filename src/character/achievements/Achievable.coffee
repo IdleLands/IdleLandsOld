@@ -8,7 +8,7 @@ _ = require "underscore"
   *
   * @name Achievable
   * @prerequisite Achieve 50*n achievements.
-  * @reward +1 awesome
+  * @reward +1 achievement
   * @category Achievements
   * @package Player
 */`
@@ -25,8 +25,8 @@ class Achievable extends Achievement
       level = currentCheckValue / killInterval
       item =
         name: "Achievable #{toRoman level}"
-        desc: "Achievable #{currentCheckValue} achievements"
-        reward: "+1 awesome"
+        desc: "Achieve #{currentCheckValue} achievements"
+        reward: "+1 achievement"
         type: "progress"
 
       achieved.push item

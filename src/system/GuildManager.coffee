@@ -97,7 +97,7 @@ class GuildManager
     return Q {isSuccess: no, code: 58, message: "You didn't specify a valid invitation target!"} if not invitee
     return Q {isSuccess: no, code: 59, message: "You aren't part of a guild!"} if not sender?.guild
     return Q {isSuccess: no, code: 60, message: "That person already has a guild!"} if invitee?.guild
-    return Q {isSuccess: no, code: 61, message: "You're not an admin in that guild!"} if not @checkAdmin sender
+    return Q {isSuccess: no, code: 61, message: "You're not an admin in that guild!"} if not @checkAdmin sender.name
     return Q {isSuccess: no, code: 62, message: "You've already invited that person!"} if _.contains @guildHash[sender.guild]?.invites, invitee?.identifier
     return Q {isSuccess: no, code: 63, message: "You don't have any available invites!"} if not @guildHash[sender.guild]?.invitesLeft()
 
@@ -133,9 +133,13 @@ class GuildManager
     ret.invites = []
     ret
 
-  checkAdmin: (player) ->
-    return false if not player.guild
-    (_.findWhere @guildHash[player.guild].members, {identifier: player.identifier}).isAdmin
+  checkAdmin: (playerName, guildName = @game.playerManager.getPlayerByName(playerName).guild) ->
+    return false if not guildName
+    (@findMember playerName, guildName)?.isAdmin
+
+  findMember: (playerName, guildName) ->
+    return false if not @guildHash[guildName]
+    _.findWhere @guildHash[guildName].members, {name: playerName}
 
   leaveGuild: (identifier) ->
     player = @game.playerManager.getPlayerById identifier
@@ -150,15 +154,14 @@ class GuildManager
 
   kickPlayer: (adminId, playerName) ->
     admin = @game.playerManager.getPlayerById adminId
-    player = @game.playerManager.getPlayerByName playerName
-
     return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} if not admin.guild
-    return Q {isSuccess: no, code: 61, message: "You aren't a guild administrator!"} if not @checkAdmin admin
-    return Q {isSuccess: no, code: 66, message: "You can't kick another administrator!"} if @checkAdmin player
+    return Q {isSuccess: no, code: 61, message: "You aren't a guild administrator!"} if not @checkAdmin admin.name
+    return Q {isSuccess: no, code: 61, message: "That player isn't in your guild!"} if not @findMember playerName, admin.guild
+    return Q {isSuccess: no, code: 66, message: "You can't kick another administrator!"} if @checkAdmin playerName, admin.guild
 
-    @guildHash[player.guild].remove player
+    @guildHash[admin.guild].remove playerName
 
-    Q {isSuccess: yes, code: 73, message: "You've kicked #{player.name} successfully."}
+    Q {isSuccess: yes, code: 73, message: "You've kicked #{playerName} successfully."}
 
   disband: (identifier) ->
     player = @game.playerManager.getPlayerById identifier
@@ -175,10 +178,11 @@ class GuildManager
 
       return if not player
       player.guild = null
+      player.guildStatus = -1
       player.save()
 
     # offline players
-    @game.playerManager.db.update {guild: @name}, {$set: {guild: null}}
+    @game.playerManager.db.update {guild: @name}, {$set: {guild: null}}, {}, () ->
 
     @guilds = _.reject @guilds, (guildTest) -> guild.name is guildTest.name
     delete @guildHash[guild.name]

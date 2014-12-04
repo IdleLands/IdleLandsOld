@@ -19,6 +19,9 @@ class Guild
     @invites = []
 
   add: (player) ->
+    # Adding assumes that a player is online, i.e. they have accepted an invite.
+    # Therefore, this function can use the player object directly.
+
     return if player.guild?
     @members.push {identifier: player.identifier, isAdmin: no, name: player.name}
     player.guild = @name
@@ -27,39 +30,52 @@ class Guild
     @avgLevel()
     Q()
 
-  remove: (player) ->
-    return -1 if not _.findWhere @members, {identifier: player.identifier}
-    @members = _.reject @members, (member) -> member.identifier is player.identifier
-    player.guild = null
-    player.guildStatus = -1
-    player.save()
+  remove: (playerName) ->
+    # Removing a player should work even when the player is offline.
+    # Therefore, this uses the player's name in case it cannot be retrieved (player is offline).
+
+    memberEntry = _.findWhere @members, {name: playerName}
+    @members = _.without @members, memberEntry
+
+    # In the event that a player is online, modify their guild status and save the player.
+    # If the player is offline, update the database directly.
+
+    player = @guildManager.game.playerManager.getPlayerByName(playerName)
+    if player?
+      player.guild = null
+      player.guildStatus = -1
+      player.save()
+    else @guildManager.game.playerManager.db.update {name: playerName}, {$set:{guild: null}}, {}, () ->
     @avgLevel()
 
   promote: (leaderId, memberName) ->
     member = @guildManager.game.playerManager.getPlayerByName memberName
+    memberEntry = _.findWhere @members, {name: memberName}
 
     return Q {isSuccess: no, code: 50, message: "You're not the leader of your guild!"} if leaderId isnt @leader
-    return Q {isSuccess: no, code: 51, message: "That member does not exist!"} if not member
-    return Q {isSuccess: no, code: 51, message: "That member is not in your guild!"} if member.guild isnt @name
+    return Q {isSuccess: no, code: 51, message: "That member is not in your guild!"} if not memberEntry
 
-    member.isAdmin = yes
-    player.guildStatus = 1
+    memberEntry.isAdmin = yes
+    member?.guildStatus = 1
+
     @save()
 
-    Q {isSuccess: yes, code: 67, message: "Successfully promoted #{member.name}."}
+    Q {isSuccess: yes, code: 67, message: "Successfully promoted #{memberName}."}
 
   demote: (leaderId, memberName) ->
     member = @guildManager.game.playerManager.getPlayerByName memberName
+    memberEntry = _.findWhere @members, {name: memberName}
+    console.log memberEntry
 
     return Q {isSuccess: no, code: 50, message: "You're not the leader of your guild!"} if leaderId isnt @leader
-    return Q {isSuccess: no, code: 51, message: "That member does not exist!"} if not member
-    return Q {isSuccess: no, code: 51, message: "That member is not in your guild!"} if member.guild isnt @name
+    return Q {isSuccess: no, code: 51, message: "That member is not in your guild!"} if not memberEntry
 
-    member.isAdmin = no
-    player.guildStatus = 0
+    memberEntry.isAdmin = no
+    member?.guildStatus = 0
+
     @save()
 
-    Q {isSuccess: yes, code: 68, message: "Successfully demoted #{member.name}."}
+    Q {isSuccess: yes, code: 68, message: "Successfully demoted #{memberName}."}
 
   invitesLeft: ->
     @invitesAvailable = @cap() - (@members.length + @invites.length)

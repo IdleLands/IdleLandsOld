@@ -61,3 +61,6 @@
 "supersticky" sticky=2
 "superdupersticky" sticky=3
 "greased up" sticky=-1
+
+"drunk" drunk=1
+"sober" drunk=-1
