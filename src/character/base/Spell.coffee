@@ -11,7 +11,7 @@ class Spell
   cost: @cost = 0
   tiers: @tiers = []
   spellPower: @spellPower = 1
-  stack: "intensity"
+  stack: "refresh"
   bindings:
     doSpellCast: ->
     doSpellUncast: ->
@@ -159,9 +159,11 @@ class Spell
         (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
       else
         oldSpell = _.findWhere player.spellsAffectedBy, baseName: @baseName
-        if false #oldSpell and @stack is "duration"
-          oldSpell.turns[player.name] = @calcDuration player
-          battleInstance.emitEvents "skill.duration.refresh", "skill.duration.refreshed", @caster, player, skill: oldSpell, turns: oldSpell.turns
+
+        if oldSpell and @stack is "refresh"
+          oldSpell.suppressed = yes
+          oldSpell.unaffect player
+          battleInstance.emitEvents "skill.duration.refresh", "skill.duration.refreshed", @caster, player, skill: @, turns: @turns
 
         else
           player?.spellsAffectedBy = [] if not player?.spellsAffectedBy or not _.isArray player?.spellsAffectedBy
