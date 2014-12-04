@@ -278,7 +278,7 @@ class Player extends Character
     return if current
 
     @collectibles.push
-      name: collectible
+      name: collectibleName
       map: @map
       region: @mapRegion
       foundAt: Date.now()
