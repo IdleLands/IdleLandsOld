@@ -24,10 +24,10 @@ class Collector extends Achievement
 
     currentCheckValue = 25
     levelInterval = 2
+    level = 1
     achieved = []
 
     while baseStat >= currentCheckValue
-      level = currentCheckValue / levelInterval
       item =
         name: "Collector #{toRoman level}"
         desc: "Find #{currentCheckValue} unique collectibles"
@@ -37,6 +37,7 @@ class Collector extends Achievement
       achieved.push item
 
       currentCheckValue *= levelInterval
+      level++
 
     achieved
 
