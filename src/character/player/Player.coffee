@@ -274,7 +274,7 @@ class Player extends Character
     collectibleName = collectible.name
     collectibleRarity = collectible.rarity or "basic"
 
-    current = _.findWhere @collectibles, {name: collectibleName, map: @map, region: @mapRegion}
+    current = _.findWhere @collectibles, {name: collectibleName, map: @map}
     return if current
 
     @collectibles.push
