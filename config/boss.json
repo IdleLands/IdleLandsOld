@@ -14,7 +14,7 @@
             { "name": "Goblin Lord Shortsword", "dropPercent": 95 }
         ]
     },
-    "Cluckin' Chicken": {
+    "dChicken Problem Solver": {
         "respawn": 4200,
         "availableScore": 1500,
         "stats": {
