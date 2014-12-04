@@ -1223,6 +1223,48 @@
                  "width":0,
                  "x":496,
                  "y":64
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Waterlogged Log",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":432,
+                 "y":160
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Old Doorframe",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":96,
+                 "y":464
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Ancient Wood Chunk",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":288,
+                 "y":192
                 }],
          "opacity":1,
          "type":"objectgroup",

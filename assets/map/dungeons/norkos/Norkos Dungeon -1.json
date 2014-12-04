@@ -75,6 +75,20 @@
                  "width":0,
                  "x":656,
                  "y":240
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Goblish Cap",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":656,
+                 "y":96
                 }],
          "opacity":1,
          "type":"objectgroup",

@@ -1064,6 +1064,48 @@
                  "width":0,
                  "x":400,
                  "y":32
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Mini Shuriken",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":720,
+                 "y":80
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Silver Lining",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":96,
+                 "y":400
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Black Shroud",
+                 "properties":
+                    {
+                     "rarity":"pro"
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":128,
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",

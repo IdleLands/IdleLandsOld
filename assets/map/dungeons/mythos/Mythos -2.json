@@ -23,7 +23,6 @@
          "y":0
         }, 
         {
-         "draworder":"topdown",
          "height":50,
          "name":"Interactables",
          "objects":[
@@ -39,7 +38,6 @@
                      "map":"Norkos",
                      "movementType":"ascend"
                     },
-                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -54,7 +52,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"Trainer",
                  "visible":true,
                  "width":0,
@@ -70,7 +67,6 @@
                      "movementType":"teleport",
                      "toLoc":"vocalnus"
                     },
-                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -86,7 +82,6 @@
                      "movementType":"teleport",
                      "toLoc":"vocalnus"
                     },
-                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -102,7 +97,6 @@
                      "movementType":"teleport",
                      "toLoc":"vocalnus"
                     },
-                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -117,12 +111,53 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"Boss",
+                 "visible":true,
+                 "width":0,
+                 "x":1024,
+                 "y":80
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Black Draygon Scale",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":928,
+                 "y":80
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Mysterious Obsidian Block",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
                  "visible":true,
                  "width":0,
                  "x":736,
                  "y":560
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Oddly Formed Granite",
+                 "properties":
+                    {
+                     "rarity":"pro"
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":288,
+                 "y":432
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -136,7 +171,6 @@
     {
      "name":"norkos"
     },
- "renderorder":"right-down",
  "tileheight":16,
  "tilesets":[
         {

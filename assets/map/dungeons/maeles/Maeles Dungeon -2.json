@@ -412,6 +412,34 @@
                  "width":0,
                  "x":256,
                  "y":272
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Broken Katana",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":720,
+                 "y":112
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Unpleasant Glass of Water",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":192,
+                 "y":48
                 }],
          "opacity":1,
          "type":"objectgroup",

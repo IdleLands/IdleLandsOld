@@ -79,6 +79,34 @@
                  "width":0,
                  "x":304,
                  "y":176
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Fishing Line",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":144,
+                 "y":128
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Bobber",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":608,
+                 "y":240
                 }],
          "opacity":1,
          "type":"objectgroup",

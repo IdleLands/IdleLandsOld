@@ -891,6 +891,76 @@
                  "width":0,
                  "x":16,
                  "y":128
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Lizard Scale",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":16,
+                 "y":224
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Swampy Water",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":1040,
+                 "y":80
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Unnatural Ice",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":32,
+                 "y":768
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Jester's Jangles",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":688,
+                 "y":704
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Weirdly Sized Bank Coin",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":624,
+                 "y":560
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -918,7 +988,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "width":70,
          "x":0,
          "y":0

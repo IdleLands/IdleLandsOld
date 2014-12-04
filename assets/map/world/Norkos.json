@@ -1965,6 +1965,482 @@
                  "width":0,
                  "x":3808,
                  "y":3024
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Jail Brick",
+                 "properties":
+                    {
+                     "rarity":"idle"
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":240,
+                 "y":688
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Mini Norkian Tree",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":80,
+                 "y":592
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Jar of Norkian Water",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":640,
+                 "y":224
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Secret Wood Panel",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":704,
+                 "y":128
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Prisoner Shackle",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":1520,
+                 "y":128
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Dangerous Stalactite",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":2144,
+                 "y":144
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Obsidian Chunk",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":3184,
+                 "y":384
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Piece o' Booty",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":3680,
+                 "y":768
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Boat Figurehead",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":240,
+                 "y":1360
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Small, Tasty Fish",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":512,
+                 "y":1120
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Maelian Branch",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":688,
+                 "y":1984
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Snowbeast Skull",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":3232,
+                 "y":1904
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Maelian Blade of Grass",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":2512,
+                 "y":1456
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Drop of Volcanic Water",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":3968,
+                 "y":32
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Guardian Fragment",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":1600,
+                 "y":768
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Dried Up, Not Tasty Fish",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":928,
+                 "y":864
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Gold Bank Coin",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":160,
+                 "y":320
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Old Minotaur Axe Shard",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":2224,
+                 "y":1024
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Bolt of Yellow Cloth",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":192,
+                 "y":1888
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Deer Horn",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":3072,
+                 "y":2912
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Timmy's Twig",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":1856,
+                 "y":2480
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Betty's Doil",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":256,
+                 "y":2336
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Small Mirror",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":832,
+                 "y":3472
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Odd Amulet",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":2800,
+                 "y":3392
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Random Piece of Earthy Earth",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":3440,
+                 "y":3328
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Slightly Newer Minotaur Axe Piece",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":3792,
+                 "y":2976
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Spyglass",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":2016,
+                 "y":2352
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Turtle Egg",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":176,
+                 "y":3760
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Doctor's Floating Device",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":3408,
+                 "y":800
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Medium Sized Bank Coin",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":816,
+                 "y":1776
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Rather Large Bank Coin",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":2064,
+                 "y":2656
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Sextant",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":608,
+                 "y":1280
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Minotaur Horn",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":1808,
+                 "y":1152
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"King's Key",
+                 "properties":
+                    {
+                     "rarity":"godly"
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":1424,
+                 "y":2352
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2182,8 +2658,8 @@
                  "type":"",
                  "visible":true,
                  "width":160,
-                 "x":2032,
-                 "y":960
+                 "x":2080,
+                 "y":976
                 }, 
                 {
                  "height":336,
@@ -2420,7 +2896,7 @@
                  "y":3664
                 }, 
                 {
-                 "height":96,
+                 "height":64,
                  "name":"Jail",
                  "properties":
                     {
@@ -2428,13 +2904,13 @@
                     },
                  "type":"",
                  "visible":true,
-                 "width":96,
-                 "x":176,
-                 "y":656
+                 "width":64,
+                 "x":192,
+                 "y":672
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "width":250,
          "x":0,
          "y":0

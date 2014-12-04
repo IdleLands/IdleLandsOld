@@ -263,9 +263,28 @@ class Player extends Character
       when "Teleport" then @handleTeleport tile
       when "Trainer" then @handleTrainerOnTile tile
       when "Treasure" then @handleTreasure tile.object.name
+      when "Collectible" then @handleCollectible tile.object
 
     if tile.object?.forceEvent
       @playerManager.game.eventHandler.doEventForPlayer @name, tile.object.forceEvent
+
+  handleCollectible: (collectible) ->
+    @collectibles = [] if not @collectibles
+
+    collectibleName = collectible.name
+    collectibleRarity = collectible.rarity or "basic"
+
+    current = _.findWhere @collectibles, {name: collectibleName, map: @map, region: @mapRegion}
+    return if current
+
+    @collectibles.push
+      name: collectible
+      map: @map
+      region: @mapRegion
+      foundAt: Date.now()
+
+    message = "<player.name>#{@name}</player.name> stumbled across a rare, shiny, and collectible <event.item.#{collectibleRarity}>#{collectibleName}</event.item.#{collectibleRarity}> in #{@map} - #{@mapRegion}!"
+    @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'event'}
 
   handleTreasure: (treasure) ->
     @playerManager.game.treasureFactory.createTreasure treasure, @

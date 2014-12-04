@@ -410,6 +410,48 @@
                  "width":0,
                  "x":352,
                  "y":256
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Broken Dagger Blade",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":256,
+                 "y":32
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Broken Dagger Hilt",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":672,
+                 "y":240
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Shattered Shortsword",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":32,
+                 "y":240
                 }],
          "opacity":1,
          "type":"objectgroup",

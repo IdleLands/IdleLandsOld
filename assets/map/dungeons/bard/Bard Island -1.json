@@ -57,6 +57,48 @@
                  "width":0,
                  "x":64,
                  "y":80
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Ancient Lute",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":96,
+                 "y":208
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Harp String",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":496,
+                 "y":64
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Soaked Sitar",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":512,
+                 "y":192
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -75,7 +117,7 @@
         {
          "firstgid":1,
          "image":"..\/..\/..\/img\/tiles.png",
-         "imageheight":32,
+         "imageheight":64,
          "imagewidth":144,
          "margin":0,
          "name":"tiles",
