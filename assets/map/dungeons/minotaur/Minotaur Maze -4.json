@@ -125,6 +125,21 @@
                  "width":0,
                  "x":256,
                  "y":768
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Poorly Drawn Map",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":464,
+                 "y":560
                 }],
          "opacity":1,
          "type":"objectgroup",
