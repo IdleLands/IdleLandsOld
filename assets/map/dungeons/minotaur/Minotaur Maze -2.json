@@ -427,7 +427,7 @@
                      "destx":"21",
                      "desty":"32",
                      "map":"Minotaur Maze -3",
-                     "movementType":"desend"
+                     "movementType":"descend"
                     },
                  "type":"Teleport",
                  "visible":true,
