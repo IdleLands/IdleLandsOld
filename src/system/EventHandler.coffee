@@ -37,6 +37,10 @@ class EventHandler
       switch eventType
         when 'yesno'
           @doYesNo event, player, callback
+
+        when 'levelDown'
+          (new allEvents.LevelDownEvent @game, event, player).go()
+
         when 'blessXp', 'forsakeXp'
           (new allEvents.XpEvent @game, event, player).go()
 

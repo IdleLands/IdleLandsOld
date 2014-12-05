@@ -265,8 +265,8 @@ class Player extends Character
       when "Treasure" then @handleTreasure tile.object.name
       when "Collectible" then @handleCollectible tile.object
 
-    if tile.object?.forceEvent
-      @playerManager.game.eventHandler.doEventForPlayer @name, tile.object.forceEvent
+    if tile.object?.properties?.forceEvent
+      @playerManager.game.eventHandler.doEventForPlayer @name, tile.object.properties.forceEvent
 
   handleCollectible: (collectible) ->
     @collectibles = [] if not @collectibles
