@@ -135,6 +135,9 @@ class Battle
 
     1 < aliveParties.length
 
+  checkIfOpponentHasBattleEffect: (turntaker, effect) ->
+    0 < _.reduce (_.difference @turnOrder, turntaker.party.players), ((prev, player) -> prev+player.calc[effect]()), 0
+
   beginTakingTurns: ->
     @emitEventToAll "battle.start", @turnOrder
     while @playersAlive()
@@ -167,7 +170,7 @@ class Battle
       @broadcast message
       return
 
-    if chance.bool {likelihood: player.calc.fleePercent()}
+    if (chance.bool {likelihood: player.calc.fleePercent()}) and not @checkIfOpponentHasBattleEffect player, "fear"
       @broadcast "<player.name>#{player.name}</player.name> has fled from combat!", player
       player.fled = true
       @emitEventToAll "flee", player

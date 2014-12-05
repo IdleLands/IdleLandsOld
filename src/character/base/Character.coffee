@@ -277,6 +277,17 @@ class Character extends EventEmitter2
       drunk:  -> Math.max 0, @self.calc.stat 'drunk'
 
       #`/**
+      # * Fear makes it so no opponents can flee combat. Works well on Jesters!
+      # *
+      # * @name fear
+      # * @combat
+      # * @stacks yes
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      fear:  -> @self.calc.stat 'fear'
+
+      #`/**
       # * Glowing adds +5% to each of your combat calculations. It's pretty crazy.
       # *
       # * @name glowing

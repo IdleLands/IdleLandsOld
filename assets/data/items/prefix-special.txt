@@ -64,3 +64,6 @@
 
 "drunk" drunk=1
 "sober" drunk=-1
+
+"scary" fear=1
+"fearless" fear=-1
