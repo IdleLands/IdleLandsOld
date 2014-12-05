@@ -240,6 +240,22 @@
             { "name": "Halberd of the Giants", "dropPercent": 80 }
         ]
 		},
+"Ghostly Pirate Captain": {
+        "respawn": 10800,
+        "availableScore": 1200,
+        "stats": {
+            "class": "Pirate",
+            "hp": 1750,
+            "level": 15,
+            "luck": 33,
+            "dex": 200,
+	    "agi": 200,
+	    "parry": 10
+        },
+        "items": [
+            { "name": "Incorporeal Cutlass", "dropPercent": 70 }
+        ]
+		},
     "Lucifer the Flame-Born": {
         "respawn": 10800,
         "availableScore": 2400,
