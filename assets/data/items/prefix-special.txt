@@ -70,3 +70,6 @@
 
 "startling" startle=1
 "soothing" startle=-1
+
+"attractive" parry=-1
+"parrying" parry=1

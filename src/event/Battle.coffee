@@ -174,6 +174,7 @@ class Battle
     if @currentTurn is 1 and @checkIfOpponentHasBattleEffect player, "startle"
       message = "#{player.name} is startled!"
       @broadcast message
+      @emitEventToAll "startled", player
       return
 
     if player.calc.cantAct() > 0
@@ -196,6 +197,11 @@ class Battle
     else
       @doMagicalAttack player, spellChosen
 
+  tryParry: (defender, attacker) ->
+    return if (chance.bool {likelihood: 80}) or defender.calc.parry() <= 0
+
+    @doPhysicalAttack defender, attacker, yes
+
   doPhysicalAttack: (player, target = null, isCounter = no) ->
     if not target
       enemies = _.reject @turnOrder, (target) -> (player.party is target.party) or target.hp.atMin() or target.fled
@@ -217,6 +223,7 @@ class Battle
       message += ", but <player.name>#{target.name}</player.name> dodged!"
       battleMessage message, target
       @emitEvents "dodge", "dodged", target, player
+      @tryParry target, player
       return
 
     [hitMin, hitMax] = [-target.calc.hit(), player.calc.beatHit()]
@@ -227,6 +234,7 @@ class Battle
       message += ", but <player.name>#{player.name}</player.name> missed!"
       battleMessage message, target
       @emitEvents "miss", "missed", player, target
+      @tryParry target, player
       return
 
     if hitChance < -(target.calc.stat 'luck')
@@ -234,6 +242,7 @@ class Battle
       message += ", but <player.name>#{target.name}</player.name> deflected it with %hisher <event.item.#{deflectItem.itemClass}>#{deflectItem.getName()}</event.item.#{deflectItem.itemClass}>!"
       battleMessage message, target
       @emitEvents "deflect", "deflected", target, player
+      @tryParry target, player
       return
 
     maxDamage = player.calc.damage()

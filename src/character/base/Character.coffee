@@ -335,6 +335,17 @@ class Character extends EventEmitter2
       mindwipe:    -> 0 < @self.calc.stat 'mindwipe'
 
       #`/**
+      # * Parry allows you the chance to counterattack if you dodge, deflect, or are missed by an attack.
+      # *
+      # * @name parry
+      # * @combat
+      # * @stacks no
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      parry:    -> @self.calc.stat 'parry'
+
+      #`/**
       # * Poison is a small DoT that does damage based on the attackers wisdom.
       # *
       # * @name poison
