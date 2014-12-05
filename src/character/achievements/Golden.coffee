@@ -18,10 +18,10 @@ class Golden extends Achievement
 
     currentCheckValue = 20000
     multiplier = 10
+    level = 1
     achieved = []
 
     while baseStat >= currentCheckValue
-      level = @log multiplier, currentCheckValue
       achieved.push
         name: "Golden #{toRoman level}"
         desc: "Gain and lose #{currentCheckValue} total gold"
@@ -30,6 +30,7 @@ class Golden extends Achievement
         type: "event"
 
       currentCheckValue *= multiplier
+      level++
 
     achieved
 
