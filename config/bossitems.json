@@ -99,6 +99,13 @@
         "sturdy": 1,
         "enchantLevel": 6
     },
+    "Incorporeal Cutlass": {
+        "type": "mainhand",
+        "dex": 150,
+        "luck": 11,
+        "agi": 150,
+        "parry": 1
+    },
     "Flame Polished Gauntlets": {
         "type": "hands",
         "int": 350,
