@@ -86,6 +86,19 @@
         "vorpal": 1,
         "power": 1
     },
+    "Golden Vampire Gauntlets": {
+        "type": "hands",
+        "dex": 750,
+        "agi": 750,
+        "vampire": 1
+    },
+    "Halberd of the Giants": {
+        "type": "mainhand",
+        "str": 1000,
+        "con": 225,
+        "sturdy": 1,
+        "enchantLevel": 6
+    },
     "Flame Polished Gauntlets": {
         "type": "hands",
         "int": 350,

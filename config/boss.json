@@ -88,7 +88,8 @@
 			"str": 1800,
             "con": 400,
             "dex": 1600,
-            "agi": 1500
+            "agi": 1500,
+	    "poison": 1
         },
         "items": [
             { "name": "Super Shuriken", "dropPercent": 80 }
@@ -133,7 +134,8 @@
             "level": 40,
             "str": 1800,
             "dex": 1750,
-            "con": 1000
+            "con": 1000,
+            "sturdy": 1
         },
         "items": [
             { "name": "Ward of the Black Dragon King", "dropPercent": 60 }
@@ -195,10 +197,47 @@
             "str": 2100,
             "dex": 750,
             "con": 1200,
-	    "agi": 100
+	    "agi": 100,
+            "sturdy": 1
         },
         "items": [
             { "name": "King Minotaur's Axe", "dropPercent": 85 }
+        ]
+		},
+    "Vampire Lord": {
+        "respawn": 10800,
+        "availableScore": 4000,
+        "stats": {
+            "class": "Rogue",
+            "hp": 13666,
+            "level": 42,
+            "str": 750,
+            "dex": 1000,
+            "con": 250,
+	    "agi": 1000,
+	    "wis": 500,
+	    "int": 500,
+	    "vampire": 2
+        },
+        "items": [
+            { "name": "Golden Vampire Gauntlets", "dropPercent": 80 }
+        ]
+		},
+    "Cloud Giant": {
+        "respawn": 10800,
+        "availableScore": 11400,
+        "stats": {
+            "class": "Fighter",
+            "hp": 14777,
+            "level": 45,
+            "str": 2000,
+            "dex": 500,
+            "con": 1200,
+	    "agi": 100,
+	    "sturdy": 1
+        },
+        "items": [
+            { "name": "Halberd of the Giants", "dropPercent": 80 }
         ]
 		},
     "Lucifer the Flame-Born": {
@@ -213,7 +252,8 @@
             "int": 1750,
             "wis": 1450,
             "con": 900,
-			"fire": 10000
+			"fire": 10000,
+            "sturdy": 1
         },
         "items": [
             { "name": "Flame Polished Gauntlets", "dropPercent": 80 }
