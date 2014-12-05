@@ -76,3 +76,6 @@
 
 "punishing" punish=1
 "thornless" punish=-1
+
+"bloody" darkside=1
+"safe" darkside=-1

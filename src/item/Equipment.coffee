@@ -93,7 +93,7 @@ class Equipment
     fear: 400
     parry: 450
     punish: 450
-    bloodstained: 300
+    darkside: 300
     explosive: 250
 
     sticky: 1000

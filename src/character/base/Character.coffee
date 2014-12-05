@@ -249,6 +249,17 @@ class Character extends EventEmitter2
       dance:    -> 0 < @self.calc.stat 'dance'
 
       #`/**
+      # * Darkside makes it so you do more damage, but all of the bonus damage is taken by both the attacker and defender.
+      # *
+      # * @name darkside
+      # * @combat
+      # * @stacks yes (Stacking formula is 10%/darkside point)
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      darkside:  -> Math.max 0, @self.calc.stat 'darkside'
+
+      #`/**
       # * Deadeye doubles your chance to overcome the opponents dodge roll.
       # *
       # * @name deadeye

@@ -468,11 +468,14 @@ class Battle
   takeMp: (attacker, defender, damage, type, spell, message) ->
     @takeStatFrom attacker, defender, damage, type, "mp", spell, message
 
-  takeStatFrom: (attacker, defender, damage, type, damageType = "hp", spell, message = null, ignorePunish = no) ->
-
-    damage -= defender.calc?.damageTaken attacker, damage, type, spell, damageType
+  takeStatFrom: (attacker, defender, damage, type, damageType = "hp", spell, message = null, doPropagate = no) ->
 
     damage += attacker.calc.absolute()
+
+    darksideDamage = Math.round damage*(attacker.calc.darkside()*10/100)
+    damage += darksideDamage if darksideDamage > 0
+
+    damage -= defender.calc?.damageTaken attacker, damage, type, spell, damageType
 
     canFireSturdy = defender.hp.gtePercent 10
 
@@ -504,9 +507,15 @@ class Battle
     message = MessageCreator.doStringReplace message, attacker, extra
     @broadcast message if message and typeof message is "string"
 
-    if defenderPunishDamage > 0 and not ignorePunish
+    if defenderPunishDamage > 0 and not doPropagate
       refmsg = "<player.name>#{defender.name}</player.name> reflected <damage.hp>#{defenderPunishDamage}</damage.hp> damage back at <player.name>#{attacker.name}</player.name>!"
       @takeStatFrom defender, attacker, defenderPunishDamage, type, damageType, spell, refmsg, yes
+      @emitEvents "punish", "punished", defender, attacker
+
+    if darksideDamage > 0 and not doPropagate
+      refmsg = "<player.name>#{attacker.name}</player.name> took <damage.hp>#{darksideDamage}</damage.hp> damage due to darkside!"
+      @takeStatFrom attacker, attacker, darksideDamage, type, damageType, spell, refmsg, yes
+      @emitEventToAll "darkside", attacker
 
   emitEventToAll: (event, data) ->
     _.forEach @turnOrder, (player) ->
