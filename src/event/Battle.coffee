@@ -198,7 +198,9 @@ class Battle
       @doMagicalAttack player, spellChosen
 
   tryParry: (defender, attacker) ->
-    return if (chance.bool {likelihood: 80}) or defender.calc.parry() <= 0
+    defenderParry = defender.calc.parry()
+    parryChance = Math.max 0, Math.min 100, 100 - defenderParry*10
+    return if (chance.bool {likelihood: parryChance})
 
     @doPhysicalAttack defender, attacker, yes
 
@@ -264,8 +266,6 @@ class Battle
     weapon = _.findWhere player.equipment, {type: "mainhand"}
     message += ", and #{if damage is maxDamage then "CRITICALLY " else ""}hit with %hisher <event.item.#{weapon.itemClass}>#{weapon.getName()}</event.item.#{weapon.itemClass}> for <damage.hp>#{realDamage}</damage.hp> HP #{damageType}"
 
-    @takeStatFrom player, target, damage, "physical", "hp"
-
     fatal = no
     if target.hp.atMin()
       message += " -- a fatal blow!"
@@ -275,6 +275,8 @@ class Battle
       message += "!"
 
     battleMessage message, player
+
+    @takeStatFrom player, target, damage, "physical", "hp"
 
     @checkBattleEffects player, target if not fatal
 
@@ -466,7 +468,7 @@ class Battle
   takeMp: (attacker, defender, damage, type, spell, message) ->
     @takeStatFrom attacker, defender, damage, type, "mp", spell, message
 
-  takeStatFrom: (attacker, defender, damage, type, damageType = "hp", spell, message = null) ->
+  takeStatFrom: (attacker, defender, damage, type, damageType = "hp", spell, message = null, ignorePunish = no) ->
 
     damage -= defender.calc?.damageTaken attacker, damage, type, spell, damageType
 
@@ -475,6 +477,7 @@ class Battle
     canFireSturdy = defender.hp.gtePercent 10
 
     defender[damageType]?.sub damage
+    defenderPunishDamage = Math.round damage*(defender.calc.punish()*5/100)
 
     if damageType is "hp"
       if damage < 0
@@ -500,6 +503,10 @@ class Battle
 
     message = MessageCreator.doStringReplace message, attacker, extra
     @broadcast message if message and typeof message is "string"
+
+    if defenderPunishDamage > 0 and not ignorePunish
+      refmsg = "<player.name>#{defender.name}</player.name> reflected <damage.hp>#{defenderPunishDamage}</damage.hp> damage back at <player.name>#{attacker.name}</player.name>!"
+      @takeStatFrom defender, attacker, defenderPunishDamage, type, damageType, spell, refmsg, yes
 
   emitEventToAll: (event, data) ->
     _.forEach @turnOrder, (player) ->

@@ -339,7 +339,7 @@ class Character extends EventEmitter2
       # *
       # * @name parry
       # * @combat
-      # * @stacks no
+      # * @stacks yes (Stacking formula is +10% parry chance/parry point)
       # * @category Equipment Effects
       # * @package Item
       # */`
@@ -377,6 +377,17 @@ class Character extends EventEmitter2
       # * @package Item
       # */`
       prone:    -> 0 < @self.calc.stat 'prone'
+
+      #`/**
+      # * Punish allows you to return some damage back to the attacker.
+      # *
+      # * @name punish
+      # * @combat
+      # * @stacks yes (Stacking formula is +5% returned damage/punish point)
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      punish:    -> Math.max 0, @self.calc.stat 'punish'
 
       #`/**
       # * Offense adds a +10% boost for each of your offensive calculations.

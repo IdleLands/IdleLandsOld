@@ -73,3 +73,6 @@
 
 "attractive" parry=-1
 "parrying" parry=1
+
+"punishing" punish=1
+"thornless" punish=-1
