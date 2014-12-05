@@ -111,7 +111,6 @@ class Equipment
     agi: 0
     luck: 0
     sentimentality: 0
-    piety: 0
     ice: 0
     fire: 0
     water: 0
@@ -127,8 +126,6 @@ class Equipment
     wisPercent: 0
     agiPercent: 0
     luckPercent: 0
-    sentimentalityPercent: 0
-    pietyPercent: 0
     icePercent: 0
     firePercent: 0
     waterPercent: 0
