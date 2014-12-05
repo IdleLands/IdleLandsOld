@@ -94,7 +94,6 @@ class Equipment
     parry: 450
     punish: 450
     darkside: 300
-    explosive: 250
 
     sticky: 1000
 
