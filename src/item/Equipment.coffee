@@ -88,6 +88,13 @@ class Equipment
     poison: 200
     venom: 300
     vampire: 350
+    mindwipe: 5000
+    startle: 250
+    fear: 400
+    parry: 450
+    punish: 450
+    bloodstained: 300
+    explosive: 250
 
     sticky: 1000
 
