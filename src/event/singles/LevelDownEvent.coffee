@@ -17,6 +17,7 @@ class LevelDownEvent extends Event
     string = "#{@event.remark} [<player.level>level</player.level> <player.level>#{currentLevel}</player.level> -> <player.level>#{newLevel}</player.level>]"
     @game.eventHandler.broadcastEvent {message: string, player: @player, type: 'levelup'}
     @player.level.sub 1
+    @player.resetMaxXp()
     @player.emit "event.levelDown", @player, currentLevel, newLevel
     @player.emit "player.level.down", @player
 
