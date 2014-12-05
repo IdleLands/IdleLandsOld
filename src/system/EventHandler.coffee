@@ -38,6 +38,9 @@ class EventHandler
         when 'yesno'
           @doYesNo event, player, callback
 
+        when 'providence'
+          (new allEvents.ProvidenceEvent @game, event, player).go()
+
         when 'levelDown'
           (new allEvents.LevelDownEvent @game, event, player).go()
 

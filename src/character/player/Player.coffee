@@ -465,7 +465,7 @@ class Player extends Character
     return if not @playerManager or @level.getValue() is @level.maximum
     @level.add 1
     message = "<player.name>#{@name}</player.name> has attained level <player.level>#{@level.getValue()}</player.level>!"
-    @xp.maximum = @levelUpXpCalc @level.getValue()
+    @resetMaxXp()
     @xp.toMinimum()
     @recalculateStats()
     @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'levelup'} if not suppress
@@ -473,6 +473,9 @@ class Player extends Character
     @emit "player.level.up", @
 
     @playerManager.addForAnalytics @
+
+  resetMaxXp: ->
+    @xp.maximum = @levelUpXpCalc @level.getValue()
 
   recalcGuildLevel: ->
     return if not @guild
