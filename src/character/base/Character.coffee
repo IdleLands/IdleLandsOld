@@ -397,6 +397,17 @@ class Character extends EventEmitter2
       silver:   -> 0 < @self.calc.stat 'silver'
 
       #`/**
+      # * Startle allows you to take away your opponents first turns.
+      # *
+      # * @name startle
+      # * @combat
+      # * @stacks no
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      startle:  -> @self.calc.stat 'startle'
+
+      #`/**
       # * Sturdy allows you to survive a fatal attack with 1 hp.
       # *
       # * @name sturdy

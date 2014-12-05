@@ -67,3 +67,6 @@
 
 "scary" fear=1
 "fearless" fear=-1
+
+"startling" startle=1
+"soothing" startle=-1

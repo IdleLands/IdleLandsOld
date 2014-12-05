@@ -140,11 +140,12 @@ class Battle
 
   beginTakingTurns: ->
     @emitEventToAll "battle.start", @turnOrder
+    @currentTurn = 1
     while @playersAlive()
       @turnPosition = @turnPosition or 0
 
       if @turnPosition is 0
-        @broadcast "ROUND STATUS: #{@getAllStatStrings().join ' VS '}"
+        @broadcast "ROUND #{@currentTurn} STATUS: #{@getAllStatStrings().join ' VS '}"
         @emitEventToAll "round.start", @turnOrder
 
       @emitEventToAll "turn.start", player
@@ -156,6 +157,7 @@ class Battle
       if @turnPosition is @turnOrder.length
         @emitEventToAll "round.end", @turnOrder
         @turnPosition = 0
+        @currentTurn++
 
 
   takeTurn: (player) ->
@@ -163,6 +165,11 @@ class Battle
 
     player.hp.add player.calc.stat "hpregen"
     player.mp.add player.calc.stat "mpregen"
+
+    if @currentTurn is 1 and @checkIfOpponentHasBattleEffect player, "startle"
+      message = "#{player.name} is startled!"
+      @broadcast message
+      return
 
     if player.calc.cantAct() > 0
       affectingCauses = player.calc.cantActMessages()
