@@ -72,7 +72,8 @@
             "str": 3900,
             "int": 100,
 			"luck": 800,
-			"thunder": 2000
+			"thunder": 2000,
+            "mindwipe": 1
         },
         "items": [
             { "name": "Wardens Gavel", "dropPercent": 95 }
@@ -119,7 +120,8 @@
             "level": 10,
             "agi": 50,
             "dex": 75,
-            "str": 100
+            "str": 100,
+            "mindwipe": 1
         },
         "items": [
             { "name": "Moonlight Signet", "dropPercent": 80 }

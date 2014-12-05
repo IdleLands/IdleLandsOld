@@ -166,6 +166,11 @@ class Battle
     player.hp.add player.calc.stat "hpregen"
     player.mp.add player.calc.stat "mpregen"
 
+    if (@checkIfOpponentHasBattleEffect player, "mindwipe") and (chance.bool {likelihood: 1})
+      @broadcast "#{player.name} was attacked by mindwipe! All personalities have now been turned off!"
+      player.removeAllPersonalities()
+      return
+
     if @currentTurn is 1 and @checkIfOpponentHasBattleEffect player, "startle"
       message = "#{player.name} is startled!"
       @broadcast message

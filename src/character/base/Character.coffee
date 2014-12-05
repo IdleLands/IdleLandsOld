@@ -124,6 +124,10 @@ class Character extends EventEmitter2
 
     Q {isSuccess: yes, code: 33, message: "Your personality settings have been updated successfully! Personalities are now: #{personalityString or "none"}"}
 
+  removeAllPersonalities: ->
+    @personalityStrings = []
+    @rebuildPersonalityList()
+
   hasPersonality: (personality) ->
     return no if not @personalityStrings
     personality in @personalityStrings
@@ -318,6 +322,17 @@ class Character extends EventEmitter2
       # * @package Item
       # */`
       lethal:   -> 0 < @self.calc.stat 'lethal'
+
+      #`/**
+      # * Mindwipe makes the target forget that they have any personalities.
+      # *
+      # * @name mindwipe
+      # * @combat
+      # * @stacks no
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
+      mindwipe:    -> 0 < @self.calc.stat 'mindwipe'
 
       #`/**
       # * Poison is a small DoT that does damage based on the attackers wisdom.
