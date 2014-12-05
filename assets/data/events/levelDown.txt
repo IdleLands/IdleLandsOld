@@ -1,0 +1,4 @@
+%player fell into a pungee pit!
+%player accidentally self-destructed like a Shockball!
+%player dun goofed like Dijkstra!
+%player looked in the mirror and it blew up!
