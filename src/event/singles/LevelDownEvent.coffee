@@ -18,6 +18,6 @@ class LevelDownEvent extends Event
     @game.eventHandler.broadcastEvent {message: string, player: @player, type: 'levelup'}
     @player.level.sub 1
     @player.emit "event.levelDown", @player, currentLevel, newLevel
-    @emit "player.level.down", @player
+    @player.emit "player.level.down", @player
 
 module.exports = exports = LevelDownEvent
