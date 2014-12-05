@@ -25,7 +25,7 @@ class Golden extends Achievement
       achieved.push
         name: "Golden #{toRoman level}"
         desc: "Gain and lose #{currentCheckValue} total gold"
-        reward: "+#{(level*0.03).toFixed 1} itemSellMultiplier"
+        reward: "+#{(level*0.03).toFixed 2} itemSellMultiplier"
         itemSellMultiplier: -> level*0.03
         type: "event"
 
