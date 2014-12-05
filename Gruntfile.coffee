@@ -2,10 +2,17 @@ module.exports = (grunt) ->
 
   grunt.task.loadNpmTasks 'grunt-contrib-watch'
   grunt.task.loadNpmTasks 'grunt-coffeelint'
+  grunt.task.loadNpmTasks 'grunt-gh-pages'
 
   grunt.initConfig
     pkg:
       grunt.file.readJSON 'package.json'
+
+    'gh-pages':
+      src: ['**']
+      options:
+        base: 'doks'
+        add: yes
 
     coffeelint:
       dist:

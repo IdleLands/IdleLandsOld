@@ -50,5 +50,8 @@
     "compression": "~1.2.0",
     "express-brute-redis": "0.0.1",
     "express-brute-mongo": "~0.1.0"
+  },
+  "devDependencies": {
+    "grunt-gh-pages": "^0.9.1"
   }
 }
