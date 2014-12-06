@@ -14,7 +14,7 @@
 
 "vorpal" crit=1
 
-"dancing" dodge=1
+"dancing" dance=1
 
 "glowing" glowing=1
 
