@@ -105,7 +105,7 @@ class MonsterGenerator extends Generator
     monsterCount = chance.integer({min: 1, max: Constants.defaults.game.maxPartyMembers})
     monsters = []
 
-    (monsters.push (@generateScalableMonster party, party.score()*2)) for x in [1..monsterCount]
+    (monsters.push (@generateScalableMonster party, party.score()*1.35)) for x in [1..monsterCount]
 
     new Party @game, monsters if monsters.length > 0
 
