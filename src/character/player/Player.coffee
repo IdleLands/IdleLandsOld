@@ -548,9 +548,9 @@ class Player extends Character
 
     @priorityPoints[stat] += points
     if points > 0
-      return Q {isSuccess: yes, code: 113, message: "Successfully added #{points} to your #{stat} priority."}
+      return Q {isSuccess: yes, code: 113, message: "Successfully added #{points} to your #{stat} priority.", player: @buildRESTObject()}
 
     else
-      return Q {isSuccess: yes, code: 113, message: "Successfully removed #{-points} from your #{stat} priority."}
+      return Q {isSuccess: yes, code: 113, message: "Successfully removed #{-points} from your #{stat} priority.", player: @buildRESTObject()}
 
 module.exports = exports = Player
