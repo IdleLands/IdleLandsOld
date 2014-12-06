@@ -285,6 +285,48 @@
                  "width":0,
                  "x":432,
                  "y":512
+                }, 
+                {
+                 "gid":18,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "requireBoss":"Warden of Norkos"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":432,
+                 "y":384
+                }, 
+                {
+                 "gid":18,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "requireClass":"Jester"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":48,
+                 "y":384
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"Jester's Bell",
+                 "properties":
+                    {
+
+                    },
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":80,
+                 "y":528
                 }],
          "opacity":1,
          "type":"objectgroup",

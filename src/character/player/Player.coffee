@@ -314,14 +314,20 @@ class Player extends Character
   getRegion: ->
     regions[@getTileAt().region.replace(/\s/g, '')]
 
+  cantEnterTile: (tile) ->
+    return @statistics['calculated boss kills'][tile.object.properties.requireBoss] if tile.object?.properties?.requireBoss
+    return no if tile.object.properties?.requireClass and @professionName isnt tile.object.properties.requireClass
+
+    tile.blocked
+
   moveAction: (currentStep) ->
     [newLoc, dir] = @pickRandomTile()
 
     try
       tile = @getTileAt newLoc.x,newLoc.y
 
-      drunkAdjustedProb = Math.max 0, 95 - (@calc.drunk() * 5)
-      while (tile.blocked and chance.bool likelihood: drunkAdjustedProb)
+      #drunkAdjustedProb = Math.max 0, 95 - (@calc.drunk() * 5)
+      while @cantEnterTile tile
         [newLoc, dir] = @pickRandomTile()
         tile = @getTileAt newLoc.x, newLoc.y
 
