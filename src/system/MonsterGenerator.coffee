@@ -83,4 +83,30 @@ class MonsterGenerator extends Generator
 
     new Party @game, monsters if monsters.length > 0
 
+  generateScalableMonster: (party, maxScore = party.score()*1.5) ->
+
+    chosenClass = _.sample classes
+    baseMonster =
+      class: chosenClass
+      name: "Vector #{chosenClass}"
+      level: party.level()
+
+    monster = @generateMonster maxScore, baseMonster
+
+    for x in [0..100]
+      _.each @types, (type) =>
+        return if monster.calc.totalItemScore() > maxScore
+        item = @game.equipmentGenerator.generateItem type
+        monster.equip item if monster.isBetterItem item
+
+    monster
+
+  generateScalableMonsterParty: (party) ->
+    monsterCount = chance.integer({min: 1, max: Constants.defaults.game.maxPartyMembers})
+    monsters = []
+
+    (monsters.push (@generateScalableMonster party, party.score()*2)) for x in [1..monsterCount]
+
+    new Party @game, monsters if monsters.length > 0
+
 module.exports = exports = MonsterGenerator

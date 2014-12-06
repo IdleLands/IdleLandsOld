@@ -18,6 +18,9 @@ class Party
   score: ->
     _.reduce @players, ((prev, player) -> prev + player.calc.totalItemScore()), 0
 
+  level: ->
+    (_.reduce @players, ((prev, player) -> prev + player.level.getValue()), 0) / @players.length
+
   getPartyName: ->
     if @players.length > 1 then @name else @players[0].name
 

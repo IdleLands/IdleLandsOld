@@ -91,6 +91,8 @@ class Game
     tryBattle = (parties) =>
       return if parties.length <= 1
 
+      avgPartyLevel = (_.reduce parties, ((prev, party) -> prev+party.level()), 0) / parties.length
+
       partyScores = _.map parties, (party) -> party.score()
 
       minScore = Math.min partyScores...
@@ -104,7 +106,7 @@ class Game
 
       maxPercDiff = Constants.defaults.game.maxPartyScorePercentDifference
 
-      if minScore < maxScore*maxPercDiff
+      if minScore < maxScore*maxPercDiff and avgPartyLevel < 100
         if parties[0].players.length and parties[1].players.length
           @broadcast MessageCreator.genericMessage "#{parties[0].getPartyName()} passed by #{parties[1].getPartyName()}, smiling and waving."
         _.each parties, (party) -> party.disband()

@@ -47,6 +47,10 @@ class Monster extends Character
     current = _.findWhere @equipment, {type: item.type}
     current.score() <= item.score() and @level.getValue()*15 >= item.score()
 
+  isBetterItem: (item) ->
+    current = _.findWhere @equipment, {type: item.type}
+    current.score() < item.score()
+
   generateBaseEquipment: ->
     @equipment = [
       new Equipment {type: "body",    class: "newbie", name: "Bloody Corpse", con: 30}
