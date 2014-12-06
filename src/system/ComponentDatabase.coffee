@@ -41,6 +41,9 @@ class ComponentDatabase
   generateBattleName: ->
     @generateStringFromGrammar _.sample @generatorCache.battleGrammar
 
+  generateProvidenceName: ->
+    @generateStringFromGrammar _.sample @generatorCache.providenceGrammar
+
   generateStringFromGrammar: (grammar) ->
     grammarPieces = grammar.split " "
     _.map grammarPieces, (piece) =>

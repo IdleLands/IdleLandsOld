@@ -16,7 +16,7 @@ class ProvidenceEvent extends Event
 
   generateFate: ->
     base =
-      name: "empty"       #no selling your fate
+      name: @game.componentDatabase.generateProvidenceName()
       type: "providence"  #end of the alphabet, slotwise
       itemClass: "basic"
 
