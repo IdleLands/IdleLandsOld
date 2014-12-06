@@ -16,8 +16,8 @@ class Levelable extends Achievement
   getAllAchievedFor: (player) ->
     baseStat = player.level.getValue()
 
-    currentCheckValue = 5
-    levelInterval = 5
+    currentCheckValue = 10
+    levelInterval = 10
     achieved = []
 
     while baseStat >= currentCheckValue and currentCheckValue <= 100
