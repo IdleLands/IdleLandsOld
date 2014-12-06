@@ -109,7 +109,9 @@ class Event
     forsaken = _.findWhere items, {forsaken: 1}
     return forsaken if forsaken
     nonSacred = _.reject items, (item) -> item.sacred
-    _.sample nonSacred
+
+    badSlots = _.reject nonSacred, (item) -> item.slot in ["providence"]
+    _.sample badSlots
 
   pickBlessStat: (item) ->
     chances = [1, 5, 10, 20, 100]
