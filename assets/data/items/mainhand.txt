@@ -154,7 +154,7 @@
 "Deathbringer" str=1000 vorpal=1
 "Kusanagi" str=1100
 "Smashing Board" str=1200
-"Turbo Jet Engine" str=1300 dodge=1
+"Turbo Jet Engine" str=1300 dance=1
 "durganball" str=1350
 "Dragonball" str=1400
 "Blade of Infinity" str=1500 offense=1 vorpal=1 silver=1 crit=1

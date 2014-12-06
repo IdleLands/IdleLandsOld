@@ -62,7 +62,7 @@
 "10 pound earring" str=40 wis=-5
 
 # agi/int/luck
-"teleporter" agi=10 int=20 luck=3  dodge=1 
+"teleporter" agi=10 int=20 luck=3  dance=1
 
 #agi/int/wis
 "Whole Rabbit" wis=200 int=100 agi=100

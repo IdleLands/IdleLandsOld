@@ -63,7 +63,7 @@
 "ascot" agi=150 int=90
 
 # n-stat
-"Impossibility Cloak" wis=500 con=100 int=100 str=100 dex=100 agi=100 dodge=1
+"Impossibility Cloak" wis=500 con=100 int=100 str=100 dex=100 agi=100 dance=1
 
 # idle-class
 "Transcendent Torc of the Idling Gods" wis=2000 int=2000

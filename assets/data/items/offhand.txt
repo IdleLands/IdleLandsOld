@@ -49,7 +49,7 @@
 "keyboard" con=30 int=10
 
 # con / agi
-"wing" con=17 agi=20 dodge=1
+"wing" con=17 agi=20 dance=1
 "clock" con=35 agi=20
 
 # wis / str
