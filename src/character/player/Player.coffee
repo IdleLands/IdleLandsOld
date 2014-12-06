@@ -316,7 +316,7 @@ class Player extends Character
 
   cantEnterTile: (tile) ->
     return @statistics['calculated boss kills'][tile.object.properties.requireBoss] if tile.object?.properties?.requireBoss
-    return no if tile.object.properties?.requireClass and @professionName isnt tile.object.properties.requireClass
+    return no if tile.object.properties?.requireClass and @professionName isnt tile.object?.properties?.requireClass
 
     tile.blocked
 
