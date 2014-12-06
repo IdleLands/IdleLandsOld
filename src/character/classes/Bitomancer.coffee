@@ -58,10 +58,11 @@ class Bitomancer extends Class
 
   load: (player) ->
     super player
-    player.special.maximum = player.profession.maxBandwidth player
+    player.special.maximum = @maxBandwidth player
     player.special.name = "Bitrate"
-    player.on "combat.battle.start", @events.battleStart = ->
-      player.special.maximum = player.profession.maxBandwidth player
+    player.on "combat.battle.start", @events.battleStart = =>
+      return if player.professionName isnt "Bitomancer"
+      player.special.maximum = @maxBandwidth player
       player.special.toMaximum()
 
   unload: (player) ->
