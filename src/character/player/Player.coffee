@@ -450,6 +450,23 @@ class Player extends Character
   checkPets: ->
     @playerManager.game.petManager.handlePetsForPlayer @
 
+  buyPet: (pet, name, attr1 = "a monocle", attr2 = "a top hat") ->
+    return Q {isSuccess: no, code: 200, message: "You need to specify all required information to make a pet."} if not name or not attr1 or not attr2
+    return Q {isSuccess: no, code: 201, message: "You haven't unlocked that pet."} if not @foundPets[pet]
+    return Q {isSuccess: no, code: 202, message: "You've already purchased that pet."} if @foundPets[pet].purchaseDate
+    return Q {isSuccess: no, code: 203, message: "You don't have enough gold to buy that pet!"} if @foundPets[pet].cost > @gold.getValue()
+    
+    @gold.sub @foundPets[pet].cost
+
+    @playerManager.game.petManager.createPet
+      player: @
+      type: pet
+      name: name
+      attr1: attr1
+      attr2: attr2
+
+    Q {isSuccess: yes, code: 95, message: "Successfully purchased a new pet!"}
+
   save: ->
     return if not @playerManager
     @playerManager.savePlayer @
@@ -494,9 +511,6 @@ class Player extends Character
     @emit "player.level.up", @
 
     @playerManager.addForAnalytics @
-
-  resetMaxXp: ->
-    @xp.maximum = @levelUpXpCalc @level.getValue()
 
   recalcGuildLevel: ->
     return if not @guild

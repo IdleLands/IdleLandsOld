@@ -186,6 +186,12 @@ class API
         .then (res) ->
           res.player.setString stringType if res.isSuccess
 
+    pet:
+      buy: (identifier, type, name, attr1, attr2) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.buyPet type, name, attr1, attr2 if res.isSuccess
+
     guild:
       create: (identifier, guildName) =>
         @validateIdentifier identifier

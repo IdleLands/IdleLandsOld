@@ -30,6 +30,22 @@ class PetManager
 
       , @DELAY_INTERVAL
 
+  createPet: (options) ->
+    {player, type, name, attr1, attr2} = options
+
+    options =
+      name: name
+      attrs: [attr1, attr2]
+      type: type
+
+      owner:
+        identifier: player.identifier
+        name: player.name
+
+      creator:
+        identifier: player.identifier
+        name: player.name
+
   loadPet: (pet) ->
     console.log pet
 
@@ -63,6 +79,7 @@ class PetManager
         message: "<player.name>#{player.name}</player.name> has unlocked a new pet: <player.name>#{key}</player.name>"
 
       player.foundPets[key] =
+        cost: PetData[key].cost
         purchaseDate: null
         unlockDate: Date.now()
 

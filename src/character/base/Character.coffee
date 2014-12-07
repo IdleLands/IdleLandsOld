@@ -22,9 +22,10 @@ class Character extends EventEmitter2
 
     @
 
-  moveAction: ->
+  resetMaxXp: ->
+    @xp.maximum = @levelUpXpCalc @level.getValue()
 
-  combatAction: ->
+  moveAction: ->
 
   clearAffectingSpells: ->
     return if not @spellsAffectedBy
