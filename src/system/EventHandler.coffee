@@ -164,15 +164,10 @@ class EventHandler
     player.emit "event.findItem", player, item
 
   tryToEquipItem: (event, player, item) ->
-    myItem = _.findWhere player.equipment, {type: item.type}
-    return if not myItem
-    score = player.calc.itemScore item
-    myScore = player.calc.itemScore myItem
-    realScore = item.score()
 
     rangeBoost = event.rangeBoost ?= 1
 
-    if score > myScore and realScore < player.calc.itemFindRange()*rangeBoost and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
+    if (player.canEquip item, rangeBoost) and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
       @doItemEquip player, item, event.remark
       return true
 

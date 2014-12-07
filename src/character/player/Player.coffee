@@ -22,6 +22,15 @@ class Player extends Character
   constructor: (player) ->
     super player
 
+  canEquip: (item, rangeBoost = 1) ->
+    myItem = _.findWhere @equipment, {type: item.type}
+    return if not myItem
+    score = @calc.itemScore item
+    myScore = @calc.itemScore myItem
+    realScore = item.score()
+
+    score > myScore and realScore < @calc.itemFindRange()*rangeBoost
+
   initialize: ->
     if not @xp
       @xp = new RestrictedNumber 0, (@levelUpXpCalc 0), 0
@@ -151,9 +160,10 @@ class Player extends Character
     current = _.findWhere @equipment, {type: @overflow[slot].type}
     inOverflow = @overflow[slot]
 
-    @equipment = _.without @equipment, current
-    @equipment.push inOverflow
+    if not @canEquip inOverflow
+      return defer.resolve {isSuccess: no, code: 43, message: "A mysterious force compels you to not equip that item. It may be too powerful."}
 
+    @equip inOverflow
     @overflow[slot] = current
 
     defer.resolve {isSuccess: yes, code: 47, message: "Successfully swapped #{current.name} with #{inOverflow.name} (slot #{slot}).", player: @buildRESTObject()}
@@ -433,8 +443,12 @@ class Player extends Character
     @possiblyDoEvent()
     @possiblyLeaveParty()
     @checkShop()
+    @checkPets()
     @save()
     @
+
+  checkPets: ->
+    @playerManager.game.petManager.handlePetsForPlayer @
 
   save: ->
     return if not @playerManager

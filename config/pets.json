@@ -19,6 +19,7 @@
             "goldStorage": [1000, 10000, 100000],
             "battleJoinPercent": [0, 5, 15, 25, 35, 50],
             "itemFind": [0, 86400, 64800, 43200, 21600, 10800, 3600, 1800, 450],
+            "itemSell": [0.05, 0.10],
             "itemBonus": [0, 1, 5, 10, 15, 30, 50, 100],
             "xpPerGold": [10, 50, 100, 150, 250]
         },
@@ -27,6 +28,7 @@
             "goldStorage": [0, 10000, 100000],
             "battleJoinPercent": [0, 10000, 10000, 10000, 10000, 10000, 15000],
             "itemFind": [0, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 50000],
+            "itemSell": [0, 20000],
             "itemBonus": [0, 100, 1000, 5000, 7500, 15000, 30000, 65000],
             "xpPerGold": [0, 5000, 10000, 15000, 25000]
         }
@@ -53,6 +55,7 @@
             "goldStorage": [2000, 20000, 100000],
             "battleJoinPercent": [0, 15, 30, 45, 60, 75],
             "itemFind": [0, 43200, 21600, 10800, 3600, 1800, 450, 275],
+            "itemSell": [0.07, 0.13],
             "itemBonus": [0, 10, 15, 30, 50, 100],
             "xpPerGold": [10, 100, 250, 500]
         },
@@ -61,6 +64,7 @@
             "goldStorage": [0, 10000, 75000],
             "battleJoinPercent": [0, 15000, 25000, 35000, 45000, 60000, 75000],
             "itemFind": [0, 20000, 25000, 30000, 35000, 40000, 50000, 65000],
+            "itemSell": [0, 25000],
             "itemBonus": [0, 5000, 7500, 15000, 30000, 65000],
             "xpPerGold": [0, 10000, 25000, 50000]
         }
@@ -92,6 +96,7 @@
             "goldStorage": [10000, 50000, 100000, 500000],
             "battleJoinPercent": [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
             "itemFind": [0, 21600, 10800, 3600, 1800, 450, 275, 150],
+            "itemSell": [0.07, 0.13, 0.20, 0.27],
             "itemBonus": [0, 10, 15, 30, 50, 100, 150, 200],
             "xpPerGold": [10, 100, 250, 500]
         },
@@ -100,6 +105,7 @@
             "goldStorage": [0, 5000, 10000, 50000],
             "battleJoinPercent": [0, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000],
             "itemFind": [0, 25000, 30000, 35000, 40000, 50000, 65000, 85000],
+            "itemSell": [0, 15000, 25000, 45000],
             "itemBonus": [0, 5000, 7500, 15000, 30000, 45000, 60000, 95000],
             "xpPerGold": [0, 10000, 25000, 50000]
         }
@@ -130,6 +136,7 @@
             "goldStorage": [500, 5000, 50000],
             "battleJoinPercent": [0, 10, 20, 30, 40, 50, 60],
             "itemFind": [0, 21600, 10800, 3600, 1800],
+            "itemSell": [0.04, 0.08, 0.12, 0.16],
             "itemBonus": [0, 10, 15, 30, 50, 75],
             "xpPerGold": [10, 100, 250]
         },
@@ -138,6 +145,7 @@
             "goldStorage": [0, 5000, 50000],
             "battleJoinPercent": [0, 20000, 30000, 40000, 50000, 60000, 70000],
             "itemFind": [0, 25000, 30000, 40000, 65000, 85000],
+            "itemSell": [0, 10000, 20000, 30000],
             "itemBonus": [0, 5000, 7500, 15000, 30000, 45000],
             "xpPerGold": [0, 10000, 25000]
         }
@@ -152,7 +160,8 @@
         "requirements": {
             "collectibles": [
                 "Dried Up, Not Tasty Fish",
-                "Small, Tasty Fish"
+                "Small, Tasty Fish",
+                "Jar of Norkian Water"
             ]
         },
         "scale": {
@@ -160,6 +169,7 @@
             "goldStorage": [10000, 100000, 250000],
             "battleJoinPercent": [0],
             "itemFind": [0, 21600, 10800, 3600, 1800],
+            "itemSell": [0.18, 0.27, 0.36],
             "itemBonus": [0, 30, 50, 75, 150, 200, 250],
             "xpPerGold": [10, 100, 150]
         },
@@ -168,6 +178,7 @@
             "goldStorage": [0, 50000, 125000],
             "battleJoinPercent": [0],
             "itemFind": [0, 25000, 30000, 40000, 65000, 85000],
+            "itemSell": [0, 20000, 40000],
             "itemBonus": [0, 5000, 7500, 15000, 30000, 55000, 100000],
             "xpPerGold": [0, 10000, 15000]
         }
@@ -190,7 +201,9 @@
             "power": 1,
             "silver": 1,
             "shatter": 1,
-            "sturdy": 1
+            "sturdy": 1,
+            "str": 200,
+            "dex": 200
         },
         "requirements": {
             "collectibles": [
@@ -211,6 +224,7 @@
             "goldStorage": [10000, 25000],
             "battleJoinPercent": [50, 60, 70, 80, 90, 99],
             "itemFind": [0, 86400, 64800, 43200, 21600],
+            "itemSell": [0.10, 0.15],
             "itemBonus": [0, 25, 50, 75, 100],
             "xpPerGold": [100, 500, 1000]
         },
@@ -219,7 +233,62 @@
             "goldStorage": [0, 50000],
             "battleJoinPercent": [0],
             "itemFind": [0, 45000, 55000, 65000, 75000],
+            "itemSell": [0, 15000, 25000],
             "itemBonus": [0, 25000, 50000, 75000, 100000],
+            "xpPerGold": [0, 25000, 50000]
+        }
+    },
+
+    "Chimera Dragon": {
+        "cost": 50000,
+        "slots": {
+            "body": 1,
+            "feet": 2,
+            "legs": 2,
+            "head": 3
+        },
+        "specialStats": {
+            "prone": 1,
+            "defense": 2,
+            "offense": 2,
+            "punish": 1,
+            "int": 200,
+            "fire": 400,
+            "ice": 400,
+            "thunder": 400
+        },
+        "requirements": {
+            "collectibles": [
+                "Black Draygon Scale",
+                "Silver Draygon Scale",
+                "Red Draygon Scale",
+                "Green Draygon Scale",
+                "Mama Draygon Scale"
+            ],
+            "bosses": [
+                "Sky Dragon of Vocalnus",
+                "Black Dragon King",
+                "Green Dragon",
+                "Mama Draygon",
+                "Red Dragon Hatchling"
+            ]
+        },
+        "scale": {
+            "inventory": [3],
+            "goldStorage": [10000, 35000],
+            "battleJoinPercent": [55, 65, 75, 85, 95, 100],
+            "itemFind": [0, 86400, 64800, 43200, 21600, 10800],
+            "itemSell": [0.20, 0.40],
+            "itemBonus": [0, 25, 50, 75, 100, 125],
+            "xpPerGold": [50, 250, 750]
+        },
+        "scaleCost": {
+            "inventory": [30000],
+            "goldStorage": [0, 50000],
+            "battleJoinPercent": [0],
+            "itemFind": [0, 50000, 60000, 70000, 80000, 100000],
+            "itemSell": [0, 60000],
+            "itemBonus": [0, 25000, 50000, 75000, 100000, 125000],
             "xpPerGold": [0, 25000, 50000]
         }
     }

@@ -2,6 +2,7 @@
 AchievementManager = require "./AchievementManager"
 PlayerManager = require "./PlayerManager"
 GuildManager = require "./GuildManager"
+PetManager = require "./PetManager"
 EventHandler = require "./EventHandler"
 MonsterGenerator = require "./MonsterGenerator"
 MessageCreator = require "./MessageCreator"
@@ -31,6 +32,7 @@ class Game
   constructor: () ->
     @parties = []
     @gmCommands = new GMCommands @
+    @petManager = new PetManager @
     @spellManager = new SpellManager @
     @eventHandler = new EventHandler @
     @playerManager = new PlayerManager @
