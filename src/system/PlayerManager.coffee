@@ -394,6 +394,9 @@ class PlayerManager
         when "player.gold.lose"
           addStat "calculated total gold lost", Math.abs arguments[1]
 
+        when "player.shop.buy"
+          addStat "calculated total gold spent", Math.abs arguments[2]
+
         when "explore.transfer"
           addStat arguments[1], 1, "calculated map changes"
           handleRegion arguments[0]
