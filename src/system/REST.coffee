@@ -84,4 +84,3 @@ process.on 'uncaughtException', (e) ->
 
 # spin it up
 http.createServer(app).listen 80
-http.createServer(app).listen 443
