@@ -53,19 +53,19 @@ class ProvidenceEvent extends Event
       @player.resetMaxXp()
       message = "#{message} #{if levelMod > 0 then 'Gained' else 'Lost'} #{Math.abs levelMod} levels!"
 
-    if @player.getGender() isnt gender and chance.bool {likelihood: 80}
+    if @player.getGender() isnt gender and (chance.bool {likelihood: 80})
       @player.gender = gender
       message = "#{message} Gender is now '#{gender}'!"
 
-    if goldMod and chance.bool {likelihood: 50}
+    if goldMod and (chance.bool {likelihood: 50})
       @player.gold.add goldMod
       message = "#{message} #{if goldMod > 0 then 'Found' else 'Lost'} #{Math.abs goldMod} gold!"
 
-    if classMod and @professionName isnt classMod and chance.bool {likelihood: 15}
+    if classMod and @professionName isnt classMod and (chance.bool {likelihood: 15})
       @player.changeProfession classMod, yes
       message = "#{message} Changed class to #{classMod}!"
 
-    if chance.bool {likelihood: 25}
+    if (chance.bool {likelihood: 25})
       @player.personalityStrings = personalityMod
       @player.rebuildPersonalityList()
       message = "#{message} Personality shift!"
