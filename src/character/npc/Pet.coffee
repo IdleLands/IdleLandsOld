@@ -4,14 +4,18 @@ Equipment = require "../../item/Equipment"
 RestrictedNumber = require "restricted-number"
 _ = require "underscore"
 chance = new (require "chance")()
+PetData = require "../../../config/pets.json"
 
 class Pet extends Character
 
   constructor: (options) ->
+
+    return if not options.type
+
     super options
 
-    @level = new RestrictedNumber 0, 200, 0
-    @gold = new RestrictedNumber 0, 0, 0
+    @level = new RestrictedNumber 0, PetData[type].scale.maxLevel[0], 0
+    @gold = new RestrictedNumber 0, PetData[type].scale.goldStorage[0], 0
     @lastInteraction = new Date()
     @gender = chance.gender().toLowerCase()
     @xp = new RestrictedNumber 0, (@levelUpXpCalc level), 0
@@ -53,6 +57,8 @@ class Pet extends Character
     realScore = item.score()
 
     score > myScore and realScore < @calc.itemFindRange()
+
+  save: ->
 
   takeTurn: ->
     # do action, check if current time > expected time to finish event, if passes, do action and reset time?

@@ -15,6 +15,7 @@
             }
         },
         "scale": {
+            "maxLevel": [50],
             "inventory": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
             "goldStorage": [1000, 10000, 100000],
             "battleJoinPercent": [0, 5, 15, 25, 35, 50],
@@ -24,6 +25,7 @@
             "xpPerGold": [10, 50, 100, 150, 250]
         },
         "scaleCost": {
+            "maxLevel": [0],
             "inventory": [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000],
             "goldStorage": [0, 10000, 100000],
             "battleJoinPercent": [0, 10000, 10000, 10000, 10000, 10000, 15000],
@@ -51,6 +53,7 @@
             ]
         },
         "scale": {
+            "maxLevel": [50, 75],
             "inventory": [5, 7, 9, 11, 13, 15],
             "goldStorage": [2000, 20000, 100000],
             "battleJoinPercent": [0, 15, 30, 45, 60, 75],
@@ -60,6 +63,7 @@
             "xpPerGold": [10, 100, 250, 500]
         },
         "scaleCost": {
+            "maxLevel": [0, 50000],
             "inventory": [0, 5000, 7500, 10000, 12500, 15000],
             "goldStorage": [0, 10000, 75000],
             "battleJoinPercent": [0, 15000, 25000, 35000, 45000, 60000, 75000],
@@ -92,6 +96,7 @@
             ]
         },
         "scale": {
+            "maxLevel": [75, 100],
             "inventory": [3, 5, 7, 10, 15],
             "goldStorage": [10000, 50000, 100000, 500000],
             "battleJoinPercent": [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
@@ -101,6 +106,7 @@
             "xpPerGold": [10, 100, 250, 500]
         },
         "scaleCost": {
+            "maxLevel": [0, 75000],
             "inventory": [0, 5000, 7500, 10000, 12500, 15000],
             "goldStorage": [0, 5000, 10000, 50000],
             "battleJoinPercent": [0, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000],
@@ -132,6 +138,7 @@
             ]
         },
         "scale": {
+            "maxLevel": [25, 50, 75],
             "inventory": [5, 10, 15],
             "goldStorage": [500, 5000, 50000],
             "battleJoinPercent": [0, 10, 20, 30, 40, 50, 60],
@@ -141,6 +148,7 @@
             "xpPerGold": [10, 100, 250]
         },
         "scaleCost": {
+            "maxLevel": [0, 25000, 50000],
             "inventory": [0, 5000, 10000, 15000],
             "goldStorage": [0, 5000, 50000],
             "battleJoinPercent": [0, 20000, 30000, 40000, 50000, 60000, 70000],
@@ -165,6 +173,7 @@
             ]
         },
         "scale": {
+            "maxLevel": [10, 25, 50],
             "inventory": [15, 25, 35],
             "goldStorage": [10000, 100000, 250000],
             "battleJoinPercent": [0],
@@ -174,6 +183,7 @@
             "xpPerGold": [10, 100, 150]
         },
         "scaleCost": {
+            "maxLevel": [0, 10000, 25000],
             "inventory": [0, 10000, 30000, 50000],
             "goldStorage": [0, 50000, 125000],
             "battleJoinPercent": [0],
@@ -220,6 +230,7 @@
             ]
         },
         "scale": {
+            "maxLevel": [50, 100, 150],
             "inventory": [2],
             "goldStorage": [10000, 25000],
             "battleJoinPercent": [50, 60, 70, 80, 90, 99],
@@ -229,6 +240,7 @@
             "xpPerGold": [100, 500, 1000]
         },
         "scaleCost": {
+            "maxLevel": [0, 50000, 100000],
             "inventory": [20000],
             "goldStorage": [0, 50000],
             "battleJoinPercent": [0],
@@ -274,6 +286,7 @@
             ]
         },
         "scale": {
+            "maxLevel": [75, 125, 175],
             "inventory": [3],
             "goldStorage": [10000, 35000],
             "battleJoinPercent": [55, 65, 75, 85, 95, 100],
@@ -283,6 +296,7 @@
             "xpPerGold": [50, 250, 750]
         },
         "scaleCost": {
+            "maxLevel": [0, 75000, 125000],
             "inventory": [30000],
             "goldStorage": [0, 50000],
             "battleJoinPercent": [0],
