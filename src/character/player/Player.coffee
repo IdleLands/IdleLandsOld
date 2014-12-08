@@ -427,6 +427,7 @@ class Player extends Character
     resolved = Q {isSuccess: yes, code: 125, message: "Successfully purchased #{@shop.slots[slot].item.name} for #{@shop.slots[slot].price} gold.", player: @buildRESTObject()}
 
     @gold.sub @shop.slots[slot].price
+    @emit "player.shop.buy", @, @shop.slots[slot].item, @shop.slots[slot].price
 
     current = _.findWhere @equipment, {type: @shop.slots[slot].item.type}
     @equipment = _.without @equipment, current

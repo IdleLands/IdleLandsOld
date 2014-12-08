@@ -19,23 +19,17 @@ app = express()
 bodyParser = require "body-parser"
 cors = require "cors"
 compression = require "compression"
+morgan = require "morgan"
+fs = require "fs"
+
+accessLogStream =
+app.use (morgan('combined', {stream: fs.createWriteStream "#{__dirname}/../../access.log", flags: 'a'}))
 
 # express config
-app.use compression {threshold: 128}
 app.use cors()
+app.use compression {threshold: 128}
 app.use bodyParser.urlencoded extended: no
 app.use bodyParser.json()
-
-app.use (req, res, next) ->
-  res.header "Access-Control-Allow-Origin", "*"
-  res.header "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS"
-  res.header "Access-Control-Allow-Headers", "X-Requested-With,Content-Type,Cache-Control"
-  
-  if req.method is "OPTIONS"
-    req.statusCode = 204
-    return res.end()
-    
-  next()
 
 ###
 
@@ -84,4 +78,3 @@ process.on 'uncaughtException', (e) ->
 
 # spin it up
 http.createServer(app).listen 80
-http.createServer(app).listen 443
