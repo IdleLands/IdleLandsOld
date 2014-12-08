@@ -19,6 +19,11 @@ app = express()
 bodyParser = require "body-parser"
 cors = require "cors"
 compression = require "compression"
+morgan = require "morgan"
+fs = require "fs"
+
+accessLogStream = fs.createWriteStream "#{__dirname}/access.log", flags: 'a'
+app.use morgan 'combined', stream: accessLogStream
 
 # express config
 app.use cors()
