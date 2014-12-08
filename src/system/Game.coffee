@@ -26,6 +26,10 @@ chance = (new require "chance")()
 
 console.log "Rebooted IdleLands."
 
+process.on 'uncaughtException', (err) ->
+  console.error (new Date).toUTCString() + ' uncaughtException:', err.message
+  console.error err.stack
+
 class Game
 
   constructor: () ->
