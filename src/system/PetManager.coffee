@@ -31,6 +31,9 @@ class PetManager
 
     , @DELAY_INTERVAL
 
+  getActivePetFor: (player) ->
+    @activePets[player.identifier]
+
   createPet: (options) ->
     {player, type, name, attr1, attr2} = options
 

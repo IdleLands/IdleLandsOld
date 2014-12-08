@@ -471,11 +471,22 @@ class Player extends Character
       attr1: attr1
       attr2: attr2
 
-    Q {isSuccess: yes, code: 95, message: "Successfully purchased a new pet!"}
+    Q {isSuccess: yes, code: 205, message: "Successfully purchased a new pet (#{pet}) named '#{name}'!"}
+
+  changePetClass: (newClass) ->
+    myClasses = _.keys @statistics['calculated class changes']
+    return Q {isSuccess: no, code: 206, message: "You haven't been that class yet, so you can't teach your pet how to do it!"} if (myClasses.indexOf newClass) is -1
+
+    @getPet().setClassTo newClass
+
+    Q {isSuccess: yes, code: 207, message: "Successfully changed your pets class to #{newClass}!"}
 
   save: ->
     return if not @playerManager
     @playerManager.savePlayer @
+
+  getPet: ->
+    @playerManager.game.petManager.getActivePetFor @
 
   gainGold: (gold) ->
     if _.isNaN gold
