@@ -22,7 +22,7 @@ router
   .then (resp) -> res.json resp
 
 # login
-.post "/player/auth/login", loginRequestTimeout.prevent, (req, res) ->
+.post "/player/auth/login", (req, res) ->
   {identifier, password} = req.body
   API.player.auth.loginWithPassword identifier, password
   .then (resp) -> res.json resp
