@@ -21,21 +21,10 @@ cors = require "cors"
 compression = require "compression"
 
 # express config
-app.use compression {threshold: 128}
 app.use cors()
+app.use compression {threshold: 128}
 app.use bodyParser.urlencoded extended: no
 app.use bodyParser.json()
-
-app.use (req, res, next) ->
-  res.header "Access-Control-Allow-Origin", "*"
-  res.header "Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS"
-  res.header "Access-Control-Allow-Headers", "X-Requested-With,Content-Type,Cache-Control"
-  
-  if req.method is "OPTIONS"
-    req.statusCode = 204
-    return res.end()
-    
-  next()
 
 ###
 
