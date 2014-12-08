@@ -6,6 +6,7 @@ class Equipment
     _.extend @, _.defaults options, Equipment.defaults
     @_baseScore = ~~@score()
     @foundAt = new Date()
+    @uid = Date.now()
     @itemClass = options.itemClass if options.itemClass
     #console.error "ERROR in equipment constructor, name=#{@name}, type=#{@type}" if not @name or not @type
 

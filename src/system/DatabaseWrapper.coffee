@@ -72,10 +72,10 @@ class DatabaseWrapper
       else
         @db.find terms, callback
 
-  findForEach: (terms, callback) =>
+  findForEach: (terms, callback, context = null) =>
     if databaseEngine is 'mongo'
       Q.when @databaseReady, =>
-        @db.find(terms).stream().on 'data', (data) -> callback null, data
+        @db.find(terms).stream().on 'data', (data) -> callback.call context, data
     else
       @db.find terms, (e, docs) ->
         docs.forEach (doc) ->

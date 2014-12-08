@@ -1,6 +1,7 @@
 {
     "Pet Rock": {
         "cost": 5000,
+        "description": "Unlocked by changing yourself once.",
         "slots": {
             "body": 1
         },
@@ -38,6 +39,7 @@
 
     "Corgi": {
         "cost": 25000,
+        "description": "Unlocked by being a collector of fine items.",
         "slots": {
             "body": 1,
             "feet": 2,
@@ -76,6 +78,7 @@
 
     "Raven": {
         "cost": 35000,
+        "description": "Unlocked by keeping an eye out for shiny things.",
         "slots": {
             "body": 1,
             "feet": 1,
@@ -119,6 +122,7 @@
 
     "Parrot": {
         "cost": 30000,
+        "description": "Unlocked by getting some booty.",
         "slots": {
             "body": 1,
             "feet": 1,
@@ -161,6 +165,7 @@
 
     "Dolphin": {
         "cost": 15000,
+        "description": "Unlocked by finding some watery delicacies.",
         "slots": {
         },
         "specialStats": {
@@ -196,6 +201,7 @@
 
     "Minitaur": {
         "cost": 50000,
+        "description": "Unlocked by being a slayer of the ancients and a purveyor of their goods.",
         "slots": {
             "body": 1,
             "feet": 1,
@@ -253,6 +259,7 @@
 
     "Chimera Dragon": {
         "cost": 50000,
+        "description": "Unlocked by being a connoisseur of all matters draconic.",
         "slots": {
             "body": 1,
             "feet": 2,

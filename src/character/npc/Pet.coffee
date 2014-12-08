@@ -9,25 +9,24 @@ PetData = require "../../../config/pets.json"
 class Pet extends Character
 
   constructor: (options) ->
-
-    return if not options.type
-
     super options
 
-    @type = options.type
+    [@type, @attrs, @owner, @creator] = [options.type, options.attrs, options.owner, options.creator]
+
     @level = new RestrictedNumber 0, PetData[@type].scale.maxLevel[0], 0
     @gold = new RestrictedNumber 0, PetData[@type].scale.goldStorage[0], 0
-    @lastInteraction = new Date()
-    @gender = chance.gender().toLowerCase()
     @xp = new RestrictedNumber 0, (@levelUpXpCalc 1), 0
-    @setClassTo 'Monster'
+
     @gender = chance.gender().toLowerCase()
+    @setClassTo 'Monster'
+
     @isMonster = yes
     @isPet = yes
     @isActive = yes
     @autoSell = yes
     @scaleLevel = {}
     @lastInteraction = Date.now()
+    @createdAt = Date.now()
 
   getGender: -> @gender
 
@@ -51,13 +50,12 @@ class Pet extends Character
     stats
 
   canEquip: (item) ->
-    myItem = _.findWhere @equipment, {type: item.type}
-    return if not myItem
-    score = @calc.itemScore item
-    myScore = @calc.itemScore myItem
-    realScore = item.score()
+    # are all slots filled?
+    itemsInSlot = (_.find @equipment, {type: item.type}).length
+    return no if itemsInSlot >= PetData[@type].slots[item.type]
 
-    score > myScore and realScore < @calc.itemFindRange()
+    # if not, we just have to make sure it's within our current parameters for equipping
+    item.score() < @calc.itemFindRange()
 
   gainXp: (xp) ->
     @xp.add xp
@@ -65,15 +63,38 @@ class Pet extends Character
 
   levelUp: ->
     @level.add 1
-    message = "<player.name>#{@name}</player.name> has attained level <player.level>#{@level.getValue()}</player.level>!"
     @resetMaxXp()
     @xp.toMinimum()
-    @recalculateStats()
-    @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'levelup'} if not suppress
+
+  buildSaveObject: ->
+    realCalc = _.omit @calc, 'self'
+    calc = realCalc.base
+    calcStats = realCalc.statCache
+    badStats = [
+      'petManager'
+      'party'
+      'personalities'
+      'identifier'
+      'calc'
+      'spellsAffectedBy'
+      'fled'
+      '_events'
+      'profession'
+      '_id'
+    ]
+    ret = _.omit @, badStats
+    ret._baseStats = calc
+    ret._statCache = calcStats
+    ret
+
+  getOwner: ->
+    @petManager.game.playerManager.getPlayerByName @owner.name
 
   save: ->
+    @petManager.save @buildSaveObject()
 
   takeTurn: ->
+    console.log "#{@name} taking turn"
     # do action, check if current time > expected time to finish event, if passes, do action and reset time?
     @save()
 

@@ -451,10 +451,16 @@ class Player extends Character
     @playerManager.game.petManager.handlePetsForPlayer @
 
   buyPet: (pet, name, attr1 = "a monocle", attr2 = "a top hat") ->
+
+    name = name.trim()
+    attr1 = attr1.trim()
+    attr2 = attr2.trim()
+
     return Q {isSuccess: no, code: 200, message: "You need to specify all required information to make a pet."} if not name or not attr1 or not attr2
-    return Q {isSuccess: no, code: 201, message: "You haven't unlocked that pet."} if not @foundPets[pet]
-    return Q {isSuccess: no, code: 202, message: "You've already purchased that pet."} if @foundPets[pet].purchaseDate
-    return Q {isSuccess: no, code: 203, message: "You don't have enough gold to buy that pet!"} if @foundPets[pet].cost > @gold.getValue()
+    return Q {isSuccess: no, code: 201, message: "Your information needs to be less than 20 characters."} if name.length > 20 or attr1.length > 20 or attr2.length > 20
+    return Q {isSuccess: no, code: 202, message: "You haven't unlocked that pet."} if not @foundPets[pet]
+    return Q {isSuccess: no, code: 203, message: "You've already purchased that pet."} if @foundPets[pet].purchaseDate
+    return Q {isSuccess: no, code: 204, message: "You don't have enough gold to buy that pet!"} if @foundPets[pet].cost > @gold.getValue()
     
     @gold.sub @foundPets[pet].cost
 
