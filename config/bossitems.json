@@ -106,6 +106,24 @@
         "agi": 150,
         "parry": 1
     },
+    "Fire Enfused Dragon Tooth": {
+        "type": "offhand",
+        "dex": 250,
+        "luck": 1,
+        "agi": 150,
+	"con": 150,
+        "str": 1000,
+	"glowing": 2
+    },
+    "Breastplate of Wrath": {
+        "type": "body",
+        "int": 1500,
+        "luck": 3,
+        "wis": 750,
+        "fire": 1400,
+	"intPercent": 5,
+	"defense": 2
+    }, 
     "Flame Polished Gauntlets": {
         "type": "hands",
         "int": 350,

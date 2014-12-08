@@ -242,7 +242,7 @@
             { "name": "Halberd of the Giants", "dropPercent": 80 }
         ]
 		},
-"Ghostly Pirate Captain": {
+    "Ghostly Pirate Captain": {
         "respawn": 10800,
         "availableScore": 1200,
         "stats": {
@@ -258,13 +258,55 @@
             { "name": "Incorporeal Cutlass", "dropPercent": 70 }
         ]
 		},
+    "Baby Red Draygon": {
+        "respawn": 10800,
+        "availableScore": 3000,
+        "stats": {
+            "class": "Barbarian",
+            "hp": 16999,
+            "level": 30,
+            "luck": 33,
+            "dex": 600,
+	    "agi": 900,
+	    "str": 2000,
+	    "prone": 1,
+	    "glowing": 1
+        },
+        "items": [
+            { "name": "Fire Enfused Dragon Tooth", "dropPercent": 75 }
+        ]
+		},
+    "Mama Red Draygon": {
+        "respawn": 10800,
+        "availableScore": 5000,
+        "stats": {
+            "class": "Mage",
+            "hp": 39212,
+	    "mp": 77777,
+            "level": 55,
+            "luck": 77,
+            "dex": 1600,
+	    "con": 1300,
+	    "agi": 500,
+	    "str": 3900,
+	    "wis": 999,
+	    "int": 2900,
+	    "fire": 7777,
+	    "defense": 2,
+	    "fear": 1,
+	    "sturdy": 1
+        },
+        "items": [
+            { "name": "Breastplate of Wrath", "dropPercent": 80 }
+        ]
+		},
     "Lucifer the Flame-Born": {
         "respawn": 10800,
         "availableScore": 2400,
         "stats": {
             "class": "Mage",
             "hp": 23200,
-            "mp": 28200,
+            "mp": 28200, 
             "level": 40,
             "str": 1800,
             "int": 1750,
