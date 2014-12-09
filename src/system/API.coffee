@@ -192,6 +192,11 @@ class API
         .then (res) ->
           res.player.buyPet type, name, attr1, attr2 if res.isSuccess
 
+      upgrade: (identifier, stat) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.upgradePet stat if res.isSuccess
+
     guild:
       create: (identifier, guildName) =>
         @validateIdentifier identifier

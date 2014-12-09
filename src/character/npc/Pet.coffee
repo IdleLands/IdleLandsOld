@@ -87,6 +87,10 @@ class Pet extends Character
     ret._statCache = calcStats
     ret
 
+  increaseStat: (stat) ->
+    @scaleLevel[stat]++
+    @petManager.configurePet @
+
   getOwner: ->
     @petManager.game.playerManager.getPlayerByName @owner.name
 
@@ -94,7 +98,7 @@ class Pet extends Character
     @petManager.save @buildSaveObject()
 
   takeTurn: ->
-    console.log "#{@name} taking turn"
+    #console.log "#{@name} taking turn"
     # do action, check if current time > expected time to finish event, if passes, do action and reset time?
     @save()
 

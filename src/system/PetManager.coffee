@@ -4,6 +4,7 @@ _ = require "underscore"
 Equipment = require "../item/Equipment"
 Q = require "q"
 MessageCreator = require "./MessageCreator"
+RestrictedNumber = require "restricted-number"
 Constants = require "./Constants"
 PetData = require "../../config/pets.json"
 Pet = require "../character/npc/Pet"
@@ -53,6 +54,7 @@ class PetManager
     newPet = new Pet options
     @pets.push newPet
     newPet.petManager = @
+    @configurePet newPet
 
     player.foundPets[type].purchaseDate = Date.now()
     @activePets[player.identifier]?.isActive = no
@@ -84,6 +86,8 @@ class PetManager
     pet.equipment = loadEquipment pet.equipment
     pet.profession = loadProfession pet.professionName
 
+    @configurePet pet
+
   save: (pet) ->
     @db.update {createdAt: pet.createdAt}, pet, {upsert: yes}, (e) ->
       console.error "Pet save error: #{e}" if e
@@ -105,6 +109,21 @@ class PetManager
 
   handlePetsForPlayer: (player) ->
     @checkPetAvailablity player
+
+  configurePet: (pet) ->
+    config = @getConfig pet
+    pet._configCache = config
+
+    _.each (_.keys config.scaleCost), (key) ->
+      pet.scaleLevel[key] = 0 if not pet.scaleLevel[key]
+
+    pet.level.maximum = config.scale.maxLevel[pet.scaleLevel.maxLevel]
+    pet.gold.maximum = config.scale.goldStorage[pet.scaleLevel.goldStorage]
+
+    pet.calc.itemFindRange()
+
+  getConfig: (pet) ->
+    PetData[pet.type]
 
   checkPetAvailablity: (player) ->
     player.foundPets = {} if not player.foundPets

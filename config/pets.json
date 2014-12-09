@@ -20,9 +20,10 @@
             "inventory": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
             "goldStorage": [1000, 10000, 100000],
             "battleJoinPercent": [0, 5, 15, 25, 35, 50],
-            "itemFind": [0, 86400, 64800, 43200, 21600, 10800, 3600, 1800, 450],
-            "itemSell": [0.05, 0.10],
-            "itemBonus": [0, 1, 5, 10, 15, 30, 50, 100],
+            "itemFindTimeDuration": [0, 86400, 64800, 43200, 21600, 10800, 3600, 1800, 450],
+            "itemSellMultiplier": [0.05, 0.10],
+            "itemFindBonus": [0, 1, 5, 10, 15, 30, 50, 100],
+            "itemFindRangeMultiplier": [0, 0.1, 0.2, 0.4],
             "xpPerGold": [10, 50, 100, 150, 250]
         },
         "scaleCost": {
@@ -30,9 +31,10 @@
             "inventory": [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000],
             "goldStorage": [0, 10000, 100000],
             "battleJoinPercent": [0, 10000, 10000, 10000, 10000, 10000, 15000],
-            "itemFind": [0, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 50000],
-            "itemSell": [0, 20000],
-            "itemBonus": [0, 100, 1000, 5000, 7500, 15000, 30000, 65000],
+            "itemFindTimeDuration": [0, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 50000],
+            "itemSellMultiplier": [0, 20000],
+            "itemFindBonus": [0, 100, 1000, 5000, 7500, 15000, 30000, 65000],
+            "itemFindRangeMultiplier": [0, 10000, 20000, 40000],
             "xpPerGold": [0, 5000, 10000, 15000, 25000]
         }
     },
@@ -59,9 +61,10 @@
             "inventory": [5, 7, 9, 11, 13, 15],
             "goldStorage": [2000, 20000, 100000],
             "battleJoinPercent": [0, 15, 30, 45, 60, 75],
-            "itemFind": [0, 43200, 21600, 10800, 3600, 1800, 450, 275],
-            "itemSell": [0.07, 0.13],
-            "itemBonus": [0, 10, 15, 30, 50, 100],
+            "itemFindTimeDuration": [0, 43200, 21600, 10800, 3600, 1800, 450, 275],
+            "itemSellMultiplier": [0.07, 0.13],
+            "itemFindBonus": [0, 10, 15, 30, 50, 100],
+            "itemFindRangeMultiplier": [0.1, 0.2, 0.3],
             "xpPerGold": [10, 100, 250, 500]
         },
         "scaleCost": {
@@ -69,9 +72,10 @@
             "inventory": [0, 5000, 7500, 10000, 12500, 15000],
             "goldStorage": [0, 10000, 75000],
             "battleJoinPercent": [0, 15000, 25000, 35000, 45000, 60000, 75000],
-            "itemFind": [0, 20000, 25000, 30000, 35000, 40000, 50000, 65000],
-            "itemSell": [0, 25000],
-            "itemBonus": [0, 5000, 7500, 15000, 30000, 65000],
+            "itemFindTimeDuration": [0, 20000, 25000, 30000, 35000, 40000, 50000, 65000],
+            "itemSellMultiplier": [0, 25000],
+            "itemFindBonus": [0, 5000, 7500, 15000, 30000, 65000],
+            "itemFindRangeMultiplier": [0, 20000, 30000],
             "xpPerGold": [0, 10000, 25000, 50000]
         }
     },
@@ -103,9 +107,10 @@
             "inventory": [3, 5, 7, 10, 15],
             "goldStorage": [10000, 50000, 100000, 500000],
             "battleJoinPercent": [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
-            "itemFind": [0, 21600, 10800, 3600, 1800, 450, 275, 150],
-            "itemSell": [0.07, 0.13, 0.20, 0.27],
-            "itemBonus": [0, 10, 15, 30, 50, 100, 150, 200],
+            "itemFindTimeDuration": [0, 21600, 10800, 3600, 1800, 450, 275, 150],
+            "itemSellMultiplier": [0.07, 0.13, 0.20, 0.27],
+            "itemFindBonus": [0, 10, 15, 30, 50, 100, 150, 200],
+            "itemFindRangeMultiplier": [0, 0.2, 0.4, 0.75],
             "xpPerGold": [10, 100, 250, 500]
         },
         "scaleCost": {
@@ -113,9 +118,10 @@
             "inventory": [0, 5000, 7500, 10000, 12500, 15000],
             "goldStorage": [0, 5000, 10000, 50000],
             "battleJoinPercent": [0, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000],
-            "itemFind": [0, 25000, 30000, 35000, 40000, 50000, 65000, 85000],
-            "itemSell": [0, 15000, 25000, 45000],
-            "itemBonus": [0, 5000, 7500, 15000, 30000, 45000, 60000, 95000],
+            "itemFindTimeDuration": [0, 25000, 30000, 35000, 40000, 50000, 65000, 85000],
+            "itemSellMultiplier": [0, 15000, 25000, 45000],
+            "itemFindBonus": [0, 5000, 7500, 15000, 30000, 45000, 60000, 95000],
+            "itemFindRangeMultiplier": [0, 20000, 40000, 75000],
             "xpPerGold": [0, 10000, 25000, 50000]
         }
     },
@@ -146,9 +152,10 @@
             "inventory": [5, 10, 15],
             "goldStorage": [500, 5000, 50000],
             "battleJoinPercent": [0, 10, 20, 30, 40, 50, 60],
-            "itemFind": [0, 21600, 10800, 3600, 1800],
-            "itemSell": [0.04, 0.08, 0.12, 0.16],
-            "itemBonus": [0, 10, 15, 30, 50, 75],
+            "itemFindTimeDuration": [0, 21600, 10800, 3600, 1800],
+            "itemSellMultiplier": [0.04, 0.08, 0.12, 0.16],
+            "itemFindBonus": [0, 10, 15, 30, 50, 75],
+            "itemFindRangeMultiplier": [0, 0.1, 0.2],
             "xpPerGold": [10, 100, 250]
         },
         "scaleCost": {
@@ -156,9 +163,10 @@
             "inventory": [0, 5000, 10000, 15000],
             "goldStorage": [0, 5000, 50000],
             "battleJoinPercent": [0, 20000, 30000, 40000, 50000, 60000, 70000],
-            "itemFind": [0, 25000, 30000, 40000, 65000, 85000],
-            "itemSell": [0, 10000, 20000, 30000],
-            "itemBonus": [0, 5000, 7500, 15000, 30000, 45000],
+            "itemFindTimeDuration": [0, 25000, 30000, 40000, 65000, 85000],
+            "itemSellMultiplier": [0, 10000, 20000, 30000],
+            "itemFindBonus": [0, 5000, 7500, 15000, 30000, 45000],
+            "itemFindRangeMultiplier": [0, 10000, 20000],
             "xpPerGold": [0, 10000, 25000]
         }
     },
@@ -182,9 +190,10 @@
             "inventory": [15, 25, 35],
             "goldStorage": [10000, 100000, 250000],
             "battleJoinPercent": [0],
-            "itemFind": [0, 21600, 10800, 3600, 1800],
-            "itemSell": [0.18, 0.27, 0.36],
-            "itemBonus": [0, 30, 50, 75, 150, 200, 250],
+            "itemFindTimeDuration": [0, 21600, 10800, 3600, 1800],
+            "itemSellMultiplier": [0.18, 0.27, 0.36],
+            "itemFindBonus": [0, 30, 50, 75, 150, 200, 250],
+            "itemFindRangeMultiplier": [0],
             "xpPerGold": [10, 100, 150]
         },
         "scaleCost": {
@@ -192,9 +201,10 @@
             "inventory": [0, 10000, 30000, 50000],
             "goldStorage": [0, 50000, 125000],
             "battleJoinPercent": [0],
-            "itemFind": [0, 25000, 30000, 40000, 65000, 85000],
-            "itemSell": [0, 20000, 40000],
-            "itemBonus": [0, 5000, 7500, 15000, 30000, 55000, 100000],
+            "itemFindTimeDuration": [0, 25000, 30000, 40000, 65000, 85000],
+            "itemSellMultiplier": [0, 20000, 40000],
+            "itemFindBonus": [0, 5000, 7500, 15000, 30000, 55000, 100000],
+            "itemFindRangeMultiplier": [0],
             "xpPerGold": [0, 10000, 15000]
         }
     },
@@ -240,9 +250,10 @@
             "inventory": [2],
             "goldStorage": [10000, 25000],
             "battleJoinPercent": [50, 60, 70, 80, 90, 99],
-            "itemFind": [0, 86400, 64800, 43200, 21600],
-            "itemSell": [0.10, 0.15],
-            "itemBonus": [0, 25, 50, 75, 100],
+            "itemFindTimeDuration": [0, 86400, 64800, 43200, 21600],
+            "itemSellMultiplier": [0.10, 0.15],
+            "itemFindBonus": [0, 25, 50, 75, 100],
+            "itemFindRangeMultiplier": [0, 0.2, 0.4, 0.6],
             "xpPerGold": [100, 500, 1000]
         },
         "scaleCost": {
@@ -250,9 +261,10 @@
             "inventory": [20000],
             "goldStorage": [0, 50000],
             "battleJoinPercent": [0],
-            "itemFind": [0, 45000, 55000, 65000, 75000],
-            "itemSell": [0, 15000, 25000],
-            "itemBonus": [0, 25000, 50000, 75000, 100000],
+            "itemFindTimeDuration": [0, 45000, 55000, 65000, 75000],
+            "itemSellMultiplier": [0, 15000, 25000],
+            "itemFindBonus": [0, 25000, 50000, 75000, 100000],
+            "itemFindRangeMultiplier": [0, 25000, 45000, 65000],
             "xpPerGold": [0, 25000, 50000]
         }
     },
@@ -297,9 +309,10 @@
             "inventory": [3],
             "goldStorage": [10000, 35000],
             "battleJoinPercent": [55, 65, 75, 85, 95, 100],
-            "itemFind": [0, 86400, 64800, 43200, 21600, 10800],
-            "itemSell": [0.20, 0.40],
-            "itemBonus": [0, 25, 50, 75, 100, 125],
+            "itemFindTimeDuration": [0, 86400, 64800, 43200, 21600, 10800],
+            "itemSellMultiplier": [0.20, 0.40],
+            "itemFindBonus": [0, 25, 50, 75, 100, 125],
+            "itemFindRangeMultiplier": [0, 0.3, 0.5, 0.7, 1],
             "xpPerGold": [50, 250, 750]
         },
         "scaleCost": {
@@ -307,9 +320,10 @@
             "inventory": [30000],
             "goldStorage": [0, 50000],
             "battleJoinPercent": [0],
-            "itemFind": [0, 50000, 60000, 70000, 80000, 100000],
-            "itemSell": [0, 60000],
-            "itemBonus": [0, 25000, 50000, 75000, 100000, 125000],
+            "itemFindTimeDuration": [0, 50000, 60000, 70000, 80000, 100000],
+            "itemSellMultiplier": [0, 60000],
+            "itemFindBonus": [0, 25000, 50000, 75000, 100000, 125000],
+            "itemFindRangeMultiplier": [0, 25000, 45000, 65000, 95000],
             "xpPerGold": [0, 25000, 50000]
         }
     }

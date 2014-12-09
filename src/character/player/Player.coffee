@@ -472,15 +472,38 @@ class Player extends Character
       attr1: attr1
       attr2: attr2
 
+    @emit "player.shop.pet"
+
     Q {isSuccess: yes, code: 205, message: "Successfully purchased a new pet (#{pet}) named '#{name}'!"}
+
+  upgradePet: (stat) ->
+    pet = @getPet()
+    config = pet.petManager.getConfig pet
+
+    curLevel = pet.scaleLevel[stat]
+    cost = config.scaleCost[stat][curLevel+1]
+
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+    return Q {isSuccess: no, code: 209, message: "That stat is invalid."} if not (stat of pet.scaleLevel)
+    return Q {isSuccess: no, code: 210, message: "That stat is already at max level."} if config.scaleCost[stat].length <= curLevel+1
+    return Q {isSuccess: no, code: 211, message: "You don't have enough gold to upgrade your pet."} if @gold.getValue < cost
+
+    @gold.sub cost
+
+    pet.increaseStat stat
+
+    @emit "player.shop.petupgrade"
+
+    Q {isSuccess: yes, code: 212, message: "Successfully upgraded your pets #{stat} to level #{curLevel+1}!"}
 
   changePetClass: (newClass) ->
     myClasses = _.keys @statistics['calculated class changes']
-    return Q {isSuccess: no, code: 206, message: "You haven't been that class yet, so you can't teach your pet how to do it!"} if (myClasses.indexOf newClass) is -1
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+    return Q {isSuccess: no, code: 207, message: "You haven't been that class yet, so you can't teach your pet how to do it!"} if (myClasses.indexOf newClass) is -1
 
     @getPet().setClassTo newClass
 
-    Q {isSuccess: yes, code: 207, message: "Successfully changed your pets class to #{newClass}!"}
+    Q {isSuccess: yes, code: 208, message: "Successfully changed your pets class to #{newClass}!"}
 
   save: ->
     return if not @playerManager

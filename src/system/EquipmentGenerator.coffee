@@ -12,6 +12,8 @@ class EquipmentGenerator extends Generator
     itemList = @game.componentDatabase.itemStats
     type = _.sample @types if not type
 
+    return if not itemList[type]
+
     baseItem = _.sample itemList[type]
 
     item = new Equipment baseItem
