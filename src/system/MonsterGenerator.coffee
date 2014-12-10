@@ -1,5 +1,5 @@
 
-_ = require "underscore"
+_ = require "lodash"
 Monster = require "../character/npc/Monster"
 Generator = require "./Generator"
 Constants = require "./Constants"

@@ -1,6 +1,6 @@
 
 Event = require "../Event"
-_ = require "underscore"
+_ = require "lodash"
 Constants = require "../../system/Constants"
 
 `/**

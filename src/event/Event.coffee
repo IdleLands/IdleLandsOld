@@ -3,7 +3,7 @@ chance = new (require "chance")()
 MessageCreator = require "../system/MessageCreator"
 Constants = require "../system/Constants"
 
-_ = require "underscore"
+_ = require "lodash"
 
 class Event
   constructor: (@game, @event, @player) ->

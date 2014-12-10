@@ -1,6 +1,6 @@
 
 Event = require "../Event"
-_ = require "underscore"
+_ = require "lodash"
 
 `/**
  * This event handles creating a party for the player.

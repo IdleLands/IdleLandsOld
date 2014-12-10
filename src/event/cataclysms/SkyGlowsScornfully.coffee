@@ -1,6 +1,6 @@
 
 Cataclysm = require "../Cataclysm"
-_ = require "underscore"
+_ = require "lodash"
 
 `/**
   * This cataclysm forsakes your experiences.

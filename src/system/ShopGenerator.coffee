@@ -1,5 +1,5 @@
 
-_ = require "underscore"
+_ = require "lodash"
 Generator = require "./Generator"
 Chance = require "chance"
 Constants = require "./Constants"
@@ -11,6 +11,7 @@ class ShopGenerator extends Generator
   generateShop: (player) ->
     shop = {}
     shop.item = @generateItem player
+    return if not shop.item
     shop.item = @generateItem player while shop.item.score() > player.calc.itemFindRange()*Constants.defaults.game.shopRangeBoost
     shop.price = Math.floor(shop.item.score()*
                 (chance.floating {min: 1, max: 1 + Constants.defaults.game.shopPriceFlux, fixed: 3})*
@@ -26,6 +27,7 @@ class ShopGenerator extends Generator
     shop.region = region.name
     for i in [0...region.shopSlots()]
       item = @generateItem player
+      return if not item
       item = @generateItem player while item.score() > player.calc.itemFindRange()*Constants.defaults.game.shopRangeBoost*region.shopQuality()
       price = Math.floor(item.score()*region.shopMult()*
                 (chance.floating {min: 1, max: 1 + Constants.defaults.game.shopPriceFlux, fixed: 3})*

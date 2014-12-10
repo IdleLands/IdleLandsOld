@@ -4,7 +4,7 @@ RestrictedNumber = require "restricted-number"
 MessageCreator = require "../../system/MessageCreator"
 Constants = require "../../system/Constants"
 Equipment = require "../../item/Equipment"
-_ = require "underscore"
+_ = require "lodash"
 Q = require "q"
 Personality = require "../base/Personality"
 requireDir = require "require-dir"
@@ -498,12 +498,32 @@ class Player extends Character
 
   changePetClass: (newClass) ->
     myClasses = _.keys @statistics['calculated class changes']
+    pet = @getPet()
     return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
     return Q {isSuccess: no, code: 207, message: "You haven't been that class yet, so you can't teach your pet how to do it!"} if (myClasses.indexOf newClass) is -1
 
-    @getPet().setClassTo newClass
+    pet.setClassTo newClass
 
     Q {isSuccess: yes, code: 208, message: "Successfully changed your pets class to #{newClass}!"}
+
+  feedPet: (gold) ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+    return Q {isSuccess: no, code: 213, message: "You specified an invalid amount of gold."} if gold <= 0 or not _.isNumber gold
+    return Q {isSuccess: no, code: 214, message: "You don't have enough gold for that!"} if @gold.lessThan gold
+
+    oldLevel = pet.level.getValue()
+    @gold.sub gold
+    xpGained = pet.feedOn gold
+
+    newLevel = pet.level.getValue()
+    levelup = no
+    if newLevel isnt oldLevel
+      levelup = yes
+      message = "<player.name>#{pet.name}</player.name> (#{pet.type} of <player.name>#{@name}</player.name>) is now level <player.level>#{newLevel}</player.level>!"
+      @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'levelup'}
+
+    Q {isSuccess: yes, code: 215, message: "Your pet was fed #{gold} gold and gained #{xpGained} xp! #{if levelup then "Now level #{newLevel}!" else ""}"}
 
   save: ->
     return if not @playerManager

@@ -22,7 +22,7 @@ Battle = require "../event/Battle"
 World = require "../map/World"
 q = require "q"
 
-_ = require "underscore"
+_ = require "lodash"
 chance = (new require "chance")()
 
 console.log "Rebooted IdleLands."

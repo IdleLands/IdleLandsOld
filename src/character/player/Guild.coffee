@@ -3,7 +3,7 @@ Character = require "../base/Character"
 RestrictedNumber = require "restricted-number"
 MessageCreator = require "../../system/MessageCreator"
 Constants = require "../../system/Constants"
-_ = require "underscore"
+_ = require "lodash"
 Q = require "q"
 
 Chance = require "chance"

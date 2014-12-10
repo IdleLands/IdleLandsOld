@@ -1,7 +1,7 @@
 
 Achievement = require "../base/Achievement"
 Personality = require "../base/Personality"
-_ = require "underscore"
+_ = require "lodash"
 
 `/**
   * This achievement is earned by meeting the requirements for a personality.

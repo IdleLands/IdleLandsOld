@@ -1,6 +1,6 @@
 
 Personality = require "./Personality"
-_ = require "underscore"
+_ = require "lodash"
 
 class Class extends Personality
 

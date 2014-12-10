@@ -1,5 +1,5 @@
 
-_ = require "underscore"
+_ = require "lodash"
 Equipment = require "../item/Equipment"
 chance = new (require "chance")()
 

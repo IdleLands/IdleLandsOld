@@ -1,5 +1,5 @@
 BotManager = require("../../../../core/BotManager").BotManager
-_ = require "underscore"
+_ = require "lodash"
 _.str = require "underscore.string"
 Q = require "q"
 

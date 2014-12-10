@@ -1,6 +1,6 @@
 
 Spell = require "../../../base/Spell"
-_ = require "underscore"
+_ = require "lodash"
 
 class FoodFight extends Spell
   name: "food fight"

@@ -1,7 +1,7 @@
 
 Datastore = require "./DatabaseWrapper"
 ObjectID = require("mongodb").ObjectID
-_ = require "underscore"
+_ = require "lodash"
 _.str = require "underscore.string"
 readdirp = require "readdirp"
 fs = require "fs"

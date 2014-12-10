@@ -1,6 +1,6 @@
 
 Datastore = require "./DatabaseWrapper"
-_ = require "underscore"
+_ = require "lodash"
 Equipment = require "../item/Equipment"
 Q = require "q"
 MessageCreator = require "./MessageCreator"
@@ -84,6 +84,7 @@ class PetManager
 
     pet.loadCalc()
     pet.equipment = loadEquipment pet.equipment
+    pet.inventory = loadEquipment pet.inventory
     pet.profession = loadProfession pet.professionName
 
     @configurePet pet
@@ -112,6 +113,7 @@ class PetManager
 
   configurePet: (pet) ->
     config = @getConfig pet
+
     pet._configCache = config
 
     _.each (_.keys config.scaleCost), (key) ->
@@ -119,6 +121,8 @@ class PetManager
 
     pet.level.maximum = config.scale.maxLevel[pet.scaleLevel.maxLevel]
     pet.gold.maximum = config.scale.goldStorage[pet.scaleLevel.goldStorage]
+
+    pet.inventory = [] if not pet.inventory
 
     pet.calc.itemFindRange()
 

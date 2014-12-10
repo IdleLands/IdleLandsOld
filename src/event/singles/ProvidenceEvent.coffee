@@ -1,6 +1,6 @@
 
 Event = require "../Event"
-_ = require "underscore"
+_ = require "lodash"
 _.str = require "underscore.string"
 chance = new (require "chance")()
 Equipment = require "../../item/Equipment"

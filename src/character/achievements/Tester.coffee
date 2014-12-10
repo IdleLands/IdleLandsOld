@@ -1,7 +1,7 @@
 
 Achievement = require "../base/Achievement"
 Personality = require "../base/Personality"
-_ = require "underscore"
+_ = require "lodash"
 
 `/**
   * This achievement was earned by participating in IdleLands Alpha.

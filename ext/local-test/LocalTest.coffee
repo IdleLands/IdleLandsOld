@@ -2,7 +2,7 @@
 finder = require "fs-finder"
 watch = require "node-watch"
 colors = require "cli-color"
-_ = require "underscore"
+_ = require "lodash"
 
 #### GAME CONSTANTS ####
 

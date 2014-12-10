@@ -4,7 +4,7 @@ Player = require "../character/player/Player"
 BattleCache = require "./BattleCache"
 Constants = require "../system/Constants"
 
-_ = require "underscore"
+_ = require "lodash"
 _.str = require "underscore.string"
 chance = (new require "chance")()
 

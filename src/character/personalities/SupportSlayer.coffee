@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 Constants = require "../../system/Constants"
-_ = require "underscore"
+_ = require "lodash"
 
 slay = (player, enemies) ->
   targets = _.filter enemies.result, (enemy) -> Constants.isSupport enemy.professionName

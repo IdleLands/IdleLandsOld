@@ -1,6 +1,6 @@
 chance = new (require "chance")()
 
-_ = require "underscore"
+_ = require "lodash"
 _.str = require "underscore.string"
 
 Datastore = require "./DatabaseWrapper"

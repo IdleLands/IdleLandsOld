@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 Constants = require "../../system/Constants"
-_ = require "underscore"
+_ = require "lodash"
 
 slay = (player, enemies) ->
   targets = _.sortBy (_.compact enemies.result), (enemy) -> enemy.hp.getValue()

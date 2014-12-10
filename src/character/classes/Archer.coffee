@@ -1,6 +1,6 @@
 
 Class = require "./../base/Class"
-_ = require "underscore"
+_ = require "lodash"
 MessageCreator = require "../../system/MessageCreator"
 
 `/**

@@ -2,7 +2,7 @@
 Character = require "../base/Character"
 Equipment = require "../../item/Equipment"
 RestrictedNumber = require "restricted-number"
-_ = require "underscore"
+_ = require "lodash"
 chance = new (require "chance")()
 
 class Monster extends Character

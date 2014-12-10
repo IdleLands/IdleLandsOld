@@ -1,5 +1,5 @@
 
-_ = require "underscore"
+_ = require "lodash"
 Chance = require "chance"
 chance = new Chance()
 

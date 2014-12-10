@@ -1,5 +1,5 @@
 
-_ = require "underscore"
+_ = require "lodash"
 _.str = require "underscore.string"
 MessageCreator = require "../system/MessageCreator"
 chance = new (require "chance")()

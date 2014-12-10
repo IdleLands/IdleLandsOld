@@ -2,7 +2,7 @@
 Character = require "../base/Character"
 Equipment = require "../../item/Equipment"
 RestrictedNumber = require "restricted-number"
-_ = require "underscore"
+_ = require "lodash"
 chance = new (require "chance")()
 PetData = require "../../../config/pets.json"
 
@@ -24,7 +24,9 @@ class Pet extends Character
     @isPet = yes
     @isActive = yes
     @autoSell = yes
+    @autoUpgrade = no
     @scaleLevel = {}
+    @inventory = []
     @lastInteraction = Date.now()
     @createdAt = Date.now()
 
@@ -91,14 +93,79 @@ class Pet extends Character
     @scaleLevel[stat]++
     @petManager.configurePet @
 
+  feedOn: (gold) ->
+    config = PetData[@type]
+
+    xp = gold * config.scale.xpPerGold[@scaleLevel.xpPerGold]
+
+    @gainXp xp
+
+    xp
+
   getOwner: ->
     @petManager.game.playerManager.getPlayerByName @owner.name
 
   save: ->
     @petManager.save @buildSaveObject()
 
+  addToItemFindTimer: (time) ->
+    @nextItemFind.setSeconds @nextItemFind.getSeconds() + time/10000
+
+  updateItemFind: ->
+    config = PetData[@type]
+    findTime = config.scale.itemFindTimeDuration[@scaleLevel.itemFindTimeDuration]
+    @nextItemFind = new Date()
+    @addToItemFindTimer findTime
+
+  sellItem: (item) ->
+    config = PetData[@type]
+
+    lowestScoreItem = _.min @inventory, (item) -> item.score()
+
+    if lowestScoreItem.score() < item.score()
+      @inventory.push item
+      @inventory = _.without @inventory, lowestScoreItem
+      item = lowestScoreItem
+
+    sellBonus = (@calc.itemSellMultiplier item) + config.scale.itemSellMultiplier[@scaleLevel.itemSellMultiplier]
+    value = Math.max 1, Math.floor item.score() * sellBonus
+    @gold.add value
+
+  actuallyFindItem: ->
+    config = PetData[@type]
+    bonus = config.scale.itemFindBonus[@scaleLevel.itemFindBonus]
+    item = @petManager.game.equipmentGenerator.generateItem null, bonus
+
+    return if not item
+
+    if @canAddToInventory()
+      @addToInventory item
+
+    else
+      @sellItem item
+
+  addToInventory: (item) ->
+    @inventory.push item
+
+  canAddToInventory: ->
+    config = PetData[@type]
+    size = config.scale.inventory[@scaleLevel.inventory]
+
+    @inventory.length < size
+
+  handleItemFind: ->
+    config = PetData[@type]
+    findTime = config.scale.itemFindTimeDuration[@scaleLevel.itemFindTimeDuration]
+    return if not findTime
+
+    @updateItemFind() if not @nextItemFind
+
+    if new Date() > @nextItemFind
+      @actuallyFindItem()
+      @addToItemFindTimer findTime
+
   takeTurn: ->
-    #console.log "#{@name} taking turn"
+    @handleItemFind()
     # do action, check if current time > expected time to finish event, if passes, do action and reset time?
     @save()
 

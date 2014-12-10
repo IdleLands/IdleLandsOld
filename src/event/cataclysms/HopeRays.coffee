@@ -1,6 +1,6 @@
 
 Cataclysm = require "../Cataclysm"
-_ = require "underscore"
+_ = require "lodash"
 
 `/**
   * This cataclysm runs every positive event on every player. See, it's not so bad, now is it?

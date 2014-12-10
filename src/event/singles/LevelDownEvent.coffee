@@ -1,6 +1,6 @@
 
 Event = require "../Event"
-_ = require "underscore"
+_ = require "lodash"
 
 `/**
  * This event causes players to cry. They also lose a level. This does not occur naturally like most other events, it can only happen by stepping on bad tiles.
