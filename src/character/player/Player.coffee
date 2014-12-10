@@ -507,6 +507,7 @@ class Player extends Character
     Q {isSuccess: yes, code: 208, message: "Successfully changed your pets class to #{newClass}!"}
 
   feedPet: (gold) ->
+    gold = Math.round gold
     pet = @getPet()
     return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
     return Q {isSuccess: no, code: 213, message: "You specified an invalid amount of gold."} if gold <= 0 or not _.isNumber gold
