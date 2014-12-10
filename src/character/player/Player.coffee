@@ -526,6 +526,17 @@ class Player extends Character
 
     Q {isSuccess: yes, code: 215, message: "Your pet was fed #{gold} gold and gained #{xpGained} xp! #{if levelup then "Now level #{newLevel}!" else ""}"}
 
+  getPetGold: ->
+    pet = @getPet()
+    petMoney = pet.gold.getValue()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+    return Q {isSuccess: no, code: 216, message: "Your pet is penniless."} if not petMoney
+
+    @gold.add petMoney
+    pet.gold.toMinimum()
+
+    Q {isSuccess: yes, code: 217, message: "You retrieved #{petMoney} gold from your pet!"}
+
   save: ->
     return if not @playerManager
     @playerManager.savePlayer @
