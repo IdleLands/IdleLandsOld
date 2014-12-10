@@ -109,7 +109,7 @@ class Pet extends Character
     @petManager.save @buildSaveObject()
 
   addToItemFindTimer: (time) ->
-    @nextItemFind.setSeconds @nextItemFind.getSeconds() + time/10000
+    @nextItemFind.setSeconds @nextItemFind.getSeconds() + time
 
   updateItemFind: ->
     config = PetData[@type]
