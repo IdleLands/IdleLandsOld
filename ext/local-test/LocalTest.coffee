@@ -143,17 +143,15 @@ adjustSpeed = ->
   IdleWrapper.api.gameInstance.playerManager.beginGameLoop()
 
 gameLoop = ->
-  IdleWrapper.api.gameInstance.loading.then ->
+  doActionPerMember = (arr, action) ->
+    for i in [0...arr.length]
+      setTimeout (player, i) ->
+        action player
+      , DELAY_INTERVAL/arr.length*i, arr[i]
 
-    doActionPerMember = (arr, action) ->
-      for i in [0...arr.length]
-        setTimeout (player, i) ->
-          action player
-        , DELAY_INTERVAL/arr.length*i, arr[i]
-
-    interval = setInterval ->
-      doActionPerMember hashes, IdleWrapper.api.player.takeTurn
-    , DELAY_INTERVAL
+  interval = setInterval ->
+    doActionPerMember hashes, IdleWrapper.api.player.takeTurn
+  , DELAY_INTERVAL
   
 interactiveSession = ->
   readline = require 'readline'
@@ -203,6 +201,6 @@ do loadIdle
 do registerAllPlayers
 do loadAllPlayers
 do watchIdleFiles
-#do adjustSpeed
+do adjustSpeed
 do gameLoop
 do interactiveSession
