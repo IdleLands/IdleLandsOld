@@ -197,6 +197,11 @@ class API
         .then (res) ->
           res.player.upgradePet stat if res.isSuccess
 
+      feed: (identifier, gold) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.feedPet gold if res.isSuccess
+
     guild:
       create: (identifier, guildName) =>
         @validateIdentifier identifier

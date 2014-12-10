@@ -36,13 +36,17 @@ class Game
 
   constructor: () ->
     @parties = []
+
+    defer = q.defer()
+    @loading = defer.promise
+
+    @componentDatabase = new ComponentDatabase @
     @gmCommands = new GMCommands @
     @petManager = new PetManager @
     @spellManager = new SpellManager @
     @eventHandler = new EventHandler @
     @playerManager = new PlayerManager @
     @guildManager = new GuildManager @
-    @componentDatabase = new ComponentDatabase @
     @globalEventHandler = new GlobalEventHandler @
     @calendar = new Calendar @
     @equipmentGenerator = new EquipmentGenerator @
@@ -53,6 +57,8 @@ class Game
     @bossFactory = new BossFactory @
     @treasureFactory = new TreasureFactory @
     @world = new World()
+
+    defer.resolve()
 
     require "./REST"
 

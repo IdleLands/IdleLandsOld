@@ -19,7 +19,7 @@ class ComponentDatabase
     @eventsDb = new Datastore "events", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @itemsDb = new Datastore "items", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @ingredientsDb = new Datastore "items", (db) -> db.ensureIndex {random: '2dsphere'}, ->
-    @battleDb = new Datastore "battles", (db) -> db.ensureIndex {started: 1}, {expireAfterSeconds: 7200}, ->
+    @battleDb = new Datastore "battles", (db) -> db.ensureIndex {started: 1}, {expireAfterSeconds: 10800}, ->
     @analyticsDb = new Datastore "analytics", ->
 
     @importAllData()
@@ -101,11 +101,25 @@ class ComponentDatabase
     basePath = "#{__dirname}/../../assets/data"
     me = @
 
+    itemDefer = Q.defer()
+    ingredientDefer = Q.defer()
+    eventDefer = Q.defer()
+    stringDefer = Q.defer()
+    monsterDefer = Q.defer()
+
+    loadingItems = itemDefer.promise
+    loadingIngredients = ingredientDefer.promise
+    loadingEvents = eventDefer.promise
+    loadingStrings = stringDefer.promise
+    loadingMonsters = monsterDefer.promise
+
     @itemsDb.remove {}, {}, ->
       stream "#{basePath}/items", (entry) ->
         type = entry.name.split(".")[0]
         fs.readFile entry.fullPath, {}, (e, data) ->
           _.each data.toString().split("\n"), (line) -> me.parseItemString line, type
+
+        itemDefer.resolve()
 
     @ingredientsDb.remove {}, {}, ->
       stream "#{basePath}/ingredients", (entry) ->
@@ -113,11 +127,15 @@ class ComponentDatabase
         fs.readFile entry.fullPath, {}, (e, data) ->
           _.each data.toString().split("\n"), (line) -> me.parseIngredientString line, type
 
+        ingredientDefer.resolve()
+
     @eventsDb.remove {}, {}, ->
       stream "#{basePath}/events", (entry) ->
         type = entry.name.split(".")[0]
         fs.readFile entry.fullPath, {}, (e, data) ->
           _.each data.toString().split("\n"), (line) -> me.insertStatic type, line
+
+        eventDefer.resolve()
 
     stream = (path, callback) ->
       objStream = readdirp {root: path, fileFilter: "*.txt"}
@@ -131,10 +149,22 @@ class ComponentDatabase
       fs.readFile entry.fullPath, {}, (e, data) ->
         _.each data.toString().split("\n"), (line) -> me.insertString type, line
 
+      stringDefer.resolve()
+
     stream "#{basePath}/monsters/", (entry) ->
       fs.readFile entry.fullPath, {}, (e, data) ->
         arr = data.toString().split("\n")
         _.each arr, (line) -> me.parseMonsterString line
+
+        monsterDefer.resolve()
+
+    @loadingAll = Q.all [
+      loadingItems
+      loadingIngredients
+      loadingEvents
+      loadingStrings
+      loadingMonsters
+    ]
 
   insertMonster: (monster) ->
     monster.random = [Math.random(), 0]
