@@ -161,6 +161,7 @@ class Spell
         oldSpell = _.findWhere player.spellsAffectedBy, baseName: @baseName
 
         if oldSpell and @stack is "refresh"
+          return
           oldSpell.suppressed = yes
           oldSpell.unaffect player
           battleInstance.emitEvents "skill.duration.refresh", "skill.duration.refreshed", @caster, player, skill: @, turns: @turns
