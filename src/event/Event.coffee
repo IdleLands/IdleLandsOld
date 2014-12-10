@@ -110,7 +110,7 @@ class Event
     return forsaken if forsaken
     nonSacred = _.reject items, (item) -> item.sacred
 
-    badSlots = _.reject nonSacred, (item) -> item.slot in ["providence"]
+    badSlots = _.reject nonSacred, (item) -> item.type in ["providence"]
     _.sample badSlots
 
   pickBlessStat: (item) ->
