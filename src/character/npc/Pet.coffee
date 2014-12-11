@@ -47,11 +47,6 @@ class Pet extends Character
     toClass.load @
     @professionName = toClassName
 
-  pullOutStatsFrom: (base) ->
-    stats = _.omit base, ["level", "name", "class", "_id"]
-    [stats.type, stats.class, stats.name] = ["pet essence", "newbie", "pet essence"]
-    stats
-
   canEquip: (item) ->
     # are all slots filled?
     itemsInSlot = (_.find @equipment, {type: item.type}).length

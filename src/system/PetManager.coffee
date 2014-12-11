@@ -96,9 +96,10 @@ class PetManager
     pet.equipment = _.without pet.equipment, petSoul
 
     baseSoul = PetData[pet.type].specialStats
+    baseSoul.itemFindRangeMultiplier = PetData[pet.type].scale.itemFindRangeMultiplier
     baseSoul.name = "Pet Soul"
-    type: "pet soul"
-    itemClass: "basic"
+    baseSoul.type = "pet soul"
+    baseSoul.itemClass = "basic"
 
     pet.equipment.push new Equipment baseSoul
 
