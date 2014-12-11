@@ -87,7 +87,20 @@ class PetManager
     pet.inventory = loadEquipment pet.inventory
     pet.profession = loadProfession pet.professionName
 
+    @handleSoul pet
+
     @configurePet pet
+
+  handleSoul: (pet) ->
+    petSoul = _.findWhere pet.equipment, {type: 'pet soul'}
+    pet.equipment = _.without pet.equipment, petSoul
+
+    baseSoul = PetData[pet.type].specialStats
+    baseSoul.name = "Pet Soul"
+    type: "pet soul"
+    itemClass: "basic"
+
+    pet.equipment.push new Equipment baseSoul
 
   save: (pet) ->
     @db.update {createdAt: pet.createdAt}, pet, {upsert: yes}, (e) ->

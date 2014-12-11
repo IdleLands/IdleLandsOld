@@ -579,7 +579,7 @@ class Player extends Character
   setPetOption: (option, value) ->
     pet = @getPet()
     return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
-    return Q {isSuccess: no, code: 222, message: "That option is invalid."} if not (option in ["smartSell", "smartEquip", "autoEquip"])
+    return Q {isSuccess: no, code: 222, message: "That option is invalid."} if not (option in ["smartSell", "smartEquip", "smartSelf"])
 
     pet[option] = value
 
@@ -603,6 +603,7 @@ class Player extends Character
 
     item = pet.findEquipped uid
     return Q {isSuccess: no, code: 226, message: "Your pet does not have that item equipped!"} if not item
+    return Q {isSuccess: no, code: 231, message: "You can't unequip your pets soul, you jerk!"} if item.type is "pet soul"
 
     pet.unequip item
 
