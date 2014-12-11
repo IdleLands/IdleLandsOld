@@ -232,6 +232,11 @@ class API
         .then (res) ->
           res.player.setPetOption option, value if res.isSuccess
 
+      swapToPet: (identifier, petId) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.swapToPet petId if res.isSuccess
+
     guild:
       create: (identifier, guildName) =>
         @validateIdentifier identifier

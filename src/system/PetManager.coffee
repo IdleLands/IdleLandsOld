@@ -57,8 +57,8 @@ class PetManager
     @configurePet newPet
 
     player.foundPets[type].purchaseDate = Date.now()
-    @activePets[player.identifier]?.isActive = no
-    @activePets[player.identifier] = newPet
+
+    @changePetForPlayer player, newPet
 
   loadPet: (pet) ->
     pet.petManager = @
@@ -95,6 +95,11 @@ class PetManager
 
   getPetsForPlayer: (player) ->
     _.find @pets, {'owner.identifier': player.identifier}
+
+  changePetForPlayer: (player, newPet) ->
+    @activePets[player.identifier]?.isActive = no
+    @activePets[player.identifier] = newPet
+    @activePets[player.identifier].isActive = yes
 
   canUsePet: (pet, player) ->
     requirements = pet.requirements

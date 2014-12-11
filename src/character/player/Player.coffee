@@ -606,7 +606,19 @@ class Player extends Character
 
     pet.unequip item
 
-    Q {isSuccess: yes, code: 225, message: "Successfully unequipped #{item.name} from your pet (#{pet.name})."}
+    Q {isSuccess: yes, code: 227, message: "Successfully unequipped #{item.name} from your pet (#{pet.name})."}
+
+  swapToPet: (petId) ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+
+    newPet = _.findWhere pet.petManager.pets, (pet) => pet.createdAt is petId and pet.owner.name is @name
+    return Q {isSuccess: no, code: 228, message: "That pet does not exist!"} if not newPet
+    return Q {isSuccess: no, code: 229, message: "That pet is already active!"} if newPet is pet
+
+    pet.petManager.changePetForPlayer @, newPet
+
+    Q {isSuccess: yes, code: 230, message: "Successfully made #{newPet.name}, the #{newPet.type} your active pet!"}
 
   save: ->
     return if not @playerManager
