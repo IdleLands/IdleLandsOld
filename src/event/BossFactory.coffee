@@ -12,7 +12,7 @@ class BossFactory
     try
       respawnTimer = BossInformation.bosses[name].respawn or 3600
     catch e
-      console.log "INVALID BOSS RESPAWN/NAME: #{name}"
+      console.error "INVALID BOSS RESPAWN/NAME: #{name}"
 
     return if ((new Date) - currentTimer) < respawnTimer * 1000
 

@@ -494,7 +494,7 @@ class Player extends Character
 
     @emit "player.shop.petupgrade"
 
-    Q {isSuccess: yes, code: 212, message: "Successfully upgraded your pets #{stat} to level #{curLevel+1}!"}
+    Q {isSuccess: yes, code: 212, message: "Successfully upgraded your pets (#{pet.name}) #{stat} to level #{curLevel+1}!"}
 
   changePetClass: (newClass) ->
     myClasses = _.keys @statistics['calculated class changes']
@@ -504,7 +504,7 @@ class Player extends Character
 
     pet.setClassTo newClass
 
-    Q {isSuccess: yes, code: 208, message: "Successfully changed your pets class to #{newClass}!"}
+    Q {isSuccess: yes, code: 208, message: "Successfully changed your pets (#{pet.name}) class to #{newClass}!"}
 
   feedPet: (gold) ->
     gold = Math.round gold
@@ -524,18 +524,89 @@ class Player extends Character
       message = "<player.name>#{pet.name}</player.name> (#{pet.type} of <player.name>#{@name}</player.name>) is now level <player.level>#{newLevel}</player.level>!"
       @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'levelup'}
 
-    Q {isSuccess: yes, code: 215, message: "Your pet was fed #{gold} gold and gained #{xpGained} xp! #{if levelup then "Now level #{newLevel}!" else ""}"}
+    Q {isSuccess: yes, code: 215, message: "Your pet (#{pet.name}) was fed #{gold} gold and gained #{xpGained} xp! #{if levelup then "Now level #{newLevel}!" else ""}"}
 
   getPetGold: ->
     pet = @getPet()
-    petMoney = pet.gold.getValue()
     return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+
+    petMoney = pet.gold.getValue()
     return Q {isSuccess: no, code: 216, message: "Your pet is penniless."} if not petMoney
 
     @gold.add petMoney
     pet.gold.toMinimum()
 
-    Q {isSuccess: yes, code: 217, message: "You retrieved #{petMoney} gold from your pet!"}
+    Q {isSuccess: yes, code: 217, message: "You retrieved #{petMoney} gold from your pet (#{pet.name})!"}
+
+  sellPetItem: (itemSlot) ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+
+    item = pet.inventory[itemSlot]
+    return Q {isSuccess: no, code: 218, message: "Your pet does not have an item in that slot!"} if not item
+
+    pet.inventory = _.without pet.inventory, item
+    value = pet.sellItem item, no
+
+    Q {isSuccess: yes, code: 219, message: "Your pet (#{pet.name}) sold #{item.name} for #{value} gold!"}
+
+  givePetItem: (itemSlot) ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+    return Q {isSuccess: no, code: 220, message: "Your pet's inventory is full!"} if not pet.canAddToInventory()
+
+    curItem = @overflow[itemSlot]
+    return Q {isSuccess: no, code: 43, message: "You don't have anything in that inventory slot."} if not curItem
+
+    pet.addToInventory curItem
+    @overflow = _.without @overflow, curItem
+
+    Q {isSuccess: yes, code: 221, message: "Successfully gave #{curItem.name} to your pet (#{pet.name})."}
+
+  takePetItem: (itemSlot) ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+    return Q {isSuccess: no, code: 41, message: "Your inventory is currently full!"} if @overflow.length is Constants.defaults.player.maxOverflow
+
+    curItem = pet.inventory[itemSlot]
+    return Q {isSuccess: no, code: 218, message: "Your pet doesn't have anything in that inventory slot."} if not curItem
+
+    @overflow.push curItem
+    pet.removeFromInventory curItem
+
+    Q {isSuccess: yes, code: 221, message: "Successfully took #{curItem.name} from your pet (#{pet.name})."}
+
+  setPetOption: (option, value) ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+    return Q {isSuccess: no, code: 222, message: "That option is invalid."} if not (option in ["smartSell", "smartEquip", "autoEquip"])
+
+    pet[option] = value
+
+    Q {isSuccess: yes, code: 223, message: "Successfully set #{option} to #{value} for #{pet.name}."}
+
+  equipPetItem: (itemSlot) ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+
+    item = pet.inventory[itemSlot]
+    return Q {isSuccess: no, code: 218, message: "Your pet does not have an item in that slot!"} if not item
+    return Q {isSuccess: no, code: 224, message: "Your pet cannot equip that item! Either it is too strong, or your pets equipment slots are full."} if not pet.canEquip item
+
+    pet.equip item
+
+    Q {isSuccess: yes, code: 225, message: "Successfully equipped your pet (#{pet.name}) with #{item.name}."}
+
+  unequipPetItem: (uid) ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+
+    item = pet.findEquipped uid
+    return Q {isSuccess: no, code: 226, message: "Your pet does not have that item equipped!"} if not item
+
+    pet.unequip item
+
+    Q {isSuccess: yes, code: 225, message: "Successfully unequipped #{item.name} from your pet (#{pet.name})."}
 
   save: ->
     return if not @playerManager

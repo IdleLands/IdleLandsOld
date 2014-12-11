@@ -23,7 +23,8 @@ class Pet extends Character
     @isMonster = yes
     @isPet = yes
     @isActive = yes
-    @autoSell = yes
+    @smartSell = yes
+    @smartEquip = yes
     @autoUpgrade = no
     @scaleLevel = {}
     @inventory = []
@@ -58,6 +59,17 @@ class Pet extends Character
 
     # if not, we just have to make sure it's within our current parameters for equipping
     item.score() < @calc.itemFindRange()
+
+  equip: (item) ->
+    @removeFromInventory item
+    @equipment.push item
+
+  unequip: (item) ->
+    @addToInventory item
+    @equipment = _.without @equipment, item
+
+  findEquipped: (uid) ->
+    _.findWhere @equipment, {uid: uid}
 
   gainXp: (xp) ->
     @xp.add xp
@@ -117,19 +129,22 @@ class Pet extends Character
     @nextItemFind = new Date()
     @addToItemFindTimer findTime
 
-  sellItem: (item) ->
+  sellItem: (item, findLowest = @smartSell) ->
     config = PetData[@type]
 
-    lowestScoreItem = _.min @inventory, (item) -> item.score()
+    if findLowest
+      lowestScoreItem = _.min @inventory, (item) -> item.score()
 
-    if lowestScoreItem.score() < item.score()
-      @inventory.push item
-      @inventory = _.without @inventory, lowestScoreItem
-      item = lowestScoreItem
+      if lowestScoreItem.score() < item.score()
+        @inventory.push item
+        @inventory = _.without @inventory, lowestScoreItem
+        item = lowestScoreItem
 
     sellBonus = (@calc.itemSellMultiplier item) + config.scale.itemSellMultiplier[@scaleLevel.itemSellMultiplier]
     value = Math.max 1, Math.floor item.score() * sellBonus
     @gold.add value
+
+    value
 
   actuallyFindItem: ->
     config = PetData[@type]
@@ -146,6 +161,9 @@ class Pet extends Character
 
   addToInventory: (item) ->
     @inventory.push item
+
+  removeFromInventory: (item) ->
+    @inventory = _.without @inventory, item
 
   canAddToInventory: ->
     config = PetData[@type]
@@ -166,7 +184,6 @@ class Pet extends Character
 
   takeTurn: ->
     @handleItemFind()
-    # do action, check if current time > expected time to finish event, if passes, do action and reset time?
     @save()
 
 module.exports = exports = Pet
