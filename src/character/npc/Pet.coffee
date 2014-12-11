@@ -25,7 +25,7 @@ class Pet extends Character
     @isActive = yes
     @smartSell = yes
     @smartEquip = yes
-    @autoUpgrade = no
+    @smartSelf = no
     @scaleLevel = {}
     @inventory = []
     @lastInteraction = Date.now()
@@ -47,9 +47,12 @@ class Pet extends Character
     toClass.load @
     @professionName = toClassName
 
+  equippedItemsOfType: (type) ->
+    _.find @equipment, {type: type}
+
   canEquip: (item) ->
     # are all slots filled?
-    itemsInSlot = (_.find @equipment, {type: item.type}).length
+    itemsInSlot = (@equippedItemsOfType item.type).length
     return no if itemsInSlot >= PetData[@type].slots[item.type]
 
     # if not, we just have to make sure it's within our current parameters for equipping
@@ -69,6 +72,43 @@ class Pet extends Character
   gainXp: (xp) ->
     @xp.add xp
     @levelUp() if @xp.atMax()
+
+  gainGold: (gold) ->
+    @gold.add gold
+
+    @tryToUpgradeSelf()
+
+  tryToUpgradeSelf: ->
+    return if not @smartSelf
+
+    config = PetData[@type]
+
+    _.each (_.keys @scaleLevel), (stat) =>
+      curLevel = @scaleLevel[stat]
+      cost = config.scaleCost[stat][curLevel+1]
+
+      if cost < @gold.getValue()
+        @increaseStat stat
+        @gold.sub cost
+
+  tryToEquipToSelf: (item) ->
+    return if not @smartEquip
+
+    itemsInSlot = @equippedItemsOfType item.type
+    if itemsInSlot >= PetData[@type].slots[item.type]
+      lowestScoreItem = _.min itemsInSlot, (item) -> item.score()
+
+      if lowestScoreItem.score() < item.score()
+        @equipment.push item
+        @equipment = _.without @equipment, lowestScoreItem
+        @sellItem lowestScoreItem
+
+        return true
+
+    else
+      @equipment.push item
+      
+      return true
 
   levelUp: ->
     @level.add 1
@@ -137,7 +177,7 @@ class Pet extends Character
 
     sellBonus = (@calc.itemSellMultiplier item) + config.scale.itemSellMultiplier[@scaleLevel.itemSellMultiplier]
     value = Math.max 1, Math.floor item.score() * sellBonus
-    @gold.add value
+    @gainGold value
 
     value
 
@@ -147,6 +187,8 @@ class Pet extends Character
     item = @petManager.game.equipmentGenerator.generateItem null, bonus
 
     return if not item
+
+    return if @tryToEquipToSelf item
 
     if @canAddToInventory()
       @addToInventory item
