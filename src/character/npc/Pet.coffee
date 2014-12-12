@@ -107,13 +107,16 @@ class Pet extends Character
 
     else
       @equipment.push item
-      
+
       return true
 
   levelUp: ->
     @level.add 1
     @resetMaxXp()
     @xp.toMinimum()
+
+  tryToJoinCombat: ->
+    chance.bool {likelihood: @getStatAtCurrentLevel 'battleJoinPercent'}
 
   buildSaveObject: ->
     realCalc = _.omit @calc, 'self'
@@ -141,9 +144,7 @@ class Pet extends Character
     @petManager.configurePet @
 
   feedOn: (gold) ->
-    config = PetData[@type]
-
-    xp = gold * config.scale.xpPerGold[@scaleLevel.xpPerGold]
+    xp = gold * @getStatAtCurrentLevel 'xpPerGold'
 
     @gainXp xp
 
@@ -159,14 +160,11 @@ class Pet extends Character
     @nextItemFind.setSeconds @nextItemFind.getSeconds() + time
 
   updateItemFind: ->
-    config = PetData[@type]
-    findTime = config.scale.itemFindTimeDuration[@scaleLevel.itemFindTimeDuration]
+    findTime = @getStatAtCurrentLevel 'itemFindTimeDuration'
     @nextItemFind = new Date()
     @addToItemFindTimer findTime
 
   sellItem: (item, findLowest = @smartSell) ->
-    config = PetData[@type]
-
     if findLowest
       lowestScoreItem = _.min @inventory, (item) -> item.score()
 
@@ -175,15 +173,14 @@ class Pet extends Character
         @inventory = _.without @inventory, lowestScoreItem
         item = lowestScoreItem
 
-    sellBonus = (@calc.itemSellMultiplier item) + config.scale.itemSellMultiplier[@scaleLevel.itemSellMultiplier]
+    sellBonus = (@calc.itemSellMultiplier item) + @getStatAtCurrentLevel 'itemSellMultiplier'
     value = Math.max 1, Math.floor item.score() * sellBonus
     @gainGold value
 
     value
 
   actuallyFindItem: ->
-    config = PetData[@type]
-    bonus = config.scale.itemFindBonus[@scaleLevel.itemFindBonus]
+    bonus = @getStatAtCurrentLevel 'itemFindBonus'
     item = @petManager.game.equipmentGenerator.generateItem null, bonus
 
     return if not item
@@ -203,14 +200,10 @@ class Pet extends Character
     @inventory = _.without @inventory, item
 
   canAddToInventory: ->
-    config = PetData[@type]
-    size = config.scale.inventory[@scaleLevel.inventory]
-
-    @inventory.length < size
+    @inventory.length < @getStatAtCurrentLevel 'inventory'
 
   handleItemFind: ->
-    config = PetData[@type]
-    findTime = config.scale.itemFindTimeDuration[@scaleLevel.itemFindTimeDuration]
+    findTime = @getStatAtCurrentLevel 'itemFindTimeDuration'
     return if not findTime
 
     @updateItemFind() if not @nextItemFind
@@ -218,6 +211,10 @@ class Pet extends Character
     if new Date() > @nextItemFind
       @actuallyFindItem()
       @addToItemFindTimer findTime
+
+  getStatAtCurrentLevel: (stat) ->
+    config = PetData[@type]
+    config.scale[stat][@scaleLevel[stat]]
 
   takeTurn: ->
     @handleItemFind()

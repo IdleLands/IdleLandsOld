@@ -45,6 +45,11 @@ class Battle
         return
       party.currentBattle = @
 
+      _.each party.players, (player) =>
+        pet = @game.petManager.getActivePetFor player
+        return if not pet
+        party.addPlayer pet if pet.tryToJoinCombat()
+
   fixStats: ->
     _.each @turnOrder, (player) ->
       player.recalculateStats()

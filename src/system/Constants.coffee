@@ -39,7 +39,7 @@ class Constants
     dps: ['Mage', 'Rogue', 'Bitomancer', 'Archer']
 
   @pickRandomNormalEvent = (player) ->
-    if player.party
+    if player?.party
       _.sample @eventRates
     else
       _.sample (_.reject @eventRates, (event) -> event.party?)
