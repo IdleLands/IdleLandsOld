@@ -528,6 +528,33 @@ class Player extends Character
   priorityTotal: ->
     _.reduce @priorityPoints, ((total, stat) -> total + stat), 0
 
+  setPriorities: (stats) ->
+    if not @priorityPoints
+      @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
+
+    if stats.length != 6
+      return Q {isSuccess: no, code: 111, message: "Priority list is invalid. Expected 6 items"}
+
+    total = 0
+    sanitizedStats = {}
+
+    for key, stat of stats
+      if !_.isNumber stat
+        return Q {isSuccess: no, code: 112, message: "Priority \"" + key + "\" is not a number."}
+
+      if not (key in ["dex", "str", "agi", "wis", "con", "int"])
+        return Q {isSuccess: no, code: 111, message: "Key \"" + key + "\" is invalid."}
+
+      sanitizedStats[key] = Math.round stat
+      total += Math.round stat
+
+    if total != Constants.defaults.player.priorityTotal
+      return Q {isSuccess: no, code: 112, message: "Number of priority points are not equal to " + Constants.defaults.player.priorityTotal + "."}
+
+    @priorityPoints = sanitizedStats
+
+    return Q {isSuccess: yes, code: 113, message: "Successfully set priorities.", player: @buildRESTObject()}
+
   addPriority:  (stat, points) ->
     if not @priorityPoints
       @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
