@@ -93,6 +93,7 @@ class Pet extends Character
 
   tryToEquipToSelf: (item) ->
     return if not @smartEquip
+    return if not PetData[@type].slots[item.type]
 
     itemsInSlot = @equippedItemsOfType item.type
     if itemsInSlot >= PetData[@type].slots[item.type]
@@ -105,7 +106,7 @@ class Pet extends Character
 
         return true
 
-    else
+    else if itemsInSlot < PetData[@type].slots[item.type]
       @equipment.push item
 
       return true
@@ -178,7 +179,8 @@ class Pet extends Character
         item = lowestScoreItem
 
     sellBonus = (@calc.itemSellMultiplier item) + @getStatAtCurrentLevel 'itemSellMultiplier'
-    value = Math.max 1, Math.floor item.score() * sellBonus
+
+    value = Math.max 1, Math.round item.score() * sellBonus
     @gainGold value
 
     value
