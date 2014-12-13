@@ -114,6 +114,7 @@ class Pet extends Character
     @level.add 1
     @resetMaxXp()
     @xp.toMinimum()
+    @recalculateStats()
 
   tryToJoinCombat: ->
     chance.bool {likelihood: @getStatAtCurrentLevel 'battleJoinPercent'}
