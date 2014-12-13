@@ -112,6 +112,7 @@ class PetManager
 
   changePetForPlayer: (player, newPet) ->
     @activePets[player.identifier]?.isActive = no
+    @activePets[player.identifier]?.save()
     @activePets[player.identifier] = newPet
     @activePets[player.identifier].isActive = yes
 
