@@ -11,6 +11,11 @@ router
   API.player.priority.add identifier, stat, points
   .then (resp) -> res.json resp
 
+.put "/player/manage/priority/set", hasValidToken, (req, res) ->
+  {identifier, stats, points} = req.body
+  API.player.priority.set identifier, stats, points
+  .then (resp) -> res.json resp
+
 .post "/player/manage/priority/remove", hasValidToken, (req, res) ->
   {identifier, stat, points} = req.body
   API.player.priority.remove identifier, stat, points
