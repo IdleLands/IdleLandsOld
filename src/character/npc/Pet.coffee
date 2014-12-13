@@ -141,6 +141,9 @@ class Pet extends Character
 
   increaseStat: (stat) ->
     @scaleLevel[stat]++
+
+    @updateItemFind() if stat is 'itemFindTimeDuration'
+
     @petManager.configurePet @
 
   feedOn: (gold) ->
