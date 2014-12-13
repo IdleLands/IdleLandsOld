@@ -55,6 +55,7 @@ class PetManager
     @pets.push newPet
     newPet.petManager = @
     @configurePet newPet
+    @handleSoul newPet
 
     player.foundPets[type].purchaseDate = Date.now()
 
