@@ -494,7 +494,7 @@ class Player extends Character
 
     @emit "player.shop.petupgrade"
 
-    Q {isSuccess: yes, code: 212, message: "Successfully upgraded your pets (#{pet.name}) #{stat} to level #{curLevel+1}!"}
+    Q {isSuccess: yes, code: 212, message: "Successfully upgraded your pets (#{pet.name}) #{stat} to level #{curLevel+2}!"}
 
   changePetClass: (newClass) ->
     myClasses = _.keys @statistics['calculated class changes']
