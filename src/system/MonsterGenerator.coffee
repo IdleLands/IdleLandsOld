@@ -41,7 +41,7 @@ class MonsterGenerator extends Generator
     _.each @types, (type) =>
       return if monster.calc.totalItemScore() > maxScore
       item = @game.equipmentGenerator.generateItem type
-      monster.equip item if monster.canEquip item
+      monster.equip item if item and monster.canEquip item
 
     monster.personalities = []
 

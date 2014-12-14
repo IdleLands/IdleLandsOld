@@ -36,13 +36,15 @@ class ProvidenceEvent extends Event
     availablePersonalities = _(@player.achievements)
       .filter (achievement) -> achievement.type is "personality"
       .map (achievement) -> achievement._personality
+      .value()
 
     xpMod = chance.integer {min: -@player.xp.maximum, max: @player.xp.maximum}
     levelMod = chance.integer {min: -3, max: 2}
     gender = _.sample ['male', 'female', 'glowcloud', 'not a bear', 'astroentity', 'secret', 'other']
     goldMod = chance.integer {min: -30000, max: 20000}
     classMod = _.sample availableClasses
-    personalityMod = _.sample availablePersonalities, chance.integer {min: 0, max: availablePersonalities.length}
+    numPersonalities = chance.integer {min: 0, max: availablePersonalities.length}
+    personalityMod = _.sample availablePersonalities, numPersonalities
 
     if xpMod and chance.bool {likelihood: 60}
       @player.xp.add xpMod
