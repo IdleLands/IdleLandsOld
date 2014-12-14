@@ -474,7 +474,8 @@ class Player extends Character
 
     @emit "player.shop.pet"
 
-    Q {isSuccess: yes, code: 205, message: "Successfully purchased a new pet (#{pet}) named '#{name}'!"}
+    pet = @playerManager.game.petManager.getActivePetFor @
+    Q {isSuccess: yes, code: 205, message: "Successfully purchased a new pet (#{pet}) named '#{name}'!", pet: pet.buildSaveObject()}
 
   upgradePet: (stat) ->
     pet = @getPet()
@@ -494,7 +495,7 @@ class Player extends Character
 
     @emit "player.shop.petupgrade"
 
-    Q {isSuccess: yes, code: 212, message: "Successfully upgraded your pets (#{pet.name}) #{stat} to level #{curLevel+2}!"}
+    Q {isSuccess: yes, code: 212, message: "Successfully upgraded your pets (#{pet.name}) #{stat} to level #{curLevel+2}!", pet: pet.buildSaveObject()}
 
   changePetClass: (newClass) ->
     myClasses = _.keys @statistics['calculated class changes']
@@ -504,7 +505,7 @@ class Player extends Character
 
     pet.setClassTo newClass
 
-    Q {isSuccess: yes, code: 208, message: "Successfully changed your pets (#{pet.name}) class to #{newClass}!"}
+    Q {isSuccess: yes, code: 208, message: "Successfully changed your pets (#{pet.name}) class to #{newClass}!", pet: pet.buildSaveObject()}
 
   feedPet: (gold) ->
     gold = Math.round gold
@@ -524,7 +525,7 @@ class Player extends Character
       message = "<player.name>#{pet.name}</player.name> (#{pet.type} of <player.name>#{@name}</player.name>) is now level <player.level>#{newLevel}</player.level>!"
       @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'levelup'}
 
-    Q {isSuccess: yes, code: 215, message: "Your pet (#{pet.name}) was fed #{gold} gold and gained #{xpGained} xp! #{if levelup then "Now level #{newLevel}!" else ""}"}
+    Q {isSuccess: yes, code: 215, message: "Your pet (#{pet.name}) was fed #{gold} gold and gained #{xpGained} xp! #{if levelup then "Now level #{newLevel}!" else ""}", pet: pet.buildSaveObject()}
 
   getPetGold: ->
     pet = @getPet()
@@ -536,7 +537,7 @@ class Player extends Character
     @gold.add petMoney
     pet.gold.toMinimum()
 
-    Q {isSuccess: yes, code: 217, message: "You retrieved #{petMoney} gold from your pet (#{pet.name})!"}
+    Q {isSuccess: yes, code: 217, message: "You retrieved #{petMoney} gold from your pet (#{pet.name})!", pet: pet.buildSaveObject()}
 
   sellPetItem: (itemSlot) ->
     pet = @getPet()
@@ -548,7 +549,7 @@ class Player extends Character
     pet.inventory = _.without pet.inventory, item
     value = pet.sellItem item, no
 
-    Q {isSuccess: yes, code: 219, message: "Your pet (#{pet.name}) sold #{item.name} for #{value} gold!"}
+    Q {isSuccess: yes, code: 219, message: "Your pet (#{pet.name}) sold #{item.name} for #{value} gold!", pet: pet.buildSaveObject()}
 
   givePetItem: (itemSlot) ->
     pet = @getPet()
@@ -561,7 +562,7 @@ class Player extends Character
     pet.addToInventory curItem
     @overflow = _.without @overflow, curItem
 
-    Q {isSuccess: yes, code: 221, message: "Successfully gave #{curItem.name} to your pet (#{pet.name})."}
+    Q {isSuccess: yes, code: 221, message: "Successfully gave #{curItem.name} to your pet (#{pet.name}).", pet: pet.buildSaveObject()}
 
   takePetItem: (itemSlot) ->
     pet = @getPet()
@@ -574,7 +575,7 @@ class Player extends Character
     @overflow.push curItem
     pet.removeFromInventory curItem
 
-    Q {isSuccess: yes, code: 221, message: "Successfully took #{curItem.name} from your pet (#{pet.name})."}
+    Q {isSuccess: yes, code: 221, message: "Successfully took #{curItem.name} from your pet (#{pet.name}).", pet: pet.buildSaveObject()}
 
   setPetOption: (option, value) ->
     pet = @getPet()
@@ -595,7 +596,7 @@ class Player extends Character
 
     pet.equip item
 
-    Q {isSuccess: yes, code: 225, message: "Successfully equipped your pet (#{pet.name}) with #{item.name}."}
+    Q {isSuccess: yes, code: 225, message: "Successfully equipped your pet (#{pet.name}) with #{item.name}.", pet: newPet.buildSaveObject()}
 
   unequipPetItem: (uid) ->
     pet = @getPet()
@@ -607,7 +608,7 @@ class Player extends Character
 
     pet.unequip item
 
-    Q {isSuccess: yes, code: 227, message: "Successfully unequipped #{item.name} from your pet (#{pet.name})."}
+    Q {isSuccess: yes, code: 227, message: "Successfully unequipped #{item.name} from your pet (#{pet.name}).", pet: newPet.buildSaveObject()}
 
   swapToPet: (petId) ->
     pet = @getPet()
@@ -619,7 +620,7 @@ class Player extends Character
 
     pet.petManager.changePetForPlayer @, newPet
 
-    Q {isSuccess: yes, code: 230, message: "Successfully made #{newPet.name}, the #{newPet.type} your active pet!"}
+    Q {isSuccess: yes, code: 230, message: "Successfully made #{newPet.name}, the #{newPet.type} your active pet!", pet: newPet.buildSaveObject()}
 
   save: ->
     return if not @playerManager

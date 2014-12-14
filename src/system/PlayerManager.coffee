@@ -249,7 +249,11 @@ class PlayerManager
     player = @playerHash[identifier]
     @handleAutoLogout player
 
-    Q {isSuccess: yes, code: 102, message: "Turn taken.", player: player.buildRESTObject()}
+    results = {isSuccess: yes, code: 102, message: "Turn taken.", player: player.buildRESTObject()}
+
+    pet = @playerManager.game.petManager.getActivePetFor player
+    results.pet = pet.buildSaveObject() if pet
+    Q results
 
   registerLoadAllPlayersHandler: (@playerLoadHandler) ->
     console.log "Registered AllPlayerLoad handler."
