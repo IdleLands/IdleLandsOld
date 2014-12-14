@@ -272,7 +272,7 @@ class Battle
     message += ", and #{if damage is maxDamage then "CRITICALLY " else ""}hit with %hisher <event.item.#{weapon.itemClass}>#{weapon.getName()}</event.item.#{weapon.itemClass}> for <damage.hp>#{realDamage}</damage.hp> HP #{damageType}"
 
     fatal = no
-    if target.hp.getValue() - damage <= 0
+    if target.hp.getValue() - damage <= 0 and not target.calc.sturdy()
       message += " -- a fatal blow!"
       fatal = yes
 
