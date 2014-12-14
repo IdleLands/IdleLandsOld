@@ -222,10 +222,10 @@ class API
         .then (res) ->
           res.player.equipPetItem itemSlot if res.isSuccess
 
-      unequipItem: (identifier, uid) =>
+      unequipItem: (identifier, itemUid) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.unequipPetItem uid if res.isSuccess
+          res.player.unequipPetItem itemUid if res.isSuccess
 
       setOption: (identifier, option, value) =>
         @validateIdentifier identifier
