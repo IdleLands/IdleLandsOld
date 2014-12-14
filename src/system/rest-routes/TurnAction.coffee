@@ -7,7 +7,7 @@ router
 
 # take turn
 .route "/player/action/turn"
-.post turnTimeout.prevent, hasValidToken, (req, res) ->
+.post (req, res) ->
   {identifier} = req.body
   API.player.takeTurn identifier
   .then (resp) -> res.send resp
