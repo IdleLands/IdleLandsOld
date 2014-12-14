@@ -48,7 +48,7 @@ class Pet extends Character
     @professionName = toClassName
 
   equippedItemsOfType: (type) ->
-    _.find @equipment, {type: type}
+    _.filter @equipment, (item) -> item.type is type
 
   canEquip: (item) ->
     # are all slots filled?
@@ -96,7 +96,7 @@ class Pet extends Character
     return if not PetData[@type].slots[item.type]
 
     itemsInSlot = @equippedItemsOfType item.type
-    if itemsInSlot >= PetData[@type].slots[item.type]
+    if itemsInSlot.length >= PetData[@type].slots[item.type]
       lowestScoreItem = _.min itemsInSlot, (item) -> item.score()
 
       if lowestScoreItem.score() < item.score()
@@ -106,7 +106,7 @@ class Pet extends Character
 
         return true
 
-    else if itemsInSlot < PetData[@type].slots[item.type]
+    else if itemsInSlot.length < PetData[@type].slots[item.type]
       @equipment.push item
 
       return true

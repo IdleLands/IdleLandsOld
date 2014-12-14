@@ -103,6 +103,9 @@
                 "Rather Large Bank Coin",
                 "Weirdly Sized Bank Coin",
                 "Ashen Bank Coin"
+            ],
+            "achievements": [
+                "Golden I"
             ]
         },
         "scale": {
