@@ -30,6 +30,9 @@ class BossFactory
 
     monster.on "combat.party.lose", (winningParty) =>
       _.each winningParty, (member) =>
+
+        return if member.isMonster
+
         _.each baseObj.items, (item) =>
           probability = Math.max 0, Math.min 100, item.dropPercent + member.calc.luckBonus()
           return if not (chance.bool likelihood: probability)
@@ -61,10 +64,11 @@ class BossFactory
       BossInformation.timers[name] = new Date()
 
     monster.on "combat.party.win", (losingParty) ->
-      baseObj.playerLose? forPlayer, losingParty
 
       _.each losingParty, (member) ->
         member.emit "event.bossbattle.lose", member, name
+
+        member.handleTeleport tile: object: properties: toLoc: baseObj.teleportOnDeath, movementType: "teleport" if baseObj.teleportOnDeath
 
     monster
 
