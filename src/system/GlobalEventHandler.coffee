@@ -1,7 +1,7 @@
 
 Constants = require "./Constants"
 
-_ = require "underscore"
+_ = require "lodash"
 
 requireDir = require "require-dir"
 

@@ -1,6 +1,6 @@
 
 MessageCreator = require "./MessageCreator"
-_ = require "underscore"
+_ = require "lodash"
 Equipment = require "../item/Equipment"
 
 teleports = require "../../config/teleports.json"

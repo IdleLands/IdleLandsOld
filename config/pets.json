@@ -1,6 +1,8 @@
 {
     "Pet Rock": {
         "cost": 5000,
+        "category": "Hybrid",
+        "description": "Unlocked by changing yourself once.",
         "slots": {
             "body": 1
         },
@@ -15,25 +17,33 @@
             }
         },
         "scale": {
+            "maxLevel": [50],
             "inventory": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
             "goldStorage": [1000, 10000, 100000],
             "battleJoinPercent": [0, 5, 15, 25, 35, 50],
-            "itemFind": [0, 86400, 64800, 43200, 21600, 10800, 3600, 1800, 450],
-            "itemBonus": [0, 1, 5, 10, 15, 30, 50, 100],
-            "xpPerGold": [10, 50, 100, 150, 250]
+            "itemFindTimeDuration": [0, 86400, 64800, 43200, 21600, 10800, 3600, 1800, 450],
+            "itemSellMultiplier": [0.05, 0.10],
+            "itemFindBonus": [0, 1, 5, 10, 15, 30, 50, 100],
+            "itemFindRangeMultiplier": [0, 0.1, 0.2, 0.4],
+            "xpPerGold": [3, 10, 18, 27]
         },
         "scaleCost": {
+            "maxLevel": [0],
             "inventory": [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000],
             "goldStorage": [0, 10000, 100000],
-            "battleJoinPercent": [0, 10000, 10000, 10000, 10000, 10000, 15000],
-            "itemFind": [0, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 50000],
-            "itemBonus": [0, 100, 1000, 5000, 7500, 15000, 30000, 65000],
-            "xpPerGold": [0, 5000, 10000, 15000, 25000]
+            "battleJoinPercent": [0, 10000, 10000, 10000, 10000, 15000],
+            "itemFindTimeDuration": [0, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 50000],
+            "itemSellMultiplier": [0, 20000],
+            "itemFindBonus": [0, 100, 1000, 5000, 7500, 15000, 30000, 65000],
+            "itemFindRangeMultiplier": [0, 10000, 20000, 40000],
+            "xpPerGold": [0, 5000, 10000, 15000]
         }
     },
 
     "Corgi": {
         "cost": 25000,
+        "category": "Hybrid",
+        "description": "Unlocked by being a collector of fine items.",
         "slots": {
             "body": 1,
             "feet": 2,
@@ -49,25 +59,33 @@
             ]
         },
         "scale": {
+            "maxLevel": [50, 75],
             "inventory": [5, 7, 9, 11, 13, 15],
             "goldStorage": [2000, 20000, 100000],
             "battleJoinPercent": [0, 15, 30, 45, 60, 75],
-            "itemFind": [0, 43200, 21600, 10800, 3600, 1800, 450, 275],
-            "itemBonus": [0, 10, 15, 30, 50, 100],
-            "xpPerGold": [10, 100, 250, 500]
+            "itemFindTimeDuration": [0, 43200, 21600, 10800, 3600, 1800, 450, 275],
+            "itemSellMultiplier": [0.07, 0.13],
+            "itemFindBonus": [0, 10, 15, 30, 50, 100],
+            "itemFindRangeMultiplier": [0.1, 0.2, 0.3],
+            "xpPerGold": [5, 15, 25, 40]
         },
         "scaleCost": {
+            "maxLevel": [0, 50000],
             "inventory": [0, 5000, 7500, 10000, 12500, 15000],
             "goldStorage": [0, 10000, 75000],
-            "battleJoinPercent": [0, 15000, 25000, 35000, 45000, 60000, 75000],
-            "itemFind": [0, 20000, 25000, 30000, 35000, 40000, 50000, 65000],
-            "itemBonus": [0, 5000, 7500, 15000, 30000, 65000],
+            "battleJoinPercent": [0, 15000, 25000, 35000, 45000, 60000],
+            "itemFindTimeDuration": [0, 20000, 25000, 30000, 35000, 40000, 50000, 65000],
+            "itemSellMultiplier": [0, 25000],
+            "itemFindBonus": [0, 5000, 7500, 15000, 30000, 65000],
+            "itemFindRangeMultiplier": [0, 20000, 30000],
             "xpPerGold": [0, 10000, 25000, 50000]
         }
     },
 
     "Raven": {
         "cost": 35000,
+        "category": "Hybrid",
+        "description": "Unlocked by keeping an eye out for shiny things.",
         "slots": {
             "body": 1,
             "feet": 1,
@@ -85,28 +103,39 @@
                 "Rather Large Bank Coin",
                 "Weirdly Sized Bank Coin",
                 "Ashen Bank Coin"
+            ],
+            "achievements": [
+                "Golden I"
             ]
         },
         "scale": {
+            "maxLevel": [75, 100],
             "inventory": [3, 5, 7, 10, 15],
             "goldStorage": [10000, 50000, 100000, 500000],
             "battleJoinPercent": [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50],
-            "itemFind": [0, 21600, 10800, 3600, 1800, 450, 275, 150],
-            "itemBonus": [0, 10, 15, 30, 50, 100, 150, 200],
-            "xpPerGold": [10, 100, 250, 500]
+            "itemFindTimeDuration": [0, 21600, 10800, 3600, 1800, 450, 275, 150],
+            "itemSellMultiplier": [0.07, 0.13, 0.20, 0.27],
+            "itemFindBonus": [0, 10, 15, 30, 50, 100, 150, 200],
+            "itemFindRangeMultiplier": [0, 0.2, 0.4, 0.75],
+            "xpPerGold": [7, 17, 27, 37]
         },
         "scaleCost": {
+            "maxLevel": [0, 75000],
             "inventory": [0, 5000, 7500, 10000, 12500, 15000],
             "goldStorage": [0, 5000, 10000, 50000],
             "battleJoinPercent": [0, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000],
-            "itemFind": [0, 25000, 30000, 35000, 40000, 50000, 65000, 85000],
-            "itemBonus": [0, 5000, 7500, 15000, 30000, 45000, 60000, 95000],
+            "itemFindTimeDuration": [0, 25000, 30000, 35000, 40000, 50000, 65000, 85000],
+            "itemSellMultiplier": [0, 15000, 25000, 45000],
+            "itemFindBonus": [0, 5000, 7500, 15000, 30000, 45000, 60000, 95000],
+            "itemFindRangeMultiplier": [0, 20000, 40000, 75000],
             "xpPerGold": [0, 10000, 25000, 50000]
         }
     },
 
     "Parrot": {
         "cost": 30000,
+        "category": "Hybrid",
+        "description": "Unlocked by getting some booty.",
         "slots": {
             "body": 1,
             "feet": 1,
@@ -126,25 +155,33 @@
             ]
         },
         "scale": {
+            "maxLevel": [25, 50, 75],
             "inventory": [5, 10, 15],
             "goldStorage": [500, 5000, 50000],
             "battleJoinPercent": [0, 10, 20, 30, 40, 50, 60],
-            "itemFind": [0, 21600, 10800, 3600, 1800],
-            "itemBonus": [0, 10, 15, 30, 50, 75],
-            "xpPerGold": [10, 100, 250]
+            "itemFindTimeDuration": [0, 21600, 10800, 3600, 1800],
+            "itemSellMultiplier": [0.04, 0.08, 0.12, 0.16],
+            "itemFindBonus": [0, 10, 15, 30, 50, 75],
+            "itemFindRangeMultiplier": [0, 0.1, 0.2],
+            "xpPerGold": [10, 20, 35]
         },
         "scaleCost": {
+            "maxLevel": [0, 25000, 50000],
             "inventory": [0, 5000, 10000, 15000],
             "goldStorage": [0, 5000, 50000],
             "battleJoinPercent": [0, 20000, 30000, 40000, 50000, 60000, 70000],
-            "itemFind": [0, 25000, 30000, 40000, 65000, 85000],
-            "itemBonus": [0, 5000, 7500, 15000, 30000, 45000],
+            "itemFindTimeDuration": [0, 25000, 30000, 40000, 65000, 85000],
+            "itemSellMultiplier": [0, 10000, 20000, 30000],
+            "itemFindBonus": [0, 5000, 7500, 15000, 30000, 45000],
+            "itemFindRangeMultiplier": [0, 10000, 20000],
             "xpPerGold": [0, 10000, 25000]
         }
     },
 
     "Dolphin": {
         "cost": 15000,
+        "category": "Non-Combat",
+        "description": "Unlocked by finding some watery delicacies.",
         "slots": {
         },
         "specialStats": {
@@ -152,29 +189,38 @@
         "requirements": {
             "collectibles": [
                 "Dried Up, Not Tasty Fish",
-                "Small, Tasty Fish"
+                "Small, Tasty Fish",
+                "Jar of Norkian Water"
             ]
         },
         "scale": {
+            "maxLevel": [10, 25, 50],
             "inventory": [15, 25, 35],
             "goldStorage": [10000, 100000, 250000],
             "battleJoinPercent": [0],
-            "itemFind": [0, 21600, 10800, 3600, 1800],
-            "itemBonus": [0, 30, 50, 75, 150, 200, 250],
-            "xpPerGold": [10, 100, 150]
+            "itemFindTimeDuration": [0, 21600, 10800, 3600, 1800],
+            "itemSellMultiplier": [0.18, 0.27, 0.36],
+            "itemFindBonus": [0, 30, 50, 75, 150, 200, 250],
+            "itemFindRangeMultiplier": [0],
+            "xpPerGold": [10, 25, 50]
         },
         "scaleCost": {
+            "maxLevel": [0, 10000, 25000],
             "inventory": [0, 10000, 30000, 50000],
             "goldStorage": [0, 50000, 125000],
             "battleJoinPercent": [0],
-            "itemFind": [0, 25000, 30000, 40000, 65000, 85000],
-            "itemBonus": [0, 5000, 7500, 15000, 30000, 55000, 100000],
+            "itemFindTimeDuration": [0, 25000, 30000, 40000, 65000, 85000],
+            "itemSellMultiplier": [0, 20000, 40000],
+            "itemFindBonus": [0, 5000, 7500, 15000, 30000, 55000, 100000],
+            "itemFindRangeMultiplier": [0],
             "xpPerGold": [0, 10000, 15000]
         }
     },
 
     "Minitaur": {
         "cost": 50000,
+        "category": "Combat",
+        "description": "Unlocked by being a slayer of the ancients and a purveyor of their goods.",
         "slots": {
             "body": 1,
             "feet": 1,
@@ -190,7 +236,9 @@
             "power": 1,
             "silver": 1,
             "shatter": 1,
-            "sturdy": 1
+            "sturdy": 1,
+            "str": 200,
+            "dex": 200
         },
         "requirements": {
             "collectibles": [
@@ -207,20 +255,86 @@
             ]
         },
         "scale": {
+            "maxLevel": [50, 100, 150],
             "inventory": [2],
             "goldStorage": [10000, 25000],
             "battleJoinPercent": [50, 60, 70, 80, 90, 99],
-            "itemFind": [0, 86400, 64800, 43200, 21600],
-            "itemBonus": [0, 25, 50, 75, 100],
-            "xpPerGold": [100, 500, 1000]
+            "itemFindTimeDuration": [0, 86400, 64800, 43200, 21600],
+            "itemSellMultiplier": [0.10, 0.15],
+            "itemFindBonus": [0, 25, 50, 75, 100],
+            "itemFindRangeMultiplier": [0, 0.2, 0.4, 0.6],
+            "xpPerGold": [35, 50, 75]
         },
         "scaleCost": {
+            "maxLevel": [0, 50000, 100000],
             "inventory": [20000],
             "goldStorage": [0, 50000],
             "battleJoinPercent": [0],
-            "itemFind": [0, 45000, 55000, 65000, 75000],
-            "itemBonus": [0, 25000, 50000, 75000, 100000],
+            "itemFindTimeDuration": [0, 45000, 55000, 65000, 75000],
+            "itemSellMultiplier": [0, 15000, 25000],
+            "itemFindBonus": [0, 25000, 50000, 75000, 100000],
+            "itemFindRangeMultiplier": [0, 25000, 45000, 65000],
             "xpPerGold": [0, 25000, 50000]
+        }
+    },
+
+    "Chimera Dragon": {
+        "cost": 50000,
+        "category": "Combat",
+        "description": "Unlocked by being a connoisseur of all matters draconic.",
+        "slots": {
+            "body": 1,
+            "feet": 2,
+            "legs": 2,
+            "head": 3
+        },
+        "specialStats": {
+            "prone": 1,
+            "defense": 2,
+            "offense": 2,
+            "punish": 1,
+            "int": 200,
+            "fire": 400,
+            "ice": 400,
+            "thunder": 400
+        },
+        "requirements": {
+            "collectibles": [
+                "Black Draygon Scale",
+                "Silver Draygon Scale",
+                "Red Draygon Scale",
+                "Green Draygon Scale",
+                "Mama Draygon Scale"
+            ],
+            "bosses": [
+                "Sky Dragon of Vocalnus",
+                "Black Dragon King",
+                "Green Dragon",
+                "Mama Draygon",
+                "Red Dragon Hatchling"
+            ]
+        },
+        "scale": {
+            "maxLevel": [75, 125, 175],
+            "inventory": [3],
+            "goldStorage": [10000, 35000],
+            "battleJoinPercent": [55, 65, 75, 85, 95, 100],
+            "itemFindTimeDuration": [0, 86400, 64800, 43200, 21600, 10800],
+            "itemSellMultiplier": [0.20, 0.40],
+            "itemFindBonus": [0, 25, 50, 75, 100, 125],
+            "itemFindRangeMultiplier": [0, 0.3, 0.5, 0.7, 1],
+            "xpPerGold": [25, 50, 75, 100]
+        },
+        "scaleCost": {
+            "maxLevel": [0, 75000, 125000],
+            "inventory": [30000],
+            "goldStorage": [0, 50000],
+            "battleJoinPercent": [0],
+            "itemFindTimeDuration": [0, 50000, 60000, 70000, 80000, 100000],
+            "itemSellMultiplier": [0, 60000],
+            "itemFindBonus": [0, 25000, 50000, 75000, 100000, 125000],
+            "itemFindRangeMultiplier": [0, 25000, 45000, 65000, 95000],
+            "xpPerGold": [0, 25000, 50000, 100000]
         }
     }
 }

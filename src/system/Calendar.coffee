@@ -2,7 +2,7 @@
 requireDir = require "require-dir"
 timePeriods = requireDir "../event/calendar", recurse: yes
 
-_ = require "underscore"
+_ = require "lodash"
 
 class Calendar
 

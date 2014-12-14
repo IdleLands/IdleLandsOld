@@ -191,6 +191,57 @@ class API
         .then (res) ->
           res.player.setString stringType if res.isSuccess
 
+    pet:
+      buy: (identifier, type, name, attr1, attr2) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.buyPet type, name, attr1, attr2 if res.isSuccess
+
+      upgrade: (identifier, stat) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.upgradePet stat if res.isSuccess
+
+      feed: (identifier, gold) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.feedPet gold if res.isSuccess
+
+      giveEquipment: (identifier, itemSlot) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.givePetItem itemSlot if res.isSuccess
+
+      sellEquipment: (identifier, itemSlot) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.sellPetItem itemSlot if res.isSuccess
+
+      takeEquipment: (identifier, itemSlot) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.takePetItem itemSlot if res.isSuccess
+
+      equipItem: (identifier, itemSlot) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.equipPetItem itemSlot if res.isSuccess
+
+      unequipItem: (identifier, itemUid) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.unequipPetItem itemUid if res.isSuccess
+
+      setOption: (identifier, option, value) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.setPetOption option, value if res.isSuccess
+
+      swapToPet: (identifier, petId) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.swapToPet petId if res.isSuccess
+
     guild:
       create: (identifier, guildName) =>
         @validateIdentifier identifier

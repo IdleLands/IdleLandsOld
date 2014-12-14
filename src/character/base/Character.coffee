@@ -1,7 +1,7 @@
 
 RestrictedNumber = require "restricted-number"
 EventEmitter2 = require("eventemitter2").EventEmitter2
-_ = require "underscore"
+_ = require "lodash"
 Q = require "q"
 Personality = require "./Personality"
 Constants = require "../../system/Constants"
@@ -22,9 +22,10 @@ class Character extends EventEmitter2
 
     @
 
-  moveAction: ->
+  resetMaxXp: ->
+    @xp.maximum = @levelUpXpCalc @level.getValue()
 
-  combatAction: ->
+  moveAction: ->
 
   clearAffectingSpells: ->
     return if not @spellsAffectedBy

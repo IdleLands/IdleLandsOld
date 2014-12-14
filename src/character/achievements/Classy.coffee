@@ -2,7 +2,7 @@
 Achievement = require "../base/Achievement"
 
 requireDir = require "require-dir"
-_ = require "underscore"
+_ = require "lodash"
 
 classProtos = requireDir "../classes"
 classList = _.pluck classProtos, 'name'

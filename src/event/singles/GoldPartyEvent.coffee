@@ -1,7 +1,7 @@
 
 Event = require "../Event"
 MessageCreator = require "../../system/MessageCreator"
-_ = require "underscore"
+_ = require "lodash"
 
 `/**
  * This event handles both the blessGold and forsakeGold aliases for a party.

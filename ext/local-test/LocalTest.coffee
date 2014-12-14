@@ -2,7 +2,7 @@
 finder = require "fs-finder"
 watch = require "node-watch"
 colors = require "cli-color"
-_ = require "underscore"
+_ = require "lodash"
 
 #### GAME CONSTANTS ####
 
@@ -166,7 +166,7 @@ interactiveSession = ->
     if line is ""
       cli.prompt()
     else if line is "c"
-      do IdleWrapper.api.gameInstance.playerManager.beginGameLoop()
+      do IdleWrapper.api.gameInstance.playerManager.beginGameLoop
       do gameLoop
     else
       try

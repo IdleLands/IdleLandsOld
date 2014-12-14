@@ -4,7 +4,7 @@ Player = require "../character/player/Player"
 BattleCache = require "./BattleCache"
 Constants = require "../system/Constants"
 
-_ = require "underscore"
+_ = require "lodash"
 _.str = require "underscore.string"
 chance = (new require "chance")()
 
@@ -44,6 +44,11 @@ class Battle
         @isBad = yes
         return
       party.currentBattle = @
+
+      _.each party.players, (player) =>
+        pet = @game.petManager.getActivePetFor player
+        return if not pet
+        party.addPlayer pet if pet.tryToJoinCombat()
 
   fixStats: ->
     _.each @turnOrder, (player) ->
@@ -476,6 +481,8 @@ class Battle
     damage += darksideDamage if darksideDamage > 0
 
     damage -= defender.calc?.damageTaken attacker, damage, type, spell, damageType
+
+    damage = Math.round damage
 
     canFireSturdy = defender.hp.gtePercent 10
 

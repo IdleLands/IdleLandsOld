@@ -3,7 +3,7 @@ Character = require "../base/Character"
 RestrictedNumber = require "restricted-number"
 MessageCreator = require "../../system/MessageCreator"
 Constants = require "../../system/Constants"
-_ = require "underscore"
+_ = require "lodash"
 Q = require "q"
 
 Chance = require "chance"
@@ -65,7 +65,6 @@ class Guild
   demote: (leaderId, memberName) ->
     member = @guildManager.game.playerManager.getPlayerByName memberName
     memberEntry = _.findWhere @members, {name: memberName}
-    console.log memberEntry
 
     return Q {isSuccess: no, code: 50, message: "You're not the leader of your guild!"} if leaderId isnt @leader
     return Q {isSuccess: no, code: 51, message: "That member is not in your guild!"} if not memberEntry

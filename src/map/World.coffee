@@ -1,5 +1,5 @@
 Map = require "./Map"
-_ = require "underscore"
+_ = require "lodash"
 fs = require "fs"
 
 class World

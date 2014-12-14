@@ -1,7 +1,7 @@
 
 Event = require "../Event"
 MessageCreator = require "../../system/MessageCreator"
-_ = require "underscore"
+_ = require "lodash"
 Constants = require "../../system/Constants"
 chance = new (require "chance")()
 

@@ -1,7 +1,7 @@
 
 Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
-_ = require "underscore"
+_ = require "lodash"
 
 `/**
   * This achievement is obtained when creating a character. It only lasts for 3 days, so idle wisely.

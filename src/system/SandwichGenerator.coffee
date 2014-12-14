@@ -1,5 +1,5 @@
 
-_ = require "underscore"
+_ = require "lodash"
 Sandwich = require "../item/Sandwich"
 Generator = require "./Generator"
 Chance = require "chance"

@@ -1,6 +1,6 @@
 
 Cataclysm = require "../Cataclysm"
-_ = require "underscore"
+_ = require "lodash"
 
 `/**
   * This cataclysm breaks up every party in the game.

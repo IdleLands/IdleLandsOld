@@ -4,7 +4,7 @@ RestrictedNumber = require "restricted-number"
 MessageCreator = require "../../system/MessageCreator"
 Constants = require "../../system/Constants"
 Equipment = require "../../item/Equipment"
-_ = require "underscore"
+_ = require "lodash"
 Q = require "q"
 Personality = require "../base/Personality"
 requireDir = require "require-dir"
@@ -21,6 +21,15 @@ class Player extends Character
 
   constructor: (player) ->
     super player
+
+  canEquip: (item, rangeBoost = 1) ->
+    myItem = _.findWhere @equipment, {type: item.type}
+    return if not myItem
+    score = @calc.itemScore item
+    myScore = @calc.itemScore myItem
+    realScore = item.score()
+
+    score > myScore and realScore < @calc.itemFindRange()*rangeBoost
 
   initialize: ->
     if not @xp
@@ -151,9 +160,10 @@ class Player extends Character
     current = _.findWhere @equipment, {type: @overflow[slot].type}
     inOverflow = @overflow[slot]
 
-    @equipment = _.without @equipment, current
-    @equipment.push inOverflow
+    if not @canEquip inOverflow
+      return defer.resolve {isSuccess: no, code: 43, message: "A mysterious force compels you to not equip that item. It may be too powerful."}
 
+    @equip inOverflow
     @overflow[slot] = current
 
     defer.resolve {isSuccess: yes, code: 47, message: "Successfully swapped #{current.name} with #{inOverflow.name} (slot #{slot}).", player: @buildRESTObject()}
@@ -435,12 +445,190 @@ class Player extends Character
     @possiblyDoEvent()
     @possiblyLeaveParty()
     @checkShop()
+    @checkPets()
     @save()
     @
+
+  checkPets: ->
+    @playerManager.game.petManager.handlePetsForPlayer @
+
+  buyPet: (pet, name, attr1 = "a monocle", attr2 = "a top hat") ->
+
+    name = name.trim()
+    attr1 = attr1.trim()
+    attr2 = attr2.trim()
+
+    return Q {isSuccess: no, code: 200, message: "You need to specify all required information to make a pet."} if not name or not attr1 or not attr2
+    return Q {isSuccess: no, code: 201, message: "Your information needs to be less than 20 characters."} if name.length > 20 or attr1.length > 20 or attr2.length > 20
+    return Q {isSuccess: no, code: 202, message: "You haven't unlocked that pet."} if not @foundPets[pet]
+    return Q {isSuccess: no, code: 203, message: "You've already purchased that pet."} if @foundPets[pet].purchaseDate
+    return Q {isSuccess: no, code: 204, message: "You don't have enough gold to buy that pet! You need #{@foundPets[pet].cost -@gold.getValue()} more gold."} if @foundPets[pet].cost > @gold.getValue()
+    
+    @gold.sub @foundPets[pet].cost
+
+    @playerManager.game.petManager.createPet
+      player: @
+      type: pet
+      name: name
+      attr1: attr1
+      attr2: attr2
+
+    @emit "player.shop.pet"
+
+    pet = @playerManager.game.petManager.getActivePetFor @
+    Q {isSuccess: yes, code: 205, message: "Successfully purchased a new pet (#{pet}) named '#{name}'!", pet: pet.buildSaveObject()}
+
+  upgradePet: (stat) ->
+    pet = @getPet()
+    config = pet.petManager.getConfig pet
+
+    curLevel = pet.scaleLevel[stat]
+    cost = config.scaleCost[stat][curLevel+1]
+
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+    return Q {isSuccess: no, code: 209, message: "That stat is invalid."} if not (stat of pet.scaleLevel)
+    return Q {isSuccess: no, code: 210, message: "That stat is already at max level."} if config.scale[stat].length <= curLevel+1
+    return Q {isSuccess: no, code: 211, message: "You don't have enough gold to upgrade your pet. You need #{cost-@gold.getValue()} more gold."} if @gold.getValue() < cost
+
+    @gold.sub cost
+
+    pet.increaseStat stat
+
+    @emit "player.shop.petupgrade"
+
+    Q {isSuccess: yes, code: 212, message: "Successfully upgraded your pets (#{pet.name}) #{stat} to level #{curLevel+2}!", pet: pet.buildSaveObject()}
+
+  changePetClass: (newClass) ->
+    myClasses = _.keys @statistics['calculated class changes']
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+    return Q {isSuccess: no, code: 207, message: "You haven't been that class yet, so you can't teach your pet how to do it!"} if (myClasses.indexOf newClass) is -1
+
+    pet.setClassTo newClass
+
+    Q {isSuccess: yes, code: 208, message: "Successfully changed your pets (#{pet.name}) class to #{newClass}!", pet: pet.buildSaveObject()}
+
+  feedPet: (gold) ->
+    gold = Math.round gold
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+    return Q {isSuccess: no, code: 213, message: "You specified an invalid amount of gold."} if gold <= 0 or not _.isNumber gold
+    return Q {isSuccess: no, code: 214, message: "You don't have enough gold for that!"} if @gold.lessThan gold
+
+    oldLevel = pet.level.getValue()
+    @gold.sub gold
+    xpGained = pet.feedOn gold
+
+    newLevel = pet.level.getValue()
+    levelup = no
+    if newLevel isnt oldLevel
+      levelup = yes
+      message = "<player.name>#{pet.name}</player.name> (#{pet.type} of <player.name>#{@name}</player.name>) is now level <player.level>#{newLevel}</player.level>!"
+      @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'levelup'}
+
+    Q {isSuccess: yes, code: 215, message: "Your pet (#{pet.name}) was fed #{gold} gold and gained #{xpGained} xp! #{if levelup then "Now level #{newLevel}!" else ""}", pet: pet.buildSaveObject()}
+
+  getPetGold: ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+
+    petMoney = pet.gold.getValue()
+    return Q {isSuccess: no, code: 216, message: "Your pet is penniless."} if not petMoney
+
+    @gold.add petMoney
+    pet.gold.toMinimum()
+
+    Q {isSuccess: yes, code: 217, message: "You retrieved #{petMoney} gold from your pet (#{pet.name})!", pet: pet.buildSaveObject()}
+
+  sellPetItem: (itemSlot) ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+
+    item = pet.inventory[itemSlot]
+    return Q {isSuccess: no, code: 218, message: "Your pet does not have an item in that slot!"} if not item
+
+    pet.inventory = _.without pet.inventory, item
+    value = pet.sellItem item, no
+
+    Q {isSuccess: yes, code: 219, message: "Your pet (#{pet.name}) sold #{item.name} for #{value} gold!", pet: pet.buildSaveObject()}
+
+  givePetItem: (itemSlot) ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+    return Q {isSuccess: no, code: 220, message: "Your pet's inventory is full!"} if not pet.canAddToInventory()
+
+    curItem = @overflow[itemSlot]
+    return Q {isSuccess: no, code: 43, message: "You don't have anything in that inventory slot."} if not curItem
+
+    pet.addToInventory curItem
+    @overflow = _.without @overflow, curItem
+
+    Q {isSuccess: yes, code: 221, message: "Successfully gave #{curItem.name} to your pet (#{pet.name}).", pet: pet.buildSaveObject()}
+
+  takePetItem: (itemSlot) ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+    return Q {isSuccess: no, code: 41, message: "Your inventory is currently full!"} if @overflow.length is Constants.defaults.player.maxOverflow
+
+    curItem = pet.inventory[itemSlot]
+    return Q {isSuccess: no, code: 218, message: "Your pet doesn't have anything in that inventory slot."} if not curItem
+
+    @overflow.push curItem
+    pet.removeFromInventory curItem
+
+    Q {isSuccess: yes, code: 221, message: "Successfully took #{curItem.name} from your pet (#{pet.name}).", pet: pet.buildSaveObject()}
+
+  setPetOption: (option, value) ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+    return Q {isSuccess: no, code: 222, message: "That option is invalid."} if not (option in ["smartSell", "smartEquip", "smartSelf"])
+
+    pet[option] = value
+
+    Q {isSuccess: yes, code: 223, message: "Successfully set #{option} to #{value} for #{pet.name}."}
+
+  equipPetItem: (itemSlot) ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+
+    item = pet.inventory[itemSlot]
+    return Q {isSuccess: no, code: 218, message: "Your pet does not have an item in that slot!"} if not item
+    return Q {isSuccess: no, code: 224, message: "Your pet cannot equip that item! Either it is too strong, or your pets equipment slots are full."} if not pet.canEquip item
+
+    pet.equip item
+
+    Q {isSuccess: yes, code: 225, message: "Successfully equipped your pet (#{pet.name}) with #{item.name}.", pet: newPet.buildSaveObject()}
+
+  unequipPetItem: (uid) ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+
+    item = pet.findEquipped uid
+    return Q {isSuccess: no, code: 226, message: "Your pet does not have that item equipped!"} if not item
+    return Q {isSuccess: no, code: 231, message: "You can't unequip your pets soul, you jerk!"} if item.type is "pet soul"
+
+    pet.unequip item
+
+    Q {isSuccess: yes, code: 227, message: "Successfully unequipped #{item.name} from your pet (#{pet.name}).", pet: newPet.buildSaveObject()}
+
+  swapToPet: (petId) ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+
+    newPet = _.findWhere pet.petManager.pets, (pet) => pet.createdAt is petId and pet.owner.name is @name
+    return Q {isSuccess: no, code: 228, message: "That pet does not exist!"} if not newPet
+    return Q {isSuccess: no, code: 229, message: "That pet is already active!"} if newPet is pet
+
+    pet.petManager.changePetForPlayer @, newPet
+
+    Q {isSuccess: yes, code: 230, message: "Successfully made #{newPet.name}, the #{newPet.type} your active pet!", pet: newPet.buildSaveObject()}
 
   save: ->
     return if not @playerManager
     @playerManager.savePlayer @
+
+  getPet: ->
+    @playerManager.game.petManager.getActivePetFor @
 
   gainGold: (gold) ->
     if _.isNaN gold
@@ -482,9 +670,6 @@ class Player extends Character
     @emit "player.level.up", @
 
     @playerManager.addForAnalytics @
-
-  resetMaxXp: ->
-    @xp.maximum = @levelUpXpCalc @level.getValue()
 
   recalcGuildLevel: ->
     return if not @guild

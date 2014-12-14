@@ -1,5 +1,5 @@
 BotManager = require("../../../../core/BotManager").BotManager
-_ = require "underscore"
+_ = require "lodash"
 _.str = require "underscore.string"
 Q = require "q"
 
@@ -751,6 +751,93 @@ module.exports = (Module) ->
           identifier = @generateIdent origin.bot.config.server, username
 
           (@IdleWrapper.api.player.auth[action] identifier, password)
+          .then (res) =>
+            @reply origin, res.message
+
+      `/**
+       * Buy a new pet.
+       *
+       * @name idle-pet buy
+       * @syntax !idle-pet buy "type" "name" "attr1" "attr2"
+       * @example !idle-pet buy "Pet Rock" "Rocky" "a top hat" "a monocle"
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-pet buy \":petType\" \":petName\" \":attr1\" \":attr2\"", (origin, route) =>
+        [type, name, attr1, attr2] = [route.params.petType, route.params.petName, route.params.attr1, route.params.attr2]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to buy a pet!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.pet.buy identifier, type, name, attr1, attr2)
+          .then (res) =>
+            @reply origin, res.message
+
+      `/**
+       * Set smart options for your pet.
+       *
+       * @name idle-pet set
+       * @syntax !idle-pet set option on|off
+       * @example !idle-pet set smartSell on
+       * @example !idle-pet set smartSelf on
+       * @example !idle-pet set smartEquip off
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-pet set :option :value", (origin, route) =>
+        [option, value] = [route.params.option, route.params.value is "on"]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to change pet settings!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.pet.setOption identifier, option, value)
+          .then (res) =>
+            @reply origin, res.message
+
+      `/**
+       * Manage your pets items, upgrade their stats, and feed them gold!
+       *
+       * @name idle-pet action
+       * @syntax !idle-pet action actionType actionParameter
+       * @syntax !idle-pet action upgrade maxLevel|inventory|goldStorage|battleJoinPercent|itemFindTimeDuration|itemSellMultiplier|itemFindBonus|itemFindRangeMultiplier|xpPerGold
+       * @syntax !idle-pet action feed gold
+       * @syntax !idle-pet action giveEquipment itemSlot
+       * @syntax !idle-pet action sellEquipment itemSlot
+       * @syntax !idle-pet action takeEquipment itemSlot
+       * @syntax !idle-pet action equipItem itemSlot
+       * @syntax !idle-pet action unequipItem itemUid
+       * @syntax !idle-pet action swapToPet petId
+       * @example !idle-pet action upgrade maxLevel
+       * @example !idle-pet action feed 100
+       * @example !idle-pet action giveEquipment 0
+       * @example !idle-pet action takeEquipment 1
+       * @example !idle-pet action sellEquipment 2
+       * @example !idle-pet action equipItem 3
+       * @example !idle-pet action unequipItem 1418554184641
+       * @example !idle-pet action swapToPet 1418503227081
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-pet action :action :param", (origin, route) =>
+        [action, param] = [route.params.action, route.params.param]
+        param = parseInt param if action isnt "upgrade"
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to change pet settings!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.pet[action] identifier, action, param)
           .then (res) =>
             @reply origin, res.message
 

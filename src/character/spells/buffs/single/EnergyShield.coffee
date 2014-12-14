@@ -14,8 +14,8 @@ class EnergyShield extends Spell
       * @requirement {level} 4
       * @element buff
       * @targets {ally} 1
-      * @effect -200 damage
-      * @duration 13 rounds
+      * @effect -100 damage
+      * @duration 9 rounds
       * @category Mage
       * @package Spells
     */`
@@ -29,8 +29,8 @@ class EnergyShield extends Spell
       * @requirement {level} 29
       * @element buff
       * @targets {ally} 1
-      * @effect -800 damage
-      * @duration 11 rounds
+      * @effect -400 damage
+      * @duration 7 rounds
       * @category Mage
       * @package Spells
     */`
@@ -44,8 +44,8 @@ class EnergyShield extends Spell
       * @requirement {level} 54
       * @element buff
       * @targets {ally} 1
-      * @effect -1800 damage
-      * @duration 9 rounds
+      * @effect -900 damage
+      * @duration 5 rounds
       * @category Mage
       * @package Spells
     */`
@@ -55,16 +55,16 @@ class EnergyShield extends Spell
       *
       * @name energy omegashield
       * @requirement {class} Mage
-      * @requirement {mp} 3900
+      * @requirement {mp} 7900
       * @requirement {level} 79
       * @element buff
       * @targets {ally} 1
-      * @effect -5000 damage
-      * @duration 5 rounds
+      * @effect -2500 damage
+      * @duration 1 round
       * @category Mage
       * @package Spells
     */`
-    {name: "energy omegashield",  spellPower: 10, cost: 3900,  class: "Mage", level: 79}
+    {name: "energy omegashield",  spellPower: 10, cost: 7900,  class: "Mage", level: 79}
     `/**
       * This spell reduces incoming damage for a period of time.
       *
@@ -74,8 +74,8 @@ class EnergyShield extends Spell
       * @requirement {level} 10
       * @element buff
       * @targets {ally} 1
-      * @effect -50 damage
-      * @duration 14 rounds
+      * @effect -25 damage
+      * @duration 10 rounds
       * @category Generalist
       * @package Spells
     */`
@@ -89,8 +89,8 @@ class EnergyShield extends Spell
       * @requirement {level} 25
       * @element buff
       * @targets {ally} 1
-      * @effect -200 damage
-      * @duration 13 rounds
+      * @effect -100 damage
+      * @duration 9 rounds
       * @category Generalist
       * @package Spells
     */`
@@ -104,8 +104,8 @@ class EnergyShield extends Spell
       * @requirement {level} 40
       * @element buff
       * @targets {ally} 1
-      * @effect -450 damage
-      * @duration 12 rounds
+      * @effect -225 damage
+      * @duration 8 rounds
       * @category Generalist
       * @package Spells
     */`
@@ -119,20 +119,20 @@ class EnergyShield extends Spell
       * @requirement {level} 55
       * @element buff
       * @targets {ally} 1
-      * @effect -800 damage
-      * @duration 11 rounds
+      * @effect -1225 damage
+      * @duration 7 rounds
       * @category Generalist
       * @package Spells
     */`
     {name: "energy barricade",    spellPower: 4,  cost: 1600,  class: "Generalist", level: 55}
   ]
 
-  calcDuration: -> super()+15-@spellPower
+  calcDuration: -> super()+11-@spellPower
 
   determineTargets: ->
     @targetSomeAllies()
 
-  damageReduction: -> 50 * @spellPower * @spellPower
+  damageReduction: -> 50 * @spellPower * (@spellPower / 2)
 
   cast: (player) ->
     message = "%casterName gave %targetName %spellName!"

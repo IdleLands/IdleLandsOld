@@ -4,7 +4,7 @@ useREST = config.useREST
 
 return if not useREST
 
-_ = require "underscore"
+_ = require "lodash"
 requireDir = require "require-dir"
 
 API = require "./API"

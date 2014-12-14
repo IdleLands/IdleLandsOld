@@ -1,5 +1,5 @@
 
-_ = require "underscore"
+_ = require "lodash"
 requireDir = require "require-dir"
 spells = requireDir "../character/spells", recurse: yes
 Spell = require "../character/base/Spell"

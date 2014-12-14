@@ -1,5 +1,5 @@
 
-_ = require "underscore"
+_ = require "lodash"
 MessageCreator = require "../system/MessageCreator"
 
 class Cataclysm

@@ -1,5 +1,5 @@
 
-_ = require "underscore"
+_ = require "lodash"
 Equipment = require "../item/Equipment"
 Generator = require "./Generator"
 Chance = require "chance"
@@ -11,6 +11,8 @@ class EquipmentGenerator extends Generator
   generateItem: (type = null, generatorBonus = 0) ->
     itemList = @game.componentDatabase.itemStats
     type = _.sample @types if not type
+
+    return if not itemList[type]
 
     baseItem = _.sample itemList[type]
 
@@ -41,14 +43,14 @@ class EquipmentGenerator extends Generator
 
     itemClass
 
-  generateItemAtScore: (targetScore, tolerance = 0.15) ->
+  generateItemAtScore: (targetScore, tolerance = 0.15, bonus = 0) ->
     testItem = (item) ->
       baseScore = item.score()
       flux = baseScore * tolerance
       baseScore-flux <= targetScore <= baseScore+flux
 
-    item = @cleanUpItem @generateItem()
-    item = @cleanUpItem @generateItem() while not testItem item
+    item = @cleanUpItem @generateItem null, bonus
+    item = @cleanUpItem @generateItem null, bonus while not testItem item
 
     item
 

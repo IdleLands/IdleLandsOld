@@ -1,6 +1,6 @@
 
 Event = require "../Event"
-_ = require "underscore"
+_ = require "lodash"
 _.str = require "underscore.string"
 chance = new (require "chance")()
 Equipment = require "../../item/Equipment"
@@ -36,13 +36,15 @@ class ProvidenceEvent extends Event
     availablePersonalities = _(@player.achievements)
       .filter (achievement) -> achievement.type is "personality"
       .map (achievement) -> achievement._personality
+      .value()
 
     xpMod = chance.integer {min: -@player.xp.maximum, max: @player.xp.maximum}
     levelMod = chance.integer {min: -3, max: 2}
     gender = _.sample ['male', 'female', 'glowcloud', 'not a bear', 'astroentity', 'secret', 'other']
     goldMod = chance.integer {min: -30000, max: 20000}
     classMod = _.sample availableClasses
-    personalityMod = _.sample availablePersonalities, chance.integer {min: 0, max: availablePersonalities.length}
+    numPersonalities = chance.integer {min: 0, max: availablePersonalities.length}
+    personalityMod = _.sample availablePersonalities, numPersonalities
 
     if xpMod and chance.bool {likelihood: 60}
       @player.xp.add xpMod
@@ -53,19 +55,19 @@ class ProvidenceEvent extends Event
       @player.resetMaxXp()
       message = "#{message} #{if levelMod > 0 then 'Gained' else 'Lost'} #{Math.abs levelMod} levels!"
 
-    if @player.getGender() isnt gender and chance.bool {likelihood: 80}
+    if @player.getGender() isnt gender and (chance.bool {likelihood: 80})
       @player.gender = gender
       message = "#{message} Gender is now '#{gender}'!"
 
-    if goldMod and chance.bool {likelihood: 50}
+    if goldMod and (chance.bool {likelihood: 50})
       @player.gold.add goldMod
       message = "#{message} #{if goldMod > 0 then 'Found' else 'Lost'} #{Math.abs goldMod} gold!"
 
-    if classMod and @professionName isnt classMod and chance.bool {likelihood: 15}
+    if classMod and @professionName isnt classMod and (chance.bool {likelihood: 15})
       @player.changeProfession classMod, yes
       message = "#{message} Changed class to #{classMod}!"
 
-    if chance.bool {likelihood: 25}
+    if (chance.bool {likelihood: 25})
       @player.personalityStrings = personalityMod
       @player.rebuildPersonalityList()
       message = "#{message} Personality shift!"

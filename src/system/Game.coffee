@@ -2,6 +2,7 @@
 AchievementManager = require "./AchievementManager"
 PlayerManager = require "./PlayerManager"
 GuildManager = require "./GuildManager"
+PetManager = require "./PetManager"
 EventHandler = require "./EventHandler"
 MonsterGenerator = require "./MonsterGenerator"
 MessageCreator = require "./MessageCreator"
@@ -21,7 +22,7 @@ Battle = require "../event/Battle"
 World = require "../map/World"
 q = require "q"
 
-_ = require "underscore"
+_ = require "lodash"
 chance = (new require "chance")()
 
 console.log "Rebooted IdleLands."
@@ -35,12 +36,17 @@ class Game
 
   constructor: () ->
     @parties = []
+
+    defer = q.defer()
+    @loading = defer.promise
+
+    @componentDatabase = new ComponentDatabase @
     @gmCommands = new GMCommands @
+    @petManager = new PetManager @
     @spellManager = new SpellManager @
     @eventHandler = new EventHandler @
     @playerManager = new PlayerManager @
     @guildManager = new GuildManager @
-    @componentDatabase = new ComponentDatabase @
     @globalEventHandler = new GlobalEventHandler @
     @calendar = new Calendar @
     @equipmentGenerator = new EquipmentGenerator @
@@ -51,6 +57,8 @@ class Game
     @bossFactory = new BossFactory @
     @treasureFactory = new TreasureFactory @
     @world = new World()
+
+    defer.resolve()
 
     require "./REST"
 
@@ -107,6 +115,7 @@ class Game
       modified = _.flatten playerLists
       if (_.uniq modified).length < modified.length
         console.error "ERROR: BATTLE FORMATION BLOCKED DUE TO ONE PLAYER BEING ON BOTH SIDES"
+        console.error _.pluck modified, 'name'
         return no
 
       maxPercDiff = Constants.defaults.game.maxPartyScorePercentDifference

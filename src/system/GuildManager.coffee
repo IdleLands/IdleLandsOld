@@ -1,6 +1,6 @@
 
 Datastore = require "./DatabaseWrapper"
-_ = require "underscore"
+_ = require "lodash"
 Guild = require "../character/player/Guild"
 RestrictedNumber = require "restricted-number"
 Q = require "q"

@@ -1,5 +1,5 @@
 
-_ = require "underscore"
+_ = require "lodash"
 Spell = require "../../../base/Spell"
 
 class FrostBite extends Spell

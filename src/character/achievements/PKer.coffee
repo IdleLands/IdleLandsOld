@@ -1,7 +1,7 @@
 
 Achievement = require "../base/Achievement"
 {toRoman} = require "roman-numerals"
-_ = require "underscore"
+_ = require "lodash"
 
 `/**
   * This achievement is earned by killing unique players.
