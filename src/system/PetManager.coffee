@@ -58,6 +58,7 @@ class PetManager
     @handleSoul newPet
 
     player.foundPets[type].purchaseDate = Date.now()
+    player.foundPets[type].uid = newPet.createdAt
 
     @changePetForPlayer player, newPet
 
