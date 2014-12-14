@@ -532,7 +532,7 @@ class Player extends Character
     if not @priorityPoints
       @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
 
-    if stats.length != 6
+    if _.size stats != 6
       return Q {isSuccess: no, code: 111, message: "Priority list is invalid. Expected 6 items"}
 
     total = 0
