@@ -92,6 +92,8 @@ class PetManager
 
     @configurePet pet
 
+    pet.recalculateStats()
+
   handleSoul: (pet) ->
     petSoul = _.findWhere pet.equipment, {type: 'pet soul'}
     pet.equipment = _.without pet.equipment, petSoul

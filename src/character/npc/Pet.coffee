@@ -61,10 +61,12 @@ class Pet extends Character
   equip: (item) ->
     @removeFromInventory item
     @equipment.push item
+    @recalculateStats()
 
   unequip: (item) ->
     @addToInventory item
     @equipment = _.without @equipment, item
+    @recalculateStats()
 
   findEquipped: (uid) ->
     _.findWhere @equipment, {uid: uid}
@@ -102,6 +104,7 @@ class Pet extends Character
       if lowestScoreItem.score() < item.score()
         @equipment.push item
         @equipment = _.without @equipment, lowestScoreItem
+        @recalculateStats()
         @sellItem lowestScoreItem
 
         return true

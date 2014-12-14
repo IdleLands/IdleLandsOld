@@ -26,7 +26,7 @@ router
   API.player.pet.setOption identifier, option, value
   .then (resp) -> res.json resp
 
-.post "/pet/swap", hasValidToken, (req, res) ->
+.patch "/pet/swap", hasValidToken, (req, res) ->
   {identifier, petId} = req.body
   API.player.pet.swapToPet identifier, petId
   .then (resp) -> res.json resp
@@ -41,7 +41,7 @@ router
   API.player.pet.takeEquipment identifier, itemSlot
   .then (resp) -> res.json resp
 
-.post "/pet/inventory/sell", hasValidToken, (req, res) ->
+.patch "/pet/inventory/sell", hasValidToken, (req, res) ->
   {identifier, itemSlot} = req.body
   API.player.pet.sellEquipment identifier, itemSlot
   .then (resp) -> res.json resp
