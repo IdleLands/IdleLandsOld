@@ -71,8 +71,8 @@
             "con": 1000,
             "str": 3900,
             "int": 100,
-			"luck": 800,
-			"thunder": 2000,
+            "luck": 800,
+            "thunder": 2000,
             "mindwipe": 1
         },
         "items": [
@@ -86,11 +86,11 @@
             "class": "Rogue",
             "hp": 14740,
             "level": 30,
-			"str": 1800,
+            "str": 1800,
             "con": 400,
             "dex": 1600,
             "agi": 1500,
-	    "poison": 1
+            "poison": 1
         },
         "items": [
             { "name": "Super Shuriken", "dropPercent": 80 }
@@ -110,7 +110,7 @@
         "items": [
             { "name": "Staff of the Prophet", "dropPercent": 80 }
         ]
-	},
+    },
     "Trustee Rakshasha": {
         "respawn": 10800,
         "availableScore": 1000,
@@ -126,7 +126,7 @@
         "items": [
             { "name": "Moonlight Signet", "dropPercent": 80 }
         ]
-		},
+    },
     "Black Dragon King": {
         "respawn": 10800,
         "availableScore": 2400,
@@ -142,7 +142,7 @@
         "items": [
             { "name": "Ward of the Black Dragon King", "dropPercent": 60 }
         ]
-		},
+    },
     "Child Minotaur": {
         "respawn": 10800,
         "availableScore": 2500,
@@ -157,7 +157,7 @@
         "items": [
             { "name": "Oversized Locket", "dropPercent": 60 }
         ]
-    		},
+    },
     "Sibling Minotaur": {
         "respawn": 10800,
         "availableScore": 4000,
@@ -168,12 +168,12 @@
             "str": 575,
             "dex": 545,
             "agi": 350,
-	    "con": 50
+            "con": 50
         },
         "items": [
             { "name": "Hand-Me-Down Battleaxe", "dropPercent": 65 }
         ]
-   		 },
+    },
     "Elder Minotaur": {
         "respawn": 10800,
         "availableScore": 6000,
@@ -183,12 +183,12 @@
             "level": 30,
             "int": 1100,
             "wis": 990,
-	    "agi": 50
+            "agi": 50
         },
         "items": [
             { "name": "Wizard Hat with Horns", "dropPercent": 70 }
         ]
-    		},
+    },
     "King Minotaur": {
         "respawn": 10800,
         "availableScore": 11400,
@@ -199,13 +199,13 @@
             "str": 2100,
             "dex": 750,
             "con": 1200,
-	    "agi": 100,
+            "agi": 100,
             "sturdy": 1
         },
         "items": [
             { "name": "King Minotaur's Axe", "dropPercent": 85 }
         ]
-		},
+    },
     "Vampire Lord": {
         "respawn": 10800,
         "availableScore": 4000,
@@ -216,15 +216,18 @@
             "str": 750,
             "dex": 1000,
             "con": 250,
-	    "agi": 1000,
-	    "wis": 500,
-	    "int": 500,
-	    "vampire": 2
+            "agi": 1000,
+            "wis": 500,
+            "int": 500,
+            "vampire": 2
         },
         "items": [
             { "name": "Golden Vampire Gauntlets", "dropPercent": 80 }
+        ],
+        "collectibles": [
+            { "name": "Vampire Heart", "dropPercent": 95 }
         ]
-		},
+    },
     "Cloud Giant": {
         "respawn": 10800,
         "availableScore": 11400,
@@ -235,13 +238,13 @@
             "str": 2000,
             "dex": 500,
             "con": 1200,
-	    "agi": 100,
-	    "sturdy": 1
+            "agi": 100,
+            "sturdy": 1
         },
         "items": [
             { "name": "Halberd of the Giants", "dropPercent": 80 }
         ]
-		},
+    },
     "Ghostly Pirate Captain": {
         "respawn": 10800,
         "availableScore": 1200,
@@ -251,13 +254,13 @@
             "level": 15,
             "luck": 33,
             "dex": 200,
-	    "agi": 200,
-	    "parry": 10
+            "agi": 200,
+            "parry": 10
         },
         "items": [
             { "name": "Incorporeal Cutlass", "dropPercent": 70 }
         ]
-		},
+    },
     "Baby Red Draygon": {
         "respawn": 10800,
         "availableScore": 3000,
@@ -267,58 +270,58 @@
             "level": 30,
             "luck": 33,
             "dex": 600,
-	    "agi": 900,
-	    "str": 2000,
-	    "prone": 1,
-	    "glowing": 1
+            "agi": 900,
+            "str": 2000,
+            "prone": 1,
+            "glowing": 1
         },
         "items": [
             { "name": "Fire Enfused Dragon Tooth", "dropPercent": 75 }
         ]
-		},
+    },
     "Mama Red Draygon": {
         "respawn": 10800,
         "availableScore": 5000,
         "stats": {
             "class": "Mage",
             "hp": 39212,
-	    "mp": 77777,
+            "mp": 77777,
             "level": 55,
             "luck": 77,
             "dex": 1600,
-	    "con": 1300,
-	    "agi": 500,
-	    "str": 3900,
-	    "wis": 999,
-	    "int": 2900,
-	    "fire": 7777,
-	    "defense": 2,
-	    "fear": 1,
-	    "sturdy": 1
+            "con": 1300,
+            "agi": 500,
+            "str": 3900,
+            "wis": 999,
+            "int": 2900,
+            "fire": 7777,
+            "defense": 2,
+            "fear": 1,
+            "sturdy": 1
         },
         "items": [
             { "name": "Breastplate of Wrath", "dropPercent": 80 }
         ]
-		},
+    },
     "Lucifer the Flame-Born": {
         "respawn": 10800,
         "availableScore": 2400,
         "stats": {
             "class": "Mage",
             "hp": 23200,
-            "mp": 28200, 
+            "mp": 28200,
             "level": 40,
             "str": 1800,
             "int": 1750,
             "wis": 1450,
             "con": 900,
-			"fire": 10000,
+            "fire": 10000,
             "sturdy": 1
         },
         "items": [
             { "name": "Flame Polished Gauntlets", "dropPercent": 80 }
         ]
-        },
+    },
     "Gryffyndor House Representative": {
         "respawn": 10800,
         "availableScore": 2400,
@@ -328,15 +331,15 @@
             "mp": 28200,
             "level": 40,
             "str": 1800,
-			"dex": 1500,
-			"agi": 1400,
-			"con": 1000
-            
+            "dex": 1500,
+            "agi": 1400,
+            "con": 1000
+
         },
         "items": [
             { "name": "Gryffyndor Sword", "dropPercent": 80 }
         ]
-        },
+    },
     "Sky Dragon of Vocalnus": {
         "respawn": 10800,
         "availableScore": 2400,
@@ -346,13 +349,13 @@
             "mp": 28200,
             "level": 40,
             "str": 1800,
-			"wis": 1500,
-			"int": 1400,
-			"con": 1000
-            
+            "wis": 1500,
+            "int": 1400,
+            "con": 1000
+
         },
         "items": [
             { "name": "Nimbus Cloud Mace", "dropPercent": 80 }
         ]
-        }
+    }
 }
