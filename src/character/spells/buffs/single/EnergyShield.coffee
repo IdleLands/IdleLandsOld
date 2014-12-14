@@ -55,7 +55,7 @@ class EnergyShield extends Spell
       *
       * @name energy omegashield
       * @requirement {class} Mage
-      * @requirement {mp} 3900
+      * @requirement {mp} 7900
       * @requirement {level} 79
       * @element buff
       * @targets {ally} 1
@@ -64,7 +64,7 @@ class EnergyShield extends Spell
       * @category Mage
       * @package Spells
     */`
-    {name: "energy omegashield",  spellPower: 10, cost: 3900,  class: "Mage", level: 79}
+    {name: "energy omegashield",  spellPower: 10, cost: 7900,  class: "Mage", level: 79}
     `/**
       * This spell reduces incoming damage for a period of time.
       *
