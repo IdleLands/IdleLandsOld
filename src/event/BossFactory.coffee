@@ -44,7 +44,7 @@ class BossFactory
           if @game.eventHandler.tryToEquipItem event, member, itemInst
             member.emit "event.bossbattle.loot", member, name, item
 
-        _.each baseObj.collectibles, (item) =>
+        _.each baseObj.collectibles, (item) ->
           probability = Math.max 0, Math.min 100, item.dropPercent + member.calc.luckBonus()
           return if not (chance.bool likelihood: probability)
 
