@@ -44,6 +44,18 @@ class BossFactory
           if @game.eventHandler.tryToEquipItem event, member, itemInst
             member.emit "event.bossbattle.loot", member, name, item
 
+        _.each baseObj.collectibles, (item) ->
+          probability = Math.max 0, Math.min 100, item.dropPercent + member.calc.luckBonus()
+          return if not (chance.bool likelihood: probability)
+
+          baseCollectible =
+            name: item.name
+            rarity: "guardian"
+
+          member.handleCollectible baseCollectible
+
+          member.emit "event.bossbattle.lootcollectible", member, name, item
+
         member.emit "event.bossbattle.win", member, name
 
       BossInformation.timers[name] = new Date()

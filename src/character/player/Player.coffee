@@ -318,6 +318,7 @@ class Player extends Character
     return @statistics['calculated boss kills'][tile.object.properties.requireBoss] if tile.object?.properties?.requireBoss
     return no if tile.object?.properties?.requireClass and @professionName isnt tile.object?.properties?.requireClass
     return no if not @collectibles or not _.findWhere @collectibles, {name: tile.object?.properties?.requireCollectible}
+    return no if not @achievements or not _.findWhere @achievements, {name: tile.object?.properties?.requireAchievement}
 
     tile.blocked
 
