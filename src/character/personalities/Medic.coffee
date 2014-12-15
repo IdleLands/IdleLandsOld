@@ -7,11 +7,18 @@ Constants = require "../../system/Constants"
   *
   * @name Medic
   * @prerequisite Heal 50000 damage
+  * @effect +5% WIS
+  * @effect -3% AGI
+  * @effect -3% DEX
   * @category Personalities
   * @package Player
 */`
 class Medic extends Personality
   constructor: ->
+
+  wisPercent: -> 5
+  agiPercent: -> -3
+  dexPercent: -> -3
 
   classChangePercent: (potential) ->
     -100 if not Constants.isMedic potential

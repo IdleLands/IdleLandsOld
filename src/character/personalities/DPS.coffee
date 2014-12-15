@@ -7,12 +7,21 @@ Constants = require "../../system/Constants"
   *
   * @name DPS
   * @prerequisite Deal 500000 damage
+  * @effect +4% INT
+  * @effect +4% STR
+  * @effect -5% CON
+  * @effect -5% WIS
   * @category Personalities
   * @package Player
 */`
 
 class DPS extends Personality
   constructor: ->
+
+  intPercent: -> 4
+  strPercent: -> 4
+  conPercent: -> -5
+  wisPercent: -> -5
 
   classChangePercent: (potential) ->
     -100 if not Constants.isDPS potential
