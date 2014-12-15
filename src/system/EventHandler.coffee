@@ -82,8 +82,26 @@ class EventHandler
   bossBattle: (player, bossName) ->
     return if @game.inBattle
 
-    boss = @game.bossFactory.createBoss bossName, player
+    boss = @createBoss bossName
     return if not boss
+
+    bossParty = new Party @game, boss
+
+    @bossBattleParty player, bossParty
+
+  bossPartyBattle: (player, bossPartyName) ->
+    monsters = @createBosses @game.bossFactory.createBossPartyNames bossPartyName
+    bossParty = new Party @game, monsters
+
+    @bossBattleParty player, bossParty
+
+  createBoss: (bossName) ->
+    @game.bossFactory.createBoss bossName
+
+  createBosses: (bossNames) ->
+    _.map bossNames, @createBoss
+
+  bossBattleParty: (player, bossParty) ->
 
     if not player.party
       if player.calc.totalItemScore() < boss.calc.totalItemScore()
@@ -94,8 +112,6 @@ class EventHandler
     message = ">>> BOSS BATTLE: %player prepares for an epic battle!"
     message = MessageCreator.doStringReplace message, player
     @game.broadcast MessageCreator.genericMessage message
-
-    bossParty = new Party @game, boss
 
     new Battle @game, [player.party, bossParty]
 

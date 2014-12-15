@@ -6,7 +6,10 @@ chance = new (require "chance")()
 class BossFactory
   constructor: (@game) ->
 
-  createBoss: (name, forPlayer) ->
+  createBossPartyNames: (partyName) ->
+    BossInformation.parties[partyName]
+
+  createBoss: (name) ->
     currentTimer = BossInformation.timers[name]
 
     try
@@ -76,6 +79,7 @@ class BossFactory
 
 class BossInformation
   @timers = {}
+  @parties = require "../../config/bossparties.json"
   @items = require "../../config/bossitems.json"
   @bosses = require "../../config/boss.json"
 

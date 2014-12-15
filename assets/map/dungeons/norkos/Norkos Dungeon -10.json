@@ -261,12 +261,12 @@
                 {
                  "gid":26,
                  "height":0,
-                 "name":"Warden of Norkos",
+                 "name":"Wardens",
                  "properties":
                     {
 
                     },
-                 "type":"Boss",
+                 "type":"BossParty",
                  "visible":true,
                  "width":0,
                  "x":432,

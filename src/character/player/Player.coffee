@@ -270,6 +270,7 @@ class Player extends Character
   handleTile: (tile) ->
     switch tile.object?.type
       when "Boss" then @handleBossBattle tile.object.name
+      when "BossParty" then @handleBossBattleParty tile.object.name
       when "Teleport" then @handleTeleport tile
       when "Trainer" then @handleTrainerOnTile tile
       when "Treasure" then @handleTreasure tile.object.name
@@ -302,6 +303,9 @@ class Player extends Character
 
   handleBossBattle: (bossName) ->
     @playerManager.game.eventHandler.bossBattle @, bossName
+
+  handleBossBattleParty: (bossParty) ->
+    @playerManager.game.eventHandler.bossPartyBattle @, bossParty
 
   pickRandomTile: ->
     @ignoreDir = [] if not @ignoreDir
