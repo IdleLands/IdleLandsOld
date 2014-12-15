@@ -42,6 +42,8 @@ class BossFactory
 
           itemInst = new Equipment baseItem
 
+          @game.equipmentGenerator.addPropertiesToItem itemInst, member.calc.luckBonus()
+
           event = rangeBoost: 2, remark: "%player looted %item from the corpse of <player.name>#{name}</player.name>."
 
           if @game.eventHandler.tryToEquipItem event, member, itemInst
