@@ -18,16 +18,16 @@ class EventHandler
   constructor: (@game) ->
     @playerEventsDb = new Datastore "playerEvents", (db) -> db.ensureIndex {createdAt: 1}, {expiresAfterSeconds: 7200}, ->
 
-  doEventForPlayer: (playerName, eventType = null, callback) ->
+  doEventForPlayer: (playerName, eventType = null) ->
     player = @game.playerManager.getPlayerByName playerName
     eventType = Constants.pickRandomNormalEventType(player) if not eventType
     if not player
       console.error "Attempting to do event #{eventType} for #{playerName}, but player was not there."
       return callback?()
 
-    @doEvent eventType, player, callback
+    @doEvent eventType, player
 
-  doEvent: (eventType, player, callback = null) ->
+  doEvent: (eventType, player) ->
     @game.componentDatabase.getRandomEvent eventType, (e, event) =>
       console.error "CANT GET EVENT",e,e.stack if e
       return if not event or not player
@@ -81,22 +81,23 @@ class EventHandler
 
   bossBattle: (player, bossName) ->
     return if @game.inBattle
-    doBossBattle = =>
-      boss = @game.bossFactory.createBoss bossName, player
-      return if not boss
 
-      message = ">>> BOSS BATTLE: %player prepares for an epic battle!"
-      message = MessageCreator.doStringReplace message, player
-      @game.broadcast MessageCreator.genericMessage message
+    boss = @game.bossFactory.createBoss bossName, player
+    return if not boss
 
-      bossParty = new Party @game, boss
+    if not player.party
+      if player.calc.totalItemScore() < boss.calc.totalItemScore()
+        @doEventForPlayer player.name, 'party'
+      else
+        new Party @game, [player]
 
-      new Battle @game, [player.party, bossParty]
+    message = ">>> BOSS BATTLE: %player prepares for an epic battle!"
+    message = MessageCreator.doStringReplace message, player
+    @game.broadcast MessageCreator.genericMessage message
 
-    if player.party
-      doBossBattle()
-    else
-      @doEventForPlayer player.name, 'party', doBossBattle
+    bossParty = new Party @game, boss
+
+    new Battle @game, [player.party, bossParty]
 
   # sendMessage = no implies that you're forwarding the original message to multiple people
   broadcastEvent: (options) ->
