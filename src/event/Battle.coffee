@@ -164,7 +164,6 @@ class Battle
         @turnPosition = 0
         @currentTurn++
 
-
   takeTurn: (player) ->
     return if player.hp.atMin() or player.fled
 
