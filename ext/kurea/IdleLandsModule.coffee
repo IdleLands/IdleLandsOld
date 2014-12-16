@@ -462,6 +462,20 @@ module.exports = (Module) ->
         @IdleWrapper.api.gm.player.createItem playerName, itemType, itemData
 
       `/**
+       * Give a player some gold.
+       *
+       * @name idle-goldgive
+       * @gmOnly
+       * @syntax !idle-itemgen "Player Name" gold
+       * @example !idle-itemgen "Swirly" 10000
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute 'idle-goldgive ":player" :gold', "idle.game.gm", (origin, route) =>
+        [playerName, gold] = [route.params.player, route.params.gold]
+        @IdleWrapper.api.gm.player.giveGold playerName, parseInt gold
+
+      `/**
         * Modify your personality settings.
         *
         * @name idle-personality

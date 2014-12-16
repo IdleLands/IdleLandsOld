@@ -74,6 +74,10 @@ class API
         player = @gameInstance.playerManager.getPlayerByName playerName
         @gameInstance.gmCommands.createItemFor player, type, itemString
 
+      giveGold: (playerName, gold) =>
+        player = @gameInstance.playerManager.getPlayerByName playerName
+        player.gold.add gold
+
     arrangeBattle: (names) =>
       @gameInstance.gmCommands.arrangeBattle names
 
