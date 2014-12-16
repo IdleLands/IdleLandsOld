@@ -182,7 +182,7 @@ class GuildManager
       player.save()
 
     # offline players
-    @game.playerManager.db.update {guild: @name}, {$set: {guild: null}}, {}, () ->
+    @game.playerManager.db.update {guild: @name}, {$set: {guild: null}}, {}, (e) -> console.error "GUILD ERROR",e.stack if e
 
     @guilds = _.reject @guilds, (guildTest) -> guild.name is guildTest.name
     delete @guildHash[guild.name]

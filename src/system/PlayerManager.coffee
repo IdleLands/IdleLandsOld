@@ -20,7 +20,7 @@ class PlayerManager
       db.ensureIndex { identifier: 1 }, { unique: true }, ->
       db.ensureIndex { name: 1 }, { unique: true }, ->
 
-      db.update {}, {$set:{isOnline: no}}, {multi: yes}, ->
+      db.update {}, {$set:{isOnline: no}}, {multi: yes}, (e) -> console.error "PLAYER SETINACTIVE ERROR",e.stack if e
 
     @interval = null
     @DELAY_INTERVAL = 10000

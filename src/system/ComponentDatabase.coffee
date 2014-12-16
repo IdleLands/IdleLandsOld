@@ -30,6 +30,7 @@ class ComponentDatabase
   retrieveBattle: (battleId) ->
     defer = Q.defer()
     @battleDb.findOne {_id: ObjectID battleId}, (e, doc) ->
+      console.error "BATTLE FIND ERROR",e.stack if e
       defer.resolve {isSuccess: no, code: 120, message: "Battle not found."} if e or not doc
       defer.resolve {isSuccess: yes, code: 121, message: "Battle retrieved.", battle: doc}
 
@@ -192,6 +193,8 @@ class ComponentDatabase
     query = [ copy, {name: object.name} ]
     @ingredientsDb.findOne { $or: query }, (e, doc) =>
 
+      console.error e.stack if e
+
       if doc?.name is object.name
         duplicateCallback {name: doc.name}
         console.error "DUPLICATE INGREDIENT NAME: #{doc.name}"
@@ -215,6 +218,8 @@ class ComponentDatabase
     delete copy.name
     query = [ copy, {name: object.name} ]
     @itemsDb.findOne { $or: query }, (e, doc) =>
+
+      console.error e if e
 
       if doc?.name is object.name
         console.error "DUPLICATE ITEM NAME: #{doc.name}"
