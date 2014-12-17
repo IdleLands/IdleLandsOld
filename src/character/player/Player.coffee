@@ -517,7 +517,7 @@ class Player extends Character
     @gold.add gold
     pet.gold.toMinimum()
 
-    Q {isSuccess: yes, code: 232, message: "You took #{gold} from your pet.", pet: pet.buildSaveObject()}
+    Q {isSuccess: yes, code: 232, message: "You took #{gold} gold from your pet.", pet: pet.buildSaveObject()}
 
   feedPet: ->
     pet = @getPet()
