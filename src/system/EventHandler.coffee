@@ -104,7 +104,7 @@ class EventHandler
   bossBattleParty: (player, bossParty) ->
 
     if not player.party
-      if player.calc.totalItemScore() < boss.calc.totalItemScore()
+      if player.calc.totalItemScore() < bossParty.score()
         @doEventForPlayer player.name, 'party'
       else
         new Party @game, [player]
