@@ -104,7 +104,7 @@
 "luck mail" luck=15
 
 # idle-class
-"Avaracious Armor of the Idling Gods", dex=2500 con=2500 str=100 wis=100 agi=700 defense=1
+"Avaracious Armor of the Idling Gods" dex=2500 con=2500 str=100 wis=100 agi=700 defense=1
 
 # godly-class
 "Velociraptor" str=5000 dex=2000 con=3000
