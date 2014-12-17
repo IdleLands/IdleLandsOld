@@ -851,7 +851,7 @@ module.exports = (Module) ->
 
           identifier = @generateIdent origin.bot.config.server, username
 
-          (@IdleWrapper.api.player.pet[action] identifier, param)
+          (@IdleWrapper.api.player.pet[action]? identifier, param)
           .then (res) =>
             @reply origin, res.message
 

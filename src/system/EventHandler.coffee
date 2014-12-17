@@ -121,6 +121,8 @@ class EventHandler
     sendMessage = yes if _.isUndefined sendMessage
     extra = {} if not extra
 
+    return if player.isMonster
+
     if sendMessage
       message = MessageCreator.doStringReplace message, player, extra
       @game.broadcast MessageCreator.genericMessage message

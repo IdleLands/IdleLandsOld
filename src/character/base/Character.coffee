@@ -155,6 +155,10 @@ class Character extends EventEmitter2
     current = _.findWhere @equipment, {type: item.type}
     @equipment = _.without @equipment, current
     @equipment.push item
+    item.canEquip = yes
+
+  calculateYesPercent: ->
+    Math.min 100, (Math.max 0, Constants.defaults.player.defaultYesPercent + @personalityReduce 'calculateYesPercentBonus')
 
   recalculateStats: ->
     @hp.maximum = @calc.hp()
@@ -646,7 +650,7 @@ class Character extends EventEmitter2
         @self.personalityReduce 'itemFindRangeMultiplier', [@self, @base.itemFindRangeMultiplier], @base.itemFindRangeMultiplier
 
       itemScore: (item) ->
-        baseValue = item.score()
+        baseValue = item?.score() or 0
         (Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue) + @self.itemPriority item
 
       totalItemScore: ->

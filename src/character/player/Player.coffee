@@ -51,16 +51,16 @@ class Player extends Character
 
   generateBaseEquipment: ->
     @equipment = [
-      new Equipment {type: "body",    class: "newbie", name: "Tattered Shirt", con: 1}
-      new Equipment {type: "feet",    class: "newbie", name: "Cardboard Shoes", dex: 1}
-      new Equipment {type: "finger",  class: "newbie", name: "Twisted Wire", int: 1}
-      new Equipment {type: "hands",   class: "newbie", name: "Pixelated Gloves", str: 1}
-      new Equipment {type: "head",    class: "newbie", name: "Miniature Top Hat", wis: 1}
-      new Equipment {type: "legs",    class: "newbie", name: "Leaf", agi: 1}
-      new Equipment {type: "neck",    class: "newbie", name: "Old Brooch", wis: 1, int: 1}
-      new Equipment {type: "mainhand",class: "newbie", name: "Empty and Broken Ale Bottle", str: 1, con: -1}
-      new Equipment {type: "offhand", class: "newbie", name: "Chunk of Rust", dex: 1, str: 1}
-      new Equipment {type: "charm",   class: "newbie", name: "Ancient Bracelet", con: 1, dex: 1}
+      new Equipment {canEquip: yes, type: "body",    class: "newbie", name: "Tattered Shirt", con: 1}
+      new Equipment {canEquip: yes, type: "feet",    class: "newbie", name: "Cardboard Shoes", dex: 1}
+      new Equipment {canEquip: yes, type: "finger",  class: "newbie", name: "Twisted Wire", int: 1}
+      new Equipment {canEquip: yes, type: "hands",   class: "newbie", name: "Pixelated Gloves", str: 1}
+      new Equipment {canEquip: yes, type: "head",    class: "newbie", name: "Miniature Top Hat", wis: 1}
+      new Equipment {canEquip: yes, type: "legs",    class: "newbie", name: "Leaf", agi: 1}
+      new Equipment {canEquip: yes, type: "neck",    class: "newbie", name: "Old Brooch", wis: 1, int: 1}
+      new Equipment {canEquip: yes, type: "mainhand",class: "newbie", name: "Empty and Broken Ale Bottle", str: 1, con: -1}
+      new Equipment {canEquip: yes, type: "offhand", class: "newbie", name: "Chunk of Rust", dex: 1, str: 1}
+      new Equipment {canEquip: yes, type: "charm",   class: "newbie", name: "Ancient Bracelet", con: 1, dex: 1}
     ]
 
   setPushbulletKey: (key) ->
@@ -75,7 +75,7 @@ class Player extends Character
     pushbullet.devices (e, res) ->
       _.each res?.devices, (device) ->
         if link
-          pushbullet.link device.iden, message, link (e, res) ->
+          pushbullet.link device.iden, message, link, (e, res) ->
         else
           pushbullet.note device.iden, 'IdleLands', message, (e, res) ->
 
@@ -160,7 +160,7 @@ class Player extends Character
     current = _.findWhere @equipment, {type: @overflow[slot].type}
     inOverflow = @overflow[slot]
 
-    if not @canEquip inOverflow
+    if not inOverflow.canEquip
       return defer.resolve {isSuccess: no, code: 43, message: "A mysterious force compels you to not equip that item. It may be too powerful."}
 
     @equip inOverflow
@@ -393,9 +393,6 @@ class Player extends Character
     @emit "player.profession.change", @, oldProfessionName, @professionName
 
     @recalculateStats()
-
-  calculateYesPercent: ->
-    Math.min 100, (Math.max 0, Constants.defaults.player.defaultYesPercent + @personalityReduce 'calculateYesPercentBonus')
 
   getGender: ->
     if @gender then @gender else "female"
