@@ -509,25 +509,28 @@ class Player extends Character
 
     Q {isSuccess: yes, code: 208, message: "Successfully changed your pets (#{pet.name}) class to #{newClass}!", pet: pet.buildSaveObject()}
 
-  feedPet: (gold) ->
-    gold = Math.round gold
+  takePetGold: ->
     pet = @getPet()
     return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
-    return Q {isSuccess: no, code: 213, message: "You specified an invalid amount of gold."} if gold <= 0 or not _.isNumber gold
-    return Q {isSuccess: no, code: 214, message: "You don't have enough gold for that!"} if @gold.lessThan gold
 
-    oldLevel = pet.level.getValue()
+    gold = pet.gold.getValue()
+    @gold.add gold
+    pet.gold.toMinimum()
+
+    Q {isSuccess: yes, code: 232, message: "You took #{gold} from your pet.", pet: pet.buildSaveObject()}
+
+  feedPet: ->
+    pet = @getPet()
+    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+    return Q {isSuccess: no, code: 213, message: "Your pet is already at max level."} if pet.level.atMax()
+
+    gold = pet.goldToNextLevel()
+    return Q {isSuccess: no, code: 214, message: "You don't have enough gold for that! You need #{gold-@gold.getValue()} more gold."} if @gold.lessThan gold
+
     @gold.sub gold
-    xpGained = pet.feedOn gold
+    pet.feed()
 
-    newLevel = pet.level.getValue()
-    levelup = no
-    if newLevel isnt oldLevel
-      levelup = yes
-      message = "<player.name>#{pet.name}</player.name> (#{pet.type} of <player.name>#{@name}</player.name>) is now level <player.level>#{newLevel}</player.level>!"
-      @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'levelup'}
-
-    Q {isSuccess: yes, code: 215, message: "Your pet (#{pet.name}) was fed #{gold} gold and gained #{xpGained} xp! #{if levelup then "Now level #{newLevel}!" else ""}", pet: pet.buildSaveObject()}
+    Q {isSuccess: yes, code: 215, message: "Your pet (#{pet.name}) was fed #{gold} gold and gained a level (#{pet.level.getValue()}).", pet: pet.buildSaveObject()}
 
   getPetGold: ->
     pet = @getPet()

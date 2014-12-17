@@ -206,10 +206,15 @@ class API
         .then (res) ->
           res.player.upgradePet stat if res.isSuccess
 
-      feed: (identifier, gold) =>
+      feed: (identifier) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.feedPet gold if res.isSuccess
+          res.player.feedPet() if res.isSuccess
+
+      takeGold: (identifier) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.takePetGold() if res.isSuccess
 
       giveEquipment: (identifier, itemSlot) =>
         @validateIdentifier identifier
@@ -245,6 +250,11 @@ class API
         @validateIdentifier identifier
         .then (res) ->
           res.player.swapToPet petId if res.isSuccess
+
+      changeClass: (identifier, petClass) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          res.player.changePetClass petClass if res.isSuccess
 
     guild:
       create: (identifier, guildName) =>

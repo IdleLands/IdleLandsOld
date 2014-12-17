@@ -822,27 +822,43 @@ module.exports = (Module) ->
        * @name idle-pet action
        * @syntax !idle-pet action actionType actionParameter
        * @syntax !idle-pet action upgrade <stat> (maxLevel | inventory | goldStorage | battleJoinPercent | itemFindTimeDuration | itemSellMultiplier | itemFindBonus | itemFindRangeMultiplier | xpPerGold)
-       * @syntax !idle-pet action feed gold
        * @syntax !idle-pet action giveEquipment itemSlot
        * @syntax !idle-pet action sellEquipment itemSlot
        * @syntax !idle-pet action takeEquipment itemSlot
+       * @syntax !idle-pet action changeClass newClass
        * @syntax !idle-pet action equipItem itemSlot
        * @syntax !idle-pet action unequipItem itemUid
        * @syntax !idle-pet action swapToPet petId
+       * @syntax !idle-pet action feed
+       * @syntax !idle-pet action takeGold
        * @example !idle-pet action upgrade maxLevel
-       * @example !idle-pet action feed 100
        * @example !idle-pet action giveEquipment 0
        * @example !idle-pet action takeEquipment 1
        * @example !idle-pet action sellEquipment 2
+       * @example !idle-pet action changeClass Generalist
        * @example !idle-pet action equipItem 3
        * @example !idle-pet action unequipItem 1418554184641
        * @example !idle-pet action swapToPet 1418503227081
        * @category IRC Commands
        * @package Client
        */`
+      @addRoute "idle-pet action :action(feed|takeGold)", (origin, route) =>
+        [action] = [route.params.action]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to change pet settings!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.pet[action]? identifier)
+          .then (res) =>
+            @reply origin, res.message
+
       @addRoute "idle-pet action :action :param", (origin, route) =>
         [action, param] = [route.params.action, route.params.param]
-        param = parseInt param if action isnt "upgrade"
+        param = parseInt param if not (action in ["upgrade", "changeClass"])
 
         origin.bot.userManager.getUsername origin, (e, username) =>
           if not username

@@ -16,6 +16,8 @@ class XpPartyEvent extends Event
       console.error "XP PARTY EVENT FAILURE", @event
       return
 
+    return if not @player.party
+
     message = []
     for member in (@player.party?.players or [@player])
       boost = member.calcXpGain @calcXpEventGain @event.type, member

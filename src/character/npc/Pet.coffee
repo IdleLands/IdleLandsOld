@@ -151,12 +151,18 @@ class Pet extends Character
 
     @petManager.configurePet @
 
-  feedOn: (gold) ->
-    xp = gold * @getStatAtCurrentLevel 'xpPerGold'
+  goldToNextLevel: ->
+    Math.round (@xp.maximum - @xp.getValue()) / @getStatAtCurrentLevel 'xpPerGold'
 
-    @gainXp xp
+  feed: ->
+    @levelUp()
 
-    xp
+  #feedOn: (gold) ->
+  #  xp = gold * @getStatAtCurrentLevel 'xpPerGold'
+#
+  #  @gainXp xp
+#
+  #  xp
 
   getOwner: ->
     @petManager.game.playerManager.getPlayerByName @owner.name

@@ -17,8 +17,13 @@ router
   .then (resp) -> res.json resp
 
 .put "/pet/feed", hasValidToken, (req, res) ->
-  {identifier, gold} = req.body
-  API.player.pet.feed identifier, gold
+  {identifier} = req.body
+  API.player.pet.feed identifier
+  .then (resp) -> res.json resp
+
+.post "/pet/takeGold", hasValidToken, (req, res) ->
+  {identifier} = req.body
+  API.player.pet.takeGold identifier
   .then (resp) -> res.json resp
 
 .put "/pet/smart", hasValidToken, (req, res) ->
@@ -29,6 +34,11 @@ router
 .patch "/pet/swap", hasValidToken, (req, res) ->
   {identifier, petId} = req.body
   API.player.pet.swapToPet identifier, petId
+  .then (resp) -> res.json resp
+
+.patch "/pet/class", hasValidToken, (req, res) ->
+  {identifier, petClass} = req.body
+  API.player.pet.changeClass identifier, petClass
   .then (resp) -> res.json resp
 
 .put "/pet/inventory/give", hasValidToken, (req, res) ->
