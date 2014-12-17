@@ -65,7 +65,7 @@ class PetManager
   loadPet: (pet) ->
     pet.petManager = @
     @pets.push pet
-    @activePets[pet.owner.identifier] = pet
+    @activePets[pet.owner.identifier] = pet if pet.isActive
     pet.__proto__ = Pet.prototype
 
     loadRN = (obj) ->
