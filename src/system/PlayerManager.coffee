@@ -251,7 +251,7 @@ class PlayerManager
 
     results = {isSuccess: yes, code: 102, message: "Turn taken.", player: player.buildRESTObject()}
 
-    pet = @playerManager.game.petManager.getActivePetFor player
+    pet = @game.petManager.getActivePetFor player
     results.pet = pet.buildSaveObject() if pet
     Q results
 
