@@ -283,7 +283,7 @@ class Player extends Character
     @collectibles = [] if not @collectibles
 
     collectibleName = collectible.name
-    collectibleRarity = collectible.rarity or "basic"
+    collectibleRarity = collectible.properties?.rarity or "basic"
 
     current = _.findWhere @collectibles, {name: collectibleName, map: @map}
     return if current
