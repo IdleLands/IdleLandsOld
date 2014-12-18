@@ -164,6 +164,8 @@ class Character extends EventEmitter2
     @hp.maximum = @calc.hp()
     @mp.maximum = @calc.mp()
 
+    @calc.itemFindRange()
+
     # force a recalculation
     @calc.stats ['str', 'dex', 'con', 'int', 'agi', 'luck', 'wis', 'water', 'fire', 'earth', 'ice', 'thunder']
 

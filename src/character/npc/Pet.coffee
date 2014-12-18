@@ -205,8 +205,12 @@ class Pet extends Character
   addToInventory: (item) ->
     @inventory.push item
 
+    @recalculateStats()
+
   removeFromInventory: (item) ->
     @inventory = _.without @inventory, item
+
+    @recalculateStats()
 
   canAddToInventory: (item) ->
     return no if item and item.score() > @getStatAtCurrentLevel 'maxItemScore'
