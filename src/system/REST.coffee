@@ -22,8 +22,7 @@ compression = require "compression"
 morgan = require "morgan"
 fs = require "fs"
 
-accessLogStream =
-app.use (morgan('combined', {stream: fs.createWriteStream "#{__dirname}/../../access.log", flags: 'a'}))
+#app.use (morgan('combined', {stream: fs.createWriteStream "#{__dirname}/../../access.log", flags: 'a'}))
 
 # express config
 app.use cors()
