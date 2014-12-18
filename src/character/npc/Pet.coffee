@@ -96,6 +96,7 @@ class Pet extends Character
   tryToEquipToSelf: (item) ->
     return if not @smartEquip
     return if not PetData[@type].slots[item.type]
+    return if not @canUseItem item
 
     itemsInSlot = @equippedItemsOfType item.type
     if itemsInSlot.length >= PetData[@type].slots[item.type]
@@ -212,8 +213,11 @@ class Pet extends Character
 
     @recalculateStats()
 
+  canUseItem: (item) ->
+    item?.score() < @getStatAtCurrentLevel 'maxItemScore'
+
   canAddToInventory: (item) ->
-    return no if item and item.score() > @getStatAtCurrentLevel 'maxItemScore'
+    return no if not @canUseItem item
     @inventory.length < @getStatAtCurrentLevel 'inventory'
 
   handleItemFind: ->
