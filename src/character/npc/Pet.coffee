@@ -145,6 +145,7 @@ class Pet extends Character
     ret
 
   increaseStat: (stat) ->
+    @scaleLevel[stat] = 0 if not @scaleLevel[stat]
     @scaleLevel[stat]++
 
     @updateItemFind() if stat is 'itemFindTimeDuration'
@@ -156,13 +157,6 @@ class Pet extends Character
 
   feed: ->
     @levelUp()
-
-  #feedOn: (gold) ->
-  #  xp = gold * @getStatAtCurrentLevel 'xpPerGold'
-#
-  #  @gainXp xp
-#
-  #  xp
 
   getOwner: ->
     @petManager.game.playerManager.getPlayerByName @owner.name
@@ -202,7 +196,7 @@ class Pet extends Character
 
     return if @tryToEquipToSelf item
 
-    if @canAddToInventory()
+    if @canAddToInventory item
       @addToInventory item
 
     else
@@ -214,7 +208,8 @@ class Pet extends Character
   removeFromInventory: (item) ->
     @inventory = _.without @inventory, item
 
-  canAddToInventory: ->
+  canAddToInventory: (item) ->
+    return no if item and item.score() > @getStatAtCurrentLevel 'maxItemScore'
     @inventory.length < @getStatAtCurrentLevel 'inventory'
 
   handleItemFind: ->

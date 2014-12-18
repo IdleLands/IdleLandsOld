@@ -821,7 +821,7 @@ module.exports = (Module) ->
        *
        * @name idle-pet action
        * @syntax !idle-pet action actionType actionParameter
-       * @syntax !idle-pet action upgrade <stat> (maxLevel | inventory | goldStorage | battleJoinPercent | itemFindTimeDuration | itemSellMultiplier | itemFindBonus | itemFindRangeMultiplier | xpPerGold)
+       * @syntax !idle-pet action upgrade <stat> (maxLevel | inventory | goldStorage | battleJoinPercent | itemFindTimeDuration | itemSellMultiplier | itemFindBonus | itemFindRangeMultiplier | xpPerGold | maxItemScore)
        * @syntax !idle-pet action giveEquipment itemSlot
        * @syntax !idle-pet action sellEquipment itemSlot
        * @syntax !idle-pet action takeEquipment itemSlot

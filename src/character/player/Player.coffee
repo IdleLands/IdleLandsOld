@@ -487,7 +487,7 @@ class Player extends Character
     cost = config.scaleCost[stat][curLevel+1]
 
     return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
-    return Q {isSuccess: no, code: 209, message: "That stat is invalid."} if not (stat of pet.scaleLevel)
+    return Q {isSuccess: no, code: 209, message: "That stat is invalid."} if not (stat of config)
     return Q {isSuccess: no, code: 210, message: "That stat is already at max level."} if config.scale[stat].length <= curLevel+1
     return Q {isSuccess: no, code: 211, message: "You don't have enough gold to upgrade your pet. You need #{cost-@gold.getValue()} more gold."} if @gold.getValue() < cost
 
