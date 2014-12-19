@@ -148,7 +148,7 @@ class Character extends EventEmitter2
     else baseDamage*multiplier
 
   canEquip: (item) ->
-    return yes if -1 isnt item.equippedBy.indexOf if @isPet then @createdAt else @name
+    return yes if (-1 isnt item.equippedBy.indexOf(if @isPet then @createdAt else @name))
 
     current = _.findWhere @equipment, {type: item.type}
     current.score() <= item.score()
