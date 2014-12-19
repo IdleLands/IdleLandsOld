@@ -44,6 +44,7 @@ class Battle
         @isBad = yes
         console.error new Error().stack
         return
+
       party.currentBattle = @
 
       _.each party.players, (player) =>

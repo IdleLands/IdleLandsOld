@@ -2,6 +2,8 @@
 Event = require "../Event"
 Party = require "../Party"
 
+_ = require "lodash"
+
 `/**
  * This event handles building a monster encounter for a player.
  *
@@ -25,6 +27,7 @@ class MonsterBattleEvent extends Event
     else
       monsterParty = @game.monsterGenerator.generateMonsterParty party.score()
 
+    monsterParty.players = _.compact monsterParty.players
     return if (not monsterParty or monsterParty.players.length is 0)
 
     @game.startBattle [monsterParty, @player.party], @event
