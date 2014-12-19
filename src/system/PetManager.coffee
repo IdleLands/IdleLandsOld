@@ -80,6 +80,7 @@ class PetManager
     loadEquipment = (equipment) ->
       _.forEach equipment, (item) ->
         item.__proto__ = Equipment.prototype
+        pet.addToEquippedBy item
 
     _.forEach ['hp', 'mp', 'special', 'level', 'xp', 'gold'], (item) ->
       pet[item] = loadRN pet[item]

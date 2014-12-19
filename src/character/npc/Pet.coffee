@@ -103,15 +103,14 @@ class Pet extends Character
       lowestScoreItem = _.min itemsInSlot, (item) -> item.score()
 
       if lowestScoreItem.score() < item.score()
-        @equipment.push item
+        @equip item
         @equipment = _.without @equipment, lowestScoreItem
-        @recalculateStats()
         @sellItem lowestScoreItem
 
         return true
 
     else if itemsInSlot.length < PetData[@type].slots[item.type]
-      @equipment.push item
+      @equip item
 
       return true
 

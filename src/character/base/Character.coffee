@@ -155,7 +155,13 @@ class Character extends EventEmitter2
     current = _.findWhere @equipment, {type: item.type}
     @equipment = _.without @equipment, current
     @equipment.push item
-    item.canEquip = yes
+
+    @addToEquippedBy item
+
+  addToEquippedBy: (item) ->
+    item.equippedBy = [] if not item.equippedBy
+    item.equippedBy.push if @isPet then @createdAt else @name
+    item.equippedBy = _.uniq item.equippedBy
 
   calculateYesPercent: ->
     Math.min 100, (Math.max 0, Constants.defaults.player.defaultYesPercent + @personalityReduce 'calculateYesPercentBonus')

@@ -282,7 +282,7 @@ class PlayerManager
     loadEquipment = (equipment) ->
       _.forEach equipment, (item) ->
         item.__proto__ = Equipment.prototype
-        item.canEquip = yes
+        player.addToEquippedBy item
 
     _.forEach ['hp', 'mp', 'special', 'level', 'xp', 'gold'], (item) ->
       player[item] = loadRN player[item]

@@ -431,9 +431,8 @@ class Player extends Character
     @gold.sub @shop.slots[slot].price
     @emit "player.shop.buy", @, @shop.slots[slot].item, @shop.slots[slot].price
 
-    current = _.findWhere @equipment, {type: @shop.slots[slot].item.type}
-    @equipment = _.without @equipment, current
-    @equipment.push @shop.slots[slot].item
+    @equip @shop.slots[slot].item
+
     @shop.slots[slot] = null
     @shop.slots = _.compact @shop.slots
     @save()
