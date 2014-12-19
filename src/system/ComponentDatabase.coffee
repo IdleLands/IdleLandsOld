@@ -46,6 +46,7 @@ class ComponentDatabase
     @generateStringFromGrammar _.sample @generatorCache.providenceGrammar
 
   generateStringFromGrammar: (grammar) ->
+    return "" if not grammar
     grammarPieces = grammar.split " "
     _.map grammarPieces, (piece) =>
       return piece if not _.str.include piece, "%"

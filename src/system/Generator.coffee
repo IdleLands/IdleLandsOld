@@ -6,6 +6,7 @@ class Generator
   types: ['body', 'charm', 'feet', 'finger', 'hands', 'head', 'legs', 'neck', 'mainhand', 'offhand']
 
   mergePropInto: (baseItem, prop) ->
+    return if not prop
     if prop.type is "suffix" then baseItem.name += " of the #{prop.name}" else baseItem.name = "#{prop.name} #{baseItem.name}"
     for attr,val of prop
       continue if (not _.isNumber val) or _.isEmpty attr

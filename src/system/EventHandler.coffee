@@ -80,7 +80,6 @@ class EventHandler
       player.recalculateStats()
 
   bossBattle: (player, bossName) ->
-    console.error "DOING BOSS #{bossName}"
     return if @game.inBattle
 
     boss = @createBoss bossName
@@ -91,7 +90,6 @@ class EventHandler
     @bossBattleParty player, bossParty, bossName
 
   bossPartyBattle: (player, bossPartyName) ->
-    console.error "DOING BOSS #{bossPartyName}"
     monsters = @createBosses @game.bossFactory.createBossPartyNames bossPartyName
     bossParty = new Party @game, monsters
 
