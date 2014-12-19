@@ -160,7 +160,7 @@ class Player extends Character
     current = _.findWhere @equipment, {type: @overflow[slot].type}
     inOverflow = @overflow[slot]
 
-    if not inOverflow.canEquip
+    if not @canEquip inOverflow
       return defer.resolve {isSuccess: no, code: 43, message: "A mysterious force compels you to not equip that item. It may be too powerful."}
 
     @equip inOverflow
