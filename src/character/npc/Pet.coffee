@@ -197,7 +197,6 @@ class Pet extends Character
     return if @tryToEquipToSelf item
 
     if @canAddToInventory item
-      console.log "adding ",item.score()
       @addToInventory item
 
     else
@@ -214,11 +213,9 @@ class Pet extends Character
     @recalculateStats()
 
   canUseItem: (item) ->
-    console.log item?.score(), (@getStatAtCurrentLevel 'maxItemScore'), item?.score() <= @getStatAtCurrentLevel 'maxItemScore'
     item?.score() <= @getStatAtCurrentLevel 'maxItemScore'
 
   canAddToInventory: (item) ->
-    console.log item.score(), @canUseItem item
     return no if not @canUseItem item
     @inventory.length < @getStatAtCurrentLevel 'inventory'
 
