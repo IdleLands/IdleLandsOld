@@ -24,4 +24,6 @@ class PartyEvent extends Event
     message = @game.eventHandler.broadcastEvent {message: @event.remark, player: @player, extra: extra, type: 'party'}
     _.each newPartyPlayers, (newMember) => @game.eventHandler.broadcastEvent {message: message, player: newMember, extra: extra, sendMessage: no, type: 'party'}
 
+    @grantRapportForAllPlayers newParty, 1
+
 module.exports = exports = PartyEvent

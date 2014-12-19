@@ -147,6 +147,12 @@ class Character extends EventEmitter2
       damage
     else baseDamage*multiplier
 
+  modifyRelationshipWith: (playerName, value) ->
+    @rapport = {} if not @rapport
+    @rapport[playerName] = 0 if not @rapport[playerName]
+
+    @rapport[playerName] += value
+
   canEquip: (item) ->
     return yes if (-1 isnt item.equippedBy.indexOf(if @isPet then @createdAt else @name))
 
