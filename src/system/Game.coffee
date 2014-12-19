@@ -111,11 +111,11 @@ class Game
       minScore = Math.min partyScores...
       maxScore = Math.max partyScores...
 
-      playerLists = _.map parties, (party) -> _.map party.players, (player) -> player.name
+      playerLists = _.map parties, (party) -> _.pluck party, 'name'
       modified = _.flatten playerLists
       if (_.uniq modified).length < modified.length
         console.error "ERROR: BATTLE FORMATION BLOCKED DUE TO ONE PLAYER BEING ON BOTH SIDES"
-        console.error _.pluck modified, 'name'
+        console.error modified, playerLists
         console.error new Error().stack
         return no
 
