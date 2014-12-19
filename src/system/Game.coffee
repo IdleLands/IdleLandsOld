@@ -116,6 +116,7 @@ class Game
       if (_.uniq modified).length < modified.length
         console.error "ERROR: BATTLE FORMATION BLOCKED DUE TO ONE PLAYER BEING ON BOTH SIDES"
         console.error _.pluck modified, 'name'
+        console.error new Error().stack
         return no
 
       maxPercDiff = Constants.defaults.game.maxPartyScorePercentDifference
