@@ -42,6 +42,7 @@ class Monster extends Character
     @profession = toClass
     toClass.load @
     @professionName = toClassName
+    @recalculateStats()
 
   canEquip: (item) ->
     current = _.findWhere @equipment, {type: item.type}
