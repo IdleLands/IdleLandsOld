@@ -335,6 +335,15 @@ class PlayerManager
     player.statistics = {} if not player.statistics
     player.permanentAchievements = {} if not player.permanentAchievements
 
+    player.on "combat.self.kill", ->
+      player.playerManager.game.battle?.broadcast "#{player.name}: #{player.messages.kill}" if player.messages?.kill
+
+    player.on "combat.self.killed", ->
+      player.playerManager.game.battle?.broadcast "#{player.name}: #{player.messages.death}" if player.messages?.death
+
+    player.on "combat.self.flee", ->
+      player.playerManager.game.battle?.broadcast "#{player.name}: #{player.messages.flee}" if player.messages?.flee
+
     @beginWatchingPlayerStatistics player
 
     player
