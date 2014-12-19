@@ -42,6 +42,7 @@ class Battle
       if not party
         console.error "INVALID PARTY ??? ABORTING"
         @isBad = yes
+        console.error new Error().stack
         return
       party.currentBattle = @
 
