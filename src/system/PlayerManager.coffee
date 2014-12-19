@@ -335,6 +335,27 @@ class PlayerManager
     player.statistics = {} if not player.statistics
     player.permanentAchievements = {} if not player.permanentAchievements
 
+    player.on "combat.self.kill", (defender) ->
+      player.playerManager.game.battle?.broadcast "#{player.name}: #{player.messages.kill}" if player.messages?.kill
+      return if defender.isMonster
+      defender.modifyRelationshipWith player.name, -4
+      player.modifyRelationshipWith defender.name, -4
+
+    player.on "combat.self.killed", ->
+      player.playerManager.game.battle?.broadcast "#{player.name}: #{player.messages.death}" if player.messages?.death
+
+    player.on "combat.self.flee", ->
+      player.playerManager.game.battle?.broadcast "#{player.name}: #{player.messages.flee}" if player.messages?.flee
+
+    player.on "combat.ally.kill", (attacker) ->
+      return if attacker.isMonster
+      player.modifyRelationshipWith attacker.name, 2
+      attacker.modifyRelationshipWith player.name, 2
+
+    player.on "combat.ally.flee", (fleer) ->
+      return if fleer.isMonster
+      player.modifyRelationshipWith fleer.name, -10
+
     @beginWatchingPlayerStatistics player
 
     player

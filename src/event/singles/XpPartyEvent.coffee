@@ -46,5 +46,6 @@ class XpPartyEvent extends Event
     for member in @player.party.players
       @game.eventHandler.broadcastEvent {message: message, player: member, extra: extra, sendMessage: no, type: 'exp'} if member isnt @player
 
+    @grantRapportForAllPlayers @player.party, 3
 
 module.exports = exports = XpPartyEvent
