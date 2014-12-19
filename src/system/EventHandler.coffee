@@ -88,14 +88,14 @@ class EventHandler
 
     bossParty = new Party @game, boss
 
-    @bossBattleParty player, bossParty
+    @bossBattleParty player, bossParty, bossName
 
   bossPartyBattle: (player, bossPartyName) ->
     console.error "DOING BOSS #{bossPartyName}"
     monsters = @createBosses @game.bossFactory.createBossPartyNames bossPartyName
     bossParty = new Party @game, monsters
 
-    @bossBattleParty player, bossParty
+    @bossBattleParty player, bossParty, bossPartyName
 
   createBoss: (bossName) ->
     @game.bossFactory.createBoss bossName
@@ -103,7 +103,7 @@ class EventHandler
   createBosses: (bossNames) ->
     _.map bossNames, @createBoss
 
-  bossBattleParty: (player, bossParty) ->
+  bossBattleParty: (player, bossParty, name) ->
 
     if not player.party
       if player.calc.totalItemScore() < bossParty.score()
@@ -111,7 +111,7 @@ class EventHandler
       else
         new Party @game, [player]
 
-    message = ">>> BOSS BATTLE: %player prepares for an epic battle!"
+    message = ">>> BOSS BATTLE: %player prepares for an epic battle against #{name}!"
     message = MessageCreator.doStringReplace message, player
     @game.broadcast MessageCreator.genericMessage message
 
