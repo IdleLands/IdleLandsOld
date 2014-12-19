@@ -108,6 +108,10 @@ class EventHandler
     if not player.party
       if player.calc.totalItemScore() < bossParty.score()
         @doEventForPlayer player.name, 'party'
+        _.each player.party.players, (member) ->
+          member.x = player.x
+          member.y = player.y
+          member.map = player.map
       else
         new Party @game, [player]
 
