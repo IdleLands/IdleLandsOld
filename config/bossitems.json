@@ -122,35 +122,98 @@
         "wis": 750,
         "fire": 1400,
 	"intPercent": 5,
-	"defense": 2
-    }, 
+	"defense": 2 
+    },
+    "Amulet of Anger": {
+        "type": "neck",
+        "str": 850,
+        "luck": 1,
+	"agi": 300,
+	"offense": 1
+    },
+    "Amulet of Fear": {
+        "type": "neck",
+        "int": 300,
+        "wis": 300,
+        "str": 300,
+        "dex": 300,
+        "con": 300,
+	"luckPercent": 5,
+	"startle": 1
+    },
+    "Amulet of Decay": {
+        "type": "neck",
+        "int": 500,
+        "thunder": 333,
+        "fire": 333,
+        "ice": 333,
+	"poison": 2
+    },
+    "Amulet of Insanity": {
+        "type": "neck",
+        "int": 700,
+        "luck": 50,
+        "silver": 1,
+	"dance": 1,
+	"vorpal": 1
+    },
+    "Amulet of Death": {
+        "type": "neck",
+        "int": 1100,
+        "wis": 400,
+	"fear": 1,
+	"darkside": 1,
+	"deadeye": 1
+    },
+    "Lich Lord's Phylactery": {
+        "type": "finger",
+        "int": 400,
+        "con": 800,
+        "wis": 750,
+	"intPercent": 10,
+	"lethal": 1
+    },
+    "Jewel-Encrusted Pick Axe": {
+        "type": "offhand",
+	"str": 250,
+	"dex": 250,
+	"agi": 250,
+	"con": 500,
+        "int": 250,
+        "wis": 250,
+	"royal": 2
+    },
+    "Mushroom Shaped Charm": {
+        "type": "charm",
+        "agi": 250,
+        "dex": 700,
+	"venom": 1,
+	"glowing": 1
+    },
     "Flame Polished Gauntlets": {
         "type": "hands",
         "int": 350,
         "con": 190,
-		"fire": 10000
-        
-	},
+        "fire": 10000
+    },
     "Gryffyndor Sword": {
         "type": "mainhand",
         "int": 350,
         "wis": 300,
-		"forsaken": 1
-        
-	},
+	"forsaken": 1        
+    },
     "Nimbus Cloud Mace": {
         "type": "mainhand",
         "agi": 200,
         "dex": 300,
-		"defense": 1
-        
-	},
+	"defense": 1        
+    },
     "dSolver's Feather": {
         "type": "mainhand",
         "str": -100,
         "agi": -50,
         "dex": -25,
-		"luck": 5,
+	"luck": 5,
         "prone": 1,
         "silver": 1,
         "offense": -1

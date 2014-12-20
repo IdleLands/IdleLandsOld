@@ -303,6 +303,188 @@
             { "name": "Breastplate of Wrath", "dropPercent": 80 }
         ]
     },
+    "Lich Brother of Anger": {
+        "respawn": 10800,
+        "availableScore": 1000,
+        "stats": {
+            "class": "Fighter",
+            "hp": 12999,
+	    "mp": 3000,
+            "level": 35,
+            "luck": 30,
+            "dex": 1300,
+	    "con": 888,
+	    "agi": 750,
+	    "int": 1000,
+	    "str": 2000,
+	    "offense": 2,
+	    "sturdy": 1,
+	    "lethal": 1
+        },
+        "items": [
+            { "name": "Amulet of Anger", "dropPercent": 80 }
+        ]
+		},
+    "Lich Brother of Fear": {
+        "respawn": 10800,
+        "availableScore": 2000,
+        "stats": {
+            "class": "Monster",
+            "hp": 14999,
+	    "mp": 15000,
+            "level": 40,
+            "luck": 10,
+            "dex": 1000,
+	    "con": 1000,
+	    "agi": 1000,
+	    "str": 1000,
+	    "wis": 1000,
+	    "int": 1000,
+	    "defense": 2,
+	    "fear": 10,
+	    "sturdy": 1,
+	    "startle": 1
+        },
+        "items": [
+            { "name": "Amulet of Fear", "dropPercent": 80 }
+        ]
+		},
+    "Lich Brother of Decay": {
+        "respawn": 10800,
+        "availableScore": 3000,
+        "stats": {
+            "class": "Mage",
+            "hp": 16221,
+	    "mp": 53000,
+            "level": 45,
+            "luck": 33,
+            "agi": 888,
+	    "con": 150,
+	    "wis": 1200,
+	    "int": 2200,
+	    "fire": 500,
+	    "ice": 500,
+	    "thunder": 500,
+	    "defense": 2,
+	    "shatter": 1,
+	    "poison": 2
+        },
+        "items": [
+            { "name": "Amulet of Decay", "dropPercent": 80 }
+        ]
+		},
+    "Lich Brother of Insanity": {
+        "respawn": 10800,
+        "availableScore": 4000,
+        "stats": {
+            "class": "Random",
+            "hp": 19381,
+	    "mp": 55555,
+            "level": 50,
+            "luck": 200,
+            "dex": 700,
+	    "con": 621,
+	    "agi": 1200,
+	    "str": 1000,
+	    "wis": 500,
+	    "int": 2500,
+	    "defense": 1,
+	    "fear": 1,
+	    "sturdy": 1,
+	    "Dance": 1
+        },
+        "items": [
+            { "name": "Amulet of Insanity", "dropPercent": 80 }
+        ]
+		},
+    "Lich Brother of Death": {
+        "respawn": 10800,
+        "availableScore": 5000,
+        "stats": {
+            "class": "Lich",
+            "hp": 23090,
+	    "mp": 75000,
+            "level": 55,
+            "dex": 1500,
+	    "con": 1500,
+	    "agi": 1000,
+	    "str": 2000,
+	    "wis": 30,
+	    "int": 2000,
+	    "fear": 1,
+	    "vampire": 1
+        },
+        "items": [
+            { "name": "Amulet of Death", "dropPercent": 80 }
+        ]
+		},
+    "The Lich Lord": {
+        "respawn": 10800,
+        "availableScore": 6000,
+        "stats": {
+            "class": "Lich",
+            "hp": 26930,
+	    "mp": 100000,
+            "level": 65,
+            "luck": 1,
+            "dex": 1025,
+	    "con": 1500,
+	    "agi": 975,
+	    "str": 2001,
+	    "wis": 899,
+	    "int": 2001,
+	    "shatter": 1,
+	    "lethal": 1,
+	    "fear": 5,
+	    "glowing": 1,
+	    "startle": 1
+	    
+        },
+        "items": [
+            { "name": "Lich Lord's Phylactery", "dropPercent": 80 }
+        ]
+		},
+    "Venerable Dwarven Lord": {
+        "respawn": 10800,
+        "availableScore": 5000,
+        "stats": {
+            "class": "Random",
+            "hp": 17580,
+	    "mp": 75000,
+            "level": 50,
+            "luck": 12,
+            "dex": 900,
+	    "con": 1120,
+	    "agi": 950,
+	    "str": 2300,
+	    "wis": 1100,
+	    "int": 1500
+        },
+        "items": [
+            { "name": "Jewel-Encrusted Pick Axe", "dropPercent": 80 }
+        ]
+		},
+    "Mushroom Beast": {
+        "respawn": 10800,
+        "availableScore": 5000,
+        "stats": {
+            "class": "Archer",
+            "hp": 13790,
+	    "mp": 10000,
+            "level": 38,
+            "luck": 20,
+            "dex": 1800,
+	    "con": 900,
+	    "agi": 1001,
+	    "str": 1000,
+	    "int": 150,
+	    "glowing": 1,
+	    "venom": 1
+        },
+        "items": [
+            { "name": "Mushroom Shaped Charm", "dropPercent": 80 }
+        ]
+		},
     "Lucifer the Flame-Born": {
         "respawn": 10800,
         "availableScore": 2400,
