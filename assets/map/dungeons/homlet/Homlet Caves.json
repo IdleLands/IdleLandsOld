@@ -48,12 +48,12 @@
                 {
                  "gid":1,
                  "height":0,
-                 "name":"ToNorkos",
+                 "name":"ToHomletEntrance",
                  "properties":
                     {
                      "destx":"5",
                      "desty":"1",
-                     "map":"Norkos",
+                     "map":"Homlet Caves Entrance",
                      "movementType":"descend"
                     },
                  "rotation":0,
