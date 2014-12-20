@@ -31,6 +31,7 @@ config = require "../../config.json"
 ravenURL = config.ravenURL
 
 if ravenURL
+  raven = require "raven"
   client = new raven.Client ravenURL
   client.patchGlobal()
 
