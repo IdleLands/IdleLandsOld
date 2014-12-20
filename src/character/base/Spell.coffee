@@ -149,7 +149,7 @@ class Spell
 
     _.each @affected, (player) =>
       if not player
-        console.error "INVALID PLAYER for #{@baseName}: ", player
+        @game.errorHandler.captureMessage "INVALID PLAYER for #{@baseName}: ", player
         return
 
       @baseTurns[player.name] = @turns[player.name] = turns[player.name] = @calcDuration player
@@ -225,7 +225,7 @@ class Spell
     message = "<#{@caster.name}> #{premsg}"
     @game.currentBattle?.broadcast @caster, message if premsg
 
-    console.error "ERROR NO CASTER FOR #{@name}" if not @caster
+    @game.errorHandler.captureMessage "ERROR NO CASTER FOR #{@name}" if not @caster
 
 Spell::Element =
   none: 0

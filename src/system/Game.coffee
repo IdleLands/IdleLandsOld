@@ -30,19 +30,22 @@ console.log "Rebooted IdleLands."
 config = require "../../config.json"
 ravenURL = config.ravenURL
 
+client = null
+
 if ravenURL
   raven = require "raven"
   client = new raven.Client ravenURL, stackFunction: Error.prepareStackTrace
-  client.patchGlobal()
 
 process.on 'uncaughtException', (err) ->
   return if err.code in ['EACCES', 'EADDRINUSE'] #handled elsewhere
   console.error (new Date).toUTCString() + ' uncaughtException:', err.message
   console.error err.stack
+  client?.captureError err
 
 class Game
 
   constructor: () ->
+    @errorHandler = client or {captureMessage: console.error, captureException: console.error}
     @parties = []
 
     defer = q.defer()
@@ -122,9 +125,7 @@ class Game
       playerLists = _.map parties, (party) -> _.pluck party, 'name'
       modified = _.flatten playerLists
       if (_.uniq modified).length < modified.length
-        console.error "ERROR: BATTLE FORMATION BLOCKED DUE TO ONE PLAYER BEING ON BOTH SIDES"
-        console.error modified, playerLists
-        console.error new Error().stack
+        @game.errorHandler.captureException new Error(), extra: {modified: modified, playerLists: playerLists} if e
         return no
 
       maxPercDiff = Constants.defaults.game.maxPartyScorePercentDifference

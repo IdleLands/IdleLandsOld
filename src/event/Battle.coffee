@@ -40,9 +40,8 @@ class Battle
   setupParties: ->
     _.each @parties, (party) =>
       if not party
-        console.error "INVALID PARTY ??? ABORTING"
+        @game.errorHandler.captureException new Error "INVALID PARTY ??? ABORTING"
         @isBad = yes
-        console.error new Error().stack
         return
 
       party.currentBattle = @
@@ -68,8 +67,7 @@ class Battle
         player.hp?.toMaximum()
         player.mp?.toMaximum()
       catch e
-        console.error e
-        console.error "FAILED TO SET HP ???? #{player.name}"
+        @game.errorHandler.captureException e
 
   initializePlayers: ->
     @calculateTurnOrder()

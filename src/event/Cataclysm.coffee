@@ -29,6 +29,6 @@ class Cataclysm
     player.emit "event.cataclysms.#{@name}"
 
   go: ->
-    console.error "ERROR: THIS CATACLYSM DOESN'T SEEM TO WORK"
+    @game.errorHandler.captureException new Error "ERROR: THIS CATACLYSM DOESN'T SEEM TO WORK"
 
 module.exports = exports = Cataclysm

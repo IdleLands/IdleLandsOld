@@ -240,8 +240,8 @@ class PlayerManager
   savePlayer: (player) ->
     savePlayer = @buildPlayerSaveObject player
     savePlayer.lastLogin = new Date()
-    @db.update { identifier: player.identifier }, savePlayer, {upsert: true}, (e) ->
-      console.error "Save error: #{e}" if e
+    @db.update { identifier: player.identifier }, savePlayer, {upsert: true}, (e) =>
+      @game.errorHandler.captureException e if e
 
   playerTakeTurn: (identifier) ->
     return Q {isSuccess: no, code: 10, message: "You're not logged in!"} if not identifier or not (identifier of @playerHash)

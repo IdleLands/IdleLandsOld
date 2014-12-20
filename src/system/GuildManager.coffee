@@ -67,8 +67,8 @@ class GuildManager
 
   saveGuild: (guild) ->
     saveGuild = @buildGuildSaveObject guild
-    @db.update { name: guild.name }, saveGuild, {upsert: true}, (e) ->
-      console.error "Save error: #{e}" if e
+    @db.update { name: guild.name }, saveGuild, {upsert: true}, (e) =>
+      @game.errorHandler.captureException e if e
 
   loadAllGuilds: ->
     @retrieveAllGuilds (guilds) =>
@@ -84,8 +84,8 @@ class GuildManager
       @defer.resolve()
 
   retrieveAllGuilds: (callback) ->
-    @db.find {}, (e, guilds) ->
-      console.error "CANT GET GUILDS",e,e.stack if e
+    @db.find {}, (e, guilds) =>
+      @game.errorHandler.captureException e if e
       callback guilds
 
   sendInvite: (sendId, invName) ->
@@ -182,7 +182,7 @@ class GuildManager
       player.save()
 
     # offline players
-    @game.playerManager.db.update {guild: @name}, {$set: {guild: null}}, {}, (e) -> console.error "GUILD ERROR",e.stack if e
+    @game.playerManager.db.update {guild: @name}, {$set: {guild: null}}, {}, (e) => @game.errorHandler.captureException e if e
 
     @guilds = _.reject @guilds, (guildTest) -> guild.name is guildTest.name
     delete @guildHash[guild.name]

@@ -29,7 +29,7 @@ class EventHandler
 
   doEvent: (eventType, player) ->
     @game.componentDatabase.getRandomEvent eventType, (e, event) =>
-      console.error "CANT GET EVENT",e,e.stack if e
+      @game.errorHandler.captureException e if e
       return if not event or not player
 
       callback = (res) -> if res then player.emit "event", event

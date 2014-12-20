@@ -13,7 +13,7 @@ _ = require "lodash"
 class XpPartyEvent extends Event
   go: ->
     if not @event.remark
-      console.error "XP PARTY EVENT FAILURE", @event
+      @game.errorHandler.captureException new Error ("XP PARTY EVENT FAILURE"), extra: @event
       return
 
     return if not @player.party

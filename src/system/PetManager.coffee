@@ -109,8 +109,8 @@ class PetManager
     pet.equipment.push new Equipment baseSoul
 
   save: (pet) ->
-    @db.update {createdAt: pet.createdAt}, pet, {upsert: yes}, (e) ->
-      console.error "Pet save error: #{e}" if e
+    @db.update {createdAt: pet.createdAt}, pet, {upsert: yes}, (e) =>
+      @game.errorHandler.captureException e if e
 
   getPetsForPlayer: (player) ->
     _.find @pets, {'owner.identifier': player.identifier}

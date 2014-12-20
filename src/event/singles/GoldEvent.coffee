@@ -11,7 +11,7 @@ Event = require "../Event"
 class GoldEvent extends Event
   go: ->
     if not @event.remark
-      console.error "GOLD EVENT FAILURE", @event
+      @game.errorHandler.captureException (new Error "GOLD EVENT FAILURE"), extra: @event
       return
 
     boost = @player.calcGoldGain @calcGoldEventGain @event.type, @player

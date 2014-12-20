@@ -76,7 +76,7 @@ class DatabaseWrapper
     if databaseEngine is 'mongo'
       Q.when @databaseReady, =>
         stream = @db.find(terms).stream()
-        stream.on 'error', (err) -> console.error err
+        stream.on 'error', (err) => @game.errorHandler.captureMessage err
         stream.on 'data', (data) -> callback.call context, data
     else
       @db.find terms, (e, docs) ->

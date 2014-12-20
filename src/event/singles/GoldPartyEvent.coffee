@@ -13,7 +13,7 @@ _ = require "lodash"
 class GoldPartyEvent extends Event
   go: ->
     if not @event.remark
-      console.error "GOLD PARTY EVENT FAILURE", @event
+      @game.errorHandler.captureException (new Error "GOLD PARTY EVENT FAILURE"), extra: @event
       return
 
     extra =

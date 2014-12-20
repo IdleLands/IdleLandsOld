@@ -45,7 +45,10 @@ class Guild
       player.guild = null
       player.guildStatus = -1
       player.save()
-    else @guildManager.game.playerManager.db.update {name: playerName}, {$set:{guild: null}}, {}, (e) -> console.error "GUILD ERROR",e.stack if e
+    else
+      @guildManager.game.playerManager.db.update {name: playerName}, {$set:{guild: null}}, {}, (e) =>
+        @guildManager.game.errorHandler?.captureException e if e
+
     @avgLevel()
 
   promote: (leaderId, memberName) ->

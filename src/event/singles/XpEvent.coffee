@@ -11,7 +11,7 @@ Event = require "../Event"
 class XpEvent extends Event
   go: ->
     if not @event.remark
-      console.error "XP EVENT FAILURE", @event
+      @game.errorHandler.captureException (new Error "XP EVENT FAILURE"), extra: @event
       return
 
     boost = @player.calcXpGain @calcXpEventGain @event.type, @player
