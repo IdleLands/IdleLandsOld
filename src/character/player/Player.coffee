@@ -234,6 +234,11 @@ class Player extends Character
 
     if dest.toLoc
       newLoc = @playerManager.game.gmCommands.lookupLocation dest.toLoc
+
+      if not newLoc
+        console.error "BAD TELEPORT LOCATION #{dest.toLoc}"
+
+
       @map = newLoc.map
       @x = newLoc.x
       @y = newLoc.y
