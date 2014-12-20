@@ -27,6 +27,13 @@ chance = (new require "chance")()
 
 console.log "Rebooted IdleLands."
 
+config = require "../../config.json"
+ravenURL = config.ravenURL
+
+if ravenURL
+  client = new raven.Client ravenURL
+  client.patchGlobal()
+
 process.on 'uncaughtException', (err) ->
   return if err.code in ['EACCES', 'EADDRINUSE'] #handled elsewhere
   console.error (new Date).toUTCString() + ' uncaughtException:', err.message

@@ -43,6 +43,7 @@
     "node-watch": "^0.3.4",
     "pushbullet": "~1.4.0",
     "q": "^1.0.1",
+    "raven": "^0.7.2",
     "readdirp": "^1.1.0",
     "require-dir": "^0.1.0",
     "restricted-number": "https://github.com/seiyria/restricted-number/tarball/master",
