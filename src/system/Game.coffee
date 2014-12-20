@@ -125,7 +125,7 @@ class Game
       playerLists = _.map parties, (party) -> _.pluck party, 'name'
       modified = _.flatten playerLists
       if (_.uniq modified).length < modified.length
-        @game.errorHandler.captureException new Error(), extra: {modified: modified, playerLists: playerLists} if e
+        @game.errorHandler.captureException new Error(), extra: {modified: modified, playerLists: playerLists}
         return no
 
       maxPercDiff = Constants.defaults.game.maxPartyScorePercentDifference
