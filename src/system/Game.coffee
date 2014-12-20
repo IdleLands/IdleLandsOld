@@ -32,7 +32,7 @@ ravenURL = config.ravenURL
 
 if ravenURL
   raven = require "raven"
-  client = new raven.Client ravenURL
+  client = new raven.Client ravenURL, stackFunction: Error.prepareStackTrace
   client.patchGlobal()
 
 process.on 'uncaughtException', (err) ->
