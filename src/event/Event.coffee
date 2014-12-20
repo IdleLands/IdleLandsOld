@@ -26,6 +26,14 @@ class Event
 
       if player.level.getValue() < 100 then Math.floor player.xp.maximum * (percent/100) else player.level.getValue()
 
+  grantRapportForAllPlayers: (party, bonus) ->
+    _.each party.players, (player) ->
+      _.each party.players, (playerTwo) ->
+        return if player is playerTwo
+        return if playerTwo.isMonster
+
+        player.modifyRelationshipWith playerTwo.name, bonus
+
   calcGoldEventGain: (eventType, player) ->
 
     goldTiers = Constants.eventEffects[eventType].amount

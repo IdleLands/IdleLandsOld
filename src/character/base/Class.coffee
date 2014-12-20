@@ -122,18 +122,7 @@ class Class extends Personality
 
   events: {}
 
-  load: (player) ->
+  load: ->
     @chance = new (require "chance")()
-    player.on "combat.self.kill", @events.killSpeakEvent = ->
-      player.playerManager.game.battle?.broadcast "#{player.name}: #{player.messages.kill}" if player.messages?.kill
-    player.on "combat.self.killed", @events.deathSpeakEvent = ->
-      player.playerManager.game.battle?.broadcast "#{player.name}: #{player.messages.death}" if player.messages?.death
-    player.on "combat.self.flee", @events.fleeSpeakEvent = ->
-      player.playerManager.game.battle?.broadcast "#{player.name}: #{player.messages.flee}" if player.messages?.flee
-  
-  unload: (player) ->
-    player.off "combat.self.kill", @events.killSpeakEvent
-    player.off "combat.self.killed", @events.deathSpeakEvent
-    player.off "combat.self.flee", @events.fleeSpeakEvent
 
 module.exports = exports = Class
