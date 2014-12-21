@@ -70,7 +70,10 @@
 "Magnetic Field" str=-30 con=50 dex=50 wis=50 thunder=100 luck=10
 
 # idle-class
-"Supersonic Shield of the Idling Gods" con=5000 str=1500 defense=1
+"Supersonic Shield of the Idling Gods" con=1000 str=1500 defense=1 aegis=1
 
 # godly-class
-"The Solar System" con=10000
+"Solar System" con=3000
+
+# celestial something or another
+"Celestial Cover" str=1000 dex=1000 con=1000 agi=1000 wis=1000 luck=1000 glowing=1 parry=1 defense=2 sturdy=1

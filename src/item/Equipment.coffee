@@ -70,7 +70,7 @@ class Equipment
     luckPercent: 20
 
     crit: 100
-    dodge: 100
+    dance: 100
     aegis: 100
     prone: 100
     power: 100

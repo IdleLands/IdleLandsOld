@@ -94,7 +94,6 @@
 "beautiful dress" con=100 int=60 wis=100
 "Gem Sweater" con=150 int=90 wis=90
 
-
 # n-stat
 "The Black Box of Reverse" str=-10 con=-10 dex=-10 int=50 wis=50 agi=50
 "Super Tie Dye Shirt" str=70 con=70 int=70 wis=70 dex=70 luck=10
@@ -104,7 +103,10 @@
 "luck mail" luck=15
 
 # idle-class
-"Avaracious Armor of the Idling Gods" dex=2500 con=2500 str=100 wis=100 agi=700 defense=1
+"Avaracious Armor of the Idling Gods" wis=1500 luck=500 con=300 defense=1 darkside=1 sturdy=1
 
 # godly-class
-"Velociraptor" str=5000 dex=2000 con=3000
+"Velociraptor" str=5000 dex=2000 con=1000 offense=1
+
+# celestial something or another
+"Celestial Chestpiece" str=1000 dex=1000 con=1000 agi=1000 wis=1000 luck=1000 glowing=1 parry=1 defense=1

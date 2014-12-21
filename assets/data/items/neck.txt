@@ -66,7 +66,10 @@
 "Impossibility Cloak" wis=500 con=100 int=100 str=100 dex=100 agi=100 dance=1
 
 # idle-class
-"Transcendent Torc of the Idling Gods" wis=2000 int=2000
+"Transcendent Torc of the Idling Gods" wis=2000 int=2000 royal=1 shatter=1 power=1
 
 # godly-class
-"Visible Light" wis=5000 int=5000
+"Visible Light" wis=4500 int=4500 deadeye=1 fear=1 glowing=1
+
+# celestial something or another
+"Celestial Choker" str=1000 dex=1000 con=1000 agi=1000 wis=1000 luck=1000 glowing=1 parry=1 offense=1 punish=1

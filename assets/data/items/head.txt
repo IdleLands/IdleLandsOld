@@ -119,7 +119,10 @@
 "Antiverse Circlet" str=100 int=100 dex=100 con=500 agi=100 wis=100 deadeye=1
 
 # idle-class
-"Feathered Fez of the Idling Gods" int=-100 con=2000 str=500 wis=-100 agi=700
+"Feathered Fez of the Idling Gods" int=-100 str=500 wis=-100 agi=900 dex=1500 con=500 crit=1 deadeye=1 lethal=1
 
 # godly-class
-"Pile Of Hats That Reaches to the Moon" wis=10000
+"Pile Of Hats That Reaches to the Moon" wis=3500 agi=2500 luck=500 dex=1500 defense=1
+
+# celestial something or another
+"Celestial Cap" str=1000 dex=1000 con=1000 agi=1000 wis=1000 luck=1000 glowing=1 parry=1 defense=1

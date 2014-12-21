@@ -67,22 +67,22 @@
 #agi/int/wis
 "Whole Rabbit" wis=200 int=100 agi=100
 
-
 # int/luck/wis
 "luckstone" int=16 luck=10 wis=16 
 "juju" int=30 luck=-5 wis=-7
 "sextant" int=69 wis=18 luck=7
 "die-cast robot princess bubblegum" int=100 luck=8  wis=43 power=1 
-"Rabbit's Foot"  int=150 luck=30 wis=200 
-
-
+"Rabbit's Foot"  int=150 luck=30 wis=200
 
 # hybrid
 "prism" str=10 con=10 int=10 wis=10 dex=10 luck=1
 
 # idle-class
-"Cosmic Charm of the Idling Gods" int=2500 dex=2500
+"Cosmic Charm of the Idling Gods" int=2500 dex=2500 vorpal=1 startle=1 venom=1
 
 # godly-class
-"Black Hole" int=1500 dex=1500 con=1500 wis=1500 str=1500 agi=1500 luck=100
+"Black Hole" int=1000 dex=1500 con=500 wis=1500 str=1500 agi=1500
+
+# celestial something or another
+"Celestial Chess Piece" str=1000 dex=1000 con=1000 agi=1000 wis=1000 luck=1000 glowing=1 parry=1 offense=1
 
