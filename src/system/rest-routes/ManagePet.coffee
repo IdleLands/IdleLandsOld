@@ -6,6 +6,12 @@ router = (require "express").Router()
 router
 
 # pet management
+
+.get "/pet", hasValidToken, (req, res) ->
+  {identifier} = req.body
+  API.player.pet.getAllPets identifier
+  .then (resp) -> res.json resp
+
 .put "/pet/buy", hasValidToken, (req, res) ->
   {identifier, type, name, attrs} = req.body
   API.player.pet.buy identifier, type, name, attrs[0], attrs[1]
