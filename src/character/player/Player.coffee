@@ -212,11 +212,11 @@ class Player extends Character
     newLoc = dest
 
     if not dest.map and not dest.toLoc
-      @game.errorHandler.captureMessage "ERROR. No dest.map at #{@x},#{@y} in #{@map}"
+      @playerManager.game.errorHandler.captureMessage "ERROR. No dest.map at #{@x},#{@y} in #{@map}"
       return
 
     if not dest.movementType
-      @game.errorHandler.captureMessage "ERROR. No dest.movementType at #{@x},#{@y} in #{@map}"
+      @playerManager.game.errorHandler.captureMessage "ERROR. No dest.movementType at #{@x},#{@y} in #{@map}"
       return
       
     dest.movementType = dest.movementType.toLowerCase()
@@ -236,7 +236,7 @@ class Player extends Character
       newLoc = @playerManager.game.gmCommands.lookupLocation dest.toLoc
 
       if not newLoc
-        @game.errorHandler.captureMessage "BAD TELEPORT LOCATION #{dest.toLoc}"
+        @playerManager.game.errorHandler.captureMessage "BAD TELEPORT LOCATION #{dest.toLoc}"
 
       @map = newLoc.map
       @x = newLoc.x
@@ -369,7 +369,7 @@ class Player extends Character
       @emit 'explore.walk', @
       @emit "explore.walk.#{tile.terrain or "void"}".toLowerCase(), @
 
-      @game.errorHandler.captureMessage @x,@y,@map,tile.terrain,tile, "INVALID TILE" if not tile.terrain and not tile.blocked
+      @playerManager.game.errorHandler.captureMessage @x,@y,@map,tile.terrain,tile, "INVALID TILE" if not tile.terrain and not tile.blocked
 
       @handleTile tile
 
@@ -378,7 +378,7 @@ class Player extends Character
       @gainXp @calcXpGain 10 if currentStep < 5
 
     catch e
-      @game.errorHandler.captureException e, extra: map: @map, x: @x, y: @y
+      @playerManager.game.errorHandler.captureException e, extra: map: @map, x: @x, y: @y
       @x = @y = 10
       @map = "Norkos"
 
@@ -639,7 +639,7 @@ class Player extends Character
 
   gainGold: (gold) ->
     if _.isNaN gold
-      @game.errorHandler.captureException new Error "BAD GOLD VALUE GOTTEN SOMEHOW"
+      @playerManager.game.errorHandler.captureException new Error "BAD GOLD VALUE GOTTEN SOMEHOW"
 
       gold = 1
 
