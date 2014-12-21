@@ -125,7 +125,7 @@ class GuildManager
     Q {isSuccess: yes, code: 71, message: "Guild invite was resolved successfully."}
 
   clearInvites: (player) ->
-    _.each @invites[player.identifier], ((guild) -> @manageInvite player, no, guild), @
+    _.each @invites[player.identifier], ((guild) => @manageInvite player, no, guild), @
     @invites[player.identifier] = []
 
   buildGuildSaveObject: (guild) ->
