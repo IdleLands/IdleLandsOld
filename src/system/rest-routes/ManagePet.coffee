@@ -7,7 +7,7 @@ router
 
 # pet management
 
-.get "/pet", hasValidToken, (req, res) ->
+.post "/pet", hasValidToken, (req, res) ->
   {identifier} = req.body
   API.player.pet.getAllPets identifier
   .then (resp) -> res.json resp
