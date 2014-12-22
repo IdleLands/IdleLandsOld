@@ -212,38 +212,38 @@ class GuildManager
 
   addBuff: (identifier, type, tier) ->
     player = @game.playerManager.getPlayerById identifier
-    return Q {isSuccess: no, code: 9999, message: "You aren't in a guild!"} if not player.guild
-    return Q {isSuccess: no, code: 9999, message: "You aren't a guild admin!"} if not @checkAdmin player.name
+    return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} if not player.guild
+    return Q {isSuccess: no, code: 61, message: "You aren't a guild admin!"} if not @checkAdmin player.name
     typeString = "Guild#{type}"
-    return Q {isSuccess: no, code: 9999, message: "That is not a valid guild buff type!"} if not guildBuffs[typeString]
-    return Q {isSuccess: no, code: 9999, message: "That is not a valid tier!"} if not guildBuffs[typeString].tiers[tier]
+    return Q {isSuccess: no, code: 150, message: "That is not a valid guild buff type!"} if not guildBuffs[typeString]
+    return Q {isSuccess: no, code: 151, message: "That is not a valid tier!"} if not guildBuffs[typeString].tiers[tier]
     guild = @guildHash[player.guild]
-    return Q {isSuccess: no, code: 9999, message: "Your guild is not a high enough level!"} if guildBuffs[typeString].tiers[tier].level > guild.level
+    return Q {isSuccess: no, code: 152, message: "Your guild is not a high enough level!"} if guildBuffs[typeString].tiers[tier].level > guild.level
 
     guild.gold = new RestrictedNumber 0, 9999999999, 0 if not guild.gold
-    return Q {isSuccess: no, code: 9999, message: "Your guild does not have enough gold!"} if guildBuffs[typeString].tiers[tier].cost > guild.gold.getValue()
+    return Q {isSuccess: no, code: 56, message: "Your guild does not have enough gold!"} if guildBuffs[typeString].tiers[tier].cost > guild.gold.getValue()
     guild.gold.sub guildBuffs[typeString].tiers[tier].cost
 
     guild.buffs = [] if not guild.buffs
     current = _.findWhere guild.buffs, {type: type}
     if current?
-      return Q {isSuccess: no, code: 9999, message: "Your guild already has a higher tier of this buff!"} if current.tier > tier
+      return Q {isSuccess: no, code: 153, message: "Your guild already has a higher tier of this buff!"} if current.tier > tier
       if current.tier is tier
         current.refresh tier
         guild.save()
-        return Q {isSuccess: yes, code: 9999, message: "You have refreshed the #{current.name} guild buff."}
+        return Q {isSuccess: yes, code: 154, message: "You have refreshed the #{current.name} guild buff."}
       else
         guild.buffs = _.without guild.buffs, current
     buff = new guildBuffs[typeString] tier
     guild.buffs.push (new guildBuffs[typeString] tier)
     guild.save()
-    return Q {isSuccess: yes, code: 9999, message: "You have bought the #{buff.name} guild buff."}
+    return Q {isSuccess: yes, code: 155, message: "You have bought the #{buff.name} guild buff."}
 
   donate: (identifier, gold) ->
     player = @game.playerManager.getPlayerById identifier
     console.log player.guild
-    return Q {isSuccess: no, code: 9999, message: "You aren't in a guild!"} if not player.guild
-    return Q {isSuccess: no, code: 9999, message: "You don't have enough gold!"} if player.gold.getValue() < gold
+    return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} if not player.guild
+    return Q {isSuccess: no, code: 56, message: "You don't have enough gold!"} if player.gold.getValue() < gold
     guild = @guildHash[player.guild]
     guild.gold = new RestrictedNumber 0, 9999999999, 0 if not @guildHash[player.guild].gold
     gold = Math.min gold, guild.gold.maximum-guild.gold.getValue() #Prevent overdonation
@@ -251,6 +251,6 @@ class GuildManager
     player.gold.sub gold
     guild.save()
     player.save()
-    return Q {isSuccess: yes, code: 9999, message: "You have donated #{gold} gold to #{guild.name}."}
+    return Q {isSuccess: yes, code: 156, message: "You have donated #{gold} gold to #{guild.name}."}
 
 module.exports = exports = GuildManager
