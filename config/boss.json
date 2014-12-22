@@ -485,6 +485,98 @@
             { "name": "Mushroom Shaped Charm", "dropPercent": 80 }
         ]
 		},
+    "Elf Administrator": {
+        "respawn": 10800,
+        "availableScore": 1500,
+        "stats": {
+            "class": "Generalist",
+            "hp": 1600,
+	    "mp": 1500,
+            "level": 15,
+            "luck": 25,
+            "dex": 125,
+	    "con": 105,
+	    "wis": 175,
+	    "agi": 125,
+	    "str": 275,
+	    "int": 200
+        },
+        "items": [
+            { "name": "The Nice List", "dropPercent": 80 }
+        ]
+		},
+    "Angry Elf": {
+        "respawn": 10800,
+        "availableScore": 0,
+        "stats": {
+            "class": "Barbarian",
+            "hp": 1600,
+            "level": 12,
+            "luck": 25,
+            "dex": 120,
+	    "con": 175,
+	    "agi": 75,
+	    "str": 375,
+	    "offense": 1
+        }
+		},
+    "Toy Maker Elf": {
+        "respawn": 10800,
+        "availableScore": 0,
+        "stats": {
+            "class": "Jester",
+            "hp": 1225,
+	    "mp": 1500,
+            "level": 12,
+            "luck": 200
+        }
+        	},
+    "Reindeer Warden": {
+        "respawn": 10800,
+        "availableScore": 5000,
+        "stats": {
+            "class": "Mage",
+            "hp": 21005,
+	    "mp": 36000,
+            "level": 40,
+            "str": 2200,
+	    "int": 2300,
+	    "wis": 500,
+	    "luck": 25,
+            "dex": 850,
+            "con": 1200,
+            "agi": 670,
+            "sturdy": 1,
+	    "ice": 10000,
+	    "icePercent": 10
+        },
+        "items": [
+            { "name": "Snow Covered Antlers", "dropPercent": 80 }
+        ]
+		},
+    "Santa, Lord of Presents": {
+        "respawn": 10800,
+        "availableScore": 9000,
+        "stats": {
+            "class": "Fighter",
+            "hp": 75800,
+	    "mp": 10000,
+            "level": 80,
+            "luck": 25,
+            "dex": 2300,
+	    "con": 3500,
+	    "agi": 1701,
+	    "str": 4400,
+	    "int": 900,
+	    "glowing": 1,
+	    "silver": 1,
+	    "sturdy": 1,
+	    "startle": 1
+        },
+        "items": [
+            { "name": "The Naughty List", "dropPercent": 80 }
+        ]
+		},
     "Lucifer the Flame-Born": {
         "respawn": 10800,
         "availableScore": 2400,

@@ -22,5 +22,44 @@
         "str": 300,
         "agi": 300,
         "dex": 300
+    },
+    "Red Tunic": {
+        "type": "body",
+        "str": 600,
+        "dex": 150,
+	"luck": 25,
+	"defense": 1,
+	"hpRegen": 25
+    },
+    "Thick Winter Gloves": {
+        "type": "hands",
+        "str": 600,
+        "con": 150,
+        "conPercent": 5,
+	"luck": 25
+    },
+    "Decorative Red Pants": {
+        "type": "legs",
+        "int": 300,
+        "wis": 300,
+        "dex": 300,
+	"luck": 25,
+	"royal": 1
+    },
+    "Heavy Winter Boots": {
+        "type": "feet",
+        "str": 300,
+        "agi": 300,
+        "dex": 150,
+	"luck": 25,
+	"firePercent": 5
+    },
+    "Magical Snowball": {
+        "type": "offhand",
+        "int": 300,
+        "intPercent": 10,
+        "wis": 300,
+	"wisPercent": 10,
+	"luck": 25
     }
 }
