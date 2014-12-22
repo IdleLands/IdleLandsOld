@@ -1996,8 +1996,8 @@
             }
         },
         {
-            "lineNumber": 212,
-            "endLineNumber": 220,
+            "lineNumber": 230,
+            "endLineNumber": 238,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2026,8 +2026,8 @@
             }
         },
         {
-            "lineNumber": 223,
-            "endLineNumber": 231,
+            "lineNumber": 241,
+            "endLineNumber": 249,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2055,8 +2055,8 @@
             }
         },
         {
-            "lineNumber": 234,
-            "endLineNumber": 242,
+            "lineNumber": 252,
+            "endLineNumber": 260,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2085,8 +2085,8 @@
             }
         },
         {
-            "lineNumber": 245,
-            "endLineNumber": 253,
+            "lineNumber": 263,
+            "endLineNumber": 271,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2114,8 +2114,8 @@
             }
         },
         {
-            "lineNumber": 256,
-            "endLineNumber": 264,
+            "lineNumber": 274,
+            "endLineNumber": 282,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2144,8 +2144,8 @@
             }
         },
         {
-            "lineNumber": 267,
-            "endLineNumber": 275,
+            "lineNumber": 285,
+            "endLineNumber": 293,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2173,8 +2173,8 @@
             }
         },
         {
-            "lineNumber": 278,
-            "endLineNumber": 286,
+            "lineNumber": 296,
+            "endLineNumber": 304,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2203,8 +2203,8 @@
             }
         },
         {
-            "lineNumber": 289,
-            "endLineNumber": 296,
+            "lineNumber": 307,
+            "endLineNumber": 314,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2229,8 +2229,8 @@
             }
         },
         {
-            "lineNumber": 299,
-            "endLineNumber": 307,
+            "lineNumber": 317,
+            "endLineNumber": 325,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2258,8 +2258,8 @@
             }
         },
         {
-            "lineNumber": 310,
-            "endLineNumber": 318,
+            "lineNumber": 328,
+            "endLineNumber": 336,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2288,8 +2288,8 @@
             }
         },
         {
-            "lineNumber": 321,
-            "endLineNumber": 328,
+            "lineNumber": 339,
+            "endLineNumber": 346,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2315,8 +2315,8 @@
             }
         },
         {
-            "lineNumber": 331,
-            "endLineNumber": 339,
+            "lineNumber": 349,
+            "endLineNumber": 357,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2344,8 +2344,8 @@
             }
         },
         {
-            "lineNumber": 342,
-            "endLineNumber": 350,
+            "lineNumber": 360,
+            "endLineNumber": 368,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2373,8 +2373,8 @@
             }
         },
         {
-            "lineNumber": 353,
-            "endLineNumber": 361,
+            "lineNumber": 371,
+            "endLineNumber": 379,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2403,8 +2403,8 @@
             }
         },
         {
-            "lineNumber": 364,
-            "endLineNumber": 372,
+            "lineNumber": 382,
+            "endLineNumber": 390,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2432,8 +2432,8 @@
             }
         },
         {
-            "lineNumber": 375,
-            "endLineNumber": 383,
+            "lineNumber": 393,
+            "endLineNumber": 401,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2461,8 +2461,8 @@
             }
         },
         {
-            "lineNumber": 386,
-            "endLineNumber": 394,
+            "lineNumber": 404,
+            "endLineNumber": 412,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2490,8 +2490,8 @@
             }
         },
         {
-            "lineNumber": 397,
-            "endLineNumber": 405,
+            "lineNumber": 415,
+            "endLineNumber": 423,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2520,8 +2520,8 @@
             }
         },
         {
-            "lineNumber": 408,
-            "endLineNumber": 416,
+            "lineNumber": 426,
+            "endLineNumber": 434,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2550,8 +2550,8 @@
             }
         },
         {
-            "lineNumber": 419,
-            "endLineNumber": 427,
+            "lineNumber": 437,
+            "endLineNumber": 445,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2580,8 +2580,8 @@
             }
         },
         {
-            "lineNumber": 430,
-            "endLineNumber": 438,
+            "lineNumber": 448,
+            "endLineNumber": 456,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2609,8 +2609,8 @@
             }
         },
         {
-            "lineNumber": 441,
-            "endLineNumber": 449,
+            "lineNumber": 459,
+            "endLineNumber": 467,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2638,8 +2638,8 @@
             }
         },
         {
-            "lineNumber": 452,
-            "endLineNumber": 460,
+            "lineNumber": 470,
+            "endLineNumber": 478,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2667,8 +2667,8 @@
             }
         },
         {
-            "lineNumber": 463,
-            "endLineNumber": 471,
+            "lineNumber": 481,
+            "endLineNumber": 489,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2696,8 +2696,8 @@
             }
         },
         {
-            "lineNumber": 474,
-            "endLineNumber": 482,
+            "lineNumber": 492,
+            "endLineNumber": 500,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2726,8 +2726,8 @@
             }
         },
         {
-            "lineNumber": 485,
-            "endLineNumber": 493,
+            "lineNumber": 503,
+            "endLineNumber": 511,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2755,8 +2755,8 @@
             }
         },
         {
-            "lineNumber": 496,
-            "endLineNumber": 504,
+            "lineNumber": 514,
+            "endLineNumber": 522,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2784,8 +2784,8 @@
             }
         },
         {
-            "lineNumber": 507,
-            "endLineNumber": 515,
+            "lineNumber": 525,
+            "endLineNumber": 533,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2810,8 +2810,8 @@
             }
         },
         {
-            "lineNumber": 517,
-            "endLineNumber": 524,
+            "lineNumber": 535,
+            "endLineNumber": 542,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2836,8 +2836,8 @@
             }
         },
         {
-            "lineNumber": 526,
-            "endLineNumber": 533,
+            "lineNumber": 544,
+            "endLineNumber": 551,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2862,8 +2862,8 @@
             }
         },
         {
-            "lineNumber": 535,
-            "endLineNumber": 542,
+            "lineNumber": 553,
+            "endLineNumber": 560,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2888,8 +2888,8 @@
             }
         },
         {
-            "lineNumber": 544,
-            "endLineNumber": 551,
+            "lineNumber": 562,
+            "endLineNumber": 569,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -12425,8 +12425,8 @@
             }
         },
         {
-            "lineNumber": 5,
-            "endLineNumber": 11,
+            "lineNumber": 7,
+            "endLineNumber": 13,
             "filePath": "src/event/singles/MonsterBattleEvent.coffee",
             "fileName": "MonsterBattleEvent.coffee",
             "desc": {
@@ -12535,11 +12535,11 @@
             }
         }
     ],
-    "startTime": 1418878017588,
-    "endTime": 1418878017734,
+    "startTime": 1419210837855,
+    "endTime": 1419210837915,
     "git": {
-        "short": "7ec1a23",
-        "long": "7ec1a2302f14b0a1ed91e234f5512c9450c6f488",
+        "short": "48c52d4",
+        "long": "48c52d44127dd6b9d7f2bebe53d95be70e10b76b",
         "branch": "master",
         "tag": "0.5.0"
     },
@@ -12906,6 +12906,211 @@
                     }
                 ]
             },
+            "Lich Brother of Anger": {
+                "respawn": 10800,
+                "availableScore": 1000,
+                "stats": {
+                    "class": "Fighter",
+                    "hp": 12999,
+                    "mp": 3000,
+                    "level": 35,
+                    "luck": 30,
+                    "dex": 1300,
+                    "con": 888,
+                    "agi": 750,
+                    "int": 1000,
+                    "str": 2000,
+                    "offense": 2,
+                    "sturdy": 1,
+                    "lethal": 1
+                },
+                "items": [
+                    {
+                        "name": "Amulet of Anger",
+                        "dropPercent": 80
+                    }
+                ]
+            },
+            "Lich Brother of Fear": {
+                "respawn": 10800,
+                "availableScore": 2000,
+                "stats": {
+                    "class": "Monster",
+                    "hp": 14999,
+                    "mp": 15000,
+                    "level": 40,
+                    "luck": 10,
+                    "dex": 1000,
+                    "con": 1000,
+                    "agi": 1000,
+                    "str": 1000,
+                    "wis": 1000,
+                    "int": 1000,
+                    "defense": 2,
+                    "fear": 10,
+                    "sturdy": 1,
+                    "startle": 1
+                },
+                "items": [
+                    {
+                        "name": "Amulet of Fear",
+                        "dropPercent": 80
+                    }
+                ]
+            },
+            "Lich Brother of Decay": {
+                "respawn": 10800,
+                "availableScore": 3000,
+                "stats": {
+                    "class": "Mage",
+                    "hp": 16221,
+                    "mp": 53000,
+                    "level": 45,
+                    "luck": 33,
+                    "agi": 888,
+                    "con": 150,
+                    "wis": 1200,
+                    "int": 2200,
+                    "fire": 500,
+                    "ice": 500,
+                    "thunder": 500,
+                    "defense": 2,
+                    "shatter": 1,
+                    "poison": 2
+                },
+                "items": [
+                    {
+                        "name": "Amulet of Decay",
+                        "dropPercent": 80
+                    }
+                ]
+            },
+            "Lich Brother of Insanity": {
+                "respawn": 10800,
+                "availableScore": 4000,
+                "stats": {
+                    "class": "Random",
+                    "hp": 19381,
+                    "mp": 55555,
+                    "level": 50,
+                    "luck": 200,
+                    "dex": 700,
+                    "con": 621,
+                    "agi": 1200,
+                    "str": 1000,
+                    "wis": 500,
+                    "int": 2500,
+                    "defense": 1,
+                    "fear": 1,
+                    "sturdy": 1,
+                    "Dance": 1
+                },
+                "items": [
+                    {
+                        "name": "Amulet of Insanity",
+                        "dropPercent": 80
+                    }
+                ]
+            },
+            "Lich Brother of Death": {
+                "respawn": 10800,
+                "availableScore": 5000,
+                "stats": {
+                    "class": "Lich",
+                    "hp": 23090,
+                    "mp": 75000,
+                    "level": 55,
+                    "dex": 1500,
+                    "con": 1500,
+                    "agi": 1000,
+                    "str": 2000,
+                    "wis": 30,
+                    "int": 2000,
+                    "fear": 1,
+                    "vampire": 1
+                },
+                "items": [
+                    {
+                        "name": "Amulet of Death",
+                        "dropPercent": 80
+                    }
+                ]
+            },
+            "The Lich Lord": {
+                "respawn": 10800,
+                "availableScore": 6000,
+                "stats": {
+                    "class": "Lich",
+                    "hp": 26930,
+                    "mp": 100000,
+                    "level": 65,
+                    "luck": 1,
+                    "dex": 1025,
+                    "con": 1500,
+                    "agi": 975,
+                    "str": 2001,
+                    "wis": 899,
+                    "int": 2001,
+                    "shatter": 1,
+                    "lethal": 1,
+                    "fear": 5,
+                    "glowing": 1,
+                    "startle": 1
+                },
+                "items": [
+                    {
+                        "name": "Lich Lord's Phylactery",
+                        "dropPercent": 80
+                    }
+                ]
+            },
+            "Venerable Dwarven Lord": {
+                "respawn": 10800,
+                "availableScore": 5000,
+                "stats": {
+                    "class": "Random",
+                    "hp": 17580,
+                    "mp": 75000,
+                    "level": 50,
+                    "luck": 12,
+                    "dex": 900,
+                    "con": 1120,
+                    "agi": 950,
+                    "str": 2300,
+                    "wis": 1100,
+                    "int": 1500
+                },
+                "items": [
+                    {
+                        "name": "Jewel-Encrusted Pick Axe",
+                        "dropPercent": 80
+                    }
+                ]
+            },
+            "Mushroom Beast": {
+                "respawn": 10800,
+                "availableScore": 5000,
+                "stats": {
+                    "class": "Archer",
+                    "hp": 13790,
+                    "mp": 10000,
+                    "level": 38,
+                    "luck": 20,
+                    "dex": 1800,
+                    "con": 900,
+                    "agi": 1001,
+                    "str": 1000,
+                    "int": 150,
+                    "glowing": 1,
+                    "venom": 1
+                },
+                "items": [
+                    {
+                        "name": "Mushroom Shaped Charm",
+                        "dropPercent": 80
+                    }
+                ]
+            },
             "Lucifer the Flame-Born": {
                 "respawn": 10800,
                 "availableScore": 2400,
@@ -13094,6 +13299,72 @@
                 "fire": 1400,
                 "intPercent": 5,
                 "defense": 2
+            },
+            "Amulet of Anger": {
+                "type": "neck",
+                "str": 850,
+                "luck": 1,
+                "agi": 300,
+                "offense": 1
+            },
+            "Amulet of Fear": {
+                "type": "neck",
+                "int": 300,
+                "wis": 300,
+                "str": 300,
+                "dex": 300,
+                "con": 300,
+                "luckPercent": 5,
+                "startle": 1
+            },
+            "Amulet of Decay": {
+                "type": "neck",
+                "int": 500,
+                "thunder": 333,
+                "fire": 333,
+                "ice": 333,
+                "poison": 2
+            },
+            "Amulet of Insanity": {
+                "type": "neck",
+                "int": 700,
+                "luck": 50,
+                "silver": 1,
+                "dance": 1,
+                "vorpal": 1
+            },
+            "Amulet of Death": {
+                "type": "neck",
+                "int": 1100,
+                "wis": 400,
+                "fear": 1,
+                "darkside": 1,
+                "deadeye": 1
+            },
+            "Lich Lord's Phylactery": {
+                "type": "finger",
+                "int": 400,
+                "con": 800,
+                "wis": 750,
+                "intPercent": 10,
+                "lethal": 1
+            },
+            "Jewel-Encrusted Pick Axe": {
+                "type": "offhand",
+                "str": 250,
+                "dex": 250,
+                "agi": 250,
+                "con": 500,
+                "int": 250,
+                "wis": 250,
+                "royal": 2
+            },
+            "Mushroom Shaped Charm": {
+                "type": "charm",
+                "agi": 250,
+                "dex": 700,
+                "venom": 1,
+                "glowing": 1
             },
             "Flame Polished Gauntlets": {
                 "type": "hands",
