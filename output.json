@@ -1,10 +1,16 @@
 {
     "parsed": [
         {
-            "lineNumber": 240,
-            "endLineNumber": 248,
+            "lineNumber": 241,
+            "endLineNumber": 249,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-start"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Start the game on the server this is run on. Used when linking new IRC networks."
@@ -13,10 +19,6 @@
                 "name": "name",
                 "basicInfo": "idle-start"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-start"
-            },
             "gmOnly": {
                 "name": "gmOnly"
             },
@@ -30,10 +32,16 @@
             }
         },
         {
-            "lineNumber": 258,
-            "endLineNumber": 266,
+            "lineNumber": 259,
+            "endLineNumber": 267,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-stop"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Stop the game server on the server this is run on."
@@ -42,10 +50,6 @@
                 "name": "name",
                 "basicInfo": "idle-stop"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-stop"
-            },
             "gmOnly": {
                 "name": "gmOnly"
             },
@@ -59,10 +63,16 @@
             }
         },
         {
-            "lineNumber": 296,
-            "endLineNumber": 303,
+            "lineNumber": 297,
+            "endLineNumber": 304,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-register Character Name"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Register a new character on this IRC network."
@@ -71,10 +81,6 @@
                 "name": "name",
                 "basicInfo": "idle-register"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-register Character Name"
-            },
             "category": {
                 "name": "category",
                 "basicInfo": "IRC Commands"
@@ -85,10 +91,16 @@
             }
         },
         {
-            "lineNumber": 307,
-            "endLineNumber": 315,
+            "lineNumber": 308,
+            "endLineNumber": 316,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-event \"Player Name\" eventType"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Run any event for any logged in player."
@@ -96,10 +108,6 @@
             "name": {
                 "name": "name",
                 "basicInfo": "idle-event"
-            },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-event \"Player Name\" eventType"
             },
             "gmOnly": {
                 "name": "gmOnly"
@@ -114,10 +122,16 @@
             }
         },
         {
-            "lineNumber": 323,
-            "endLineNumber": 331,
+            "lineNumber": 324,
+            "endLineNumber": 332,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-globalevent eventType"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Run a global event",
@@ -130,10 +144,6 @@
             "gmOnly": {
                 "name": "gmOnly"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-globalevent eventType"
-            },
             "category": {
                 "name": "category",
                 "basicInfo": "IRC Commands"
@@ -144,14 +154,20 @@
             }
         },
         {
-            "lineNumber": 338,
-            "endLineNumber": 346,
+            "lineNumber": 339,
+            "endLineNumber": 347,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
                 {
                     "name": "example",
                     "basicInfo": "!idle-resetpassword \"local-server/Danret\" \"my new awesome password\""
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-resetpassword \"identifier\" \"newPassword\""
                 }
             ],
             "desc": {
@@ -161,10 +177,6 @@
             "gmOnly": {
                 "name": "gmOnly"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-resetpassword \"identifier\" \"newPassword\""
-            },
             "category": {
                 "name": "category",
                 "basicInfo": "IRC Commands"
@@ -175,10 +187,16 @@
             }
         },
         {
-            "lineNumber": 351,
-            "endLineNumber": 359,
+            "lineNumber": 352,
+            "endLineNumber": 360,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-update"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Force the bot to update IdleLands and reboot."
@@ -190,10 +208,6 @@
             "gmOnly": {
                 "name": "gmOnly"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-update"
-            },
             "category": {
                 "name": "category",
                 "basicInfo": "IRC Commands"
@@ -204,10 +218,16 @@
             }
         },
         {
-            "lineNumber": 363,
-            "endLineNumber": 371,
+            "lineNumber": 364,
+            "endLineNumber": 372,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-ban Player Name"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Ban a player."
@@ -219,10 +239,6 @@
             "gmOnly": {
                 "name": "gmOnly"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-ban Player Name"
-            },
             "category": {
                 "name": "category",
                 "basicInfo": "IRC Commands"
@@ -233,10 +249,16 @@
             }
         },
         {
-            "lineNumber": 376,
-            "endLineNumber": 384,
+            "lineNumber": 377,
+            "endLineNumber": 385,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-unban Player Name"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Unban a player."
@@ -248,10 +270,6 @@
             "gmOnly": {
                 "name": "gmOnly"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-unban Player Name"
-            },
             "category": {
                 "name": "category",
                 "basicInfo": "IRC Commands"
@@ -262,14 +280,20 @@
             }
         },
         {
-            "lineNumber": 389,
-            "endLineNumber": 398,
+            "lineNumber": 390,
+            "endLineNumber": 399,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
                 {
                     "name": "example",
                     "basicInfo": "!idle-teleport \"Swirly\" start"
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-teleportloc \"Player Name\" locationId"
                 }
             ],
             "desc": {
@@ -283,10 +307,6 @@
             "gmOnly": {
                 "name": "gmOnly"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-teleportloc \"Player Name\" locationId"
-            },
             "category": {
                 "name": "category",
                 "basicInfo": "IRC Commands"
@@ -297,14 +317,20 @@
             }
         },
         {
-            "lineNumber": 403,
-            "endLineNumber": 412,
+            "lineNumber": 404,
+            "endLineNumber": 413,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
                 {
                     "name": "example",
                     "basicInfo": "!idle-teleport \"Swirly\" \"Norkos\" 10,10"
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-teleport \"Player Name\" \"Map Name\" x,y"
                 }
             ],
             "desc": {
@@ -318,10 +344,6 @@
             "gmOnly": {
                 "name": "gmOnly"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-teleport \"Player Name\" \"Map Name\" x,y"
-            },
             "category": {
                 "name": "category",
                 "basicInfo": "IRC Commands"
@@ -332,14 +354,20 @@
             }
         },
         {
-            "lineNumber": 419,
-            "endLineNumber": 428,
+            "lineNumber": 420,
+            "endLineNumber": 429,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
                 {
                     "name": "example",
                     "basicInfo": "!idle-massteleportloc norkos"
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-massteleportloc locationId"
                 }
             ],
             "desc": {
@@ -353,10 +381,6 @@
             "gmOnly": {
                 "name": "gmOnly"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-massteleportloc locationId"
-            },
             "category": {
                 "name": "category",
                 "basicInfo": "IRC Commands"
@@ -367,14 +391,20 @@
             }
         },
         {
-            "lineNumber": 433,
-            "endLineNumber": 442,
+            "lineNumber": 434,
+            "endLineNumber": 443,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
                 {
                     "name": "example",
                     "basicInfo": "!idle-massteleport \"Norkos\" 10,10"
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-massteleport \"Map Name\" x,y"
                 }
             ],
             "desc": {
@@ -388,10 +418,6 @@
             "gmOnly": {
                 "name": "gmOnly"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-massteleport \"Map Name\" x,y"
-            },
             "category": {
                 "name": "category",
                 "basicInfo": "IRC Commands"
@@ -402,14 +428,20 @@
             }
         },
         {
-            "lineNumber": 449,
-            "endLineNumber": 458,
+            "lineNumber": 450,
+            "endLineNumber": 459,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
                 {
                     "name": "example",
                     "basicInfo": "!idle-itemgen \"Swirly\" mainhand \"Epic Cheat\" luck=10000"
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-itemgen \"Player Name\" itemSlot \"name\" stats"
                 }
             ],
             "desc": {
@@ -423,9 +455,42 @@
             "gmOnly": {
                 "name": "gmOnly"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-itemgen \"Player Name\" itemSlot \"name\" stats"
+            "category": {
+                "name": "category",
+                "basicInfo": "IRC Commands"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Client"
+            }
+        },
+        {
+            "lineNumber": 464,
+            "endLineNumber": 473,
+            "filePath": "ext/kurea/IdleLandsModule.coffee",
+            "fileName": "IdleLandsModule.coffee",
+            "example": [
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-itemgen \"Swirly\" 10000"
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-itemgen \"Player Name\" gold"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Give a player some gold."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "idle-goldgive"
+            },
+            "gmOnly": {
+                "name": "gmOnly"
             },
             "category": {
                 "name": "category",
@@ -437,8 +502,8 @@
             }
         },
         {
-            "lineNumber": 463,
-            "endLineNumber": 472,
+            "lineNumber": 478,
+            "endLineNumber": 487,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -451,6 +516,12 @@
                     "basicInfo": "!idle-personality remove ScaredOfTheDark"
                 }
             ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-personality add|remove Personality"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Modify your personality settings."
@@ -458,10 +529,6 @@
             "name": {
                 "name": "name",
                 "basicInfo": "idle-personality"
-            },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-personality add|remove Personality"
             },
             "category": {
                 "name": "category",
@@ -473,8 +540,8 @@
             }
         },
         {
-            "lineNumber": 499,
-            "endLineNumber": 508,
+            "lineNumber": 514,
+            "endLineNumber": 523,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -487,6 +554,12 @@
                     "basicInfo": "!idle-string remove web"
                 }
             ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-string add|remove type [stringData]"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Modify your string settings."
@@ -494,10 +567,6 @@
             "name": {
                 "name": "name",
                 "basicInfo": "idle-string"
-            },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-string add|remove type [stringData]"
             },
             "category": {
                 "name": "category",
@@ -509,8 +578,8 @@
             }
         },
         {
-            "lineNumber": 525,
-            "endLineNumber": 534,
+            "lineNumber": 540,
+            "endLineNumber": 549,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -523,6 +592,12 @@
                     "basicInfo": "!idle-pushbullet remove"
                 }
             ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-pushbullet set|remove [pushbulletApiKey]"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Modify your PushBullet settings."
@@ -530,10 +605,6 @@
             "name": {
                 "name": "name",
                 "basicInfo": "idle-pushbullet"
-            },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-pushbullet set|remove [pushbulletApiKey]"
             },
             "category": {
                 "name": "category",
@@ -545,8 +616,8 @@
             }
         },
         {
-            "lineNumber": 538,
-            "endLineNumber": 547,
+            "lineNumber": 553,
+            "endLineNumber": 562,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -559,6 +630,12 @@
                     "basicInfo": "!idle-priority remove str 1"
                 }
             ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-priority add|remove stat points"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Modify your priority point settings."
@@ -566,10 +643,6 @@
             "name": {
                 "name": "name",
                 "basicInfo": "idle-priority"
-            },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-priority add|remove stat points"
             },
             "category": {
                 "name": "category",
@@ -581,14 +654,20 @@
             }
         },
         {
-            "lineNumber": 561,
-            "endLineNumber": 569,
+            "lineNumber": 576,
+            "endLineNumber": 584,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
                 {
                     "name": "example",
                     "basicInfo": "!idle-gender male"
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-gender newGender"
                 }
             ],
             "desc": {
@@ -599,10 +678,6 @@
                 "name": "name",
                 "basicInfo": "idle-gender"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-gender newGender"
-            },
             "category": {
                 "name": "category",
                 "basicInfo": "IRC Commands"
@@ -613,8 +688,8 @@
             }
         },
         {
-            "lineNumber": 583,
-            "endLineNumber": 593,
+            "lineNumber": 598,
+            "endLineNumber": 608,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -631,6 +706,12 @@
                     "basicInfo": "!idle-inventory sell 0"
                 }
             ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-inventory swap|sell|add slot"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Modify your inventory."
@@ -638,10 +719,6 @@
             "name": {
                 "name": "name",
                 "basicInfo": "idle-inventory"
-            },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-inventory swap|sell|add slot"
             },
             "category": {
                 "name": "category",
@@ -653,14 +730,20 @@
             }
         },
         {
-            "lineNumber": 609,
-            "endLineNumber": 617,
+            "lineNumber": 624,
+            "endLineNumber": 632,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
                 {
                     "name": "example",
                     "basicInfo": "!idle-shop buy 0"
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-shop buy slot"
                 }
             ],
             "desc": {
@@ -672,10 +755,6 @@
                 "name": "name",
                 "basicInfo": "idle-shop"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-shop buy slot"
-            },
             "category": {
                 "name": "category",
                 "basicInfo": "IRC Commands"
@@ -686,14 +765,20 @@
             }
         },
         {
-            "lineNumber": 633,
-            "endLineNumber": 641,
+            "lineNumber": 648,
+            "endLineNumber": 656,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
                 {
                     "name": "example",
                     "basicInfo": "!idle-guild create Leet Admin Hax"
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-guild create guildName"
                 }
             ],
             "desc": {
@@ -704,10 +789,6 @@
                 "name": "name",
                 "basicInfo": "Guild Creation"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-guild create guildName"
-            },
             "category": {
                 "name": "category",
                 "basicInfo": "IRC Commands"
@@ -718,8 +799,8 @@
             }
         },
         {
-            "lineNumber": 656,
-            "endLineNumber": 667,
+            "lineNumber": 671,
+            "endLineNumber": 682,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -740,6 +821,12 @@
                     "basicInfo": "!idle-guild kick Swirly"
                 }
             ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-guild invite|promote|demote|kick Player Name"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Manage guild members."
@@ -747,10 +834,6 @@
             "name": {
                 "name": "name",
                 "basicInfo": "Guild Management"
-            },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-guild invite|promote|demote|kick Player Name"
             },
             "category": {
                 "name": "category",
@@ -762,8 +845,8 @@
             }
         },
         {
-            "lineNumber": 682,
-            "endLineNumber": 691,
+            "lineNumber": 697,
+            "endLineNumber": 706,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -776,6 +859,12 @@
                     "basicInfo": "!idle-guild disband"
                 }
             ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-guild leave|disband"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Manage your guild status."
@@ -783,10 +872,6 @@
             "name": {
                 "name": "name",
                 "basicInfo": "Guild Status"
-            },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-guild leave|disband"
             },
             "category": {
                 "name": "category",
@@ -798,8 +883,8 @@
             }
         },
         {
-            "lineNumber": 707,
-            "endLineNumber": 716,
+            "lineNumber": 722,
+            "endLineNumber": 731,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -812,6 +897,12 @@
                     "basicInfo": "!idle-guild manage-invite deny Leet Admin Hax"
                 }
             ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-guild manage-invite accept|deny guild name"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Manage your guild invitations."
@@ -819,10 +910,6 @@
             "name": {
                 "name": "name",
                 "basicInfo": "Guild Invitations"
-            },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-guild manage-invite accept|deny guild name"
             },
             "category": {
                 "name": "category",
@@ -834,8 +921,8 @@
             }
         },
         {
-            "lineNumber": 732,
-            "endLineNumber": 741,
+            "lineNumber": 747,
+            "endLineNumber": 756,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -848,6 +935,12 @@
                     "basicInfo": "!idle-secure authenticate my super secret password"
                 }
             ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-secure setPassword|authenticate password"
+                }
+            ],
             "desc": {
                 "name": "desc",
                 "basicInfo": "Manage your password, or authenticate."
@@ -856,9 +949,39 @@
                 "name": "name",
                 "basicInfo": "idle-secure"
             },
-            "syntax": {
-                "name": "syntax",
-                "basicInfo": "!idle-secure setPassword|authenticate password"
+            "category": {
+                "name": "category",
+                "basicInfo": "IRC Commands"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Client"
+            }
+        },
+        {
+            "lineNumber": 771,
+            "endLineNumber": 779,
+            "filePath": "ext/kurea/IdleLandsModule.coffee",
+            "fileName": "IdleLandsModule.coffee",
+            "example": [
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-pet buy \"Pet Rock\" \"Rocky\" \"a top hat\" \"a monocle\""
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-pet buy \"type\" \"name\" \"attr1\" \"attr2\""
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Buy a new pet."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "idle-pet buy"
             },
             "category": {
                 "name": "category",
@@ -867,6 +990,185 @@
             "package": {
                 "name": "package",
                 "basicInfo": "Client"
+            }
+        },
+        {
+            "lineNumber": 794,
+            "endLineNumber": 804,
+            "filePath": "ext/kurea/IdleLandsModule.coffee",
+            "fileName": "IdleLandsModule.coffee",
+            "example": [
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-pet set smartSell on"
+                },
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-pet set smartSelf on"
+                },
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-pet set smartEquip off"
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-pet set option on|off"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Set smart options for your pet."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "idle-pet set"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "IRC Commands"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Client"
+            }
+        },
+        {
+            "lineNumber": 819,
+            "endLineNumber": 844,
+            "filePath": "ext/kurea/IdleLandsModule.coffee",
+            "fileName": "IdleLandsModule.coffee",
+            "example": [
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-pet action upgrade maxLevel"
+                },
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-pet action giveEquipment 0"
+                },
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-pet action takeEquipment 1"
+                },
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-pet action sellEquipment 2"
+                },
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-pet action changeClass Generalist"
+                },
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-pet action equipItem 3"
+                },
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-pet action unequipItem 1418554184641"
+                },
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-pet action swapToPet 1418503227081"
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-pet action actionType actionParameter"
+                },
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-pet action upgrade <stat>",
+                    "extendedInfo": "maxLevel | inventory | goldStorage | battleJoinPercent | itemFindTimeDuration | itemSellMultiplier | itemFindBonus | itemFindRangeMultiplier | xpPerGold | maxItemScore"
+                },
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-pet action giveEquipment itemSlot"
+                },
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-pet action sellEquipment itemSlot"
+                },
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-pet action takeEquipment itemSlot"
+                },
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-pet action changeClass newClass"
+                },
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-pet action equipItem itemSlot"
+                },
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-pet action unequipItem itemUid"
+                },
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-pet action swapToPet petId"
+                },
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-pet action feed"
+                },
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-pet action takeGold"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Manage your pets items, upgrade their stats, and feed them gold!"
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "idle-pet action"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "IRC Commands"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Client"
+            }
+        },
+        {
+            "lineNumber": 6,
+            "endLineNumber": 14,
+            "filePath": "src/character/achievements/Achievable.coffee",
+            "fileName": "Achievable.coffee",
+            "reward": [
+                {
+                    "name": "reward",
+                    "basicInfo": "+1 achievement"
+                }
+            ],
+            "prerequisite": [
+                {
+                    "name": "prerequisite",
+                    "basicInfo": "Achieve 50*n achievements."
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This achievement is achieved by achieving achievements."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Achievable"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Achievements"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Player"
             }
         },
         {
@@ -1014,6 +1316,60 @@
             }
         },
         {
+            "lineNumber": 6,
+            "endLineNumber": 19,
+            "filePath": "src/character/achievements/Collector.coffee",
+            "fileName": "Collector.coffee",
+            "reward": [
+                {
+                    "name": "reward",
+                    "basicInfo": "+1% STR"
+                },
+                {
+                    "name": "reward",
+                    "basicInfo": "+1% DEX"
+                },
+                {
+                    "name": "reward",
+                    "basicInfo": "+1% AGI"
+                },
+                {
+                    "name": "reward",
+                    "basicInfo": "+1% CON"
+                },
+                {
+                    "name": "reward",
+                    "basicInfo": "+1% WIS"
+                },
+                {
+                    "name": "reward",
+                    "basicInfo": "+1% INT"
+                }
+            ],
+            "prerequisite": [
+                {
+                    "name": "prerequisite",
+                    "basicInfo": "Find 25*[2^n] collectibles"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This achievement is earned by finding many little collectibles scattered throughout the world."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Collector"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Achievements"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Player"
+            }
+        },
+        {
             "lineNumber": 5,
             "endLineNumber": 14,
             "filePath": "src/character/achievements/Combatitive.coffee",
@@ -1041,6 +1397,40 @@
             "name": {
                 "name": "name",
                 "basicInfo": "Combatitive"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Achievements"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Player"
+            }
+        },
+        {
+            "lineNumber": 5,
+            "endLineNumber": 13,
+            "filePath": "src/character/achievements/Consumer.coffee",
+            "fileName": "Consumer.coffee",
+            "reward": [
+                {
+                    "name": "reward",
+                    "basicInfo": "+0.07 itemSellMultiplier"
+                }
+            ],
+            "prerequisite": [
+                {
+                    "name": "prerequisite",
+                    "basicInfo": "Spend 100000*[3*[n-1]+1] total gold."
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This achievement is earned by spending gold."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Consumerist"
             },
             "category": {
                 "name": "category",
@@ -1271,6 +1661,40 @@
         {
             "lineNumber": 5,
             "endLineNumber": 13,
+            "filePath": "src/character/achievements/Golden.coffee",
+            "fileName": "Golden.coffee",
+            "reward": [
+                {
+                    "name": "reward",
+                    "basicInfo": "+[achievementLevel*0.03] itemSellMultiplier"
+                }
+            ],
+            "prerequisite": [
+                {
+                    "name": "prerequisite",
+                    "basicInfo": "Gain and lose 20000*[10*[n-1]+1] total gold."
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This achievement is earned by gaining and losing a lot of gold."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Golden"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Achievements"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Player"
+            }
+        },
+        {
+            "lineNumber": 5,
+            "endLineNumber": 13,
             "filePath": "src/character/achievements/Levelable.coffee",
             "fileName": "Levelable.coffee",
             "reward": [
@@ -1430,6 +1854,44 @@
         },
         {
             "lineNumber": 6,
+            "endLineNumber": 15,
+            "filePath": "src/character/achievements/Territorial.coffee",
+            "fileName": "Territorial.coffee",
+            "reward": [
+                {
+                    "name": "reward",
+                    "basicInfo": "+2% STR"
+                },
+                {
+                    "name": "reward",
+                    "basicInfo": "+2% WIS"
+                }
+            ],
+            "prerequisite": [
+                {
+                    "name": "prerequisite",
+                    "basicInfo": "Explore 10*[n] region."
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This achievement is earned by exploring unique regions."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Territorial"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Achievements"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Player"
+            }
+        },
+        {
+            "lineNumber": 6,
             "endLineNumber": 22,
             "filePath": "src/character/achievements/Tester.coffee",
             "fileName": "Tester.coffee",
@@ -1534,8 +1996,8 @@
             }
         },
         {
-            "lineNumber": 203,
-            "endLineNumber": 211,
+            "lineNumber": 212,
+            "endLineNumber": 220,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1564,8 +2026,8 @@
             }
         },
         {
-            "lineNumber": 214,
-            "endLineNumber": 222,
+            "lineNumber": 223,
+            "endLineNumber": 231,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1593,8 +2055,8 @@
             }
         },
         {
-            "lineNumber": 225,
-            "endLineNumber": 233,
+            "lineNumber": 234,
+            "endLineNumber": 242,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1623,8 +2085,8 @@
             }
         },
         {
-            "lineNumber": 236,
-            "endLineNumber": 244,
+            "lineNumber": 245,
+            "endLineNumber": 253,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1652,8 +2114,38 @@
             }
         },
         {
-            "lineNumber": 247,
-            "endLineNumber": 255,
+            "lineNumber": 256,
+            "endLineNumber": 264,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Darkside makes it so you do more damage, but all of the bonus damage is taken by both the attacker and defender."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "darkside"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "yes",
+                "extendedInfo": "Stacking formula is 10%/darkside point"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 267,
+            "endLineNumber": 275,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1681,8 +2173,8 @@
             }
         },
         {
-            "lineNumber": 258,
-            "endLineNumber": 266,
+            "lineNumber": 278,
+            "endLineNumber": 286,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1711,8 +2203,63 @@
             }
         },
         {
-            "lineNumber": 269,
-            "endLineNumber": 277,
+            "lineNumber": 289,
+            "endLineNumber": 296,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Drunk changes your movements ever-so-slightly."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "drunk"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "yes"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 299,
+            "endLineNumber": 307,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Fear makes it so no opponents can flee combat. Works well on Jesters!"
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "fear"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "yes"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 310,
+            "endLineNumber": 318,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1741,8 +2288,8 @@
             }
         },
         {
-            "lineNumber": 280,
-            "endLineNumber": 287,
+            "lineNumber": 321,
+            "endLineNumber": 328,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1768,8 +2315,8 @@
             }
         },
         {
-            "lineNumber": 290,
-            "endLineNumber": 298,
+            "lineNumber": 331,
+            "endLineNumber": 339,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1797,8 +2344,67 @@
             }
         },
         {
-            "lineNumber": 301,
-            "endLineNumber": 309,
+            "lineNumber": 342,
+            "endLineNumber": 350,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Mindwipe makes the target forget that they have any personalities."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "mindwipe"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "no"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 353,
+            "endLineNumber": 361,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Parry allows you the chance to counterattack if you dodge, deflect, or are missed by an attack."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "parry"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "yes",
+                "extendedInfo": "Stacking formula is +10% parry chance/parry point"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 364,
+            "endLineNumber": 372,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1826,8 +2432,8 @@
             }
         },
         {
-            "lineNumber": 312,
-            "endLineNumber": 320,
+            "lineNumber": 375,
+            "endLineNumber": 383,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1855,8 +2461,8 @@
             }
         },
         {
-            "lineNumber": 323,
-            "endLineNumber": 331,
+            "lineNumber": 386,
+            "endLineNumber": 394,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1884,8 +2490,38 @@
             }
         },
         {
-            "lineNumber": 334,
-            "endLineNumber": 342,
+            "lineNumber": 397,
+            "endLineNumber": 405,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Punish allows you to return some damage back to the attacker."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "punish"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "yes",
+                "extendedInfo": "Stacking formula is +5% returned damage/punish point"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 408,
+            "endLineNumber": 416,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1914,8 +2550,8 @@
             }
         },
         {
-            "lineNumber": 345,
-            "endLineNumber": 353,
+            "lineNumber": 419,
+            "endLineNumber": 427,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1944,8 +2580,8 @@
             }
         },
         {
-            "lineNumber": 356,
-            "endLineNumber": 364,
+            "lineNumber": 430,
+            "endLineNumber": 438,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -1973,8 +2609,8 @@
             }
         },
         {
-            "lineNumber": 367,
-            "endLineNumber": 375,
+            "lineNumber": 441,
+            "endLineNumber": 449,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2002,8 +2638,37 @@
             }
         },
         {
-            "lineNumber": 378,
-            "endLineNumber": 386,
+            "lineNumber": 452,
+            "endLineNumber": 460,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Startle allows you to take away your opponents first turns."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "startle"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "no"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 463,
+            "endLineNumber": 471,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2031,8 +2696,8 @@
             }
         },
         {
-            "lineNumber": 389,
-            "endLineNumber": 397,
+            "lineNumber": 474,
+            "endLineNumber": 482,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2061,8 +2726,8 @@
             }
         },
         {
-            "lineNumber": 400,
-            "endLineNumber": 408,
+            "lineNumber": 485,
+            "endLineNumber": 493,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2090,8 +2755,8 @@
             }
         },
         {
-            "lineNumber": 411,
-            "endLineNumber": 419,
+            "lineNumber": 496,
+            "endLineNumber": 504,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2119,8 +2784,8 @@
             }
         },
         {
-            "lineNumber": 422,
-            "endLineNumber": 430,
+            "lineNumber": 507,
+            "endLineNumber": 515,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2145,8 +2810,8 @@
             }
         },
         {
-            "lineNumber": 432,
-            "endLineNumber": 439,
+            "lineNumber": 517,
+            "endLineNumber": 524,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2171,8 +2836,8 @@
             }
         },
         {
-            "lineNumber": 441,
-            "endLineNumber": 448,
+            "lineNumber": 526,
+            "endLineNumber": 533,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2197,8 +2862,8 @@
             }
         },
         {
-            "lineNumber": 450,
-            "endLineNumber": 457,
+            "lineNumber": 535,
+            "endLineNumber": 542,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2220,6 +2885,114 @@
             "package": {
                 "name": "package",
                 "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 544,
+            "endLineNumber": 551,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Sticky makes it harder to have your item be replaced",
+                "extendedInfo": "or easier, if you have negative sticky"
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "sticky"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "yes"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 6,
+            "endLineNumber": 27,
+            "filePath": "src/character/classes/Archer.coffee",
+            "fileName": "Archer.coffee",
+            "statPerLevel": [
+                {
+                    "name": "statPerLevel",
+                    "type": "str",
+                    "basicInfo": "2"
+                },
+                {
+                    "name": "statPerLevel",
+                    "type": "dex",
+                    "basicInfo": "4"
+                },
+                {
+                    "name": "statPerLevel",
+                    "type": "con",
+                    "basicInfo": "2"
+                },
+                {
+                    "name": "statPerLevel",
+                    "type": "int",
+                    "basicInfo": "1"
+                },
+                {
+                    "name": "statPerLevel",
+                    "type": "wis",
+                    "basicInfo": "1"
+                },
+                {
+                    "name": "statPerLevel",
+                    "type": "agi",
+                    "basicInfo": "3"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Archer is a physical debuff/dps class. Their Focus stat increases critical chance by up to 50%, and allows access to powerful skills. Focus increases every turn and with use of the Take Aim skill, and decreases when the Archer is damaged as well as when it is spent."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Archer"
+            },
+            "physical": {
+                "name": "physical"
+            },
+            "dps": {
+                "name": "dps"
+            },
+            "hp": {
+                "name": "hp",
+                "basicInfo": "70+[level*10]+[con*6]"
+            },
+            "mp": {
+                "name": "mp",
+                "basicInfo": "30+[level*2]+[int*1]"
+            },
+            "special": {
+                "name": "special",
+                "basicInfo": "Focus",
+                "extendedInfo": "The Archer builds focus over time, resulting in devastating attacks if unchecked."
+            },
+            "itemScore": {
+                "name": "itemScore",
+                "basicInfo": "agi*1.2 + dex*1.6 + str*0.3 - int"
+            },
+            "minDamage": {
+                "name": "minDamage",
+                "basicInfo": "50%"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Classes"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Player"
             }
         },
         {
@@ -3448,13 +4221,31 @@
         },
         {
             "lineNumber": 5,
-            "endLineNumber": 12,
+            "endLineNumber": 16,
             "filePath": "src/character/personalities/DPS.coffee",
             "fileName": "DPS.coffee",
             "prerequisite": [
                 {
                     "name": "prerequisite",
                     "basicInfo": "Deal 500000 damage"
+                }
+            ],
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+4% INT"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "+4% STR"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "-5% CON"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "-5% WIS"
                 }
             ],
             "desc": {
@@ -4067,13 +4858,27 @@
         },
         {
             "lineNumber": 5,
-            "endLineNumber": 12,
+            "endLineNumber": 15,
             "filePath": "src/character/personalities/Medic.coffee",
             "fileName": "Medic.coffee",
             "prerequisite": [
                 {
                     "name": "prerequisite",
                     "basicInfo": "Heal 50000 damage"
+                }
+            ],
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+5% WIS"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "-3% AGI"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "-3% DEX"
                 }
             ],
             "desc": {
@@ -4302,7 +5107,7 @@
             },
             "name": {
                 "name": "name",
-                "basicInfo": "Greedy"
+                "basicInfo": "Seeker"
             },
             "category": {
                 "name": "category",
@@ -4349,13 +5154,39 @@
         },
         {
             "lineNumber": 5,
-            "endLineNumber": 12,
+            "endLineNumber": 18,
             "filePath": "src/character/personalities/Support.coffee",
             "fileName": "Support.coffee",
             "prerequisite": [
                 {
                     "name": "prerequisite",
                     "basicInfo": "Use 100 duration skills."
+                }
+            ],
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "Slightly more likely to get party gold blessings"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "Slightly more likely to get party XP blessings"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "Slightly more likely to get into parties"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "+3% AGI"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "+3% DEX"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "-8% WIS"
                 }
             ],
             "desc": {
@@ -4443,13 +5274,35 @@
         },
         {
             "lineNumber": 5,
-            "endLineNumber": 12,
+            "endLineNumber": 17,
             "filePath": "src/character/personalities/Tank.coffee",
             "fileName": "Tank.coffee",
             "prerequisite": [
                 {
                     "name": "prerequisite",
                     "basicInfo": "Receive 200000 damage"
+                }
+            ],
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "Slightly more likely to get into battles"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "Slightly more likely to have items forsaken"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "+5% CON"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "-3% INT"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "-3% WIS"
                 }
             ],
             "desc": {
@@ -4670,6 +5523,34 @@
         {
             "lineNumber": 4,
             "endLineNumber": 11,
+            "filePath": "src/character/regions/FrigriTown.coffee",
+            "fileName": "FrigriTown.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "Shops have very good items."
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This region has some nice wares."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Frigri Town"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Norkos"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "World Regions"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 11,
             "filePath": "src/character/regions/MaelesCaveArea.coffee",
             "fileName": "MaelesCaveArea.coffee",
             "effect": [
@@ -4805,6 +5686,38 @@
             "name": {
                 "name": "name",
                 "basicInfo": "Norkos Volcano Area"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Norkos"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "World Regions"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 12,
+            "filePath": "src/character/regions/RaburroTown.coffee",
+            "fileName": "RaburroTown.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "Lots of shops"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "+3 drunk"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This region grants you a shopping mall. Of course, there is a little inflation here, but the variety! It also reeks of ale."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Raburro Town"
             },
             "category": {
                 "name": "category",
@@ -5403,7 +6316,7 @@
             "effect": [
                 {
                     "name": "effect",
-                    "basicInfo": "-200 damage"
+                    "basicInfo": "-100 damage"
                 }
             ],
             "requirement": [
@@ -5442,7 +6355,7 @@
             },
             "duration": {
                 "name": "duration",
-                "basicInfo": "13 rounds"
+                "basicInfo": "9 rounds"
             },
             "category": {
                 "name": "category",
@@ -5461,7 +6374,7 @@
             "effect": [
                 {
                     "name": "effect",
-                    "basicInfo": "-800 damage"
+                    "basicInfo": "-400 damage"
                 }
             ],
             "requirement": [
@@ -5500,7 +6413,7 @@
             },
             "duration": {
                 "name": "duration",
-                "basicInfo": "11 rounds"
+                "basicInfo": "7 rounds"
             },
             "category": {
                 "name": "category",
@@ -5519,7 +6432,7 @@
             "effect": [
                 {
                     "name": "effect",
-                    "basicInfo": "-1800 damage"
+                    "basicInfo": "-900 damage"
                 }
             ],
             "requirement": [
@@ -5558,7 +6471,7 @@
             },
             "duration": {
                 "name": "duration",
-                "basicInfo": "9 rounds"
+                "basicInfo": "5 rounds"
             },
             "category": {
                 "name": "category",
@@ -5577,7 +6490,7 @@
             "effect": [
                 {
                     "name": "effect",
-                    "basicInfo": "-5000 damage"
+                    "basicInfo": "-2500 damage"
                 }
             ],
             "requirement": [
@@ -5589,7 +6502,7 @@
                 {
                     "name": "requirement",
                     "type": "mp",
-                    "basicInfo": "3900"
+                    "basicInfo": "7900"
                 },
                 {
                     "name": "requirement",
@@ -5616,7 +6529,7 @@
             },
             "duration": {
                 "name": "duration",
-                "basicInfo": "5 rounds"
+                "basicInfo": "1 round"
             },
             "category": {
                 "name": "category",
@@ -5635,7 +6548,7 @@
             "effect": [
                 {
                     "name": "effect",
-                    "basicInfo": "-50 damage"
+                    "basicInfo": "-25 damage"
                 }
             ],
             "requirement": [
@@ -5674,7 +6587,7 @@
             },
             "duration": {
                 "name": "duration",
-                "basicInfo": "14 rounds"
+                "basicInfo": "10 rounds"
             },
             "category": {
                 "name": "category",
@@ -5693,7 +6606,7 @@
             "effect": [
                 {
                     "name": "effect",
-                    "basicInfo": "-200 damage"
+                    "basicInfo": "-100 damage"
                 }
             ],
             "requirement": [
@@ -5732,7 +6645,7 @@
             },
             "duration": {
                 "name": "duration",
-                "basicInfo": "13 rounds"
+                "basicInfo": "9 rounds"
             },
             "category": {
                 "name": "category",
@@ -5751,7 +6664,7 @@
             "effect": [
                 {
                     "name": "effect",
-                    "basicInfo": "-450 damage"
+                    "basicInfo": "-225 damage"
                 }
             ],
             "requirement": [
@@ -5790,7 +6703,7 @@
             },
             "duration": {
                 "name": "duration",
-                "basicInfo": "12 rounds"
+                "basicInfo": "8 rounds"
             },
             "category": {
                 "name": "category",
@@ -5809,7 +6722,7 @@
             "effect": [
                 {
                     "name": "effect",
-                    "basicInfo": "-800 damage"
+                    "basicInfo": "-1225 damage"
                 }
             ],
             "requirement": [
@@ -5848,7 +6761,7 @@
             },
             "duration": {
                 "name": "duration",
-                "basicInfo": "11 rounds"
+                "basicInfo": "7 rounds"
             },
             "category": {
                 "name": "category",
@@ -5911,6 +6824,553 @@
             "category": {
                 "name": "category",
                 "basicInfo": "Generalist"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 10,
+            "endLineNumber": 24,
+            "filePath": "src/character/spells/combat-skills/archer/AntimagicArrow.coffee",
+            "fileName": "AntimagicArrow.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "Drains mp"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Archer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "Focus",
+                    "basicInfo": "25"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "42"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This skill targets the enemy with the most mp, inflicting a moderate amount of damage and halving their mp."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "anti-magic arrow"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1",
+                "extendedInfo": "with most mp remaining"
+            },
+            "minDamage": {
+                "name": "minDamage",
+                "basicInfo": "0.4*[wis+dex]"
+            },
+            "maxDamage": {
+                "name": "maxDamage",
+                "basicInfo": "0.8*[wis+dex]"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Archer"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 9,
+            "endLineNumber": 22,
+            "filePath": "src/character/spells/combat-skills/archer/Multishot.coffee",
+            "fileName": "Multishot.coffee",
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Archer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "Focus",
+                    "basicInfo": "20"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "10"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This spell fires twice, possibly at multiple different targets."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "double shot"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1-2",
+                "extendedInfo": "This spell will fail subsequent hits if all valid targets are dead."
+            },
+            "minDamage": {
+                "name": "minDamage",
+                "basicInfo": "[dex*0.2]"
+            },
+            "maxDamage": {
+                "name": "maxDamage",
+                "basicInfo": "[dex*0.3]"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Archer"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 24,
+            "endLineNumber": 36,
+            "filePath": "src/character/spells/combat-skills/archer/Multishot.coffee",
+            "fileName": "Multishot.coffee",
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Archer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "Focus",
+                    "basicInfo": "25"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "30"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This spell fires thrice, possibly at multiple different targets."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "triple shot"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1-3",
+                "extendedInfo": "This spell will fail subsequent hits if all valid targets are dead."
+            },
+            "minDamage": {
+                "name": "minDamage",
+                "basicInfo": "[dex*0.2*2]"
+            },
+            "maxDamage": {
+                "name": "maxDamage",
+                "basicInfo": "[dex*0.3*2]"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 38,
+            "endLineNumber": 51,
+            "filePath": "src/character/spells/combat-skills/archer/Multishot.coffee",
+            "fileName": "Multishot.coffee",
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Archer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "Focus",
+                    "basicInfo": "30"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "50"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This spell fires four times, possibly at multiple different targets."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "quadruple shot"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1-4",
+                "extendedInfo": "This spell will fail subsequent hits if all valid targets are dead."
+            },
+            "minDamage": {
+                "name": "minDamage",
+                "basicInfo": "[dex*0.2*3]"
+            },
+            "maxDamage": {
+                "name": "maxDamage",
+                "basicInfo": "[dex*0.3*3]"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Archer"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 9,
+            "endLineNumber": 23,
+            "filePath": "src/character/spells/combat-skills/archer/RelentlessAssault.coffee",
+            "fileName": "RelentlessAssault.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "-25 Focus per round"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "+2 physical attack per round"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Archer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "Focus",
+                    "basicInfo": "30",
+                    "extendedInfo": "only cast if Focus >= 70"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "50"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The caster performs two additional attacks every round, losing focus gradually."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "RelentlessAssault"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "self"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "10 rounds",
+                "extendedInfo": "cancelled if focus drops below 25"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Archer"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 10,
+            "endLineNumber": 25,
+            "filePath": "src/character/spells/combat-skills/archer/Shattershot.coffee",
+            "fileName": "Shattershot.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "shatter"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "prone"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Archer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "Focus",
+                    "basicInfo": "25"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "35"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This skill deals a large amount of damage, inflicting shatter and prone."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "shattershot"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
+            "minDamage": {
+                "name": "minDamage",
+                "basicInfo": "0.75*[str+dex]"
+            },
+            "maxDamage": {
+                "name": "maxDamage",
+                "basicInfo": "1.5*[str+dex]"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Archer"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 8,
+            "endLineNumber": 22,
+            "filePath": "src/character/spells/combat-skills/archer/SmokeBomb.coffee",
+            "fileName": "SmokeBomb.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "-40% DEX"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Archer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "80"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "10"
+                },
+                {
+                    "name": "requirement",
+                    "type": "Focus",
+                    "basicInfo": "< 50"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The caster throws a smoke bomb at 1-3 enemies, reducing their DEX. Only used at low Focus."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "smoke bomb"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "2-5"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "3 rounds"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Archer"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 8,
+            "endLineNumber": 21,
+            "filePath": "src/character/spells/combat-skills/archer/TakeAim.coffee",
+            "fileName": "TakeAim.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+50 focus"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Archer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "35"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "7"
+                },
+                {
+                    "name": "requirement",
+                    "type": "Focus",
+                    "basicInfo": "< 50"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The caster takes aim, increasing their Focus. Can only be used when at low Focus."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "hurricane"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "self"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Archer"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 8,
+            "endLineNumber": 23,
+            "filePath": "src/character/spells/combat-skills/archer/VenomCoating.coffee",
+            "fileName": "VenomCoating.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "venom"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "poison"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Archer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "150"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "15"
+                },
+                {
+                    "name": "requirement",
+                    "type": "Focus",
+                    "basicInfo": "< 40"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This spell gives one ally poison and venom temporarily. Only used at low Focus."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "VenomCoating"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "ally",
+                "basicInfo": "1"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "4 rounds"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Archer"
             },
             "package": {
                 "name": "package",
@@ -7137,9 +8597,16 @@
         },
         {
             "lineNumber": 23,
-            "endLineNumber": 36,
+            "endLineNumber": 37,
             "filePath": "src/character/spells/combat-skills/multi/SweepingGeneralization.coffee",
             "fileName": "SweepingGeneralization.coffee",
+            "prerequisite": [
+                {
+                    "name": "prerequisite",
+                    "type": "collectible",
+                    "basicInfo": "Generalist's Guidebook"
+                }
+            ],
             "requirement": [
                 {
                     "name": "requirement",
@@ -7779,7 +9246,7 @@
             ],
             "desc": {
                 "name": "desc",
-                "basicInfo": "This skill does very little damage, but leaves every combat effect available on the target. Currently, it will only prone the target. Poison and other effects may happen later."
+                "basicInfo": "This skill does very little damage, but leaves every combat effect available on the target. Currently, it will inflict Prone, Poison, Venom, and Shatter on the target. It's pretty nasty."
             },
             "name": {
                 "name": "name",
@@ -8384,9 +9851,16 @@
         },
         {
             "lineNumber": 34,
-            "endLineNumber": 45,
+            "endLineNumber": 46,
             "filePath": "src/character/spells/combat-skills/single/DoubleTap.coffee",
             "fileName": "DoubleTap.coffee",
+            "prerequisite": [
+                {
+                    "name": "prerequisite",
+                    "type": "collectible",
+                    "basicInfo": "Fighter's Manual"
+                }
+            ],
             "requirement": [
                 {
                     "name": "requirement",
@@ -8770,9 +10244,16 @@
         },
         {
             "lineNumber": 23,
-            "endLineNumber": 36,
+            "endLineNumber": 37,
             "filePath": "src/character/spells/heals/single/Cure.coffee",
             "fileName": "Cure.coffee",
+            "prerequisite": [
+                {
+                    "name": "prerequisite",
+                    "type": "collectible",
+                    "basicInfo": "Cleric's Text"
+                }
+            ],
             "requirement": [
                 {
                     "name": "requirement",
@@ -9392,9 +10873,16 @@
         },
         {
             "lineNumber": 53,
-            "endLineNumber": 66,
+            "endLineNumber": 67,
             "filePath": "src/character/spells/magical/energy/EnergyMissile.coffee",
             "fileName": "EnergyMissile.coffee",
+            "prerequisite": [
+                {
+                    "name": "prerequisite",
+                    "type": "collectible",
+                    "basicInfo": "Mage's Tome"
+                }
+            ],
             "requirement": [
                 {
                     "name": "requirement",
@@ -10893,6 +12381,28 @@
             }
         },
         {
+            "lineNumber": 5,
+            "endLineNumber": 11,
+            "filePath": "src/event/singles/LevelDownEvent.coffee",
+            "fileName": "LevelDownEvent.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This event causes players to cry. They also lose a level. This does not occur naturally like most other events, it can only happen by stepping on bad tiles."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "levelDown"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Player"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Events"
+            }
+        },
+        {
             "lineNumber": 8,
             "endLineNumber": 14,
             "filePath": "src/event/singles/MerchantEvent.coffee",
@@ -10959,6 +12469,28 @@
             }
         },
         {
+            "lineNumber": 8,
+            "endLineNumber": 14,
+            "filePath": "src/event/singles/ProvidenceEvent.coffee",
+            "fileName": "ProvidenceEvent.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This event can be your best friend, or your worst enemy."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "providence"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Player"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Events"
+            }
+        },
+        {
             "lineNumber": 4,
             "endLineNumber": 10,
             "filePath": "src/event/singles/XpEvent.coffee",
@@ -11003,11 +12535,11 @@
             }
         }
     ],
-    "startTime": 1417366742021,
-    "endTime": 1417366742072,
+    "startTime": 1418878017588,
+    "endTime": 1418878017734,
     "git": {
-        "short": "6c68285",
-        "long": "6c6828577572865c2af7b1c164d94d525dd5db74",
+        "short": "7ec1a23",
+        "long": "7ec1a2302f14b0a1ed91e234f5512c9450c6f488",
         "branch": "master",
         "tag": "0.5.0"
     },
@@ -11031,7 +12563,7 @@
                     }
                 ]
             },
-            "Cluckin' Chicken": {
+            "dChicken Problem Solver": {
                 "respawn": 4200,
                 "availableScore": 1500,
                 "stats": {
@@ -11098,7 +12630,8 @@
                     "str": 3900,
                     "int": 100,
                     "luck": 800,
-                    "thunder": 2000
+                    "thunder": 2000,
+                    "mindwipe": 1
                 },
                 "items": [
                     {
@@ -11117,7 +12650,8 @@
                     "str": 1800,
                     "con": 400,
                     "dex": 1600,
-                    "agi": 1500
+                    "agi": 1500,
+                    "poison": 1
                 },
                 "items": [
                     {
@@ -11153,7 +12687,8 @@
                     "level": 10,
                     "agi": 50,
                     "dex": 75,
-                    "str": 100
+                    "str": 100,
+                    "mindwipe": 1
                 },
                 "items": [
                     {
@@ -11171,7 +12706,8 @@
                     "level": 40,
                     "str": 1800,
                     "dex": 1750,
-                    "con": 1000
+                    "con": 1000,
+                    "sturdy": 1
                 },
                 "items": [
                     {
@@ -11245,12 +12781,128 @@
                     "str": 2100,
                     "dex": 750,
                     "con": 1200,
-                    "agi": 100
+                    "agi": 100,
+                    "sturdy": 1
                 },
                 "items": [
                     {
                         "name": "King Minotaur's Axe",
                         "dropPercent": 85
+                    }
+                ]
+            },
+            "Vampire Lord": {
+                "respawn": 10800,
+                "availableScore": 4000,
+                "stats": {
+                    "class": "Rogue",
+                    "hp": 13666,
+                    "level": 42,
+                    "str": 750,
+                    "dex": 1000,
+                    "con": 250,
+                    "agi": 1000,
+                    "wis": 500,
+                    "int": 500,
+                    "vampire": 2
+                },
+                "items": [
+                    {
+                        "name": "Golden Vampire Gauntlets",
+                        "dropPercent": 80
+                    }
+                ],
+                "collectibles": [
+                    {
+                        "name": "Vampire Heart",
+                        "dropPercent": 95
+                    }
+                ]
+            },
+            "Cloud Giant": {
+                "respawn": 10800,
+                "availableScore": 11400,
+                "stats": {
+                    "class": "Fighter",
+                    "hp": 14777,
+                    "level": 45,
+                    "str": 2000,
+                    "dex": 500,
+                    "con": 1200,
+                    "agi": 100,
+                    "sturdy": 1
+                },
+                "items": [
+                    {
+                        "name": "Halberd of the Giants",
+                        "dropPercent": 80
+                    }
+                ]
+            },
+            "Ghostly Pirate Captain": {
+                "respawn": 10800,
+                "availableScore": 1200,
+                "stats": {
+                    "class": "Pirate",
+                    "hp": 1750,
+                    "level": 15,
+                    "luck": 33,
+                    "dex": 200,
+                    "agi": 200,
+                    "parry": 10
+                },
+                "items": [
+                    {
+                        "name": "Incorporeal Cutlass",
+                        "dropPercent": 70
+                    }
+                ]
+            },
+            "Baby Red Draygon": {
+                "respawn": 10800,
+                "availableScore": 3000,
+                "stats": {
+                    "class": "Barbarian",
+                    "hp": 16999,
+                    "level": 30,
+                    "luck": 33,
+                    "dex": 600,
+                    "agi": 900,
+                    "str": 2000,
+                    "prone": 1,
+                    "glowing": 1
+                },
+                "items": [
+                    {
+                        "name": "Fire Enfused Dragon Tooth",
+                        "dropPercent": 75
+                    }
+                ]
+            },
+            "Mama Red Draygon": {
+                "respawn": 10800,
+                "availableScore": 5000,
+                "stats": {
+                    "class": "Mage",
+                    "hp": 39212,
+                    "mp": 77777,
+                    "level": 55,
+                    "luck": 77,
+                    "dex": 1600,
+                    "con": 1300,
+                    "agi": 500,
+                    "str": 3900,
+                    "wis": 999,
+                    "int": 2900,
+                    "fire": 7777,
+                    "defense": 2,
+                    "fear": 1,
+                    "sturdy": 1
+                },
+                "items": [
+                    {
+                        "name": "Breastplate of Wrath",
+                        "dropPercent": 80
                     }
                 ]
             },
@@ -11266,7 +12918,8 @@
                     "int": 1750,
                     "wis": 1450,
                     "con": 900,
-                    "fire": 10000
+                    "fire": 10000,
+                    "sturdy": 1
                 },
                 "items": [
                     {
@@ -11404,6 +13057,44 @@
                 "vorpal": 1,
                 "power": 1
             },
+            "Golden Vampire Gauntlets": {
+                "type": "hands",
+                "dex": 750,
+                "agi": 750,
+                "vampire": 1
+            },
+            "Halberd of the Giants": {
+                "type": "mainhand",
+                "str": 1000,
+                "con": 225,
+                "sturdy": 1,
+                "enchantLevel": 6
+            },
+            "Incorporeal Cutlass": {
+                "type": "mainhand",
+                "dex": 150,
+                "luck": 11,
+                "agi": 150,
+                "parry": 1
+            },
+            "Fire Enfused Dragon Tooth": {
+                "type": "offhand",
+                "dex": 250,
+                "luck": 1,
+                "agi": 150,
+                "con": 150,
+                "str": 1000,
+                "glowing": 2
+            },
+            "Breastplate of Wrath": {
+                "type": "body",
+                "int": 1500,
+                "luck": 3,
+                "wis": 750,
+                "fire": 1400,
+                "intPercent": 5,
+                "defense": 2
+            },
             "Flame Polished Gauntlets": {
                 "type": "hands",
                 "int": 350,
@@ -11432,6 +13123,12 @@
                 "silver": 1,
                 "offense": -1
             }
+        },
+        "bossparties.json": {
+            "Wardens": [
+                "Warden of Norkos",
+                "Warden of Norkos"
+            ]
         },
         "chests.json": {
             "Draygon Gear": {
@@ -11535,7 +13232,7 @@
                 {
                     "type": "battle",
                     "min": 1,
-                    "max": 4500
+                    "max": 2500
                 }
             ],
             "eventEffects": {
@@ -11626,8 +13323,1098 @@
                 }
             }
         },
+        "pets.json": {
+            "Pet Rock": {
+                "cost": 5000,
+                "category": "Hybrid",
+                "description": "Unlocked by changing yourself once.",
+                "slots": {
+                    "body": 1
+                },
+                "specialStats": {
+                    "prone": 1,
+                    "sturdy": 1,
+                    "defense": 3
+                },
+                "requirements": {
+                    "statistics": {
+                        "calculated class changes": 1
+                    }
+                },
+                "scale": {
+                    "maxLevel": [
+                        50
+                    ],
+                    "maxItemScore": [
+                        500,
+                        1000,
+                        1500,
+                        2500
+                    ],
+                    "inventory": [
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13
+                    ],
+                    "goldStorage": [
+                        1000,
+                        10000,
+                        100000
+                    ],
+                    "battleJoinPercent": [
+                        0,
+                        5,
+                        15,
+                        25,
+                        35,
+                        50
+                    ],
+                    "itemFindTimeDuration": [
+                        0,
+                        86400,
+                        64800,
+                        43200,
+                        21600,
+                        10800,
+                        3600,
+                        1800,
+                        450
+                    ],
+                    "itemSellMultiplier": [
+                        0.05,
+                        0.1
+                    ],
+                    "itemFindBonus": [
+                        0,
+                        1,
+                        5,
+                        10,
+                        15,
+                        30,
+                        50,
+                        100
+                    ],
+                    "itemFindRangeMultiplier": [
+                        0,
+                        0.1,
+                        0.2,
+                        0.4
+                    ],
+                    "xpPerGold": [
+                        3,
+                        10,
+                        18,
+                        27
+                    ]
+                },
+                "scaleCost": {
+                    "maxLevel": [
+                        0
+                    ],
+                    "maxItemScore": [
+                        0,
+                        15000,
+                        25000,
+                        35000
+                    ],
+                    "inventory": [
+                        0,
+                        1000,
+                        2000,
+                        3000,
+                        4000,
+                        5000,
+                        6000,
+                        7000,
+                        8000,
+                        9000,
+                        10000
+                    ],
+                    "goldStorage": [
+                        0,
+                        10000,
+                        100000
+                    ],
+                    "battleJoinPercent": [
+                        0,
+                        10000,
+                        10000,
+                        10000,
+                        10000,
+                        15000
+                    ],
+                    "itemFindTimeDuration": [
+                        0,
+                        10000,
+                        15000,
+                        20000,
+                        25000,
+                        30000,
+                        35000,
+                        40000,
+                        50000
+                    ],
+                    "itemSellMultiplier": [
+                        0,
+                        20000
+                    ],
+                    "itemFindBonus": [
+                        0,
+                        100,
+                        1000,
+                        5000,
+                        7500,
+                        15000,
+                        30000,
+                        65000
+                    ],
+                    "itemFindRangeMultiplier": [
+                        0,
+                        10000,
+                        20000,
+                        40000
+                    ],
+                    "xpPerGold": [
+                        0,
+                        5000,
+                        10000,
+                        15000
+                    ]
+                }
+            },
+            "Corgi": {
+                "cost": 25000,
+                "category": "Hybrid",
+                "description": "Unlocked by being a collector of fine items.",
+                "slots": {
+                    "body": 1,
+                    "feet": 2,
+                    "head": 1
+                },
+                "specialStats": {
+                    "fear": 1,
+                    "offense": 1
+                },
+                "requirements": {
+                    "achievements": [
+                        "Collector I"
+                    ]
+                },
+                "scale": {
+                    "maxLevel": [
+                        50,
+                        75
+                    ],
+                    "maxItemScore": [
+                        1000,
+                        2000,
+                        3000
+                    ],
+                    "inventory": [
+                        5,
+                        7,
+                        9,
+                        11,
+                        13,
+                        15
+                    ],
+                    "goldStorage": [
+                        2000,
+                        20000,
+                        100000
+                    ],
+                    "battleJoinPercent": [
+                        0,
+                        15,
+                        30,
+                        45,
+                        60,
+                        75
+                    ],
+                    "itemFindTimeDuration": [
+                        0,
+                        43200,
+                        21600,
+                        10800,
+                        3600,
+                        1800,
+                        450,
+                        275
+                    ],
+                    "itemSellMultiplier": [
+                        0.07,
+                        0.13
+                    ],
+                    "itemFindBonus": [
+                        0,
+                        10,
+                        15,
+                        30,
+                        50,
+                        100
+                    ],
+                    "itemFindRangeMultiplier": [
+                        0.1,
+                        0.2,
+                        0.3
+                    ],
+                    "xpPerGold": [
+                        5,
+                        15,
+                        25,
+                        40
+                    ]
+                },
+                "scaleCost": {
+                    "maxLevel": [
+                        0,
+                        50000
+                    ],
+                    "maxItemScore": [
+                        0,
+                        30000,
+                        40000
+                    ],
+                    "inventory": [
+                        0,
+                        5000,
+                        7500,
+                        10000,
+                        12500,
+                        15000
+                    ],
+                    "goldStorage": [
+                        0,
+                        10000,
+                        75000
+                    ],
+                    "battleJoinPercent": [
+                        0,
+                        15000,
+                        25000,
+                        35000,
+                        45000,
+                        60000
+                    ],
+                    "itemFindTimeDuration": [
+                        0,
+                        20000,
+                        25000,
+                        30000,
+                        35000,
+                        40000,
+                        50000,
+                        65000
+                    ],
+                    "itemSellMultiplier": [
+                        0,
+                        25000
+                    ],
+                    "itemFindBonus": [
+                        0,
+                        5000,
+                        7500,
+                        15000,
+                        30000,
+                        65000
+                    ],
+                    "itemFindRangeMultiplier": [
+                        0,
+                        20000,
+                        30000
+                    ],
+                    "xpPerGold": [
+                        0,
+                        10000,
+                        25000,
+                        50000
+                    ]
+                }
+            },
+            "Raven": {
+                "cost": 35000,
+                "category": "Hybrid",
+                "description": "Unlocked by keeping an eye out for shiny things.",
+                "slots": {
+                    "body": 1,
+                    "feet": 1,
+                    "hands": 1
+                },
+                "specialStats": {
+                    "deadeye": 1,
+                    "darkside": 1,
+                    "poison": 1
+                },
+                "requirements": {
+                    "collectibles": [
+                        "Gold Bank Coin",
+                        "Medium Sized Bank Coin",
+                        "Rather Large Bank Coin",
+                        "Weirdly Sized Bank Coin",
+                        "Ashen Bank Coin"
+                    ],
+                    "achievements": [
+                        "Golden I"
+                    ]
+                },
+                "scale": {
+                    "maxLevel": [
+                        75,
+                        100
+                    ],
+                    "maxItemScore": [
+                        2500,
+                        3000,
+                        3500,
+                        4000,
+                        4500,
+                        5000
+                    ],
+                    "inventory": [
+                        3,
+                        5,
+                        7,
+                        10,
+                        15
+                    ],
+                    "goldStorage": [
+                        10000,
+                        50000,
+                        100000,
+                        500000
+                    ],
+                    "battleJoinPercent": [
+                        0,
+                        5,
+                        10,
+                        15,
+                        20,
+                        25,
+                        30,
+                        35,
+                        40,
+                        45,
+                        50
+                    ],
+                    "itemFindTimeDuration": [
+                        0,
+                        21600,
+                        10800,
+                        3600,
+                        1800,
+                        450,
+                        275,
+                        150
+                    ],
+                    "itemSellMultiplier": [
+                        0.07,
+                        0.13,
+                        0.2,
+                        0.27
+                    ],
+                    "itemFindBonus": [
+                        0,
+                        10,
+                        15,
+                        30,
+                        50,
+                        100,
+                        150,
+                        200
+                    ],
+                    "itemFindRangeMultiplier": [
+                        0,
+                        0.2,
+                        0.4,
+                        0.75
+                    ],
+                    "xpPerGold": [
+                        7,
+                        17,
+                        27,
+                        37
+                    ]
+                },
+                "scaleCost": {
+                    "maxLevel": [
+                        0,
+                        75000
+                    ],
+                    "maxItemScore": [
+                        0,
+                        50000,
+                        60000,
+                        70000,
+                        80000,
+                        90000
+                    ],
+                    "inventory": [
+                        0,
+                        5000,
+                        7500,
+                        10000,
+                        12500,
+                        15000
+                    ],
+                    "goldStorage": [
+                        0,
+                        5000,
+                        10000,
+                        50000
+                    ],
+                    "battleJoinPercent": [
+                        0,
+                        15000,
+                        20000,
+                        25000,
+                        30000,
+                        35000,
+                        40000,
+                        45000,
+                        50000,
+                        55000,
+                        60000
+                    ],
+                    "itemFindTimeDuration": [
+                        0,
+                        25000,
+                        30000,
+                        35000,
+                        40000,
+                        50000,
+                        65000,
+                        85000
+                    ],
+                    "itemSellMultiplier": [
+                        0,
+                        15000,
+                        25000,
+                        45000
+                    ],
+                    "itemFindBonus": [
+                        0,
+                        5000,
+                        7500,
+                        15000,
+                        30000,
+                        45000,
+                        60000,
+                        95000
+                    ],
+                    "itemFindRangeMultiplier": [
+                        0,
+                        20000,
+                        40000,
+                        75000
+                    ],
+                    "xpPerGold": [
+                        0,
+                        10000,
+                        25000,
+                        50000
+                    ]
+                }
+            },
+            "Parrot": {
+                "cost": 30000,
+                "category": "Hybrid",
+                "description": "Unlocked by getting some booty.",
+                "slots": {
+                    "body": 1,
+                    "feet": 1,
+                    "legs": 1
+                },
+                "specialStats": {
+                    "startle": 1,
+                    "drunk": 1,
+                    "crit": 5
+                },
+                "requirements": {
+                    "collectibles": [
+                        "Haunted Eye Patch"
+                    ],
+                    "bosses": [
+                        "Ghostly Pirate Captain"
+                    ]
+                },
+                "scale": {
+                    "maxLevel": [
+                        25,
+                        50,
+                        75
+                    ],
+                    "maxItemScore": [
+                        1500,
+                        2500,
+                        3500
+                    ],
+                    "inventory": [
+                        5,
+                        10,
+                        15
+                    ],
+                    "goldStorage": [
+                        500,
+                        5000,
+                        50000
+                    ],
+                    "battleJoinPercent": [
+                        0,
+                        10,
+                        20,
+                        30,
+                        40,
+                        50,
+                        60
+                    ],
+                    "itemFindTimeDuration": [
+                        0,
+                        21600,
+                        10800,
+                        3600,
+                        1800
+                    ],
+                    "itemSellMultiplier": [
+                        0.04,
+                        0.08,
+                        0.12,
+                        0.16
+                    ],
+                    "itemFindBonus": [
+                        0,
+                        10,
+                        15,
+                        30,
+                        50,
+                        75
+                    ],
+                    "itemFindRangeMultiplier": [
+                        0,
+                        0.1,
+                        0.2
+                    ],
+                    "xpPerGold": [
+                        10,
+                        20,
+                        35
+                    ]
+                },
+                "scaleCost": {
+                    "maxLevel": [
+                        0,
+                        25000,
+                        50000
+                    ],
+                    "maxItemScore": [
+                        0,
+                        15000,
+                        25000
+                    ],
+                    "inventory": [
+                        0,
+                        5000,
+                        10000,
+                        15000
+                    ],
+                    "goldStorage": [
+                        0,
+                        5000,
+                        50000
+                    ],
+                    "battleJoinPercent": [
+                        0,
+                        20000,
+                        30000,
+                        40000,
+                        50000,
+                        60000,
+                        70000
+                    ],
+                    "itemFindTimeDuration": [
+                        0,
+                        25000,
+                        30000,
+                        40000,
+                        65000,
+                        85000
+                    ],
+                    "itemSellMultiplier": [
+                        0,
+                        10000,
+                        20000,
+                        30000
+                    ],
+                    "itemFindBonus": [
+                        0,
+                        5000,
+                        7500,
+                        15000,
+                        30000,
+                        45000
+                    ],
+                    "itemFindRangeMultiplier": [
+                        0,
+                        10000,
+                        20000
+                    ],
+                    "xpPerGold": [
+                        0,
+                        10000,
+                        25000
+                    ]
+                }
+            },
+            "Dolphin": {
+                "cost": 15000,
+                "category": "Non-Combat",
+                "description": "Unlocked by finding some watery delicacies.",
+                "slots": {},
+                "specialStats": {},
+                "requirements": {
+                    "collectibles": [
+                        "Dried Up, Not Tasty Fish",
+                        "Small, Tasty Fish",
+                        "Jar of Norkian Water"
+                    ]
+                },
+                "scale": {
+                    "maxLevel": [
+                        10,
+                        25,
+                        50
+                    ],
+                    "maxItemScore": [
+                        500,
+                        1000,
+                        2000,
+                        4000,
+                        8000
+                    ],
+                    "inventory": [
+                        15,
+                        25,
+                        35
+                    ],
+                    "goldStorage": [
+                        10000,
+                        100000,
+                        250000
+                    ],
+                    "battleJoinPercent": [
+                        0
+                    ],
+                    "itemFindTimeDuration": [
+                        0,
+                        21600,
+                        10800,
+                        3600,
+                        1800
+                    ],
+                    "itemSellMultiplier": [
+                        0.18,
+                        0.27,
+                        0.36
+                    ],
+                    "itemFindBonus": [
+                        0,
+                        30,
+                        50,
+                        75,
+                        150,
+                        200,
+                        250
+                    ],
+                    "itemFindRangeMultiplier": [
+                        0
+                    ],
+                    "xpPerGold": [
+                        10,
+                        25,
+                        50
+                    ]
+                },
+                "scaleCost": {
+                    "maxLevel": [
+                        0,
+                        10000,
+                        25000
+                    ],
+                    "maxItemScore": [
+                        0,
+                        25000,
+                        50000,
+                        75000,
+                        15000
+                    ],
+                    "inventory": [
+                        0,
+                        10000,
+                        30000,
+                        50000
+                    ],
+                    "goldStorage": [
+                        0,
+                        50000,
+                        125000
+                    ],
+                    "battleJoinPercent": [
+                        0
+                    ],
+                    "itemFindTimeDuration": [
+                        0,
+                        25000,
+                        30000,
+                        40000,
+                        65000,
+                        85000
+                    ],
+                    "itemSellMultiplier": [
+                        0,
+                        20000,
+                        40000
+                    ],
+                    "itemFindBonus": [
+                        0,
+                        5000,
+                        7500,
+                        15000,
+                        30000,
+                        55000,
+                        100000
+                    ],
+                    "itemFindRangeMultiplier": [
+                        0
+                    ],
+                    "xpPerGold": [
+                        0,
+                        10000,
+                        15000
+                    ]
+                }
+            },
+            "Minitaur": {
+                "cost": 50000,
+                "category": "Combat",
+                "description": "Unlocked by being a slayer of the ancients and a purveyor of their goods.",
+                "slots": {
+                    "body": 1,
+                    "feet": 1,
+                    "legs": 1,
+                    "hands": 1,
+                    "head": 1,
+                    "mainhand": 1,
+                    "offhand": 1
+                },
+                "specialStats": {
+                    "prone": 1,
+                    "offense": 3,
+                    "power": 1,
+                    "silver": 1,
+                    "shatter": 1,
+                    "sturdy": 1,
+                    "str": 200,
+                    "dex": 200
+                },
+                "requirements": {
+                    "collectibles": [
+                        "Old Minotaur Axe Shard",
+                        "Slightly Newer Minotaur Axe Piece",
+                        "Poorly Drawn Map",
+                        "Chewtoy"
+                    ],
+                    "bosses": [
+                        "Child Minotaur",
+                        "Sibling Minotaur",
+                        "Elder Minotaur",
+                        "King Minotaur"
+                    ]
+                },
+                "scale": {
+                    "maxLevel": [
+                        50,
+                        100,
+                        150
+                    ],
+                    "maxItemScore": [
+                        100,
+                        500,
+                        1000,
+                        2000,
+                        3000
+                    ],
+                    "inventory": [
+                        2
+                    ],
+                    "goldStorage": [
+                        10000,
+                        25000
+                    ],
+                    "battleJoinPercent": [
+                        50,
+                        60,
+                        70,
+                        80,
+                        90,
+                        99
+                    ],
+                    "itemFindTimeDuration": [
+                        0,
+                        86400,
+                        64800,
+                        43200,
+                        21600
+                    ],
+                    "itemSellMultiplier": [
+                        0.1,
+                        0.15
+                    ],
+                    "itemFindBonus": [
+                        0,
+                        25,
+                        50,
+                        75,
+                        100
+                    ],
+                    "itemFindRangeMultiplier": [
+                        0,
+                        0.2,
+                        0.4,
+                        0.6
+                    ],
+                    "xpPerGold": [
+                        35,
+                        50,
+                        75
+                    ]
+                },
+                "scaleCost": {
+                    "maxLevel": [
+                        0,
+                        50000,
+                        100000
+                    ],
+                    "maxItemScore": [
+                        0,
+                        10000,
+                        20000,
+                        30000,
+                        40000
+                    ],
+                    "inventory": [
+                        0
+                    ],
+                    "goldStorage": [
+                        0,
+                        50000
+                    ],
+                    "battleJoinPercent": [
+                        0
+                    ],
+                    "itemFindTimeDuration": [
+                        0,
+                        45000,
+                        55000,
+                        65000,
+                        75000
+                    ],
+                    "itemSellMultiplier": [
+                        0,
+                        15000,
+                        25000
+                    ],
+                    "itemFindBonus": [
+                        0,
+                        25000,
+                        50000,
+                        75000,
+                        100000
+                    ],
+                    "itemFindRangeMultiplier": [
+                        0,
+                        25000,
+                        45000,
+                        65000
+                    ],
+                    "xpPerGold": [
+                        0,
+                        25000,
+                        50000
+                    ]
+                }
+            },
+            "Chimera Dragon": {
+                "cost": 50000,
+                "category": "Combat",
+                "description": "Unlocked by being a connoisseur of all matters draconic.",
+                "slots": {
+                    "body": 1,
+                    "feet": 2,
+                    "legs": 2,
+                    "head": 3
+                },
+                "specialStats": {
+                    "prone": 1,
+                    "defense": 2,
+                    "offense": 2,
+                    "punish": 1,
+                    "int": 200,
+                    "fire": 400,
+                    "ice": 400,
+                    "thunder": 400
+                },
+                "requirements": {
+                    "collectibles": [
+                        "Black Draygon Scale",
+                        "Silver Draygon Scale",
+                        "Red Draygon Scale",
+                        "Green Draygon Scale",
+                        "Mama Draygon Scale"
+                    ],
+                    "bosses": [
+                        "Sky Dragon of Vocalnus",
+                        "Black Dragon King",
+                        "Green Dragon",
+                        "Mama Draygon",
+                        "Red Dragon Hatchling"
+                    ]
+                },
+                "scale": {
+                    "maxLevel": [
+                        75,
+                        125,
+                        175
+                    ],
+                    "maxItemScore": [
+                        750,
+                        1500,
+                        2750,
+                        4500,
+                        5750
+                    ],
+                    "inventory": [
+                        3
+                    ],
+                    "goldStorage": [
+                        10000,
+                        35000
+                    ],
+                    "battleJoinPercent": [
+                        55,
+                        65,
+                        75,
+                        85,
+                        95,
+                        100
+                    ],
+                    "itemFindTimeDuration": [
+                        0,
+                        86400,
+                        64800,
+                        43200,
+                        21600,
+                        10800
+                    ],
+                    "itemSellMultiplier": [
+                        0.2,
+                        0.4
+                    ],
+                    "itemFindBonus": [
+                        0,
+                        25,
+                        50,
+                        75,
+                        100,
+                        125
+                    ],
+                    "itemFindRangeMultiplier": [
+                        0,
+                        0.3,
+                        0.5,
+                        0.7,
+                        1
+                    ],
+                    "xpPerGold": [
+                        25,
+                        50,
+                        75,
+                        100
+                    ]
+                },
+                "scaleCost": {
+                    "maxLevel": [
+                        0,
+                        75000,
+                        125000
+                    ],
+                    "maxItemScore": [
+                        0,
+                        25000,
+                        27500,
+                        50000,
+                        95000
+                    ],
+                    "inventory": [
+                        30000
+                    ],
+                    "goldStorage": [
+                        0,
+                        50000
+                    ],
+                    "battleJoinPercent": [
+                        0
+                    ],
+                    "itemFindTimeDuration": [
+                        0,
+                        50000,
+                        60000,
+                        70000,
+                        80000,
+                        100000
+                    ],
+                    "itemSellMultiplier": [
+                        0,
+                        60000
+                    ],
+                    "itemFindBonus": [
+                        0,
+                        25000,
+                        50000,
+                        75000,
+                        100000,
+                        125000
+                    ],
+                    "itemFindRangeMultiplier": [
+                        0,
+                        25000,
+                        45000,
+                        65000,
+                        95000
+                    ],
+                    "xpPerGold": [
+                        0,
+                        25000,
+                        50000,
+                        100000
+                    ]
+                }
+            }
+        },
         "teleports.json": {
             "towns": {
+                "frigri": {
+                    "map": "Norkos",
+                    "formalName": "Frigri",
+                    "x": 133,
+                    "y": 160
+                },
                 "norkos": {
                     "map": "Norkos",
                     "formalName": "Norkos",
@@ -11770,14 +14557,20 @@
                     "x": 92,
                     "y": 11
                 },
-                "minotaur": {
+                "minotaurmaze": {
                     "map": "Norkos",
                     "formalName": "the Minotaur Maze entrance",
-                    "x": 139,
-                    "y": 65
+                    "x": 238,
+                    "y": 188
                 }
             },
             "trainers": {
+                "archer": {
+                    "map": "Norkos",
+                    "formalName": "the Archer Trainer",
+                    "x": 141,
+                    "y": 146
+                },
                 "barbarian": {
                     "map": "Norkos",
                     "formalName": "the Barbarian Trainer",
@@ -11815,16 +14608,22 @@
                     "y": 23
                 },
                 "bitomancer": {
-                    "map": "Minotaur Maze -3",
+                    "map": "Norkos",
                     "formalName": "the Bitomancer Trainer",
-                    "x": 22,
-                    "y": 1
+                    "x": 165,
+                    "y": 154
                 },
                 "monster": {
                     "map": "Mythos -2",
                     "formalName": "the Monster Trainer",
                     "x": 6,
                     "y": 19
+                },
+                "magicalmonster": {
+                    "map": "Minotaur Maze -3",
+                    "formalName": "the MagicalMonster Trainer",
+                    "x": 22,
+                    "y": 2
                 },
                 "pirate": {
                     "map": "Norkos",
