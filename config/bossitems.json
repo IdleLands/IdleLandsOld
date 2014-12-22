@@ -190,6 +190,37 @@
 	"venom": 1,
 	"glowing": 1
     },
+    "The Nice List": {
+        "type": "offhand",
+        "int": 250,
+        "con": 50,
+	"silver": 1,
+	"goldPercent": 5,
+	"sacred": 1
+    },
+    "Snow Covered Antlers": {
+        "type": "head",
+        "agi": 100,
+	"agiPercent": 10,
+        "dex": 100,
+	"dexPercent": 10,
+	"int": 100,
+	"intPercent": 10,
+	"ice": 1225,
+	"icePercent": 10
+    },
+    "The Naughty List": {
+        "type": "mainhand",
+        "str": 1500,
+        "con": 1000,
+	"luck": 25,
+	"silver": 1,
+	"haste": 1,
+	"royal": 1,
+	"sacred": 1,
+	"shatter": 1,
+	"punish": 1
+    },
     "Flame Polished Gauntlets": {
         "type": "hands",
         "int": 350,
