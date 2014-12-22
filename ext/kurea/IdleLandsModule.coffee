@@ -745,6 +745,52 @@ module.exports = (Module) ->
             @reply origin, res.message
 
       `/**
+        * Donate gold to your guild.
+        *
+        * @name Guild Donation
+        * @syntax !idle-guild donate gold
+        * @example !idle-guild donate 1337
+        * @category IRC Commands
+        * @package Client
+      */`
+      @addRoute "idle-guild donate :gold", (origin, route) =>
+        [gold] = [route.params.gold]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to donate gold!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          @IdleWrapper.api.player.guild.donate identifier, parseInt gold
+          .then (res) =>
+            @reply origin, res.message
+
+      `/**
+        * Purchase a buff for your guild.
+        *
+        * @name Guild Buff
+        * @syntax !idle-guild buff "type" tier
+        * @example !idle-guild buff "Strength" 1
+        * @category IRC Commands
+        * @package Client
+      */`
+      @addRoute "idle-guild buff \":type\" :tier", (origin, route) =>
+        [type, tier] = [route.params.type, route.params.tier]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to buy a guild buff!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          @IdleWrapper.api.player.guild.buff identifier, type, parseInt tier
+          .then (res) =>
+            @reply origin, res.message
+
+      `/**
         * Manage your password, or authenticate.
         *
         * @name idle-secure

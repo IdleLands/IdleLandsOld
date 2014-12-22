@@ -306,6 +306,16 @@ class API
         .then (res) =>
           @gameInstance.guildManager.leaveGuild identifier if res.isSuccess
 
+      donate: (identifier, gold) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          @gameInstance.guildManager.donate identifier, gold if res.isSuccess
+
+      buff: (identifier, type, tier) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          @gameInstance.guildManager.addBuff identifier, type, tier if res.isSuccess
+
     shop:
       buy: (identifier, slot) =>
         @validateIdentifier identifier

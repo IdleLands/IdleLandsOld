@@ -6,6 +6,8 @@ RestrictedNumber = require "restricted-number"
 Q = require "q"
 MessageCreator = require "./MessageCreator"
 Constants = require "./Constants"
+requireDir = require "require-dir"
+guildBuffs = requireDir "../character/guildBuffs", recurse: yes
 
 class GuildManager
 
@@ -20,6 +22,11 @@ class GuildManager
       db.ensureIndex { name: 1 }, { unique: true }, ->
 
     @loadAllGuilds()
+
+    # Check guild buffs every minute, which is 60000 ms
+    @checkBuffInterval = setInterval =>
+      @checkBuffs()
+    , 60000
 
   waitForGuild: ->
     @defer.promise
@@ -78,9 +85,17 @@ class GuildManager
         guild.guildManager = @
         guild.invitesLeft()
         guild.avgLevel()
+        guild.gold = new RestrictedNumber 0, 9999999999, 0 if not guild.gold
+        guild.gold.__current = 0 if _.isNaN guild.gold.__current
+        guild.gold.__proto__ = RestrictedNumber.prototype
+        guild.buffs = _.compact guild.buffs
+        _.each guild.buffs, (buff) ->
+          if guildBuffs["Guild#{buff.type}"]
+            buff.__proto__ = guildBuffs["Guild#{buff.type}"].prototype
+          else guild.buffs = _.without buff
         @guilds.push guild
         @guildHash[guild.name] = guild
-
+      @checkBuffs()
       @defer.resolve()
 
   retrieveAllGuilds: (callback) ->
@@ -189,5 +204,54 @@ class GuildManager
     @db.remove {name: guild.name}
 
     Q {isSuccess: yes, code: 74, message: "You've successfully disbanded your guild."}
+
+  checkBuffs: ->
+    for guild in @guilds
+      guild.buffs = [] if not guild.buffs
+      guild.buffs = _.reject guild.buffs, ((buff) -> buff.expire < Date.now())
+
+  addBuff: (identifier, type, tier) ->
+    player = @game.playerManager.getPlayerById identifier
+    return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} if not player.guild
+    return Q {isSuccess: no, code: 61, message: "You aren't a guild admin!"} if not @checkAdmin player.name
+    typeString = "Guild#{type}"
+    return Q {isSuccess: no, code: 150, message: "That is not a valid guild buff type!"} if not guildBuffs[typeString]
+    return Q {isSuccess: no, code: 151, message: "That is not a valid tier!"} if not guildBuffs[typeString].tiers[tier]
+    guild = @guildHash[player.guild]
+    return Q {isSuccess: no, code: 152, message: "Your guild is not a high enough level!"} if guildBuffs[typeString].tiers[tier].level > guild.level
+    return Q {isSuccess: no, code: 153, message: "Your guild does not have enough members!"} if guildBuffs[typeString].tiers[tier].members > guild.members.length
+
+    guild.gold = new RestrictedNumber 0, 9999999999, 0 if not guild.gold
+    return Q {isSuccess: no, code: 56, message: "Your guild does not have enough gold!"} if guildBuffs[typeString].tiers[tier].cost > guild.gold.getValue()
+    guild.gold.sub guildBuffs[typeString].tiers[tier].cost
+
+    guild.buffs = [] if not guild.buffs
+    current = _.findWhere guild.buffs, {type: type}
+    if current?
+      return Q {isSuccess: no, code: 154, message: "Your guild already has a higher tier of this buff!"} if current.tier > tier
+      if current.tier is tier
+        current.refresh tier
+        guild.save()
+        return Q {isSuccess: yes, code: 155, message: "You have refreshed the #{current.name} guild buff."}
+      else
+        guild.buffs = _.without guild.buffs, current
+    buff = new guildBuffs[typeString] tier
+    guild.buffs.push (new guildBuffs[typeString] tier)
+    guild.save()
+    return Q {isSuccess: yes, code: 156, message: "You have purchased the #{buff.name} guild buff."}
+
+  donate: (identifier, gold) ->
+    player = @game.playerManager.getPlayerById identifier
+    console.log player.guild
+    return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} if not player.guild
+    return Q {isSuccess: no, code: 56, message: "You don't have enough gold!"} if player.gold.getValue() < gold
+    guild = @guildHash[player.guild]
+    guild.gold = new RestrictedNumber 0, 9999999999, 0 if not @guildHash[player.guild].gold
+    gold = Math.min gold, guild.gold.maximum-guild.gold.getValue() #Prevent overdonation
+    guild.gold.add gold
+    player.gold.sub gold
+    guild.save()
+    player.save()
+    return Q {isSuccess: yes, code: 157, message: "You have donated #{gold} gold to #{guild.name}."}
 
 module.exports = exports = GuildManager

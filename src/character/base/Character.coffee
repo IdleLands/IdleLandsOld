@@ -70,6 +70,7 @@ class Character extends EventEmitter2
     .concat @playerManager?.game.calendar.getDateEffects()
     .concat @calendar?.game.calendar.getDateEffects() # for monsters
     .concat @getRegion?()
+    .concat @playerManager?.game.guildManager.guildHash[@guild]?.buffs ? []
 
     _.reduce array, (combined, iter) ->
       applied = if _.isFunction iter?[appFunctionName] then iter?[appFunctionName]?.apply iter, args else iter?[appFunctionName]
