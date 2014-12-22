@@ -9,8 +9,8 @@ class GuildBuff
 
   refresh: (tier) ->
     duration = @tiers[tier].duration
-    seconds = (duration.years ?= 0) * 31556900 +
-      (duration.months ?= 0) * 2629740 +
+    seconds = (duration.years ?= 0) * 31536000 + # 365 days
+      (duration.months ?= 0) * 2592000 + # 30 days
       (duration.days ?= 0) * 86700 +
       (duration.hours ?= 0) * 3600 +
       (duration.minutes ?= 0) * 60 +
