@@ -219,6 +219,7 @@ class GuildManager
     return Q {isSuccess: no, code: 151, message: "That is not a valid tier!"} if not guildBuffs[typeString].tiers[tier]
     guild = @guildHash[player.guild]
     return Q {isSuccess: no, code: 152, message: "Your guild is not a high enough level!"} if guildBuffs[typeString].tiers[tier].level > guild.level
+    return Q {isSuccess: no, code: 153, message: "Your guild does not have enough members!"} if guildBuffs[typeString].tiers[tier].members > guild.members.length
 
     guild.gold = new RestrictedNumber 0, 9999999999, 0 if not guild.gold
     return Q {isSuccess: no, code: 56, message: "Your guild does not have enough gold!"} if guildBuffs[typeString].tiers[tier].cost > guild.gold.getValue()
@@ -227,17 +228,17 @@ class GuildManager
     guild.buffs = [] if not guild.buffs
     current = _.findWhere guild.buffs, {type: type}
     if current?
-      return Q {isSuccess: no, code: 153, message: "Your guild already has a higher tier of this buff!"} if current.tier > tier
+      return Q {isSuccess: no, code: 154, message: "Your guild already has a higher tier of this buff!"} if current.tier > tier
       if current.tier is tier
         current.refresh tier
         guild.save()
-        return Q {isSuccess: yes, code: 154, message: "You have refreshed the #{current.name} guild buff."}
+        return Q {isSuccess: yes, code: 155, message: "You have refreshed the #{current.name} guild buff."}
       else
         guild.buffs = _.without guild.buffs, current
     buff = new guildBuffs[typeString] tier
     guild.buffs.push (new guildBuffs[typeString] tier)
     guild.save()
-    return Q {isSuccess: yes, code: 155, message: "You have bought the #{buff.name} guild buff."}
+    return Q {isSuccess: yes, code: 156, message: "You have purchased the #{buff.name} guild buff."}
 
   donate: (identifier, gold) ->
     player = @game.playerManager.getPlayerById identifier
@@ -251,6 +252,6 @@ class GuildManager
     player.gold.sub gold
     guild.save()
     player.save()
-    return Q {isSuccess: yes, code: 156, message: "You have donated #{gold} gold to #{guild.name}."}
+    return Q {isSuccess: yes, code: 157, message: "You have donated #{gold} gold to #{guild.name}."}
 
 module.exports = exports = GuildManager
