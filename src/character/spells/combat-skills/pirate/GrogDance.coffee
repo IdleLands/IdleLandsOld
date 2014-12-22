@@ -55,10 +55,10 @@ class GrogDance extends Spell
       message = "%casterName stops %hisher %spellName."
       @broadcast player, message
       frenzy = @game.spellManager.modifySpell new DrunkenFrenzy @game, @caster
-      frenzy.prepareCast()
+      frenzy.prepareCast @caster
       if @caster.profession.drunkPct.atMax()
         stupor = new DrunkenStupor @game, @caster
-        stupor.prepareCast()
+        stupor.prepareCast @caster
 
   constructor: (@game, @caster) ->
     super @game, @caster

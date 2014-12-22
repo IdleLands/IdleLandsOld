@@ -112,8 +112,8 @@ class PetManager
     @db.update {createdAt: pet.createdAt}, pet, {upsert: yes}, (e) =>
       @game.errorHandler.captureException e if e
 
-  getPetsForPlayer: (player) ->
-    _.find @pets, {'owner.identifier': player.identifier}
+  getPetsForPlayer: (identifier) ->
+    _.find @pets, {'owner.identifier': identifier}
 
   changePetForPlayer: (player, newPet) ->
     @activePets[player.identifier]?.isActive = no

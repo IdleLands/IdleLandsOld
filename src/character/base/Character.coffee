@@ -176,13 +176,14 @@ class Character extends EventEmitter2
     Math.min 100, (Math.max 0, Constants.defaults.player.defaultYesPercent + @personalityReduce 'calculateYesPercentBonus')
 
   recalculateStats: ->
-    @hp.maximum = @calc.hp()
-    @mp.maximum = @calc.mp()
 
     @calc.itemFindRange()
 
     # force a recalculation
     @calc.stats ['str', 'dex', 'con', 'int', 'agi', 'luck', 'wis', 'water', 'fire', 'earth', 'ice', 'thunder']
+
+    @hp.maximum = @calc.hp()
+    @mp.maximum = @calc.mp()
 
   levelUpXpCalc: (level) ->
     Math.floor 100 + (400 * Math.pow level, 1.71)
@@ -221,10 +222,11 @@ class Character extends EventEmitter2
         combinedVal = Math.round(baseVal*(1+percent/100))
         combinedVal = 0 if _.isNaN combinedVal or (not ignoreNegative and combinedVal < 0)
         @statCache[stat] = combinedVal
+
         combinedVal
 
       stats: (stats) ->
-        _.reduce stats, ((prev, stat) => prev+@stat stat), 0
+        _.reduce stats, ((prev, stat) => prev+@self.calc.stat stat), 0
 
       #`/**
       # * Absolute adds a static amount of damage to all of your attacks.

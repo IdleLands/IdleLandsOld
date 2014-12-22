@@ -43,7 +43,10 @@
 "My Little Painbringers"  dex=311 luck=5 str=200
 
 # idle-class
-"Glowing Gauntlets of the Idling Gods" str=1500 con=1500 dex=1000
+"Glowing Gauntlets of the Idling Gods" str=1500 dex=1000 agi=1500 luck=200 glowing=1 defense=1 parry=2
 
 # godly-class
-"Infinitely Expanding Fractal Gloves" int=-1000 con=3000 str=3000 dex=3000
+"Infinitely Expanding Fractal Gloves" int=-1000 con=1000 str=3000 dex=3000 darkside=4 fear=1
+
+# celestial something or another
+"Celestial Cannonhands" str=1000 dex=1000 con=1000 agi=1000 wis=1000 luck=1000 glowing=1 parry=1 offense=1

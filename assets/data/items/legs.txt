@@ -60,7 +60,10 @@
 "Untouchable Pants"  agi=300 con=315 luck=35
 
 # idle-class
-"Gloomy Greaves of the Idling Gods" con=1500 agi=1500 str=1500
+"Gloomy Greaves of the Idling Gods" con=1000 agi=1000 dex=500 vampire=1 defense=1 poison=1
 
 # godly-class
-"The Biggest Fishnets You Ever Dun Seen" agi=1500 con=1500 int=-200 wis=-100 dex=7000
+"The Biggest Fishnets You Ever Dun Seen" agi=1500 dex=7000 con=500 dance=1 startle=1
+
+# celestial something or another
+"Celestial Chausses" str=1000 dex=1000 con=1000 agi=1000 wis=1000 luck=1000 glowing=1 parry=1 offense=1

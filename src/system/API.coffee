@@ -256,6 +256,11 @@ class API
         .then (res) ->
           res.player.changePetClass petClass if res.isSuccess
 
+      getAllPets: (identifier) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          @gameInstance.petManager.getPetsForPlayer identifier if res.isSuccess
+
     guild:
       create: (identifier, guildName) =>
         @validateIdentifier identifier

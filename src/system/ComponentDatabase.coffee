@@ -30,7 +30,7 @@ class ComponentDatabase
   retrieveBattle: (battleId) ->
     defer = Q.defer()
     @battleDb.findOne {_id: ObjectID battleId}, (e, doc) =>
-      @game.errorHandler.captureException e
+      @game.errorHandler.captureException e if e
       defer.resolve {isSuccess: no, code: 120, message: "Battle not found."} if e or not doc
       defer.resolve {isSuccess: yes, code: 121, message: "Battle retrieved.", battle: doc}
 

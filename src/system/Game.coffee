@@ -122,8 +122,9 @@ class Game
       minScore = Math.min partyScores...
       maxScore = Math.max partyScores...
 
-      playerLists = _.map parties, (party) -> _.pluck party, 'name'
+      playerLists = _.map parties, (party) -> _.pluck party.players, 'name'
       modified = _.flatten playerLists
+
       if (_.uniq modified).length < modified.length
         @errorHandler.captureException (new Error "Bad party lineup"), extra: {modified: modified, playerLists: playerLists, parties: parties}
         return no

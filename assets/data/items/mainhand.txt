@@ -354,7 +354,10 @@
 "homeless person" str=500 int=200 wis=-100 dex=400
 
 # idle-class
-"Wingsaber, Whirling Blade of the Idling Gods" str=5000
+"Wingsaber, Whirling Blade of the Idling Gods" str=5000 silver=1 offense=1 prone=1
 
 # godly-class
-"Godly Imagination" str=5000 int=5000
+"Godly Imagination" str=5000 int=3500
+
+# celestial something or another
+"Celestial Cutlass" str=1000 dex=1000 con=1000 agi=1000 wis=1000 luck=1000 glowing=1 parry=1 offense=1 power=1 silver=1

@@ -43,7 +43,10 @@
 "Wolverine" int=150 str=300 wis=150
 
 # idle-class
-"Rebellious Ring of the Idling Gods" int=1500 wis=1500 con=1000 dex=1000
+"Rebellious Ring of the Idling Gods" luck=200 int=1000 wis=1500 dex=1000 parry=1 defense=1 punish=1
 
 # godly-class
-"Earth-sized Diamond" str=12000 agi=-1000 dex=-1000
+"Earth-sized Diamond" str=12000 agi=-1000 dex=-1000 offense=1 vorpal=1
+
+# celestial something or another
+"Celestial Circle" str=1000 dex=1000 con=1000 agi=1000 wis=1000 luck=1000 glowing=1 parry=1 defense=1 royal=1 shatter=1
