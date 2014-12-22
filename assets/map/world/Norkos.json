@@ -2915,6 +2915,24 @@
                  "width":0,
                  "x":1840,
                  "y":32
+                }, 
+                {
+                 "gid":1,
+                 "height":0,
+                 "name":"ToNorkosSecret-1",
+                 "properties":
+                    {
+                     "destx":"11",
+                     "desty":"1",
+                     "map":"Norkos Secret -1",
+                     "movementType":"descend"
+                    },
+                 "rotation":0,
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":688,
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",
