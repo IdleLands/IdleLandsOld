@@ -165,7 +165,14 @@ class PlayerManager
         @addPlayer identifier
         .then (res) =>
           player = @playerHash[identifier]
-          return defer.resolve {isSuccess: yes, code: 15, message: "Successful login.", player: player.buildRESTObject(), token: player.tempSecureToken} if @playerHash[identifier]
+          if @playerHash[identifier] then return defer.resolve
+            isSuccess: yes
+            code: 15
+            message: "Successful login. Welcome back to #{Constants.gameName}, #{player.name}!"
+            player: player.buildRESTObject()
+            token: player.tempSecureToken
+            pet: @game.petManager.getActivePetFor(player)?.buildSaveObject()
+            pets: @game.petManager.getPetsForPlayer player.identifier
       else
         return defer.resolve {isSuccess: no, code: res.code, message: res.message}
 
