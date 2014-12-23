@@ -113,7 +113,7 @@ class PetManager
       @game.errorHandler.captureException e if e
 
   getPetsForPlayer: (identifier) ->
-    _.find @pets, {'owner.identifier': identifier}
+    pets: _.findWhere @pets, (pet) -> pet.owner.identifier is identifier
 
   changePetForPlayer: (player, newPet) ->
     @activePets[player.identifier]?.isActive = no
