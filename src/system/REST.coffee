@@ -30,6 +30,12 @@ app.use compression {threshold: 128}
 app.use bodyParser.urlencoded extended: no
 app.use bodyParser.json()
 
+app.use (err, req, res, next) ->
+  res.json
+    err: err
+    message: err.message
+    stack: err.stack
+
 ###
 
   /player
