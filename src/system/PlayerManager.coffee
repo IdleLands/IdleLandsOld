@@ -122,12 +122,19 @@ class PlayerManager
       player.cannotBeLoggedOut = not autoLogout
       @handleAutoLogout player
 
-      defer.resolve
+      results =
         isSuccess: yes
         code: 18
         message: "Successful login. Welcome back to #{Constants.gameName}, #{player.name}!"
         token: player.tempSecureToken
         player: player.buildRESTObject()
+
+      pet = @game.petManager.getActivePetFor player
+      results.pet = pet.buildSaveObject() if pet
+
+      results.pets = @game.petManager.getPetsForPlayer player.identifier
+
+      defer.resolve results
 
     defer.promise
 

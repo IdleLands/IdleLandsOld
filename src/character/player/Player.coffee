@@ -480,7 +480,8 @@ class Player extends Character
     @emit "player.shop.pet"
 
     pet = @playerManager.game.petManager.getActivePetFor @
-    Q {isSuccess: yes, code: 205, message: "Successfully purchased a new pet (#{pet.type}) named '#{name}'!", pet: pet.buildSaveObject()}
+
+    Q {isSuccess: yes, code: 205, message: "Successfully purchased a new pet (#{pet.type}) named '#{name}'!", pet: pet.buildSaveObject(), pets: @game.petManager.getPetsForPlayer @identifier}
 
   upgradePet: (stat) ->
     pet = @getPet()
