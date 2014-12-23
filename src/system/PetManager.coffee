@@ -113,7 +113,9 @@ class PetManager
       @game.errorHandler.captureException e if e
 
   getPetsForPlayer: (identifier) ->
-    _.map (_.findWhere @pets, (pet) -> pet.owner.identifier is identifier), (pet) -> pet.buildSaveObject()
+    filteredPets = _.findWhere @pets, (pet) -> pet.owner.identifier is identifier
+    @game.errorHandler.captureMessage "PET DEBUG", {extra: _.map filteredPets, (pet) -> pet.buildSaveObject()}
+    _.map filteredPets, (pet) -> pet.buildSaveObject()
 
   changePetForPlayer: (player, newPet) ->
     @activePets[player.identifier]?.isActive = no
