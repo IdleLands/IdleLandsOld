@@ -470,7 +470,9 @@ class Player extends Character
     
     @gold.sub @foundPets[pet].cost
 
-    @playerManager.game.petManager.createPet
+    petManager = @playerManager.game.petManager
+
+    petManager.createPet
       player: @
       type: pet
       name: name
@@ -479,9 +481,9 @@ class Player extends Character
 
     @emit "player.shop.pet"
 
-    pet = @playerManager.game.petManager.getActivePetFor @
+    pet = petManager.getActivePetFor @
 
-    Q {isSuccess: yes, code: 205, message: "Successfully purchased a new pet (#{pet.type}) named '#{name}'!", pet: pet.buildSaveObject(), pets: @game.petManager.getPetsForPlayer @identifier}
+    Q {isSuccess: yes, code: 205, message: "Successfully purchased a new pet (#{pet.type}) named '#{name}'!", pet: pet.buildSaveObject(), pets: petManager.getPetsForPlayer @identifier}
 
   upgradePet: (stat) ->
     pet = @getPet()

@@ -128,11 +128,8 @@ class PlayerManager
         message: "Successful login. Welcome back to #{Constants.gameName}, #{player.name}!"
         token: player.tempSecureToken
         player: player.buildRESTObject()
-
-      pet = @game.petManager.getActivePetFor player
-      results.pet = pet.buildSaveObject() if pet
-
-      results.pets = @game.petManager.getPetsForPlayer player.identifier
+        pet: @game.petManager.getActivePetFor(player).buildSaveObject()
+        pets: @game.petManager.getPetsForPlayer player.identifier
 
       defer.resolve results
 
@@ -258,9 +255,7 @@ class PlayerManager
 
     results = {isSuccess: yes, code: 102, message: "Turn taken.", player: player.buildRESTObject()}
 
-    pet = @game.petManager.getActivePetFor player
-    results.pet = pet.buildSaveObject() if pet
-
+    results.pet = @game.petManager.getActivePetFor(player).buildSaveObject()
     results.pets = @game.petManager.getPetsForPlayer player.identifier
 
     Q results
