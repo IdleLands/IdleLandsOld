@@ -254,6 +254,8 @@ class PlayerManager
     pet = @game.petManager.getActivePetFor player
     results.pet = pet.buildSaveObject() if pet
 
+    results.pets = @game.petManager.getPetsForPlayer player.identifier
+
     Q results
 
   registerLoadAllPlayersHandler: (@playerLoadHandler) ->
