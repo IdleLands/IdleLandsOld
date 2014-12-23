@@ -31,7 +31,7 @@ app.use bodyParser.urlencoded extended: no
 app.use bodyParser.json()
 
 app.use (err, req, res, next) ->
-  res.json
+  res.status(500).send
     err: err
     message: err.message
     stack: err.stack
