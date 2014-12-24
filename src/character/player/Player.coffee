@@ -595,7 +595,7 @@ class Player extends Character
 
     pet[option] = value
 
-    Q {isSuccess: yes, code: 223, message: "Successfully set #{option} to #{value} for #{pet.name}."}
+    Q {isSuccess: yes, code: 223, message: "Successfully set #{option} to #{value} for #{pet.name}.", pet: pet.buildSaveObject()}
 
   equipPetItem: (itemSlot) ->
     pet = @getPet()
