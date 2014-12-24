@@ -518,6 +518,7 @@ class Player extends Character
   takePetGold: ->
     pet = @getPet()
     return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
+    return Q {isSuccess: no, code: 233, message: "Your pet has no gold."} if pet.gold.atMinimum()
 
     gold = pet.gold.getValue()
     @gold.add gold
@@ -631,7 +632,7 @@ class Player extends Character
 
     pet.petManager.changePetForPlayer @, newPet
 
-    Q {isSuccess: yes, code: 230, message: "Successfully made #{newPet.name}, the #{newPet.type} your active pet!", pet: newPet.buildSaveObject()}
+    Q {isSuccess: yes, code: 230, message: "Successfully made #{newPet.name}, the #{newPet.type} your active pet!", pet: newPet.buildSaveObject(), pets: pet.petManager.getPetsForPlayer @identifier}
 
   save: ->
     return if not @playerManager

@@ -168,7 +168,7 @@ class PlayerManager
         token: player.tempSecureToken
         pet: @game.petManager.getActivePetFor(player)?.buildSaveObject()
         pets: @game.petManager.getPetsForPlayer player.identifier
-        
+
       if res.isSuccess
         @addPlayer identifier
         .then (res) =>
