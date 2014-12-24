@@ -31,6 +31,7 @@ app.use bodyParser.urlencoded extended: no
 app.use bodyParser.json()
 
 app.use (err, req, res, next) ->
+  API.gameInstance.errorHandler.captureException err
   res.status(500).send
     err: err
     message: err.message
@@ -82,4 +83,4 @@ process.on 'uncaughtException', (e) ->
     app.listen fallbackPort
 
 # spin it up
-http.createServer(app).listen 80
+http.createServer(app).listen port
