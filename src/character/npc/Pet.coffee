@@ -215,9 +215,12 @@ class Pet extends Character
   canUseItem: (item) ->
     item?.score() <= @getStatAtCurrentLevel 'maxItemScore'
 
+  hasInventorySpace: ->
+    @inventory.length < @getStatAtCurrentLevel 'inventory'
+
   canAddToInventory: (item) ->
     return no if not @canUseItem item
-    @inventory.length < @getStatAtCurrentLevel 'inventory'
+    @hasInventorySpace()
 
   handleItemFind: ->
     findTime = @getStatAtCurrentLevel 'itemFindTimeDuration'

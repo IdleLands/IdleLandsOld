@@ -566,7 +566,7 @@ class Player extends Character
   givePetItem: (itemSlot) ->
     pet = @getPet()
     return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
-    return Q {isSuccess: no, code: 220, message: "Your pet's inventory is full!"} if not pet.canAddToInventory()
+    return Q {isSuccess: no, code: 220, message: "Your pet's inventory is full!"} if not pet.hasInventorySpace()
 
     curItem = @overflow[itemSlot]
     return Q {isSuccess: no, code: 43, message: "You don't have anything in that inventory slot."} if not curItem
