@@ -62,6 +62,25 @@ class PetManager
 
     @changePetForPlayer player, newPet
 
+  verifyAndCorrectPet: (pet) ->
+    # reset stats to max value if they go over
+    for stat, value of pet.scaleLevel
+      pet.scaleLevel[stat] = Math.min pet.scaleLevel[stat], PetData[pet.type].scale[stat].length
+
+    # unequip all items in an invalid or over-filled slot
+    currentlyEquipped = _.countBy pet.equipment, 'type'
+    for slot, max of PetData[pet.type].slots
+      if currentlyEquipped[slot] > max
+        items = _.filter pet.equipment, (item) -> item.type is slot
+        _.each items, (item) -> pet.unequip item
+
+    # sell items that are overflowing the inventory
+    itemsOverMax = PetData[pet.type].scale.inventory[pet.scaleLevel.inventory] - pet.inventory.length
+    if itemsOverMax > 0
+      sellItems = pet.inventory[0...itemsOverMax]
+      _.each sellItems, (item) -> pet.sellItem item, no
+
+
   loadPet: (pet) ->
     pet.petManager = @
     @pets.push pet
@@ -93,6 +112,8 @@ class PetManager
     @handleSoul pet
 
     @configurePet pet
+
+    @verifyAndCorrectPet pet
 
     pet.recalculateStats()
 
