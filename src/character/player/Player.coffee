@@ -617,10 +617,11 @@ class Player extends Character
     item = pet.findEquipped uid
     return Q {isSuccess: no, code: 226, message: "Your pet does not have that item equipped!"} if not item
     return Q {isSuccess: no, code: 231, message: "You can't unequip your pets soul, you jerk!"} if item.type is "pet soul"
+    return Q {isSuccess: no, code: 220, message: "Your pet's inventory is full!"} if not pet.hasInventorySpace()
 
     pet.unequip item
 
-    Q {isSuccess: yes, code: 227, message: "Successfully unequipped #{item.name} from your pet (#{pet.name}).", pet: newPet.buildSaveObject()}
+    Q {isSuccess: yes, code: 227, message: "Successfully unequipped #{item.name} from your pet (#{pet.name}).", pet: pet.buildSaveObject()}
 
   swapToPet: (petId) ->
     pet = @getPet()
