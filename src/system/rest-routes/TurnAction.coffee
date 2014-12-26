@@ -10,6 +10,6 @@ router
 .post (req, res) ->
   {identifier} = req.body
   API.player.takeTurn identifier
-  .then (resp) -> res.send resp
+  .then (resp) -> res.json resp
 
 module.exports = router
