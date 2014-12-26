@@ -232,6 +232,9 @@ class Pet extends Character
       @actuallyFindItem()
       @addToItemFindTimer findTime
 
+  hasEquipmentSlot: (slot) ->
+    PetData[@type].slots[slot]
+
   getStatAtCurrentLevel: (stat) ->
     config = PetData[@type]
     config.scale[stat][@scaleLevel[stat]]
