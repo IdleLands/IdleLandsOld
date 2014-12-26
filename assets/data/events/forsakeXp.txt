@@ -72,3 +72,4 @@ There was a snail burrito laying on the ground and %player, being as wise as %sh
 In todays Death Daily, %player found %hisher name. Better luck next time!
 %player forgot to use %hisher blinker when merging into a nearby lane, and got hit off the road due to %hisher negligence!
 %player found a legendary weapon and went to fight the demon lord. Sadly it was Excalipoor and %player died quickly losing %xp xp.
+%player got "The Song That Never Ends" stuck in %hisher head. It won't go away. For weeks!
