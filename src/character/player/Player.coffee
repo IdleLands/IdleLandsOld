@@ -518,7 +518,7 @@ class Player extends Character
   takePetGold: ->
     pet = @getPet()
     return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
-    return Q {isSuccess: no, code: 233, message: "Your pet has no gold."} if pet.gold.atMinimum()
+    return Q {isSuccess: no, code: 233, message: "Your pet has no gold."} if pet.gold.atMin()
 
     gold = pet.gold.getValue()
     @gold.add gold
