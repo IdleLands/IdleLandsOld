@@ -23,7 +23,6 @@
          "y":0
         }, 
         {
-         "draworder":"topdown",
          "height":20,
          "name":"Interactables",
          "objects":[
@@ -38,7 +37,6 @@
                      "map":"Norkos",
                      "movementType":"ascend"
                     },
-                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -56,7 +54,6 @@
                      "map":"Haunted Ship -2",
                      "movementType":"descend"
                     },
-                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -71,7 +68,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"Collectible",
                  "visible":true,
                  "width":0,
@@ -86,7 +82,6 @@
          "y":0
         }, 
         {
-         "draworder":"topdown",
          "height":24,
          "name":"Regions",
          "objects":[
@@ -97,7 +92,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":160,
@@ -106,7 +100,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "width":12,
          "x":0,
          "y":0
@@ -116,7 +110,6 @@
     {
 
     },
- "renderorder":"right-down",
  "tileheight":16,
  "tilesets":[
         {
