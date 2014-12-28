@@ -99,7 +99,7 @@ class EventHandler
     @game.bossFactory.createBoss bossName
 
   createBosses: (bossNames) ->
-    _.map bossNames, @createBoss
+    _.map bossNames, @createBoss, @
 
   bossBattleParty: (player, bossParty, name) ->
 
