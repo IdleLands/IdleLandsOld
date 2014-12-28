@@ -176,7 +176,7 @@ class Pet extends Character
     if findLowest
       lowestScoreItem = _.min @inventory, (item) -> item.score()
 
-      if lowestScoreItem.score() < item.score()
+      if lowestScoreItem.score() < item?.score()
         @inventory.push item
         @inventory = _.without @inventory, lowestScoreItem
         item = lowestScoreItem

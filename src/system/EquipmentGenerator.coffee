@@ -12,7 +12,7 @@ class EquipmentGenerator extends Generator
     itemList = @game.componentDatabase.itemStats
     type = _.sample @types if not type
 
-    return if not itemList[type]
+    return null if not itemList[type]
 
     baseItem = _.sample itemList[type]
 
@@ -35,7 +35,6 @@ class EquipmentGenerator extends Generator
     (@mergePropInto item,  _.sample itemList['prefix-special']) if chance.integer({min: 0, max: 120}) <= 0+generatorBonus
 
     (@mergePropInto item,  _.sample itemList['suffix']) if chance.integer({min: 0, max: 85}) <= 0+generatorBonus
-
 
   cleanUpItem: (item) ->
     (if _.isNaN val then item[attr] = true) for attr,val of item
