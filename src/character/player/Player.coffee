@@ -164,12 +164,13 @@ class Player extends Character
       return defer.resolve {isSuccess: no, code: 43, message: "A mysterious force compels you to not equip that item. It may be too powerful."}
 
     @equip inOverflow
-    if current.name is "empty"
+    if not current.name is "empty"
       @overflow[slot] = current
 
       return defer.resolve {isSuccess: yes, code: 47, message: "Successfully swapped #{current.name} with #{inOverflow.name} (slot #{slot}).", player: @buildRESTObject()}
 
-    return defer.resolve {isSuccess: yes, code: 47, message: "Successfully equipped #{inOverflow.name} (slot #{slot}).", player: @buildRESTObject()}
+    @overflow[slot] = null
+    defer.resolve {isSuccess: yes, code: 47, message: "Successfully equipped #{inOverflow.name} (slot #{slot}).", player: @buildRESTObject()}
 
   sellOverflow: (slot, defer) ->
     curItem = @overflow[slot]
