@@ -2666,7 +2666,7 @@
                  "y":3808
                 }, 
                 {
-                 "gid":38,
+                 "gid":2,
                  "height":0,
                  "name":"ToLich",
                  "properties":
@@ -2683,7 +2683,7 @@
                  "y":3360
                 }, 
                 {
-                 "gid":38,
+                 "gid":2,
                  "height":0,
                  "name":"ToHomlet",
                  "properties":
@@ -3242,21 +3242,6 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/..\/img\/tiles.png",
-         "imageheight":64,
-         "imagewidth":144,
-         "margin":0,
-         "name":"tiles",
-         "properties":
-            {
-
-            },
-         "spacing":0,
-         "tileheight":16,
-         "tilewidth":16
-        }, 
-        {
-         "firstgid":37,
          "image":"..\/..\/img\/tiles.png",
          "imageheight":64,
          "imagewidth":144,
