@@ -195,6 +195,9 @@
         "specialStats": {
         },
         "requirements": {
+            "statistics": {
+                "explore walk water": 25000
+            },
             "collectibles": [
                 "Dried Up, Not Tasty Fish",
                 "Small, Tasty Fish",
