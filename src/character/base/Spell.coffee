@@ -149,7 +149,7 @@ class Spell
 
     _.each @affected, (player) =>
       if not player
-        @game.errorHandler.captureMessage "INVALID PLAYER for #{@baseName}: ", player
+        @game.errorHandler.captureException (new Error "INVALID PLAYER for #{@baseName}: #{player?.name}"), extra: player
         return
 
       @baseTurns[player.name] = @turns[player.name] = turns[player.name] = @calcDuration player
