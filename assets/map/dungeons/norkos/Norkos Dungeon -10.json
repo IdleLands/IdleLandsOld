@@ -306,6 +306,7 @@
                  "name":"",
                  "properties":
                     {
+                     "flavorText":"What are those strange bells that I hear?",
                      "requireClass":"Jester"
                     },
                  "type":"",
