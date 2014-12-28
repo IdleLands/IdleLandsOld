@@ -177,6 +177,27 @@ class PetManager
   getConfig: (pet) ->
     PetData[pet.type]
 
+  buildPetSaveObject: (pet) ->
+    realCalc = _.omit pet.calc, 'self'
+    calc = realCalc.base
+    calcStats = realCalc.statCache
+    badStats = [
+      'petManager'
+      'party'
+      'personalities'
+      'identifier'
+      'calc'
+      'spellsAffectedBy'
+      'fled'
+      '_events'
+      'profession'
+      '_id'
+    ]
+    ret = _.omit pet, badStats
+    ret._baseStats = calc
+    ret._statCache = calcStats
+    ret
+
   checkPetAvailablity: (player) ->
     player.foundPets = {} if not player.foundPets
     for key,val of PetData

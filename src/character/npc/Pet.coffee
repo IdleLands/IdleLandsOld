@@ -124,25 +124,7 @@ class Pet extends Character
     chance.bool {likelihood: @getStatAtCurrentLevel 'battleJoinPercent'}
 
   buildSaveObject: ->
-    realCalc = _.omit @calc, 'self'
-    calc = realCalc.base
-    calcStats = realCalc.statCache
-    badStats = [
-      'petManager'
-      'party'
-      'personalities'
-      'identifier'
-      'calc'
-      'spellsAffectedBy'
-      'fled'
-      '_events'
-      'profession'
-      '_id'
-    ]
-    ret = _.omit @, badStats
-    ret._baseStats = calc
-    ret._statCache = calcStats
-    ret
+    @petManager.buildPetSaveObject @
 
   increaseStat: (stat) ->
     @scaleLevel[stat] = 0 if not @scaleLevel[stat]
