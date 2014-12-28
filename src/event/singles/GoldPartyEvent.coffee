@@ -16,6 +16,8 @@ class GoldPartyEvent extends Event
       @game.errorHandler.captureException (new Error "GOLD PARTY EVENT FAILURE"), extra: @event
       return
 
+    return if not @player.party
+
     extra =
       partyName: @player.party.name
 
