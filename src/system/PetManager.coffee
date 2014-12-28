@@ -20,7 +20,7 @@ class PetManager
 
     @db.findForEach {}, @loadPet, @
 
-    @DELAY_INTERVAL = 1000
+    @DELAY_INTERVAL = 10000
     @beginGameLoop()
 
   beginGameLoop: ->
