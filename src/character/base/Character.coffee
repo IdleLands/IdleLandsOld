@@ -626,6 +626,15 @@ class Character extends EventEmitter2
         value += @self.calc.boosts ['silver', 'offense', 'glowing', 'vorpal'], maxDamage
         Math.min value, maxDamage-1
 
+      #`/**
+      # * Damage reduction makes it so you take less damage.
+      # *
+      # * @name damageReduction
+      # * @combat
+      # * @stacks yes (Stacking formula is -1 damage / damageReduction point)
+      # * @category Equipment Effects
+      # * @package Item
+      # */`
       damageReduction: ->
         @base.damageMultiplier = 0
         @self.personalityReduce 'damageReduction', [@self, @base.damageReduction], @base.damageReduction

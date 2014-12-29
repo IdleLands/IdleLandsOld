@@ -34,6 +34,7 @@ class Equipment
     water: 0.3
     earth: 0.3
     thunder: 0.3
+    holy: 1
 
     gold: 2
     xp: 7
@@ -56,6 +57,7 @@ class Equipment
     waterPercent: 2
     earthPercent: 2
     thunderPercent: 2
+    holyPercent: 5
 
     goldPercent: 10
     xpPercent: 27
@@ -95,6 +97,7 @@ class Equipment
     parry: 450
     punish: 450
     darkside: 300
+    damageReduction: 10
 
     sticky: 1000
 

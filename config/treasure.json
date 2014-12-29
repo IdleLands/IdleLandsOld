@@ -1,65 +1,127 @@
 {
-    "Draygon Armor": {
-        "type": "body",
-        "str": 300,
-        "agi": 300,
-        "dex": 300
-    },
-    "Draygon Helmet": {
-        "type": "head",
-        "str": 300,
-        "agi": 300,
-        "dex": 300
-    },
-    "Draygon Gloves": {
-        "type": "hands",
-        "str": 300,
-        "agi": 300,
-        "dex": 300
-    },
-    "Draygon Greaves": {
-        "type": "legs",
-        "str": 300,
-        "agi": 300,
-        "dex": 300
-    },
-    "Red Tunic": {
-        "type": "body",
-        "str": 600,
-        "dex": 150,
-	"luck": 25,
-	"defense": 1,
-	"hpRegen": 25
-    },
-    "Thick Winter Gloves": {
-        "type": "hands",
-        "str": 600,
-        "con": 150,
-        "conPercent": 5,
-	"luck": 25
-    },
-    "Decorative Red Pants": {
-        "type": "legs",
-        "int": 300,
-        "wis": 300,
-        "dex": 300,
-	"luck": 25,
-	"royal": 1
-    },
-    "Heavy Winter Boots": {
-        "type": "feet",
-        "str": 300,
-        "agi": 300,
-        "dex": 150,
-	"luck": 25,
-	"firePercent": 5
-    },
-    "Magical Snowball": {
-        "type": "offhand",
-        "int": 300,
-        "intPercent": 10,
-        "wis": 300,
-	"wisPercent": 10,
-	"luck": 25
-    }
+  "Draygon Armor": {
+    "type": "body",
+    "str": 300,
+    "agi": 300,
+    "dex": 300
+  },
+  "Draygon Helmet": {
+    "type": "head",
+    "str": 300,
+    "agi": 300,
+    "dex": 300
+  },
+  "Draygon Gloves": {
+    "type": "hands",
+    "str": 300,
+    "agi": 300,
+    "dex": 300
+  },
+  "Draygon Greaves": {
+    "type": "legs",
+    "str": 300,
+    "agi": 300,
+    "dex": 300
+  },
+  "Red Tunic": {
+    "type": "body",
+    "str": 600,
+    "dex": 150,
+    "luck": 25,
+    "defense": 1,
+    "hpRegen": 25
+  },
+  "Thick Winter Gloves": {
+    "type": "hands",
+    "str": 600,
+    "con": 150,
+    "conPercent": 5,
+    "luck": 25
+  },
+  "Decorative Red Pants": {
+    "type": "legs",
+    "int": 300,
+    "wis": 300,
+    "dex": 300,
+    "luck": 25,
+    "royal": 1
+  },
+  "Heavy Winter Boots": {
+    "type": "feet",
+    "str": 300,
+    "agi": 300,
+    "dex": 150,
+    "luck": 25,
+    "firePercent": 5
+  },
+  "Magical Snowball": {
+    "type": "offhand",
+    "int": 300,
+    "intPercent": 10,
+    "wis": 300,
+    "wisPercent": 10,
+    "luck": 25
+  },
+  "Radiant Ruby": {
+    "type": "trinket",
+    "str": 250,
+    "strPercent": 20,
+    "int": 250,
+    "intPercent": 20
+  },
+  "Divine Diamond": {
+    "type": "trinket",
+    "str": 400,
+    "strPercent": 30,
+    "con": 400,
+    "conPercent": 30,
+    "haste": -10
+  },
+  "Energetic Emerald": {
+    "type": "trinket",
+    "damageReduction": 500
+  },
+  "Precious Peridot": {
+    "type": "trinket",
+    "luck": 250,
+    "luckPercent": 25
+  },
+  "Timeless Topaz": {
+    "type": "trinket",
+    "haste": 10,
+    "agi": 250,
+    "agiPercent": 15
+  },
+  "Transcendent Tourmaline": {
+    "type": "trinket",
+    "fire": 1000,
+    "firePercent": 10,
+    "ice": 1000,
+    "icePercent": 10,
+    "water": 1000,
+    "waterPercent": 10,
+    "earth": 1000,
+    "earthPercent": 10,
+    "thunder": 1000,
+    "thunderPercent": 10,
+    "holy": 100,
+    "int": 1000,
+    "intPercent": 50,
+    "wis": 1000,
+    "wisPercent": 50,
+    "str": -750,
+    "strPercent": -20,
+    "con": -750,
+    "conPercent": -20,
+    "agi": -750,
+    "agiPercent": -20,
+    "dex": -750,
+    "dexPercent": -20
+  },
+  "Subtle Sapphire": {
+    "type": "trinket",
+    "stealth": 10,
+    "agi": 1000,
+    "agiPercent": 10
+  }
 }
