@@ -515,7 +515,7 @@ class Player extends Character
     myClasses = _.keys @statistics['calculated class changes']
     pet = @getPet()
     return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
-    return Q {isSuccess: no, code: 207, message: "You haven't been that class yet, so you can't teach your pet how to do it!"} if (myClasses.indexOf newClass) is -1
+    return Q {isSuccess: no, code: 207, message: "You haven't been that class yet, so you can't teach your pet how to do it!"} if (myClasses.indexOf newClass) is -1 and newClass isnt "Monster"
 
     pet.setClassTo newClass
 
