@@ -143,6 +143,7 @@ class PetManager
     @activePets[player.identifier]?.save()
     @activePets[player.identifier] = newPet
     @activePets[player.identifier].isActive = yes
+    newPet.updateItemFind()
 
   canUsePet: (pet, player) ->
     requirements = pet.requirements
