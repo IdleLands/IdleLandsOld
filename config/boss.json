@@ -76,7 +76,8 @@
             "mindwipe": 1
         },
         "items": [
-            { "name": "Wardens Gavel", "dropPercent": 95 }
+            { "name": "Wardens Gavel", "dropPercent": 95 },
+            { "name": "Subtle Sapphire", "dropPercent": 25 }
         ]
     },
     "Super Ninja Gaiden": {
