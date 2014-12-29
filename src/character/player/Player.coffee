@@ -337,6 +337,8 @@ class Player extends Character
     regions[@getTileAt().region.replace(/\s/g, '')]
 
   cantEnterTile: (tile) ->
+    return @statistics['calculated map changes'][tile.object.properties.requireMap] if tile.object?.properties?.requireMap
+    return @statistics['calculated regions visited'][tile.object.properties.requireRegion] if tile.object?.properties?.requireRegion
     return @statistics['calculated boss kills'][tile.object.properties.requireBoss] if tile.object?.properties?.requireBoss
     return no if tile.object?.properties?.requireClass and @professionName isnt tile.object?.properties?.requireClass
     return no if not @collectibles or not _.findWhere @collectibles, {name: tile.object?.properties?.requireCollectible}
