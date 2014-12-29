@@ -386,6 +386,15 @@ class PlayerManager
   getPlayerById: (playerId) ->
     @playerHash[playerId]
 
+  incrementPlayerSubmissions: (playerId) ->
+    player = @getPlayerById playerId
+    if player
+      player.permanentAchievements.contentSubmissions = 0 if not player.permanentAchievements.contentSubmissions
+      player.permanentAchievements.contentSubmissions++
+
+    else
+      @db.update {identifier: playerId}, {$inc: {'permanentAchievements.contentSubmissions': 1}}, ->
+
   beginWatchingPlayerStatistics: (player) ->
 
     maxStat = (stat, val) ->

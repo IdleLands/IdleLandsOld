@@ -14,6 +14,16 @@ class API
 
     defer.promise
 
+  @validateContentModerator: (identifier) ->
+    defer = Q.defer()
+    player = @gameInstance.playerManager.getPlayerById identifier
+
+    defer.resolve {isSuccess: no, code: 510, message: "You aren't a content moderator!"} if not player?.isContentModerator
+    defer.resolve {isSuccess: yes, code: 999999, player: player} if player #lol
+    defer.resolve {isSuccess: no, code: 10, message: "You aren't logged in!"}
+
+    defer.promise
+
   # Called on game initialization
   @game =
     handlers:
@@ -31,6 +41,26 @@ class API
 
   # Invoked manually to either update or mess with the game
   @gm =
+    custom:
+      init: =>
+        @gameInstance.gmCommands.initializeCustomData()
+
+      update: =>
+        @gameInstance.gmCommands.updateCustomData()
+
+      approve: (identifier, ids) =>
+        @validateContentModerator identifier
+        .then (res) =>
+          if res.isSuccess then @gameInstance.componentDatabase.approveContent ids else res
+
+      reject: (identifier, ids) =>
+        @validateContentModerator identifier
+        .then (res) =>
+          if res.isSuccess then @gameInstance.componentDatabase.rejectContent ids else res
+
+      modModerator: (newModeratorIdentifier, isModerator = yes) =>
+        @gameInstance.gmCommands.setModeratorStatus newModeratorIdentifier, isModerator
+
     teleport:
       location:
         single: (playerName, location) =>
@@ -86,18 +116,24 @@ class API
     takeTurn: (identifier) =>
       @validateIdentifier identifier
       .then (res) =>
-        @gameInstance.playerManager.playerTakeTurn identifier if res.isSuccess
+        if res.isSuccess then @gameInstance.playerManager.playerTakeTurn identifier else res
+
+    custom:
+      submit: (identifier, data) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          if res.isSuccess then @gameInstance.componentDatabase.submitCustomContent identifier, data else res
 
     gender:
       set: (identifier, newGender) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.setGender newGender if res.isSuccess
+          if res.isSuccess then res.player.setGender newGender else res
 
       remove: (identifier) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.setGender '' if res.isSuccess
+          if res.isSuccess then res.player.setGender '' else res
 
     auth:
       register: (options) =>
@@ -112,8 +148,7 @@ class API
       setPassword: (identifier, password) =>
         @validateIdentifier identifier
         .then (res) =>
-          return (@gameInstance.playerManager.storePasswordFor identifier, password) if res.isSuccess
-          res
+          if res.isSuccess then @gameInstance.playerManager.storePasswordFor identifier, password else res
 
       authenticate: (identifier, password) =>
         @gameInstance.playerManager.checkPassword identifier, password, yes
@@ -121,200 +156,196 @@ class API
       logout: (identifier) =>
         @validateIdentifier identifier
         .then (res) =>
-          return (@gameInstance.playerManager.removePlayer identifier) if res.isSuccess
-          res
+          if res.isSuccess then @gameInstance.playerManager.removePlayer identifier else res
 
       isTokenValid: (identifier, token) =>
         @validateIdentifier identifier
         .then (res) =>
-          return (@gameInstance.playerManager.checkToken identifier, token) if res.isSuccess
-          res
+          if res.isSuccess then @gameInstance.playerManager.checkToken identifier, token else res
 
     overflow:
       add: (identifier, slot) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.manageOverflow "add", slot if res.isSuccess
+          if res.isSuccess then res.player.manageOverflow "add", slot else res
 
       sell: (identifier, slot) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.manageOverflow "sell", slot if res.isSuccess
+          if res.isSuccess then res.player.manageOverflow "sell", slot else res
 
       swap: (identifier, slot) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.manageOverflow "swap", slot if res.isSuccess
+          if res.isSuccess then res.player.manageOverflow "swap", slot else res
 
     personality:
       add: (identifier, personality) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.addPersonality personality if res.isSuccess
+          if res.isSuccess then res.player.addPersonality personality else res
 
       remove: (identifier, personality) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.removePersonality personality if res.isSuccess
+          if res.isSuccess then res.player.removePersonality personality else res
 
     priority:
       add: (identifier, stat, points) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.addPriority stat, points if res.isSuccess
+          if res.isSuccess then res.player.addPriority stat, points else res
 
       set: (identifier, stats) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.setPriorities stats if res.isSuccess
+          if res.isSuccess then res.player.setPriorities stats else res
 
       remove: (identifier, stat, points) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.addPriority stat, -points if res.isSuccess
+          if res.isSuccess then res.player.addPriority stat, -points else res
 
     pushbullet:
       set: (identifier, apiKey) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.setPushbulletKey apiKey if res.isSuccess
+          if res.isSuccess then res.player.setPushbulletKey apiKey else res
 
       remove: (identifier) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.setPushbulletKey '' if res.isSuccess
+          if res.isSuccess then res.player.setPushbulletKey '' else res
 
     string:
       set: (identifier, stringType, string) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.setString stringType, string if res.isSuccess
+          if res.isSuccess then res.player.setString stringType, string else res
 
       remove: (identifier, stringType) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.setString stringType if res.isSuccess
+          if res.isSuccess then res.player.setString stringType else res
 
     pet:
       buy: (identifier, type, name, attr1, attr2) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.buyPet type, name, attr1, attr2 if res.isSuccess
+          if res.isSuccess then res.player.buyPet type, name, attr1, attr2 else res
 
       upgrade: (identifier, stat) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.upgradePet stat if res.isSuccess
+          if res.isSuccess then res.player.upgradePet stat else res
 
       feed: (identifier) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.feedPet() if res.isSuccess
+          if res.isSuccess then res.player.feedPet() else res
 
       takeGold: (identifier) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.takePetGold() if res.isSuccess
+          if res.isSuccess then res.player.takePetGold() else res
 
       giveEquipment: (identifier, itemSlot) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.givePetItem itemSlot if res.isSuccess
+          if res.isSuccess then res.player.givePetItem itemSlot else res
 
       sellEquipment: (identifier, itemSlot) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.sellPetItem itemSlot if res.isSuccess
+          if res.isSuccess then res.player.sellPetItem itemSlot else res
 
       takeEquipment: (identifier, itemSlot) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.takePetItem itemSlot if res.isSuccess
+          if res.isSuccess then res.player.takePetItem itemSlot else res
 
       equipItem: (identifier, itemSlot) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.equipPetItem itemSlot if res.isSuccess
+          if res.isSuccess then res.player.equipPetItem itemSlot else res
 
       unequipItem: (identifier, itemUid) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.unequipPetItem itemUid if res.isSuccess
+          if res.isSuccess then res.player.unequipPetItem itemUid else res
 
       setOption: (identifier, option, value) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.setPetOption option, value if res.isSuccess
+          if res.isSuccess then res.player.setPetOption option, value else res
 
       swapToPet: (identifier, petId) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.swapToPet petId if res.isSuccess
+          if res.isSuccess then res.player.swapToPet petId else res
 
       changeClass: (identifier, petClass) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.changePetClass petClass if res.isSuccess
+          if res.isSuccess then res.player.changePetClass petClass else res
 
     guild:
       create: (identifier, guildName) =>
         @validateIdentifier identifier
         .then (res) =>
-          @gameInstance.guildManager.createGuild identifier, guildName if res.isSuccess
+          if res.isSuccess then @gameInstance.guildManager.createGuild identifier, guildName else res
 
       invite: (identifier, invName) =>
         @validateIdentifier identifier
         .then (res) =>
-          @gameInstance.guildManager.sendInvite identifier, invName if res.isSuccess
+          if res.isSuccess then @gameInstance.guildManager.sendInvite identifier, invName else res
 
       manageInvite: (identifier, accepted, guildName) =>
         @validateIdentifier identifier
         .then (res) =>
-          @gameInstance.guildManager.manageInvite identifier, accepted, guildName if res.isSuccess
+          if res.isSuccess then @gameInstance.guildManager.manageInvite identifier, accepted, guildName else res
 
       promote: (identifier, memberName) =>
         @validateIdentifier identifier
         .then (res) =>
-          return if not res.isSuccess
           guild = res.player.guild
-          @gameInstance.guildManager.guildHash[guild].promote identifier, memberName
+          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].promote identifier, memberName else res
 
       demote: (identifier, memberName) =>
         @validateIdentifier identifier
         .then (res) =>
-          return if not res.isSuccess
           guild = res.player.guild
-          @gameInstance.guildManager.guildHash[guild].demote identifier, memberName if res.isSuccess
+          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].demote identifier, memberName else res
 
       kick: (identifier, playerName) =>
         @validateIdentifier identifier
         .then (res) =>
-          @gameInstance.guildManager.kickPlayer identifier, playerName if res.isSuccess
+          if res.isSuccess then @gameInstance.guildManager.kickPlayer identifier, playerName else res
 
       disband: (identifier) =>
         @validateIdentifier identifier
         .then (res) =>
-          @gameInstance.guildManager.disband identifier if res.isSuccess
+          if res.isSuccess then @gameInstance.guildManager.disband identifier else res
 
       leave: (identifier) =>
         @validateIdentifier identifier
         .then (res) =>
-          @gameInstance.guildManager.leaveGuild identifier if res.isSuccess
+          if res.isSuccess then @gameInstance.guildManager.leaveGuild identifier else res
 
       donate: (identifier, gold) =>
         @validateIdentifier identifier
         .then (res) =>
-          @gameInstance.guildManager.donate identifier, gold if res.isSuccess
+          if res.isSuccess then @gameInstance.guildManager.donate identifier, gold else res
 
       buff: (identifier, type, tier) =>
         @validateIdentifier identifier
         .then (res) =>
-          @gameInstance.guildManager.addBuff identifier, type, tier if res.isSuccess
+          if res.isSuccess then @gameInstance.guildManager.addBuff identifier, type, tier else res
 
     shop:
       buy: (identifier, slot) =>
         @validateIdentifier identifier
         .then (res) ->
-          res.player.buyShop slot if res.isSuccess
+          if res.isSuccess then res.player.buyShop slot else res
       
 module.exports = exports = API

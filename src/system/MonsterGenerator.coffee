@@ -23,7 +23,7 @@ class MonsterGenerator extends Generator
     itemList = @game.componentDatabase.itemStats
 
     if not baseMonster.level
-      @game.errorHandler.captureMessage "GENERATE ERROR, NO LEVEL " + JSON.stringify baseMonster if e
+      @game.errorHandler.captureMessage "GENERATE ERROR, NO LEVEL " + JSON.stringify baseMonster
       return
 
     baseMonster.class = _.sample classes if baseMonster.class is 'Random'

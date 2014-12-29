@@ -8,6 +8,8 @@ fs = require "fs"
 Party = require "../event/Party"
 Q = require "q"
 
+config = require "../../config.json"
+
 class ComponentDatabase
 
   itemStats: {}
@@ -21,6 +23,7 @@ class ComponentDatabase
     @ingredientsDb = new Datastore "items", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @battleDb = new Datastore "battles", (db) -> db.ensureIndex {started: 1}, {expireAfterSeconds: 10800}, ->
     @analyticsDb = new Datastore "analytics", ->
+    @submissionsDb = new Datastore "submissions", ->
 
     @importAllData()
 
@@ -100,7 +103,6 @@ class ComponentDatabase
 
   importAllData: ->
 
-    basePath = "#{__dirname}/../../assets/data"
     me = @
 
     itemDefer = Q.defer()
@@ -115,30 +117,6 @@ class ComponentDatabase
     loadingStrings = stringDefer.promise
     loadingMonsters = monsterDefer.promise
 
-    @itemsDb.remove {}, {}, ->
-      stream "#{basePath}/items", (entry) ->
-        type = entry.name.split(".")[0]
-        fs.readFile entry.fullPath, {}, (e, data) ->
-          _.each data.toString().split("\n"), (line) -> me.parseItemString line, type
-
-        itemDefer.resolve()
-
-    @ingredientsDb.remove {}, {}, ->
-      stream "#{basePath}/ingredients", (entry) ->
-        type = entry.name.split(".")[0]
-        fs.readFile entry.fullPath, {}, (e, data) ->
-          _.each data.toString().split("\n"), (line) -> me.parseIngredientString line, type
-
-        ingredientDefer.resolve()
-
-    @eventsDb.remove {}, {}, ->
-      stream "#{basePath}/events", (entry) ->
-        type = entry.name.split(".")[0]
-        fs.readFile entry.fullPath, {}, (e, data) ->
-          _.each data.toString().split("\n"), (line) -> me.insertStatic type, line
-
-        eventDefer.resolve()
-
     stream = (path, callback) ->
       objStream = readdirp {root: path, fileFilter: "*.txt"}
       objStream
@@ -146,19 +124,49 @@ class ComponentDatabase
       .on "error", (e) -> console.log "importAllData error: #{e}"
       .on "data", callback
 
-    stream "#{basePath}/strings", (entry) ->
-      type = entry.name.split(".")[0]
-      fs.readFile entry.fullPath, {}, (e, data) ->
-        _.each data.toString().split("\n"), (line) -> me.insertString type, line
+    loadPath = (path) =>
+      basePath = "#{__dirname}/../../assets/#{path}"
 
-      stringDefer.resolve()
+      @itemsDb.remove {}, {}, ->
+        stream "#{basePath}/items", (entry) ->
+          type = entry.name.split(".")[0]
+          fs.readFile entry.fullPath, {}, (e, data) ->
+            _.each data.toString().split("\n"), (line) -> me.parseItemString line, type
 
-    stream "#{basePath}/monsters/", (entry) ->
-      fs.readFile entry.fullPath, {}, (e, data) ->
-        arr = data.toString().split("\n")
-        _.each arr, (line) -> me.parseMonsterString line
+          itemDefer.resolve()
 
-        monsterDefer.resolve()
+      @ingredientsDb.remove {}, {}, ->
+        stream "#{basePath}/ingredients", (entry) ->
+          type = entry.name.split(".")[0]
+          fs.readFile entry.fullPath, {}, (e, data) ->
+            _.each data.toString().split("\n"), (line) -> me.parseIngredientString line, type
+
+          ingredientDefer.resolve()
+
+      @eventsDb.remove {}, {}, ->
+        stream "#{basePath}/events", (entry) ->
+          type = entry.name.split(".")[0]
+          fs.readFile entry.fullPath, {}, (e, data) ->
+            _.each data.toString().split("\n"), (line) -> me.insertStatic type, line
+
+          eventDefer.resolve()
+
+      stream "#{basePath}/strings", (entry) ->
+        type = entry.name.split(".")[0]
+        fs.readFile entry.fullPath, {}, (e, data) ->
+          _.each data.toString().split("\n"), (line) -> me.insertString type, line
+
+        stringDefer.resolve()
+
+      stream "#{basePath}/monsters/", (entry) ->
+        fs.readFile entry.fullPath, {}, (e, data) ->
+          arr = data.toString().split("\n")
+          _.each arr, (line) -> me.parseMonsterString line
+
+          monsterDefer.resolve()
+
+    loadPath "data"
+    loadPath "custom" if fs.existsSync "#{__dirname}/../../assets/custom"
 
     @loadingAll = Q.all [
       loadingItems
@@ -167,6 +175,103 @@ class ComponentDatabase
       loadingStrings
       loadingMonsters
     ]
+
+  events: [
+    "battle","blessGold","blessGoldParty","blessItem","blessXp","blessXpParty",
+    "enchant","findItem","flipStat","forsakeGold","forsakeItem","forsakeXp","levelDown"
+    "merchant","party","providence","tinker"
+  ]
+
+  ingredients: [
+    "bread", "veg", "meat"
+  ]
+
+  items: [
+    "body", "charm", "feet", "finger", "hands", "head", "legs", "mainhand", "neck", "offhand"
+    "prefix", "prefix-special", "suffix"
+  ]
+
+  monsters: [
+    "monster"
+  ]
+
+  # here for posterity -- not currently submittable (partially due to conflicts w/ providence)
+  strings: [
+    "adjective", "article", "battleGrammar", "battleTitle", "conjunction", "noun", "partyGrammar"
+    "preposition", "providence", "providenceGrammar"
+  ]
+
+  allValidTypes: -> @events.concat @ingredients.concat @items.concat @monsters.concat @strings
+
+  commitAndPushAllFiles: (types, submitters) ->
+    #if not config.githubUser or not config.githubPass
+    #  @game.errorHandler.captureException new Error "No githubUser or githubPass specified in config.json"
+    #  return
+
+    repo = require("gitty") "#{__dirname}/../../assets/custom"
+
+    message = "New #{types.join ", "}\n\nThanks to #{submitters.join ", "}"
+
+    repo.addSync ["*"]
+    repo.commitSync message
+
+    repo.push "origin", "master", {###username: config.githubUser, password: config.githubPassword###}, ->
+
+  writeNewContentToFile: (newItem) ->
+    validFolders = ["events", "ingredients", "items", "monsters"]
+
+    _.each validFolders, (folder) =>
+      return if not _.contains @[folder], newItem.type
+      fs.appendFileSync "#{__dirname}/../../assets/custom/#{folder}/#{newItem.type}.txt", "#{newItem.content}\n"
+
+  rejectContent: (ids) ->
+    oids = _.map ids, ObjectID
+
+    defer = Q.defer()
+
+    return Q {isSuccess: no, code: 505, message: "You didn't specify any targets."} if ids.length is 0
+
+    @submissionsDb.remove {_id: {$in: oids}}, {multi: yes}, =>
+      defer.resolve isSuccess: yes, code: 504, message: "Successfully burninated #{ids.length} submissions."
+
+    defer.promise
+
+  approveContent: (ids) ->
+    oids = _.map ids, ObjectID
+
+    defer = Q.defer()
+
+    return Q {isSuccess: no, code: 505, message: "You didn't specify any targets."} if ids.length is 0
+
+    @submissionsDb.find {_id: {$in: oids}}, (e, docs) =>
+
+      return defer.resolve {isSuccess: no, code: 502, message: "None of those items are valid targets for approval."} if docs.length is 0
+
+      _.each docs, (doc) =>
+        @writeNewContentToFile doc
+        @game.playerManager.incrementPlayerSubmissions doc.submitter
+
+      @commitAndPushAllFiles (_.sortBy _.uniq _.pluck docs, "type"), (_.sortBy _.uniq _.pluck docs, "submitterName")
+
+      @submissionsDb.remove {_id: {$in: oids}}, {multi: yes}, (e) =>
+        defer.resolve isSuccess: yes, code: 503, message: "Successfully approved #{docs.length} new items."
+
+    defer.promise
+
+  submitCustomContent: (identifier, content) ->
+
+    return Q {isSuccess: no, code: 500, message: "That type is invalid."} if not (content.type in @allValidTypes())
+
+    content.submitterName = @game.playerManager.playerHash[identifier].name
+    content.submitter = identifier
+    content.submissionTime = new Date()
+
+    content.voters = {}
+    content.voters[identifier] = 1
+
+    @submissionsDb.insert content, ->
+
+    Q {isSuccess: yes, code: 501, message: "Successfully submitted new content!"}
 
   insertMonster: (monster) ->
     monster.random = [Math.random(), 0]

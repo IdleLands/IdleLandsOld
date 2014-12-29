@@ -54,6 +54,16 @@ class GMCommands
       teams.push newTeam
     @game.arrangeBattle teams
 
+  initializeCustomData: ->
+    require('git-clone') 'https://github.com/IdleLands/Custom-Assets', "#{__dirname}/../../assets/custom", ->
+
+  updateCustomData: (cb = ->) ->
+    require("git-pull") "#{__dirname}/../../assets/custom", cb
+
+  setModeratorStatus: (identifier, status) ->
+    player = @game.playerManager.getPlayerById identifier
+    player?.isContentModerator = status
+
   locations: _.extend {},
     teleports.towns,
     teleports.bosses,
