@@ -176,32 +176,33 @@ class ComponentDatabase
       loadingMonsters
     ]
 
-  events: [
-    "battle","blessGold","blessGoldParty","blessItem","blessXp","blessXpParty",
-    "enchant","findItem","flipStat","forsakeGold","forsakeItem","forsakeXp","levelDown"
-    "merchant","party","providence","tinker"
-  ]
+  contentFolders:
+    events: [
+      "battle","blessGold","blessGoldParty","blessItem","blessXp","blessXpParty",
+      "enchant","findItem","flipStat","forsakeGold","forsakeItem","forsakeXp","levelDown"
+      "merchant","party","providence","tinker"
+    ]
 
-  ingredients: [
-    "bread", "veg", "meat"
-  ]
+    ingredients: [
+      "bread", "veg", "meat"
+    ]
 
-  items: [
-    "body", "charm", "feet", "finger", "hands", "head", "legs", "mainhand", "neck", "offhand"
-    "prefix", "prefix-special", "suffix"
-  ]
+    items: [
+      "body", "charm", "feet", "finger", "hands", "head", "legs", "mainhand", "neck", "offhand"
+      "prefix", "prefix-special", "suffix"
+    ]
 
-  monsters: [
-    "monster"
-  ]
+    monsters: [
+      "monster"
+    ]
 
-  # here for posterity -- not currently submittable (partially due to conflicts w/ providence)
-  strings: [
-    "adjective", "article", "battleGrammar", "battleTitle", "conjunction", "noun", "partyGrammar"
-    "preposition", "providence", "providenceGrammar"
-  ]
+    # here for posterity -- not currently submittable (partially due to conflicts w/ providence)
+    strings: [
+      "adjective", "article", "battleGrammar", "battleTitle", "conjunction", "noun", "partyGrammar"
+      "preposition", "providence", "providenceGrammar"
+    ]
 
-  allValidTypes: -> @events.concat @ingredients.concat @items.concat @monsters.concat @strings
+  allValidTypes: -> @contentFolders.events.concat @contentFolders.ingredients.concat @contentFolders.items.concat @contentFolders.monsters.concat @contentFolders.strings
 
   commitAndPushAllFiles: (types, submitters) ->
     #if not config.githubUser or not config.githubPass
@@ -221,7 +222,7 @@ class ComponentDatabase
     validFolders = ["events", "ingredients", "items", "monsters"]
 
     _.each validFolders, (folder) =>
-      return if not _.contains @[folder], newItem.type
+      return if not _.contains @contentFolders[folder], newItem.type
       fs.appendFileSync "#{__dirname}/../../assets/custom/#{folder}/#{newItem.type}.txt", "#{newItem.content}\n"
 
   rejectContent: (ids) ->
@@ -231,7 +232,7 @@ class ComponentDatabase
 
     return Q {isSuccess: no, code: 505, message: "You didn't specify any targets."} if ids.length is 0
 
-    @submissionsDb.remove {_id: {$in: oids}}, {multi: yes}, =>
+    @submissionsDb.remove {_id: {$in: oids}}, {multi: yes}, ->
       defer.resolve isSuccess: yes, code: 504, message: "Successfully burninated #{ids.length} submissions."
 
     defer.promise
@@ -253,7 +254,7 @@ class ComponentDatabase
 
       @commitAndPushAllFiles (_.sortBy _.uniq _.pluck docs, "type"), (_.sortBy _.uniq _.pluck docs, "submitterName")
 
-      @submissionsDb.remove {_id: {$in: oids}}, {multi: yes}, (e) =>
+      @submissionsDb.remove {_id: {$in: oids}}, {multi: yes}, (e) ->
         defer.resolve isSuccess: yes, code: 503, message: "Successfully approved #{docs.length} new items."
 
     defer.promise
