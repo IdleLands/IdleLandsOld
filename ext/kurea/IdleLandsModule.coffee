@@ -916,6 +916,45 @@ module.exports = (Module) ->
           (@IdleWrapper.api.player.pet[action]? identifier, param)?.then (res) =>
             @reply origin, res.message
 
+      `/**
+       * Manage custom data for the game.
+       *
+       * @name idle-customdata
+       * @gmOnly
+       * @syntax !idle-customdata <command> (init | update)
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-customdata :action", "idle.game.gm", (origin, route) =>
+        [action] = [route.params.action]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to manage custom data!"
+            return
+
+          @IdleWrapper.api.gm.custom[action]?()
+
+      `/**
+       * Manage moderators for managing custom data for the game.
+       *
+       * @name idle-custommod
+       * @gmOnly
+       * @syntax !idle-custommod "<user-identifier>" status
+       * @example !idle-custommod "local-server/Danret" 1
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-custommod \":identifier\" :mod", "idle.game.gm", (origin, route) =>
+        [identifier, modStatus] = [route.params.identifier, parseInt route.params.mod]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to manage custom mods!"
+            return
+
+          @IdleWrapper.api.gm.custom.modModerator identifier, modStatus
+
       @initialize()
 
       #@on "notice", (bot, sender, channel, message) =>

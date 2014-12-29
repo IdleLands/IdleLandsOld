@@ -274,9 +274,16 @@ class Game
 
   doCodeUpdate: ->
 
-    require("git-pull") "#{__dirname}/../", (e, consoleOutput) ->
+    quitCallback = (e, consoleOutput) ->
       console.error "BAD UPDATE",e if e
       console.log consoleOutput
       process.exit 0
+
+    require("git-pull") "#{__dirname}/../", (e, output) =>
+      if require("fs").existsSync "#{__dirname}/../../assets/custom"
+        console.log output
+        @gmCommands.updateCustomData quitCallback
+      else
+        quitCallback e, output
 
 module.exports = exports = Game
