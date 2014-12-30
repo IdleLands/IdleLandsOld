@@ -30,14 +30,6 @@ app.use compression {threshold: 128}
 app.use bodyParser.urlencoded extended: no
 app.use bodyParser.json()
 
-app.use (err, req, res, next) ->
-#  API.gameInstance.errorHandler.captureException err
-  console.error err.message, err.stack
-  res.status(500).send
-    err: err
-    message: err.message
-    stack: err.stack
-
 ###
 
   /player
@@ -76,6 +68,15 @@ _.each (_.values requireDir "./rest-routes"), (router) ->
 
 # init
 app.use "/img", express.static __dirname + '/../../assets/img'
+
+# errarz
+app.use (err, req, res, next) ->
+#  API.gameInstance.errorHandler.captureException err
+  console.error err.message, err.stack
+  res.status(500).send
+    err: err
+    message: err.message
+    stack: err.stack
 
 # spin it up
 http.createServer(app).listen port
