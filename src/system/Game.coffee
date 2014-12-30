@@ -36,16 +36,17 @@ if ravenURL
   raven = require "raven"
   client = new raven.Client ravenURL, stackFunction: Error.prepareStackTrace
 
-process.on 'uncaughtException', (err) ->
-  return if err.code in ['EACCES', 'EADDRINUSE'] #handled elsewhere
-  console.error (new Date).toUTCString() + ' uncaughtException:', err.message
-  console.error err.stack
-  client?.captureError err
-
 class Game
 
   constructor: () ->
-    @errorHandler = client or {captureMessage: console.error, captureException: console.error}
+    errHandler = @errorHandler = client or {captureMessage: console.error, captureException: console.error}
+
+    process.on 'uncaughtException', (err) ->
+      #return if err.code in ['EACCES', 'EADDRINUSE'] #handled elsewhere
+      console.error (new Date).toUTCString() + ' uncaughtException:', err.message
+      #console.error err.stack
+      errHandler.captureError err
+
     @parties = []
 
     defer = q.defer()

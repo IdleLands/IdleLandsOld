@@ -30,12 +30,12 @@ app.use compression {threshold: 128}
 app.use bodyParser.urlencoded extended: no
 app.use bodyParser.json()
 
-app.use (err, req, res, next) ->
-  API.gameInstance.errorHandler.captureException err
-  res.status(500).send
-    err: err
-    message: err.message
-    stack: err.stack
+#app.use (err, req, res, next) ->
+#  API.gameInstance.errorHandler.captureException err
+#  res.status(500).send
+#    err: err
+#    message: err.message
+#    stack: err.stack
 
 ###
 
@@ -75,12 +75,6 @@ _.each (_.values requireDir "./rest-routes"), (router) ->
 
 # init
 app.use "/img", express.static __dirname + '/../../assets/img'
-
-# error catching
-process.on 'uncaughtException', (e) ->
-  if e.code is 'EACCES'
-    console.error "port #{port} is not available, falling back to port #{fallbackPort}"
-    app.listen fallbackPort
 
 # spin it up
 http.createServer(app).listen port
