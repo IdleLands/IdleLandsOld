@@ -48,6 +48,17 @@ MapRequestTimer =
     lifetime: 10
     failCallback: (req, res) -> res.json {isSuccess: no, code: 100, message: "You can only request a map every 10 seconds!"}
 
+CustomContentTimer =
+  new brute store,
+    freeRetries: 0
+    proxyDepth: 1
+    minWait: 10*1000
+    maxWait: 6*10*1000
+    attachResetToRequest: no
+    refreshTimeoutOnRequest: yes
+    lifetime: 10
+    failCallback: (req, res) -> res.json {isSuccess: no, code: 100, message: "You can only submit new content once every 10 seconds!"}
+
 LoginRequestTimer = new brute store,
   freeRetries: 3
   proxyDepth: 1
@@ -66,4 +77,4 @@ CharCreateTimer = new brute store,
   lifetime: 24*60*60
   failCallback: (req, res) -> res.json {isSuccess: no, code: 101, message: "You can only create a new character once per day!"}
 
-module.exports = {CharCreateTimer, TurnTimeoutTimer, MapRequestTimer, LoginRequestTimer}
+module.exports = {CharCreateTimer, TurnTimeoutTimer, MapRequestTimer, LoginRequestTimer, CustomContentTimer}
