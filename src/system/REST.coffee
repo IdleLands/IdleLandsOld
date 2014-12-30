@@ -32,6 +32,7 @@ app.use bodyParser.json()
 
 app.use (err, req, res, next) ->
 #  API.gameInstance.errorHandler.captureException err
+  console.error err.message, err.stack
   res.status(500).send
     err: err
     message: err.message
