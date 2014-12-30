@@ -50,7 +50,7 @@ class ProvidenceEvent extends Event
       @player.xp.add xpMod
       message = "#{message} #{if xpMod > 0 then 'Gained' else 'Lost'} #{Math.abs xpMod} xp!"
 
-    else if levelMod and chance.bool {likelihood: 35}
+    else if levelMod and chance.bool {likelihood: 15}
       @player.level.add levelMod
       @player.resetMaxXp()
       message = "#{message} #{if levelMod > 0 then 'Gained' else 'Lost'} #{Math.abs levelMod} levels!"
