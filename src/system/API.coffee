@@ -48,6 +48,11 @@ class API
       update: =>
         @gameInstance.gmCommands.updateCustomData()
 
+      list: (identifier) =>
+        @validateContentModerator identifier
+        .then (res) =>
+          if res.isSuccess then @gameInstance.componentDatabase.getContentList() else res
+
       approve: (identifier, ids) =>
         @validateContentModerator identifier
         .then (res) =>

@@ -225,6 +225,14 @@ class ComponentDatabase
       return if not _.contains @contentFolders[folder], newItem.type
       fs.appendFileSync "#{__dirname}/../../assets/custom/#{folder}/#{newItem.type}.txt", "#{newItem.content}\n"
 
+  getContentList: ->
+    defer = Q.defer()
+
+    @submissionsDb.find {}, (e, docs) ->
+      defer.resolve {isSuccess: yes, code: 510, message: "Successfully retrieved custom content listing.", customs: docs}
+
+    defer.promise
+
   rejectContent: (ids) ->
     oids = _.map ids, ObjectID
 
@@ -233,7 +241,7 @@ class ComponentDatabase
     return Q {isSuccess: no, code: 505, message: "You didn't specify any targets."} if ids.length is 0
 
     @submissionsDb.remove {_id: {$in: oids}}, {multi: yes}, ->
-      defer.resolve isSuccess: yes, code: 504, message: "Successfully burninated #{ids.length} submissions."
+      defer.resolve { isSuccess: yes, code: 504, message: "Successfully burninated #{ids.length} submissions." }
 
     defer.promise
 
@@ -246,7 +254,7 @@ class ComponentDatabase
 
     @submissionsDb.find {_id: {$in: oids}}, (e, docs) =>
 
-      return defer.resolve {isSuccess: no, code: 502, message: "None of those items are valid targets for approval."} if docs.length is 0
+      return defer.resolve { isSuccess: no, code: 502, message: "None of those items are valid targets for approval." } if docs.length is 0
 
       _.each docs, (doc) =>
         @writeNewContentToFile doc

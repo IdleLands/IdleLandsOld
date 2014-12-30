@@ -11,6 +11,11 @@ router
   API.player.custom.submit identifier, data
   .then (resp) -> res.json resp
 
+.post "/custom/mod/list", hasValidToken, (req, res) ->
+  {identifier} = req.body
+  API.gm.custom.list identifier
+  .then (resp) -> res.json resp
+
 .patch "/custom/mod/approve", hasValidToken, (req, res) ->
   {identifier, ids} = req.body
   API.gm.custom.approve identifier, ids
