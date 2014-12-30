@@ -30,12 +30,12 @@ app.use compression {threshold: 128}
 app.use bodyParser.urlencoded extended: no
 app.use bodyParser.json()
 
-#app.use (err, req, res, next) ->
+app.use (err, req, res, next) ->
 #  API.gameInstance.errorHandler.captureException err
-#  res.status(500).send
-#    err: err
-#    message: err.message
-#    stack: err.stack
+  res.status(500).send
+    err: err
+    message: err.message
+    stack: err.stack
 
 ###
 
