@@ -1,6 +1,7 @@
 
 Achievement = require "../base/Achievement"
 Personality = require "../base/Personality"
+{toRoman} = require "roman-numerals"
 _ = require "lodash"
 
 `/**
