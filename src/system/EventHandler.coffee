@@ -7,6 +7,7 @@ Datastore = require "./DatabaseWrapper"
 MessageCreator = require "./MessageCreator"
 Constants = require "./Constants"
 Battle = require "../event/Battle"
+Q = require "q"
 
 Party = require "../event/Party"
 
@@ -28,6 +29,7 @@ class EventHandler
     @doEvent eventType, player
 
   doEvent: (eventType, player) ->
+    defer = Q.defer()
     @game.componentDatabase.getRandomEvent eventType, (e, event) =>
       @game.errorHandler.captureException e if e
       return if not event or not player
@@ -78,6 +80,9 @@ class EventHandler
           (new allEvents.MonsterBattleEvent @game, event, player).go()
 
       player.recalculateStats()
+      defer.resolve()
+
+    defer.promise
 
   bossBattle: (player, bossName) ->
     return if @game.inBattle
@@ -103,21 +108,28 @@ class EventHandler
 
   bossBattleParty: (player, bossParty, name) ->
 
+    startBattle = =>
+      _.each player.party.players, (member) ->
+        member.x = player.x
+        member.y = player.y
+        member.map = player.map
+
+      message = ">>> BOSS BATTLE: %player prepares for an epic battle against #{name}!"
+      message = MessageCreator.doStringReplace message, player
+      @game.broadcast MessageCreator.genericMessage message
+      new Battle @game, [player.party, bossParty]
+
     if not player.party
       if player.calc.totalItemScore() < bossParty.score()
         @doEventForPlayer player.name, 'party'
-        _.each player.party?.players, (member) ->
-          member.x = player.x
-          member.y = player.y
-          member.map = player.map
+        .then ->
+          startBattle()
       else
         new Party @game, [player]
+        startBattle()
 
-    message = ">>> BOSS BATTLE: %player prepares for an epic battle against #{name}!"
-    message = MessageCreator.doStringReplace message, player
-    @game.broadcast MessageCreator.genericMessage message
-
-    new Battle @game, [player.party, bossParty]
+    else
+      startBattle()
 
   # sendMessage = no implies that you're forwarding the original message to multiple people
   broadcastEvent: (options) ->

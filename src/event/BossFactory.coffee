@@ -26,7 +26,6 @@ class BossFactory
     statObj.name = name
     monster = @game.monsterGenerator.generateMonster baseObj.score, statObj
     _.each baseObj.items, (item) ->
-      console.log item, item.name, BossInformation.items[item.name]
       baseItem = _.clone BossInformation.items[item.name]
       baseItem.name = item.name
       baseItem.itemClass = setAllItemClasses
