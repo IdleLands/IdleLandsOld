@@ -127,7 +127,7 @@ class Game
       modified = _.flatten playerLists
 
       if (_.uniq modified).length < modified.length
-        @errorHandler.captureException (new Error "Bad party lineup"), extra: {modified: modified, playerLists: playerLists, parties: parties}
+        @errorHandler.captureException (new Error "Bad party lineup"), extra: {modified: modified}
         return no
 
       maxPercDiff = Constants.defaults.game.maxPartyScorePercentDifference
