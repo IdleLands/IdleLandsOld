@@ -218,7 +218,7 @@
         },
         "scaleCost": {
             "maxLevel": [0, 10000, 25000],
-            "maxItemScore": [0, 25000, 50000, 75000, 15000],
+            "maxItemScore": [0, 25000, 50000, 75000, 150000],
             "inventory": [0, 10000, 30000, 50000],
             "goldStorage": [0, 50000, 125000],
             "battleJoinPercent": [0],
