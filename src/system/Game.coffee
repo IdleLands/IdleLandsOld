@@ -45,7 +45,7 @@ class Game
       #return if err.code in ['EACCES', 'EADDRINUSE'] #handled elsewhere
       console.error (new Date).toUTCString() + ' uncaughtException:', err.message
       #console.error err.stack
-      errHandler.captureError err
+      errHandler.captureException err
 
     @parties = []
 
