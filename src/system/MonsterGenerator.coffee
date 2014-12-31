@@ -55,7 +55,7 @@ class MonsterGenerator extends Generator
 
     monster.calendar = @game.calendar
 
-    nameOpts = {middle: chance.bool(), prefix: chance.bool()}
+    nameOpts = {middle: chance.bool(), prefix: chance.bool(), suffix: chance.bool()}
     nameOpts.gender = chance.gender().toLowerCase() if chance.bool()
 
     monster.name = "#{chance.name nameOpts}, the #{monster.name}" if chance.bool likelihood: 1
