@@ -126,6 +126,12 @@ class Game
       playerLists = _.map parties, (party) -> _.pluck party.players, 'identifier'
       modified = _.flatten playerLists
 
+      checkPartyMemberSizes = _.pluck playerLists, 'length'
+
+      if (_.compact checkPartyMemberSizes).length isnt checkPartyMemberSizes.length
+        @errorHandler.captureException (new Error "Bad party formation"), extra: {checkPartyMemberSizes: checkPartyMemberSizes}
+        return no
+
       if (_.uniq modified).length < modified.length
         @errorHandler.captureException (new Error "Bad party lineup"), extra: {modified: modified}
         return no
