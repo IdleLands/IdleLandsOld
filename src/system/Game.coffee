@@ -123,7 +123,7 @@ class Game
       minScore = Math.min partyScores...
       maxScore = Math.max partyScores...
 
-      playerLists = _.map parties, (party) -> _.pluck party.players, 'name'
+      playerLists = _.map parties, (party) -> _.pluck party.players, 'identifier'
       modified = _.flatten playerLists
 
       if (_.uniq modified).length < modified.length

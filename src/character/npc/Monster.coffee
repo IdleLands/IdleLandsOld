@@ -13,6 +13,7 @@ class Monster extends Character
     super options
 
     @level = new RestrictedNumber 0, 1000, 0
+    @identifier = Date.now()
 
     @gender = chance.gender().toLowerCase()
 
