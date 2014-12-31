@@ -1,6 +1,77 @@
 
 _ = require "lodash"
 _.str = require "underscore.string"
+API = require "./API"
+
+chance = new (require "chance")()
+
+getDB = -> API.gameInstance.componentDatabase.generatorCache
+
+class RandomDomainHandler
+  @pet = ->
+    (_.sample API.gameInstance.petManager.pets).name
+
+  @activePet = ->
+    petHash = API.gameInstance.petManager.activePets
+    petHash[_.sample _.keys petHash].name
+
+  @player = ->
+    (_.sample API.gameInstance.playerManager.players).name
+
+  @deity = ->
+    _.sample [
+      'Kirierath, The Goddess of Riches'
+      'Ishkalorht, The God of Rampage and Brawling'
+      'Shashkajze, The God of Items'
+      'Ulrya, The Goddess of Time'
+    ]
+
+  @guild = ->
+    (_.sample API.gameInstance.guildManager.guilds).name
+
+  @map = ->
+    _.sample _.keys API.gameInstance.world.maps
+
+  @item = (args) ->
+
+  @monster = ->
+
+  @ingredient = ->
+
+  @placeholder = ->
+    _.sample [
+      'a red potato'
+      'a glass shark'
+      'a shiny mackerel'
+      'a paper goatee'
+      'a bearded hat'
+      'a wooden plank'
+    ]
+  #@party = -> (use @placeholder when @party size lookup fails)
+
+class CustomHandler
+  @dict = (props) ->
+    {funct} = props[0]
+    realFunct = funct.toLowerCase()
+
+    if realFunct is "nouns"
+      realFunct = "noun"
+      isPlural = yes
+
+    value = _.sample getDB()[realFunct]
+    value = if funct.toLowerCase() is funct then value.toLowerCase() else _.str.capitalize value
+
+    value = value.substring 0, value.length-1 if realFunct is "noun" and not isPlural #all nouns end in 's'
+
+    value
+
+  @chance = (props) ->
+    {funct, args} = props[0]
+    chance[funct]? args
+
+  @random = (props) ->
+    {funct, args} = props[0]
+    RandomDomainHandler[funct]? args, props
 
 class MessageCreator
 
@@ -67,6 +138,8 @@ class MessageCreator
 
     message
 
+    #\$([a-zA-Z\:#0-9 {},']+)\$
+
   @genericMessage: (message) ->
     return if not message
     @replaceMessageColors message
@@ -96,7 +169,48 @@ class MessageCreator
         else if gender is 'female' then 'she'
         else 'they'
 
-  #more types: combat, health, mana, special, announcement, event.gold, event.item, event.xp
+  @handleCustomVariables = (string) ->
+
+    varCache = {}
+
+    getVarProps = (keyString) ->
+      terms = keyString.split " "
+      varProps = []
+      _.each terms, (term) ->
+        [props, cacheNum] = term.split "#"
+        [domain, funct] = props.split ":", 2
+        args = (_.str.trim props.substring 1+funct.length+props.indexOf funct).split("'").join '"'
+
+        varProps.push
+          domain: domain
+          funct: funct
+          args: if args then JSON.parse args
+          cacheNum: parseInt cacheNum
+
+      varProps
+
+    transformVarProps = (props) ->
+      {domain, funct, cacheNum} = props[0]
+
+      return varCache[domain][funct][cacheNum] if (_.isNumber cacheNum) and varCache[domain]?[funct]?[cacheNum]
+
+      retVal = CustomHandler[domain]? props
+
+      if _.isNumber cacheNum
+        varCache[domain] = {} if not varCache[domain]
+        varCache[domain][funct] = [] if not varCache[domain][funct]
+        varCache[domain][funct][cacheNum] = retVal
+
+      retVal
+
+    testString = "$random:player$ ($random:party#1 party:member#1$) goes down the $dict:adjective#1$ $dict:noun$ and finds a $dict:adjective#1$ $dict:Noun$ named $chance:name:{'middle':true}$. A local townsperson named $chance:name:{'female':true}#1$, with a twin sister also named $chance:name#1$ said it was $dict:adjective$!"
+    t2 = testString.replace /\$([a-zA-Z\:#0-9 {},']+)\$/g, (match, p1, p2) ->
+      transformVarProps getVarProps p1
+
+    console.log testString
+    console.log t2
+
+    string
 
   @doStringReplace: (string, player = {}, extra = {}) ->
     gender = player?.getGender()
@@ -104,7 +218,7 @@ class MessageCreator
 
     (string = string.split("%#{key}").join (if key is "item" then val else "<event.#{key}>#{val}</event.#{key}>")) for key, val of extra
 
-    string
+    @handleCustomVariables string
       .split('%player').join "<player.name>#{player.name}</player.name>"
       .split('%hishers').join getGenderPronoun gender, '%hishers'
       .split('%hisher').join getGenderPronoun gender, '%hisher'
