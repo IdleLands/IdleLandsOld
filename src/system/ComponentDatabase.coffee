@@ -22,7 +22,7 @@ class ComponentDatabase
     @itemsDb = new Datastore "items", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @ingredientsDb = new Datastore "items", (db) -> db.ensureIndex {random: '2dsphere'}, ->
     @battleDb = new Datastore "battles", (db) -> db.ensureIndex {started: 1}, {expireAfterSeconds: 10800}, ->
-    @analyticsDb = new Datastore "analytics", ->
+    @analyticsDb = new Datastore "analytics", (db) -> db.ensureIndex {identifier: 1, 'level.__current': 1}, {unique: yes}, ->
     @submissionsDb = new Datastore "submissions", ->
 
     @importAllData()
