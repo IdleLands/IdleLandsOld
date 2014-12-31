@@ -207,7 +207,7 @@
         "scale": {
             "maxLevel": [10, 25, 50],
             "maxItemScore": [500, 1000, 2000, 4000, 8000],
-            "inventory": [15, 25, 35],
+            "inventory": [5, 15, 25, 35],
             "goldStorage": [10000, 100000, 250000],
             "battleJoinPercent": [0],
             "itemFindTimeDuration": [0, 21600, 10800, 3600, 1800],
