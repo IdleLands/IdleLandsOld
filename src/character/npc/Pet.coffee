@@ -97,6 +97,7 @@ class Pet extends Character
     return if not @smartEquip
     return if not PetData[@type].slots[item.type]
     return if not @canUseItem item
+    return if not @canEquip item
 
     itemsInSlot = @equippedItemsOfType item.type
     if itemsInSlot.length >= PetData[@type].slots[item.type]
