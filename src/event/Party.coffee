@@ -41,7 +41,7 @@ class Party
       return if player of @players
       player.emit "player.party.join"
       player.party = @
-      player.partyName = if @players.length > 1 then @name else ''
+      player.partyName = @name
       @players.push player
 
   playerLeave: (player, forced = no) ->

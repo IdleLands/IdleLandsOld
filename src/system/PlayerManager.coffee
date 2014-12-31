@@ -308,6 +308,7 @@ class PlayerManager
       player[item] = loadRN player[item]
 
     player.level.maximum = 200
+    player.partyName = ''
 
     player.__proto__ = Player.prototype
 
