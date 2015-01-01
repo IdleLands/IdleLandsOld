@@ -5,15 +5,26 @@ API = require "./API"
 
 chance = new (require "chance")()
 
-getDB = -> API.gameInstance.componentDatabase.generatorCache
+getCD = -> API.gameInstance.componentDatabase
 
 class RandomDomainHandler
+
+  placeholder = @placeholder = ->
+    _.sample [
+      'a red potato'
+      'a glass shark'
+      'a shiny mackerel'
+      'a paper goatee'
+      'a bearded hat'
+      'a wooden plank'
+    ]
+
   @pet = ->
-    (_.sample API.gameInstance.petManager.pets).name
+    (_.sample API.gameInstance.petManager.pets)?.name or placeholder()
 
   @activePet = ->
     petHash = API.gameInstance.petManager.activePets
-    petHash[_.sample _.keys petHash].name
+    petHash[_.sample _.keys petHash]?.name or placeholder()
 
   @player = ->
     (_.sample API.gameInstance.playerManager.players).name
@@ -27,26 +38,22 @@ class RandomDomainHandler
     ]
 
   @guild = ->
-    (_.sample API.gameInstance.guildManager.guilds).name
+    (_.sample API.gameInstance.guildManager.guilds)?.name or placeholder()
 
   @map = ->
     _.sample _.keys API.gameInstance.world.maps
 
   @item = (args) ->
+    type = args?.type or (_.sample _.keys getCD().itemStats)
+    (_.sample getCD().itemStats[type])?.name or placeholder() #should only happen locally
 
   @monster = ->
+    (_.sample getCD().monsters)?.name or placeholder() #should only happen locally
 
-  @ingredient = ->
+  @ingredient = (args) ->
+    type = args?.type or (_.sample _.keys getCD().ingredientStats)
+    (_.sample getCD().ingredientStats[type])?.name or placeholder() # should only happen locally
 
-  @placeholder = ->
-    _.sample [
-      'a red potato'
-      'a glass shark'
-      'a shiny mackerel'
-      'a paper goatee'
-      'a bearded hat'
-      'a wooden plank'
-    ]
   #@party = -> (use @placeholder when @party size lookup fails)
 
 class CustomHandler
@@ -58,7 +65,7 @@ class CustomHandler
       realFunct = "noun"
       isPlural = yes
 
-    value = _.sample getDB()[realFunct]
+    value = _.sample getCD().generatorCache[realFunct]
     value = if funct.toLowerCase() is funct then value.toLowerCase() else _.str.capitalize value
 
     value = value.substring 0, value.length-1 if realFunct is "noun" and not isPlural #all nouns end in 's'
@@ -196,14 +203,15 @@ class MessageCreator
 
       retVal = CustomHandler[domain]? props
 
-      if _.isNumber cacheNum
+      if not _.isNaN cacheNum
         varCache[domain] = {} if not varCache[domain]
         varCache[domain][funct] = [] if not varCache[domain][funct]
         varCache[domain][funct][cacheNum] = retVal
 
       retVal
 
-    testString = "$random:player$ ($random:party#1 party:member#1$) goes down the $dict:adjective#1$ $dict:noun$ and finds a $dict:adjective#1$ $dict:Noun$ named $chance:name:{'middle':true}$. A local townsperson named $chance:name:{'female':true}#1$, with a twin sister also named $chance:name#1$ said it was $dict:adjective$!"
+    testString = "$dict:adjective#1$ $dict:adjective#1$ $dict:noun$ $dict:Noun$ $dict:Nouns$ $dict:nouns$ $random:pet$ $random:player$ $random:deity$ $random:guild$ $random:map$ $random:item$ $random:monster$ $random:item:{'type':'body'}$ $random:ingredient$ $random:placeholder$ $chance:age$"
+    #testString = "$random:player$ ($random:party#1 party:member#1$) goes down the $dict:adjective#1$ $dict:noun$ and finds a $dict:adjective#1$ $dict:Noun$ named $chance:name:{'middle':true}$. A local townsperson named $chance:name:{'female':true}#1$, with a twin sister also named $chance:name#1$ said it was $dict:adjective$!"
     t2 = testString.replace /\$([a-zA-Z\:#0-9 {},']+)\$/g, (match, p1, p2) ->
       transformVarProps getVarProps p1
 
