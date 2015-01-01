@@ -48,6 +48,7 @@ class Game
       errHandler.captureException err
 
     @parties = []
+    @_battleParties = []
 
     defer = q.defer()
     @loading = defer.promise
@@ -106,6 +107,8 @@ class Game
     wasPassedEnoughParties = parties.length > 1
 
     startBattle = (parties) =>
+
+      @_battleParties = parties
 
       if event
         @broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.remark, event.player

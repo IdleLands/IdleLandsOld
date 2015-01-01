@@ -54,7 +54,23 @@ class RandomDomainHandler
     type = args?.type or (_.sample _.keys getCD().ingredientStats)
     (_.sample getCD().ingredientStats[type])?.name or placeholder() # should only happen locally
 
-  #@party = -> (use @placeholder when @party size lookup fails)
+  @party = (args, props, varCache, parties) ->
+    {domain, funct, cacheNum} = props[0]
+
+    party = varCache[domain]?[funct]?[cacheNum] ? _.sample parties
+
+    varCache[domain] = {} if not varCache[domain]
+    varCache[domain][funct] = [] if not varCache[domain][funct]
+    varCache[domain][funct][cacheNum] = party if not _.isNaN cacheNum
+
+    partyName = party?.name or "A Group Of Adventurers"
+
+    return partyName if not props[1]
+    {cacheNum} = props[1]
+
+    return "A Mysterious Adventurer" if not party
+
+    if _.isNaN cacheNum then (_.sample party.players).name else party.players[cacheNum]?.name or "A Mysterious Adventurer"
 
 class CustomHandler
   @dict = (props) ->
@@ -76,9 +92,13 @@ class CustomHandler
     {funct, args} = props[0]
     chance[funct]? args
 
-  @random = (props) ->
+  @combat = (props, cache) ->
     {funct, args} = props[0]
-    RandomDomainHandler[funct]? args, props
+    RandomDomainHandler[funct]? args, props, cache, API.gameInstance._battleParties
+
+  @random = (props, cache) ->
+    {funct, args} = props[0]
+    RandomDomainHandler[funct]? args, props, cache, API.gameInstance.parties
 
 class MessageCreator
 
@@ -145,8 +165,6 @@ class MessageCreator
 
     message
 
-    #\$([a-zA-Z\:#0-9 {},']+)\$
-
   @genericMessage: (message) ->
     return if not message
     @replaceMessageColors message
@@ -180,6 +198,11 @@ class MessageCreator
 
     varCache = {}
 
+    setCache = (domain, funct, cacheNum) ->
+      varCache[domain] = {} if not varCache[domain]
+      varCache[domain][funct] = [] if not varCache[domain][funct]
+      varCache[domain][funct][cacheNum] = retVal if not _.isNaN cacheNum
+
     getVarProps = (keyString) ->
       terms = keyString.split " "
       varProps = []
@@ -199,26 +222,16 @@ class MessageCreator
     transformVarProps = (props) ->
       {domain, funct, cacheNum} = props[0]
 
-      return varCache[domain][funct][cacheNum] if (_.isNumber cacheNum) and varCache[domain]?[funct]?[cacheNum]
+      return getCache domain, funct, cacheNum if funct isnt 'party' and (not _.isNaN cacheNum) and varCache[domain]?[funct]?[cacheNum]
 
-      retVal = CustomHandler[domain]? props
+      retVal = CustomHandler[domain]? props, varCache
 
-      if not _.isNaN cacheNum
-        varCache[domain] = {} if not varCache[domain]
-        varCache[domain][funct] = [] if not varCache[domain][funct]
-        varCache[domain][funct][cacheNum] = retVal
+      setCache domain, funct, cacheNum if funct isnt 'party'   #let party handle caching by itself because it has to do nested weird shit
 
       retVal
 
-    testString = "$dict:adjective#1$ $dict:adjective#1$ $dict:noun$ $dict:Noun$ $dict:Nouns$ $dict:nouns$ $random:pet$ $random:player$ $random:deity$ $random:guild$ $random:map$ $random:item$ $random:monster$ $random:item:{'type':'body'}$ $random:ingredient$ $random:placeholder$ $chance:age$"
-    #testString = "$random:player$ ($random:party#1 party:member#1$) goes down the $dict:adjective#1$ $dict:noun$ and finds a $dict:adjective#1$ $dict:Noun$ named $chance:name:{'middle':true}$. A local townsperson named $chance:name:{'female':true}#1$, with a twin sister also named $chance:name#1$ said it was $dict:adjective$!"
-    t2 = testString.replace /\$([a-zA-Z\:#0-9 {},']+)\$/g, (match, p1, p2) ->
+    string.replace /\$([a-zA-Z\:#0-9 {},']+)\$/g, (match, p1, p2) ->
       transformVarProps getVarProps p1
-
-    console.log testString
-    console.log t2
-
-    string
 
   @doStringReplace: (string, player = {}, extra = {}) ->
     gender = player?.getGender()
