@@ -1,6 +1,104 @@
 
 _ = require "lodash"
 _.str = require "underscore.string"
+API = require "./API"
+
+chance = new (require "chance")()
+
+getCD = -> API.gameInstance.componentDatabase
+
+class RandomDomainHandler
+
+  placeholder = @placeholder = ->
+    _.sample [
+      'a red potato'
+      'a glass shark'
+      'a shiny mackerel'
+      'a paper goatee'
+      'a bearded hat'
+      'a wooden plank'
+    ]
+
+  @pet = ->
+    (_.sample API.gameInstance.petManager.pets)?.name or placeholder()
+
+  @activePet = ->
+    petHash = API.gameInstance.petManager.activePets
+    petHash[_.sample _.keys petHash]?.name or placeholder()
+
+  @player = ->
+    (_.sample API.gameInstance.playerManager.players).name
+
+  @deity = ->
+    _.sample [
+      'Kirierath, The Goddess of Riches'
+      'Ishkalorht, The God of Rampage and Brawling'
+      'Shashkajze, The God of Items'
+      'Ulrya, The Goddess of Time'
+    ]
+
+  @guild = ->
+    (_.sample API.gameInstance.guildManager.guilds)?.name or placeholder()
+
+  @map = ->
+    _.sample _.keys API.gameInstance.world.maps
+
+  @item = (args) ->
+    type = args?.type or (_.sample _.keys getCD().itemStats)
+    (_.sample getCD().itemStats[type])?.name or placeholder() #should only happen locally
+
+  @monster = ->
+    (_.sample getCD().monsters)?.name or placeholder() #should only happen locally
+
+  @ingredient = (args) ->
+    type = args?.type or (_.sample _.keys getCD().ingredientStats)
+    (_.sample getCD().ingredientStats[type])?.name or placeholder() # should only happen locally
+
+  @party = (args, props, varCache, parties) ->
+    {domain, funct, cacheNum} = props[0]
+
+    party = varCache[domain]?[funct]?[cacheNum] ? _.sample parties
+
+    varCache[domain] = {} if not varCache[domain]
+    varCache[domain][funct] = [] if not varCache[domain][funct]
+    varCache[domain][funct][cacheNum] = party if not _.isNaN cacheNum
+
+    partyName = party?.name or "A Group Of Adventurers"
+
+    return partyName if not props[1]
+    {cacheNum} = props[1]
+
+    return "A Mysterious Adventurer" if not party
+
+    if _.isNaN cacheNum then (_.sample party.players).name else party.players[cacheNum]?.name or "A Mysterious Adventurer"
+
+class CustomHandler
+  @dict = (props) ->
+    {funct} = props[0]
+    realFunct = funct.toLowerCase()
+
+    if realFunct is "nouns"
+      realFunct = "noun"
+      isPlural = yes
+
+    value = _.sample getCD().generatorCache[realFunct]
+    value = if funct.toLowerCase() is funct then value.toLowerCase() else _.str.capitalize value
+
+    value = value.substring 0, value.length-1 if realFunct is "noun" and not isPlural #all nouns end in 's'
+
+    value
+
+  @chance = (props) ->
+    {funct, args} = props[0]
+    chance[funct]? args
+
+  @combat = (props, cache) ->
+    {funct, args} = props[0]
+    RandomDomainHandler[funct]? args, props, cache, API.gameInstance._battleParties
+
+  @random = (props, cache) ->
+    {funct, args} = props[0]
+    RandomDomainHandler[funct]? args, props, cache, API.gameInstance.parties
 
 class MessageCreator
 
@@ -96,7 +194,44 @@ class MessageCreator
         else if gender is 'female' then 'she'
         else 'they'
 
-  #more types: combat, health, mana, special, announcement, event.gold, event.item, event.xp
+  @handleCustomVariables = (string) ->
+
+    varCache = {}
+
+    setCache = (domain, funct, cacheNum) ->
+      varCache[domain] = {} if not varCache[domain]
+      varCache[domain][funct] = [] if not varCache[domain][funct]
+      varCache[domain][funct][cacheNum] = retVal if not _.isNaN cacheNum
+
+    getVarProps = (keyString) ->
+      terms = keyString.split " "
+      varProps = []
+      _.each terms, (term) ->
+        [props, cacheNum] = term.split "#"
+        [domain, funct] = props.split ":", 2
+        args = (_.str.trim props.substring 1+funct.length+props.indexOf funct).split("'").join '"'
+
+        varProps.push
+          domain: domain
+          funct: funct
+          args: if args then JSON.parse args
+          cacheNum: parseInt cacheNum
+
+      varProps
+
+    transformVarProps = (props) ->
+      {domain, funct, cacheNum} = props[0]
+
+      return getCache domain, funct, cacheNum if funct isnt 'party' and (not _.isNaN cacheNum) and varCache[domain]?[funct]?[cacheNum]
+
+      retVal = CustomHandler[domain]? props, varCache
+
+      setCache domain, funct, cacheNum if funct isnt 'party'   #let party handle caching by itself because it has to do nested weird shit
+
+      retVal
+
+    string.replace /\$([a-zA-Z\:#0-9 {},']+)\$/g, (match, p1, p2) ->
+      transformVarProps getVarProps p1
 
   @doStringReplace: (string, player = {}, extra = {}) ->
     gender = player?.getGender()
@@ -104,7 +239,7 @@ class MessageCreator
 
     (string = string.split("%#{key}").join (if key is "item" then val else "<event.#{key}>#{val}</event.#{key}>")) for key, val of extra
 
-    string
+    @handleCustomVariables string
       .split('%player').join "<player.name>#{player.name}</player.name>"
       .split('%hishers').join getGenderPronoun gender, '%hishers'
       .split('%hisher').join getGenderPronoun gender, '%hisher'
