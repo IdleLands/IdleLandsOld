@@ -182,7 +182,7 @@ class MessageCreator
 
     varCache = {}
 
-    setCache = (domain, funct, cacheNum) ->
+    setCache = (domain, funct, cacheNum, retVal) ->
       varCache[domain] = {} if not varCache[domain]
       varCache[domain][funct] = [] if not varCache[domain][funct]
       varCache[domain][funct][cacheNum] = retVal if not _.isNaN cacheNum
@@ -210,7 +210,7 @@ class MessageCreator
 
       retVal = CustomHandler[domain]? props, varCache
 
-      setCache domain, funct, cacheNum if funct isnt 'party'   #let party handle caching by itself because it has to do nested weird shit
+      setCache domain, funct, cacheNum, retVal if funct isnt 'party'   #let party handle caching by itself because it has to do nested weird shit
 
       retVal
 
