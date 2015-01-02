@@ -3,7 +3,7 @@
 %player forced %partyMembers to join %hisher new party, "%partyName."
 %player, along with %partyMembers are going to have a gay old time in their new adventuring group, "%partyName!"
 Nobody expects "%partyName," with %player and other heroes like %partyMembers!
-Introducing "%partyName!" They don't need a catchphrase, because %player and %partyMembers are too cool for that!
+Introducing "%partyName!" They don't need a catchphrase, because %player and %partyMembers are too $random:adjective$ for that!
 %player started a gang called "%partyName," and recruited %partyMembers.
 %partyMembers convinced a disgruntled %player to start a party with them, called "%partyName."
 A group of unknown figures suddenly appears from afar. Leading with %player, and right behind them %partyMembers, it's the ones known as: "%partyName!"
@@ -14,6 +14,6 @@ Although they all hate eachother, their common goal has brought %player and %par
 Sarda, The Wizard Who Did It made a party called "%partyName", and forced %player, %partyMembers into it.
 %player bands together with %partyMembers, forming "%partyName" and performing many heroic feats!
 TODAY'S HEADLINES: %player dissatisfied with overcooked lasagna at restaurant; bands together with %partyMembers into a group called "%partyName" to fight for quality of food.
-%player forms party "%partyName" with %partyMembers... and a red potato.
+%player forms party "%partyName" with %partyMembers... and $random:placeholder$.
 %partyMembers initially didn't like %player, but after 30 minutes of bickering, they agree to form a party called "%partyName".
 After a crazy night of events involving a blood-sucking orange, Bigfoot, gummy bears, obscene amounts of root beer, among other things, %player is now best friends with %partyMembers, and they all hang out together under the name "%partyName"!

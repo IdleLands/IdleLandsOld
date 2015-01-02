@@ -2,8 +2,9 @@
 %player befriended a local enchantress. Because of this, she enchanted %hisher %item at no cost.
 %player had a vision in which %she realized %hisher alter ego lived inside %hisher %item, and that it was enchanted!
 %player read something about an enchanting ritual in a book and buries %hisher %item on a field. Suddenly, thunder strucks the place and after digging it out, %player sees that %hisher %item got enchanted!
-%player prayed for %hisher deity to enchant %hisher %item.  After that tactic didn't pan out, %player got a job crushing baby seals to pay for the enchantment.
+%player prayed for %hisher deity, $random:deity$, to enchant %hisher %item.  After that tactic didn't pan out, %player got a job crushing baby seals to pay for the enchantment.
 An enchantress approaches %player and enchants %hisher %item, making it glow pretty colors.
 %player used what sorcery %she knows to enchant %hisher %item with extra power!
 Sarda, The Wizard Who Did It enchanted %player's %item to see what would happen.
 %player brought %hisher %item to the Dark Lord, enchanting it with the imbuement of his malice.
+%player sent %hisher %item through the mail to $random:deity$, and after a while it came back enchanted!

@@ -1,16 +1,16 @@
 %player fell into a hole and lost %xpxp!
 %player was struck by lightning, causing %xpxp to fall out.
-%player choked on a wooden nickel, coughing it up along with %xpxp.
-%player was mauled by a bear, the bear stealing %xpxp afterwards.
+%player choked on $random:placeholder$, coughing it up along with %xpxp.
+%player was mauled by a $random:monster#1$, and the $random:monster#1$ stole %xpxp afterwards.
 %player was eaten by a grue. %player had to pay a %xpxp fee to respawn!
 %player was shot in the leg, causing %xpxp to pour out of the wound.
-%player ate a wooden nickel, %hisher poor dieting habits causing %player to lose %xpxp.
+%player ate $random:placeholder$, %hisher poor dieting habits causing %player to lose %xpxp.
 %player found a chest! Inside this chest is another chest. This chest meta is too overwhelming for %himher to understand, and causes %himher to lose %xpxp.
 %player saw a really bright light, and went stumbling around in a forest for hours, getting %xpxp stolen from %himher by pixies.
 %player had a piano fall on %hisher head. %player was knocked out for long enough to make %himher lose %xpxp.
-%player had acid poured on %himher by an old lady. The acid also dissolved %xpxp!
+%player had acid poured on %himher by an old lady named $chance:name:{'female':true}$. The acid also dissolved %xpxp!
 %player got hit with a flying card, square between the eyes, and was knocked to the ground. %xpxp fell out of %hisher pocket when %player fell!
-%player was attacked by a giant waffle iron falling from the sky, crushing %himher, turning %himher into a waffle. Somebody ate %himher as a waffle, making %player lose %xpxp.
+%player was attacked by a giant waffle iron falling from the sky, crushing %himher, turning %himher into a waffle. $random:player$ ate %himher as a waffle, making %player lose %xpxp.
 %player was vomited on by an adorable little kitty. %player began to question %hisher existence, which caused %himher to lose %xpxp.
 %player stepped on a landmine. %player paid a %xpxp toll to respawn.
 %player fell into a nearby river. %xpxp fell into the river out of %player while %she was in the water.
@@ -24,15 +24,15 @@
 %player was crushed by a falling tower. %player had to spend a lot of time recovering, making %himher lose %xpxp.
 %player finds a heavy bag on the ground, and upon trying to open it, is chomped on by a strong set of razor-sharp teeth. %player had to expend %xpxp carrying the bag into a location far from the public.
 %player got run over by a herd of elephants. While dusting %himherself off, %player lost %xpxp flaking off.
-%player got run over by a mac truck. The owner of the truck sued %player for %xpxp.
+%player got run over by a mac truck. The owner of the truck, $chance:name$, sued %player for %xpxp.
 %player sneezed uncontrollably, %xpxp rocketing out of %hisher nostrils as %she ended up bashing %hisher head into the wall.
 %player got distracted by TVTropes, losing %xpxp to distraction.
 %player found the missing link between %himher and the ground. This reunion costed %himher %xpxp.
-%player ran in circles around a tree, exhausting %player of %xpxp.
+%player ran in circles around a $dict:adjective$ tree, exhausting %player of %xpxp.
 %player stepped in a large pile of monkey poo. The monkeys sued %player for %xpxp over the damages done to their feces.
 %player threw an apple at a tree, and had it richochet back and hit %himher in the face.
 %player was cursed by Oyashiro-sama. %player had to spend %xpxp to save %himherself.
-%player was pushed into a burning river by an old lady and a monkey. %player paid the hospital %xpxp to fix the injuries.
+%player was pushed into a burning river by an old lady and a monkey named $chance:first$. %player paid the hospital %xpxp to fix the injuries.
 %player woke up without %hisher pants on. %player realized %she'd also lost %xpxp.
 %player was carried away, off into the distance, by a rabid pack of bats. %player lost %xpxp walking aaaa~ll the way home.
 %player was given a magical rod by a fairy, and not the kind of fairy with wings. At the same time, a real fairy stole %xpxp from %player.
@@ -49,8 +49,9 @@
 %player got hit by a mac truck and is now limping along the highway. The damages to %hisher leg costed %himher %xpxp to mend.
 %player was taken in by the Stillstanders for questioning. In the end, %she got extorted %xpxp.
 %player had %hisher xp stolen by the Goddess of Time, Ulrya. She was merciful and only stole %xpxp, however.
+%player had %xpxp taken from %himher by $random:deity$. All you could hear was laughter.
 %player had %hisher leg set on fire by a box of cheerios. %xpxp was burned up in the process.
-While %player was frozen after an encounter with a floating eye, a warhorse stumbled upon %himher and kicked %himher to death! %she had to pay %xpxp to respawn.
+While %player was frozen after an encounter with a floating eye, a $random:adjective$ warhorse stumbled upon %himher and kicked %himher to death! %she had to pay %xpxp to respawn.
 %player rolled snake eyes, and then %hisher eyes turned into snakes, causing %himher to lose %xpxp. (s.s)
 %player walks around some sketchy alleys and gets beaten up by a boy band. When %she wakes up, %she notices that %she lost nothing but %hisher self-esteem.
 %player sees a dark shape near a dead unicorn. The shape glares at %player and %she runs away like a sissy.
@@ -63,7 +64,7 @@ A survivor on %player's team turned into a zombie and bit %himher!
 %player failed to defend %hisher fortress from the undead!
 %player built a watch tower in %hisher warehouse to keep away the zombies, but no one was guarding it, so they got in.
 %player's teammates left the gates open, and the undead got in and slaughtered %hisher team.
-%player got run over by a PC truck. The owner of the truck installed Windows on %player, forcing %himher to wait while updates were downloaded and installed.  %She lost %xpxp waiting for this process to finish.
+%player got run over by a PC truck. The owner of the truck, $chance:name$, installed Windows on %player, forcing %himher to wait while updates were downloaded and installed.  %She lost %xpxp waiting for this process to finish.
 %player got mowed down by a mac and cheese truck when it exploded. %She drowned in the cheesy deliciousness.
 %player got stopped by a chili mac truck. The driver got out and threw hot chili in %hisher face.
 Sarda, The Wizard Who Did It took %xpxp from %player, saying he needed it back.
@@ -73,3 +74,5 @@ In todays Death Daily, %player found %hisher name. Better luck next time!
 %player forgot to use %hisher blinker when merging into a nearby lane, and got hit off the road due to %hisher negligence!
 %player found a legendary weapon and went to fight the demon lord. Sadly it was Excalipoor and %player died quickly losing %xp xp.
 %player got "The Song That Never Ends" stuck in %hisher head. It won't go away. For weeks!
+%player took a right turn at $chance:city$ and it turned out to be a waste of time.
+%player went to $chance:address$ and found a really creepy mansion. Creepy! %player isn't going in that place.

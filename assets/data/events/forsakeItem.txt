@@ -4,12 +4,13 @@ In a drunken rage, %player vomits all over %hisher %item.
 %player is attacked by a rogue flying book, and drops %hisher %item.
 A bowling ball rolls by and knocks %player over, causing %himher to drop %hisher %item.
 A passing camel spits in %player's eye, causing %himher to drop %hisher %item.
+$random:player$ punches %player and %heshe drops %item.
 %player threw %hisher %item in a vat of acid, thinking it was some mystical fountain. Really?
 %player wakes up in an unknown place, and finds scratches and scuffs all over %hisher %item.
 %player trips on a ceramic jar, causing %himher to drop %hisher %item on the ground, chipping it.
 A brutal child runs up to %player and kicks %himher in the shin, causing %himher to drop to the ground in pain and nearly lose %hisher %item!
 A stampede of wild raccoons topples %player, causing %himher to drop %hisher %item to the ground, luckily it wasn't stolen..
-A demon decides to play a trick on %player by placing a curse on %hisher %item.
+A demon named $chance:name{'middle':true,'prefix':true,'suffix':true}$ decides to play a trick on %player by placing a curse on %hisher %item.
 %player's %item was exposed to spontaneous and strong Gamma radiation, and is now glowing a bright shade of red.
 %player tried using %hisher %item for pleasuring purposes. Needless to say, it didn't end well.
 %player was hit by the salmon rain, and dropped %hisher %item.

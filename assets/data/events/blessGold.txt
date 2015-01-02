@@ -1,4 +1,5 @@
 %player found a shiny rock and sold it for %gold gold!
+%player stumbled across $random:placeholder$ and sold it for %gold gold!
 %player found a gold mine containing %gold bits of gold!
 %player found a pot of gold at the end of the rainbow, and it contained %gold gold pieces!
 %player sneezed on a rock, and cleaning it off revealed a golden lustre. It sold for %gold gold!
@@ -18,11 +19,11 @@ The Goddess of Riches, Kirierath, causes it to rain gold down at %player only, a
 %player received %gold gold from a charity to help adventurers in need!
 %player was picking %hisher ears, when suddenly %gold gold coins fell out right into %hisher hands!
 %player pawned off some things %she didn't need for %gold gold!
-%player got a %gold reward for slaying a monster!
-%player looted a dungeon for %gold gold. %She also managed to make it out of the dungeon safely.
+%player got a %gold reward for slaying a $random:monster$!
+%player looted a dungeon in $random:map$ for %gold gold. %She also managed to make it out of the dungeon safely.
 %player accidentally caught a criminal as the criminal was running through the streets. The city ended up paying %player %gold gold for catching the criminal!
 %player went and gathered various herbs and fruits, and sold them off for %gold gold!
-%player decided to play a man in chess for money, and ended up netting %gold gold from winning!
+%player decided to play $random:player$ in chess for money, and ended up netting %gold gold from winning!
 %player managed to catch the Gold Fairie, who dropped %gold gold into %hisher hands before flying away!
 %player was given an experienced axe from the axe-fairy.  %player used the experienced axe to cut down a Golden Tree, using the woodsmelter to convert it into %gold gold.
 %player won second prize in a beauty contest and collected %gold gold!
@@ -31,7 +32,7 @@ The Goddess of Riches, Kirierath, causes it to rain gold down at %player only, a
 %player fell on some hard times, and decided to sell a tooth to the tooth faerie for %gold gold.
 %player made a successful trade with some nearby townspeople!
 Sarda, The Wizard Who Did It gave %player %gold gold to shake up the economy.
-%player played the stock markets! %player profitted with %gold gold.
+%player played the stock markets! %player profited with %gold gold.
 %player found %gold gold in a brownie sundae!
 %player dug up a Time Capsule! %player found %gold gold.
 A time anomaly made a few bank statements non-exist! The bank credits %player %gold gold.
@@ -41,9 +42,11 @@ A time anomaly made a few bank statements non-exist! The bank credits %player %g
 %player works a night guarding a VIP. %player is paid %gold gold. Good job.
 %player kills a caribou and crawls inside. %She finds %gold gold in it's stomach!
 %player starts eating moonrocks... a week later they find %gold gold...
-%player yells insults at a passing god. The god thanks %himher with %gold gold.
+%player yells insults at a passing god. $random:deity$ thanks %himher with %gold gold.
 %player happens upon a dragon ride camp. %She spends two weeks learning to fly. Upon graduation, %player was awarded %gold gold for having top honours!
 %player logs onto %hisher computer and checks %hisher email. %She won several online lotteries gaining %gold gold!
 %player eats a vial of nuclear waste thus winning a bet! %player wins %gold gold!  And cancer!
 %player smashes a parking meter with a stick, and absconds with the %gold gold inside it.
-%player took %gold gold from a passerby and ran away yelling "I'm a treasure hunter not a thief!"
+%player took %gold gold from a passerby and ran away yelling "I'm a treasure hunter, not a thief!"
+%player found $random:item$ but decided it would be better off liquidated, so %heshe sold it for %gold gold.
+%player saw $random:party$ and found it to be the perfect time to loot %gold from them!

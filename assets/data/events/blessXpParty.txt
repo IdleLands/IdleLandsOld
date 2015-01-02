@@ -6,5 +6,6 @@
 %partyName wins "Scariest Group Costume" at the Halloween party. They weren't dressed up.
 %partyName has a team-building exercise, improving synergy across the board.
 %partyName wins the lottery with a group ticket, which is promptly destroyed in the celebration. Well, they learned their lesson at least.
-%partyName runs a co-op dungeon in Satan 4, and their teamwork improves a bit.
+%partyName runs a co-op dungeon in Satan -4, and their teamwork improves a bit.
 %partyName attends a group workshop, and learn how to be better adventurers.
+%partyName meets up with $random:party$ and they work together briefly, but break it off before the experience points are split up.

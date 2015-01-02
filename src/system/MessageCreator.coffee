@@ -14,9 +14,11 @@ class RandomDomainHandler
       'a red potato'
       'a glass shark'
       'a shiny mackerel'
+      'a shiny rock'
       'a paper goatee'
       'a bearded hat'
       'a wooden plank'
+      'a wooden nickel'
     ]
 
   @pet = ->
@@ -35,7 +37,8 @@ class RandomDomainHandler
       'Ishkalorht, The God of Rampage and Brawling'
       'Shashkajze, The God of Items'
       'Ulrya, The Goddess of Time',
-      'Sarda, The Wizard Who Did It'
+      'Sarda, The Wizard Who Did It',
+      'Zardoz, the Angel of Weird Sean Connery Movies'
     ]
 
   @guild = ->
@@ -58,7 +61,7 @@ class RandomDomainHandler
   @party = (args, props, varCache, parties) ->
     {domain, funct, cacheNum} = props[0]
 
-    party = varCache[domain]?[funct]?[cacheNum] ? parties[cacheNum]
+    party = varCache[domain]?[funct]?[cacheNum] ? if _.isNaN cacheNum then _.sample parties else parties[cacheNum]
 
     varCache[domain] = {} if not varCache[domain]
     varCache[domain][funct] = [] if not varCache[domain][funct]

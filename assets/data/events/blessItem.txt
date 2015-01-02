@@ -6,15 +6,16 @@
 While strolling around, %player encounters a fiery-hot forge, and proceeds to reinforce %hisher %item.
 Thinking %hisher %item is looking a bit tarnished, %player tries %hisher best to repair it.
 A demon approaches and possesses %player's %item, to aid %player on %hisher quest.
-The God of Rampage and Brawling, Ishkalorht, has decided to give %player an advantage by powering up %hisher %item.
+$random:deity$, has decided to give %player an advantage by powering up %hisher %item.
 %player's %item was exposed to spontaneous and strong gamma radiation, and is now glowing a bright shade of green.
 %player uses a soul gem to enchant %hisher %item at an enchantment table.
 %player took %hisher %item in for repairs, and it came out looking even better than before!
 %player was fighting FOEs, when %she suddenly figured out how to use %hisher %item better!
-%player decided to enforce %hisher %item a bit with another material to make it a little stronger.
+%player decided to reinforce %hisher %item a bit with another material to make it a little stronger.
 %player added a magic gem to %hisher %item, which in turn strengthens %item!
 %player took %hisher %item to the Great Fairy Fountain, where the Great Fairy enhanced %hisher %item to make it better!
 %player finally figured out which end of %hisher %item was the business end, and is now wielding it with more proficiency!
 %player used what magic %she knows to imbue %hisher %item with extra power!
 Sarda, The Wizard Who Did It made %player's %item stronger to make fights more interesting.
 Zardoz, the Angel of Weird Sean Connery Movies enchanted %player's %item with the Spirit of the Loincloth-Beltsuit, making %hisher %item more...uh, different.
+%player came across a $dict:adjective$ $dict:noun$ and it helped %himher fix up %hisher %item.

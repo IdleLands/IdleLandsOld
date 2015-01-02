@@ -3,3 +3,4 @@ Sarda, The Wizard Who Did It caused %player's %item to have its polarity reverse
 %player had the stat-switching bug applied to %hisher %item.
 %player had the ol' switcheroo happen to %item.  Didgeridoo and Timbuktu.
 %player's %item got switcheroo'd.  Maybe if they stand on their head and look at the stat it'll be alright...
+%player prayed to $random:deity$ for a buff, but instead %hisher %item suffered a switcheroo!
