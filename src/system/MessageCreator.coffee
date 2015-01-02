@@ -34,7 +34,8 @@ class RandomDomainHandler
       'Kirierath, The Goddess of Riches'
       'Ishkalorht, The God of Rampage and Brawling'
       'Shashkajze, The God of Items'
-      'Ulrya, The Goddess of Time'
+      'Ulrya, The Goddess of Time',
+      'Sarda, The Wizard Who Did It'
     ]
 
   @guild = ->
