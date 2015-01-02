@@ -683,7 +683,10 @@ class Character extends EventEmitter2
         (Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue) + @self.itemPriority item
 
       totalItemScore: ->
-        _.reduce @self.equipment, ((prev, item) -> prev+item.score()), 0
+        _.reduce @self.equipment, ((prev, item) =>
+          if not item?.score then @self.playerManager.game.errorHandler.captureError (new Error "Bad item for itemScore calculation"), extra: item
+          prev+(item?.score() or 0)
+        ), 0
 
       itemReplaceChancePercent: ->
         @base.itemReplaceChancePercent = 100
