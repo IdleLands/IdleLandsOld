@@ -96,7 +96,11 @@ class EventHandler
 
   bossPartyBattle: (player, bossPartyName) ->
     monsters = @createBosses @game.bossFactory.createBossPartyNames bossPartyName
-    bossParty = new Party @game, monsters
+
+    try
+      bossParty = new Party @game, monsters
+    catch e
+      @game.errorHandler.captureException e, extra: partyName: bossPartyName
 
     @bossBattleParty player, bossParty, bossPartyName
 
