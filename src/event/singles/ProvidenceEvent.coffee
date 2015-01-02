@@ -46,11 +46,11 @@ class ProvidenceEvent extends Event
     numPersonalities = chance.integer {min: 0, max: availablePersonalities.length}
     personalityMod = _.sample availablePersonalities, numPersonalities
 
-    if xpMod and chance.bool {likelihood: 60}
+    if xpMod and chance.bool {likelihood: 60} and @player.level.getValue() < 100
       @player.xp.add xpMod
       message = "#{message} #{if xpMod > 0 then 'Gained' else 'Lost'} #{Math.abs xpMod} xp!"
 
-    else if levelMod and chance.bool {likelihood: 15}
+    else if levelMod and chance.bool {likelihood: 15} and @player.level.getValue() < 100
       @player.level.add levelMod
       @player.resetMaxXp()
       message = "#{message} #{if levelMod > 0 then 'Gained' else 'Lost'} #{Math.abs levelMod} levels!"
