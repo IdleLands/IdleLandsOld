@@ -9,17 +9,7 @@ getCD = -> API.gameInstance.componentDatabase
 
 class RandomDomainHandler
 
-  placeholder = @placeholder = ->
-    _.sample [
-      'a red potato'
-      'a glass shark'
-      'a shiny mackerel'
-      'a shiny rock'
-      'a paper goatee'
-      'a bearded hat'
-      'a wooden plank'
-      'a wooden nickel'
-    ]
+  placeholder = @placeholder = -> CustomHandler.dict [funct: 'placeholder']
 
   @pet = ->
     (_.sample API.gameInstance.petManager.pets)?.name or placeholder()
@@ -30,16 +20,6 @@ class RandomDomainHandler
 
   @player = ->
     (_.sample API.gameInstance.playerManager.players).name
-
-  @deity = ->
-    _.sample [
-      'Kirierath, The Goddess of Riches'
-      'Ishkalorht, The God of Rampage and Brawling'
-      'Shashkajze, The God of Items'
-      'Ulrya, The Goddess of Time',
-      'Sarda, The Wizard Who Did It',
-      'Zardoz, the Angel of Weird Sean Connery Movies'
-    ]
 
   @guild = ->
     (_.sample API.gameInstance.guildManager.guilds)?.name or placeholder()

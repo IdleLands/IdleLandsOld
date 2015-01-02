@@ -14,6 +14,6 @@ Although they all hate eachother, their common goal has brought %player and %par
 Sarda, The Wizard Who Did It made a party called "%partyName", and forced %player, %partyMembers into it.
 %player bands together with %partyMembers, forming "%partyName" and performing many heroic feats!
 TODAY'S HEADLINES: %player dissatisfied with overcooked lasagna at restaurant; bands together with %partyMembers into a group called "%partyName" to fight for quality of food.
-%player forms party "%partyName" with %partyMembers... and $random:placeholder$.
+%player forms party "%partyName" with %partyMembers... and $dict:placeholder$.
 %partyMembers initially didn't like %player, but after 30 minutes of bickering, they agree to form a party called "%partyName".
 After a crazy night of events involving a blood-sucking orange, Bigfoot, gummy bears, obscene amounts of root beer, among other things, %player is now best friends with %partyMembers, and they all hang out together under the name "%partyName"!

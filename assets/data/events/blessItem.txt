@@ -6,7 +6,7 @@
 While strolling around, %player encounters a fiery-hot forge, and proceeds to reinforce %hisher %item.
 Thinking %hisher %item is looking a bit tarnished, %player tries %hisher best to repair it.
 A demon approaches and possesses %player's %item, to aid %player on %hisher quest.
-$random:deity$, has decided to give %player an advantage by powering up %hisher %item.
+$dict:deity$, has decided to give %player an advantage by powering up %hisher %item.
 %player's %item was exposed to spontaneous and strong gamma radiation, and is now glowing a bright shade of green.
 %player uses a soul gem to enchant %hisher %item at an enchantment table.
 %player took %hisher %item in for repairs, and it came out looking even better than before!

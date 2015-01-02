@@ -1,4 +1,4 @@
-%player found $random:placeholder$ and attempted to sell it, but got chased out of the store and billed for damages amounting to %gold gold.
+%player found $dict:placeholder$ and attempted to sell it, but got chased out of the store and billed for damages amounting to %gold gold.
 %player was mugged by a rogue named $chance:name{'middle':true}$, and lost %gold gold.
 %player stumbled across a pyrite mine, and invested %gold gold in it, only to watch it fail miserably..
 %player bets %gold gold at a gambling table, only to lose it. Unfortunately, %she did not realize the dealer had loaded dice.

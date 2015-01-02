@@ -1,10 +1,10 @@
 %player fell into a hole and lost %xpxp!
 %player was struck by lightning, causing %xpxp to fall out.
-%player choked on $random:placeholder$, coughing it up along with %xpxp.
+%player choked on $dict:placeholder$, coughing it up along with %xpxp.
 %player was mauled by a $random:monster#1$, and the $random:monster#1$ stole %xpxp afterwards.
 %player was eaten by a grue. %player had to pay a %xpxp fee to respawn!
 %player was shot in the leg, causing %xpxp to pour out of the wound.
-%player ate $random:placeholder$, %hisher poor dieting habits causing %player to lose %xpxp.
+%player ate $dict:placeholder$, %hisher poor dieting habits causing %player to lose %xpxp.
 %player found a chest! Inside this chest is another chest. This chest meta is too overwhelming for %himher to understand, and causes %himher to lose %xpxp.
 %player saw a really bright light, and went stumbling around in a forest for hours, getting %xpxp stolen from %himher by pixies.
 %player had a piano fall on %hisher head. %player was knocked out for long enough to make %himher lose %xpxp.
@@ -49,7 +49,7 @@
 %player got hit by a mac truck and is now limping along the highway. The damages to %hisher leg costed %himher %xpxp to mend.
 %player was taken in by the Stillstanders for questioning. In the end, %she got extorted %xpxp.
 %player had %hisher xp stolen by the Goddess of Time, Ulrya. She was merciful and only stole %xpxp, however.
-%player had %xpxp taken from %himher by $random:deity$. All you could hear was laughter.
+%player had %xpxp taken from %himher by $dict:deity$. All you could hear was laughter.
 %player had %hisher leg set on fire by a box of cheerios. %xpxp was burned up in the process.
 While %player was frozen after an encounter with a floating eye, a $random:adjective$ warhorse stumbled upon %himher and kicked %himher to death! %she had to pay %xpxp to respawn.
 %player rolled snake eyes, and then %hisher eyes turned into snakes, causing %himher to lose %xpxp. (s.s)

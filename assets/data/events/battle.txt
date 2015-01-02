@@ -21,4 +21,4 @@ Chewing gum is in limited supply! A fight over resources breaks out...
 $combat:party#0$ decided to start a war with $combat:party#1$! $combat:party#0 party:member#0$ is leading the charge!
 $combat:party#0 party:member#0$ spat at $combat:party#1 party:member#0$ and it sparked a fight!
 $combat:party#0$ and $combat:party#1$ were fighting over $random:monster$ and ended up in their own combat!
-$combat:party#0$ was eyeing up $random:placeholder$ and $combat:party#1$ got jealous and starting fighting them!
+$combat:party#0$ was eyeing up $dict:placeholder$ and $combat:party#1$ got jealous and starting fighting them!
