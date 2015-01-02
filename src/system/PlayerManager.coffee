@@ -88,12 +88,12 @@ class PlayerManager
     return Q {isSuccess: no, code: 12, message: "You're not currently logged in, so you can't auth via password."} if isIRC and not @playerHash[identifier]
     return Q {isSuccess: no, code: 16, message: "You can't login without a password, silly!"} if not password
 
-    @db.findOne {identifier: identifier}, (e, player) ->
-      console.error "BAD CHECK PASSWORD",e,e.stack if e
+    @db.findOne {identifier: identifier}, (e, player) =>
+      @game.errorHandler.captureException e, extra: identifier: identifier
 
-      defer.resolve {isSuccess: no, code: 13, message: "Authentication failure (player doesn't exist)."} if not player
-      defer.resolve {isSuccess: no, code: 12, message: "You haven't set up a password yet!"} if not player?.password
-      defer.resolve {isSuccess: no, code: 14, message: "Authentication failure (bad password)."} if not bcrypt.compareSync password, player?.password
+      return defer.resolve {isSuccess: no, code: 13, message: "Authentication failure (player doesn't exist)."} if not player
+      return defer.resolve {isSuccess: no, code: 12, message: "You haven't set up a password yet!"} if not player?.password
+      return defer.resolve {isSuccess: no, code: 14, message: "Authentication failure (bad password)."} if not bcrypt.compareSync password, player?.password
 
       defer.resolve {isSuccess: yes, code: 999999, message: "Successful login. Welcome back!"} #lol
 
