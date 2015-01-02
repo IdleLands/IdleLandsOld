@@ -678,7 +678,7 @@ class Character extends EventEmitter2
         @self.personalityReduce 'itemFindRangeMultiplier', [@self, @base.itemFindRangeMultiplier], @base.itemFindRangeMultiplier
 
       itemScore: (item) ->
-        if not item?.score then @self.game.errorHandler.captureError "Bad item for itemScore calculation", extra: item
+        if not item?.score then @self.playerManager.game.errorHandler.captureError "Bad item for itemScore calculation", extra: item
         baseValue = item?.score() or 0
         (Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue) + @self.itemPriority item
 
