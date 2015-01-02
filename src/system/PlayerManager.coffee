@@ -89,7 +89,7 @@ class PlayerManager
     return Q {isSuccess: no, code: 16, message: "You can't login without a password, silly!"} if not password
 
     @db.findOne {identifier: identifier}, (e, player) =>
-      @game.errorHandler.captureException e, extra: identifier: identifier
+      @game.errorHandler.captureException e, extra: identifier: identifier if e
 
       return defer.resolve {isSuccess: no, code: 13, message: "Authentication failure (player doesn't exist)."} if not player
       return defer.resolve {isSuccess: no, code: 12, message: "You haven't set up a password yet!"} if not player?.password
