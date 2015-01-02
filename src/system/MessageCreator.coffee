@@ -193,16 +193,18 @@ class MessageCreator
     getVarProps = (keyString) ->
       terms = keyString.split " "
       varProps = []
-      _.each terms, (term) ->
+      _.each terms, (term) =>
         [props, cacheNum] = term.split "#"
         [domain, funct] = props.split ":", 2
         args = (_.str.trim props.substring 1+funct.length+props.indexOf funct).split("'").join '"'
-
-        varProps.push
-          domain: domain
-          funct: funct
-          args: if args then JSON.parse args
-          cacheNum: parseInt cacheNum
+        try
+          varProps.push
+            domain: domain
+            funct: funct
+            args: if args then JSON.parse args
+            cacheNum: parseInt cacheNum
+        catch e
+          @game.errorHandler.captureException e, extra: message: keyString
 
       varProps
 
