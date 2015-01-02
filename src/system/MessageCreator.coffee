@@ -182,6 +182,9 @@ class MessageCreator
 
     varCache = {}
 
+    getCache = (domain, funct, cacheNum) ->
+      varCache[domain][funct][cacheNum]
+
     setCache = (domain, funct, cacheNum, retVal) ->
       varCache[domain] = {} if not varCache[domain]
       varCache[domain][funct] = [] if not varCache[domain][funct]
