@@ -196,6 +196,7 @@ class PlayerManager
     return Q {isSuccess: no, code: 2, message: "You have to make your name above 2 characters!"} if options.name.length < 2
     return Q {isSuccess: no, code: 3, message: "You have to keep your name under 20 characters!"} if options.name.length > 20
     return Q {isSuccess: no, code: 4, message: "You have to send a unique identifier for this player!"} if not options.identifier
+    return Q {isSuccess: no, code: 4, message: "You can't have dots in your name. Sorry!"} if -1 isnt options.name.indexOf "."
 
     defer = Q.defer()
 

@@ -131,6 +131,7 @@ class PetManager
     pet.equipment.push new Equipment baseSoul
 
   save: (pet) ->
+    console.log pet
     @db.update {createdAt: pet.createdAt}, pet, {upsert: yes}, (e) =>
       @game.errorHandler.captureException e if e
 
