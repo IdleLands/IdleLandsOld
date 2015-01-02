@@ -57,7 +57,7 @@ class RandomDomainHandler
   @party = (args, props, varCache, parties) ->
     {domain, funct, cacheNum} = props[0]
 
-    party = varCache[domain]?[funct]?[cacheNum] ? _.sample parties
+    party = varCache[domain]?[funct]?[cacheNum] ? parties[cacheNum]
 
     varCache[domain] = {} if not varCache[domain]
     varCache[domain][funct] = [] if not varCache[domain][funct]
