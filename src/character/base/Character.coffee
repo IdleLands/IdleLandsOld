@@ -678,13 +678,13 @@ class Character extends EventEmitter2
         @self.personalityReduce 'itemFindRangeMultiplier', [@self, @base.itemFindRangeMultiplier], @base.itemFindRangeMultiplier
 
       itemScore: (item) ->
-        if not item?.score then @self.playerManager.game.errorHandler.captureError (new Error "Bad item for itemScore calculation"), extra: item
+        if not item?.score and not item?._calcScore then @self.playerManager.game.errorHandler.captureError (new Error "Bad item for itemScore calculation"), extra: item
         baseValue = item?.score?() or item?._calcScore or 0
         (Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue) + @self.itemPriority item
 
       totalItemScore: ->
         _.reduce @self.equipment, ((prev, item) =>
-          if not item?.score then @self.playerManager.game.errorHandler.captureError (new Error "Bad item for itemScore calculation"), extra: item
+          if not item?.score and not item?._calcScore then @self.playerManager.game.errorHandler.captureError (new Error "Bad item for totalItemScore calculation"), extra: item
           prev+(item?.score?() or item?._calcScore or 0)
         ), 0
 
