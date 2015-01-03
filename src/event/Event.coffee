@@ -48,17 +48,14 @@ class Event
         min = Math.min highVal, lowVal
         max = Math.max highVal, lowVal
         boost = chance.integer {min: min, max: max}
-        console.log 'boost',min,max,boost
         break
 
     if not boost
-      console.log 'no boost'
       val = _.last goldTiers
       min = Math.min val, 0
       max = Math.max val, 1
       boost = chance.integer min: min, max: max
 
-    console.log boost
     boost
 
   ignoreKeys: ['_calcScore', 'enchantLevel']

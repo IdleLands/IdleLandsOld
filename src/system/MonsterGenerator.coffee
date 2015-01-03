@@ -136,33 +136,12 @@ class MonsterGenerator extends Generator
 
     monster
 
-  generateMonsterAtScore: (targetScore = 100, tolerance = 0.1) ->
-    testMonster = (monster) ->
-      return false if not monster
-      baseScore = monster.calc.totalItemScore()
-      flux = baseScore * tolerance
-      baseScore-flux <= targetScore <= baseScore+flux
-
-    tries = 0
-    monster = @generateMonster targetScore
-    monster = (@generateMonster targetScore) while (not testMonster monster) and tries++ < 100
-
-    monster
-
-  generateMonsterParty: (targetScore = 100, tolerance = 0.1) ->
-    monsterCount = chance.integer({min: 1, max: Constants.defaults.game.maxPartyMembers})
-    monsters = []
-
-    (monsters.push @generateMonsterAtScore (targetScore/monsterCount), tolerance) for x in [1..monsterCount]
-
-    new Party @game, monsters if monsters.length > 0
-
-  generateScalableMonster: (party, maxScore = party.score()*1.5) ->
+  generateScalableMonster: (party, maxScore = party.score()*1.5, name) ->
 
     chosenClass = _.sample classes
     baseMonster =
       class: chosenClass
-      name: "Vector #{chosenClass}"
+      name: name ? "Vector #{chosenClass}"
       level: Math.round party.level()
 
     monster = @generateMonster maxScore, baseMonster
