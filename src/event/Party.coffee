@@ -42,8 +42,7 @@ class Party
   finishAfterBattle: ->
     _(@players)
       .filter (player) -> player.isPet
-      .each (pet) =>
-        @playerLeave pet, yes
+      .each (pet) => @playerLeave pet, yes
 
   shouldDisband: (basePercent = 0) ->
     chance.bool likelihood: Math.max 0, Math.min 100, basePercent+(_.reduce @players, ((prev, player) -> prev + player.calc.partyLeavePercent()), 0)/@players.length
