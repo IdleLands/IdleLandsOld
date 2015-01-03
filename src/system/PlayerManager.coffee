@@ -93,9 +93,12 @@ class PlayerManager
 
       return defer.resolve {isSuccess: no, code: 13, message: "Authentication failure (player doesn't exist)."} if not player
       return defer.resolve {isSuccess: no, code: 12, message: "You haven't set up a password yet!"} if not player?.password
-      return defer.resolve {isSuccess: no, code: 14, message: "Authentication failure (bad password)."} if not bcrypt.compareSync password, player?.password
 
-      defer.resolve {isSuccess: yes, code: 999999, message: "Successful login. Welcome back!"} #lol
+      bcrypt.compare password, player.password, (e, res) ->
+        if not res
+          defer.resolve {isSuccess: no, code: 14, message: "Authentication failure (bad password)."}
+        else
+          defer.resolve {isSuccess: yes, code: 999999, message: "Successful login. Welcome back!"} #lol
 
     defer.promise
 
