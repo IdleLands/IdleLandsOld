@@ -133,7 +133,7 @@
     "defaults": {
         "game": {
             "maxPartyMembers": 3,
-            "maxParties": 3,
+            "maxParties": 4,
             "soloBattleProbability": 35,
             "aboveAveragePartyCountBattleProbability": 25,
             "maxEnchantLevel": 10,

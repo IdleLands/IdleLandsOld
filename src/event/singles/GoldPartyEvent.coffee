@@ -22,7 +22,7 @@ class GoldPartyEvent extends Event
       partyName: @player.party.name
 
     message = []
-    for member in (@player.party?.players or [@player])
+    for member in @player.party.players
       boost = @player.calcGoldGain @calcGoldEventGain @event.type, @player
 
       extra =

@@ -6,10 +6,15 @@ chance = new (require "chance")()
 class BossFactory
   constructor: (@game) ->
 
-  createBossPartyNames: (partyName) ->
-    BossInformation.parties[partyName]
+  cantDoBossPartyBattle: (partyName) ->
+    currentTimer = BossInformation.timers[partyName] or 0
+    respawnTimer = BossInformation.parties[partyName].respawn or 3600
+    ((new Date) - currentTimer) < respawnTimer * 1000
 
-  createBoss: (name) ->
+  createBossPartyNames: (partyName) ->
+    BossInformation.parties[partyName].members
+
+  createBoss: (name, isParty = no) ->
     currentTimer = BossInformation.timers[name]
 
     try
@@ -17,7 +22,7 @@ class BossFactory
     catch e
       @game.errorHandler.captureException new Error "INVALID BOSS RESPAWN/NAME: #{name}"
 
-    return if ((new Date) - currentTimer) < respawnTimer * 1000
+    return if not isParty and ((new Date) - currentTimer) < respawnTimer * 1000
 
     setAllItemClasses = "guardian"
 
@@ -25,6 +30,7 @@ class BossFactory
     statObj = baseObj.stats
     statObj.name = name
     monster = @game.monsterGenerator.generateMonster baseObj.score, statObj
+    monster.bossPartyName = isParty
     _.each baseObj.items, (item) ->
       baseItem = _.clone BossInformation.items[item.name]
       baseItem.name = item.name
@@ -66,7 +72,10 @@ class BossFactory
 
         member.emit "event.bossbattle.win", member, name
 
-      BossInformation.timers[name] = new Date()
+      if monster.bossPartyName
+        BossInformation.timers[monster.bossPartyName] = new Date()
+      else
+        BossInformation.timers[name] = new Date()
 
     monster.on "combat.party.win", (losingParty) ->
 

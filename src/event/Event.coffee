@@ -52,9 +52,11 @@ class Event
 
     if not boost
       val = _.last goldTiers
-      min = Math.min val, 1
+      min = Math.min val, 0
       max = Math.max val, 1
       boost = chance.integer min: min, max: max
+
+    boost
 
   ignoreKeys: ['_calcScore', 'enchantLevel']
 

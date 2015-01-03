@@ -19,7 +19,7 @@ class XpPartyEvent extends Event
     return if not @player.party
 
     message = []
-    for member in (@player.party?.players or [@player])
+    for member in @player.party.players
       boost = member.calcXpGain @calcXpEventGain @event.type, member
       member.gainXp boost
 

@@ -27,6 +27,26 @@ class Party
   pickPartyName: ->
     @game.componentDatabase.generatePartyName()
 
+  prepareForBattle: ->
+    _.each @players, (player) =>
+      pet = @game.petManager.getActivePetFor player
+      return if not pet
+      @addPlayer pet if pet.tryToJoinCombat()
+
+    if chance.bool({likelihood: 1})
+      deity = _.sample @game.componentDatabase.generatorCache.deity
+      deityMon = @game.monsterGenerator.generateScalableMonster @, @score(), deity
+      deityMon.isPet = yes
+      @addPlayer deityMon
+
+  finishAfterBattle: ->
+    _(@players)
+      .filter (player) -> player.isPet
+      .each (pet) => @playerLeave pet, yes
+
+  shouldDisband: (basePercent = 0) ->
+    chance.bool likelihood: Math.max 0, Math.min 100, basePercent+(_.reduce @players, ((prev, player) -> prev + player.calc.partyLeavePercent()), 0)/@players.length
+
   addGlobally: ->
     if not @game.parties
       @game.parties = []
@@ -38,7 +58,7 @@ class Party
 
   recruit: (players) ->
     _.forEach players, (player) =>
-      return if player of @players
+      return if player in @players
       player.emit "player.party.join"
       player.party = @
       player.partyName = @name

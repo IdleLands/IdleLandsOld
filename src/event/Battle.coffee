@@ -41,15 +41,11 @@ class Battle
     _.each @parties, (party) =>
       if not party
         @game.errorHandler.captureException new Error "INVALID PARTY ??? ABORTING"
+        console.error @parties
         @isBad = yes
         return
 
       party.currentBattle = @
-
-      _.each party.players, (player) =>
-        pet = @game.petManager.getActivePetFor player
-        return if not pet
-        party.addPlayer pet if pet.tryToJoinCombat()
 
   fixStats: ->
     _.each @turnOrder, (player) ->
@@ -453,12 +449,16 @@ class Battle
     # end losing
 
   cleanUp: ->
-    _.each @parties, (party) ->
+    _.each @parties, (party) =>
 
       _.each party.players, (player) ->
         player.clearAffectingSpells()
 
-      party.disband()
+      if party.isMonsterParty or party.shouldDisband (if party is @winningParty then 25 else 50)
+        party.disband()
+
+      else
+        party.finishAfterBattle()
 
     @cleanUpGlobals()
     @fixStats()

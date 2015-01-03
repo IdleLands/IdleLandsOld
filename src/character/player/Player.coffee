@@ -51,16 +51,16 @@ class Player extends Character
 
   generateBaseEquipment: ->
     @equipment = [
-      new Equipment {canEquip: yes, type: "body",    class: "newbie", name: "Tattered Shirt", con: 1}
-      new Equipment {canEquip: yes, type: "feet",    class: "newbie", name: "Cardboard Shoes", dex: 1}
-      new Equipment {canEquip: yes, type: "finger",  class: "newbie", name: "Twisted Wire", int: 1}
-      new Equipment {canEquip: yes, type: "hands",   class: "newbie", name: "Pixelated Gloves", str: 1}
-      new Equipment {canEquip: yes, type: "head",    class: "newbie", name: "Miniature Top Hat", wis: 1}
-      new Equipment {canEquip: yes, type: "legs",    class: "newbie", name: "Leaf", agi: 1}
-      new Equipment {canEquip: yes, type: "neck",    class: "newbie", name: "Old Brooch", wis: 1, int: 1}
-      new Equipment {canEquip: yes, type: "mainhand",class: "newbie", name: "Empty and Broken Ale Bottle", str: 1, con: -1}
-      new Equipment {canEquip: yes, type: "offhand", class: "newbie", name: "Chunk of Rust", dex: 1, str: 1}
-      new Equipment {canEquip: yes, type: "charm",   class: "newbie", name: "Ancient Bracelet", con: 1, dex: 1}
+      new Equipment {type: "body",    class: "newbie", name: "Tattered Shirt", con: 1}
+      new Equipment {type: "feet",    class: "newbie", name: "Cardboard Shoes", dex: 1}
+      new Equipment {type: "finger",  class: "newbie", name: "Twisted Wire", int: 1}
+      new Equipment {type: "hands",   class: "newbie", name: "Pixelated Gloves", str: 1}
+      new Equipment {type: "head",    class: "newbie", name: "Miniature Top Hat", wis: 1}
+      new Equipment {type: "legs",    class: "newbie", name: "Leaf", agi: 1}
+      new Equipment {type: "neck",    class: "newbie", name: "Old Brooch", wis: 1, int: 1}
+      new Equipment {type: "mainhand",class: "newbie", name: "Empty and Broken Ale Bottle", str: 1, con: -1}
+      new Equipment {type: "offhand", class: "newbie", name: "Chunk of Rust", dex: 1, str: 1}
+      new Equipment {type: "charm",   class: "newbie", name: "Ancient Bracelet", con: 1, dex: 1}
     ]
 
   setPushbulletKey: (key) ->

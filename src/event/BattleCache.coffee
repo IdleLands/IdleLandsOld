@@ -13,7 +13,7 @@ class BattleCache
   parseMembers: (teams) ->
     @teams = _.map teams, (team) ->
       name: team.name
-      members: _.map team.players, (member) -> {name: member.name, level: member.level.getValue(), profession: member.professionName, isPlayer: !!member.playerManager}
+      members: _.map team.players, (member) -> {name: member.name, level: member.level.getValue(), profession: member.professionName, isPlayer: !!member.playerManager, petUid: member.createdAt, petOwner: member.owner?.name}
 
   addMessage: (message) ->
     @messages.push message

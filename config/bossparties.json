@@ -1,11 +1,17 @@
 {
-  "Wardens": [
-    "Warden of Norkos",
-    "Warden of Norkos"
-  ],
-  "Christmas Elves": [
-    "Elf Administrator",
-    "Angry Elf",
-    "Toy Maker Elf"
-  ]
+  "Wardens": {
+    "respawn": 7200,
+    "members": [
+      "Warden of Norkos",
+      "Warden of Norkos"
+    ]
+  },
+  "Christmas Elves": {
+    "respawn": 7200,
+    "members": [
+      "Elf Administrator",
+      "Angry Elf",
+      "Toy Maker Elf"
+    ]
+  }
 }
