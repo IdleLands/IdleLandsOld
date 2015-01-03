@@ -16,7 +16,7 @@ class Sanctified extends Personality
   eventModifier: -> -10000
 
   @canUse = (player) ->
-    player.permanentAchievements.hasFoundSacred
+    player.permanentAchievements?.hasFoundSacred
 
   @desc = "Find a sacred item"
 

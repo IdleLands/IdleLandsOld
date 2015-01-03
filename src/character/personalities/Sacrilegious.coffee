@@ -17,7 +17,7 @@ class Sacrilegious extends Personality
   eventModifier: (player, event) -> if event.type in ['forsakeItem', 'forsakeXp', 'forsakeGold', 'flipStat'] then 700 else 350
 
   @canUse = (player) ->
-    player.permanentAchievements.hasFoundForsaken
+    player.permanentAchievements?.hasFoundForsaken
 
   @desc = "Find a forsaken item"
 
