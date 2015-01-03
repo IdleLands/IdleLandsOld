@@ -25,7 +25,7 @@ class Player extends Character
 
   canEquip: (item, rangeBoost = 1) ->
     myItem = _.findWhere @equipment, {type: item.type}
-    return if not myItem
+    return false if not myItem
     score = @calc.itemScore item
     myScore = @calc.itemScore myItem
     realScore = item.score()
