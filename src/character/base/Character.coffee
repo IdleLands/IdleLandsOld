@@ -167,6 +167,9 @@ class Character extends EventEmitter2
 
     @addToEquippedBy item
 
+    @permanentAchievements.hasFoundForsaken = yes if item.forsaken
+    @permanentAchievements.hasFoundSacred   = yes if item.sacred
+
   addToEquippedBy: (item) ->
     item.equippedBy = [] if not item.equippedBy
     item.equippedBy.push if @isPet then @createdAt else @name
