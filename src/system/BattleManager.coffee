@@ -17,7 +17,7 @@ class BattleManager
   getAllPossiblePartyOrderingsInOrder: (sizeLimit = 2) ->
     _(@game.parties)
       .sortBy (party) -> party.score()
-      .map (party, index) -> parties.slice index, index+sizeLimit
+      .map (party, index) => @game.parties.slice index, index+sizeLimit
       .reject (arr) -> arr.length isnt sizeLimit
       .value()
 
