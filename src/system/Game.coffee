@@ -33,7 +33,7 @@ ravenURL = config.ravenURL
 
 client = null
 
-class localCapture
+class LocalCapture
   captureMessage: (others...) ->
     fs = require "fs"
     _.each others, (err) ->
@@ -52,7 +52,7 @@ if ravenURL
   raven = require "raven"
   client = new raven.Client ravenURL, stackFunction: Error.prepareStackTrace
 else if config.captureLocal
-  client = new localCapture()
+  client = new LocalCapture()
 
 class Game
 
