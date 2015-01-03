@@ -28,7 +28,8 @@ class ShopGenerator extends Generator
     for i in [0...region.shopSlots()]
       item = @generateItem player
       return if not item
-      item = @generateItem player while item.score() > player.calc.itemFindRange()*Constants.defaults.game.shopRangeBoost*region.shopQuality()
+      item = @generateItem player while item?.score() > player.calc.itemFindRange()*Constants.defaults.game.shopRangeBoost*region.shopQuality()
+      return if not item
       price = Math.floor(item.score()*region.shopMult()*
                 (chance.floating {min: 1, max: 1 + Constants.defaults.game.shopPriceFlux, fixed: 3})*
                 (1 + player.calc.stat('shopPercent')/100))

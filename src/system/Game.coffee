@@ -33,9 +33,26 @@ ravenURL = config.ravenURL
 
 client = null
 
+class localCapture
+  captureMessage: (others...) ->
+    fs = require "fs"
+    _.each others, (err) ->
+      msg = (JSON.stringify err) + "\r\n" + (err.message ? err) + "\r\n" + (err.stack ? "") + "\r\n\r\n"
+      fs.appendFileSync "./err.log", msg
+      console.log msg
+
+  captureException: (others...) ->
+    fs = require "fs"
+    _.each others, (err) ->
+      msg = (JSON.stringify err) + "\r\n" + (err.message ? err) + "\r\n" + (err.stack ? "") + "\r\n\r\n"
+      fs.appendFileSync "./err.log", msg
+      console.log msg
+
 if ravenURL
   raven = require "raven"
   client = new raven.Client ravenURL, stackFunction: Error.prepareStackTrace
+else if config.captureLocal
+  client = new localCapture()
 
 class Game
 
