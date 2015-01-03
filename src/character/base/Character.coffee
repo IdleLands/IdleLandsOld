@@ -620,7 +620,7 @@ class Character extends EventEmitter2
         @base.damage = Math.max 10, @self.calc.stats ['str']
         value = @self.personalityReduce 'damage', [@self, @base.damage], @base.damage
         value += @self.calc.boosts ['power', 'offense', 'glowing', 'vorpal'], @base.damage
-        value
+        Math.round value
 
       minDamage: ->
         @base.minDamage = 1
