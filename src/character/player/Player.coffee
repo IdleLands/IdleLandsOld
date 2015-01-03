@@ -324,15 +324,15 @@ class Player extends Character
     weight = [10, 10, 10, 10, 10, 10, 10, 10, 10]
     drunk = Math.max 0, @calc.drunk()
     drunk = Math.min 10, drunk
-    if @lastDir isnt null
+    if @lastDir isnt null and @lastDir isnt undefined
       point1 = [@lastDir%3, Math.floor(@lastDir/3)] #list -> matrix
-      _.each [0..8], (num) ->
+      _.each [1..9], (num) ->
         point2 = [num%3, Math.floor(num/3)] #list -> matrix
         distance = Math.abs(point1[0] - point2[0]) + Math.abs(point1[1] - point2[1]) #number of squares distance, diagonal movement not allowed
         if distance is 0
-          weight[num] = 40 - 3.6*drunk
+          weight[num-1] = 40 - 3.6*drunk
         else
-          weight[num] = Math.max 1, 4 - distance*(1-drunk/10) #each point of drunkenness makes the distance matter less
+          weight[num-1] = Math.max 1, 4 - distance*(1-drunk/10) #each point of drunkenness makes the distance matter less
 
     # example when lastDir == 6 and drunk == 0
     # 1 2 3
@@ -345,6 +345,8 @@ class Player extends Character
     # 3.6 3.8 11.2
     # 3.4 3.6 3.8
     # = 27.18% chance of continuing going right
+
+    console.log("weight: " + @name + " " + weight + " lastdir: " + @lastDir)
 
     randomDir = -> chance.weighted(possibleNumbers, weight)
 
