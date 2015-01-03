@@ -86,6 +86,55 @@
         }
     },
 
+    "Moose": {
+        "cost": 45000,
+        "category": "Combat",
+        "description": "Unlocked by seeing the finest herbivore food in great quantities.",
+        "slots": {
+            "feet": 2,
+            "legs": 2
+        },
+        "specialStats": {
+            "dance": 1,
+            "offense": 1,
+            "startle": 1,
+            "vorpal": 1,
+            "crit": 2
+        },
+        "requirements": {
+            "collectibles": [
+                "Timmy's Twig"
+            ],
+            "statistics": {
+                "explore walk grass": 100000
+            }
+        },
+        "scale": {
+            "maxLevel": [50, 75, 100],
+            "maxItemScore": [1500, 3000, 4500],
+            "inventory": [5, 6, 7, 8, 9, 10],
+            "goldStorage": [10000, 20000, 30000],
+            "battleJoinPercent": [0, 15, 30, 45, 60, 75, 85],
+            "itemFindTimeDuration": [0, 43200, 21600, 10800, 3600],
+            "itemSellMultiplier": [0.05],
+            "itemFindBonus": [0, 10, 15, 20, 25],
+            "itemFindRangeMultiplier": [0.1, 0.25, 0.45],
+            "xpPerGold": [15, 25, 35, 50]
+        },
+        "scaleCost": {
+            "maxLevel": [0, 50000],
+            "maxItemScore": [0, 50000, 100000],
+            "inventory": [0, 5000, 7500, 10000, 12500, 15000],
+            "goldStorage": [0, 10000, 20000],
+            "battleJoinPercent": [0, 15000, 25000, 35000, 45000, 60000, 75000],
+            "itemFindTimeDuration": [0, 25000, 35000, 40000, 50000],
+            "itemSellMultiplier": [0],
+            "itemFindBonus": [0, 5000, 7500, 15000, 30000],
+            "itemFindRangeMultiplier": [0, 20000, 45000],
+            "xpPerGold": [0, 25000, 35000, 50000]
+        }
+    },
+
     "Raven": {
         "cost": 35000,
         "category": "Hybrid",
@@ -309,8 +358,10 @@
             "offense": 2,
             "punish": 1,
             "int": 200,
-            "fire": 400,
             "ice": 400,
+            "fire": 400,
+            "earth": 400,
+            "water": 400,
             "thunder": 400
         },
         "requirements": {
@@ -319,14 +370,14 @@
                 "Silver Draygon Scale",
                 "Red Draygon Scale",
                 "Green Draygon Scale",
-                "Mama Draygon Scale"
+                "Mama Red Draygon Scale"
             ],
             "bosses": [
                 "Sky Dragon of Vocalnus",
                 "Black Dragon King",
                 "Green Dragon",
-                "Mama Draygon",
-                "Red Dragon Hatchling"
+                "Mama Red Draygon",
+                "Baby Red Draygon"
             ]
         },
         "scale": {
@@ -346,12 +397,61 @@
             "maxItemScore": [0, 25000, 27500, 50000, 95000],
             "inventory": [30000],
             "goldStorage": [0, 50000],
-            "battleJoinPercent": [0],
+            "battleJoinPercent": [0, 20000, 30000, 60000, 75000, 100000],
             "itemFindTimeDuration": [0, 50000, 60000, 70000, 80000, 100000],
             "itemSellMultiplier": [0, 60000],
             "itemFindBonus": [0, 25000, 25000, 50000, 75000, 100000, 125000],
             "itemFindRangeMultiplier": [0, 25000, 45000, 65000, 95000],
             "xpPerGold": [0, 25000, 50000, 100000]
+        }
+    },
+
+    "Octopus": {
+        "cost": 80000,
+        "category": "Combat",
+        "description": "Unlocked by observing the rules of the sea.",
+        "slots": {
+            "mainhand": 4,
+            "offhand": 4
+        },
+        "specialStats": {
+            "water": 800,
+            "int": 800,
+            "str": 800,
+            "con": 800,
+            "fear": 1,
+            "sturdy": 1,
+            "drunk": 1,
+            "parry": 4
+        },
+        "requirements": {
+            "statistics": {
+                "explore walk water": 260000
+            }
+        },
+        "scale": {
+            "maxLevel": [5, 15, 30, 50, 75, 105, 140, 180],
+            "maxItemScore": [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000],
+            "inventory": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+            "goldStorage": [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000],
+            "battleJoinPercent": [10, 20, 30, 40, 50, 60, 70, 80],
+            "itemFindTimeDuration": [28800, 25200, 21600, 18000, 14400, 10800, 7200, 3600],
+            "itemSellMultiplier": [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40],
+            "itemFindBonus": [0, 10, 20, 30, 40, 50, 60, 70, 80],
+            "itemFindRangeMultiplier": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8],
+            "xpPerGold": [1, 2, 4, 8, 16, 32, 64, 128]
+        },
+        "scaleCost": {
+            "maxLevel": [0, 10000, 15000, 20000, 25000, 30000, 35000, 40000],
+            "maxItemScore": [0, 20000, 30000, 40000, 50000, 60000, 70000, 100000],
+            "inventory": [0, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000],
+            "goldStorage": [0, 20000, 30000, 40000, 50000, 60000, 70000, 80000],
+            "battleJoinPercent": [0, 20000, 30000, 40000, 50000, 60000, 70000, 100000],
+            "itemFindTimeDuration": [0, 20000, 30000, 40000, 50000, 60000, 70000, 100000],
+            "itemSellMultiplier": [0, 15000, 20000, 25000, 30000, 35000, 40000, 50000],
+            "itemFindBonus": [0, 20000, 30000, 40000, 50000, 60000, 70000, 100000],
+            "itemFindRangeMultiplier": [0, 20000, 30000, 40000, 50000, 60000, 70000, 100000],
+            "xpPerGold": [0, 5000, 10000, 20000, 40000, 80000, 160000, 320000]
         }
     }
 }
