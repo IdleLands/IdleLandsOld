@@ -28,14 +28,13 @@ class PlayerManager
 
   beginGameLoop: ->
 
-    doActionPerMember = (arr, action) ->
-      for i in [0...arr.length]
-        setTimeout (player, i) ->
-          action player
-        , @DELAY_INTERVAL/arr.length*i, arr[i]
-
     @interval = setInterval =>
-      (doActionPerMember @players, ((player) -> player.takeTurn())) if @players.length > 0
+      return if @players.length is 0
+      _.each @players, (player, i) =>
+        delay = (@DELAY_INTERVAL/@players.length*i) + if i%2 is 1 then @DELAY_INTERVAL/2 else 0
+        setTimeout (player, i) ->
+          player.takeTurn()
+        , delay, player
     , @DELAY_INTERVAL
 
   randomPlayer: ->

@@ -18,6 +18,7 @@ chance = new Chance Math.random
 class Player extends Character
 
   isBusy: false
+  permanentAchievements: {}
 
   constructor: (player) ->
     super player
