@@ -33,6 +33,12 @@ class Party
       return if not pet
       @addPlayer pet if pet.tryToJoinCombat()
 
+    if chance.bool({likelihood: 1})
+      deity = _.sample @game.componentDatabase.generatorCache.deity
+      deityMon = @game.monsterGenerator.generateScalableMonster @, @score(), deity
+      deityMon.isPet = yes
+      @addPlayer deityMon
+
   finishAfterBattle: ->
     _(@players)
       .filter (player) -> player.isPet
