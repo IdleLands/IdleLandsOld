@@ -95,7 +95,8 @@ class EventHandler
     @bossBattleParty player, bossParty, bossName
 
   bossPartyBattle: (player, bossPartyName) ->
-    monsters = @createBosses @game.bossFactory.createBossPartyNames bossPartyName
+    return if @game.bossFactory.cantDoBossPartyBattle bossPartyName
+    monsters = @createBosses (@game.bossFactory.createBossPartyNames bossPartyName), bossPartyName
 
     try
       bossParty = new Party @game, monsters
@@ -104,11 +105,11 @@ class EventHandler
 
     @bossBattleParty player, bossParty, bossPartyName
 
-  createBoss: (bossName) ->
-    @game.bossFactory.createBoss bossName
+  createBoss: (bossName, partyName) ->
+    @game.bossFactory.createBoss bossName, partyName
 
-  createBosses: (bossNames) ->
-    _.map bossNames, (bossName) => @createBoss bossName
+  createBosses: (bossNames, partyName) ->
+    _.map bossNames, (bossName) => @createBoss bossName, partyName
 
   bossBattleParty: (player, bossParty, name) ->
 
@@ -123,12 +124,16 @@ class EventHandler
       @game.broadcast MessageCreator.genericMessage message
       new Battle @game, [player.party, bossParty]
 
+    # players need a party to get into combat
     if not player.party
-      if player.calc.totalItemScore() < bossParty.score()
+
+      # we only give them an actual party if they're not too close to the bosses score
+      if player.calc.totalItemScore() < bossParty.score() * 0.8
         @doEventForPlayer player.name, 'party'
         .then ->
           startBattle()
       else
+        # otherwise they get a party of themselves
         new Party @game, [player]
         startBattle()
 
@@ -141,6 +146,7 @@ class EventHandler
     sendMessage = yes if _.isUndefined sendMessage
     extra = {} if not extra
 
+    # monsters can't receive messages :(
     return if player.isMonster
 
     if sendMessage
@@ -149,9 +155,12 @@ class EventHandler
 
     stripped = MessageCreator._replaceMessageColors message
 
+    # pushbullet for the players!
     if link
       player.pushbulletSend extra.linkTitle, link
     else player.pushbulletSend stripped
+
+    # cache all the things that happen
     @addEventToDb stripped, player, type, extra
 
     message

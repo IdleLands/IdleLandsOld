@@ -33,7 +33,7 @@ class GlobalEventHandler
   doBattle: ->
     @game.componentDatabase.getRandomEvent 'battle', (e, event = {}) =>
       event.player = @game.playerManager.randomPlayer()
-      @game.startBattle [], event
+      @game.battleManager.startBattle [], event
 
   doCataclysm: ->
     cata = new cataclysms[_.sample _.keys cataclysms] @game
