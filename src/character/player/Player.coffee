@@ -320,13 +320,36 @@ class Player extends Character
     @ignoreDir = [] if not @ignoreDir
     @stepCooldown = 0 if not @stepCooldown
 
-    randomDir = -> chance.integer({min: 1, max: 9})
+    possibleNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    weight = [10, 10, 10, 10, 10, 10, 10, 10, 10]
+    drunk = Math.max 0, @calc.drunk()
+    drunk = Math.min 10, drunk
+    if @lastDir isnt null
+      point1 = [@lastDir%3, Math.floor(@lastDir/3)] #list -> matrix
+      _.each [0..8], (num) ->
+        point2 = [num%3, Math.floor(num/3)] #list -> matrix
+        distance = Math.abs(point1[0] - point2[0]) + Math.abs(point1[1] - point2[1]) #number of squares distance, diagonal movement not allowed
+        if distance is 0
+          weight[num] = 40 - 3.6*drunk
+        else
+          weight[num] = Math.max 1, 4 - distance*(1-drunk/10) #each point of drunkenness makes the distance matter less
+
+    # example when lastDir == 6 and drunk == 0
+    # 1 2 3
+    # 2 3 40
+    # 1 2 3
+    # = 72.73% chance of continuing going right
+
+    # example when lastDir == 6 and drunk == 8
+    # 3.4 3.6 3.8
+    # 3.6 3.8 11.2
+    # 3.4 3.6 3.8
+    # = 27.18% chance of continuing going right
+
+    randomDir = -> chance.weighted(possibleNumbers, weight)
 
     dir = randomDir()
     dir = randomDir() while dir in @ignoreDir
-
-    drunkAdjustedProb = Math.max 0, 80 - (@calc.drunk() * 10)
-    dir = if chance.bool {likelihood: drunkAdjustedProb} then @lastDir else dir
 
     [(@num2dir dir, @x, @y), dir]
 
