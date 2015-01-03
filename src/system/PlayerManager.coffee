@@ -266,11 +266,13 @@ class PlayerManager
     @db.update { identifier: player.identifier }, savePlayer, {upsert: true}, (e) =>
       @game.errorHandler.captureException e if e
 
-  playerTakeTurn: (identifier) ->
+  playerTakeTurn: (identifier, sendPlayerObject) ->
     return Q {isSuccess: no, code: 10, message: "You're not logged in!"} if not identifier or not (identifier of @playerHash)
 
     player = @playerHash[identifier]
     @handleAutoLogout player
+
+    return if not sendPlayerObject
 
     results = {isSuccess: yes, code: 102, message: "Turn taken.", player: player.buildRESTObject()}
 

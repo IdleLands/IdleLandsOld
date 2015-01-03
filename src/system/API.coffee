@@ -118,10 +118,10 @@ class API
 
   # Invoked either automatically (by means of taking a turn), or when a player issues a command
   @player =
-    takeTurn: (identifier) =>
+    takeTurn: (identifier, sendPlayerObject = yes) =>
       @validateIdentifier identifier
       .then (res) =>
-        if res.isSuccess then @gameInstance.playerManager.playerTakeTurn identifier else res
+        if res.isSuccess then @gameInstance.playerManager.playerTakeTurn identifier, sendPlayerObject else res
 
     custom:
       submit: (identifier, data) =>

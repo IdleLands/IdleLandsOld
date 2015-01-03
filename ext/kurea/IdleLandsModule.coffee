@@ -167,7 +167,7 @@ module.exports = (Module) ->
           , DELAY_INTERVAL/arr.length*i, arr[i]
 
       @interval = setInterval =>
-        doActionPerMember @userIdentsList, @IdleWrapper.api.player.takeTurn
+        doActionPerMember @userIdentsList, (identifier) => @IdleWrapper.api.player.takeTurn identifier, no
       , DELAY_INTERVAL
 
     watchIdleFiles: ->
