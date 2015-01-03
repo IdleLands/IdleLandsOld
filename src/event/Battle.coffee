@@ -9,6 +9,9 @@ _.str = require "underscore.string"
 chance = (new require "chance")()
 
 class Battle
+
+  BAD_TURN_THRESHOLD: 100
+
   constructor: (@game, @parties, @suppress = Constants.defaults.battle.suppress, @battleUrl = Constants.defaults.battle.showUrl) ->
     return if @parties.length < 2
     @game.battle = @
@@ -23,6 +26,7 @@ class Battle
 
     return if @isBad
 
+    @badTurns = 0
     @battleCache = new BattleCache @game, @parties
     @game.currentBattle = @
     @initializePlayers()
@@ -145,6 +149,8 @@ class Battle
     while @playersAlive()
       @turnPosition = @turnPosition or 0
 
+      return if @badTurns > @BAD_TURN_THRESHOLD
+
       if @turnPosition is 0
         @broadcast "ROUND #{@currentTurn} STATUS: #{@getAllStatStrings().join ' VS '}"
         @emitEventToAll "round.start", @turnOrder
@@ -226,6 +232,7 @@ class Battle
       battleMessage message, target
       @emitEvents "dodge", "dodged", target, player
       @tryParry target, player
+      @badTurns++
       return
 
     [hitMin, hitMax] = [-target.calc.hit(), player.calc.beatHit()]
@@ -237,6 +244,7 @@ class Battle
       battleMessage message, target
       @emitEvents "miss", "missed", player, target
       @tryParry target, player
+      @badTurns++
       return
 
     if hitChance < -(target.calc.stat 'luck')
@@ -245,6 +253,7 @@ class Battle
       battleMessage message, target
       @emitEvents "deflect", "deflected", target, player
       @tryParry target, player
+      @badTurns++
       return
 
     maxDamage = player.calc.damage()
@@ -321,6 +330,13 @@ class Battle
       spellInst.prepareCast()
 
   endBattle: ->
+
+    if @badTurns > @BAD_TURN_THRESHOLD
+      @emitEventToAll "battle.stale", @turnOrder
+      @broadcast "Thalynas, The Goddess of Destruction And Stopping Battles Prematurely decided that you mortals were taking too long. Try better to amuse her next time!", {}, not @battleUrl
+      @cleanUp()
+      return
+
     @emitEventToAll "battle.end", @turnOrder
     randomWinningPlayer = _.sample(_.filter @turnOrder, (player) -> (not player.hp.atMin()) and (not player.fled))
     if not randomWinningPlayer
@@ -341,9 +357,6 @@ class Battle
 
     @divvyXp()
     @cleanUp()
-
-    @battleCache.finalize @notifyParticipants.bind @
-    @game.currentBattle = null
 
   notifyParticipants: (e, docs) ->
 
@@ -463,6 +476,9 @@ class Battle
     @cleanUpGlobals()
     @fixStats()
 
+    @battleCache.finalize @notifyParticipants.bind @
+    @game.currentBattle = null
+
   cleanUpGlobals: ->
     @game.battle = null
     @game.inBattle = false
@@ -501,6 +517,11 @@ class Battle
       if defender.hp.atMin()
         defender.clearAffectingSpells()
         message = "#{message} [FATAL]" if message
+
+      if damage is 0
+        @badTurns++
+      else
+        @badTurns = 0
 
     else if damageType is "mp"
       if damage < 0
