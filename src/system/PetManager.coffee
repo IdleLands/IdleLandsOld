@@ -153,7 +153,7 @@ class PetManager
     _.each requirements.collectibles, (collectible) -> meets = no if not _.findWhere player.collectibles, {name: collectible}
     _.each requirements.achievements, (achievement) -> meets = no if not _.findWhere player.achievements, {name: achievement}
     _.each requirements.bosses,              (boss) -> meets = no if not player.statistics?['calculated boss kills']?[boss]
-    _.each (_.keys requirements.statistics), (stat) -> meets = no if player.statistics?[stat] < requirements.statistics[stat]
+    _.each (_.keys requirements.statistics), (stat) -> meets = no if not player.statistics?[stat] or player.statistics[stat] < requirements.statistics[stat]
 
     meets
 
