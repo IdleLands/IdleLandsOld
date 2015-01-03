@@ -922,7 +922,75 @@
         },
         {
             "lineNumber": 747,
-            "endLineNumber": 756,
+            "endLineNumber": 755,
+            "filePath": "ext/kurea/IdleLandsModule.coffee",
+            "fileName": "IdleLandsModule.coffee",
+            "example": [
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-guild donate 1337"
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-guild donate gold"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Donate gold to your guild."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Guild Donation"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "IRC Commands"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Client"
+            }
+        },
+        {
+            "lineNumber": 770,
+            "endLineNumber": 778,
+            "filePath": "ext/kurea/IdleLandsModule.coffee",
+            "fileName": "IdleLandsModule.coffee",
+            "example": [
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-guild buff \"Strength\" 1"
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-guild buff \"type\" tier"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Purchase a buff for your guild."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Guild Buff"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "IRC Commands"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Client"
+            }
+        },
+        {
+            "lineNumber": 793,
+            "endLineNumber": 802,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -959,8 +1027,8 @@
             }
         },
         {
-            "lineNumber": 771,
-            "endLineNumber": 779,
+            "lineNumber": 817,
+            "endLineNumber": 825,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -993,8 +1061,8 @@
             }
         },
         {
-            "lineNumber": 794,
-            "endLineNumber": 804,
+            "lineNumber": 840,
+            "endLineNumber": 850,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -1035,8 +1103,8 @@
             }
         },
         {
-            "lineNumber": 819,
-            "endLineNumber": 844,
+            "lineNumber": 865,
+            "endLineNumber": 890,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -1127,6 +1195,75 @@
             "name": {
                 "name": "name",
                 "basicInfo": "idle-pet action"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "IRC Commands"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Client"
+            }
+        },
+        {
+            "lineNumber": 919,
+            "endLineNumber": 927,
+            "filePath": "ext/kurea/IdleLandsModule.coffee",
+            "fileName": "IdleLandsModule.coffee",
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-customdata <command>",
+                    "extendedInfo": "init | update"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Manage custom data for the game."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "idle-customdata"
+            },
+            "gmOnly": {
+                "name": "gmOnly"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "IRC Commands"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Client"
+            }
+        },
+        {
+            "lineNumber": 938,
+            "endLineNumber": 947,
+            "filePath": "ext/kurea/IdleLandsModule.coffee",
+            "fileName": "IdleLandsModule.coffee",
+            "example": [
+                {
+                    "name": "example",
+                    "basicInfo": "!idle-custommod \"local-server/Danret\" 1"
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-custommod \"<user-identifier>\" status"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Manage moderators for managing custom data for the game."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "idle-custommod"
+            },
+            "gmOnly": {
+                "name": "gmOnly"
             },
             "category": {
                 "name": "category",
@@ -1431,6 +1568,40 @@
             "name": {
                 "name": "name",
                 "basicInfo": "Consumerist"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Achievements"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Player"
+            }
+        },
+        {
+            "lineNumber": 7,
+            "endLineNumber": 15,
+            "filePath": "src/character/achievements/Contented.coffee",
+            "fileName": "Contented.coffee",
+            "reward": [
+                {
+                    "name": "reward",
+                    "basicInfo": "+10% gold"
+                }
+            ],
+            "prerequisite": [
+                {
+                    "name": "prerequisite",
+                    "basicInfo": "Submit 5*[n-1]+1 pieces of content."
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This achievement is earned by submitting content. All the cool kids are doing it!"
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Contented"
             },
             "category": {
                 "name": "category",
@@ -1996,8 +2167,8 @@
             }
         },
         {
-            "lineNumber": 230,
-            "endLineNumber": 238,
+            "lineNumber": 234,
+            "endLineNumber": 242,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2026,8 +2197,8 @@
             }
         },
         {
-            "lineNumber": 241,
-            "endLineNumber": 249,
+            "lineNumber": 245,
+            "endLineNumber": 253,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2055,8 +2226,8 @@
             }
         },
         {
-            "lineNumber": 252,
-            "endLineNumber": 260,
+            "lineNumber": 256,
+            "endLineNumber": 264,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2085,8 +2256,8 @@
             }
         },
         {
-            "lineNumber": 263,
-            "endLineNumber": 271,
+            "lineNumber": 267,
+            "endLineNumber": 275,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2114,8 +2285,8 @@
             }
         },
         {
-            "lineNumber": 274,
-            "endLineNumber": 282,
+            "lineNumber": 278,
+            "endLineNumber": 286,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2144,8 +2315,8 @@
             }
         },
         {
-            "lineNumber": 285,
-            "endLineNumber": 293,
+            "lineNumber": 289,
+            "endLineNumber": 297,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2173,8 +2344,8 @@
             }
         },
         {
-            "lineNumber": 296,
-            "endLineNumber": 304,
+            "lineNumber": 300,
+            "endLineNumber": 308,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2203,8 +2374,8 @@
             }
         },
         {
-            "lineNumber": 307,
-            "endLineNumber": 314,
+            "lineNumber": 311,
+            "endLineNumber": 318,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2229,8 +2400,8 @@
             }
         },
         {
-            "lineNumber": 317,
-            "endLineNumber": 325,
+            "lineNumber": 321,
+            "endLineNumber": 329,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2258,8 +2429,8 @@
             }
         },
         {
-            "lineNumber": 328,
-            "endLineNumber": 336,
+            "lineNumber": 332,
+            "endLineNumber": 340,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2288,8 +2459,8 @@
             }
         },
         {
-            "lineNumber": 339,
-            "endLineNumber": 346,
+            "lineNumber": 343,
+            "endLineNumber": 350,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2315,8 +2486,8 @@
             }
         },
         {
-            "lineNumber": 349,
-            "endLineNumber": 357,
+            "lineNumber": 353,
+            "endLineNumber": 361,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2344,8 +2515,8 @@
             }
         },
         {
-            "lineNumber": 360,
-            "endLineNumber": 368,
+            "lineNumber": 364,
+            "endLineNumber": 372,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2373,8 +2544,8 @@
             }
         },
         {
-            "lineNumber": 371,
-            "endLineNumber": 379,
+            "lineNumber": 375,
+            "endLineNumber": 383,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2403,8 +2574,8 @@
             }
         },
         {
-            "lineNumber": 382,
-            "endLineNumber": 390,
+            "lineNumber": 386,
+            "endLineNumber": 394,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2432,8 +2603,8 @@
             }
         },
         {
-            "lineNumber": 393,
-            "endLineNumber": 401,
+            "lineNumber": 397,
+            "endLineNumber": 405,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2461,8 +2632,8 @@
             }
         },
         {
-            "lineNumber": 404,
-            "endLineNumber": 412,
+            "lineNumber": 408,
+            "endLineNumber": 416,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2490,8 +2661,8 @@
             }
         },
         {
-            "lineNumber": 415,
-            "endLineNumber": 423,
+            "lineNumber": 419,
+            "endLineNumber": 427,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2520,8 +2691,8 @@
             }
         },
         {
-            "lineNumber": 426,
-            "endLineNumber": 434,
+            "lineNumber": 430,
+            "endLineNumber": 438,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2550,8 +2721,8 @@
             }
         },
         {
-            "lineNumber": 437,
-            "endLineNumber": 445,
+            "lineNumber": 441,
+            "endLineNumber": 449,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2580,8 +2751,8 @@
             }
         },
         {
-            "lineNumber": 448,
-            "endLineNumber": 456,
+            "lineNumber": 452,
+            "endLineNumber": 460,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2609,8 +2780,8 @@
             }
         },
         {
-            "lineNumber": 459,
-            "endLineNumber": 467,
+            "lineNumber": 463,
+            "endLineNumber": 471,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2638,8 +2809,8 @@
             }
         },
         {
-            "lineNumber": 470,
-            "endLineNumber": 478,
+            "lineNumber": 474,
+            "endLineNumber": 482,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2667,8 +2838,8 @@
             }
         },
         {
-            "lineNumber": 481,
-            "endLineNumber": 489,
+            "lineNumber": 485,
+            "endLineNumber": 493,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2696,8 +2867,8 @@
             }
         },
         {
-            "lineNumber": 492,
-            "endLineNumber": 500,
+            "lineNumber": 496,
+            "endLineNumber": 504,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2726,8 +2897,8 @@
             }
         },
         {
-            "lineNumber": 503,
-            "endLineNumber": 511,
+            "lineNumber": 507,
+            "endLineNumber": 515,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2755,8 +2926,8 @@
             }
         },
         {
-            "lineNumber": 514,
-            "endLineNumber": 522,
+            "lineNumber": 518,
+            "endLineNumber": 526,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2784,8 +2955,8 @@
             }
         },
         {
-            "lineNumber": 525,
-            "endLineNumber": 533,
+            "lineNumber": 529,
+            "endLineNumber": 537,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2810,8 +2981,8 @@
             }
         },
         {
-            "lineNumber": 535,
-            "endLineNumber": 542,
+            "lineNumber": 539,
+            "endLineNumber": 546,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2836,8 +3007,8 @@
             }
         },
         {
-            "lineNumber": 544,
-            "endLineNumber": 551,
+            "lineNumber": 548,
+            "endLineNumber": 555,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2862,8 +3033,8 @@
             }
         },
         {
-            "lineNumber": 553,
-            "endLineNumber": 560,
+            "lineNumber": 557,
+            "endLineNumber": 564,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2888,8 +3059,8 @@
             }
         },
         {
-            "lineNumber": 562,
-            "endLineNumber": 569,
+            "lineNumber": 566,
+            "endLineNumber": 573,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2904,6 +3075,36 @@
             "stacks": {
                 "name": "stacks",
                 "basicInfo": "yes"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Equipment Effects"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Item"
+            }
+        },
+        {
+            "lineNumber": 632,
+            "endLineNumber": 640,
+            "filePath": "src/character/base/Character.coffee",
+            "fileName": "Character.coffee",
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Damage reduction makes it so you take less damage."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "damageReduction"
+            },
+            "combat": {
+                "name": "combat"
+            },
+            "stacks": {
+                "name": "stacks",
+                "basicInfo": "yes",
+                "extendedInfo": "Stacking formula is -1 damage / damageReduction point"
             },
             "category": {
                 "name": "category",
@@ -3993,6 +4194,3426 @@
         },
         {
             "lineNumber": 4,
+            "endLineNumber": 15,
+            "filePath": "src/character/guildBuffs/GuildAgility.coffee",
+            "fileName": "GuildAgility.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+5% AGI"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "4000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 20"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Agility I guild buff increases Agility."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Agility I"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Agility"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 16,
+            "endLineNumber": 27,
+            "filePath": "src/character/guildBuffs/GuildAgility.coffee",
+            "fileName": "GuildAgility.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+10% AGI"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "9000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 30"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Agility II guild buff increases Agility."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Agility II"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Agility"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 28,
+            "endLineNumber": 39,
+            "filePath": "src/character/guildBuffs/GuildAgility.coffee",
+            "fileName": "GuildAgility.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+15% AGI"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "16000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 40"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 4"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Agility III guild buff increases Agility."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Agility III"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Agility"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 40,
+            "endLineNumber": 51,
+            "filePath": "src/character/guildBuffs/GuildAgility.coffee",
+            "fileName": "GuildAgility.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+20% AGI"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "25000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 50"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 4"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Agility IV guild buff increases Agility."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Agility IV"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Agility"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 52,
+            "endLineNumber": 63,
+            "filePath": "src/character/guildBuffs/GuildAgility.coffee",
+            "fileName": "GuildAgility.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+25% AGI"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "36000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 60"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 9"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Agility V guild buff increases Agility."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Agility V"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "3 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Agility"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 64,
+            "endLineNumber": 75,
+            "filePath": "src/character/guildBuffs/GuildAgility.coffee",
+            "fileName": "GuildAgility.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+30% AGI"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "49000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 80"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 9"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Agility VI guild buff increases Agility."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Agility VI"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "3 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Agility"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 76,
+            "endLineNumber": 87,
+            "filePath": "src/character/guildBuffs/GuildAgility.coffee",
+            "fileName": "GuildAgility.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+35% AGI"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "64000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 80"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Agility VII guild buff increases Agility."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Agility VII"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "4 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Agility"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 88,
+            "endLineNumber": 99,
+            "filePath": "src/character/guildBuffs/GuildAgility.coffee",
+            "fileName": "GuildAgility.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+40% AGI"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "81000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 90"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Agility VIII guild buff increases Agility."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Agility VIII"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "4 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Agility"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 100,
+            "endLineNumber": 111,
+            "filePath": "src/character/guildBuffs/GuildAgility.coffee",
+            "fileName": "GuildAgility.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+45% AGI"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "100000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 100"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 20"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Agility IX guild buff increases Agility."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Agility IX"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "5 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Agility"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 15,
+            "filePath": "src/character/guildBuffs/GuildConstitution.coffee",
+            "fileName": "GuildConstitution.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+5% CON"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "4000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 20"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Constitution I guild buff increases Constitution."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Constitution I"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Constitution"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 16,
+            "endLineNumber": 27,
+            "filePath": "src/character/guildBuffs/GuildConstitution.coffee",
+            "fileName": "GuildConstitution.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+10% CON"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "9000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 30"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Constitution II guild buff increases Constitution."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Constitution II"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Constitution"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 28,
+            "endLineNumber": 39,
+            "filePath": "src/character/guildBuffs/GuildConstitution.coffee",
+            "fileName": "GuildConstitution.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+15% CON"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "16000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 40"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 4"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Constitution III guild buff increases Constitution."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Constitution III"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Constitution"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 40,
+            "endLineNumber": 51,
+            "filePath": "src/character/guildBuffs/GuildConstitution.coffee",
+            "fileName": "GuildConstitution.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+20% CON"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "25000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 50"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 4"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Constitution IV guild buff increases Constitution."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Constitution IV"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Constitution"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 52,
+            "endLineNumber": 63,
+            "filePath": "src/character/guildBuffs/GuildConstitution.coffee",
+            "fileName": "GuildConstitution.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+25% CON"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "36000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 60"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 9"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Constitution V guild buff increases Constitution."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Constitution V"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "3 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Constitution"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 64,
+            "endLineNumber": 75,
+            "filePath": "src/character/guildBuffs/GuildConstitution.coffee",
+            "fileName": "GuildConstitution.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+30% CON"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "49000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 80"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 9"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Constitution VI guild buff increases Constitution."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Constitution VI"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "3 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Constitution"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 76,
+            "endLineNumber": 87,
+            "filePath": "src/character/guildBuffs/GuildConstitution.coffee",
+            "fileName": "GuildConstitution.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+35% CON"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "64000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 80"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Constitution VII guild buff increases Constitution."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Constitution VII"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "4 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Constitution"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 88,
+            "endLineNumber": 99,
+            "filePath": "src/character/guildBuffs/GuildConstitution.coffee",
+            "fileName": "GuildConstitution.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+40% CON"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "81000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 90"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Constitution VIII guild buff increases Constitution."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Constitution VIII"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "4 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Constitution"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 100,
+            "endLineNumber": 111,
+            "filePath": "src/character/guildBuffs/GuildConstitution.coffee",
+            "fileName": "GuildConstitution.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+45% CON"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "100000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 100"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 20"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Constitution IX guild buff increases Constitution."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Constitution IX"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "5 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Constitution"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 15,
+            "filePath": "src/character/guildBuffs/GuildDexterity.coffee",
+            "fileName": "GuildDexterity.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+5% DEX"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "4000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 20"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Dexterity I guild buff increases Dexterity."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Dexterity I"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Dexterity"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 16,
+            "endLineNumber": 27,
+            "filePath": "src/character/guildBuffs/GuildDexterity.coffee",
+            "fileName": "GuildDexterity.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+10% DEX"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "9000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 30"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Dexterity II guild buff increases Dexterity."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Dexterity II"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Dexterity"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 28,
+            "endLineNumber": 39,
+            "filePath": "src/character/guildBuffs/GuildDexterity.coffee",
+            "fileName": "GuildDexterity.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+15% DEX"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "16000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 40"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 4"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Dexterity III guild buff increases Dexterity."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Dexterity III"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Dexterity"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 40,
+            "endLineNumber": 51,
+            "filePath": "src/character/guildBuffs/GuildDexterity.coffee",
+            "fileName": "GuildDexterity.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+20% DEX"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "25000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 50"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 4"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Dexterity IV guild buff increases Dexterity."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Dexterity IV"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Dexterity"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 52,
+            "endLineNumber": 63,
+            "filePath": "src/character/guildBuffs/GuildDexterity.coffee",
+            "fileName": "GuildDexterity.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+25% DEX"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "36000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 60"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 9"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Dexterity V guild buff increases Dexterity."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Dexterity V"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "3 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Dexterity"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 64,
+            "endLineNumber": 75,
+            "filePath": "src/character/guildBuffs/GuildDexterity.coffee",
+            "fileName": "GuildDexterity.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+30% DEX"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "49000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 80"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 9"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Dexterity VI guild buff increases Dexterity."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Dexterity VI"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "3 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Dexterity"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 76,
+            "endLineNumber": 87,
+            "filePath": "src/character/guildBuffs/GuildDexterity.coffee",
+            "fileName": "GuildDexterity.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+35% DEX"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "64000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 80"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Dexterity VII guild buff increases Dexterity."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Dexterity VII"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "4 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Dexterity"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 88,
+            "endLineNumber": 99,
+            "filePath": "src/character/guildBuffs/GuildDexterity.coffee",
+            "fileName": "GuildDexterity.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+40% DEX"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "81000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 90"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Dexterity VIII guild buff increases Dexterity."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Dexterity VIII"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "4 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Dexterity"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 100,
+            "endLineNumber": 111,
+            "filePath": "src/character/guildBuffs/GuildDexterity.coffee",
+            "fileName": "GuildDexterity.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+45% DEX"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "100000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 100"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 20"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Dexterity IX guild buff increases Dexterity."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Dexterity IX"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "5 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Dexterity"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 16,
+            "filePath": "src/character/guildBuffs/GuildFortune.coffee",
+            "fileName": "GuildFortune.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+5% gold"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "+5% item find range"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "4000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 20"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Fortune I guild buff increases gold found and item quality."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Fortune I"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Fortune"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 17,
+            "endLineNumber": 29,
+            "filePath": "src/character/guildBuffs/GuildFortune.coffee",
+            "fileName": "GuildFortune.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+10% gold"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "+10% item find range"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "9000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 30"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Fortune II guild buff increases gold found and item quality."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Fortune II"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "18 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Fortune"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 30,
+            "endLineNumber": 42,
+            "filePath": "src/character/guildBuffs/GuildFortune.coffee",
+            "fileName": "GuildFortune.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+15% gold"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "+15% item find range"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "16000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 40"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 4"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Fortune III guild buff increases gold found and item quality."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Fortune III"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Fortune"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 43,
+            "endLineNumber": 55,
+            "filePath": "src/character/guildBuffs/GuildFortune.coffee",
+            "fileName": "GuildFortune.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+20% gold"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "+20% item find range"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "25000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 50"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 4"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Fortune IV guild buff increases gold found and item quality."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Fortune IV"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day, 6 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Fortune"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 56,
+            "endLineNumber": 68,
+            "filePath": "src/character/guildBuffs/GuildFortune.coffee",
+            "fileName": "GuildFortune.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+25% gold"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "+25% item find range"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "36000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 60"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 9"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Fortune V guild buff increases gold found and item quality."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Fortune V"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Fortune"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 69,
+            "endLineNumber": 81,
+            "filePath": "src/character/guildBuffs/GuildFortune.coffee",
+            "fileName": "GuildFortune.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+30% gold"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "+30% item find range"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "49000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 80"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 9"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Fortune VI guild buff increases gold found and item quality."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Fortune VI"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day, 18 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Fortune"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 82,
+            "endLineNumber": 94,
+            "filePath": "src/character/guildBuffs/GuildFortune.coffee",
+            "fileName": "GuildFortune.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+35% gold"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "+35% item find range"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "64000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 80"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Fortune VII guild buff increases gold found and item quality."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Fortune VII"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Fortune"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 95,
+            "endLineNumber": 107,
+            "filePath": "src/character/guildBuffs/GuildFortune.coffee",
+            "fileName": "GuildFortune.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+40% gold"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "+40% item find range"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "81000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 90"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Fortune VIII guild buff increases gold found and item quality."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Fortune VIII"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days, 6 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Fortune"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 108,
+            "endLineNumber": 120,
+            "filePath": "src/character/guildBuffs/GuildFortune.coffee",
+            "fileName": "GuildFortune.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+45% gold"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "+45% item find range"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "100000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 100"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 20"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Fortune IX guild buff increases gold found and item quality."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Fortune IX"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Fortune"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 15,
+            "filePath": "src/character/guildBuffs/GuildIntelligence.coffee",
+            "fileName": "GuildIntelligence.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+5% INT"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "4000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 20"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Intelligence I guild buff increases Intelligence."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Intelligence I"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Intelligence"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 16,
+            "endLineNumber": 27,
+            "filePath": "src/character/guildBuffs/GuildIntelligence.coffee",
+            "fileName": "GuildIntelligence.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+10% INT"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "9000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 30"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Intelligence II guild buff increases Intelligence."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Intelligence II"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Intelligence"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 28,
+            "endLineNumber": 39,
+            "filePath": "src/character/guildBuffs/GuildIntelligence.coffee",
+            "fileName": "GuildIntelligence.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+15% INT"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "16000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 40"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 4"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Intelligence III guild buff increases Intelligence."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Intelligence III"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Intelligence"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 40,
+            "endLineNumber": 51,
+            "filePath": "src/character/guildBuffs/GuildIntelligence.coffee",
+            "fileName": "GuildIntelligence.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+20% INT"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "25000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 50"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 4"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Intelligence IV guild buff increases Intelligence."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Intelligence IV"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Intelligence"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 52,
+            "endLineNumber": 63,
+            "filePath": "src/character/guildBuffs/GuildIntelligence.coffee",
+            "fileName": "GuildIntelligence.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+25% INT"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "36000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 60"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 9"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Intelligence V guild buff increases Intelligence."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Intelligence V"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "3 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Intelligence"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 64,
+            "endLineNumber": 75,
+            "filePath": "src/character/guildBuffs/GuildIntelligence.coffee",
+            "fileName": "GuildIntelligence.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+30% INT"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "49000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 80"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 9"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Intelligence VI guild buff increases Intelligence."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Intelligence VI"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "3 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Intelligence"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 76,
+            "endLineNumber": 87,
+            "filePath": "src/character/guildBuffs/GuildIntelligence.coffee",
+            "fileName": "GuildIntelligence.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+35% INT"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "64000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 80"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Intelligence VII guild buff increases Intelligence."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Intelligence VII"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "4 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Intelligence"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 88,
+            "endLineNumber": 99,
+            "filePath": "src/character/guildBuffs/GuildIntelligence.coffee",
+            "fileName": "GuildIntelligence.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+40% INT"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "81000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 90"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Intelligence VIII guild buff increases Intelligence."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Intelligence VIII"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "4 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Intelligence"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 100,
+            "endLineNumber": 111,
+            "filePath": "src/character/guildBuffs/GuildIntelligence.coffee",
+            "fileName": "GuildIntelligence.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+45% INT"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "100000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 100"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 20"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Intelligence IX guild buff increases Intelligence."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Intelligence IX"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "5 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Intelligence"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 15,
+            "filePath": "src/character/guildBuffs/GuildLuck.coffee",
+            "fileName": "GuildLuck.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+1% LUCK"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "4000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 20"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Luck I guild buff increases Luck."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Luck I"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Luck"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 16,
+            "endLineNumber": 27,
+            "filePath": "src/character/guildBuffs/GuildLuck.coffee",
+            "fileName": "GuildLuck.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+2% LUCK"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "9000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 30"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Luck II guild buff increases Luck."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Luck II"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Luck"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 28,
+            "endLineNumber": 39,
+            "filePath": "src/character/guildBuffs/GuildLuck.coffee",
+            "fileName": "GuildLuck.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+3% LUCK"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "16000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 40"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 4"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Luck III guild buff increases Luck."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Luck III"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Luck"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 40,
+            "endLineNumber": 51,
+            "filePath": "src/character/guildBuffs/GuildLuck.coffee",
+            "fileName": "GuildLuck.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+4% LUCK"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "25000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 50"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 4"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Luck IV guild buff increases Luck."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Luck IV"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Luck"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 52,
+            "endLineNumber": 63,
+            "filePath": "src/character/guildBuffs/GuildLuck.coffee",
+            "fileName": "GuildLuck.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+5% LUCK"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "36000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 60"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 9"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Luck V guild buff increases Luck."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Luck V"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "3 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Luck"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 64,
+            "endLineNumber": 75,
+            "filePath": "src/character/guildBuffs/GuildLuck.coffee",
+            "fileName": "GuildLuck.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+6% LUCK"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "49000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 80"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 9"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Luck VI guild buff increases Luck."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Luck VI"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "3 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Luck"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 76,
+            "endLineNumber": 87,
+            "filePath": "src/character/guildBuffs/GuildLuck.coffee",
+            "fileName": "GuildLuck.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+7% LUCK"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "64000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 80"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Luck VII guild buff increases Luck."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Luck VII"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "4 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Luck"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 88,
+            "endLineNumber": 99,
+            "filePath": "src/character/guildBuffs/GuildLuck.coffee",
+            "fileName": "GuildLuck.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+8% LUCK"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "81000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 90"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Luck VIII guild buff increases Luck."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Luck VIII"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "4 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Luck"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 100,
+            "endLineNumber": 111,
+            "filePath": "src/character/guildBuffs/GuildLuck.coffee",
+            "fileName": "GuildLuck.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+9% LUCK"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "100000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 100"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 20"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Luck IX guild buff increases Luck."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Luck IX"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "5 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Luck"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 15,
+            "filePath": "src/character/guildBuffs/GuildStrength.coffee",
+            "fileName": "GuildStrength.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+5% STR"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "4000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 20"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Strength I guild buff increases Strength."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Strength I"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Strength"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 16,
+            "endLineNumber": 27,
+            "filePath": "src/character/guildBuffs/GuildStrength.coffee",
+            "fileName": "GuildStrength.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+10% STR"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "9000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 30"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Strength II guild buff increases Strength."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Strength II"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Strength"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 28,
+            "endLineNumber": 39,
+            "filePath": "src/character/guildBuffs/GuildStrength.coffee",
+            "fileName": "GuildStrength.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+15% STR"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "16000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 40"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 4"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Strength III guild buff increases Strength."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Strength III"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Strength"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 40,
+            "endLineNumber": 51,
+            "filePath": "src/character/guildBuffs/GuildStrength.coffee",
+            "fileName": "GuildStrength.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+20% STR"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "25000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 50"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 4"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Strength IV guild buff increases Strength."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Strength IV"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Strength"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 52,
+            "endLineNumber": 63,
+            "filePath": "src/character/guildBuffs/GuildStrength.coffee",
+            "fileName": "GuildStrength.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+25% STR"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "36000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 60"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 9"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Strength V guild buff increases Strength."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Strength V"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "3 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Strength"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 64,
+            "endLineNumber": 75,
+            "filePath": "src/character/guildBuffs/GuildStrength.coffee",
+            "fileName": "GuildStrength.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+30% STR"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "49000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 80"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 9"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Strength VI guild buff increases Strength."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Strength VI"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "3 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Strength"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 76,
+            "endLineNumber": 87,
+            "filePath": "src/character/guildBuffs/GuildStrength.coffee",
+            "fileName": "GuildStrength.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+35% STR"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "64000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 80"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Strength VII guild buff increases Strength."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Strength VII"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "4 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Strength"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 88,
+            "endLineNumber": 99,
+            "filePath": "src/character/guildBuffs/GuildStrength.coffee",
+            "fileName": "GuildStrength.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+40% STR"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "81000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 90"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Strength VIII guild buff increases Strength."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Strength VIII"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "4 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Strength"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 100,
+            "endLineNumber": 111,
+            "filePath": "src/character/guildBuffs/GuildStrength.coffee",
+            "fileName": "GuildStrength.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+45% STR"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "100000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 100"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 20"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Strength IX guild buff increases Strength."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Strength IX"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "5 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Strength"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 15,
+            "filePath": "src/character/guildBuffs/GuildWisdom.coffee",
+            "fileName": "GuildWisdom.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+5% WIS"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "4000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 20"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Wisdom I guild buff increases Wisdom."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Wisdom I"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Wisdom"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 16,
+            "endLineNumber": 27,
+            "filePath": "src/character/guildBuffs/GuildWisdom.coffee",
+            "fileName": "GuildWisdom.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+10% WIS"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "9000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 30"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Wisdom II guild buff increases Wisdom."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Wisdom II"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "1 day, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Wisdom"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 28,
+            "endLineNumber": 39,
+            "filePath": "src/character/guildBuffs/GuildWisdom.coffee",
+            "fileName": "GuildWisdom.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+15% WIS"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "16000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 40"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 4"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Wisdom III guild buff increases Wisdom."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Wisdom III"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Wisdom"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 40,
+            "endLineNumber": 51,
+            "filePath": "src/character/guildBuffs/GuildWisdom.coffee",
+            "fileName": "GuildWisdom.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+20% WIS"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "25000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 50"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 4"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Wisdom IV guild buff increases Wisdom."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Wisdom IV"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "2 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Wisdom"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 52,
+            "endLineNumber": 63,
+            "filePath": "src/character/guildBuffs/GuildWisdom.coffee",
+            "fileName": "GuildWisdom.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+25% WIS"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "36000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 60"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 9"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Wisdom V guild buff increases Wisdom."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Wisdom V"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "3 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Wisdom"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 64,
+            "endLineNumber": 75,
+            "filePath": "src/character/guildBuffs/GuildWisdom.coffee",
+            "fileName": "GuildWisdom.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+30% WIS"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "49000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 80"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 9"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Wisdom VI guild buff increases Wisdom."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Wisdom VI"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "3 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Wisdom"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 76,
+            "endLineNumber": 87,
+            "filePath": "src/character/guildBuffs/GuildWisdom.coffee",
+            "fileName": "GuildWisdom.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+35% WIS"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "64000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 80"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Wisdom VII guild buff increases Wisdom."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Wisdom VII"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "4 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Wisdom"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 88,
+            "endLineNumber": 99,
+            "filePath": "src/character/guildBuffs/GuildWisdom.coffee",
+            "fileName": "GuildWisdom.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+40% WIS"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "81000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 90"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Wisdom VIII guild buff increases Wisdom."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Wisdom VIII"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "4 days, 12 hours"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Wisdom"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 100,
+            "endLineNumber": 111,
+            "filePath": "src/character/guildBuffs/GuildWisdom.coffee",
+            "fileName": "GuildWisdom.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "+45% WIS"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "gold",
+                    "basicInfo": "100000"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild level} 100"
+                },
+                {
+                    "name": "requirement",
+                    "basicInfo": "{guild members} 20"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "The Wisdom IX guild buff increases Wisdom."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Wisdom IX"
+            },
+            "duration": {
+                "name": "duration",
+                "basicInfo": "5 days"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Wisdom"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "GuildBuffs"
+            }
+        },
+        {
+            "lineNumber": 4,
             "endLineNumber": 14,
             "filePath": "src/character/personalities/Brave.coffee",
             "fileName": "Brave.coffee",
@@ -5032,6 +8653,78 @@
             "name": {
                 "name": "name",
                 "basicInfo": "Physical"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Personalities"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Player"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 13,
+            "filePath": "src/character/personalities/Sacrilegious.coffee",
+            "fileName": "Sacrilegious.coffee",
+            "prerequisite": [
+                {
+                    "name": "prerequisite",
+                    "basicInfo": "Find a forsaken item"
+                }
+            ],
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "bad events happen often"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "all events happen more"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This personality makes you never have events happen. In general."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Sacrilegious"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Personalities"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Player"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 12,
+            "filePath": "src/character/personalities/Sanctuary.coffee",
+            "fileName": "Sanctuary.coffee",
+            "prerequisite": [
+                {
+                    "name": "prerequisite",
+                    "basicInfo": "Find a sacred item"
+                }
+            ],
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "event probability drastically reduced"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This personality makes you never have events happen. In general."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Sanctified"
             },
             "category": {
                 "name": "category",
@@ -12447,13 +16140,13 @@
             }
         },
         {
-            "lineNumber": 5,
-            "endLineNumber": 11,
+            "lineNumber": 6,
+            "endLineNumber": 12,
             "filePath": "src/event/singles/PartyEvent.coffee",
             "fileName": "PartyEvent.coffee",
             "desc": {
                 "name": "desc",
-                "basicInfo": "This event handles creating a party for the player."
+                "basicInfo": "This event handles creating a party for the player, or recruiting new members as applicable."
             },
             "name": {
                 "name": "name",
@@ -12535,11 +16228,11 @@
             }
         }
     ],
-    "startTime": 1419210837855,
-    "endTime": 1419210837915,
+    "startTime": 1420305558908,
+    "endTime": 1420305558988,
     "git": {
-        "short": "48c52d4",
-        "long": "48c52d44127dd6b9d7f2bebe53d95be70e10b76b",
+        "short": "715d502",
+        "long": "715d502f156638f515a11ff4979ec2bb25e6d28d",
         "branch": "master",
         "tag": "0.5.0"
     },
@@ -12637,6 +16330,10 @@
                     {
                         "name": "Wardens Gavel",
                         "dropPercent": 95
+                    },
+                    {
+                        "name": "Subtle Sapphire",
+                        "dropPercent": 25
                     }
                 ]
             },
@@ -13111,6 +16808,107 @@
                     }
                 ]
             },
+            "Elf Administrator": {
+                "respawn": 10800,
+                "availableScore": 1500,
+                "stats": {
+                    "class": "Generalist",
+                    "hp": 1600,
+                    "mp": 1500,
+                    "level": 15,
+                    "luck": 25,
+                    "dex": 125,
+                    "con": 105,
+                    "wis": 175,
+                    "agi": 125,
+                    "str": 275,
+                    "int": 200
+                },
+                "items": [
+                    {
+                        "name": "The Nice List",
+                        "dropPercent": 80
+                    }
+                ]
+            },
+            "Angry Elf": {
+                "respawn": 10800,
+                "availableScore": 0,
+                "stats": {
+                    "class": "Barbarian",
+                    "hp": 1600,
+                    "level": 12,
+                    "luck": 25,
+                    "dex": 120,
+                    "con": 175,
+                    "agi": 75,
+                    "str": 375,
+                    "offense": 1
+                }
+            },
+            "Toy Maker Elf": {
+                "respawn": 10800,
+                "availableScore": 0,
+                "stats": {
+                    "class": "Jester",
+                    "hp": 1225,
+                    "mp": 1500,
+                    "level": 12,
+                    "luck": 200
+                }
+            },
+            "Reindeer Warden": {
+                "respawn": 10800,
+                "availableScore": 5000,
+                "stats": {
+                    "class": "Mage",
+                    "hp": 21005,
+                    "mp": 36000,
+                    "level": 40,
+                    "str": 2200,
+                    "int": 2300,
+                    "wis": 500,
+                    "luck": 25,
+                    "dex": 850,
+                    "con": 1200,
+                    "agi": 670,
+                    "sturdy": 1,
+                    "ice": 10000,
+                    "icePercent": 10
+                },
+                "items": [
+                    {
+                        "name": "Snow Covered Antlers",
+                        "dropPercent": 80
+                    }
+                ]
+            },
+            "Santa, Lord of Presents": {
+                "respawn": 10800,
+                "availableScore": 9000,
+                "stats": {
+                    "class": "Fighter",
+                    "hp": 75800,
+                    "mp": 10000,
+                    "level": 80,
+                    "luck": 25,
+                    "dex": 2300,
+                    "con": 3500,
+                    "agi": 1701,
+                    "str": 4400,
+                    "int": 900,
+                    "glowing": 1,
+                    "silver": 1,
+                    "sturdy": 1,
+                    "startle": 1
+                },
+                "items": [
+                    {
+                        "name": "The Naughty List",
+                        "dropPercent": 80
+                    }
+                ]
+            },
             "Lucifer the Flame-Born": {
                 "respawn": 10800,
                 "availableScore": 2400,
@@ -13366,6 +17164,37 @@
                 "venom": 1,
                 "glowing": 1
             },
+            "The Nice List": {
+                "type": "offhand",
+                "int": 250,
+                "con": 50,
+                "silver": 1,
+                "goldPercent": 5,
+                "sacred": 1
+            },
+            "Snow Covered Antlers": {
+                "type": "head",
+                "agi": 100,
+                "agiPercent": 10,
+                "dex": 100,
+                "dexPercent": 10,
+                "int": 100,
+                "intPercent": 10,
+                "ice": 1225,
+                "icePercent": 10
+            },
+            "The Naughty List": {
+                "type": "mainhand",
+                "str": 1500,
+                "con": 1000,
+                "luck": 25,
+                "silver": 1,
+                "haste": 1,
+                "royal": 1,
+                "sacred": 1,
+                "shatter": 1,
+                "punish": 1
+            },
             "Flame Polished Gauntlets": {
                 "type": "hands",
                 "int": 350,
@@ -13393,13 +17222,86 @@
                 "prone": 1,
                 "silver": 1,
                 "offense": -1
+            },
+            "Radiant Ruby": {
+                "type": "trinket",
+                "str": 250,
+                "strPercent": 20,
+                "int": 250,
+                "intPercent": 20
+            },
+            "Divine Diamond": {
+                "type": "trinket",
+                "str": 400,
+                "strPercent": 30,
+                "con": 400,
+                "conPercent": 30,
+                "haste": -10
+            },
+            "Energetic Emerald": {
+                "type": "trinket",
+                "damageReduction": 500
+            },
+            "Precious Peridot": {
+                "type": "trinket",
+                "luck": 250,
+                "luckPercent": 25
+            },
+            "Timeless Topaz": {
+                "type": "trinket",
+                "haste": 10,
+                "agi": 250,
+                "agiPercent": 15
+            },
+            "Transcendent Tourmaline": {
+                "type": "trinket",
+                "fire": 1000,
+                "firePercent": 10,
+                "ice": 1000,
+                "icePercent": 10,
+                "water": 1000,
+                "waterPercent": 10,
+                "earth": 1000,
+                "earthPercent": 10,
+                "thunder": 1000,
+                "thunderPercent": 10,
+                "holy": 100,
+                "int": 1000,
+                "intPercent": 50,
+                "wis": 1000,
+                "wisPercent": 50,
+                "str": -750,
+                "strPercent": -20,
+                "con": -750,
+                "conPercent": -20,
+                "agi": -750,
+                "agiPercent": -20,
+                "dex": -750,
+                "dexPercent": -20
+            },
+            "Subtle Sapphire": {
+                "type": "trinket",
+                "stealth": 10,
+                "agi": 1000,
+                "agiPercent": 10
             }
         },
         "bossparties.json": {
-            "Wardens": [
-                "Warden of Norkos",
-                "Warden of Norkos"
-            ]
+            "Wardens": {
+                "respawn": 7200,
+                "members": [
+                    "Warden of Norkos",
+                    "Warden of Norkos"
+                ]
+            },
+            "Christmas Elves": {
+                "respawn": 7200,
+                "members": [
+                    "Elf Administrator",
+                    "Angry Elf",
+                    "Toy Maker Elf"
+                ]
+            }
         },
         "chests.json": {
             "Draygon Gear": {
@@ -13408,6 +17310,15 @@
                     "Draygon Helmet",
                     "Draygon Gloves",
                     "Draygon Greaves"
+                ]
+            },
+            "Christmas Gear": {
+                "items": [
+                    "Red Tunic",
+                    "Thick Winter Gloves",
+                    "Decorative Red Pants",
+                    "Heavy Winter Boots",
+                    "Magical Snowball"
                 ]
             }
         },
@@ -13538,11 +17449,11 @@
                 "blessGoldParty": {
                     "amount": [
                         1,
-                        60,
-                        100,
+                        30,
+                        50,
+                        125,
                         400,
-                        1000,
-                        1300
+                        750
                     ]
                 },
                 "forsakeGold": {
@@ -13551,7 +17462,8 @@
                         -90,
                         -300,
                         -550,
-                        -1050
+                        -1050,
+                        -1500
                     ]
                 },
                 "blessItem": {
@@ -13566,7 +17478,7 @@
             "defaults": {
                 "game": {
                     "maxPartyMembers": 3,
-                    "maxParties": 3,
+                    "maxParties": 4,
                     "soloBattleProbability": 35,
                     "aboveAveragePartyCountBattleProbability": 25,
                     "maxEnchantLevel": 10,
@@ -13669,9 +17581,9 @@
                         5,
                         10,
                         15,
-                        30,
-                        50,
-                        100
+                        25,
+                        35,
+                        50
                     ],
                     "itemFindRangeMultiplier": [
                         0,
@@ -13828,9 +17740,9 @@
                         0,
                         10,
                         15,
-                        30,
-                        50,
-                        100
+                        20,
+                        25,
+                        35
                     ],
                     "itemFindRangeMultiplier": [
                         0.1,
@@ -13992,14 +17904,14 @@
                         0.27
                     ],
                     "itemFindBonus": [
-                        0,
-                        10,
                         15,
-                        30,
-                        50,
-                        100,
-                        150,
-                        200
+                        25,
+                        35,
+                        45,
+                        55,
+                        65,
+                        75,
+                        100
                     ],
                     "itemFindRangeMultiplier": [
                         0,
@@ -14078,7 +17990,7 @@
                         30000,
                         45000,
                         60000,
-                        95000
+                        135000
                     ],
                     "itemFindRangeMultiplier": [
                         0,
@@ -14160,12 +18072,12 @@
                         0.16
                     ],
                     "itemFindBonus": [
-                        0,
+                        5,
                         10,
                         15,
-                        30,
-                        50,
-                        75
+                        20,
+                        25,
+                        30
                     ],
                     "itemFindRangeMultiplier": [
                         0,
@@ -14250,6 +18162,9 @@
                 "slots": {},
                 "specialStats": {},
                 "requirements": {
+                    "statistics": {
+                        "explore walk water": 25000
+                    },
                     "collectibles": [
                         "Dried Up, Not Tasty Fish",
                         "Small, Tasty Fish",
@@ -14270,6 +18185,7 @@
                         8000
                     ],
                     "inventory": [
+                        5,
                         15,
                         25,
                         35
@@ -14296,12 +18212,12 @@
                     ],
                     "itemFindBonus": [
                         0,
+                        5,
+                        10,
+                        20,
                         30,
                         50,
-                        75,
-                        150,
-                        200,
-                        250
+                        80
                     ],
                     "itemFindRangeMultiplier": [
                         0
@@ -14323,7 +18239,7 @@
                         25000,
                         50000,
                         75000,
-                        15000
+                        150000
                     ],
                     "inventory": [
                         0,
@@ -14448,11 +18364,11 @@
                         0.15
                     ],
                     "itemFindBonus": [
+                        -20,
+                        -10,
                         0,
                         25,
-                        50,
-                        75,
-                        100
+                        50
                     ],
                     "itemFindRangeMultiplier": [
                         0,
@@ -14598,6 +18514,7 @@
                         0.4
                     ],
                     "itemFindBonus": [
+                        -25,
                         0,
                         25,
                         50,
@@ -14656,6 +18573,7 @@
                     ],
                     "itemFindBonus": [
                         0,
+                        25000,
                         25000,
                         50000,
                         75000,
@@ -14954,6 +18872,45 @@
                 "str": 300,
                 "agi": 300,
                 "dex": 300
+            },
+            "Red Tunic": {
+                "type": "body",
+                "str": 600,
+                "dex": 150,
+                "luck": 25,
+                "defense": 1,
+                "hpRegen": 25
+            },
+            "Thick Winter Gloves": {
+                "type": "hands",
+                "str": 600,
+                "con": 150,
+                "conPercent": 5,
+                "luck": 25
+            },
+            "Decorative Red Pants": {
+                "type": "legs",
+                "int": 300,
+                "wis": 300,
+                "dex": 300,
+                "luck": 25,
+                "royal": 1
+            },
+            "Heavy Winter Boots": {
+                "type": "feet",
+                "str": 300,
+                "agi": 300,
+                "dex": 150,
+                "luck": 25,
+                "firePercent": 5
+            },
+            "Magical Snowball": {
+                "type": "offhand",
+                "int": 300,
+                "intPercent": 10,
+                "wis": 300,
+                "wisPercent": 10,
+                "luck": 25
             }
         }
     }
