@@ -346,8 +346,6 @@ class Player extends Character
     # 3.4 3.6 3.8
     # = 27.18% chance of continuing going right
 
-    console.log("weight: " + @name + " " + weight + " lastdir: " + @lastDir)
-
     randomDir = -> chance.weighted(possibleNumbers, weight)
 
     dir = randomDir()
