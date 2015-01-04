@@ -503,7 +503,7 @@ class Battle
     canFireSturdy = defender.hp.gtePercent 10
 
     defender[damageType]?.sub damage
-    defenderPunishDamage = Math.round damage*(defender.calc.punish()*5/100)
+    defenderPunishDamage = if damage > 0 then Math.round damage*(defender.calc.punish()*5/100) else 0
 
     if damageType is "hp"
       if damage < 0
