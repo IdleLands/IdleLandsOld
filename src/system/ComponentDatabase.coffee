@@ -213,7 +213,7 @@ class ComponentDatabase
 
     message = "New #{types.join ", "}\n\nThanks to #{submitters.join ", "}"
 
-    repo.addSync ["*"]
+    repo.addSync ["."]
     repo.commitSync message
 
     repo.push "origin", "master", {###username: config.githubUser, password: config.githubPassword###}, ->
