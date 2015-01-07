@@ -22,18 +22,19 @@ class Spell
   ## utility chooser functions
   gpmbmh = @getPartyMembersBelowMaxHealth = (player) ->
     return [] if not player.party
-    _.chain player.party.players
+    _(player.party.players)
       .reject (member) -> member.hp.atMax()
+      .reject (member) -> member.hp.atMin() or member.fled
       .value()
 
   deadPartyMembers = @deadPartyMembers = (player) ->
     return [] if not player.party
-    _.chain player.party.players
-    .filter (member) -> member.hp.atMin()
-    .value()
+    _(player.party.players)
+      .filter (member) -> member.hp.atMin()
+      .value()
 
-  @areAnyPartyMembersBelowMaxHealth = (player) ->
-    gpmbmh(player).length > 0
+  @areAnyPartyMembersBelowMaxHealth = (player, min = 0) ->
+    gpmbmh(player).length > min
 
   @areAnyPartyMembersDead = (player) ->
     deadPartyMembers(player).length > 0
@@ -54,14 +55,14 @@ class Spell
 
   _baseTarget: (options = {}) ->
     options = _.defaults options, {includeLiving: yes, includeDead: no}
-    _.chain @baseTargets
-    .reject (target) -> target.fled
-    .filter (target) ->
-      return yes if not options.includeDead
-      target.hp.atMin()
-    .filter (target) ->
-      return yes if not options.includeLiving
-      not target.hp.atMin()
+    _(@baseTargets)
+      .reject (target) -> target.fled
+      .filter (target) ->
+        return yes if not options.includeDead
+        target.hp.atMin()
+      .filter (target) ->
+        return yes if not options.includeLiving
+        not target.hp.atMin()
     .value()
 
   targetAll: (options) ->
@@ -84,7 +85,7 @@ class Spell
 
   ## specialized targetting functions
   targetBelowMaxHealth: (party) ->
-    _.reject party, (member) -> member.hp.atMax()
+    _.reject party, (member) -> member.hp.atMax() and not member.hp.atMin()
 
   targetLowestHp: (party) ->
     _.chain party

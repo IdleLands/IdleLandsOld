@@ -1,5 +1,6 @@
 
 Spell = require "../../../base/Spell"
+_ = require "lodash"
 
 class CureGroup extends Spell
   name: "cure group"
@@ -19,11 +20,11 @@ class CureGroup extends Spell
       * @category Cleric
       * @package Spells
     */`
-    {name: "cure group", spellPower: 1, cost: ((caster) -> if caster.party then caster.party.players.length * 50 else 50), class: "Cleric", level: 15}
+    {name: "cure group", spellPower: 1, cost: ((caster) -> caster.party.players.length * 50), class: "Cleric", level: 15}
   ]
 
   @canChoose = (caster) ->
-    Spell.areAnyPartyMembersBelowMaxHealth caster
+    Spell.areAnyPartyMembersBelowMaxHealth caster, 1
 
   determineTargets: ->
     @targetBelowMaxHealth @targetAllAllies()
