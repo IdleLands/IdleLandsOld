@@ -362,6 +362,8 @@ class Battle
 
   notifyParticipants: (e, docs) ->
 
+    @game.errorHandler.captureException e if e
+
     _.chain(@turnOrder)
     .filter (entity) -> entity instanceof Player
     .each (player) =>
