@@ -241,7 +241,7 @@ class Player extends Character
       newLoc = @playerManager.game.gmCommands.lookupLocation dest.toLoc
 
       if not newLoc
-        @playerManager.game.errorHandler.captureMessage "BAD TELEPORT LOCATION #{dest.toLoc}"
+        @playerManager.game.errorHandler.captureException new Error "BAD TELEPORT LOCATION #{dest.toLoc}"
 
       @map = newLoc.map
       @x = newLoc.x
@@ -399,7 +399,7 @@ class Player extends Character
       @emit 'explore.walk', @
       @emit "explore.walk.#{tile.terrain or "void"}".toLowerCase(), @
 
-      @playerManager.game.errorHandler.captureMessage @x,@y,@map,tile.terrain,tile, "INVALID TILE" if not tile.terrain and not tile.blocked
+      @playerManager.game.errorHandler.captureException (new Error "INVALID TILE"), extra: x: @x, y: @y, map: @map, tile: tile if not tile.terrain and not tile.blocked
 
       @handleTile tile
 

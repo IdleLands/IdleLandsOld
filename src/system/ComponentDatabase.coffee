@@ -312,10 +312,10 @@ class ComponentDatabase
 
       if doc?.name is object.name
         duplicateCallback {name: doc.name}
-        @game.errorHandler.captureMessage "DUPLICATE INGREDIENT NAME: #{doc.name}"
+        @game.errorHandler.captureException new Error "DUPLICATE INGREDIENT NAME: #{doc.name}"
         return
       else if doc
-        @game.errorHandler.captureMessage "DUPLICATE INGREDIENT STATS: #{doc.name}"
+        @game.errorHandler.captureException new Error "DUPLICATE INGREDIENT STATS: #{doc.name}"
         duplicateCallback {stats: true}
         return
 
@@ -337,10 +337,10 @@ class ComponentDatabase
       @game.errorHandler.captureException e if e
 
       if doc?.name is object.name
-        @game.errorHandler.captureMessage "DUPLICATE ITEM NAME: #{doc.name}"
+        @game.errorHandler.captureException new Error "DUPLICATE ITEM NAME: #{doc.name}"
         return
       else if doc
-        @game.errorHandler.captureMessage "DUPLICATE ITEM STATS: #{doc.name}"
+        @game.errorHandler.captureException new Error "DUPLICATE ITEM STATS: #{doc.name}"
         return
 
       @addItem object
