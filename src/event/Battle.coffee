@@ -11,6 +11,7 @@ chance = (new require "chance")()
 class Battle
 
   BAD_TURN_THRESHOLD: 100
+  BAD_ROUND_THRESHOLD: 1000
 
   constructor: (@game, @parties, @suppress = Constants.defaults.battle.suppress, @battleUrl = Constants.defaults.battle.showUrl) ->
     return if @parties.length < 2
@@ -150,6 +151,7 @@ class Battle
       @turnPosition = @turnPosition or 0
 
       return if @badTurns > @BAD_TURN_THRESHOLD
+      return if @currentTurn > @BAD_ROUND_THRESHOLD
 
       if @turnPosition is 0
         @broadcast "ROUND #{@currentTurn} STATUS: #{@getAllStatStrings().join ' VS '}"
@@ -331,7 +333,7 @@ class Battle
 
   endBattle: ->
 
-    if @badTurns > @BAD_TURN_THRESHOLD
+    if @badTurns > @BAD_TURN_THRESHOLD or @currentTurn > @BAD_ROUND_THRESHOLD
       @emitEventToAll "battle.stale", @turnOrder
       @broadcast "Thalynas, The Goddess of Destruction And Stopping Battles Prematurely decided that you mortals were taking too long. Try better to amuse her next time!", {}, not @battleUrl
       @cleanUp()
@@ -512,6 +514,7 @@ class Battle
         @emitEvents "damage", "damaged", attacker, defender, type: type, damage: damage
 
       if defender.calc.sturdy() and defender.hp.atMin() and canFireSturdy
+        @emitEventToAll "effect.sturdy", defender
         defender.hp.set 1
 
       if defender.hp.atMin()
@@ -538,12 +541,15 @@ class Battle
     if defenderPunishDamage > 0 and not doPropagate
       refmsg = "<player.name>#{defender.name}</player.name> reflected <damage.hp>#{defenderPunishDamage}</damage.hp> damage back at <player.name>#{attacker.name}</player.name>!"
       @takeStatFrom defender, attacker, defenderPunishDamage, type, damageType, spell, refmsg, yes
-      @emitEvents "punish", "punished", defender, attacker
+      @emitEvents "effect.punish", "effect.punished", defender, attacker
+      defender.emit "combat.self.punish.damage", defenderPunishDamage
+      attacker.emit "combat.self.punished.damage", defenderPunishDamage
 
     if darksideDamage > 0 and not doPropagate
       refmsg = "<player.name>#{attacker.name}</player.name> took <damage.hp>#{darksideDamage}</damage.hp> damage due to darkside!"
       @takeStatFrom attacker, attacker, darksideDamage, type, damageType, spell, refmsg, yes
-      @emitEventToAll "darkside", attacker
+      @emitEventToAll "effect.darkside", attacker
+      attacker.emit "combat.self.darkside.damage", darksideDamage
 
   emitEventToAll: (event, data) ->
     _.forEach @turnOrder, (player) ->
