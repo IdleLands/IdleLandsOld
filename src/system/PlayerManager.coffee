@@ -57,8 +57,9 @@ class PlayerManager
       player.playerManager = @
       callback player
 
-  hashPassword: (password) ->
-    bcrypt.hashSync password
+  hashPassword: (password, callback) ->
+    bcrypt.genSalt 10, (e, salt) ->
+      bcrypt.hash password, salt, callback
 
   storePasswordFor: (identifier, password) ->
     password = password.trim()
@@ -69,7 +70,17 @@ class PlayerManager
 
     player.password = @hashPassword password
 
-    Q {isSuccess: yes, code: 17, message: "Your password has been set! Extraneous spaces at be beginning and end have been removed!"}
+    defer = Q.defer()
+
+    @hashPassword password, (e, hash) ->
+
+      if e
+        defer.resolve {isSuccess: no, code: 9999, message: "Something went wrong. ¯\_(ツ)_/¯"}
+      else
+        player.password = hash
+        defer.resolve {isSuccess: yes, code: 17, message: "Your password has been set! Extraneous spaces at be beginning and end have been removed!"}
+
+    defer.promise
 
   checkToken: (identifier, token) ->
 
