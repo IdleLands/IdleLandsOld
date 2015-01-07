@@ -167,6 +167,7 @@ class Character extends EventEmitter2
 
     @addToEquippedBy item
 
+    return if @isMonster
     @permanentAchievements.hasFoundForsaken = yes if item.forsaken
     @permanentAchievements.hasFoundSacred   = yes if item.sacred
 
