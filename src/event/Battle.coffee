@@ -403,7 +403,7 @@ class Battle
 
     @broadcast (_.str.toSentence winMessages)+"!", {}, not @battleUrl if winMessages.length > 0
 
-    _.each combatWinners.players, (player) ->
+    _.each combatWinners, (player) ->
       player.gainXp xpMap[player]
 
     # winning player gold distribution
