@@ -7,7 +7,7 @@ RestrictedNumber = require "restricted-number"
 Q = require "q"
 MessageCreator = require "./MessageCreator"
 Constants = require "./Constants"
-bcrypt = require "bcrypt-nodejs"
+bcrypt = require "bcrypt"
 crypto = require "crypto"
 
 class PlayerManager

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/seiyria/IdleLands",
   "dependencies": {
+    "bcrypt": "^0.8.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.10.0",
     "chance": "^0.7.0",
