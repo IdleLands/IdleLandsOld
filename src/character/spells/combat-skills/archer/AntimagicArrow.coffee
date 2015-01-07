@@ -26,7 +26,7 @@ class AntimagicArrow extends Spell
   ]
 
   determineTargets: ->
-    _.max @targetAllEnemies(), (player) -> player.mp.getValue()
+    @targetHighestMp @targetAllEnemies()
 
   calcDamage: ->
     minStat = (@caster.calc.stats ['wis', 'dex']) * 0.4

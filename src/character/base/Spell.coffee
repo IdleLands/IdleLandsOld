@@ -87,6 +87,12 @@ class Spell
   targetBelowMaxHealth: (party) ->
     _.reject party, (member) -> member.hp.atMax() and not member.hp.atMin()
 
+  targetHighestMp: (party) ->
+    _.chain party
+    .reject (member) -> member.hp.atMin()
+    .max (member) -> member.mp.asPercent()
+    .value()
+
   targetLowestHp: (party) ->
     _.chain party
       .reject (member) -> member.hp.atMin()
