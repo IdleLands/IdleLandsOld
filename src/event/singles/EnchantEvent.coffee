@@ -14,7 +14,7 @@ class EnchantEvent extends Event
   go: ->
     item = @pickValidItem @player, yes
 
-    return if (not item) or (item.name is "empty")
+    return if (not item) or (item.name is "empty") or item.enchantLevel >= Constants.defaults.game.maxEnchantLevel
 
     if @event.type is 'enchant'
       stat = @pickStatNotPresentOnItem item
