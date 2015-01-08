@@ -518,6 +518,7 @@ class Battle
       if defender.calc.sturdy() and defender.hp.atMin() and canFireSturdy
         @emitEventToAll "effect.sturdy", defender
         defender.hp.set 1
+        message = "#{message} [STURDY]"
 
       if defender.hp.atMin()
         defender.clearAffectingSpells()
