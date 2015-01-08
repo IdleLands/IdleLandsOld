@@ -10,6 +10,10 @@ class AchievementManager
 
 AchievementManager::allAchievements = -> achievements
 AchievementManager::getAllAchievedFor = (player) ->
-  _.reduce achievements, ((prev, achievement) -> _.union prev, achievement.getAllAchievedFor player), []
+  _.reduce achievements, ((prev, achievement) ->
+    arr = prev
+    arr.push (achievement.getAllAchievedFor player)...
+    arr
+  ), []
 
 module.exports = exports = AchievementManager
