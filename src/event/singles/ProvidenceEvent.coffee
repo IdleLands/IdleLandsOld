@@ -21,8 +21,8 @@ class ProvidenceEvent extends Event
       itemClass: "basic"
 
     _.each @allValidStats(), (stat) ->
-      base[stat] = chance.integer {min: -300, max: 200} if (stat.indexOf("Percent") is -1)   and chance.bool {likelihood: 50}
-      base[stat] = chance.integer {min: -60, max: 40}   if (stat.indexOf("Percent") isnt -1) and chance.bool {likelihood: 25}
+      base[stat] = chance.integer {min: -150, max: 100} if (stat.indexOf("Percent") is -1)   and chance.bool {likelihood: 50}
+      base[stat] = chance.integer {min: -30, max: 20}   if (stat.indexOf("Percent") isnt -1) and chance.bool {likelihood: 25}
 
     _.each @specialStats, (stat) ->
       base[stat] = chance.integer {min: -3, max: 2} if chance.bool {likelihood: 25}
