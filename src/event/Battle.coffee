@@ -333,7 +333,7 @@ class Battle
 
   endBattle: ->
 
-    if @badTurns > @BAD_TURN_THRESHOLD or @currentTurn > @BAD_ROUND_THRESHOLD
+    if @badTurns > @BAD_TURN_THRESHOLD or @currentTurn >= @BAD_ROUND_THRESHOLD
       @emitEventToAll "battle.stale", @turnOrder
       @broadcast "Thalynas, The Goddess of Destruction And Stopping Battles Prematurely decided that you mortals were taking too long. Try better to amuse her next time!", {}, not @battleUrl
       @cleanUp()
