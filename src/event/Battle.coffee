@@ -282,6 +282,9 @@ class Battle
     if target.hp.getValue() - damage <= 0 and not target.calc.sturdy()
       message += " -- a fatal blow!"
       fatal = yes
+      
+    else if target.hp.getValue() is 1 and target.calc.sturdy()
+      message += " -- a nearly fatal blow!"
 
     else
       message += "!"
@@ -518,7 +521,7 @@ class Battle
       if defender.calc.sturdy() and defender.hp.atMin() and canFireSturdy
         @emitEventToAll "effect.sturdy", defender
         defender.hp.set 1
-        message = "#{message} [STURDY]"
+        message = "#{message} [STURDY]" if message
 
       if defender.hp.atMin()
         defender.clearAffectingSpells()
