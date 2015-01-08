@@ -405,7 +405,7 @@ class Player extends Character
 
       @stepCooldown--
 
-      @gainXp @calcXpGain 10 if currentStep < 5
+      @gainXp Math.max 1, @calcXpGain 10 if currentStep < 5
 
     catch e
       @playerManager.game.errorHandler.captureException e, extra: map: @map, x: @x, y: @y
