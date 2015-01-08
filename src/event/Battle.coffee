@@ -11,7 +11,7 @@ chance = (new require "chance")()
 class Battle
 
   BAD_TURN_THRESHOLD: 100
-  BAD_ROUND_THRESHOLD: 1000
+  BAD_ROUND_THRESHOLD: 300
 
   constructor: (@game, @parties, @suppress = Constants.defaults.battle.suppress, @battleUrl = Constants.defaults.battle.showUrl) ->
     return if @parties.length < 2
