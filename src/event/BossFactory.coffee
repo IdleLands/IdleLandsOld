@@ -31,7 +31,7 @@ class BossFactory
       @game.errorHandler.captureException new Error "INVALID BOSS RESPAWN/NAME: #{name}"
 
     return if lastChallenge and ((new Date) - lastChallenge) < @RECHALLENGE_TIME * 1000
-    return if not isParty and ((new Date) - currentTimer) < respawnTimer * 1000
+    return if (not isParty) and ((new Date) - currentTimer) < respawnTimer * 1000
 
     setAllItemClasses = "guardian"
 
