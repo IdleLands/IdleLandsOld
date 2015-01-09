@@ -14,12 +14,12 @@ classes = _.keys requireDir "../character/classes", recurse: yes
 class MonsterGenerator extends Generator
   constructor: (@game) ->
 
-  experimentalMonsterPartyGeneration: (party) ->
+  experimentalMonsterPartyGeneration: (party, reduction = 0) ->
     return @generateScalableMonsterParty party if party.level() >= 100
 
     itemList = @game.componentDatabase.itemStats
 
-    remainingScore = party.score()
+    remainingScore = party.score() - reduction
     possibleMonsters = _.filter @game.componentDatabase.monsters, (monster) -> party.level()-10 < monster.level < party.level()+5
 
     monsters = []

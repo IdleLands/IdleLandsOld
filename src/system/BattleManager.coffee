@@ -65,7 +65,7 @@ class BattleManager
       parties[0].prepareForBattle()
       try
         parties.push @game.monsterGenerator.experimentalMonsterPartyGeneration parties[0]
-        parties.push @game.monsterGenerator.experimentalMonsterPartyGeneration parties[0] / 1.5 if chance.bool {likelihood: 15} and parties[0].level() < 100
+        parties.push @game.monsterGenerator.experimentalMonsterPartyGeneration parties[0], parties[0].score()/1.5 if chance.bool {likelihood: 15} and parties[0].level() < 100
       catch e
         console.error e.stack
 
