@@ -65,8 +65,12 @@ class CustomHandler
       realFunct = "noun"
       isPlural = yes
 
+    canLowercase = (funct) ->
+      funct isnt "deity"
+
     value = _.sample getCD().generatorCache[realFunct]
-    value = if funct.toLowerCase() is funct then value.toLowerCase() else _.str.capitalize value
+    if canLowercase funct
+      value = if funct.toLowerCase() is funct then value.toLowerCase() else _.str.capitalize value
 
     value = value.substring 0, value.length-1 if realFunct is "noun" and not isPlural #all nouns end in 's'
 

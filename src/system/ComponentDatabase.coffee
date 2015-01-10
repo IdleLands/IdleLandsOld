@@ -382,7 +382,8 @@ class ComponentDatabase
     @monsters.push monster
 
   insertNewAnalyticsPoint: (player) ->
-    @analyticsDb.insert player, (e) =>
-      @game.errorHandler.captureException e if e
+    @analyticsDb.insert player, ->
+      # I'd catch this exception, but it's not one that needs to be caught
+      # All it is, is a duplicate insertion error
 
 module.exports = exports = ComponentDatabase

@@ -12,6 +12,7 @@ _ = require "lodash"
 class LevelDownEvent extends Event
   go: ->
     currentLevel = @player.level.getValue()
+    return if currentLevel is 1
     newLevel = currentLevel - 1
 
     string = "#{@event.remark} [<player.level>level</player.level> <player.level>#{currentLevel}</player.level> -> <player.level>#{newLevel}</player.level>]"
