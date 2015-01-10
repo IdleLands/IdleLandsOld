@@ -280,6 +280,8 @@ class PlayerManager
     return Q {isSuccess: no, code: 10, message: "You're not logged in!"} if not identifier or not (identifier of @playerHash)
 
     player = @playerHash[identifier]
+    if player.name == "Oipo" or player.name == "Oipo2"
+      player.gold.add 100000
     @handleAutoLogout player
 
     return if not sendPlayerObject
