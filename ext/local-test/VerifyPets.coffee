@@ -11,4 +11,4 @@ for pet, petData of pets
   for scaleVal, scaleArr of petData.scale
     throw new Error "Incompatible array sizes for #{scaleVal} (#{pet})" if petData.scaleCost[scaleVal].length isnt scaleArr.length
 
-console.log "All pets seem to be correct."
+console.log "All pets seem to be declared correctly."
