@@ -23,13 +23,17 @@ class Combatitive extends Achievement
     achieved = []
 
     while baseStat >= currentCheckValue
-      achieved.push
+      item =
         name: "Combatitive #{toRoman level}"
         desc: "Enter #{currentCheckValue} battles"
         reward: "+1 offense/defense"
         offense: -> 1
         defense: -> 1
         type: "combat"
+
+      item.title = "Bloodthirsty" if level is 5
+
+      achieved.push item
 
       currentCheckValue *= multiplier
       level++

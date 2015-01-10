@@ -483,6 +483,12 @@ class Player extends Character
     @save()
     @
 
+  setTitle: (newTitle) ->
+    return Q {isSuccess: no, code: 600, message: "You haven't unlocked that title."} if newTitle isnt '' and not _.contains @titles, newTitle
+    @title = newTitle
+
+    Q {isSuccess: yes, code: 601, message: "Successfully changed your title to #{if newTitle then newTitle else 'empty'}!"}
+
   checkPets: ->
     @playerManager.game.petManager.handlePetsForPlayer @
 
@@ -730,8 +736,12 @@ class Player extends Character
     @_oldAchievements = _.compact _.clone @achievements
     @achievements = []
 
+    @_oldTitles = _.compact _.clone @titles
+    @titles = []
+
     achieved = @playerManager.game.achievementManager.getAllAchievedFor @
 
+    # achievements
     stringCurrent = _.map @_oldAchievements, (achievement) -> achievement.name
     stringAll = _.map achieved, (achievement) -> achievement.name
 
@@ -739,12 +749,26 @@ class Player extends Character
 
     _.each newAchievements, (achievementName) =>
       achievement = _.findWhere achieved, name: achievementName
-      @achievements.push achievement
       if not silent
         message = "<player.name>#{@name}</player.name> has achieved <event.achievement>#{achievementName}</event.achievement> (#{achievement.desc} | #{achievement.reward})"
         @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'achievement'} if not silent
 
+    # titles
+    achievementTitles = _(achieved)
+      .map (achievement) -> achievement.title
+      .compact()
+      .value()
+
+    newTitles = _.difference achievementTitles, @_oldTitles
+
+    _.each newTitles, (title) =>
+      @titles.push title
+      if not silent
+        message = "<player.name>#{@name}</player.name> has unlocked a new title: <event.achievement>#{title}</event.achievement>."
+        @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'achievement'} if not silent
+
     @achievements = achieved
+
 
   itemPriority: (item) ->
     if not @priorityPoints

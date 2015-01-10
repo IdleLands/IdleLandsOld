@@ -34,6 +34,8 @@ class Contented extends Achievement
         goldPercent: -> 10
         type: "special"
 
+      item.title = "Contented" if level is 5
+
       achieved.push item
 
       currentCheckValue *= submitInterval

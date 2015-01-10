@@ -34,6 +34,8 @@ class Collector extends Achievement
         reward: "+1% STR/DEX/AGI/CON/WIS/INT"
         type: "exploration"
 
+      item.title = "Collector" if level is 5
+
       achieved.push item
 
       currentCheckValue *= levelInterval

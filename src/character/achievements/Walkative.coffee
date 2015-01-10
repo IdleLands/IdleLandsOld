@@ -33,6 +33,8 @@ class Walkative extends Achievement
       if level%%5 is 0
         item.haste = -> 1
 
+      item.title = "Tired Foot" if level is 6
+
       achieved.push item
 
       currentCheckValue *= multiplier

@@ -32,6 +32,8 @@ class Dominus extends Achievement
         dex: -> 5
         type: "combat"
 
+      item.title = "Dominator" if level is 5
+
       achieved.push item
 
       currentCheckValue += killInterval

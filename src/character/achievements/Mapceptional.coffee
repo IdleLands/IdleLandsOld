@@ -19,7 +19,7 @@ class Mapceptional extends Achievement
     return [] if not baseStat
 
     possibilities = [
-      {mapName: "Norkos +1", reward: "+20 CON", con: -> 20}
+      {mapName: "Norkos Secret -1", reward: "+20 CON", con: -> 20}
       {mapName: "Norkos -11", reward: "+100 CON", con: -> 100}
     ]
 

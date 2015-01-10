@@ -586,12 +586,34 @@ module.exports = (Module) ->
         gender = route.params.newGender
         origin.bot.userManager.getUsername origin, (e, username) =>
           if not username
-            @reply origin, "You must be logged in to change your string settings!"
+            @reply origin, "You must be logged in to change your gender settings!"
             return
 
           identifier = @generateIdent origin.bot.config.server, username
 
           @IdleWrapper.api.player.gender.set identifier, gender
+          .then (ret) =>
+            @reply origin, ret.message
+
+      `/**
+        * Modify your title.
+        *
+        * @name idle-title
+        * @syntax !idle-title newTitle
+        * @example !idle-title Entitled
+        * @category IRC Commands
+        * @package Client
+      */`
+      @addRoute "idle-title :newTitle", (origin, route) =>
+        newTitle = route.params.newTitle
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to change your title settings!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          @IdleWrapper.api.player.title.set identifier, newTitle
           .then (ret) =>
             @reply origin, ret.message
 

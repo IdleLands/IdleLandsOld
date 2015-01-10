@@ -222,6 +222,12 @@ class API
         .then (res) ->
           if res.isSuccess then res.player.setPushbulletKey '' else res
 
+    title:
+      set: (identifier, newTitle) =>
+        @validateIdentifier identifier
+        .then (res) ->
+          if res.isSuccess then res.player.setTitle newTitle else res
+
     string:
       set: (identifier, stringType, string) =>
         @validateIdentifier identifier

@@ -22,12 +22,16 @@ class Damaging extends Achievement
     achieved = []
 
     while baseStat >= currentCheckValue
-      achieved.push
+      item =
         name: "Damaging #{toRoman level}"
         desc: "Deal #{currentCheckValue} total damage"
         reward: "+#{level*10} STR"
         str: -> level*10
         type: "combat"
+
+      item.title = "Unstoppable" if level is 5
+
+      achieved.push item
 
       currentCheckValue *= multiplier
       level++

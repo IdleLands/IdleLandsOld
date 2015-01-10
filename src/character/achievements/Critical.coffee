@@ -22,12 +22,16 @@ class Critical extends Achievement
     achieved = []
 
     while baseStat >= currentCheckValue
-      achieved.push
+      item =
         name: "Critical #{toRoman level}"
         desc: "Perform #{currentCheckValue} critical hits"
         reward: "+1 crit"
         crit: -> 1
         type: "combat"
+
+      item.title = "Eagle Eye" if level is 3
+
+      achieved.push item
 
       currentCheckValue *= multiplier
       level++
