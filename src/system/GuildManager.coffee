@@ -179,7 +179,6 @@ class GuildManager
     Q {isSuccess: yes, code: 73, message: "You've kicked #{playerName} successfully."}
 
   disband: (identifier) ->
-    console.log "disband guildmanager"
     player = @game.playerManager.getPlayerById identifier
 
     if @guildHash[player.guild].leader isnt player.identifier
