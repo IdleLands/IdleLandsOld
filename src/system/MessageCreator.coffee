@@ -224,7 +224,6 @@ class MessageCreator
       retVal
 
     string.replace /\$([a-zA-Z\:#0-9 {}_,']+)\$/g, (match, p1, p2) ->
-      console.log match, p1, p2
       transformVarProps getVarProps p1
 
   @doStringReplace: (string, player = {}, extra = {}) ->
