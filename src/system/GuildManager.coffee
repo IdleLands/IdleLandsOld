@@ -164,7 +164,7 @@ class GuildManager
     if player.identifier is @guildHash[player.guild].leader
       return @disband player.identifier
     else
-      @guildHash[player.guild].remove player
+      @guildHash[player.guild].remove player.name
       return Q {isSuccess: yes, code: 72, message: "You've successfully left the guild."}
 
   kickPlayer: (adminId, playerName) ->
@@ -242,7 +242,6 @@ class GuildManager
 
   donate: (identifier, gold) ->
     player = @game.playerManager.getPlayerById identifier
-    console.log player.guild
     return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} if not player.guild
     return Q {isSuccess: no, code: 56, message: "You don't have enough gold!"} if player.gold.getValue() < gold
     guild = @guildHash[player.guild]
