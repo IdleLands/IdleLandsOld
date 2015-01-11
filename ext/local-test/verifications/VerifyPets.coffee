@@ -1,7 +1,7 @@
 
 _ = require "lodash"
 
-pets = require "../../config/pets.json"
+pets = require "../../../config/pets.json"
 
 for pet, petData of pets
   throw new Error "Invalid pet type: #{petData.category} (#{pet})" if not (petData.category in ['Hybrid', 'Non-Combat', 'Combat'])

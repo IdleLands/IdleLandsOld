@@ -1,9 +1,5 @@
-require "./VerifyPets"
-require "./VerifyBossPartyMembers"
-require "./VerifyBossTreasure"
-require "./VerifyTeleports"
-require "./VerifyTreasureChests"
-require "./VerifyMaps"
+requireDir = require "require-dir"
+requireDir "./verifications"
 
 require "./LocalTest"
 process.exit 0

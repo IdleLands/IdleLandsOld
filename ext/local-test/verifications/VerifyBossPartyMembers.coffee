@@ -1,8 +1,8 @@
 
 _ = require "lodash"
 
-bossparties = require "../../config/bossparties.json"
-bosses = require "../../config/boss.json"
+bossparties = require "../../../config/bossparties.json"
+bosses = require "../../../config/boss.json"
 
 for party, partyData of bossparties
   for i in [0...partyData.members.length]

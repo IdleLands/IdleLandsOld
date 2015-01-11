@@ -1,9 +1,9 @@
 
 _ = require "lodash"
 
-bosses = require "../../config/boss.json"
-bossitems = require "../../config/bossitems.json"
-treasure = require "../../config/treasure.json"
+bosses = require "../../../config/boss.json"
+bossitems = require "../../../config/bossitems.json"
+treasure = require "../../../config/treasure.json"
 
 verifyExistence = (key, warnOnEmpty = yes, checkTreasure = yes) ->
 

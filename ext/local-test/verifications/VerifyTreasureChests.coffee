@@ -1,8 +1,8 @@
 
 _ = require "lodash"
 
-treasure = require "../../config/treasure.json"
-chests = require "../../config/chests.json"
+treasure = require "../../../config/treasure.json"
+chests = require "../../../config/chests.json"
 
 for chest, chestData of chests
 

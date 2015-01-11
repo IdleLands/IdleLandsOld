@@ -1,11 +1,11 @@
-Map = require "../../src/map/Map"
+Map = require "../../../src/map/Map"
 _ = require "lodash"
 fs = require "fs"
 
-bossparties = require "../../config/bossparties.json"
-bosses = require "../../config/boss.json"
-treasures = require "../../config/chests.json"
-teleports = require "../../config/teleports.json"
+bossparties = require "../../../config/bossparties.json"
+bosses = require "../../../config/boss.json"
+treasures = require "../../../config/chests.json"
+teleports = require "../../../config/teleports.json"
 teleLocs = _.extend {},
   teleports.towns,
   teleports.bosses,
@@ -27,7 +27,7 @@ walk = (dir) ->
 
   results
 
-_.each (walk "#{__dirname}/../../assets/map"), (mapObj) =>
+_.each (walk "#{__dirname}/../../../assets/map"), (mapObj) =>
   maps[mapObj.map] = new Map mapObj.path
 
 inBounds = (x1, y1, x2, y2) ->
@@ -42,9 +42,11 @@ for teleName, teleData of teleLocs
 
 allBossesOnMaps = []
 allTreasureOnMaps = []
+allTeleportsOnMaps = []
 for mapName, mapData of maps
   allBossesOnMaps.push (_.map (_.filter mapData.map.layers[2].objects, (obj) -> obj.type in ["Boss", "BossParty"]), 'name')...
   allTreasureOnMaps.push (_.map (_.filter mapData.map.layers[2].objects, (obj) -> obj.type is "Treasure"), 'name')...
+  allTeleportsOnMaps.push (_.map (_.filter mapData.map.layers[2].objects, (obj) -> obj.type is "Teleport"), 'properties')...
 
 allBossesInParties = []
 for partyName, partyData of bossparties
@@ -59,5 +61,17 @@ for bossName, bossData of bosses
 
 for treasureName, treasureData of treasures
   throw new Error "Treasure (#{treasureName}) not on map" if not _.contains allTreasureOnMaps, treasureName
+
+for teleport in allTeleportsOnMaps
+
+
+  [teleport.destx, teleport.desty, teleport.map] = [t.x, t.y, t.map] if (t = teleLocs[teleport.toLoc])
+
+  teleMap = maps[teleport.map]
+  teleName = JSON.stringify teleport
+  tileData = teleMap.getTile (parseInt teleport.destx), (parseInt teleport.desty)
+  throw new Error "Teleport (#{teleName}) not in map bounds" if not inBounds teleport.destx, teleport.desty, teleMap.width, teleMap.height
+  throw new Error "Teleport (#{teleName}) lands on a dense tile" if tileData.blocked
+  throw new Error "Teleport (#{teleName}) does not have a valid teleport type" if not teleport.movementType in ['teleport', 'ascend', 'descend', 'fall']
 
 console.log "All map data seems to be correct"

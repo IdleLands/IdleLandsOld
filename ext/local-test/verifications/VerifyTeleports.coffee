@@ -1,7 +1,7 @@
 
 _ = require "lodash"
 
-teleports = require "../../config/teleports.json"
+teleports = require "../../../config/teleports.json"
 
 locations = {}
 
