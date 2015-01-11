@@ -15,7 +15,7 @@ verifyExistence = (key, warnOnEmpty = yes, checkTreasure = yes) ->
     item = bossData[key][i]
 
     throw new Error "#{item.name} does not have a dropPercent specified" if _.isUndefined item.dropPercent
-    throw new Error "#{item.name} does not have a valid dropPercent (less than 0 or greater than 100)" if item.dropPercent < 0 or item.dropPercent > 100
+    throw new Error "#{item.name} does not have a valid dropPercent (less than 0 or greater than 100)" if item.dropPercent <= 0 or item.dropPercent > 100
 
     return if not checkTreasure
 
