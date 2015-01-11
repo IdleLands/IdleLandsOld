@@ -1,4 +1,4 @@
-Idle Lands
+Idle Lands [![Build Status](https://travis-ci.org/IdleLands/IdleLands.svg?branch=master)](https://travis-ci.org/IdleLands/IdleLands)
 =========
 
 An incremental game (read: idling) where you do nothing while your character fights to be the best in the realm. 
