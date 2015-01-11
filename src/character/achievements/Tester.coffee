@@ -41,6 +41,7 @@ class Tester extends Achievement
         agi: (player) -> player.level.getValue() * 2
         wis: (player) -> player.level.getValue() * 2
         type: "special"
+        title: "Omega"
 
     achieved
 

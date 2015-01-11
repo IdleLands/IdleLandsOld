@@ -22,12 +22,16 @@ class Eventful extends Achievement
 
     while baseStat >= currentCheckValue
       level = @log multiplier, currentCheckValue
-      achieved.push
+      item =
         name: "Eventful #{toRoman level}"
         desc: "Experience #{currentCheckValue} events"
         reward: "+#{(level*0.1).toFixed 1} itemFindRangeMultiplier"
         itemFindRangeMultiplier: -> level*0.1
         type: "event"
+
+      item.title = "Center of Attention" if item.level is 6
+
+      achieved.push item
 
       currentCheckValue *= multiplier
 

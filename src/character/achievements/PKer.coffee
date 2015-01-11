@@ -42,6 +42,8 @@ class PKer extends Achievement
         luck: -> 1
         type: "combat"
 
+      item.title = "PKer" if level is 10
+
       achieved.push item
 
       currentCheckValue += killInterval

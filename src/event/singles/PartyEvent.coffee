@@ -18,7 +18,7 @@ class PartyEvent extends Event
     if @player.party
       newMember = @game.selectRandomNonPartyPlayer()
       return if not newMember
-      message = "<player.name>#{@player.name}</player.name> recruited <player.name>#{newMember.name}</player.name> into <event.partyName>#{@player.partyName}</event.partyName>!"
+      message = "<player.name>#{@player.getName()}</player.name> recruited <player.name>#{newMember.getName()}</player.name> into <event.partyName>#{@player.partyName}</event.partyName>!"
       messageObj = @game.eventHandler.broadcastEvent {message: message, player: @player, type: 'party'}
       @game.eventHandler.broadcastEvent {message: messageObj, player: newMember, sendMessage: no, type: 'party'}
       @player.party.recruit [newMember]

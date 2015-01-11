@@ -22,12 +22,16 @@ class Defensive extends Achievement
     achieved = []
 
     while baseStat >= currentCheckValue
-      achieved.push
+      item =
         name: "Defensive #{toRoman level}"
         desc: "Receive #{currentCheckValue} total damage"
         reward: "+#{level*10} CON"
         con: -> level*10
         type: "combat"
+
+      item.title = "Sponge" if level is 5
+
+      achieved.push item
 
       currentCheckValue *= multiplier
       level++

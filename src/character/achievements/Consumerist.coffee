@@ -22,12 +22,16 @@ class Consumerist extends Achievement
     achieved = []
 
     while baseStat >= currentCheckValue
-      achieved.push
+      item =
         name: "Consumerist #{toRoman level}"
         desc: "Spend #{currentCheckValue} total gold"
         reward: "+0.07 itemSellMultiplier"
         itemSellMultiplier: -> level*0.07
         type: "event"
+
+      item.title = "Consumerist" if level is 5
+
+      achieved.push item
 
       currentCheckValue *= multiplier
       level++

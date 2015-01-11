@@ -21,7 +21,7 @@ class ConsolationPrize extends Personality
         player = extra.dead
         player.hp.toMaximum()
         #bad, but inheritance for whatever reason isn't working
-        player?.playerManager?.game?.broadcast MessageCreator.genericMessage "<event.player>#{player.name}</event.player> suddenly sprang back to life, as if guided by a super awesome consolation prize!"
+        player?.playerManager?.game?.currentBattle?.broadcast MessageCreator.genericMessage "<event.player>#{player.getName()}</event.player> suddenly sprang back to life, as if guided by a super awesome consolation prize!"
 
     player.on 'combat.self.killed', @deathListener
 

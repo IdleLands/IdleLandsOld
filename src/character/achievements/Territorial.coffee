@@ -32,6 +32,8 @@ class Territorial extends Achievement
         wisPercent: -> 2
         type: "exploration"
 
+      item.title = "Territorial" if level is 10
+
       if level%%5 is 0
         item.haste = -> 1
 

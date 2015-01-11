@@ -22,6 +22,9 @@ class Character extends EventEmitter2
 
     @
 
+  getName: ->
+    if @title then "#{@name}, the #{@title}" else @name
+
   resetMaxXp: ->
     @xp.maximum = @levelUpXpCalc @level.getValue()
 

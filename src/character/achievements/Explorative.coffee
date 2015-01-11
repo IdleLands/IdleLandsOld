@@ -33,6 +33,8 @@ class Explorative extends Achievement
         intPercent: -> 2
         type: "exploration"
 
+      item.title = "Explorer" if level is 5
+
       if level%%5 is 0
         item.haste = -> 1
 

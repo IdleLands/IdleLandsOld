@@ -32,6 +32,8 @@ class Bossy extends Achievement
         dexPercent: -> 2
         type: "combat"
 
+      item.title = "Boss" if level is 5
+
       achieved.push item
 
       currentCheckValue *= killInterval

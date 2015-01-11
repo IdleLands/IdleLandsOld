@@ -233,7 +233,7 @@ class MessageCreator
     (string = string.split("%#{key}").join (if key is "item" then val else "<event.#{key}>#{val}</event.#{key}>")) for key, val of extra
 
     @handleCustomVariables string
-      .split('%player').join "<player.name>#{player.name}</player.name>"
+      .split('%player').join "<player.name>#{player?.getName()}</player.name>"
       .split('%hishers').join getGenderPronoun gender, '%hishers'
       .split('%hisher').join getGenderPronoun gender, '%hisher'
       .split('%himher').join getGenderPronoun gender, '%himher'

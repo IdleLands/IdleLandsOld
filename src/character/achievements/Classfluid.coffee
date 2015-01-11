@@ -32,6 +32,8 @@ class Classfluid extends Achievement
         wisPercent: -> 2
         type: "class"
 
+      item.title = "Fluid" if level is 5
+
       achieved.push item
 
       currentCheckValue += levelInterval

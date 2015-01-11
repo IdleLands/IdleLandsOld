@@ -208,7 +208,7 @@ class PetManager
         player: player
         sendMessage: yes
         type: "pet"
-        message: "<player.name>#{player.name}</player.name> has unlocked a new pet: <player.name>#{key}</player.name>"
+        message: "<player.name>#{player.getName()}</player.name> has unlocked a new pet: <player.name>#{key}</player.name>"
 
       player.foundPets[key] =
         cost: PetData[key].cost

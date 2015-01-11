@@ -29,6 +29,8 @@ class Achievable extends Achievement
         reward: "+1 achievement"
         type: "progress"
 
+      item.title = "Achiever" if level is 5
+
       achieved.push item
 
       currentCheckValue += killInterval

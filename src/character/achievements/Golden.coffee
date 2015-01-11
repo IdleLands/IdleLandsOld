@@ -22,12 +22,16 @@ class Golden extends Achievement
     achieved = []
 
     while baseStat >= currentCheckValue
-      achieved.push
+      item =
         name: "Golden #{toRoman level}"
         desc: "Gain and lose #{currentCheckValue} total gold"
         reward: "+#{(level*0.03).toFixed 2} itemSellMultiplier"
         itemSellMultiplier: -> level*0.03
         type: "event"
+
+      item.title = "Shiny" if item.level is 3
+
+      achieved.push item
 
       currentCheckValue *= multiplier
       level++
