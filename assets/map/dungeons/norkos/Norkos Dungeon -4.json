@@ -51,8 +51,8 @@
                  "properties":
                     {
                      "destName":"Norkos Dungeon -5",
-                     "destx":"30",
-                     "desty":"1",
+                     "destx":"15",
+                     "desty":"32",
                      "map":"Norkos Dungeon -5",
                      "movementType":"descend"
                     },
@@ -69,8 +69,8 @@
                  "properties":
                     {
                      "destName":"Norkos Dungeon -5",
-                     "destx":"30",
-                     "desty":"1",
+                     "destx":"11",
+                     "desty":"11",
                      "map":"Norkos Dungeon -5",
                      "movementType":"descend"
                     },
@@ -87,8 +87,8 @@
                  "properties":
                     {
                      "destName":"Norkos Dungeon -5",
-                     "destx":"30",
-                     "desty":"1",
+                     "destx":"47",
+                     "desty":"40",
                      "map":"Norkos Dungeon -5",
                      "movementType":"descend"
                     },

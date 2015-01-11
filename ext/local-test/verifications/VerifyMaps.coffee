@@ -64,14 +64,15 @@ for treasureName, treasureData of treasures
 
 for teleport in allTeleportsOnMaps
 
-
   [teleport.destx, teleport.desty, teleport.map] = [t.x, t.y, t.map] if (t = teleLocs[teleport.toLoc])
 
   teleMap = maps[teleport.map]
   teleName = JSON.stringify teleport
   tileData = teleMap.getTile (parseInt teleport.destx), (parseInt teleport.desty)
+
   throw new Error "Teleport (#{teleName}) not in map bounds" if not inBounds teleport.destx, teleport.desty, teleMap.width, teleMap.height
   throw new Error "Teleport (#{teleName}) lands on a dense tile" if tileData.blocked
-  throw new Error "Teleport (#{teleName}) does not have a valid teleport type" if not teleport.movementType in ['teleport', 'ascend', 'descend', 'fall']
+  throw new Error "Teleport (#{teleName}) does not have a valid teleport type" if not (teleport.movementType.toLowerCase() in ['teleport', 'ascend', 'descend', 'fall'])
+  throw new Error "Teleport (#{teleName}) does not have a matching staircase" if (teleport.movementType in ['ascend', 'descend']) and tileData.object?.type isnt 'Teleport'
 
 console.log "All map data seems to be correct"

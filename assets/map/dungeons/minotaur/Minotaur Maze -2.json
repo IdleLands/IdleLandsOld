@@ -424,8 +424,8 @@
                  "name":"ToMinotaur-3",
                  "properties":
                     {
-                     "destx":"21",
-                     "desty":"32",
+                     "destx":"20",
+                     "desty":"28",
                      "map":"Minotaur Maze -3",
                      "movementType":"descend"
                     },
@@ -441,8 +441,8 @@
                  "name":"ToMinotaur-3",
                  "properties":
                     {
-                     "destx":"21",
-                     "desty":"33",
+                     "destx":"24",
+                     "desty":"28",
                      "map":"Minotaur Maze -3",
                      "movementType":"descend"
                     },
