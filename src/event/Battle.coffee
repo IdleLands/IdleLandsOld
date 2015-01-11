@@ -81,7 +81,7 @@ class Battle
 
   getRelevantStats: (player) ->
     stats =
-      name: "<player.name>#{player.name}</player.name>"
+      name: "<player.name>#{player.getName()}</player.name>"
 
     stats.hp = player.hp if player.hp.maximum isnt 0
     stats.mp = player.mp if player.mp.maximum isnt 0
@@ -114,7 +114,7 @@ class Battle
     _.str.toSentenceSerial _.flatten names
 
   getAllPlayersInPartyNames: (party) ->
-    _.map party.players, (player) -> "<player.name>#{player.name}</player.name>"
+    _.map party.players, (player) -> "<player.name>#{player.getName()}</player.name>"
 
   getAllPlayersInPartyStatStrings: (party) ->
     _.map party.players, (player) =>
@@ -175,12 +175,12 @@ class Battle
     player.mp.add player.calc.stat "mpregen"
 
     if (@checkIfOpponentHasBattleEffect player, "mindwipe") and (chance.bool {likelihood: 1})
-      @broadcast "#{player.name} was attacked by mindwipe! All personalities have now been turned off!"
+      @broadcast "#{player.getName()} was attacked by mindwipe! All personalities have now been turned off!"
       player.removeAllPersonalities()
       return
 
     if @currentTurn is 1 and @checkIfOpponentHasBattleEffect player, "startle"
-      message = "#{player.name} is startled!"
+      message = "#{player.getName()} is startled!"
       @broadcast message
       @emitEventToAll "startled", player
       return
@@ -192,7 +192,7 @@ class Battle
       return
 
     if (chance.bool {likelihood: player.calc.fleePercent()}) and not @checkIfOpponentHasBattleEffect player, "fear"
-      @broadcast "<player.name>#{player.name}</player.name> has fled from combat!", player
+      @broadcast "<player.name>#{player.getName()}</player.name> has fled from combat!", player
       player.fled = true
       @emitEventToAll "flee", player
       return
@@ -223,14 +223,14 @@ class Battle
     battleMessage = (message, player) =>
       @broadcast MessageCreator.doStringReplace message, player
 
-    message = "<player.name>#{player.name}</player.name> is #{if isCounter then "COUNTER-" else ""}attacking <player.name>#{target.name}</player.name>"
+    message = "<player.name>#{player.getName()}</player.name> is #{if isCounter then "COUNTER-" else ""}attacking <player.name>#{target.name}</player.name>"
 
     [dodgeMin, dodgeMax] = [-target.calc.dodge(), player.calc.beatDodge()]
 
     dodgeChance = chance.integer {min: dodgeMin, max: Math.max dodgeMin+1, dodgeMax}
 
     if dodgeChance <= 0
-      message += ", but <player.name>#{target.name}</player.name> dodged!"
+      message += ", but <player.name>#{target.getName()}</player.name> dodged!"
       battleMessage message, target
       @emitEvents "dodge", "dodged", target, player
       @tryParry target, player
@@ -242,7 +242,7 @@ class Battle
     hitChance = chance.integer {min: hitMin, max: Math.max hitMin+1, hitMax}
 
     if -(target.calc.stat 'luck') <= hitChance <= 0
-      message += ", but <player.name>#{player.name}</player.name> missed!"
+      message += ", but <player.name>#{player.getName()}</player.name> missed!"
       battleMessage message, target
       @emitEvents "miss", "missed", player, target
       @tryParry target, player
@@ -404,7 +404,7 @@ class Battle
       gainPct = (xpGain/player.xp.maximum)*100
       pct = +((gainPct).toFixed 3)
 
-      winMessages.push "<player.name>#{player.name}</player.name> gained <event.xp>#{xpGain}</event.xp>xp [<event.xp>#{pct}</event.xp>%]"
+      winMessages.push "<player.name>#{player.getName()}</player.name> gained <event.xp>#{xpGain}</event.xp>xp [<event.xp>#{pct}</event.xp>%]"
 
       xpMap[player] = xpGain
 
@@ -425,7 +425,7 @@ class Battle
 
       if goldGain > 0
         player.gainGold goldGain
-        winMessages.push "<player.name>#{player.name}</player.name> gained <event.gold>#{goldGain}</event.gold> gold"
+        winMessages.push "<player.name>#{player.getName()}</player.name> gained <event.gold>#{goldGain}</event.gold> gold"
 
     @broadcast (_.str.toSentence winMessages)+"!", {}, not @battleUrl if winMessages.length > 0
 
@@ -442,7 +442,7 @@ class Battle
       xpLoss = player.calcXpGain xpLoss
 
       pct = +((xpLoss/player.xp.maximum)*100).toFixed 3
-      loseMessages.push "<player.name>#{player.name}</player.name> lost <event.xp>#{xpLoss}</event.xp>xp [<event.xp>#{pct}</event.xp>%]"
+      loseMessages.push "<player.name>#{player.getName()}</player.name> lost <event.xp>#{xpLoss}</event.xp>xp [<event.xp>#{pct}</event.xp>%]"
       xpMap[player] = xpLoss
 
     @broadcast (_.str.toSentence loseMessages)+"!", {}, not @battleUrl if loseMessages.length > 0
@@ -462,7 +462,7 @@ class Battle
 
       if goldLoss > 0
         player.gainGold -goldLoss
-        loseMessages.push "<player.name>#{player.name}</player.name> lost <event.gold>#{goldLoss}</event.gold> gold"
+        loseMessages.push "<player.name>#{player.getName()}</player.name> lost <event.gold>#{goldLoss}</event.gold> gold"
 
     @broadcast (_.str.toSentence loseMessages)+"!", {}, not @battleUrl if loseMessages.length > 0
 

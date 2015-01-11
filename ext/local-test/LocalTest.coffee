@@ -64,12 +64,15 @@ IdleWrapper = require(idlePath+"/system/ExternalWrapper")()
 
 w = getWrapper = -> IdleWrapper
 
+# utility functions for sanity
 api = -> w().api
 inst = -> api().gameInstance
 pm = -> inst().playerManager
 player = -> api().player
 game = -> api().game
 gm = -> api().gm
+pname = (name) -> pm().getPlayerByName name
+pid = (id) -> pm().getPlayerById id
 
 colorMap =
   "player.name":                colors.bold

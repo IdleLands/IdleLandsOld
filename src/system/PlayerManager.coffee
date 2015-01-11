@@ -127,7 +127,7 @@ class PlayerManager
       player.isOnline = yes
       @players.push player
       @playerHash[identifier] = player
-      @game.broadcast "#{player.name}, the level #{player.level.__current} #{player.professionName}, has joined #{Constants.gameName}!" if not suppress
+      @game.broadcast "#{player.getName()}, the level #{player.level.__current} #{player.professionName}, has joined #{Constants.gameName}!" if not suppress
 
       @players = _.uniq @players
       player.tempSecureToken = @generateTempToken()
@@ -138,7 +138,7 @@ class PlayerManager
       results =
         isSuccess: yes
         code: 18
-        message: "Successful login. Welcome back to #{Constants.gameName}, #{player.name}!"
+        message: "Successful login. Welcome back to #{Constants.gameName}, #{player.getName()}!"
         token: player.tempSecureToken
         player: player.buildRESTObject()
         pet: @game.petManager.getActivePetFor(player)?.buildSaveObject()
@@ -189,7 +189,7 @@ class PlayerManager
           if @playerHash[identifier] then return defer.resolve
             isSuccess: yes
             code: 15
-            message: "Successful login. Welcome back to #{Constants.gameName}, #{player.name}!"
+            message: "Successful login. Welcome back to #{Constants.gameName}, #{player.getName()}!"
             player: player.buildRESTObject()
             token: player.tempSecureToken
             pet: @game.petManager.getActivePetFor(player)?.buildSaveObject()
@@ -373,16 +373,16 @@ class PlayerManager
     player.permanentAchievements = {} if not player.permanentAchievements
 
     player.on "combat.self.kill", (defender) ->
-      player.playerManager.game.battle?.broadcast "#{player.name}: #{player.messages.kill}" if player.messages?.kill
+      player.playerManager.game.battle?.broadcast "#{player.getName()}: #{player.messages.kill}" if player.messages?.kill
       return if defender.isMonster
       defender.modifyRelationshipWith player.name, -4
       player.modifyRelationshipWith defender.name, -4
 
     player.on "combat.self.killed", ->
-      player.playerManager.game.battle?.broadcast "#{player.name}: #{player.messages.death}" if player.messages?.death
+      player.playerManager.game.battle?.broadcast "#{player.getName()}: #{player.messages.death}" if player.messages?.death
 
     player.on "combat.self.flee", ->
-      player.playerManager.game.battle?.broadcast "#{player.name}: #{player.messages.flee}" if player.messages?.flee
+      player.playerManager.game.battle?.broadcast "#{player.getName()}: #{player.messages.flee}" if player.messages?.flee
 
     player.on "combat.ally.kill", (attacker) ->
       return if attacker.isMonster

@@ -71,8 +71,8 @@ class Archer extends Class
       fledPlayer.fled = false
       message = "%casterName dragged %targetName back into combat with a grappling hook arrow!"
       extra =
-        targetName: fledPlayer.name
-        casterName: player.name
+        targetName: fledPlayer.getName()
+        casterName: player.getName()
       newMessage = MessageCreator.doStringReplace message, player, extra
       player.playerManager.game.currentBattle?.broadcast newMessage
 

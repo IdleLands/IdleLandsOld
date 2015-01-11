@@ -733,10 +733,10 @@ class Player extends Character
     Q {isSuccess: yes, code: 95, message: "Successfully updated your string settings. String \"#{type}\" is now: #{if val then val else 'empty!'}"}
 
   checkAchievements: (silent = no) ->
-    @_oldAchievements = _.compact _.clone @achievements
+    @_oldAchievements = _.clone @achievements
     @achievements = []
 
-    @_oldTitles = _.compact _.clone @titles
+    @_oldTitles = _.clone @titles
     @titles = []
 
     achieved = @playerManager.game.achievementManager.getAllAchievedFor @
@@ -753,6 +753,8 @@ class Player extends Character
         message = "<player.name>#{@name}</player.name> has achieved <event.achievement>#{achievementName}</event.achievement> (#{achievement.desc} | #{achievement.reward})"
         @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'achievement'} if not silent
 
+    @achievements = achieved
+
     # titles
     achievementTitles = _(achieved)
       .map (achievement) -> achievement.title
@@ -762,13 +764,11 @@ class Player extends Character
     newTitles = _.difference achievementTitles, @_oldTitles
 
     _.each newTitles, (title) =>
-      @titles.push title
       if not silent
         message = "<player.name>#{@name}</player.name> has unlocked a new title: <event.achievement>#{title}</event.achievement>."
         @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'achievement'} if not silent
 
-    @achievements = achieved
-
+    @titles = achievementTitles
 
   itemPriority: (item) ->
     if not @priorityPoints

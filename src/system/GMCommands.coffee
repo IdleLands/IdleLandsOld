@@ -20,7 +20,7 @@ class GMCommands
 
     text = title ? "#{map} - #{x},#{y}"
 
-    @game.teleport player, map, x, y, "#{player.name} got whisked away to #{text}."
+    @game.teleport player, map, x, y, "#{player.getName()} got whisked away to #{text}."
 
     playerTile = player.getTileAt()
     player.handleTile playerTile
