@@ -26,7 +26,6 @@ router
 
 .put "/guild/invite/player", (req, res) ->
   {identifier, invName} = req.body
-  console.log "invite player " + identifier + " - " + invName
   API.player.guild.invite identifier, invName
   .then (resp) -> res.json resp
 
