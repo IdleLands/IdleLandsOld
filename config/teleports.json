@@ -4,25 +4,41 @@
             "map": "Norkos",
             "formalName": "Frigri",
             "x": 133,
-            "y": 160
+            "y": 160,
+            "cost": 500000,
+            "requiredRegionVisit": "Frigri Town"
         },
         "norkos": {
             "map": "Norkos",
             "formalName": "Norkos",
             "x": 34,
-            "y": 14
+            "y": 14,
+            "cost": 50000,
+            "requiredRegionVisit": "Norkos Town"
         },
         "maeles": {
             "map": "Norkos",
             "formalName": "Maeles",
             "x": 51,
-            "y": 115
+            "y": 115,
+            "cost": 250000,
+            "requiredRegionVisit": "Maeles Town"
         },
         "vocalnus": {
             "map": "Vocalnus",
             "formalName": "Vocalnus",
             "x": 51,
-            "y": 35
+            "y": 35,
+            "cost": 350000,
+            "requiredRegionVisit": "Vocalnus Town"
+        },
+        "raburro": {
+            "map": "Norkos Dungeon -5",
+            "formalName": "Raburro",
+            "x": 37,
+            "y": 39,
+            "cost": 750000,
+            "requiredRegionVisit": "Raburro Town"
         }
     },
     "bosses": {

@@ -596,6 +596,28 @@ module.exports = (Module) ->
             @reply origin, ret.message
 
       `/**
+       * Teleport yourself to somewhere you've been before.
+       *
+       * @name idle-teleportself
+       * @syntax !idle-teleportself townCname
+       * @example !idle-teleportself norkos
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-teleportself :newLoc", (origin, route) =>
+        newLoc = route.params.newLoc
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to teleport yourself!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          @IdleWrapper.api.player.action.teleport identifier, newLoc
+          .then (ret) =>
+            @reply origin, ret.message
+
+      `/**
         * Modify your title.
         *
         * @name idle-title

@@ -123,6 +123,12 @@ class API
       .then (res) =>
         if res.isSuccess then @gameInstance.playerManager.playerTakeTurn identifier, sendPlayerObject else res
 
+    action:
+      teleport: (identifier, newLoc) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          if res.isSuccess then res.player.manualTeleportToLocation newLoc else res
+
     custom:
       submit: (identifier, data) =>
         @validateIdentifier identifier

@@ -80,6 +80,28 @@ class Player extends Character
         else
           pushbullet.note device.iden, 'IdleLands', message, (e, res) ->
 
+  manualTeleportToLocation: (location) ->
+    teleports = (require "../../../config/teleports.json").towns
+
+    newLoc = teleports[location]
+
+    return Q {isSuccess: no, code: 650, message: "That location is not valid."} if not newLoc
+    return Q {isSuccess: no, code: 651, message: "You've never even been there!"} if not (_.contains (_.keys @statistics['calculated regions visited']), newLoc.requiredRegionVisit)
+    return Q {isSuccess: no, code: 652, message: "You don't have enough gold for that!"} if @gold.getValue() < newLoc.cost
+
+    @gold.sub newLoc.cost
+    message = "<player.name>#{@getName()}</player.name> took a one way trip on the Wind Express and got dropped off at <event.transfer.destination>#{newLoc.formalName}</event.transfer.destination>!"
+
+    @emit "explore.transfer.manualWarp", @, @map
+
+    @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'explore'}
+
+    @map = newLoc.map
+    @x = newLoc.x
+    @y = newLoc.y
+
+    Q {isSuccess: yes, code: 653, message: "You've taken the one-way trip to #{newLoc.formalName}!"}
+
   handleGuildStatus: ->
 
     if not @guild
