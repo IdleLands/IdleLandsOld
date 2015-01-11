@@ -242,6 +242,7 @@ class Player extends Character
 
       if not newLoc
         @playerManager.game.errorHandler.captureException new Error "BAD TELEPORT LOCATION #{dest.toLoc}"
+        return
 
       @map = newLoc.map
       @x = newLoc.x
