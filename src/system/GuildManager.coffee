@@ -164,7 +164,7 @@ class GuildManager
     if player.identifier is @guildHash[player.guild].leader
       return @disband player.identifier
     else
-      @guildHash[player.guild].remove player
+      @guildHash[player.guild].remove player.name
       return Q {isSuccess: yes, code: 72, message: "You've successfully left the guild."}
 
   kickPlayer: (adminId, playerName) ->
