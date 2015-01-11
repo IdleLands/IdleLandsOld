@@ -198,6 +198,12 @@
             "x": 47,
             "y": 23
         },
+        "generalist": {
+            "map": "Norkos",
+            "formalName": "the Generalist Trainer",
+            "x": 10,
+            "y": 14
+        },
         "bitomancer": {
             "map": "Norkos",
             "formalName": "the Bitomancer Trainer",

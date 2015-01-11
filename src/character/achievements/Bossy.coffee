@@ -21,9 +21,9 @@ class Bossy extends Achievement
     currentCheckValue = 3
     killInterval = 5
     achieved = []
+    level = 1
 
     while baseStat >= currentCheckValue
-      level = currentCheckValue / killInterval
       item =
         name: "Bossy #{toRoman level}"
         desc: "Kill #{currentCheckValue} unique bosses"
@@ -37,6 +37,7 @@ class Bossy extends Achievement
       achieved.push item
 
       currentCheckValue *= killInterval
+      level++
 
     achieved
 
