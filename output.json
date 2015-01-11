@@ -695,6 +695,40 @@
             "example": [
                 {
                     "name": "example",
+                    "basicInfo": "!idle-teleportself norkos"
+                }
+            ],
+            "syntax": [
+                {
+                    "name": "syntax",
+                    "basicInfo": "!idle-teleportself townCname"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "Teleport yourself to somewhere you've been before."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "idle-teleportself"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "IRC Commands"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Client"
+            }
+        },
+        {
+            "lineNumber": 620,
+            "endLineNumber": 628,
+            "filePath": "ext/kurea/IdleLandsModule.coffee",
+            "fileName": "IdleLandsModule.coffee",
+            "example": [
+                {
+                    "name": "example",
                     "basicInfo": "!idle-title Entitled"
                 }
             ],
@@ -722,8 +756,8 @@
             }
         },
         {
-            "lineNumber": 620,
-            "endLineNumber": 630,
+            "lineNumber": 642,
+            "endLineNumber": 652,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -764,8 +798,8 @@
             }
         },
         {
-            "lineNumber": 646,
-            "endLineNumber": 654,
+            "lineNumber": 668,
+            "endLineNumber": 676,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -799,8 +833,8 @@
             }
         },
         {
-            "lineNumber": 670,
-            "endLineNumber": 678,
+            "lineNumber": 692,
+            "endLineNumber": 700,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -833,8 +867,8 @@
             }
         },
         {
-            "lineNumber": 693,
-            "endLineNumber": 704,
+            "lineNumber": 715,
+            "endLineNumber": 726,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -879,8 +913,8 @@
             }
         },
         {
-            "lineNumber": 719,
-            "endLineNumber": 728,
+            "lineNumber": 741,
+            "endLineNumber": 750,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -917,8 +951,8 @@
             }
         },
         {
-            "lineNumber": 744,
-            "endLineNumber": 753,
+            "lineNumber": 766,
+            "endLineNumber": 775,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -955,8 +989,8 @@
             }
         },
         {
-            "lineNumber": 769,
-            "endLineNumber": 777,
+            "lineNumber": 791,
+            "endLineNumber": 799,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -989,8 +1023,8 @@
             }
         },
         {
-            "lineNumber": 792,
-            "endLineNumber": 800,
+            "lineNumber": 814,
+            "endLineNumber": 822,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -1023,8 +1057,8 @@
             }
         },
         {
-            "lineNumber": 815,
-            "endLineNumber": 824,
+            "lineNumber": 837,
+            "endLineNumber": 846,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -1061,8 +1095,8 @@
             }
         },
         {
-            "lineNumber": 839,
-            "endLineNumber": 847,
+            "lineNumber": 861,
+            "endLineNumber": 869,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -1095,8 +1129,8 @@
             }
         },
         {
-            "lineNumber": 862,
-            "endLineNumber": 872,
+            "lineNumber": 884,
+            "endLineNumber": 894,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -1137,8 +1171,8 @@
             }
         },
         {
-            "lineNumber": 887,
-            "endLineNumber": 912,
+            "lineNumber": 909,
+            "endLineNumber": 934,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -1240,8 +1274,8 @@
             }
         },
         {
-            "lineNumber": 941,
-            "endLineNumber": 949,
+            "lineNumber": 963,
+            "endLineNumber": 971,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "syntax": [
@@ -1272,8 +1306,8 @@
             }
         },
         {
-            "lineNumber": 960,
-            "endLineNumber": 969,
+            "lineNumber": 982,
+            "endLineNumber": 991,
             "filePath": "ext/kurea/IdleLandsModule.coffee",
             "fileName": "IdleLandsModule.coffee",
             "example": [
@@ -16296,12 +16330,12 @@
             }
         }
     ],
-    "startTime": 1420942226796,
-    "endTime": 1420942226883,
+    "startTime": 1421002080330,
+    "endTime": 1421002080399,
     "git": {
-        "short": "0ac1aa7",
-        "long": "0ac1aa768f62f8c6acc8d002b78bc2427f9a3c47",
-        "branch": "titles",
+        "short": "fd16b62",
+        "long": "fd16b627f11aa680a1755def0abab8be312fb5d0",
+        "branch": "master",
         "tag": "0.5.0"
     },
     "arbitrary": {
@@ -16639,7 +16673,7 @@
                 },
                 "items": [
                     {
-                        "name": "Fire Enfused Dragon Tooth",
+                        "name": "Fire Infused Dragon Tooth",
                         "dropPercent": 75
                     }
                 ]
@@ -17148,7 +17182,7 @@
                 "agi": 150,
                 "parry": 1
             },
-            "Fire Enfused Dragon Tooth": {
+            "Fire Infused Dragon Tooth": {
                 "type": "offhand",
                 "dex": 250,
                 "luck": 1,
@@ -19053,25 +19087,41 @@
                     "map": "Norkos",
                     "formalName": "Frigri",
                     "x": 133,
-                    "y": 160
+                    "y": 160,
+                    "cost": 500000,
+                    "requiredRegionVisit": "Frigri Town"
                 },
                 "norkos": {
                     "map": "Norkos",
                     "formalName": "Norkos",
                     "x": 34,
-                    "y": 14
+                    "y": 14,
+                    "cost": 50000,
+                    "requiredRegionVisit": "Norkos Town"
                 },
                 "maeles": {
                     "map": "Norkos",
                     "formalName": "Maeles",
                     "x": 51,
-                    "y": 115
+                    "y": 115,
+                    "cost": 250000,
+                    "requiredRegionVisit": "Maeles Town"
                 },
                 "vocalnus": {
                     "map": "Vocalnus",
                     "formalName": "Vocalnus",
                     "x": 51,
-                    "y": 35
+                    "y": 35,
+                    "cost": 350000,
+                    "requiredRegionVisit": "Vocalnus Town"
+                },
+                "raburro": {
+                    "map": "Norkos Dungeon -5",
+                    "formalName": "Raburro",
+                    "x": 37,
+                    "y": 39,
+                    "cost": 750000,
+                    "requiredRegionVisit": "Raburro Town"
                 }
             },
             "bosses": {
@@ -19107,9 +19157,9 @@
                 },
                 "trustee": {
                     "map": "Norkos Prison -2",
-                    "formalName": "Trustee Rakshasha",
-                    "x": 22,
-                    "y": 16
+                    "formalName": "the Trustee Rakshasha",
+                    "x": 18,
+                    "y": 9
                 },
                 "warden": {
                     "map": "Norkos Dungeon -10",
@@ -19126,8 +19176,8 @@
                 "skydragon": {
                     "map": "Vocalnus",
                     "formalName": "the Sky Dragon of Vocalnus",
-                    "x": 1,
-                    "y": 31
+                    "x": 12,
+                    "y": 3
                 },
                 "gaiden": {
                     "map": "Maeles Dungeon -3",
@@ -19151,7 +19201,7 @@
                     "map": "Minotaur Maze -3",
                     "formalName": "the Elder Minotaur",
                     "x": 5,
-                    "y": 29
+                    "y": 28
                 },
                 "kingminotaur": {
                     "map": "Minotaur Maze -4",
@@ -19246,6 +19296,12 @@
                     "formalName": "the Mage Trainer",
                     "x": 47,
                     "y": 23
+                },
+                "generalist": {
+                    "map": "Norkos",
+                    "formalName": "the Generalist Trainer",
+                    "x": 10,
+                    "y": 14
                 },
                 "bitomancer": {
                     "map": "Norkos",
