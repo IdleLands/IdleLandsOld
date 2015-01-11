@@ -538,7 +538,7 @@ class Player extends Character
 
     pet.increaseStat stat
 
-    @emit "player.shop.petupgrade"
+    @emit "player.shop.petupgrade", cost
 
     Q {isSuccess: yes, code: 212, message: "Successfully upgraded your pets (#{pet.name}) #{stat} to level #{curLevel+2}!", pet: pet.buildSaveObject()}
 
