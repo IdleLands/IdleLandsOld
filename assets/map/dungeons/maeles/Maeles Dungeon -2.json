@@ -32,8 +32,8 @@
                  "name":"ToMaeles-1",
                  "properties":
                     {
-                     "destx":"44",
-                     "desty":"15",
+                     "destx":"43",
+                     "desty":"14",
                      "map":"Maeles Dungeon -1",
                      "movementType":"ascend"
                     },
