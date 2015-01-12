@@ -126,7 +126,7 @@ class API
     action:
       teleport: (identifier, newLoc) =>
         @validateIdentifier identifier
-        .then (res) =>
+        .then (res) ->
           if res.isSuccess then res.player.manualTeleportToLocation newLoc else res
 
     custom:

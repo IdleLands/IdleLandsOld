@@ -39,9 +39,18 @@ class Map
     34: "Wood"
     35: "Hole"
     36: "Gravel"
+    37: "Mushroom"
+    38: "Stone Wall"
+    39: "Box"
+    40: "Ladder Up"
+    41: "Ladder Down"
+    42: "Rope Up"
+    43: "Rope Down"
+    44: "Table"
+    45: "Pot"
 
-  blockers: [16, 17, 3, 33]
-  interactables: [1, 2, 12, 13, 14, 15, 18]
+  blockers: [16, 17, 3, 33, 37, 38, 39, 44, 45]
+  interactables: [1, 2, 12, 13, 14, 15, 18, 40, 41, 42, 43]
 
   constructor: (path) ->
     @map = require path
