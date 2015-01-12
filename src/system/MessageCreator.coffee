@@ -232,8 +232,15 @@ class MessageCreator
 
     (string = string.split("%#{key}").join (if key is "item" then val else "<event.#{key}>#{val}</event.#{key}>")) for key, val of extra
 
+    petText = RandomDomainHandler.placeholder()
+
+    if player
+      pet = @game.petManager.getActivePetFor player
+      petText = pet.getName() if pet
+
     @handleCustomVariables string
       .split('%player').join "<player.name>#{player?.getName()}</player.name>"
+      .split('%pet').join "<player.name>#{petText}</player.name>"
       .split('%hishers').join getGenderPronoun gender, '%hishers'
       .split('%hisher').join getGenderPronoun gender, '%hisher'
       .split('%himher').join getGenderPronoun gender, '%himher'
