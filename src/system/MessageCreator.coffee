@@ -234,8 +234,8 @@ class MessageCreator
 
     petText = RandomDomainHandler.placeholder()
 
-    if player
-      pet = @game.petManager.getActivePetFor player
+    if player and player.playerManager
+      pet = player.playerManager.game.petManager.getActivePetFor player
       petText = pet.getName() if pet
 
     @handleCustomVariables string

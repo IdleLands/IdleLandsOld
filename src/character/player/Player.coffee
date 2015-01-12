@@ -383,15 +383,16 @@ class Player extends Character
   getRegion: ->
     regions[@getTileAt().region.replace(/\s/g, '')]
 
-  cantEnterTile: (tile) ->
-    return @statistics['calculated map changes'][tile.object.properties.requireMap] if tile.object?.properties?.requireMap
-    return @statistics['calculated regions visited'][tile.object.properties.requireRegion] if tile.object?.properties?.requireRegion
-    return @statistics['calculated boss kills'][tile.object.properties.requireBoss] if tile.object?.properties?.requireBoss
-    return no if tile.object?.properties?.requireClass and @professionName isnt tile.object?.properties?.requireClass
-    return no if not @collectibles or not _.findWhere @collectibles, {name: tile.object?.properties?.requireCollectible}
-    return no if not @achievements or not _.findWhere @achievements, {name: tile.object?.properties?.requireAchievement}
+  canEnterTile: (tile) ->
+    props = tile.object?.properties
+    return no if props?.requireMap          and not @statistics['calculated map changes'][props.requireMap]
+    return no if props?.requireRegion       and not @statistics['calculated regions visited'][props.requireRegion]
+    return no if props?.requireBoss         and not @statistics['calculated boss kills'][props.requireBoss]
+    return no if props?.requireClass        and @professionName isnt props.requireClass
+    return no if props?.requireCollectible  and not _.findWhere @collectibles, {name: props.requireCollectible}
+    return no if props?.requireAchievement  and not _.findWhere @achievements, {name: props.requireAchievement}
 
-    tile.blocked
+    not tile.blocked
 
   moveAction: (currentStep) ->
     [newLoc, dir] = @pickRandomTile()
@@ -399,8 +400,7 @@ class Player extends Character
     try
       tile = @getTileAt newLoc.x,newLoc.y
 
-      #drunkAdjustedProb = Math.max 0, 95 - (@calc.drunk() * 5)
-      while @cantEnterTile tile
+      while not @canEnterTile tile
         [newLoc, dir] = @pickRandomTile()
         tile = @getTileAt newLoc.x, newLoc.y
 
