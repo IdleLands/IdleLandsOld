@@ -23,21 +23,23 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
          "height":33,
          "name":"Interactables",
          "objects":[
                 {
                  "gid":2,
                  "height":0,
-                 "name":"ToNorkosDungeon2",
+                 "name":"ToNorkos-3",
                  "properties":
                     {
-                     "destName":"Norkos Dungeon -2",
-                     "destx":"1",
-                     "desty":"2",
-                     "map":"Norkos Dungeon -2",
+                     "destName":"Norkos Dungeon -3",
+                     "destx":"28",
+                     "desty":"17",
+                     "map":"Norkos Dungeon -3",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -51,11 +53,12 @@
                  "properties":
                     {
                      "destName":"Norkos Dungeon -5",
-                     "destx":"30",
-                     "desty":"1",
+                     "destx":"15",
+                     "desty":"32",
                      "map":"Norkos Dungeon -5",
                      "movementType":"descend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -69,11 +72,12 @@
                  "properties":
                     {
                      "destName":"Norkos Dungeon -5",
-                     "destx":"30",
-                     "desty":"1",
+                     "destx":"11",
+                     "desty":"11",
                      "map":"Norkos Dungeon -5",
                      "movementType":"descend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -87,11 +91,12 @@
                  "properties":
                     {
                      "destName":"Norkos Dungeon -5",
-                     "destx":"30",
-                     "desty":"1",
+                     "destx":"47",
+                     "desty":"40",
                      "map":"Norkos Dungeon -5",
                      "movementType":"descend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -107,6 +112,7 @@
                      "movementType":"teleport",
                      "toLoc":"norkos"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -121,6 +127,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Collectible",
                  "visible":true,
                  "width":0,
@@ -139,12 +146,13 @@
     {
      "name":"norkos"
     },
+ "renderorder":"right-down",
  "tileheight":16,
  "tilesets":[
         {
          "firstgid":1,
          "image":"..\/..\/..\/img\/tiles.png",
-         "imageheight":64,
+         "imageheight":80,
          "imagewidth":144,
          "margin":0,
          "name":"tiles",
