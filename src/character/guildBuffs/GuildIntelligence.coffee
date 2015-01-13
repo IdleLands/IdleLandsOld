@@ -6,8 +6,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Intelligence I
   * @requirement {gold} 4000
-  * @requirement {guild level} 20
-  * @requirement {guild members} 1
+  * @requirement {guild-level} 20
+  * @requirement {guild-members} 1
   * @effect +5% INT
   * @duration 1 day
   * @category Intelligence
@@ -18,8 +18,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Intelligence II
   * @requirement {gold} 9000
-  * @requirement {guild level} 30
-  * @requirement {guild members} 1
+  * @requirement {guild-level} 30
+  * @requirement {guild-members} 1
   * @effect +10% INT
   * @duration 1 day, 12 hours
   * @category Intelligence
@@ -30,8 +30,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Intelligence III
   * @requirement {gold} 16000
-  * @requirement {guild level} 40
-  * @requirement {guild members} 4
+  * @requirement {guild-level} 40
+  * @requirement {guild-members} 4
   * @effect +15% INT
   * @duration 2 days
   * @category Intelligence
@@ -42,8 +42,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Intelligence IV
   * @requirement {gold} 25000
-  * @requirement {guild level} 50
-  * @requirement {guild members} 4
+  * @requirement {guild-level} 50
+  * @requirement {guild-members} 4
   * @effect +20% INT
   * @duration 2 days, 12 hours
   * @category Intelligence
@@ -54,8 +54,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Intelligence V
   * @requirement {gold} 36000
-  * @requirement {guild level} 60
-  * @requirement {guild members} 9
+  * @requirement {guild-level} 60
+  * @requirement {guild-members} 9
   * @effect +25% INT
   * @duration 3 days
   * @category Intelligence
@@ -66,8 +66,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Intelligence VI
   * @requirement {gold} 49000
-  * @requirement {guild level} 80
-  * @requirement {guild members} 9
+  * @requirement {guild-level} 80
+  * @requirement {guild-members} 9
   * @effect +30% INT
   * @duration 3 days, 12 hours
   * @category Intelligence
@@ -78,8 +78,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Intelligence VII
   * @requirement {gold} 64000
-  * @requirement {guild level} 80
-  * @requirement {guild members} 15
+  * @requirement {guild-level} 80
+  * @requirement {guild-members} 15
   * @effect +35% INT
   * @duration 4 days
   * @category Intelligence
@@ -90,8 +90,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Intelligence VIII
   * @requirement {gold} 81000
-  * @requirement {guild level} 90
-  * @requirement {guild members} 15
+  * @requirement {guild-level} 90
+  * @requirement {guild-members} 15
   * @effect +40% INT
   * @duration 4 days, 12 hours
   * @category Intelligence
@@ -102,8 +102,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Intelligence IX
   * @requirement {gold} 100000
-  * @requirement {guild level} 100
-  * @requirement {guild members} 20
+  * @requirement {guild-level} 100
+  * @requirement {guild-members} 20
   * @effect +45% INT
   * @duration 5 days
   * @category Intelligence

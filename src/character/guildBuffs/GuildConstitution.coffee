@@ -6,8 +6,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Constitution I
   * @requirement {gold} 4000
-  * @requirement {guild level} 20
-  * @requirement {guild members} 1
+  * @requirement {guild-level} 20
+  * @requirement {guild-members} 1
   * @effect +5% CON
   * @duration 1 day
   * @category Constitution
@@ -18,8 +18,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Constitution II
   * @requirement {gold} 9000
-  * @requirement {guild level} 30
-  * @requirement {guild members} 1
+  * @requirement {guild-level} 30
+  * @requirement {guild-members} 1
   * @effect +10% CON
   * @duration 1 day, 12 hours
   * @category Constitution
@@ -30,8 +30,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Constitution III
   * @requirement {gold} 16000
-  * @requirement {guild level} 40
-  * @requirement {guild members} 4
+  * @requirement {guild-level} 40
+  * @requirement {guild-members} 4
   * @effect +15% CON
   * @duration 2 days
   * @category Constitution
@@ -42,8 +42,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Constitution IV
   * @requirement {gold} 25000
-  * @requirement {guild level} 50
-  * @requirement {guild members} 4
+  * @requirement {guild-level} 50
+  * @requirement {guild-members} 4
   * @effect +20% CON
   * @duration 2 days, 12 hours
   * @category Constitution
@@ -54,8 +54,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Constitution V
   * @requirement {gold} 36000
-  * @requirement {guild level} 60
-  * @requirement {guild members} 9
+  * @requirement {guild-level} 60
+  * @requirement {guild-members} 9
   * @effect +25% CON
   * @duration 3 days
   * @category Constitution
@@ -66,8 +66,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Constitution VI
   * @requirement {gold} 49000
-  * @requirement {guild level} 80
-  * @requirement {guild members} 9
+  * @requirement {guild-level} 80
+  * @requirement {guild-members} 9
   * @effect +30% CON
   * @duration 3 days, 12 hours
   * @category Constitution
@@ -78,8 +78,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Constitution VII
   * @requirement {gold} 64000
-  * @requirement {guild level} 80
-  * @requirement {guild members} 15
+  * @requirement {guild-level} 80
+  * @requirement {guild-members} 15
   * @effect +35% CON
   * @duration 4 days
   * @category Constitution
@@ -90,8 +90,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Constitution VIII
   * @requirement {gold} 81000
-  * @requirement {guild level} 90
-  * @requirement {guild members} 15
+  * @requirement {guild-level} 90
+  * @requirement {guild-members} 15
   * @effect +40% CON
   * @duration 4 days, 12 hours
   * @category Constitution
@@ -102,8 +102,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Constitution IX
   * @requirement {gold} 100000
-  * @requirement {guild level} 100
-  * @requirement {guild members} 20
+  * @requirement {guild-level} 100
+  * @requirement {guild-members} 20
   * @effect +45% CON
   * @duration 5 days
   * @category Constitution
