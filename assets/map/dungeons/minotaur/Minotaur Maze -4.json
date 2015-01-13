@@ -23,6 +23,7 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
          "height":0,
          "name":"Interactables",
          "objects":[
@@ -34,6 +35,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -48,28 +50,12 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
                  "x":288,
                  "y":704
-                }, 
-                {
-                 "gid":32,
-                 "height":0,
-                 "name":"ToNorkos",
-                 "properties":
-                    {
-                     "destx":"158",
-                     "desty":"192",
-                     "map":"Norkos",
-                     "movementType":"teleport"
-                    },
-                 "type":"Teleport",
-                 "visible":true,
-                 "width":0,
-                 "x":352,
-                 "y":528
                 }, 
                 {
                  "gid":26,
@@ -79,6 +65,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Boss",
                  "visible":true,
                  "width":0,
@@ -96,6 +83,7 @@
                      "map":"Minotaur Maze -3",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -113,6 +101,7 @@
                      "map":"Minotaur Maze -3",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -127,6 +116,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Collectible",
                  "visible":true,
                  "width":0,
@@ -141,6 +131,7 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
          "height":0,
          "name":"Regions",
          "objects":[
@@ -151,6 +142,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":736,
@@ -169,12 +161,13 @@
     {
 
     },
+ "renderorder":"right-down",
  "tileheight":16,
  "tilesets":[
         {
          "firstgid":1,
          "image":"..\/..\/..\/img\/tiles.png",
-         "imageheight":64,
+         "imageheight":80,
          "imagewidth":144,
          "margin":0,
          "name":"tiles",

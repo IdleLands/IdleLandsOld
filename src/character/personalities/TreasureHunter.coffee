@@ -19,7 +19,7 @@ class TreasureHunter extends Personality
 
   goldPercent: -> -50
 
-  itemFindRangeMultiplier: (player) -> player.level.getValue()*0.05
+  itemFindRangeMultiplier: (player) -> (Math.min 100,player.level.getValue())*0.05
 
   @canUse = (player) ->
     player.statistics["player sellItem"] >= 1000
