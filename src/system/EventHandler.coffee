@@ -179,7 +179,7 @@ class EventHandler
       extra: extra
 
     player.recentEvents = [] if not player.recentEvents
-    player.recentEvents.push event
+    player.recentEvents.unshift event
     player.recentEvents.shift() if player.recentEvents.length > Constants.defaults.player.maxRecentEvents
 
     @playerEventsDb.insert event, ->
