@@ -283,7 +283,7 @@ class Battle
       message += " -- a fatal blow!"
       fatal = yes
       
-    else if target.hp.getValue() is 1 and target.calc.sturdy()
+    else if target.hp.getValue() is 1 and target.calc.sturdy() and target.hp.gtePercent 10
       message += " -- a nearly fatal blow!"
 
     else
