@@ -272,7 +272,7 @@ class Battle
     damage = target.calcDamageTaken damage
 
     damageType = if damage < 0 then "healing" else "damage"
-    realDamage = Math.abs damage
+    realDamage = Math.round Math.abs damage
 
     weapon = _.findWhere player.equipment, {type: "mainhand"}
     weapon = {itemClass: "basic", getName: -> return "claw"} if not weapon
