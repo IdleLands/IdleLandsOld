@@ -272,7 +272,7 @@ class Battle
     damage = target.calcDamageTaken damage
 
     damageType = if damage < 0 then "healing" else "damage"
-    realDamage = Math.abs damage
+    realDamage = Math.round Math.abs damage
 
     weapon = _.findWhere player.equipment, {type: "mainhand"}
     weapon = {itemClass: "basic", getName: -> return "claw"} if not weapon
@@ -283,7 +283,7 @@ class Battle
       message += " -- a fatal blow!"
       fatal = yes
       
-    else if target.hp.getValue() is 1 and target.calc.sturdy()
+    else if target.hp.getValue() is 1 and target.calc.sturdy() and target.hp.gtePercent 10
       message += " -- a nearly fatal blow!"
 
     else
