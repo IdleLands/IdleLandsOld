@@ -156,6 +156,9 @@ class GuildManager
     return false if not @guildHash[guildName]
     _.findWhere @guildHash[guildName].members, {name: playerName}
 
+  getGuildByName: (guildName) ->
+    @guildHash[guildName]
+
   leaveGuild: (identifier) ->
     player = @game.playerManager.getPlayerById identifier
 

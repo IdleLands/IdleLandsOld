@@ -88,6 +88,27 @@ class CustomHandler
     {funct, args} = props[0]
     RandomDomainHandler[funct]? args, props, cache, API.gameInstance.parties
 
+class OwnedDomainHandler
+  @pet = (player) ->
+    petText = RandomDomainHandler.placeholder()
+
+    if player?.playerManager
+      pet = player.playerManager.game.petManager.getActivePetFor player
+      petText = pet.getName() if pet
+
+    petText
+
+  @guild = (player) ->
+    if player?.guild then player.guild else RandomDomainHandler.guild()
+
+  @guildMember = (player) ->
+    randomPlayer = RandomDomainHandler.player()
+
+    members = (player?.playerManager?.game.guildManager.getGuildByName player?.guild)?.members
+    return randomPlayer if not members or members.length is 1
+
+    (_.sample (_.filter members, (member) -> member.name isnt player.name)).name
+
 class MessageCreator
 
   defaultReplaceFunction = (msg) -> msg
@@ -232,15 +253,11 @@ class MessageCreator
 
     (string = string.split("%#{key}").join (if key is "item" then val else "<event.#{key}>#{val}</event.#{key}>")) for key, val of extra
 
-    petText = RandomDomainHandler.placeholder()
-
-    if player and player.playerManager
-      pet = player.playerManager.game.petManager.getActivePetFor player
-      petText = pet.getName() if pet
-
     @handleCustomVariables string
       .split('%player').join "<player.name>#{player?.getName()}</player.name>"
-      .split('%pet').join "<player.name>#{petText}</player.name>"
+      .split('%pet').join "<player.name>#{OwnedDomainHandler.pet player}</player.name>"
+      .split('%guild').join "<event.guildName>#{OwnedDomainHandler.guild player}</event.guildName>"
+      .split('%guildMember').join "<event.guildName>#{OwnedDomainHandler.guildMember player}</event.guildName>"
       .split('%hishers').join getGenderPronoun gender, '%hishers'
       .split('%hisher').join getGenderPronoun gender, '%hisher'
       .split('%himher').join getGenderPronoun gender, '%himher'
