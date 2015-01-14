@@ -2747,6 +2747,23 @@
                  "width":0,
                  "x":1648,
                  "y":784
+                }, 
+                {
+                 "gid":2,
+                 "height":0,
+                 "name":"HallOfHeroes",
+                 "properties":
+                    {
+                     "destx":"3",
+                     "desty":"16",
+                     "map":"Hall of Heroes",
+                     "movementType":"ascend"
+                    },
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":528,
+                 "y":128
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -3257,7 +3274,7 @@
         {
          "firstgid":1,
          "image":"..\/..\/img\/tiles.png",
-         "imageheight":64,
+         "imageheight":80,
          "imagewidth":144,
          "margin":0,
          "name":"tiles",

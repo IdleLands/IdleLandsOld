@@ -1,0 +1,219 @@
+{ "height":20,
+ "layers":[
+        {
+         "data":[7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+         "height":20,
+         "name":"Terrain",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":20,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+         "height":20,
+         "name":"Blocking",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":20,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "height":20,
+         "name":"Interactables",
+         "objects":[
+                {
+                 "gid":1,
+                 "height":0,
+                 "name":"IronVaseInn",
+                 "properties":
+                    {
+                     "destName":"Norkos",
+                     "destx":"33",
+                     "desty":"7",
+                     "map":"Norkos",
+                     "movementType":"descend"
+                    },
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":48,
+                 "y":272
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "name":"RNGesus",
+                 "properties":
+                    {
+                     "flavorText":"Math.random(), take the wheel!"
+                    },
+                 "type":"Hero (Content Creator)",
+                 "visible":true,
+                 "width":0,
+                 "x":80,
+                 "y":144
+                }, 
+                {
+                 "gid":13,
+                 "height":0,
+                 "name":"Z0MGBBQ",
+                 "properties":
+                    {
+                     "flavorText":"hey seiyria, I found a bug"
+                    },
+                 "type":"Hero (Server Supporter)",
+                 "visible":true,
+                 "width":0,
+                 "x":80,
+                 "y":192
+                }, 
+                {
+                 "gid":37,
+                 "height":0,
+                 "name":"Latin",
+                 "properties":
+                    {
+                     "flavorText":"\u0183u\u1d09op \u026f,I \u0287\u0250\u0265\u028d \u01ddnl\u0254 ou \u01dd\u028c\u0250\u0265 I"
+                    },
+                 "type":"Hero (Content Creator)",
+                 "visible":true,
+                 "width":0,
+                 "x":128,
+                 "y":96
+                }, 
+                {
+                 "gid":12,
+                 "height":0,
+                 "name":"rika",
+                 "properties":
+                    {
+                     "flavorText":"\u79d8\u5bc6\u3060\u3088"
+                    },
+                 "type":"Hero (Content Creator)",
+                 "visible":true,
+                 "width":0,
+                 "x":176,
+                 "y":96
+                }, 
+                {
+                 "gid":25,
+                 "height":0,
+                 "name":"Darkblizer",
+                 "properties":
+                    {
+                     "flavorText":"tt"
+                    },
+                 "type":"Hero (Artist)",
+                 "visible":true,
+                 "width":0,
+                 "x":224,
+                 "y":144
+                }, 
+                {
+                 "gid":23,
+                 "height":0,
+                 "name":"Ogredude",
+                 "properties":
+                    {
+                     "flavorText":"If there's anything ogres are good at doing, it's nothing at all."
+                    },
+                 "type":"Hero (Server Supporter)",
+                 "visible":true,
+                 "width":0,
+                 "x":224,
+                 "y":192
+                }, 
+                {
+                 "gid":26,
+                 "height":0,
+                 "name":"doctorx",
+                 "properties":
+                    {
+                     "flavorText":"Come visit us!"
+                    },
+                 "type":"Hero (Server Supporter)",
+                 "visible":true,
+                 "width":0,
+                 "x":176,
+                 "y":240
+                }, 
+                {
+                 "gid":20,
+                 "height":0,
+                 "name":"Sedgwick",
+                 "properties":
+                    {
+                     "flavorText":"For best results, idle daily."
+                    },
+                 "type":"Hero (Content Creator)",
+                 "visible":true,
+                 "width":0,
+                 "x":128,
+                 "y":240
+                }, 
+                {
+                 "gid":16,
+                 "height":0,
+                 "name":"Oipo",
+                 "properties":
+                    {
+                     "flavorText":"Oh, I'm a lumberjack, and I'm okay, I sleep all night and I work all day."
+                    },
+                 "type":"Hero (Developer)",
+                 "visible":true,
+                 "width":0,
+                 "x":16,
+                 "y":192
+                }, 
+                {
+                 "gid":21,
+                 "height":0,
+                 "name":"sadbear",
+                 "properties":
+                    {
+                     "flavorText":":<"
+                    },
+                 "type":"Hero (Developer)",
+                 "visible":true,
+                 "width":0,
+                 "x":128,
+                 "y":304
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":20,
+         "x":0,
+         "y":0
+        }],
+ "orientation":"orthogonal",
+ "properties":
+    {
+     "name":"norkos"
+    },
+ "tileheight":16,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "image":"..\/..\/img\/tiles.png",
+         "imageheight":80,
+         "imagewidth":144,
+         "margin":0,
+         "name":"tiles",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tileheight":16,
+         "tilewidth":16
+        }],
+ "tilewidth":16,
+ "version":1,
+ "width":20
+}
