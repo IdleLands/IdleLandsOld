@@ -58,7 +58,9 @@ class BattleManager
     # no parties = global event = pvp battle
     if parties.length is 0
       parties = @chooseBestPvPParties()
-      _.each parties, (party) -> party.prepareForBattle()
+      _.each parties, (party) ->
+        party.prepareForBattle()
+        parties.push @game.monsterGenerator.experimentalMonsterPartyGeneration party, party.score() / 2.5 if chance.bool {likelihood: 5}
 
     # 1 party = monster battle
     else if parties.length is 1
