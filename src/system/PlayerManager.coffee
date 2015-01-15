@@ -341,6 +341,8 @@ class PlayerManager
     player.handleGuildStatus()
 
     player.calc.itemFindRange()
+    
+    player.gender = _.sample ['male','female'] if not player.gender
 
     if not player.equipment
       player.generateBaseEquipment()
