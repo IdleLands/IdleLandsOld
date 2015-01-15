@@ -116,12 +116,15 @@ class Event
 
   pickValidItem: (player, isEnchant = no) ->
     items = player.equipment
-    forsaken = _.findWhere items, {forsaken: 1}
+
+    goodItems = _.reject items, (item) -> item.type in ["providence"]
+
+    forsaken = _.findWhere goodItems, {forsaken: 1}
+
     return forsaken if forsaken
     nonSacred = _.reject items, (item) -> item.sacred
 
-    badSlots = _.reject nonSacred, (item) -> item.type in ["providence"]
-    if isEnchant then badSlots = _.reject badSlots, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel and not item.limitless
+    if isEnchant then badSlots = _.reject nonSacred, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel and not item.limitless
     _.sample badSlots
 
   pickBlessStat: (item) ->
