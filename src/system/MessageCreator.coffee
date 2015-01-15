@@ -19,7 +19,7 @@ class RandomDomainHandler
     petHash[_.sample _.keys petHash]?.name or placeholder()
 
   @player = ->
-    (_.sample API.gameInstance.playerManager.players).name
+    (_.sample API.gameInstance.playerManager.players)?.name or placeholder()
 
   @guild = ->
     (_.sample API.gameInstance.guildManager.guilds)?.name or placeholder()
