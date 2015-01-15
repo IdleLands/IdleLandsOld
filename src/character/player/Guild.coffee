@@ -28,6 +28,7 @@ class Guild
     player.guildStatus = 0
     player.save()
     @avgLevel()
+    @notifyAllPossibleMembers "#{player.name} has joined the guild (\"#{@name}\")!"
     Q()
 
   remove: (playerName) ->
@@ -49,14 +50,19 @@ class Guild
       @guildManager.game.playerManager.db.update {name: playerName}, {$set:{guild: null}}, {}, (e) =>
         @guildManager.game.errorHandler?.captureException e if e
 
+    @notifyAllPossibleMembers "#{playerName} was removed from the guild (\"#{@name}\")."
+
     @avgLevel()
 
   promote: (leaderId, memberName) ->
     member = @guildManager.game.playerManager.getPlayerByName memberName
     memberEntry = _.findWhere @members, {name: memberName}
 
+    return Q {isSuccess: no, code: 69, message: "You can't do that to the leader!"} if leaderId is memberEntry.identifier
     return Q {isSuccess: no, code: 50, message: "You're not the leader of your guild!"} if leaderId isnt @leader
     return Q {isSuccess: no, code: 51, message: "That member is not in your guild!"} if not memberEntry
+
+    @notifyAllPossibleMembers "#{memberName} was promoted (\"#{@name}\")."
 
     memberEntry.isAdmin = yes
     member?.guildStatus = 1
@@ -69,8 +75,11 @@ class Guild
     member = @guildManager.game.playerManager.getPlayerByName memberName
     memberEntry = _.findWhere @members, {name: memberName}
 
+    return Q {isSuccess: no, code: 69, message: "You can't do that to the leader!"} if leaderId is memberEntry.identifier
     return Q {isSuccess: no, code: 50, message: "You're not the leader of your guild!"} if leaderId isnt @leader
     return Q {isSuccess: no, code: 51, message: "That member is not in your guild!"} if not memberEntry
+
+    @notifyAllPossibleMembers "#{memberName} was demoted (\"#{@name}\")."
 
     memberEntry.isAdmin = no
     member?.guildStatus = 0
@@ -79,10 +88,18 @@ class Guild
 
     Q {isSuccess: yes, code: 68, message: "Successfully demoted #{memberName}."}
 
+  notifyAllPossibleMembers: (message) ->
+    _.each @members, (member) =>
+      player = @guildManager.game.playerManager.getPlayerById member.identifier
+      return if not player
+      @guildManager.game.eventHandler.addEventToDb message, player, 'guild'
+
   invitesLeft: ->
     @invitesAvailable = @cap() - (@members.length + @invites.length)
 
   avgLevel: ->
+
+    oldLevel = @level
 
     query = [
       {$group: {_id: '$guild', level: {$avg:'$level.__current'}  }}
@@ -93,6 +110,9 @@ class Guild
       @level = Math.round result[0].level
       @invitesLeft()
       @save()
+
+      levelDiff = @level-oldLevel
+      @notifyAllPossibleMembers "Your guild, \"#{@name}\" is now level #{@level} [change: #{if levelDiff > 0 then "+" else ""}#{levelDiff}]." if levelDiff isnt 0
 
   cap: -> 1 + (3*Math.floor ((@level or 1)/5))
 
