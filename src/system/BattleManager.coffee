@@ -43,7 +43,11 @@ class BattleManager
 
     @game.inBattle = true
 
-    new Battle @game, parties
+    try
+      new Battle @game, parties
+    catch e
+      @game.errorHandler.captureException e
+      
     null
 
   # this function sets up parties for combat, it's a transformation function essentially
