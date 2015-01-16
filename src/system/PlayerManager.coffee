@@ -155,6 +155,7 @@ class PlayerManager
 
     player.isOnline = no
     player.tempSecureToken = null
+    player.party?.playerLeave player, yes
     @savePlayer player
 
     name = player.name
