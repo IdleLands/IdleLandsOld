@@ -19,7 +19,7 @@ class MonsterGenerator extends Generator
 
     itemList = @game.componentDatabase.itemStats
 
-    remainingScore = party.score() - reduction
+    remainingScore = Math.max 500, party.score() - reduction
     possibleMonsters = _.filter @game.componentDatabase.monsters, (monster) -> party.level()-10 < monster.level < party.level()+5
 
     monsters = []
