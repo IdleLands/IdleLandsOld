@@ -2,7 +2,7 @@
 Personality = require "../base/Personality"
 
 `/**
-  * This personality makes you never have events happen. In general.
+  * This personality makes you have all events more often. But bad ones happen even more often!
   *
   * @name Sacrilegious
   * @prerequisite Find a forsaken item
