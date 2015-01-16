@@ -2764,6 +2764,48 @@
                  "width":0,
                  "x":528,
                  "y":128
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"Welcome to the Iron Vase Inn!"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":544,
+                 "y":144
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":544,
+                 "y":144
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"Welcome to Idle Lands!"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":208,
+                 "y":144
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -3274,7 +3316,7 @@
         {
          "firstgid":1,
          "image":"..\/..\/img\/tiles.png",
-         "imageheight":80,
+         "imageheight":112,
          "imagewidth":144,
          "margin":0,
          "name":"tiles",
