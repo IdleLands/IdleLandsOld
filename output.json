@@ -4313,11 +4313,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 20"
+                    "type": "guild-level",
+                    "basicInfo": "20"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 1"
+                    "type": "guild-members",
+                    "basicInfo": "1"
                 }
             ],
             "desc": {
@@ -4360,11 +4362,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 30"
+                    "type": "guild-level",
+                    "basicInfo": "30"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 1"
+                    "type": "guild-members",
+                    "basicInfo": "1"
                 }
             ],
             "desc": {
@@ -4407,11 +4411,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 40"
+                    "type": "guild-level",
+                    "basicInfo": "40"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 4"
+                    "type": "guild-members",
+                    "basicInfo": "4"
                 }
             ],
             "desc": {
@@ -4454,11 +4460,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 50"
+                    "type": "guild-level",
+                    "basicInfo": "50"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 4"
+                    "type": "guild-members",
+                    "basicInfo": "4"
                 }
             ],
             "desc": {
@@ -4501,11 +4509,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 60"
+                    "type": "guild-level",
+                    "basicInfo": "60"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 9"
+                    "type": "guild-members",
+                    "basicInfo": "9"
                 }
             ],
             "desc": {
@@ -4548,11 +4558,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 80"
+                    "type": "guild-level",
+                    "basicInfo": "80"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 9"
+                    "type": "guild-members",
+                    "basicInfo": "9"
                 }
             ],
             "desc": {
@@ -4595,11 +4607,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 80"
+                    "type": "guild-level",
+                    "basicInfo": "80"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 15"
+                    "type": "guild-members",
+                    "basicInfo": "15"
                 }
             ],
             "desc": {
@@ -4642,11 +4656,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 90"
+                    "type": "guild-level",
+                    "basicInfo": "90"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 15"
+                    "type": "guild-members",
+                    "basicInfo": "15"
                 }
             ],
             "desc": {
@@ -4689,11 +4705,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 100"
+                    "type": "guild-level",
+                    "basicInfo": "100"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 20"
+                    "type": "guild-members",
+                    "basicInfo": "20"
                 }
             ],
             "desc": {
@@ -4736,11 +4754,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 20"
+                    "type": "guild-level",
+                    "basicInfo": "20"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 1"
+                    "type": "guild-members",
+                    "basicInfo": "1"
                 }
             ],
             "desc": {
@@ -4783,11 +4803,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 30"
+                    "type": "guild-level",
+                    "basicInfo": "30"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 1"
+                    "type": "guild-members",
+                    "basicInfo": "1"
                 }
             ],
             "desc": {
@@ -4830,11 +4852,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 40"
+                    "type": "guild-level",
+                    "basicInfo": "40"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 4"
+                    "type": "guild-members",
+                    "basicInfo": "4"
                 }
             ],
             "desc": {
@@ -4877,11 +4901,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 50"
+                    "type": "guild-level",
+                    "basicInfo": "50"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 4"
+                    "type": "guild-members",
+                    "basicInfo": "4"
                 }
             ],
             "desc": {
@@ -4924,11 +4950,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 60"
+                    "type": "guild-level",
+                    "basicInfo": "60"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 9"
+                    "type": "guild-members",
+                    "basicInfo": "9"
                 }
             ],
             "desc": {
@@ -4971,11 +4999,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 80"
+                    "type": "guild-level",
+                    "basicInfo": "80"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 9"
+                    "type": "guild-members",
+                    "basicInfo": "9"
                 }
             ],
             "desc": {
@@ -5018,11 +5048,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 80"
+                    "type": "guild-level",
+                    "basicInfo": "80"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 15"
+                    "type": "guild-members",
+                    "basicInfo": "15"
                 }
             ],
             "desc": {
@@ -5065,11 +5097,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 90"
+                    "type": "guild-level",
+                    "basicInfo": "90"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 15"
+                    "type": "guild-members",
+                    "basicInfo": "15"
                 }
             ],
             "desc": {
@@ -5112,11 +5146,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 100"
+                    "type": "guild-level",
+                    "basicInfo": "100"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 20"
+                    "type": "guild-members",
+                    "basicInfo": "20"
                 }
             ],
             "desc": {
@@ -5159,11 +5195,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 20"
+                    "type": "guild-level",
+                    "basicInfo": "20"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 1"
+                    "type": "guild-members",
+                    "basicInfo": "1"
                 }
             ],
             "desc": {
@@ -5206,11 +5244,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 30"
+                    "type": "guild-level",
+                    "basicInfo": "30"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 1"
+                    "type": "guild-members",
+                    "basicInfo": "1"
                 }
             ],
             "desc": {
@@ -5253,11 +5293,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 40"
+                    "type": "guild-level",
+                    "basicInfo": "40"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 4"
+                    "type": "guild-members",
+                    "basicInfo": "4"
                 }
             ],
             "desc": {
@@ -5300,11 +5342,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 50"
+                    "type": "guild-level",
+                    "basicInfo": "50"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 4"
+                    "type": "guild-members",
+                    "basicInfo": "4"
                 }
             ],
             "desc": {
@@ -5347,11 +5391,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 60"
+                    "type": "guild-level",
+                    "basicInfo": "60"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 9"
+                    "type": "guild-members",
+                    "basicInfo": "9"
                 }
             ],
             "desc": {
@@ -5394,11 +5440,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 80"
+                    "type": "guild-level",
+                    "basicInfo": "80"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 9"
+                    "type": "guild-members",
+                    "basicInfo": "9"
                 }
             ],
             "desc": {
@@ -5441,11 +5489,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 80"
+                    "type": "guild-level",
+                    "basicInfo": "80"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 15"
+                    "type": "guild-members",
+                    "basicInfo": "15"
                 }
             ],
             "desc": {
@@ -5488,11 +5538,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 90"
+                    "type": "guild-level",
+                    "basicInfo": "90"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 15"
+                    "type": "guild-members",
+                    "basicInfo": "15"
                 }
             ],
             "desc": {
@@ -5535,11 +5587,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 100"
+                    "type": "guild-level",
+                    "basicInfo": "100"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 20"
+                    "type": "guild-members",
+                    "basicInfo": "20"
                 }
             ],
             "desc": {
@@ -5586,11 +5640,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 20"
+                    "type": "guild-level",
+                    "basicInfo": "20"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 1"
+                    "type": "guild-members",
+                    "basicInfo": "1"
                 }
             ],
             "desc": {
@@ -5637,11 +5693,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 30"
+                    "type": "guild-level",
+                    "basicInfo": "30"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 1"
+                    "type": "guild-members",
+                    "basicInfo": "1"
                 }
             ],
             "desc": {
@@ -5688,11 +5746,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 40"
+                    "type": "guild-level",
+                    "basicInfo": "40"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 4"
+                    "type": "guild-members",
+                    "basicInfo": "4"
                 }
             ],
             "desc": {
@@ -5739,11 +5799,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 50"
+                    "type": "guild-level",
+                    "basicInfo": "50"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 4"
+                    "type": "guild-members",
+                    "basicInfo": "4"
                 }
             ],
             "desc": {
@@ -5790,11 +5852,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 60"
+                    "type": "guild-level",
+                    "basicInfo": "60"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 9"
+                    "type": "guild-members",
+                    "basicInfo": "9"
                 }
             ],
             "desc": {
@@ -5841,11 +5905,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 80"
+                    "type": "guild-level",
+                    "basicInfo": "80"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 9"
+                    "type": "guild-members",
+                    "basicInfo": "9"
                 }
             ],
             "desc": {
@@ -5892,11 +5958,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 80"
+                    "type": "guild-level",
+                    "basicInfo": "80"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 15"
+                    "type": "guild-members",
+                    "basicInfo": "15"
                 }
             ],
             "desc": {
@@ -5943,11 +6011,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 90"
+                    "type": "guild-level",
+                    "basicInfo": "90"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 15"
+                    "type": "guild-members",
+                    "basicInfo": "15"
                 }
             ],
             "desc": {
@@ -5994,11 +6064,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 100"
+                    "type": "guild-level",
+                    "basicInfo": "100"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 20"
+                    "type": "guild-members",
+                    "basicInfo": "20"
                 }
             ],
             "desc": {
@@ -6041,11 +6113,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 20"
+                    "type": "guild-level",
+                    "basicInfo": "20"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 1"
+                    "type": "guild-members",
+                    "basicInfo": "1"
                 }
             ],
             "desc": {
@@ -6088,11 +6162,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 30"
+                    "type": "guild-level",
+                    "basicInfo": "30"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 1"
+                    "type": "guild-members",
+                    "basicInfo": "1"
                 }
             ],
             "desc": {
@@ -6135,11 +6211,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 40"
+                    "type": "guild-level",
+                    "basicInfo": "40"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 4"
+                    "type": "guild-members",
+                    "basicInfo": "4"
                 }
             ],
             "desc": {
@@ -6182,11 +6260,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 50"
+                    "type": "guild-level",
+                    "basicInfo": "50"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 4"
+                    "type": "guild-members",
+                    "basicInfo": "4"
                 }
             ],
             "desc": {
@@ -6229,11 +6309,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 60"
+                    "type": "guild-level",
+                    "basicInfo": "60"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 9"
+                    "type": "guild-members",
+                    "basicInfo": "9"
                 }
             ],
             "desc": {
@@ -6276,11 +6358,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 80"
+                    "type": "guild-level",
+                    "basicInfo": "80"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 9"
+                    "type": "guild-members",
+                    "basicInfo": "9"
                 }
             ],
             "desc": {
@@ -6323,11 +6407,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 80"
+                    "type": "guild-level",
+                    "basicInfo": "80"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 15"
+                    "type": "guild-members",
+                    "basicInfo": "15"
                 }
             ],
             "desc": {
@@ -6370,11 +6456,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 90"
+                    "type": "guild-level",
+                    "basicInfo": "90"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 15"
+                    "type": "guild-members",
+                    "basicInfo": "15"
                 }
             ],
             "desc": {
@@ -6417,11 +6505,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 100"
+                    "type": "guild-level",
+                    "basicInfo": "100"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 20"
+                    "type": "guild-members",
+                    "basicInfo": "20"
                 }
             ],
             "desc": {
@@ -6464,11 +6554,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 20"
+                    "type": "guild-level",
+                    "basicInfo": "20"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 1"
+                    "type": "guild-members",
+                    "basicInfo": "1"
                 }
             ],
             "desc": {
@@ -6511,11 +6603,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 30"
+                    "type": "guild-level",
+                    "basicInfo": "30"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 1"
+                    "type": "guild-members",
+                    "basicInfo": "1"
                 }
             ],
             "desc": {
@@ -6558,11 +6652,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 40"
+                    "type": "guild-level",
+                    "basicInfo": "40"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 4"
+                    "type": "guild-members",
+                    "basicInfo": "4"
                 }
             ],
             "desc": {
@@ -6605,11 +6701,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 50"
+                    "type": "guild-level",
+                    "basicInfo": "50"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 4"
+                    "type": "guild-members",
+                    "basicInfo": "4"
                 }
             ],
             "desc": {
@@ -6652,11 +6750,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 60"
+                    "type": "guild-level",
+                    "basicInfo": "60"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 9"
+                    "type": "guild-members",
+                    "basicInfo": "9"
                 }
             ],
             "desc": {
@@ -6699,11 +6799,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 80"
+                    "type": "guild-level",
+                    "basicInfo": "80"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 9"
+                    "type": "guild-members",
+                    "basicInfo": "9"
                 }
             ],
             "desc": {
@@ -6746,11 +6848,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 80"
+                    "type": "guild-level",
+                    "basicInfo": "80"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 15"
+                    "type": "guild-members",
+                    "basicInfo": "15"
                 }
             ],
             "desc": {
@@ -6793,11 +6897,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 90"
+                    "type": "guild-level",
+                    "basicInfo": "90"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 15"
+                    "type": "guild-members",
+                    "basicInfo": "15"
                 }
             ],
             "desc": {
@@ -6840,11 +6946,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 100"
+                    "type": "guild-level",
+                    "basicInfo": "100"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 20"
+                    "type": "guild-members",
+                    "basicInfo": "20"
                 }
             ],
             "desc": {
@@ -6887,11 +6995,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 20"
+                    "type": "guild-level",
+                    "basicInfo": "20"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 1"
+                    "type": "guild-members",
+                    "basicInfo": "1"
                 }
             ],
             "desc": {
@@ -6934,11 +7044,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 30"
+                    "type": "guild-level",
+                    "basicInfo": "30"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 1"
+                    "type": "guild-members",
+                    "basicInfo": "1"
                 }
             ],
             "desc": {
@@ -6981,11 +7093,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 40"
+                    "type": "guild-level",
+                    "basicInfo": "40"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 4"
+                    "type": "guild-members",
+                    "basicInfo": "4"
                 }
             ],
             "desc": {
@@ -7028,11 +7142,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 50"
+                    "type": "guild-level",
+                    "basicInfo": "50"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 4"
+                    "type": "guild-members",
+                    "basicInfo": "4"
                 }
             ],
             "desc": {
@@ -7075,11 +7191,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 60"
+                    "type": "guild-level",
+                    "basicInfo": "60"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 9"
+                    "type": "guild-members",
+                    "basicInfo": "9"
                 }
             ],
             "desc": {
@@ -7122,11 +7240,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 80"
+                    "type": "guild-level",
+                    "basicInfo": "80"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 9"
+                    "type": "guild-members",
+                    "basicInfo": "9"
                 }
             ],
             "desc": {
@@ -7169,11 +7289,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 80"
+                    "type": "guild-level",
+                    "basicInfo": "80"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 15"
+                    "type": "guild-members",
+                    "basicInfo": "15"
                 }
             ],
             "desc": {
@@ -7216,11 +7338,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 90"
+                    "type": "guild-level",
+                    "basicInfo": "90"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 15"
+                    "type": "guild-members",
+                    "basicInfo": "15"
                 }
             ],
             "desc": {
@@ -7263,11 +7387,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 100"
+                    "type": "guild-level",
+                    "basicInfo": "100"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 20"
+                    "type": "guild-members",
+                    "basicInfo": "20"
                 }
             ],
             "desc": {
@@ -7310,11 +7436,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 20"
+                    "type": "guild-level",
+                    "basicInfo": "20"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 1"
+                    "type": "guild-members",
+                    "basicInfo": "1"
                 }
             ],
             "desc": {
@@ -7357,11 +7485,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 30"
+                    "type": "guild-level",
+                    "basicInfo": "30"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 1"
+                    "type": "guild-members",
+                    "basicInfo": "1"
                 }
             ],
             "desc": {
@@ -7404,11 +7534,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 40"
+                    "type": "guild-level",
+                    "basicInfo": "40"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 4"
+                    "type": "guild-members",
+                    "basicInfo": "4"
                 }
             ],
             "desc": {
@@ -7451,11 +7583,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 50"
+                    "type": "guild-level",
+                    "basicInfo": "50"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 4"
+                    "type": "guild-members",
+                    "basicInfo": "4"
                 }
             ],
             "desc": {
@@ -7498,11 +7632,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 60"
+                    "type": "guild-level",
+                    "basicInfo": "60"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 9"
+                    "type": "guild-members",
+                    "basicInfo": "9"
                 }
             ],
             "desc": {
@@ -7545,11 +7681,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 80"
+                    "type": "guild-level",
+                    "basicInfo": "80"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 9"
+                    "type": "guild-members",
+                    "basicInfo": "9"
                 }
             ],
             "desc": {
@@ -7592,11 +7730,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 80"
+                    "type": "guild-level",
+                    "basicInfo": "80"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 15"
+                    "type": "guild-members",
+                    "basicInfo": "15"
                 }
             ],
             "desc": {
@@ -7639,11 +7779,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 90"
+                    "type": "guild-level",
+                    "basicInfo": "90"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 15"
+                    "type": "guild-members",
+                    "basicInfo": "15"
                 }
             ],
             "desc": {
@@ -7686,11 +7828,13 @@
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild level} 100"
+                    "type": "guild-level",
+                    "basicInfo": "100"
                 },
                 {
                     "name": "requirement",
-                    "basicInfo": "{guild members} 20"
+                    "type": "guild-members",
+                    "basicInfo": "20"
                 }
             ],
             "desc": {
@@ -8788,7 +8932,7 @@
             ],
             "desc": {
                 "name": "desc",
-                "basicInfo": "This personality makes you never have events happen. In general."
+                "basicInfo": "This personality makes you have all events more often. But bad ones happen even more often!"
             },
             "name": {
                 "name": "name",
@@ -16330,11 +16474,11 @@
             }
         }
     ],
-    "startTime": 1421002080330,
-    "endTime": 1421002080399,
+    "startTime": 1421375530147,
+    "endTime": 1421375530289,
     "git": {
-        "short": "fd16b62",
-        "long": "fd16b627f11aa680a1755def0abab8be312fb5d0",
+        "short": "b4e2693",
+        "long": "b4e26931c0b8620254a6253ec23c83b9d66d1391",
         "branch": "master",
         "tag": "0.5.0"
     },
