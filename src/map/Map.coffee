@@ -59,7 +59,7 @@ class Map
     54: "Dead Tree"
     55: "Palm Tree"
 
-  blockers: [16, 17, 3, 33, 37, 38, 39, 44, 45, 46, 47, 50, 53, 54, 55]
+  blockers: [16, 17, 3, 33, 37, 38, 39, 44, 45, 46, 47, 48, 50, 53, 54, 55]
   interactables: [1, 2, 12, 13, 14, 15, 18, 40, 41, 42, 43, 48, 51]
 
   constructor: (path) ->
@@ -97,12 +97,15 @@ class Map
     #layers[2] will always be the interactable stuff
     #layers[3] will always be map regions, where applicable
     tilePosition = (y*@width) + x
+
+    tileObject = _.findWhere @map.layers[2].objects, {x: @tileWidth*x, y: @tileHeight*(y+1)}
+
     {
       terrain: @gidMap[@map.layers[0].data[tilePosition]]
-      blocked: @map.layers[1].data[tilePosition] in @blockers
+      blocked: @map.layers[1].data[tilePosition] in @blockers or tileObject.gid in @blockers
       blocker: @gidMap[@map.layers[1].data[tilePosition]]
       region: @regionMap[tilePosition] or 'Wilderness'
-      object: _.findWhere @map.layers[2].objects, {x: @tileWidth*x, y: @tileHeight*(y+1)}
+      object: tileObject
     }
 
   getFirstTile: (predicate) ->
