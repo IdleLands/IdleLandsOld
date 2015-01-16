@@ -9,3 +9,5 @@
 %partyName runs a co-op dungeon in Satan -4, and their teamwork improves a bit.
 %partyName attends a group workshop, and learn how to be better adventurers.
 %partyName meets up with $random:party$ and they work together briefly, but break it off before the experience points are split up.
+%partyName stumbles across $random:party$ and they train together! Too bad the experience was gained by only one team.
+%partyName attended a series of dancing classes together.  Now they can dodge more fabulously!
