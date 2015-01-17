@@ -165,6 +165,7 @@ class PlayerManager
     Q {isSuccess: yes, code: 19, message: "Player successfully logged out."}
 
   loginWithPassword: (identifier, password) ->
+    console.log 'attempting login for',identifier
 
     defer = Q.defer()
 
