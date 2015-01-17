@@ -122,7 +122,7 @@ class Event
     forsaken = _.findWhere goodItems, {forsaken: 1}
 
     return forsaken if forsaken
-    nonSacred = _.reject items, (item) -> item.sacred
+    nonSacred = _.reject goodItems, (item) -> item.sacred
 
     if isEnchant then badSlots = _.reject nonSacred, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel and not item.limitless
     _.sample badSlots
