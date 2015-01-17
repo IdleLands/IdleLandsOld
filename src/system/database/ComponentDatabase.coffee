@@ -223,7 +223,7 @@ class ComponentDatabase
 
     _.each validFolders, (folder) =>
       return if not _.contains @contentFolders[folder], newItem.type
-      fs.appendFileSync "#{__dirname}/../../assets/custom/#{folder}/#{newItem.type}.txt", "#{newItem.content}\n"
+      fs.appendFileSync "#{__dirname}/../../../assets/custom/#{folder}/#{newItem.type}.txt", "#{newItem.content}\n"
 
   getContentList: ->
     defer = Q.defer()
