@@ -276,9 +276,7 @@ class ComponentDatabase
     content.submissionTime = new Date()
 
     content.voters = {}
-    content.voters[identifier] = 1
-    
-    console.log content
+    content.voters[content.submitterName] = 1
 
     @submissionsDb.insert content, (e) =>
       @game.errorHandler.captureException e if e
