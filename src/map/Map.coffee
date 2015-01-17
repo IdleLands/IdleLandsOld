@@ -102,7 +102,7 @@ class Map
 
     {
       terrain: @gidMap[@map.layers[0].data[tilePosition]]
-      blocked: @map.layers[1].data[tilePosition] in @blockers or tileObject.gid in @blockers
+      blocked: @map.layers[1].data[tilePosition] in @blockers or tileObject?.gid in @blockers
       blocker: @gidMap[@map.layers[1].data[tilePosition]]
       region: @regionMap[tilePosition] or 'Wilderness'
       object: tileObject
