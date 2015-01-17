@@ -209,7 +209,7 @@ class ComponentDatabase
     #  @game.errorHandler.captureException new Error "No githubUser or githubPass specified in config.json"
     #  return
 
-    repo = require("gitty") "#{__dirname}/../../assets/custom"
+    repo = require("gitty") "#{__dirname}/../../../assets/custom"
 
     message = "New #{types.join ", "}\n\nThanks to #{submitters.join ", "}"
 
