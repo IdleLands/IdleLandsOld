@@ -277,8 +277,11 @@ class ComponentDatabase
 
     content.voters = {}
     content.voters[identifier] = 1
+    
+    console.log content
 
-    @submissionsDb.insert content, ->
+    @submissionsDb.insert content, (e) =>
+      @game.errorHandler.captureException e if e
 
     Q {isSuccess: yes, code: 501, message: "Successfully submitted new content!"}
 
