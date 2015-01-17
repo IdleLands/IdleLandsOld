@@ -1,8 +1,8 @@
 
-MessageCreator = require "../system/MessageCreator"
+MessageCreator = require "../system/handlers/MessageCreator"
 Player = require "../character/player/Player"
 BattleCache = require "./BattleCache"
-Constants = require "../system/Constants"
+Constants = require "../system/utilities/Constants"
 
 _ = require "lodash"
 _.str = require "underscore.string"

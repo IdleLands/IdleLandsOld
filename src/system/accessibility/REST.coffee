@@ -1,5 +1,5 @@
 
-config = require "../../config.json"
+config = require "../../../config.json"
 useREST = config.useREST
 
 return if not useREST

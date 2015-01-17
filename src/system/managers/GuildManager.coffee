@@ -1,13 +1,13 @@
 
-Datastore = require "./DatabaseWrapper"
+Datastore = require "./../database/DatabaseWrapper"
 _ = require "lodash"
-Guild = require "../character/player/Guild"
+Guild = require "../../character/player/Guild"
 RestrictedNumber = require "restricted-number"
 Q = require "q"
-MessageCreator = require "./MessageCreator"
-Constants = require "./Constants"
+MessageCreator = require "./../handlers/MessageCreator"
+Constants = require "./../utilities/Constants"
 requireDir = require "require-dir"
-guildBuffs = requireDir "../character/guildBuffs", recurse: yes
+guildBuffs = requireDir "../../character/guildBuffs", recurse: yes
 
 class GuildManager
 

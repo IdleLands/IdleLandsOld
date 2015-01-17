@@ -1,7 +1,7 @@
 
 chance = new (require "chance")()
-MessageCreator = require "../system/MessageCreator"
-Constants = require "../system/Constants"
+MessageCreator = require "../system/handlers/MessageCreator"
+Constants = require "../system/utilities/Constants"
 
 _ = require "lodash"
 

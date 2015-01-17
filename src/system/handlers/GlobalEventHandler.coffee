@@ -1,11 +1,11 @@
 
-Constants = require "./Constants"
+Constants = require "./../utilities/Constants"
 
 _ = require "lodash"
 
 requireDir = require "require-dir"
 
-cataclysms = requireDir "../event/cataclysms"
+cataclysms = requireDir "../../event/cataclysms"
 
 class GlobalEventHandler
 

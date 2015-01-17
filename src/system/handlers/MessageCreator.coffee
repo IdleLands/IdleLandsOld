@@ -1,7 +1,7 @@
 
 _ = require "lodash"
 _.str = require "underscore.string"
-API = require "./API"
+API = require "./../accessibility/API"
 
 chance = new (require "chance")()
 

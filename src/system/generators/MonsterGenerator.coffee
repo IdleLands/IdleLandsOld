@@ -1,15 +1,15 @@
 
 _ = require "lodash"
-Monster = require "../character/npc/Monster"
+Monster = require "../../character/npc/Monster"
 Generator = require "./Generator"
-Constants = require "./Constants"
-Party = require "../event/Party"
-Personality = require "../character/base/Personality"
+Constants = require "./../utilities/Constants"
+Party = require "../../event/Party"
+Personality = require "../../character/base/Personality"
 chance = new (require "chance")()
 
 requireDir = require "require-dir"
-personalities = _.keys requireDir "../character/personalities", recurse: yes
-classes = _.keys requireDir "../character/classes", recurse: yes
+personalities = _.keys requireDir "../../character/personalities", recurse: yes
+classes = _.keys requireDir "../../character/classes", recurse: yes
 
 class MonsterGenerator extends Generator
   constructor: (@game) ->

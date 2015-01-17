@@ -1,8 +1,8 @@
 
 Event = require "../Event"
-MessageCreator = require "../../system/MessageCreator"
+MessageCreator = require "../../system/handlers/MessageCreator"
 _ = require "lodash"
-Constants = require "../../system/Constants"
+Constants = require "../../system/utilities/Constants"
 chance = new (require "chance")()
 
 `/**

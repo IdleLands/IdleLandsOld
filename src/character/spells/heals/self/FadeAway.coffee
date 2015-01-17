@@ -1,6 +1,6 @@
 
 Spell = require "../../../base/Spell"
-MessageCreator = require "../../../../system/MessageCreator"
+MessageCreator = require "../../../../system/handlers/MessageCreator"
 
 class FadeAway extends Spell
   name: "fade away"

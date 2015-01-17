@@ -1,7 +1,7 @@
 
 Personality = require "../base/Personality"
 chance = new (require "chance")()
-MessageCreator = require "../../system/MessageCreator"
+MessageCreator = require "../../system/handlers/MessageCreator"
 
 `/**
   * This personality allows you to occasionally revive immediately after dying.

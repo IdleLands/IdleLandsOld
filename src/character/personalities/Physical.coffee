@@ -1,6 +1,6 @@
 
 Personality = require "../base/Personality"
-Constants = require "../../system/Constants"
+Constants = require "../../system/utilities/Constants"
 
 `/**
   * This personality makes you never change classes, unless the resulting class is considered Physical.

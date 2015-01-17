@@ -1,12 +1,12 @@
 
-Datastore = require "./DatabaseWrapper"
+Datastore = require "./../database/DatabaseWrapper"
 _ = require "lodash"
-Player = require "../character/player/Player"
-Equipment = require "../item/Equipment"
+Player = require "../../character/player/Player"
+Equipment = require "../../item/Equipment"
 RestrictedNumber = require "restricted-number"
 Q = require "q"
-MessageCreator = require "./MessageCreator"
-Constants = require "./Constants"
+MessageCreator = require "./../handlers/MessageCreator"
+Constants = require "./../utilities/Constants"
 bcrypt = require "bcrypt"
 crypto = require "crypto"
 
@@ -304,7 +304,7 @@ class PlayerManager
       obj
 
     loadProfession = (professionName) ->
-      new (require "../character/classes/#{professionName}")()
+      new (require "../../character/classes/#{professionName}")()
 
     loadEquipment = (equipment, autoequip = no) ->
       _.forEach equipment, (item) ->

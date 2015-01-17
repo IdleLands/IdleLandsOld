@@ -5,10 +5,10 @@ _ = require "lodash"
 _.str = require "underscore.string"
 readdirp = require "readdirp"
 fs = require "fs"
-Party = require "../event/Party"
+Party = require "../../event/Party"
 Q = require "q"
 
-config = require "../../config.json"
+config = require "../../../config.json"
 
 class ComponentDatabase
 
@@ -125,7 +125,7 @@ class ComponentDatabase
       .on "data", callback
 
     loadPath = (path) =>
-      basePath = "#{__dirname}/../../assets/#{path}"
+      basePath = "#{__dirname}/../../../assets/#{path}"
 
       @itemsDb.remove {}, {}, ->
         stream "#{basePath}/items", (entry) ->
@@ -166,7 +166,7 @@ class ComponentDatabase
           monsterDefer.resolve()
 
     loadPath "data"
-    loadPath "custom" if fs.existsSync "#{__dirname}/../../assets/custom"
+    loadPath "custom" if fs.existsSync "#{__dirname}/../../../assets/custom"
 
     @loadingAll = Q.all [
       loadingItems

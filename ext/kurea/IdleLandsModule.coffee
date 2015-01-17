@@ -197,7 +197,7 @@ module.exports = (Module) ->
     constructor: (moduleManager) ->
       super moduleManager
 
-      @IdleWrapper = require("../../src/system/ExternalWrapper")()
+      @IdleWrapper = require("../../src/system/accessibility/ExternalWrapper")()
       @db = @newDatabase 'channels'
 
       @on "join", (bot, channel, sender) =>

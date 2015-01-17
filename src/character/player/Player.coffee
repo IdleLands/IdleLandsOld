@@ -1,8 +1,8 @@
 
 Character = require "../base/Character"
 RestrictedNumber = require "restricted-number"
-MessageCreator = require "../../system/MessageCreator"
-Constants = require "../../system/Constants"
+MessageCreator = require "../../system/handlers/MessageCreator"
+Constants = require "../../system/utilities/Constants"
 Equipment = require "../../item/Equipment"
 _ = require "lodash"
 Q = require "q"

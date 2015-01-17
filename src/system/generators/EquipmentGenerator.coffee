@@ -1,6 +1,6 @@
 
 _ = require "lodash"
-Equipment = require "../item/Equipment"
+Equipment = require "../../item/Equipment"
 Generator = require "./Generator"
 Chance = require "chance"
 chance = new Chance()

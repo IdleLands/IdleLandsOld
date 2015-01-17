@@ -1,13 +1,13 @@
 
-Datastore = require "./DatabaseWrapper"
+Datastore = require "./../database/DatabaseWrapper"
 _ = require "lodash"
-Equipment = require "../item/Equipment"
+Equipment = require "../../item/Equipment"
 Q = require "q"
-MessageCreator = require "./MessageCreator"
+MessageCreator = require "./../handlers/MessageCreator"
 RestrictedNumber = require "restricted-number"
-Constants = require "./Constants"
-PetData = require "../../config/pets.json"
-Pet = require "../character/npc/Pet"
+Constants = require "./../utilities/Constants"
+PetData = require "../../../config/pets.json"
+Pet = require "../../character/npc/Pet"
 
 class PetManager
 
@@ -95,7 +95,7 @@ class PetManager
       obj
 
     loadProfession = (professionName) ->
-      new (require "../character/classes/#{professionName}")()
+      new (require "../../character/classes/#{professionName}")()
 
     loadEquipment = (equipment, autoequip = no) ->
       _.forEach equipment, (item) ->

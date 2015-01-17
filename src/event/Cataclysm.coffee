@@ -1,6 +1,6 @@
 
 _ = require "lodash"
-MessageCreator = require "../system/MessageCreator"
+MessageCreator = require "../system/handlers/MessageCreator"
 
 class Cataclysm
 

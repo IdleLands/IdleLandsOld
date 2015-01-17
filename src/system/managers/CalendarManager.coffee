@@ -1,10 +1,10 @@
 
 requireDir = require "require-dir"
-timePeriods = requireDir "../event/calendar", recurse: yes
+timePeriods = requireDir "../../event/calendar", recurse: yes
 
 _ = require "lodash"
 
-class Calendar
+class CalendarManager
 
   constructor: (@game) ->
     @date = [0, 0, 0]
@@ -35,16 +35,16 @@ class Calendar
       @cleanDate date
     date
 
-Calendar::allTimePeriods = -> timePeriods
+CalendarManager::allTimePeriods = -> timePeriods
 
-Calendar::getDateEffects = ->
+CalendarManager::getDateEffects = ->
   [ timePeriods.year["#{@yearOrder[@date[0]]}Year"],
     timePeriods.month["#{@monthOrder[@date[1]]}Month"],
     timePeriods.day["#{@dayOrder[@date[2]]}Day"]
   ]
 
-Calendar::getDateName = ->
+CalendarManager::getDateName = ->
   date = @getDateEffects()
   "#{date[0].dateName}, #{date[1].dateName}, #{date[2].dateName}"
 
-module.exports = exports = Calendar
+module.exports = exports = CalendarManager

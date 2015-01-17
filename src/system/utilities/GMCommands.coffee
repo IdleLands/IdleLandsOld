@@ -1,9 +1,9 @@
 
-MessageCreator = require "./MessageCreator"
+MessageCreator = require "./../handlers/MessageCreator"
 _ = require "lodash"
-Equipment = require "../item/Equipment"
+Equipment = require "../../item/Equipment"
 
-teleports = require "../../config/teleports.json"
+teleports = require "../../../config/teleports.json"
 
 class GMCommands
   constructor: (@game) ->

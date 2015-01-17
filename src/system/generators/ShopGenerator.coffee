@@ -2,7 +2,7 @@
 _ = require "lodash"
 Generator = require "./Generator"
 Chance = require "chance"
-Constants = require "./Constants"
+Constants = require "./../utilities/Constants"
 chance = new Chance()
 
 class ShopGenerator extends Generator

@@ -1,7 +1,7 @@
 
-MessageCreator = require "./MessageCreator"
-Constants = require "./Constants"
-Battle = require "../event/Battle"
+MessageCreator = require "./../handlers/MessageCreator"
+Constants = require "./../utilities/Constants"
+Battle = require "../../event/Battle"
 _ = require "lodash"
 chance = (new require "chance")()
 

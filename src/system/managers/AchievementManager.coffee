@@ -1,6 +1,6 @@
 
 requireDir = require "require-dir"
-achievements = requireDir "../character/achievements", recurse: yes
+achievements = requireDir "../../character/achievements", recurse: yes
 _ = require "lodash"
 
 achievements = _.map achievements, (proto) -> new proto
