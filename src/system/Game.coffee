@@ -60,7 +60,7 @@ class Game
     errHandler = @errorHandler = client or {captureMessage: console.error, captureException: console.error}
 
     process.on 'uncaughtException', (err) ->
-      #return if err.code in ['EACCES', 'EADDRINUSE'] #handled elsewhere
+      return if err.code in ['EADDRINUSE'] # swallow it
       console.error (new Date).toUTCString() + ' uncaughtException:', err.message
       #console.error err.stack
       errHandler.captureException err
