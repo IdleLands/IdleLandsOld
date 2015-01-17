@@ -165,7 +165,6 @@ class PlayerManager
     Q {isSuccess: yes, code: 19, message: "Player successfully logged out."}
 
   loginWithPassword: (identifier, password) ->
-    console.log 'attempting login for',identifier
 
     defer = Q.defer()
 
@@ -177,25 +176,21 @@ class PlayerManager
         code: 15
 
       if @playerHash[identifier]
-        console.log 'dupe'
         player = @playerHash[identifier]
         realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes}, baseResults
         realResults.token = player.tempSecureToken
         realResults.message = "This is a duplicate login session."
         return defer.resolve realResults
 
-      console.log 'not dupe'
       if res.isSuccess
         @addPlayer identifier
         .then (res) =>
-          console.log 'finding player'
           player = @playerHash[identifier]
           realResults.token = player.tempSecureToken
           realResults.message = "Successful login. Welcome back to #{Constants.gameName}, #{player.getName()}!"
           return defer.resolve realResults
 
       else
-        console.log 'invalid'
         return defer.resolve {isSuccess: no, code: res.code, message: res.message}
 
       res
