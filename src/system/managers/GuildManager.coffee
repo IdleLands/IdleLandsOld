@@ -159,6 +159,9 @@ class GuildManager
   getGuildByName: (guildName) ->
     @guildHash[guildName]
 
+  getPlayerInvites: (player) ->
+    @invites[player.identifier]
+
   leaveGuild: (identifier) ->
     player = @game.playerManager.getPlayerById identifier
 

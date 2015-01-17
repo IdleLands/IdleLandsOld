@@ -716,6 +716,10 @@ class Player extends Character
     @gold.add gold
 
   gainXp: (xp) ->
+    if _.isNaN xp
+      @playerManager.game.errorHandler.captureException new Error "BAD XP VALUE GOTTEN SOMEHOW"
+      xp = 1
+
     if xp > 0
       @emit "player.xp.gain", @, xp
     else
@@ -744,7 +748,6 @@ class Player extends Character
 
   recalcGuildLevel: ->
     return if not @guild
-
     @playerManager.game.guildManager.guildHash[@guild].avgLevel()
 
   setString: (type, val = '') ->
@@ -856,12 +859,17 @@ class Player extends Character
     else
       return Q @getExtraDataForREST {player: yes}, {isSuccess: yes, code: 113, message: "Successfully removed #{-points} from your #{stat} priority."}
 
+  getGuild: ->
+    @playerManager.game.guildManager.getGuildByName @guild
+
   getExtraDataForREST: (options, base) ->
     opts = {}
 
-    if options.player then opts.player = @buildRESTObject()
-    if options.pets   then opts.pets = @playerManager.game.petManager.getPetsForPlayer @identifier
-    if options.pet    then opts.pet = @getPet()?.buildSaveObject()
+    if options.player       then opts.player = @buildRESTObject()
+    if options.pets         then opts.pets = @playerManager.game.petManager.getPetsForPlayer @identifier
+    if options.pet          then opts.pet = @getPet()?.buildSaveObject()
+    if options.guild        then opts.guild = @getGuild()?.buildSaveObject()
+    if options.guildInvites then opts.guildInvites = @playerManager.game.guildManager.getPlayerInvites @
 
     _.extend base, opts
 

@@ -120,5 +120,8 @@ class Guild
     return if not @guildManager
     @invitesLeft()
     @guildManager.saveGuild @
+
+  buildSaveObject: ->
+    @guildManager.buildGuildSaveObject @
     
 module.exports = exports = Guild
