@@ -181,8 +181,6 @@ class PlayerManager
         isSuccess: yes
         code: 15
 
-      console.log player.name
-
       console.log "got here"
       console.log "now here"
 
