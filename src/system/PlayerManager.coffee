@@ -171,7 +171,7 @@ class PlayerManager
 
     @checkPassword identifier, password
     .then (res) =>
-      console.log 'password checked'
+      console.log 'password checked', res
       player = @playerHash[identifier]
 
       console.log player.name
