@@ -66,7 +66,7 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Luck VI
   * @requirement {gold} 49000
-  * @requirement {guild-level} 80
+  * @requirement {guild-level} 70
   * @requirement {guild-members} 9
   * @effect +6% LUCK
   * @duration 3 days, 12 hours

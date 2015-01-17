@@ -66,7 +66,7 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Intelligence VI
   * @requirement {gold} 49000
-  * @requirement {guild-level} 80
+  * @requirement {guild-level} 70
   * @requirement {guild-members} 9
   * @effect +30% INT
   * @duration 3 days, 12 hours
