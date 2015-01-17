@@ -174,7 +174,7 @@ class Player extends Character
     @overflow.push currentItem
     @equipment = _.without @equipment, currentItem
     @equipment.push new Equipment {type: slot, name: "empty"}
-    defer.resolve {isSuccess: yes, code: 45, message: "Successfully added #{currentItem.name} to your inventory in slot #{@overflow.length-1}.", player: @buildRESTObject()}
+    defer.resolve @getExtraDataForREST {player: yes}, {isSuccess: yes, code: 45, message: "Successfully added #{currentItem.name} to your inventory in slot #{@overflow.length-1}."}
 
   swapOverflow: (slot, defer) ->
     if not @overflow[slot]
@@ -190,10 +190,10 @@ class Player extends Character
     if current.name isnt "empty"
       @overflow[slot] = current
 
-      return defer.resolve {isSuccess: yes, code: 47, message: "Successfully swapped #{current.name} with #{inOverflow.name} (slot #{slot}).", player: @buildRESTObject()}
+      return defer.resolve @getExtraDataForREST {player: yes}, {isSuccess: yes, code: 47, message: "Successfully swapped #{current.name} with #{inOverflow.name} (slot #{slot})."}
 
     @overflow[slot] = null
-    defer.resolve {isSuccess: yes, code: 47, message: "Successfully equipped #{inOverflow.name} (slot #{slot}).", player: @buildRESTObject()}
+    defer.resolve @getExtraDataForREST {player: yes}, {isSuccess: yes, code: 47, message: "Successfully equipped #{inOverflow.name} (slot #{slot})."}
 
   sellOverflow: (slot, defer) ->
     curItem = @overflow[slot]
@@ -204,7 +204,7 @@ class Player extends Character
     @gainGold salePrice
 
     @overflow[slot] = null
-    defer.resolve {isSuccess: yes, code: 46, message: "Successfully sold #{curItem.name} for #{salePrice} gold.", player: @buildRESTObject()}
+    defer.resolve @getExtraDataForREST {player: yes}, {isSuccess: yes, code: 46, message: "Successfully sold #{curItem.name} for #{salePrice} gold."}
 
   handleTrainerOnTile: (tile) ->
     return if @isBusy or @stepCooldown > 0
@@ -483,7 +483,7 @@ class Player extends Character
     if @shop.slots[slot].price > @gold.getValue()
       return Q {isSuccess: no, code: 124, message: "That item costs #{@shop.slots[slot].price} gold, but you only have #{@gold.getValue()} gold."}
 
-    resolved = Q {isSuccess: yes, code: 125, message: "Successfully purchased #{@shop.slots[slot].item.name} for #{@shop.slots[slot].price} gold.", player: @buildRESTObject()}
+    resolved = Q @getExtraDataForREST {player: yes}, {isSuccess: yes, code: 125, message: "Successfully purchased #{@shop.slots[slot].item.name} for #{@shop.slots[slot].price} gold."}
 
     @gold.sub @shop.slots[slot].price
     @emit "player.shop.buy", @, @shop.slots[slot].item, @shop.slots[slot].price
@@ -542,7 +542,7 @@ class Player extends Character
 
     pet = petManager.getActivePetFor @
 
-    Q {isSuccess: yes, code: 205, message: "Successfully purchased a new pet (#{pet.type}) named '#{name}'!", pet: pet.buildSaveObject(), pets: petManager.getPetsForPlayer @identifier}
+    Q @getExtraDataForREST {pet: yes, pets: yes}, {isSuccess: yes, code: 205, message: "Successfully purchased a new pet (#{pet.type}) named '#{name}'!"}
 
   upgradePet: (stat) ->
     pet = @getPet()
@@ -562,7 +562,7 @@ class Player extends Character
 
     @emit "player.shop.petupgrade", cost
 
-    Q {isSuccess: yes, code: 212, message: "Successfully upgraded your pets (#{pet.name}) #{stat} to level #{curLevel+2}!", pet: pet.buildSaveObject()}
+    Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 212, message: "Successfully upgraded your pets (#{pet.name}) #{stat} to level #{curLevel+2}!"}
 
   changePetClass: (newClass) ->
     myClasses = _.keys @statistics['calculated class changes']
@@ -572,7 +572,7 @@ class Player extends Character
 
     pet.setClassTo newClass
 
-    Q {isSuccess: yes, code: 208, message: "Successfully changed your pets (#{pet.name}) class to #{newClass}!", pet: pet.buildSaveObject()}
+    Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 208, message: "Successfully changed your pets (#{pet.name}) class to #{newClass}!"}
 
   takePetGold: ->
     pet = @getPet()
@@ -583,7 +583,7 @@ class Player extends Character
     @gold.add gold
     pet.gold.toMinimum()
 
-    Q {isSuccess: yes, code: 232, message: "You took #{gold} gold from your pet.", pet: pet.buildSaveObject()}
+    Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 232, message: "You took #{gold} gold from your pet."}
 
   feedPet: ->
     pet = @getPet()
@@ -596,7 +596,7 @@ class Player extends Character
     @gold.sub gold
     pet.feed()
 
-    Q {isSuccess: yes, code: 215, message: "Your pet (#{pet.name}) was fed #{gold} gold and gained a level (#{pet.level.getValue()}).", pet: pet.buildSaveObject()}
+    Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 215, message: "Your pet (#{pet.name}) was fed #{gold} gold and gained a level (#{pet.level.getValue()})."}
 
   getPetGold: ->
     pet = @getPet()
@@ -608,7 +608,7 @@ class Player extends Character
     @gold.add petMoney
     pet.gold.toMinimum()
 
-    Q {isSuccess: yes, code: 217, message: "You retrieved #{petMoney} gold from your pet (#{pet.name})!", pet: pet.buildSaveObject()}
+    Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 217, message: "You retrieved #{petMoney} gold from your pet (#{pet.name})!"}
 
   sellPetItem: (itemSlot) ->
     pet = @getPet()
@@ -620,7 +620,7 @@ class Player extends Character
     pet.inventory = _.without pet.inventory, item
     value = pet.sellItem item, no
 
-    Q {isSuccess: yes, code: 219, message: "Your pet (#{pet.name}) sold #{item.name} for #{value} gold!", pet: pet.buildSaveObject()}
+    Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 219, message: "Your pet (#{pet.name}) sold #{item.name} for #{value} gold!"}
 
   givePetItem: (itemSlot) ->
     pet = @getPet()
@@ -633,7 +633,7 @@ class Player extends Character
     pet.addToInventory curItem
     @overflow = _.without @overflow, curItem
 
-    Q {isSuccess: yes, code: 221, message: "Successfully gave #{curItem.name} to your pet (#{pet.name}).", pet: pet.buildSaveObject()}
+    Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 221, message: "Successfully gave #{curItem.name} to your pet (#{pet.name})."}
 
   takePetItem: (itemSlot) ->
     pet = @getPet()
@@ -646,7 +646,7 @@ class Player extends Character
     @overflow.push curItem
     pet.removeFromInventory curItem
 
-    Q {isSuccess: yes, code: 221, message: "Successfully took #{curItem.name} from your pet (#{pet.name}).", pet: pet.buildSaveObject()}
+    Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 221, message: "Successfully took #{curItem.name} from your pet (#{pet.name})."}
 
   setPetOption: (option, value) ->
     pet = @getPet()
@@ -655,7 +655,7 @@ class Player extends Character
 
     pet[option] = value
 
-    Q {isSuccess: yes, code: 223, message: "Successfully set #{option} to #{value} for #{pet.name}.", pet: pet.buildSaveObject()}
+    Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 223, message: "Successfully set #{option} to #{value} for #{pet.name}."}
 
   equipPetItem: (itemSlot) ->
     pet = @getPet()
@@ -668,7 +668,7 @@ class Player extends Character
 
     pet.equip item
 
-    Q {isSuccess: yes, code: 225, message: "Successfully equipped your pet (#{pet.name}) with #{item.name}.", pet: newPet.buildSaveObject()}
+    Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 225, message: "Successfully equipped your pet (#{pet.name}) with #{item.name}."}
 
   unequipPetItem: (uid) ->
     pet = @getPet()
@@ -681,7 +681,7 @@ class Player extends Character
 
     pet.unequip item
 
-    Q {isSuccess: yes, code: 227, message: "Successfully unequipped #{item.name} from your pet (#{pet.name}).", pet: pet.buildSaveObject()}
+    Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 227, message: "Successfully unequipped #{item.name} from your pet (#{pet.name})."}
 
   swapToPet: (petId) ->
     pet = @getPet()
@@ -693,7 +693,7 @@ class Player extends Character
 
     pet.petManager.changePetForPlayer @, newPet
 
-    Q {isSuccess: yes, code: 230, message: "Successfully made #{newPet.name}, the #{newPet.type} your active pet!", pet: newPet.buildSaveObject(), pets: pet.petManager.getPetsForPlayer @identifier}
+    Q @getExtraDataForREST {pet: yes, pets: yes}, {isSuccess: yes, code: 230, message: "Successfully made #{newPet.name}, the #{newPet.type} your active pet!"}
 
   save: ->
     return if not @playerManager
@@ -828,7 +828,7 @@ class Player extends Character
 
     @priorityPoints = sanitizedStats
 
-    return Q {isSuccess: yes, code: 113, message: "Successfully set priorities.", player: @buildRESTObject()}
+    Q @getExtraDataForREST {player: yes}, {isSuccess: yes, code: 113, message: "Successfully set priorities."}
 
   addPriority:  (stat, points) ->
     if not @priorityPoints
@@ -851,9 +851,18 @@ class Player extends Character
 
     @priorityPoints[stat] += points
     if points > 0
-      return Q {isSuccess: yes, code: 113, message: "Successfully added #{points} to your #{stat} priority.", player: @buildRESTObject()}
+      return Q @getExtraDataForREST {player: yes}, {isSuccess: yes, code: 113, message: "Successfully added #{points} to your #{stat} priority."}
 
     else
-      return Q {isSuccess: yes, code: 113, message: "Successfully removed #{-points} from your #{stat} priority.", player: @buildRESTObject()}
+      return Q @getExtraDataForREST {player: yes}, {isSuccess: yes, code: 113, message: "Successfully removed #{-points} from your #{stat} priority."}
+
+  getExtraDataForREST: (options, base) ->
+    opts = {}
+
+    if options.player then opts.player = @buildRESTObject()
+    if options.pets   then opts.pets = @playerManager.game.petManager.getPetsForPlayer @identifier
+    if options.pet    then opts.pet = @getPet()?.buildSaveObject()
+
+    _.extend base, opts
 
 module.exports = exports = Player

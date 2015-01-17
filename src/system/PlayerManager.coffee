@@ -140,11 +140,8 @@ class PlayerManager
         code: 18
         message: "Successful login. Welcome back to #{Constants.gameName}, #{player.getName()}!"
         token: player.tempSecureToken
-        player: player.buildRESTObject()
-        pet: @game.petManager.getActivePetFor(player)?.buildSaveObject()
-        pets: @game.petManager.getPetsForPlayer player.identifier
 
-      defer.resolve results
+      defer.resolve player.getExtraDataForREST {player: yes, pet: yes, pets: yes}, results
 
     defer.promise
 
@@ -174,27 +171,25 @@ class PlayerManager
     @checkPassword identifier, password
     .then (res) =>
       player = @playerHash[identifier]
-      if @playerHash[identifier] then return defer.resolve
+
+      baseResults =
         isSuccess: yes
         code: 15
-        message: "This is a duplicate login session."
-        player: player.buildRESTObject()
         token: player.tempSecureToken
-        pet: @game.petManager.getActivePetFor(player)?.buildSaveObject()
-        pets: @game.petManager.getPetsForPlayer player.identifier
+
+      realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes}, baseResults
+
+      if @playerHash[identifier]
+        realResults.message = "This is a duplicate login session."
+        return defer.resolve realResults
 
       if res.isSuccess
         @addPlayer identifier
         .then (res) =>
           player = @playerHash[identifier]
-          if @playerHash[identifier] then return defer.resolve
-            isSuccess: yes
-            code: 15
-            message: "Successful login. Welcome back to #{Constants.gameName}, #{player.getName()}!"
-            player: player.buildRESTObject()
-            token: player.tempSecureToken
-            pet: @game.petManager.getActivePetFor(player)?.buildSaveObject()
-            pets: @game.petManager.getPetsForPlayer player.identifier
+          if @playerHash[identifier]
+            baseResults.message = "Successful login. Welcome back to #{Constants.gameName}, #{player.getName()}!"
+            return defer.resolve baseResults
       else
         return defer.resolve {isSuccess: no, code: res.code, message: res.message}
 
@@ -285,12 +280,7 @@ class PlayerManager
 
     return if not sendPlayerObject
 
-    results = {isSuccess: yes, code: 102, message: "Turn taken.", player: player.buildRESTObject()}
-
-    results.pet = @game.petManager.getActivePetFor(player)?.buildSaveObject()
-    results.pets = @game.petManager.getPetsForPlayer player.identifier
-
-    Q results
+    Q player.getExtraDataForREST {player: yes, pet: yes, pets: yes}, {isSuccess: yes, code: 102, message: "Turn taken."}
 
   registerLoadAllPlayersHandler: (@playerLoadHandler) ->
     console.log "Registered AllPlayerLoad handler."
