@@ -181,8 +181,8 @@ class Spell
           @eventList = _.keys _.omit @bindings, 'doSpellCast', 'doSpellUncast', 'doSpellInit'
           me = @
           @eventFunctions = {}
-          _.each @eventList, (event) ->
-            newFunc = ->
+          _.each @eventList, (event) =>
+            @eventFunctions[event] = newFunc = ->
               return if not (me in player.spellsAffectedBy)
               me.bindings[event].apply me, [player]
               me.decrementTurns player
@@ -198,6 +198,10 @@ class Spell
   unaffect: (player) ->
     battleInstance = @caster.party?.currentBattle
     player.spellsAffectedBy = _.without player.spellsAffectedBy, @
+
+    _.each (_.keys @eventFunctions), (event) =>
+      player.off event, @eventFunctions[event]
+
     (@bindings.doSpellUncast.apply @, [player]) if 'doSpellUncast' of @bindings
 
     return if not battleInstance

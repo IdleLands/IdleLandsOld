@@ -19,6 +19,7 @@ class Character extends EventEmitter2
     @equipment = []
     @createDate = new Date()
     @loadCalc()
+    @setMaxListeners 0
 
     @
 

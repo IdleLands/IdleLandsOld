@@ -333,7 +333,7 @@ class PlayerManager
     player.listenerTree = {}
     player._events = {}
     player.newListener = false
-    player.setMaxListeners 100
+    player.setMaxListeners 0
 
     player.playerManager = @
     player.isBusy = false
