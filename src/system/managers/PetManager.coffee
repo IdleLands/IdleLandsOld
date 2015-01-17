@@ -119,6 +119,8 @@ class PetManager
 
     pet.recalculateStats()
 
+    pet.setMaxListeners 0
+
   handleSoul: (pet) ->
     petSoul = _.findWhere pet.equipment, {type: 'pet soul'}
     pet.equipment = _.without pet.equipment, petSoul
