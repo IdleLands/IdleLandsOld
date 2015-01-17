@@ -58,7 +58,7 @@
         {
             "type": "blessXpParty",
             "min": 1,
-            "max": 650,
+            "max": 3500,
             "party": 1
         },
         {
@@ -74,7 +74,7 @@
         {
             "type": "blessGoldParty",
             "min": 1,
-            "max": 2000,
+            "max": 4500,
             "party": 1
         },
         {
@@ -90,7 +90,7 @@
         {
             "type": "battle",
             "min": 1,
-            "max": 2500
+            "max": 3500
         }
     ],
     "eventEffects": {
