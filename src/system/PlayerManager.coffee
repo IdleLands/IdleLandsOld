@@ -174,6 +174,8 @@ class PlayerManager
       console.log 'password checked'
       player = @playerHash[identifier]
 
+      console.log player.name
+
       baseResults =
         isSuccess: yes
         code: 15
