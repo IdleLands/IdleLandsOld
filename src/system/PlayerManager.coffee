@@ -171,21 +171,14 @@ class PlayerManager
 
     @checkPassword identifier, password
     .then (res) =>
-      console.log 'password checked', res
-
-      console.log 'HERE'
-
-      player = @playerHash[identifier]
 
       baseResults =
         isSuccess: yes
         code: 15
 
-      console.log "got here"
-      console.log "now here"
-
-      if player
+      if @playerHash[identifier]
         console.log 'dupe'
+        player = @playerHash[identifier]
         realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes}, baseResults
         realResults.token = player.tempSecureToken
         realResults.message = "This is a duplicate login session."
@@ -198,8 +191,8 @@ class PlayerManager
           console.log 'finding player'
           player = @playerHash[identifier]
           realResults.token = player.tempSecureToken
-          baseResults.message = "Successful login. Welcome back to #{Constants.gameName}, #{player.getName()}!"
-          return defer.resolve baseResults
+          realResults.message = "Successful login. Welcome back to #{Constants.gameName}, #{player.getName()}!"
+          return defer.resolve realResults
 
       else
         console.log 'invalid'
