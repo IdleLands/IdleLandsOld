@@ -125,8 +125,9 @@ class Event
 
     nonSacred = _.reject goodItems, (item) -> item.sacred
 
-    if isEnchant then badSlots = _.reject nonSacred, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel and not item.limitless
-    _.sample badSlots
+    if isEnchant then nonSacred = _.reject nonSacred, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel and not item.limitless
+
+    _.sample nonSacred
 
   pickBlessStat: (item) ->
     chances = [1, 5, 10, 20, 100]
