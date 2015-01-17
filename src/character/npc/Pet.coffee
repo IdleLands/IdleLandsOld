@@ -72,6 +72,10 @@ class Pet extends Character
     _.findWhere @equipment, {uid: uid}
 
   gainXp: (xp) ->
+    if _.isNaN xp
+      xp = 0
+      @petManager.game.errorHandler.captureException (new Error "Pet got bad xp")
+
     @xp.add xp
     @levelUp() if @xp.atMax()
 
