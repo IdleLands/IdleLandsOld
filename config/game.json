@@ -112,7 +112,7 @@
             "minPercent": -8,
             "maxPercent": -15
         },
-        "blessGold": {K
+        "blessGold": {
             "amount": [1, 60, 100, 400, 1000, 1300]
         },
         "blessGoldParty": {
