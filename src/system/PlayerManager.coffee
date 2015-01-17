@@ -172,14 +172,21 @@ class PlayerManager
     @checkPassword identifier, password
     .then (res) =>
       console.log 'password checked', res
-      player = @playerHash[identifier]
-
-      console.log player.name
 
       baseResults =
         isSuccess: yes
         code: 15
         token: player.tempSecureToken
+
+      console.log 'HERE'
+
+      player = null
+      try
+        player = @playerHash[identifier]
+      catch e
+        console.log e.stack
+
+      console.log player.name
 
       console.log "got here"
       realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes}, baseResults
