@@ -173,14 +173,14 @@ class PlayerManager
     .then (res) =>
       console.log 'password checked', res
 
+      console.log 'HERE'
+
+      player = @playerHash[identifier]
+
       baseResults =
         isSuccess: yes
         code: 15
         token: player.tempSecureToken
-
-      console.log 'HERE'
-
-      player = @playerHash[identifier]
 
       console.log player.name
 
