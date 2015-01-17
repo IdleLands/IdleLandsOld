@@ -41,6 +41,7 @@ class GuildManager
     return Q {isSuccess: no, code: 53, message: "You're already in a guild (#{player.guild})!"} if player.guild
     return Q {isSuccess: no, code: 54, message: "Your guild name has to be at least 3 characters!"} if cleanedName.length < 3
     return Q {isSuccess: no, code: 55, message: "You can't have a guild name larger than 50 characters!"} if cleanedName.length > 50
+    return Q {isSuccess: no, code: 4, message: "You can't have dots in your guild name. Sorry!"} if -1 isnt cleanedName.indexOf "."
 
     goldCost = Constants.defaults.game.guildCreateCost
 
