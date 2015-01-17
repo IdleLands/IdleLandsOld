@@ -2773,21 +2773,7 @@
                     {
                      "flavorText":"Welcome to the Iron Vase Inn!"
                     },
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":544,
-                 "y":144
-                }, 
-                {
-                 "gid":48,
-                 "height":0,
-                 "name":"",
-                 "properties":
-                    {
-                     "flavorText":"Welcome to the Iron Vase Inn!"
-                    },
-                 "type":"",
+                 "type":"Sign",
                  "visible":true,
                  "width":0,
                  "x":544,
@@ -2801,7 +2787,7 @@
                     {
                      "flavorText":"Welcome to Idle Lands!"
                     },
-                 "type":"",
+                 "type":"Sign",
                  "visible":true,
                  "width":0,
                  "x":208,
