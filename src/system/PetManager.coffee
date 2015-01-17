@@ -108,6 +108,7 @@ class PetManager
     pet.loadCalc()
     pet.equipment = loadEquipment pet.equipment, yes
     pet.inventory = loadEquipment pet.inventory
+    pet.special.name = ''
     pet.profession = loadProfession pet.professionName
 
     @handleSoul pet

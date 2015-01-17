@@ -351,6 +351,7 @@ class PlayerManager
       player.equipment = loadEquipment player.equipment, yes
       player.overflow = loadEquipment player.overflow
 
+    player.special.name = ''
     if not player.professionName
       player.changeProfession "Generalist"
     else
