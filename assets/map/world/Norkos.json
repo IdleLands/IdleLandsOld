@@ -2453,7 +2453,7 @@
                  "type":"Collectible",
                  "visible":true,
                  "width":0,
-                 "x":656,
+                 "x":576,
                  "y":400
                 }, 
                 {
@@ -2467,7 +2467,7 @@
                  "type":"Collectible",
                  "visible":true,
                  "width":0,
-                 "x":576,
+                 "x":656,
                  "y":400
                 }, 
                 {
@@ -2792,6 +2792,258 @@
                  "width":0,
                  "x":208,
                  "y":144
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"Heals r Us"
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":608,
+                 "y":336
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"Get your discipline here!"
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":688,
+                 "y":336
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"Want to burn things? Sign up here!"
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":768,
+                 "y":336
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"This used to be a bank, before the banker left town."
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":208,
+                 "y":304
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"It's a little bit of everything in here."
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":208,
+                 "y":240
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"argghhhhhhhhhhhh rawrrrrrr"
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":1744,
+                 "y":240
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"WARNING: Danger within!"
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":2272,
+                 "y":640
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"Up: Vocalnus\\nRight: Your Untimely Demise"
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":3088,
+                 "y":416
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"Caution: Hot"
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":3760,
+                 "y":560
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"Yarrr mateys. Shiver me timbers!"
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":3616,
+                 "y":944
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"If your preferred weapon is your voice, inquire within."
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":1104,
+                 "y":1232
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"There are fishes in here!"
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":576,
+                 "y":1136
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"Boats 4 u\\nInterested buyers should see the shipman downstairs!\\nBeware the Foggy Sea"
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":160,
+                 "y":1408
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"SandwichDirection"
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":864,
+                 "y":2016
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"Dangerous Dungeon Here"
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":352,
+                 "y":384
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"Norkos Prison\\nYou catch 'em, we keep 'em"
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":1568,
+                 "y":160
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"Call for aid!\\nPlease kill the snowbeast!"
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":2160,
+                 "y":2384
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"I am a humble scarecrow"
+                    },
+                 "type":"Scarecrow",
+                 "visible":true,
+                 "width":0,
+                 "x":3392,
+                 "y":2896
                 }],
          "opacity":1,
          "type":"objectgroup",
