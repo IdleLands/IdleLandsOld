@@ -121,8 +121,8 @@ class Event
 
     forsaken = _.filter goodItems, (item) -> item.forsaken
 
-    return (_.sample forsaken) if forsaken
-    
+    return (_.sample forsaken) if forsaken.length > 0
+
     nonSacred = _.reject goodItems, (item) -> item.sacred
 
     if isEnchant then badSlots = _.reject nonSacred, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel and not item.limitless
