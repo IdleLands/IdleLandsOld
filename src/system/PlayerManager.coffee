@@ -180,7 +180,6 @@ class PlayerManager
       baseResults =
         isSuccess: yes
         code: 15
-        token: player.tempSecureToken
 
       console.log player.name
 
@@ -190,6 +189,7 @@ class PlayerManager
       if player
         console.log 'dupe'
         realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes}, baseResults
+        realResults.token = player.tempSecureToken
         realResults.message = "This is a duplicate login session."
         return defer.resolve realResults
 
@@ -199,6 +199,7 @@ class PlayerManager
         .then (res) =>
           console.log 'finding player'
           player = @playerHash[identifier]
+          realResults.token = player.tempSecureToken
           baseResults.message = "Successful login. Welcome back to #{Constants.gameName}, #{player.getName()}!"
           return defer.resolve baseResults
 
