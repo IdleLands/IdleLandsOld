@@ -180,20 +180,16 @@ class PlayerManager
 
       console.log 'HERE'
 
-      player = null
-      try
-        player = @playerHash[identifier]
-      catch e
-        console.log e.stack
+      player = @playerHash[identifier]
 
       console.log player.name
 
       console.log "got here"
-      realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes}, baseResults
       console.log "now here"
 
       if player
         console.log 'dupe'
+        realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes}, baseResults
         realResults.message = "This is a duplicate login session."
         return defer.resolve realResults
 
