@@ -526,6 +526,7 @@ class Player extends Character
     return Q {isSuccess: no, code: 202, message: "You haven't unlocked that pet."} if not @foundPets[pet]
     return Q {isSuccess: no, code: 203, message: "You've already purchased that pet."} if @foundPets[pet].purchaseDate
     return Q {isSuccess: no, code: 204, message: "You don't have enough gold to buy that pet! You need #{@foundPets[pet].cost -@gold.getValue()} more gold."} if @foundPets[pet].cost > @gold.getValue()
+    return Q {isSuccess: no, code: 4, message: "You can't have dots in your pet name. Sorry!"} if -1 isnt name.indexOf "."
     
     @gold.sub @foundPets[pet].cost
 
