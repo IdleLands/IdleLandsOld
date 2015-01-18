@@ -90,6 +90,7 @@ class GuildManager
         guild.gold.__current = 0 if _.isNaN guild.gold.__current
         guild.gold.__proto__ = RestrictedNumber.prototype
         guild.buffs = _.compact guild.buffs
+        guild.invites = []
         _.each guild.buffs, (buff) ->
           if guildBuffs["Guild#{buff.type}"]
             buff.__proto__ = guildBuffs["Guild#{buff.type}"].prototype
@@ -124,10 +125,7 @@ class GuildManager
     guild.invites.push invitee.identifier
     guild.save()
 
-    # temporary workaround because invites aren't currently persisted
-    guildObj = guild.buildSaveObject()
-    guildObj.invites = guild.invites
-    Q {isSuccess: yes, code: 70, message: "Successfully sent an invite to #{invName}! You have #{@guildHash[sender.guild].invitesLeft()} invites remaining.", guild: guildObj}
+    Q sender.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 70, message: "Successfully sent an invite to #{invName}! You have #{@guildHash[sender.guild].invitesLeft()} invites remaining.", guild: guildObj}
 
   manageInvite: (invId, accepted, guildName) ->
     invitee = @game.playerManager.getPlayerById invId
@@ -152,7 +150,6 @@ class GuildManager
 
   buildGuildSaveObject: (guild) ->
     ret = _.omit guild, 'guildManager', '_id'
-    ret.invites = []
     ret
 
   checkAdmin: (playerName, guildName = @game.playerManager.getPlayerByName(playerName).guild) ->
