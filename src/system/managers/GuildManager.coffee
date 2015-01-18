@@ -236,12 +236,13 @@ class GuildManager
 
     tierLevel = guildBuffs[typeString].tiers[tier].level
     tierMembers = guildBuffs[typeString].tiers[tier].members
+    tierGold = guildBuffs[typeString].tiers[tier].cost
     return Q {isSuccess: no, code: 152, message: "Your guild is not a high enough level! It needs to be level #{tierLevel} first!"} if tierLevel > guild.level
     return Q {isSuccess: no, code: 153, message: "Your guild does not have enough members! You need #{tierMembers} members!"} if tierMembers > guild.members.length
 
     guild.gold = new RestrictedNumber 0, 9999999999, 0 if not guild.gold
 
-    return Q {isSuccess: no, code: 56, message: "Your guild does not have enough gold!"} if guildBuffs[typeString].tiers[tier].cost > guild.gold.getValue()
+    return Q {isSuccess: no, code: 56, message: "Your guild does not have enough gold! You need #{tierGold} gold!"} if tierGold > guild.gold.getValue()
 
     guild.gold.sub guildBuffs[typeString].tiers[tier].cost
 
