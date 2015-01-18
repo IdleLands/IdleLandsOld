@@ -198,7 +198,7 @@ class GuildManager
     guild = @guildHash[player.guild]
     _.each guild.invites, (identifier) => @invites[identifier] = _.without @invites[identifier], player.guild
 
-    guild.notifyAllPossibleMembers "Your guild, \"#{@name}\" has disbanded."
+    guild.notifyAllPossibleMembers "Your guild, \"#{guild.name}\" has disbanded."
 
     # online players
     _.each guild.members, (member) =>

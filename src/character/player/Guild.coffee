@@ -112,7 +112,7 @@ class Guild
       @save()
 
       levelDiff = @level-oldLevel
-      @notifyAllPossibleMembers "Your guild, \"#{@name}\" is now level #{@level} [change: #{if levelDiff > 0 then "+" else ""}#{levelDiff}]." if levelDiff isnt 0
+      @notifyAllPossibleMembers "Your guild, \"#{@name}\" is now level #{@level} [change: #{if levelDiff > 0 then "+" else ""}#{levelDiff}]." if levelDiff isnt 0 and not _.isNaN levelDiff
 
   cap: -> 1 + (3*Math.floor ((@level or 1)/5))
 
