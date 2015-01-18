@@ -345,7 +345,10 @@ class Battle
     @emitEventToAll "battle.end", @turnOrder
     randomWinningPlayer = _.sample(_.filter @turnOrder, (player) -> (not player.hp.atMin()) and (not player.fled))
     if not randomWinningPlayer
-      @game.errorHandler.captureException (new Error "Bad Battle Ending"), extra: toLength: @turnOrder.length, plLength: @parties.length
+
+      if @turnOrder.length is 0 or @parties.length is 0
+        @game.errorHandler.captureException (new Error "Bad Battle Ending"), extra: toLength: @turnOrder.length, plLength: @parties.length
+        
       @broadcast "Everyone died! The battle was a tie! You get nothing!", {}, not @battleUrl
       @cleanUp()
       return
