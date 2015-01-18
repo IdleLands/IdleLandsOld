@@ -69,7 +69,7 @@ class Guild
 
     @save()
 
-    Q {isSuccess: yes, code: 67, message: "Successfully promoted #{memberName}."}
+    Q {isSuccess: yes, code: 67, message: "Successfully promoted #{memberName}.", guild: @buildSaveObject()}
 
   demote: (leaderId, memberName) ->
     member = @guildManager.game.playerManager.getPlayerByName memberName
@@ -86,7 +86,7 @@ class Guild
 
     @save()
 
-    Q {isSuccess: yes, code: 68, message: "Successfully demoted #{memberName}."}
+    Q {isSuccess: yes, code: 68, message: "Successfully demoted #{memberName}.", guild: @buildSaveObject()}
 
   notifyAllPossibleMembers: (message) ->
     _.each @members, (member) =>
@@ -122,6 +122,12 @@ class Guild
     @guildManager.saveGuild @
 
   buildSaveObject: ->
+    _.each @members, (member) =>
+      player = @guildManager.game.playerManager.getPlayerById member.identifier
+      member._cache =
+        level: player.level.getValue()
+        class: player.professionName
+
     @guildManager.buildGuildSaveObject @
     
 module.exports = exports = Guild

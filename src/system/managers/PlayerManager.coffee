@@ -467,6 +467,9 @@ class PlayerManager
         when "player.shop.petupgrade"
           addStat "calculated total gold spent", Math.abs arguments[1]
 
+        when "player.gold.guildDonation"
+          addStat "calculated guild donations", Math.abs arguments[1]
+
         when "explore.transfer"
           addStat arguments[1], 1, "calculated map changes"
           handleRegion arguments[0]
