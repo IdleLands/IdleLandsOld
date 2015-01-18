@@ -22,6 +22,12 @@ class MonsterGenerator extends Generator
     remainingScore = Math.max 500, party.score() - reduction
     possibleMonsters = _.filter @game.componentDatabase.monsters, (monster) -> party.level()-10 < monster.level < party.level()+5
 
+    if possibleMonsters.length is 0
+      possibleMonsters.push
+        class: _.sample classes
+        name: name ? "Pushover Mob"
+        level: Math.round party.level()
+
     monsters = []
 
     removeFromScore = (score) ->
@@ -29,6 +35,10 @@ class MonsterGenerator extends Generator
 
     generateMonster = =>
       baseMonster = _.sample possibleMonsters
+
+      if not baseMonster
+        @game.captureException (new Error "Failed to generate monster"), extra: {minLevel: party.level()-10, maxLevel: party.level()+5, possibleMonsters: possibleMonsters}
+
       baseMonster.class = _.sample classes if baseMonster.class is 'Random'
 
       monster = new Monster baseMonster
