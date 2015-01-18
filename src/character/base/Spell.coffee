@@ -188,6 +188,7 @@ class Spell
               me.decrementTurns player
 
             player.many event, turns[player.name], newFunc
+            console.log _.keys player._events
 
         (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
 
@@ -201,6 +202,8 @@ class Spell
 
     _.each (_.keys @eventFunctions), (event) =>
       player.off event, @eventFunctions[event]
+
+    console.log player._events
 
     (@bindings.doSpellUncast.apply @, [player]) if 'doSpellUncast' of @bindings
 

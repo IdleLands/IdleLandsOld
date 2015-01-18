@@ -268,9 +268,10 @@ class GuildManager
     player = @game.playerManager.getPlayerById identifier
     return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} if not player.guild
     return Q {isSuccess: no, code: 56, message: "You don't have enough gold!"} if player.gold.getValue() < gold
+    return Q {isSuccess: no, code: 63, message: "Stop trying to steal gold!"} if gold <= 0
     guild = @guildHash[player.guild]
     guild.gold = new RestrictedNumber 0, 9999999999, 0 if not @guildHash[player.guild].gold
-    gold = Math.min gold, guild.gold.maximum-guild.gold.getValue() #Prevent overdonation
+    gold = Math.round Math.min gold, guild.gold.maximum-guild.gold.getValue() #Prevent overdonation
 
     guild.gold.add gold
     player.gold.sub gold
