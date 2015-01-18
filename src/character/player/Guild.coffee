@@ -125,8 +125,9 @@ class Guild
     _.each @members, (member) =>
       player = @guildManager.game.playerManager.getPlayerById member.identifier
       member._cache =
-        level: player.level.getValue()
-        class: player.professionName
+        online: player?
+        level: player?.level.getValue()
+        class: player?.professionName
 
     @guildManager.buildGuildSaveObject @
     
