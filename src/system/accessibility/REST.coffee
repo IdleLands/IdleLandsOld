@@ -67,7 +67,7 @@ _.each (_.values requireDir "./rest-routes"), (router) ->
   app.use "/", router
 
 # init
-app.use "/img", express.static __dirname + '/../../assets/img'
+app.use "/img", express.static __dirname + '/../../../assets/img'
 
 # errarz
 app.use (err, req, res, next) ->
