@@ -466,8 +466,8 @@ module.exports = (Module) ->
        *
        * @name idle-goldgive
        * @gmOnly
-       * @syntax !idle-itemgen "Player Name" gold
-       * @example !idle-itemgen "Swirly" 10000
+       * @syntax !idle-goldgive "Player Name" gold
+       * @example !idle-goldgive "Swirly" 10000
        * @category IRC Commands
        * @package Client
        */`
