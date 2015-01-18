@@ -125,8 +125,8 @@ class PetManager
     petSoul = _.findWhere pet.equipment, {type: 'pet soul'}
     pet.equipment = _.without pet.equipment, petSoul
 
-    baseSoul = PetData[pet.type].specialStats
-    baseSoul.itemFindRangeMultiplier = PetData[pet.type].scale.itemFindRangeMultiplier
+    baseSoul = _.clone PetData[pet.type].specialStats
+    baseSoul.itemFindRangeMultiplier = _.clone PetData[pet.type].scale.itemFindRangeMultiplier
     baseSoul.name = "Pet Soul"
     baseSoul.type = "pet soul"
     baseSoul.itemClass = "basic"
