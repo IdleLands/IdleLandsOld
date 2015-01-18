@@ -125,7 +125,7 @@ class GuildManager
     guild.invites.push invitee.identifier
     guild.save()
 
-    Q sender.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 70, message: "Successfully sent an invite to #{invName}! You have #{@guildHash[sender.guild].invitesLeft()} invites remaining.", guild: guildObj}
+    Q sender.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 70, message: "Successfully sent an invite to #{invName}! You have #{@guildHash[sender.guild].invitesLeft()} invites remaining."}
 
   manageInvite: (invId, accepted, guildName) ->
     invitee = @game.playerManager.getPlayerById invId
