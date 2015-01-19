@@ -83,6 +83,9 @@ class Spell
   targetSomeEnemies: (options) ->
     @_chooseTargets (@targetAllEnemies options), options
 
+  isValidTarget: (target) ->
+    not target.fled and not target.hp.atMin()
+
   ## specialized targetting functions
   targetBelowMaxHealth: (party) ->
     _.reject party, (member) -> member.hp.atMax() and not member.hp.atMin()
@@ -124,7 +127,7 @@ class Spell
     damage
 
   minMax: (min, max) ->
-    @chance.integer min: min, max: Math.max min+1, max
+    Math.max 1, @chance.integer min: min, max: Math.max min+1, max
 
   doDamageTo: (player, damage, message = "") ->
     extra =

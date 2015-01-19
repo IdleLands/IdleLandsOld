@@ -548,14 +548,14 @@ class Battle
     message = MessageCreator.doStringReplace message, attacker, extra
     @broadcast message if message and typeof message is "string"
 
-    if defenderPunishDamage > 0 and not doPropagate
+    if defenderPunishDamage > 0 and not doPropagate and not attacker.hp.atMin()
       refmsg = "<player.name>#{defender.name}</player.name> reflected <damage.hp>#{defenderPunishDamage}</damage.hp> damage back at <player.name>#{attacker.name}</player.name>!"
       @takeStatFrom defender, attacker, defenderPunishDamage, type, damageType, spell, refmsg, yes
       @emitEvents "effect.punish", "effect.punished", defender, attacker
       defender.emit "combat.self.punish.damage", defenderPunishDamage
       attacker.emit "combat.self.punished.damage", defenderPunishDamage
 
-    if darksideDamage > 0 and not doPropagate
+    if darksideDamage > 0 and not doPropagate and not attacker.hp.atMin()
       refmsg = "<player.name>#{attacker.name}</player.name> took <damage.hp>#{darksideDamage}</damage.hp> damage due to darkside!"
       @takeStatFrom attacker, attacker, darksideDamage, type, damageType, spell, refmsg, yes
       @emitEventToAll "effect.darkside", attacker

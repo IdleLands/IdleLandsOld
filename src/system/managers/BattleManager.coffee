@@ -57,6 +57,13 @@ class BattleManager
     return if @inBattle
     return if parties.length < 2 and @game.playerManager.players.length < 2
 
+    oldLength = parties.length
+    parties = _.compact parties
+
+    if oldLength isnt parties.length
+      @game.errorHandler.captureException (new Error "Somehow, something came through and it was bad")
+      return
+
     origPartyLength = parties.length
 
     # no parties = global event = pvp battle

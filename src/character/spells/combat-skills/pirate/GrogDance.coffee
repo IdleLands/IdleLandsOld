@@ -54,6 +54,9 @@ class GrogDance extends Spell
     if player?.party?.currentBattle?
       message = "%casterName stops %hisher %spellName."
       @broadcast player, message
+
+      return if not @isValidTarget @caster
+
       frenzy = @game.spellManager.modifySpell new DrunkenFrenzy @game, @caster
       frenzy.prepareCast @caster
       if @caster.profession.drunkPct.atMax()
