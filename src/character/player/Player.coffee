@@ -853,6 +853,7 @@ class Player extends Character
     if points < 0 and @priorityPoints[stat] + points < 0
       return Q {isSuccess: no, code: 112, message: "Not enough priority points to remove."}
 
+    @priorityPoints[stat] = 0 if _.isNaN @priorityPoints[stat]
     @priorityPoints[stat] += points
     if points > 0
       return Q @getExtraDataForREST {player: yes}, {isSuccess: yes, code: 113, message: "Successfully added #{points} to your #{stat} priority."}
