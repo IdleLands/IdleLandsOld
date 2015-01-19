@@ -23,6 +23,7 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
          "height":30,
          "name":"Interactables",
          "objects":[
@@ -38,6 +39,7 @@
                      "map":"Norkos Dungeon -1",
                      "movementType":"ascend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -47,7 +49,7 @@
                 {
                  "gid":1,
                  "height":0,
-                 "name":"ToNorkosDungeon2",
+                 "name":"ToNorkos-3",
                  "properties":
                     {
                      "destx":"3",
@@ -55,6 +57,7 @@
                      "map":"Norkos Dungeon -3",
                      "movementType":"descend"
                     },
+                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -69,6 +72,7 @@
                     {
 
                     },
+                 "rotation":0,
                  "type":"Collectible",
                  "visible":true,
                  "width":0,
@@ -87,12 +91,13 @@
     {
      "name":"norkos"
     },
+ "renderorder":"right-down",
  "tileheight":16,
  "tilesets":[
         {
          "firstgid":1,
          "image":"..\/..\/..\/img\/tiles.png",
-         "imageheight":64,
+         "imageheight":80,
          "imagewidth":144,
          "margin":0,
          "name":"tiles",

@@ -1,7 +1,7 @@
 
 Event = require "../Event"
 _ = require "lodash"
-Constants = require "../../system/Constants"
+Constants = require "../../system/utilities/Constants"
 
 `/**
  * This event handles creating a party for the player, or recruiting new members as applicable.

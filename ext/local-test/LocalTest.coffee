@@ -60,7 +60,7 @@ broadcastHandler = (message) ->
 ## ## ## ## ## ## ## ##
 
 interval = null
-IdleWrapper = require(idlePath+"/system/ExternalWrapper")()
+IdleWrapper = require(idlePath+"/system/accessibility/ExternalWrapper")()
 
 w = getWrapper = -> IdleWrapper
 

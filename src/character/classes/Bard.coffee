@@ -1,6 +1,6 @@
 
 Class = require "./../base/Class"
-MessageCreator = require "../../system/MessageCreator"
+MessageCreator = require "../../system/handlers/MessageCreator"
 
 `/**
   * This class is a very supportive class. They sing their songs to buff their allies.

@@ -1,7 +1,7 @@
 
 Class = require "./../base/Class"
 _ = require "lodash"
-MessageCreator = require "../../system/MessageCreator"
+MessageCreator = require "../../system/handlers/MessageCreator"
 
 `/**
   * The Archer is a physical debuff/dps class. Their Focus stat increases critical chance by up to 50%,

@@ -1,5 +1,5 @@
 
-config = require "../../config.json"
+config = require "../../../config.json"
 useREST = config.useREST
 
 return if not useREST
@@ -67,7 +67,7 @@ _.each (_.values requireDir "./rest-routes"), (router) ->
   app.use "/", router
 
 # init
-app.use "/img", express.static __dirname + '/../../assets/img'
+app.use "/img", express.static __dirname + '/../../../assets/img'
 
 # errarz
 app.use (err, req, res, next) ->

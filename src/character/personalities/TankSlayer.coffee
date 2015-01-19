@@ -1,6 +1,6 @@
 
 Personality = require "../base/Personality"
-Constants = require "../../system/Constants"
+Constants = require "../../system/utilities/Constants"
 _ = require "lodash"
 
 slay = (player, enemies) ->

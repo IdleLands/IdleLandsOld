@@ -1,8 +1,8 @@
 
 Event = require "../Event"
-MessageCreator = require "../../system/MessageCreator"
+MessageCreator = require "../../system/handlers/MessageCreator"
 _ = require "lodash"
-Constants = require "../../system/Constants"
+Constants = require "../../system/utilities/Constants"
 chance = new (require "chance")()
 
 `/**
@@ -22,7 +22,9 @@ class ItemModEvent extends Event
 
     boost = 0
 
-    if (chance.bool {likelihood: @player.calc.eventFumble()})
+    forceSmallBuff = (Math.abs val) > @player.calc.base._upperlimitItemFindRange
+
+    if forceSmallBuff or (chance.bool {likelihood: @player.calc.eventFumble()})
       boost = Constants.eventEffects[@event.type].amount
     else
       boost = Math.floor(Math.abs(val)*Constants.eventEffects[@event.type].percent/100)

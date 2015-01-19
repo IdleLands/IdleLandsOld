@@ -1,13 +1,13 @@
 
-Datastore = require "./DatabaseWrapper"
+Datastore = require "./../database/DatabaseWrapper"
 _ = require "lodash"
-Guild = require "../character/player/Guild"
+Guild = require "../../character/player/Guild"
 RestrictedNumber = require "restricted-number"
 Q = require "q"
-MessageCreator = require "./MessageCreator"
-Constants = require "./Constants"
+MessageCreator = require "./../handlers/MessageCreator"
+Constants = require "./../utilities/Constants"
 requireDir = require "require-dir"
-guildBuffs = requireDir "../character/guildBuffs", recurse: yes
+guildBuffs = requireDir "../../character/guildBuffs", recurse: yes
 
 class GuildManager
 
@@ -41,6 +41,7 @@ class GuildManager
     return Q {isSuccess: no, code: 53, message: "You're already in a guild (#{player.guild})!"} if player.guild
     return Q {isSuccess: no, code: 54, message: "Your guild name has to be at least 3 characters!"} if cleanedName.length < 3
     return Q {isSuccess: no, code: 55, message: "You can't have a guild name larger than 50 characters!"} if cleanedName.length > 50
+    return Q {isSuccess: no, code: 4, message: "You can't have dots in your guild name. Sorry!"} if -1 isnt cleanedName.indexOf "."
 
     goldCost = Constants.defaults.game.guildCreateCost
 
@@ -48,7 +49,6 @@ class GuildManager
 
     guildObject = new Guild {name: name, leader: player.identifier}
     guildObject.guildManager = @
-    guildObject.__proto__ = Guild.prototype
     guildObject.leaderName = player.name
     guildObject.members.push {identifier: player.identifier, name: player.name, isAdmin: yes}
     saveObj = @buildGuildSaveObject guildObject
@@ -68,7 +68,8 @@ class GuildManager
 
       message = "%player has founded the guild %guildName!"
       @game.eventHandler.broadcastEvent {message: message, player: player, extra: {guildName: name}, type: 'guild'}
-      defer.resolve {isSuccess: yes, code: 69, message: "You've successfully founded the guild \"#{name}!\""}
+
+      defer.resolve player.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 69, message: "You've successfully founded the guild \"#{name}!\""}
 
     defer.promise
 
@@ -89,6 +90,7 @@ class GuildManager
         guild.gold.__current = 0 if _.isNaN guild.gold.__current
         guild.gold.__proto__ = RestrictedNumber.prototype
         guild.buffs = _.compact guild.buffs
+        guild.invites = []
         _.each guild.buffs, (buff) ->
           if guildBuffs["Guild#{buff.type}"]
             buff.__proto__ = guildBuffs["Guild#{buff.type}"].prototype
@@ -118,9 +120,12 @@ class GuildManager
 
     @invites[invitee.identifier] = [] if not @invites[invitee.identifier]
     @invites[invitee.identifier].push sender.guild
-    @guildHash[sender.guild].invites.push invitee.identifier
-    @guildHash[sender.guild].save()
-    Q {isSuccess: yes, code: 70, message: "Successfully sent an invite to #{invName}! You have #{@guildHash[sender.guild].invitesLeft()} invites remaining."}
+
+    guild = @guildHash[sender.guild]
+    guild.invites.push invitee.identifier
+    guild.save()
+
+    Q sender.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 70, message: "Successfully sent an invite to #{invName}! You have #{@guildHash[sender.guild].invitesLeft()} invites remaining."}
 
   manageInvite: (invId, accepted, guildName) ->
     invitee = @game.playerManager.getPlayerById invId
@@ -137,7 +142,7 @@ class GuildManager
 
     @guildHash[guildName].save()
 
-    Q {isSuccess: yes, code: 71, message: "Guild invite was resolved successfully."}
+    Q invitee.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 71, message: "Guild invite was resolved successfully."}
 
   clearInvites: (player) ->
     _.each @invites[player.identifier], ((guild) => @manageInvite player, no, guild), @
@@ -145,7 +150,6 @@ class GuildManager
 
   buildGuildSaveObject: (guild) ->
     ret = _.omit guild, 'guildManager', '_id'
-    ret.invites = []
     ret
 
   checkAdmin: (playerName, guildName = @game.playerManager.getPlayerByName(playerName).guild) ->
@@ -156,6 +160,12 @@ class GuildManager
     return false if not @guildHash[guildName]
     _.findWhere @guildHash[guildName].members, {name: playerName}
 
+  getGuildByName: (guildName) ->
+    @guildHash[guildName]
+
+  getPlayerInvites: (player) ->
+    @invites[player.identifier]
+
   leaveGuild: (identifier) ->
     player = @game.playerManager.getPlayerById identifier
 
@@ -165,7 +175,7 @@ class GuildManager
       return @disband player.identifier
     else
       @guildHash[player.guild].remove player.name
-      return Q {isSuccess: yes, code: 72, message: "You've successfully left the guild."}
+      return Q player.getExtraDataForREST {player: yes}, {isSuccess: yes, code: 72, message: "You've successfully left the guild."}
 
   kickPlayer: (adminId, playerName) ->
     admin = @game.playerManager.getPlayerById adminId
@@ -174,9 +184,10 @@ class GuildManager
     return Q {isSuccess: no, code: 61, message: "That player isn't in your guild!"} if not @findMember playerName, admin.guild
     return Q {isSuccess: no, code: 66, message: "You can't kick another administrator!"} if @checkAdmin playerName, admin.guild
 
-    @guildHash[admin.guild].remove playerName
+    guild = @guildHash[admin.guild]
+    guild.remove playerName
 
-    Q {isSuccess: yes, code: 73, message: "You've kicked #{playerName} successfully."}
+    Q admin.getExtraDataForREST {guild: yes}, {isSuccess: yes, code: 73, message: "You've kicked #{playerName} successfully."}
 
   disband: (identifier) ->
     player = @game.playerManager.getPlayerById identifier
@@ -186,6 +197,8 @@ class GuildManager
 
     guild = @guildHash[player.guild]
     _.each guild.invites, (identifier) => @invites[identifier] = _.without @invites[identifier], player.guild
+
+    guild.notifyAllPossibleMembers "Your guild, \"#{guild.name}\" has disbanded."
 
     # online players
     _.each guild.members, (member) =>
@@ -203,7 +216,7 @@ class GuildManager
     delete @guildHash[guild.name]
     @db.remove {name: guild.name}
 
-    Q {isSuccess: yes, code: 74, message: "You've successfully disbanded your guild."}
+    Q player.getExtraDataForREST {player: yes}, {isSuccess: yes, code: 74, message: "You've successfully disbanded your guild."}
 
   checkBuffs: ->
     for guild in @guilds
@@ -212,45 +225,65 @@ class GuildManager
 
   addBuff: (identifier, type, tier) ->
     player = @game.playerManager.getPlayerById identifier
+
     return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} if not player.guild
     return Q {isSuccess: no, code: 61, message: "You aren't a guild admin!"} if not @checkAdmin player.name
     typeString = "Guild#{type}"
+
     return Q {isSuccess: no, code: 150, message: "That is not a valid guild buff type!"} if not guildBuffs[typeString]
     return Q {isSuccess: no, code: 151, message: "That is not a valid tier!"} if not guildBuffs[typeString].tiers[tier]
     guild = @guildHash[player.guild]
-    return Q {isSuccess: no, code: 152, message: "Your guild is not a high enough level!"} if guildBuffs[typeString].tiers[tier].level > guild.level
-    return Q {isSuccess: no, code: 153, message: "Your guild does not have enough members!"} if guildBuffs[typeString].tiers[tier].members > guild.members.length
+
+    tierLevel = guildBuffs[typeString].tiers[tier].level
+    tierMembers = guildBuffs[typeString].tiers[tier].members
+    tierGold = guildBuffs[typeString].tiers[tier].cost
+    return Q {isSuccess: no, code: 152, message: "Your guild is not a high enough level! It needs to be level #{tierLevel} first!"} if tierLevel > guild.level
+    return Q {isSuccess: no, code: 153, message: "Your guild does not have enough members! You need #{tierMembers} members!"} if tierMembers > guild.members.length
 
     guild.gold = new RestrictedNumber 0, 9999999999, 0 if not guild.gold
-    return Q {isSuccess: no, code: 56, message: "Your guild does not have enough gold!"} if guildBuffs[typeString].tiers[tier].cost > guild.gold.getValue()
+
+    return Q {isSuccess: no, code: 56, message: "Your guild does not have enough gold! You need #{tierGold} gold!"} if tierGold > guild.gold.getValue()
+
     guild.gold.sub guildBuffs[typeString].tiers[tier].cost
 
     guild.buffs = [] if not guild.buffs
     current = _.findWhere guild.buffs, {type: type}
+
     if current?
-      return Q {isSuccess: no, code: 154, message: "Your guild already has a higher tier of this buff!"} if current.tier > tier
+      return Q {isSuccess: no, code: 154, message: "Your guild already has a higher tier of this buff (currently: #{current.tier})!"} if current.tier > tier
       if current.tier is tier
         current.refresh tier
         guild.save()
-        return Q {isSuccess: yes, code: 155, message: "You have refreshed the #{current.name} guild buff."}
+        return Q player.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 155, message: "You have refreshed the #{current.name} guild buff."}
       else
         guild.buffs = _.without guild.buffs, current
+
     buff = new guildBuffs[typeString] tier
     guild.buffs.push (new guildBuffs[typeString] tier)
     guild.save()
-    return Q {isSuccess: yes, code: 156, message: "You have purchased the #{buff.name} guild buff."}
+
+    Q player.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 156, message: "You have purchased the #{buff.name} guild buff."}
 
   donate: (identifier, gold) ->
     player = @game.playerManager.getPlayerById identifier
+
     return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} if not player.guild
     return Q {isSuccess: no, code: 56, message: "You don't have enough gold!"} if player.gold.getValue() < gold
+    return Q {isSuccess: no, code: 63, message: "Stop trying to steal gold!"} if gold <= 0
+    return Q {isSuccess: no, code: 64, message: "That's an invalid amount of gold! You might mess something up if you do that!"} if _.isNaN parseInt gold
+
     guild = @guildHash[player.guild]
     guild.gold = new RestrictedNumber 0, 9999999999, 0 if not @guildHash[player.guild].gold
-    gold = Math.min gold, guild.gold.maximum-guild.gold.getValue() #Prevent overdonation
+    gold = Math.round Math.min gold, guild.gold.maximum-guild.gold.getValue() #Prevent overdonation
+
     guild.gold.add gold
     player.gold.sub gold
+
+    player.emit "player.gold.guildDonation", gold
+
     guild.save()
     player.save()
-    return Q {isSuccess: yes, code: 157, message: "You have donated #{gold} gold to #{guild.name}."}
+
+    Q player.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 157, message: "You have donated #{gold} gold to #{guild.name}."}
 
 module.exports = exports = GuildManager

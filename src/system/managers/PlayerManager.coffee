@@ -1,12 +1,12 @@
 
-Datastore = require "./DatabaseWrapper"
+Datastore = require "./../database/DatabaseWrapper"
 _ = require "lodash"
-Player = require "../character/player/Player"
-Equipment = require "../item/Equipment"
+Player = require "../../character/player/Player"
+Equipment = require "../../item/Equipment"
 RestrictedNumber = require "restricted-number"
 Q = require "q"
-MessageCreator = require "./MessageCreator"
-Constants = require "./Constants"
+MessageCreator = require "./../handlers/MessageCreator"
+Constants = require "./../utilities/Constants"
 bcrypt = require "bcrypt"
 crypto = require "crypto"
 
@@ -140,11 +140,8 @@ class PlayerManager
         code: 18
         message: "Successful login. Welcome back to #{Constants.gameName}, #{player.getName()}!"
         token: player.tempSecureToken
-        player: player.buildRESTObject()
-        pet: @game.petManager.getActivePetFor(player)?.buildSaveObject()
-        pets: @game.petManager.getPetsForPlayer player.identifier
 
-      defer.resolve results
+      defer.resolve player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guild: yes, guildInvites: yes}, results
 
     defer.promise
 
@@ -155,6 +152,7 @@ class PlayerManager
 
     player.isOnline = no
     player.tempSecureToken = null
+    player.party?.playerLeave player, yes
     @savePlayer player
 
     name = player.name
@@ -172,28 +170,27 @@ class PlayerManager
 
     @checkPassword identifier, password
     .then (res) =>
-      player = @playerHash[identifier]
-      if @playerHash[identifier] then return defer.resolve
+
+      baseResults =
         isSuccess: yes
         code: 15
-        message: "This is a duplicate login session."
-        player: player.buildRESTObject()
-        token: player.tempSecureToken
-        pet: @game.petManager.getActivePetFor(player)?.buildSaveObject()
-        pets: @game.petManager.getPetsForPlayer player.identifier
+
+      if @playerHash[identifier]
+        player = @playerHash[identifier]
+        realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guildInvites: yes, guild: yes}, baseResults
+        realResults.token = player.tempSecureToken
+        realResults.message = "This is a duplicate login session."
+        return defer.resolve realResults
 
       if res.isSuccess
         @addPlayer identifier
         .then (res) =>
           player = @playerHash[identifier]
-          if @playerHash[identifier] then return defer.resolve
-            isSuccess: yes
-            code: 15
-            message: "Successful login. Welcome back to #{Constants.gameName}, #{player.getName()}!"
-            player: player.buildRESTObject()
-            token: player.tempSecureToken
-            pet: @game.petManager.getActivePetFor(player)?.buildSaveObject()
-            pets: @game.petManager.getPetsForPlayer player.identifier
+          realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guildInvites: yes, guild: yes}, baseResults
+          realResults.token = player.tempSecureToken
+          realResults.message = "Successful login. Welcome back to #{Constants.gameName}, #{player.getName()}!"
+          return defer.resolve realResults
+
       else
         return defer.resolve {isSuccess: no, code: res.code, message: res.message}
 
@@ -284,12 +281,7 @@ class PlayerManager
 
     return if not sendPlayerObject
 
-    results = {isSuccess: yes, code: 102, message: "Turn taken.", player: player.buildRESTObject()}
-
-    results.pet = @game.petManager.getActivePetFor(player)?.buildSaveObject()
-    results.pets = @game.petManager.getPetsForPlayer player.identifier
-
-    Q results
+    Q player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guildInvites: yes, guild: yes}, {isSuccess: yes, code: 102, message: "Turn taken."}
 
   registerLoadAllPlayersHandler: (@playerLoadHandler) ->
     console.log "Registered AllPlayerLoad handler."
@@ -313,7 +305,7 @@ class PlayerManager
       obj
 
     loadProfession = (professionName) ->
-      new (require "../character/classes/#{professionName}")()
+      new (require "../../character/classes/#{professionName}")()
 
     loadEquipment = (equipment, autoequip = no) ->
       _.forEach equipment, (item) ->
@@ -332,7 +324,7 @@ class PlayerManager
     player.listenerTree = {}
     player._events = {}
     player.newListener = false
-    player.setMaxListeners 100
+    player.setMaxListeners 0
 
     player.playerManager = @
     player.isBusy = false
@@ -341,6 +333,8 @@ class PlayerManager
     player.handleGuildStatus()
 
     player.calc.itemFindRange()
+    
+    player.gender = _.sample ['male','female'] if not player.gender
 
     if not player.equipment
       player.generateBaseEquipment()
@@ -348,6 +342,7 @@ class PlayerManager
       player.equipment = loadEquipment player.equipment, yes
       player.overflow = loadEquipment player.overflow
 
+    player.special.name = ''
     if not player.professionName
       player.changeProfession "Generalist"
     else
@@ -471,6 +466,9 @@ class PlayerManager
 
         when "player.shop.petupgrade"
           addStat "calculated total gold spent", Math.abs arguments[1]
+
+        when "player.gold.guildDonation"
+          addStat "calculated guild donations", Math.abs arguments[1]
 
         when "explore.transfer"
           addStat arguments[1], 1, "calculated map changes"

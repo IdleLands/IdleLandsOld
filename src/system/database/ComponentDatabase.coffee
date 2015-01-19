@@ -5,10 +5,10 @@ _ = require "lodash"
 _.str = require "underscore.string"
 readdirp = require "readdirp"
 fs = require "fs"
-Party = require "../event/Party"
+Party = require "../../event/Party"
 Q = require "q"
 
-config = require "../../config.json"
+config = require "../../../config.json"
 
 class ComponentDatabase
 
@@ -125,7 +125,7 @@ class ComponentDatabase
       .on "data", callback
 
     loadPath = (path) =>
-      basePath = "#{__dirname}/../../assets/#{path}"
+      basePath = "#{__dirname}/../../../assets/#{path}"
 
       @itemsDb.remove {}, {}, ->
         stream "#{basePath}/items", (entry) ->
@@ -166,7 +166,7 @@ class ComponentDatabase
           monsterDefer.resolve()
 
     loadPath "data"
-    loadPath "custom" if fs.existsSync "#{__dirname}/../../assets/custom"
+    loadPath "custom" if fs.existsSync "#{__dirname}/../../../assets/custom"
 
     @loadingAll = Q.all [
       loadingItems
@@ -209,7 +209,7 @@ class ComponentDatabase
     #  @game.errorHandler.captureException new Error "No githubUser or githubPass specified in config.json"
     #  return
 
-    repo = require("gitty") "#{__dirname}/../../assets/custom"
+    repo = require("gitty") "#{__dirname}/../../../assets/custom"
 
     message = "New #{types.join ", "}\n\nThanks to #{submitters.join ", "}"
 
@@ -223,7 +223,7 @@ class ComponentDatabase
 
     _.each validFolders, (folder) =>
       return if not _.contains @contentFolders[folder], newItem.type
-      fs.appendFileSync "#{__dirname}/../../assets/custom/#{folder}/#{newItem.type}.txt", "#{newItem.content}\n"
+      fs.appendFileSync "#{__dirname}/../../../assets/custom/#{folder}/#{newItem.type}.txt", "#{newItem.content}\n"
 
   getContentList: ->
     defer = Q.defer()
@@ -276,9 +276,10 @@ class ComponentDatabase
     content.submissionTime = new Date()
 
     content.voters = {}
-    content.voters[identifier] = 1
+    content.voters[content.submitterName] = 1
 
-    @submissionsDb.insert content, ->
+    @submissionsDb.insert content, (e) =>
+      @game.errorHandler.captureException e if e
 
     Q {isSuccess: yes, code: 501, message: "Successfully submitted new content!"}
 

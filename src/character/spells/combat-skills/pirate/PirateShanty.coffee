@@ -44,7 +44,7 @@ class PirateShanty extends Spell
     if player.profession.drunkPct.lessThan 100
       message = "%casterName is #{player.profession.drunkPct.getValue()}% drunk."
       @broadcast player, message
-    else
+    else if @isValidTarget @caster
       stupor = new DrunkenStupor @game, @caster
       stupor.prepareCast()
 

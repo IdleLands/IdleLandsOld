@@ -1,7 +1,7 @@
 
 _ = require "lodash"
 _.str = require "underscore.string"
-MessageCreator = require "../system/MessageCreator"
+MessageCreator = require "../system/handlers/MessageCreator"
 chance = new (require "chance")()
 
 class Party

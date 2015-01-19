@@ -3,6 +3,5 @@
 %partyName found an open vault, and ran away with as much gold as they could!
 %partyName held a bake sale to fund their adventures.
 %partyName are hired as clowns at a birthday party.
-%partyName find a wild pinata, and beat it to within an inch of its life.
+%partyName find a wild piñata, and beat it to within an inch of its life.
 %partyName win an Exceptional Party grant from the Idle Party Committee.
-%partyName stumbles across $random:party$ and they train together! Too bad the experience was gained by only one team.

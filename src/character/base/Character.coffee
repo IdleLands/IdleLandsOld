@@ -4,7 +4,7 @@ EventEmitter2 = require("eventemitter2").EventEmitter2
 _ = require "lodash"
 Q = require "q"
 Personality = require "./Personality"
-Constants = require "../../system/Constants"
+Constants = require "../../system/utilities/Constants"
 chance = new (require "chance")()
 
 class Character extends EventEmitter2
@@ -19,6 +19,7 @@ class Character extends EventEmitter2
     @equipment = []
     @createDate = new Date()
     @loadCalc()
+    @setMaxListeners 0
 
     @
 
@@ -665,7 +666,7 @@ class Character extends EventEmitter2
         @self.personalityReduce 'combatEndXpGain', [@self, oppParty, @base.combatEndXpGain], @base.combatEndXpGain
 
       combatEndXpLoss: ->
-        @base.combatEndXpLoss = Math.floor self.xp.maximum / 10
+        @base.combatEndXpLoss = Math.floor @self.xp.maximum / 10
         @self.personalityReduce 'combatEndXpLoss', [@self, @base.combatEndXpLoss], @base.combatEndXpLoss
 
       combatEndGoldGain: (oppParty) ->
@@ -673,11 +674,13 @@ class Character extends EventEmitter2
         @self.personalityReduce 'combatEndGoldGain', [@self, oppParty, @base.combatEndGoldGain], @base.combatEndGoldGain
 
       combatEndGoldLoss: ->
-        @base.combatEndXpLoss = Math.floor self.xp.maximum / 10
+        @base.combatEndGoldLoss = Math.floor @self.gold.getValue() / 100
         @self.personalityReduce 'combatEndGoldLoss', [@self, @base.combatEndGoldLoss], @base.combatEndGoldLoss
 
       itemFindRange: ->
-        @base.itemFindRange = (@self.level.getValue()+1) * Constants.defaults.player.defaultItemFindModifier * @self.calc.itemFindRangeMultiplier()
+        baseRange = (@self.level.getValue()+1) * Constants.defaults.player.defaultItemFindModifier
+        @base.itemFindRange = baseRange * @self.calc.itemFindRangeMultiplier()
+        @base._upperlimitItemFindRange = baseRange * @base.itemFindRangeMultiplier
         @self.personalityReduce 'itemFindRange', [@self, @base.itemFindRange], @base.itemFindRange
 
       itemFindRangeMultiplier: ->

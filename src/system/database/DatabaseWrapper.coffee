@@ -3,8 +3,8 @@ fs = require 'fs'
 Q = require 'q'
 rimraf = require 'rimraf'
 
-if fs.existsSync "#{__dirname}/../../config.json"
-  config = require "#{__dirname}/../../config.json"
+if fs.existsSync "#{__dirname}/../../../config.json"
+  config = require "#{__dirname}/../../../config.json"
   databaseEngine = config.storage
   databaseURL = config.storageURL
 

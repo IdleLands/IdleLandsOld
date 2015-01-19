@@ -1,8 +1,8 @@
 
 Character = require "../base/Character"
 RestrictedNumber = require "restricted-number"
-MessageCreator = require "../../system/MessageCreator"
-Constants = require "../../system/Constants"
+MessageCreator = require "../../system/handlers/MessageCreator"
+Constants = require "../../system/utilities/Constants"
 _ = require "lodash"
 Q = require "q"
 
@@ -28,6 +28,7 @@ class Guild
     player.guildStatus = 0
     player.save()
     @avgLevel()
+    @notifyAllPossibleMembers "#{player.name} has joined the guild (\"#{@name}\")!"
     Q()
 
   remove: (playerName) ->
@@ -49,40 +50,56 @@ class Guild
       @guildManager.game.playerManager.db.update {name: playerName}, {$set:{guild: null}}, {}, (e) =>
         @guildManager.game.errorHandler?.captureException e if e
 
+    @notifyAllPossibleMembers "#{playerName} was removed from the guild (\"#{@name}\")."
+
     @avgLevel()
 
   promote: (leaderId, memberName) ->
     member = @guildManager.game.playerManager.getPlayerByName memberName
     memberEntry = _.findWhere @members, {name: memberName}
 
+    return Q {isSuccess: no, code: 69, message: "You can't do that to the leader!"} if leaderId is memberEntry.identifier
     return Q {isSuccess: no, code: 50, message: "You're not the leader of your guild!"} if leaderId isnt @leader
     return Q {isSuccess: no, code: 51, message: "That member is not in your guild!"} if not memberEntry
+
+    @notifyAllPossibleMembers "#{memberName} was promoted (\"#{@name}\")."
 
     memberEntry.isAdmin = yes
     member?.guildStatus = 1
 
     @save()
 
-    Q {isSuccess: yes, code: 67, message: "Successfully promoted #{memberName}."}
+    Q {isSuccess: yes, code: 67, message: "Successfully promoted #{memberName}.", guild: @buildSaveObject()}
 
   demote: (leaderId, memberName) ->
     member = @guildManager.game.playerManager.getPlayerByName memberName
     memberEntry = _.findWhere @members, {name: memberName}
 
+    return Q {isSuccess: no, code: 69, message: "You can't do that to the leader!"} if leaderId is memberEntry.identifier
     return Q {isSuccess: no, code: 50, message: "You're not the leader of your guild!"} if leaderId isnt @leader
     return Q {isSuccess: no, code: 51, message: "That member is not in your guild!"} if not memberEntry
+
+    @notifyAllPossibleMembers "#{memberName} was demoted (\"#{@name}\")."
 
     memberEntry.isAdmin = no
     member?.guildStatus = 0
 
     @save()
 
-    Q {isSuccess: yes, code: 68, message: "Successfully demoted #{memberName}."}
+    Q {isSuccess: yes, code: 68, message: "Successfully demoted #{memberName}.", guild: @buildSaveObject()}
+
+  notifyAllPossibleMembers: (message) ->
+    _.each @members, (member) =>
+      player = @guildManager.game.playerManager.getPlayerById member.identifier
+      return if not player
+      @guildManager.game.eventHandler.addEventToDb message, player, 'guild'
 
   invitesLeft: ->
     @invitesAvailable = @cap() - (@members.length + @invites.length)
 
   avgLevel: ->
+
+    oldLevel = @level
 
     query = [
       {$group: {_id: '$guild', level: {$avg:'$level.__current'}  }}
@@ -94,11 +111,31 @@ class Guild
       @invitesLeft()
       @save()
 
+      levelDiff = @level-oldLevel
+      @notifyAllPossibleMembers "Your guild, \"#{@name}\" is now level #{@level} [change: #{if levelDiff > 0 then "+" else ""}#{levelDiff}]." if levelDiff isnt 0 and not _.isNaN levelDiff
+
   cap: -> 1 + (3*Math.floor ((@level or 1)/5))
 
   save: ->
     return if not @guildManager
     @invitesLeft()
     @guildManager.saveGuild @
+
+  buildSaveObject: ->
+    _.each @members, (member) =>
+      player = @guildManager.game.playerManager.getPlayerById member.identifier
+
+      isOnline = player?
+
+      if isOnline
+        member._cache =
+          online: isOnline
+          level: player.level.getValue()
+          class: player.professionName
+          lastSeen: Date.now()
+      else
+        member._cache?.online = no
+
+    @guildManager.buildGuildSaveObject @
     
 module.exports = exports = Guild

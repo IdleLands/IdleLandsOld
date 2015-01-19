@@ -1,7 +1,7 @@
 
 Event = require "../Event"
 _ = require "lodash"
-Constants = require "../../system/Constants"
+Constants = require "../../system/utilities/Constants"
 
 `/**
  * This event handles both the enchant and tinker aliases, which add new stats to an item.

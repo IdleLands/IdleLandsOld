@@ -3,16 +3,16 @@ chance = new (require "chance")()
 _ = require "lodash"
 _.str = require "underscore.string"
 
-Datastore = require "./DatabaseWrapper"
+Datastore = require "./../database/DatabaseWrapper"
 MessageCreator = require "./MessageCreator"
-Constants = require "./Constants"
-Battle = require "../event/Battle"
+Constants = require "./../utilities/Constants"
+Battle = require "../../event/Battle"
 Q = require "q"
 
-Party = require "../event/Party"
+Party = require "../../event/Party"
 
 requireDir = require "require-dir"
-allEvents = requireDir "../event/singles"
+allEvents = requireDir "../../event/singles"
 
 class EventHandler
 
@@ -179,8 +179,8 @@ class EventHandler
       extra: extra
 
     player.recentEvents = [] if not player.recentEvents
-    player.recentEvents.push event
-    player.recentEvents.shift() if player.recentEvents.length > Constants.defaults.player.maxRecentEvents
+    player.recentEvents.unshift event
+    player.recentEvents.pop() if player.recentEvents.length > Constants.defaults.player.maxRecentEvents
 
     @playerEventsDb.insert event, ->
 

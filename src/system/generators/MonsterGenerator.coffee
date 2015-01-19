@@ -1,15 +1,15 @@
 
 _ = require "lodash"
-Monster = require "../character/npc/Monster"
+Monster = require "../../character/npc/Monster"
 Generator = require "./Generator"
-Constants = require "./Constants"
-Party = require "../event/Party"
-Personality = require "../character/base/Personality"
+Constants = require "./../utilities/Constants"
+Party = require "../../event/Party"
+Personality = require "../../character/base/Personality"
 chance = new (require "chance")()
 
 requireDir = require "require-dir"
-personalities = _.keys requireDir "../character/personalities", recurse: yes
-classes = _.keys requireDir "../character/classes", recurse: yes
+personalities = _.keys requireDir "../../character/personalities", recurse: yes
+classes = _.keys requireDir "../../character/classes", recurse: yes
 
 class MonsterGenerator extends Generator
   constructor: (@game) ->
@@ -19,8 +19,14 @@ class MonsterGenerator extends Generator
 
     itemList = @game.componentDatabase.itemStats
 
-    remainingScore = party.score() - reduction
+    remainingScore = Math.max 500, party.score() - reduction
     possibleMonsters = _.filter @game.componentDatabase.monsters, (monster) -> party.level()-10 < monster.level < party.level()+5
+
+    if possibleMonsters.length is 0
+      possibleMonsters.push
+        class: _.sample classes
+        name: name ? "Pushover Mob"
+        level: Math.round party.level()
 
     monsters = []
 
@@ -29,6 +35,10 @@ class MonsterGenerator extends Generator
 
     generateMonster = =>
       baseMonster = _.sample possibleMonsters
+
+      if not baseMonster
+        @game.captureException (new Error "Failed to generate monster"), extra: {minLevel: party.level()-10, maxLevel: party.level()+5, possibleMonsters: possibleMonsters}
+
       baseMonster.class = _.sample classes if baseMonster.class is 'Random'
 
       monster = new Monster baseMonster
@@ -97,7 +107,7 @@ class MonsterGenerator extends Generator
     itemList = @game.componentDatabase.itemStats
 
     if not baseMonster?.level
-      @game.errorHandler.captureMessage "GENERATE ERROR, NO LEVEL " + JSON.stringify baseMonster
+      @game.errorHandler.captureException (new Error "GENERATE ERROR, NO LEVEL"), extra: baseMonster: baseMonster
       return
 
     baseMonster.class = _.sample classes if baseMonster.class is 'Random'

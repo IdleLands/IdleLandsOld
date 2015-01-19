@@ -197,7 +197,7 @@ module.exports = (Module) ->
     constructor: (moduleManager) ->
       super moduleManager
 
-      @IdleWrapper = require("../../src/system/ExternalWrapper")()
+      @IdleWrapper = require("../../src/system/accessibility/ExternalWrapper")()
       @db = @newDatabase 'channels'
 
       @on "join", (bot, channel, sender) =>
@@ -466,8 +466,8 @@ module.exports = (Module) ->
        *
        * @name idle-goldgive
        * @gmOnly
-       * @syntax !idle-itemgen "Player Name" gold
-       * @example !idle-itemgen "Swirly" 10000
+       * @syntax !idle-goldgive "Player Name" gold
+       * @example !idle-goldgive "Swirly" 10000
        * @category IRC Commands
        * @package Client
        */`

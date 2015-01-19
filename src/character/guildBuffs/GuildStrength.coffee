@@ -6,8 +6,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Strength I
   * @requirement {gold} 4000
-  * @requirement {guild level} 20
-  * @requirement {guild members} 1
+  * @requirement {guild-level} 20
+  * @requirement {guild-members} 1
   * @effect +5% STR
   * @duration 1 day
   * @category Strength
@@ -18,8 +18,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Strength II
   * @requirement {gold} 9000
-  * @requirement {guild level} 30
-  * @requirement {guild members} 1
+  * @requirement {guild-level} 30
+  * @requirement {guild-members} 1
   * @effect +10% STR
   * @duration 1 day, 12 hours
   * @category Strength
@@ -30,8 +30,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Strength III
   * @requirement {gold} 16000
-  * @requirement {guild level} 40
-  * @requirement {guild members} 4
+  * @requirement {guild-level} 40
+  * @requirement {guild-members} 4
   * @effect +15% STR
   * @duration 2 days
   * @category Strength
@@ -42,8 +42,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Strength IV
   * @requirement {gold} 25000
-  * @requirement {guild level} 50
-  * @requirement {guild members} 4
+  * @requirement {guild-level} 50
+  * @requirement {guild-members} 4
   * @effect +20% STR
   * @duration 2 days, 12 hours
   * @category Strength
@@ -54,8 +54,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Strength V
   * @requirement {gold} 36000
-  * @requirement {guild level} 60
-  * @requirement {guild members} 9
+  * @requirement {guild-level} 60
+  * @requirement {guild-members} 9
   * @effect +25% STR
   * @duration 3 days
   * @category Strength
@@ -66,8 +66,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Strength VI
   * @requirement {gold} 49000
-  * @requirement {guild level} 80
-  * @requirement {guild members} 9
+  * @requirement {guild-level} 70
+  * @requirement {guild-members} 9
   * @effect +30% STR
   * @duration 3 days, 12 hours
   * @category Strength
@@ -78,8 +78,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Strength VII
   * @requirement {gold} 64000
-  * @requirement {guild level} 80
-  * @requirement {guild members} 15
+  * @requirement {guild-level} 80
+  * @requirement {guild-members} 15
   * @effect +35% STR
   * @duration 4 days
   * @category Strength
@@ -90,8 +90,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Strength VIII
   * @requirement {gold} 81000
-  * @requirement {guild level} 90
-  * @requirement {guild members} 15
+  * @requirement {guild-level} 90
+  * @requirement {guild-members} 15
   * @effect +40% STR
   * @duration 4 days, 12 hours
   * @category Strength
@@ -102,8 +102,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Strength IX
   * @requirement {gold} 100000
-  * @requirement {guild level} 100
-  * @requirement {guild members} 20
+  * @requirement {guild-level} 100
+  * @requirement {guild-members} 20
   * @effect +45% STR
   * @duration 5 days
   * @category Strength

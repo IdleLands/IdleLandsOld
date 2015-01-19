@@ -1,8 +1,8 @@
 
-MessageCreator = require "../system/MessageCreator"
+MessageCreator = require "../system/handlers/MessageCreator"
 Player = require "../character/player/Player"
 BattleCache = require "./BattleCache"
-Constants = require "../system/Constants"
+Constants = require "../system/utilities/Constants"
 
 _ = require "lodash"
 _.str = require "underscore.string"
@@ -272,7 +272,7 @@ class Battle
     damage = target.calcDamageTaken damage
 
     damageType = if damage < 0 then "healing" else "damage"
-    realDamage = Math.abs damage
+    realDamage = Math.round Math.abs damage
 
     weapon = _.findWhere player.equipment, {type: "mainhand"}
     weapon = {itemClass: "basic", getName: -> return "claw"} if not weapon
@@ -283,7 +283,7 @@ class Battle
       message += " -- a fatal blow!"
       fatal = yes
       
-    else if target.hp.getValue() is 1 and target.calc.sturdy()
+    else if target.hp.getValue() is 1 and target.calc.sturdy() and target.hp.gtePercent 10
       message += " -- a nearly fatal blow!"
 
     else
@@ -345,6 +345,10 @@ class Battle
     @emitEventToAll "battle.end", @turnOrder
     randomWinningPlayer = _.sample(_.filter @turnOrder, (player) -> (not player.hp.atMin()) and (not player.fled))
     if not randomWinningPlayer
+
+      if @turnOrder.length is 0 or @parties.length is 0
+        @game.errorHandler.captureException (new Error "Bad Battle Ending"), extra: toLength: @turnOrder.length, plLength: @parties.length
+
       @broadcast "Everyone died! The battle was a tie! You get nothing!", {}, not @battleUrl
       @cleanUp()
       return
@@ -544,14 +548,14 @@ class Battle
     message = MessageCreator.doStringReplace message, attacker, extra
     @broadcast message if message and typeof message is "string"
 
-    if defenderPunishDamage > 0 and not doPropagate
+    if defenderPunishDamage > 0 and not doPropagate and not attacker.hp.atMin()
       refmsg = "<player.name>#{defender.name}</player.name> reflected <damage.hp>#{defenderPunishDamage}</damage.hp> damage back at <player.name>#{attacker.name}</player.name>!"
       @takeStatFrom defender, attacker, defenderPunishDamage, type, damageType, spell, refmsg, yes
       @emitEvents "effect.punish", "effect.punished", defender, attacker
       defender.emit "combat.self.punish.damage", defenderPunishDamage
       attacker.emit "combat.self.punished.damage", defenderPunishDamage
 
-    if darksideDamage > 0 and not doPropagate
+    if darksideDamage > 0 and not doPropagate and not attacker.hp.atMin()
       refmsg = "<player.name>#{attacker.name}</player.name> took <damage.hp>#{darksideDamage}</damage.hp> damage due to darkside!"
       @takeStatFrom attacker, attacker, darksideDamage, type, damageType, spell, refmsg, yes
       @emitEventToAll "effect.darkside", attacker

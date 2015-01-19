@@ -1,7 +1,7 @@
 
-MessageCreator = require "./MessageCreator"
-Constants = require "./Constants"
-Battle = require "../event/Battle"
+MessageCreator = require "./../handlers/MessageCreator"
+Constants = require "./../utilities/Constants"
+Battle = require "../../event/Battle"
 _ = require "lodash"
 chance = (new require "chance")()
 
@@ -43,7 +43,11 @@ class BattleManager
 
     @game.inBattle = true
 
-    new Battle @game, parties
+    try
+      new Battle @game, parties
+    catch e
+      @game.errorHandler.captureException e
+
     null
 
   # this function sets up parties for combat, it's a transformation function essentially
@@ -53,15 +57,25 @@ class BattleManager
     return if @inBattle
     return if parties.length < 2 and @game.playerManager.players.length < 2
 
+    oldLength = parties.length
+    parties = _.compact parties
+
+    if oldLength isnt parties.length
+      @game.errorHandler.captureException (new Error "Somehow, something came through and it was bad")
+      return
+
     origPartyLength = parties.length
 
     # no parties = global event = pvp battle
     if parties.length is 0
       parties = @chooseBestPvPParties()
-      _.each parties, (party) -> party.prepareForBattle()
+      _.each parties, (party) =>
+        party.prepareForBattle()
+        parties.push @game.monsterGenerator.experimentalMonsterPartyGeneration party, party.score() / 2.5 if chance.bool {likelihood: 5}
 
     # 1 party = monster battle
     else if parties.length is 1
+
       parties[0].prepareForBattle()
       parties.push @game.monsterGenerator.experimentalMonsterPartyGeneration parties[0]
       parties.push @game.monsterGenerator.experimentalMonsterPartyGeneration parties[0], parties[0].score()/1.5 if (chance.bool {likelihood: 15}) and parties[0].level() < 100

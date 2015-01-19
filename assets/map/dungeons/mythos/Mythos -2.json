@@ -27,7 +27,7 @@
          "name":"Interactables",
          "objects":[
                 {
-                 "gid":38,
+                 "gid":30,
                  "height":0,
                  "name":"ToVocalnus",
                  "properties":
@@ -45,7 +45,7 @@
                  "y":368
                 }, 
                 {
-                 "gid":49,
+                 "gid":13,
                  "height":0,
                  "name":"Monster",
                  "properties":

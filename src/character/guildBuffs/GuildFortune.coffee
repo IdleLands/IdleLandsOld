@@ -6,8 +6,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Fortune I
   * @requirement {gold} 4000
-  * @requirement {guild level} 20
-  * @requirement {guild members} 1
+  * @requirement {guild-level} 20
+  * @requirement {guild-members} 1
   * @effect +5% gold
   * @effect +5% item find range
   * @duration 12 hours
@@ -19,8 +19,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Fortune II
   * @requirement {gold} 9000
-  * @requirement {guild level} 30
-  * @requirement {guild members} 1
+  * @requirement {guild-level} 30
+  * @requirement {guild-members} 1
   * @effect +10% gold
   * @effect +10% item find range
   * @duration 18 hours
@@ -32,8 +32,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Fortune III
   * @requirement {gold} 16000
-  * @requirement {guild level} 40
-  * @requirement {guild members} 4
+  * @requirement {guild-level} 40
+  * @requirement {guild-members} 4
   * @effect +15% gold
   * @effect +15% item find range
   * @duration 1 day
@@ -45,8 +45,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Fortune IV
   * @requirement {gold} 25000
-  * @requirement {guild level} 50
-  * @requirement {guild members} 4
+  * @requirement {guild-level} 50
+  * @requirement {guild-members} 4
   * @effect +20% gold
   * @effect +20% item find range
   * @duration 1 day, 6 hours
@@ -58,8 +58,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Fortune V
   * @requirement {gold} 36000
-  * @requirement {guild level} 60
-  * @requirement {guild members} 9
+  * @requirement {guild-level} 60
+  * @requirement {guild-members} 9
   * @effect +25% gold
   * @effect +25% item find range
   * @duration 1 day, 12 hours
@@ -71,8 +71,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Fortune VI
   * @requirement {gold} 49000
-  * @requirement {guild level} 80
-  * @requirement {guild members} 9
+  * @requirement {guild-level} 70
+  * @requirement {guild-members} 9
   * @effect +30% gold
   * @effect +30% item find range
   * @duration 1 day, 18 hours
@@ -84,8 +84,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Fortune VII
   * @requirement {gold} 64000
-  * @requirement {guild level} 80
-  * @requirement {guild members} 15
+  * @requirement {guild-level} 80
+  * @requirement {guild-members} 15
   * @effect +35% gold
   * @effect +35% item find range
   * @duration 2 days
@@ -97,8 +97,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Fortune VIII
   * @requirement {gold} 81000
-  * @requirement {guild level} 90
-  * @requirement {guild members} 15
+  * @requirement {guild-level} 90
+  * @requirement {guild-members} 15
   * @effect +40% gold
   * @effect +40% item find range
   * @duration 2 days, 6 hours
@@ -110,8 +110,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Fortune IX
   * @requirement {gold} 100000
-  * @requirement {guild level} 100
-  * @requirement {guild members} 20
+  * @requirement {guild-level} 100
+  * @requirement {guild-members} 20
   * @effect +45% gold
   * @effect +45% item find range
   * @duration 2 days, 12 hours

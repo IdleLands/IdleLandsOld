@@ -1,7 +1,7 @@
 
 chance = new (require "chance")()
-MessageCreator = require "../system/MessageCreator"
-Constants = require "../system/Constants"
+MessageCreator = require "../system/handlers/MessageCreator"
+Constants = require "../system/utilities/Constants"
 
 _ = require "lodash"
 
@@ -116,13 +116,18 @@ class Event
 
   pickValidItem: (player, isEnchant = no) ->
     items = player.equipment
-    forsaken = _.findWhere items, {forsaken: 1}
-    return forsaken if forsaken
-    nonSacred = _.reject items, (item) -> item.sacred
 
-    badSlots = _.reject nonSacred, (item) -> item.type in ["providence"]
-    if isEnchant then badSlots = _.reject badSlots, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel and not item.limitless
-    _.sample badSlots
+    goodItems = _.reject items, (item) -> item.type in ["providence"]
+
+    forsaken = _.filter goodItems, (item) -> item.forsaken
+
+    return (_.sample forsaken) if forsaken.length > 0
+
+    nonSacred = _.reject goodItems, (item) -> item.sacred
+
+    if isEnchant then nonSacred = _.reject nonSacred, (item) -> item.enchantLevel >= Constants.defaults.game.maxEnchantLevel and not item.limitless
+
+    _.sample nonSacred
 
   pickBlessStat: (item) ->
     chances = [1, 5, 10, 20, 100]

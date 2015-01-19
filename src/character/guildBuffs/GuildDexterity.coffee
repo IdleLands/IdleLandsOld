@@ -6,8 +6,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Dexterity I
   * @requirement {gold} 4000
-  * @requirement {guild level} 20
-  * @requirement {guild members} 1
+  * @requirement {guild-level} 20
+  * @requirement {guild-members} 1
   * @effect +5% DEX
   * @duration 1 day
   * @category Dexterity
@@ -18,8 +18,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Dexterity II
   * @requirement {gold} 9000
-  * @requirement {guild level} 30
-  * @requirement {guild members} 1
+  * @requirement {guild-level} 30
+  * @requirement {guild-members} 1
   * @effect +10% DEX
   * @duration 1 day, 12 hours
   * @category Dexterity
@@ -30,8 +30,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Dexterity III
   * @requirement {gold} 16000
-  * @requirement {guild level} 40
-  * @requirement {guild members} 4
+  * @requirement {guild-level} 40
+  * @requirement {guild-members} 4
   * @effect +15% DEX
   * @duration 2 days
   * @category Dexterity
@@ -42,8 +42,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Dexterity IV
   * @requirement {gold} 25000
-  * @requirement {guild level} 50
-  * @requirement {guild members} 4
+  * @requirement {guild-level} 50
+  * @requirement {guild-members} 4
   * @effect +20% DEX
   * @duration 2 days, 12 hours
   * @category Dexterity
@@ -54,8 +54,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Dexterity V
   * @requirement {gold} 36000
-  * @requirement {guild level} 60
-  * @requirement {guild members} 9
+  * @requirement {guild-level} 60
+  * @requirement {guild-members} 9
   * @effect +25% DEX
   * @duration 3 days
   * @category Dexterity
@@ -66,8 +66,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Dexterity VI
   * @requirement {gold} 49000
-  * @requirement {guild level} 80
-  * @requirement {guild members} 9
+  * @requirement {guild-level} 70
+  * @requirement {guild-members} 9
   * @effect +30% DEX
   * @duration 3 days, 12 hours
   * @category Dexterity
@@ -78,8 +78,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Dexterity VII
   * @requirement {gold} 64000
-  * @requirement {guild level} 80
-  * @requirement {guild members} 15
+  * @requirement {guild-level} 80
+  * @requirement {guild-members} 15
   * @effect +35% DEX
   * @duration 4 days
   * @category Dexterity
@@ -90,8 +90,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Dexterity VIII
   * @requirement {gold} 81000
-  * @requirement {guild level} 90
-  * @requirement {guild members} 15
+  * @requirement {guild-level} 90
+  * @requirement {guild-members} 15
   * @effect +40% DEX
   * @duration 4 days, 12 hours
   * @category Dexterity
@@ -102,8 +102,8 @@ GuildBuff = require "../base/GuildBuff"
   *
   * @name Dexterity IX
   * @requirement {gold} 100000
-  * @requirement {guild level} 100
-  * @requirement {guild members} 20
+  * @requirement {guild-level} 100
+  * @requirement {guild-members} 20
   * @effect +45% DEX
   * @duration 5 days
   * @category Dexterity

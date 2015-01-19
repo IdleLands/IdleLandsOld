@@ -1,8 +1,8 @@
 
 requireDir = require "require-dir"
 personalities = requireDir "../personalities"
-MessageCreator = require "../../system/MessageCreator"
-Constants = require "../../system/Constants"
+MessageCreator = require "../../system/handlers/MessageCreator"
+Constants = require "../../system/utilities/Constants"
 
 class Personality
 

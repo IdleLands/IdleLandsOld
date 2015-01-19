@@ -98,6 +98,20 @@
                  "width":0,
                  "x":336,
                  "y":64
+                }, 
+                {
+                 "gid":48,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"Beware, for you're crunchy and taste good with ketchup."
+                    },
+                 "type":"Sign",
+                 "visible":true,
+                 "width":0,
+                 "x":272,
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -116,7 +130,7 @@
         {
          "firstgid":1,
          "image":"..\/..\/..\/img\/tiles.png",
-         "imageheight":64,
+         "imageheight":112,
          "imagewidth":144,
          "margin":0,
          "name":"tiles",

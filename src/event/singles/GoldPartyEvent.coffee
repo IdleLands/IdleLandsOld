@@ -1,6 +1,6 @@
 
 Event = require "../Event"
-MessageCreator = require "../../system/MessageCreator"
+MessageCreator = require "../../system/handlers/MessageCreator"
 _ = require "lodash"
 
 `/**

@@ -37,6 +37,7 @@ class Thunderstrike extends Spell
   uncast: (player) ->
     return if not @caster.party or not @caster.party.currentBattle
     return if player.hp.atMin()
+    return if @suppressed
     damage = @calcDamage player
     message = "%targetName was struck by %casterName's %spellName for %damage HP damage!"
     @doDamageTo player, damage, message
