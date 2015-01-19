@@ -162,33 +162,40 @@ class Spell
       @baseTurns[player.name] = @turns[player.name] = turns[player.name] = @calcDuration player
       battleInstance.emitEvents "skill.use", "skill.used", @caster, player, skill: @
       battleInstance.emitEvents "skill.#{@determineType()}.use", "skill.#{@determineType()}.used", @caster, player, skill: @
+
       if turns[player.name] is 0
         (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
+
       else
         oldSpell = _.findWhere player.spellsAffectedBy, baseName: @baseName
 
         if oldSpell and @stack is "refresh"
-          return
+          ##
           oldSpell.suppressed = yes
           oldSpell.unaffect player
           battleInstance.emitEvents "skill.duration.refresh", "skill.duration.refreshed", @caster, player, skill: @, turns: @turns
+          ##
 
         else
-          player?.spellsAffectedBy = [] if not player?.spellsAffectedBy or not _.isArray player?.spellsAffectedBy
+          player?.spellsAffectedBy = [] if not _.isArray player?.spellsAffectedBy
           player?.spellsAffectedBy.push @ # got an error here once
           battleInstance.emitEvents "skill.duration.begin", "skill.duration.beginAt", @caster, player, skill: @, turns: @turns
 
           @eventList = _.keys _.omit @bindings, 'doSpellCast', 'doSpellUncast', 'doSpellInit'
+
           me = @
           @eventFunctions = {}
           _.each @eventList, (event) =>
             @eventFunctions[event] = newFunc = ->
-              return if not (me in player.spellsAffectedBy)
+
+              if not _.contains player.spellsAffectedBy, me
+                player.off event, newFunc
+                return
+
               me.bindings[event].apply me, [player]
               me.decrementTurns player
 
             player.many event, turns[player.name], newFunc
-            console.log _.keys player._events
 
         (@bindings.doSpellCast.apply @, [player]) if 'doSpellCast' of @bindings
 
@@ -197,18 +204,13 @@ class Spell
       @unaffect player
 
   unaffect: (player) ->
-    battleInstance = @caster.party?.currentBattle
     player.spellsAffectedBy = _.without player.spellsAffectedBy, @
 
-    _.each (_.keys @eventFunctions), (event) =>
-      player.off event, @eventFunctions[event]
-
-    console.log player._events
+    player.off event, listener for event, listener of @eventFunctions
 
     (@bindings.doSpellUncast.apply @, [player]) if 'doSpellUncast' of @bindings
 
-    return if not battleInstance
-    battleInstance.emitEvents "skill.duration.end", "skill.duration.endAt", @caster, player, skill: @
+    @caster.party?.currentBattle?.emitEvents "skill.duration.end", "skill.duration.endAt", @caster, player, skill: @
 
   broadcastBuffMessage: (target, message) ->
     extra =
