@@ -12,7 +12,7 @@ Class = require "./../base/Class"
   * @itemScore int*0.7 + wis*1.5 - str*0.4 - dex*0.4
   * @statPerLevel {str} 2
   * @statPerLevel {dex} 1
-  * @statPerLevel {con} 1
+  * @statPerLevel {con} 2
   * @statPerLevel {int} 1
   * @statPerLevel {wis} 5
   * @statPerLevel {agi} 1
