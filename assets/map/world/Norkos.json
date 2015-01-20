@@ -3354,7 +3354,7 @@
                 {
                  "gid":43,
                  "height":0,
-                 "name":"",
+                 "name":"ToDarkTower-1",
                  "properties":
                     {
                      "destx":"20",
@@ -3363,7 +3363,7 @@
                      "movementType":"descend"
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"Teleport",
                  "visible":true,
                  "width":0,
                  "x":240,
