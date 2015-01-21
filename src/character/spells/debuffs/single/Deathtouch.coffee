@@ -57,6 +57,7 @@ class Deathtouch extends Spell
      * @requirement {class} Necromancer
      * @requirement {mp} 10000
      * @requirement {level} 15
+     * @requirement {collectible} Forbidden Cleric's Text
      * @element holy, debuff, physical
      * @targets {enemy} 1
      * @minDamage target.maximumHp * 0.25
@@ -71,7 +72,6 @@ class Deathtouch extends Spell
   ]
 
   calcDamage: (target) ->
-    console.log @tierName
     return 0 if @tierName isnt "deathtouch"
     minStat = target.hp.maximum * 0.25
     maxStat = target.hp.maximum * 0.5

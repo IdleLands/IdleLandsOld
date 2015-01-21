@@ -27,8 +27,8 @@ class Cure extends Spell
      * @requirement {class} MagicalMonster
      * @requirement {mp} 100
      * @requirement {level} 10
+     * @requirement {collectible} Cleric's Text
      * @element heal
-     * @prerequisite {collectible} Cleric's Text
      * @targets {ally} 1
      * @minDamage [wis/4]
      * @maxDamage [wis]

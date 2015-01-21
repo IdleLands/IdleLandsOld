@@ -14,50 +14,31 @@ classes = _.keys requireDir "../../character/classes", recurse: yes
 class MonsterGenerator extends Generator
   constructor: (@game) ->
 
-  experimentalMonsterPartyGeneration: (party, reduction = 0) ->
+  experimentalMonsterPartyGeneration: (party, reduction = 0, monsterList = []) ->
     return @generateScalableMonsterParty party if party.level() >= 100
 
-    itemList = @game.componentDatabase.itemStats
-
     remainingScore = Math.max 500, party.score() - reduction
-    possibleMonsters = _.filter @game.componentDatabase.monsters, (monster) -> party.level()-10 < monster.level < party.level()+5
+    possibleMonsters = if monsterList.length > 0 then monsterList else _.filter @game.componentDatabase.monsters, (monster) -> party.level()-10 < monster.level < party.level()+5
 
     if possibleMonsters.length is 0
       possibleMonsters.push
         class: _.sample classes
         name: name ? "Pushover Mob"
-        level: Math.round party.level()
+        level: Math.round party.level() or 1
 
     monsters = []
 
-    removeFromScore = (score) ->
-      remainingScore -= score
+    while remainingScore > 0
+      newMonster = @experimentalMonsterGeneration (_.sample possibleMonsters), remainingScore
+      monsters.push newMonster
+      remainingScore -= newMonster.calc.totalItemScore()
 
-    generateMonster = =>
-      baseMonster = _.sample possibleMonsters
 
-      if not baseMonster
-        @game.captureException (new Error "Failed to generate monster"), extra: {minLevel: party.level()-10, maxLevel: party.level()+5, possibleMonsters: possibleMonsters}
+    new Party @game, monsters
 
-      baseMonster.class = _.sample classes if baseMonster.class is 'Random'
+  experimentalMonsterGeneration: (baseMonster, remainingScore) ->
 
-      monster = new Monster baseMonster
-      monsters.push monster
-
-      monster.calendar = @game.calendar
-
-      handlePersonalities monster
-
-      return removeFromScore monster.calc.totalItemScore() if monster.calc.totalItemScore() > remainingScore
-
-      addPropsToMonster monster
-      nameMonster monster if chance.bool likelihood: 1
-
-      return removeFromScore monster.calc.totalItemScore() if monster.calc.totalItemScore() > remainingScore
-
-      handleEquipment monster
-
-      removeFromScore monster.calc.totalItemScore()
+    itemList = @game.componentDatabase.itemStats
 
     handlePersonalities = (monster) ->
       monster.personalities = []
@@ -97,10 +78,27 @@ class MonsterGenerator extends Generator
         item = @game.equipmentGenerator.generateItem type
         monster.equip item if item and monster.canEquip item
 
-    while remainingScore > 0
-      generateMonster()
+    doGenerate = =>
+      baseMonster.class = _.sample classes if baseMonster.class is 'Random'
 
-    new Party @game, monsters
+      monster = new Monster baseMonster
+
+      monster.calendar = @game.calendar
+
+      handlePersonalities monster
+
+      return monster if monster.calc.totalItemScore() > remainingScore
+
+      addPropsToMonster monster
+      nameMonster monster if chance.bool likelihood: 1
+
+      return monster if monster.calc.totalItemScore() > remainingScore
+
+      handleEquipment monster
+
+      monster
+
+    doGenerate()
 
   generateMonster: (maxScore = 99999, baseMonster = _.sample @game.componentDatabase.monsters) ->
 
@@ -152,7 +150,7 @@ class MonsterGenerator extends Generator
     baseMonster =
       class: chosenClass
       name: name ? "Vector #{chosenClass}"
-      level: Math.round party.level()
+      level: Math.round party.level() or 1
 
     monster = @generateMonster maxScore, baseMonster
 
@@ -168,7 +166,7 @@ class MonsterGenerator extends Generator
     monsterCount = chance.integer({min: 1, max: Constants.defaults.game.maxPartyMembers+1})
     monsters = []
 
-    (monsters.push (@generateScalableMonster party, party.score()*chance.floating({min: 1.2, max: 1.3}))) for x in [1..monsterCount]
+    (monsters.push (@generateScalableMonster party, party.score()*chance.floating({min: 1.0, max: 1.3}))) for x in [1..monsterCount]
 
     party = new Party @game, monsters if monsters.length > 0
     party.isMonsterParty = yes

@@ -19,7 +19,7 @@ Class = require "./../base/Class"
   * @statPerLevel {agi} -2
   * @statPerLevel {luck} -1
   * @minDamage 15%
-  * @mpregen 5%
+  * @mpregen 3%
   * @category Classes
   * @package Player
 */`
@@ -59,7 +59,7 @@ class Necromancer extends Class
   hpPercent: -> -15
   agiPercent: -> -10
 
-  mpregen: (player) -> Math.floor(player.mp.maximum*0.05)
+  mpregen: (player) -> Math.floor(player.mp.maximum*0.03)
 
   minDamage: (player) ->
     player.calc.damage()*0.05
@@ -74,7 +74,7 @@ class Necromancer extends Class
     player.special.name = "Minions"
     player.on "combat.battle.start", @events.battleStart = =>
       player.special.maximum = @numSummons player
-      player.special.toMinimum()
+      player.special.set 0
 
   unload: (player) ->
     player.special.maximum = 0

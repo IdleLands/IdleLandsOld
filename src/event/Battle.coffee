@@ -578,18 +578,18 @@ class Battle
 
   emitEvents: (attackerEvent, defenderEvent, attacker, defender, extra = {}) ->
     return if (not defender) or (not attacker) or (not defender.party) or (not attacker.party)
-    attacker.emit "combat.self.#{attackerEvent}", defender, extra
     _.forEach (_.without attacker.party.players, attacker), (partyMate) ->
       partyMate.emit "combat.ally.#{attackerEvent}", attacker, defender, extra
 
     _.forEach (_.intersection @turnOrder, attacker.party.players), (foe) ->
       foe.emit "combat.enemy.#{attackerEvent}", attacker, defender, extra
+    attacker.emit "combat.self.#{attackerEvent}", defender, extra
 
-    defender.emit "combat.self.#{defenderEvent}", attacker, extra
     _.forEach (_.without defender.party.players, defender), (partyMate) ->
       partyMate.emit "combat.ally.#{defenderEvent}", defender, attacker, extra
 
     _.forEach (_.intersection @turnOrder, defender.party.players), (foe) ->
       foe.emit "combat.enemy.#{defenderEvent}", attacker, defender, extra
+    defender.emit "combat.self.#{defenderEvent}", attacker, extra
 
 module.exports = exports = Battle
