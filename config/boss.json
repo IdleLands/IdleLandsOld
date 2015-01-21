@@ -597,6 +597,134 @@
             { "name": "Flame Polished Gauntlets", "dropPercent": 80 }
         ]
     },
+    "Green Draygon": {
+        "respawn": 10800,
+        "availableScore": 5150,
+        "stats": {
+            "class": "Mage",
+            "hp": 28312,
+            "mp": 53000,
+            "level": 53,
+            "str": 230,
+            "int": 3370,
+	    "agi": 570,
+            "wis": 1800,
+            "con": 876,
+            "venom": 2,
+            "poison": 2
+        },
+        "items": [
+            { "name": "Noxious Amulet", "dropPercent": 80 }
+        ]
+    },
+    "Fighter Guardian": {
+        "respawn": 10800,
+        "availableScore": 3700,
+        "stats": {
+            "class": "Fighter",
+            "hp": 23200,
+            "level": 40,
+            "str": 2000,
+            "con": 1120,
+	    "dex": 400,
+            "defense": 1,
+            "offense": 1,
+	    "glowing": 1
+        },
+        "items": [
+            { "name": "Guardian Longsword", "dropPercent": 80 }
+        ]
+    },
+    "Mage Guardian": {
+        "respawn": 10800,
+        "availableScore": 2400,
+        "stats": {
+            "class": "Mage",
+            "hp": 26705,
+            "mp": 44000,
+            "level": 44,
+            "str": 400,
+            "int": 2015,
+            "wis": 700,
+            "con": 100,
+            "fire": 350,
+	    "earth": 350,
+	    "crit": 3,
+	    "lethal": 1,
+	    "glowing": 1
+        },
+        "items": [
+            { "name": "Guardian Staff", "dropPercent": 80 }
+        ]
+    },
+    "Cleric Guardian": {
+        "respawn": 10800,
+        "availableScore": 2400,
+        "stats": {
+            "class": "Cleric",
+            "hp": 35000,
+            "mp": 48000,
+            "level": 48,
+            "str": 1950,
+            "int": 1000,
+            "wis": 1950,
+	    "dex": 600,
+	    "agi": 500,
+            "con": 825,
+	    "defense": 2, 
+            "sturdy": 1,
+	    "glowing": 1
+        },
+        "items": [
+            { "name": "Guardian Mace", "dropPercent": 80 }
+        ]
+    },
+    "Generalist Guardian": {
+        "respawn": 10800,
+        "availableScore": 2400,
+        "stats": {
+            "class": "Generalist",
+            "hp": 35000,
+            "mp": 15000,
+            "level": 52,
+            "str": 1800,
+            "int": 1800,
+	    "dex": 1500,
+	    "agi": 1200,
+            "wis": 900,
+            "con": 900,
+	    "luck": 100,
+	    "parry": 1,
+	    "crit": 1,
+	    "glowing": 1
+        },
+        "items": [
+            { "name": "Guardian Guidebook", "dropPercent": 80 }
+        ]
+    },
+    "Guardian Lord": {
+        "respawn": 10800,
+        "availableScore": 5150,
+        "stats": {
+            "class": "Fighter",
+            "hp": 73000,
+            "level": 60,
+            "str": 2500,
+	    "dex": 1500,
+	    "agi": 1500,
+            "con": 2000,
+	    "luck": 100,
+            "sturdy": 1,
+	    "defense": 1,
+	    "offense": 1,
+	    "parry": 1,
+	    "crit": 2,
+	    "glowing": 2
+        },
+        "items": [
+            { "name": "Guardian Tower Shield", "dropPercent": 80 }
+        ]
+    },
     "Gryffyndor House Representative": {
         "respawn": 10800,
         "availableScore": 2400,
