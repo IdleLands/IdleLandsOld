@@ -472,13 +472,13 @@
             "example": [
                 {
                     "name": "example",
-                    "basicInfo": "!idle-itemgen \"Swirly\" 10000"
+                    "basicInfo": "!idle-goldgive \"Swirly\" 10000"
                 }
             ],
             "syntax": [
                 {
                     "name": "syntax",
-                    "basicInfo": "!idle-itemgen \"Player Name\" gold"
+                    "basicInfo": "!idle-goldgive \"Player Name\" gold"
                 }
             ],
             "desc": {
@@ -2269,8 +2269,8 @@
             }
         },
         {
-            "lineNumber": 238,
-            "endLineNumber": 246,
+            "lineNumber": 239,
+            "endLineNumber": 247,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2299,8 +2299,8 @@
             }
         },
         {
-            "lineNumber": 249,
-            "endLineNumber": 257,
+            "lineNumber": 250,
+            "endLineNumber": 258,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2328,8 +2328,8 @@
             }
         },
         {
-            "lineNumber": 260,
-            "endLineNumber": 268,
+            "lineNumber": 261,
+            "endLineNumber": 269,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2358,8 +2358,8 @@
             }
         },
         {
-            "lineNumber": 271,
-            "endLineNumber": 279,
+            "lineNumber": 272,
+            "endLineNumber": 280,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2387,8 +2387,8 @@
             }
         },
         {
-            "lineNumber": 282,
-            "endLineNumber": 290,
+            "lineNumber": 283,
+            "endLineNumber": 291,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2417,8 +2417,8 @@
             }
         },
         {
-            "lineNumber": 293,
-            "endLineNumber": 301,
+            "lineNumber": 294,
+            "endLineNumber": 302,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2446,8 +2446,8 @@
             }
         },
         {
-            "lineNumber": 304,
-            "endLineNumber": 312,
+            "lineNumber": 305,
+            "endLineNumber": 313,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2476,8 +2476,8 @@
             }
         },
         {
-            "lineNumber": 315,
-            "endLineNumber": 322,
+            "lineNumber": 316,
+            "endLineNumber": 323,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2502,8 +2502,8 @@
             }
         },
         {
-            "lineNumber": 325,
-            "endLineNumber": 333,
+            "lineNumber": 326,
+            "endLineNumber": 334,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2531,8 +2531,8 @@
             }
         },
         {
-            "lineNumber": 336,
-            "endLineNumber": 344,
+            "lineNumber": 337,
+            "endLineNumber": 345,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2561,8 +2561,8 @@
             }
         },
         {
-            "lineNumber": 347,
-            "endLineNumber": 354,
+            "lineNumber": 348,
+            "endLineNumber": 355,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2588,8 +2588,8 @@
             }
         },
         {
-            "lineNumber": 357,
-            "endLineNumber": 365,
+            "lineNumber": 358,
+            "endLineNumber": 366,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2617,8 +2617,8 @@
             }
         },
         {
-            "lineNumber": 368,
-            "endLineNumber": 376,
+            "lineNumber": 369,
+            "endLineNumber": 377,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2646,8 +2646,8 @@
             }
         },
         {
-            "lineNumber": 379,
-            "endLineNumber": 387,
+            "lineNumber": 380,
+            "endLineNumber": 388,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2676,8 +2676,8 @@
             }
         },
         {
-            "lineNumber": 390,
-            "endLineNumber": 398,
+            "lineNumber": 391,
+            "endLineNumber": 399,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2705,8 +2705,8 @@
             }
         },
         {
-            "lineNumber": 401,
-            "endLineNumber": 409,
+            "lineNumber": 402,
+            "endLineNumber": 410,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2734,8 +2734,8 @@
             }
         },
         {
-            "lineNumber": 412,
-            "endLineNumber": 420,
+            "lineNumber": 413,
+            "endLineNumber": 421,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2763,8 +2763,8 @@
             }
         },
         {
-            "lineNumber": 423,
-            "endLineNumber": 431,
+            "lineNumber": 424,
+            "endLineNumber": 432,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2793,8 +2793,8 @@
             }
         },
         {
-            "lineNumber": 434,
-            "endLineNumber": 442,
+            "lineNumber": 435,
+            "endLineNumber": 443,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2823,8 +2823,8 @@
             }
         },
         {
-            "lineNumber": 445,
-            "endLineNumber": 453,
+            "lineNumber": 446,
+            "endLineNumber": 454,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2853,8 +2853,8 @@
             }
         },
         {
-            "lineNumber": 456,
-            "endLineNumber": 464,
+            "lineNumber": 457,
+            "endLineNumber": 465,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2882,8 +2882,8 @@
             }
         },
         {
-            "lineNumber": 467,
-            "endLineNumber": 475,
+            "lineNumber": 468,
+            "endLineNumber": 476,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2911,8 +2911,8 @@
             }
         },
         {
-            "lineNumber": 478,
-            "endLineNumber": 486,
+            "lineNumber": 479,
+            "endLineNumber": 487,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2940,8 +2940,8 @@
             }
         },
         {
-            "lineNumber": 489,
-            "endLineNumber": 497,
+            "lineNumber": 490,
+            "endLineNumber": 498,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2969,8 +2969,8 @@
             }
         },
         {
-            "lineNumber": 500,
-            "endLineNumber": 508,
+            "lineNumber": 501,
+            "endLineNumber": 509,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -2999,8 +2999,8 @@
             }
         },
         {
-            "lineNumber": 511,
-            "endLineNumber": 519,
+            "lineNumber": 512,
+            "endLineNumber": 520,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -3028,8 +3028,8 @@
             }
         },
         {
-            "lineNumber": 522,
-            "endLineNumber": 530,
+            "lineNumber": 523,
+            "endLineNumber": 531,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -3057,8 +3057,8 @@
             }
         },
         {
-            "lineNumber": 533,
-            "endLineNumber": 541,
+            "lineNumber": 534,
+            "endLineNumber": 542,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -3083,8 +3083,8 @@
             }
         },
         {
-            "lineNumber": 543,
-            "endLineNumber": 550,
+            "lineNumber": 544,
+            "endLineNumber": 551,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -3109,8 +3109,8 @@
             }
         },
         {
-            "lineNumber": 552,
-            "endLineNumber": 559,
+            "lineNumber": 553,
+            "endLineNumber": 560,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -3135,8 +3135,8 @@
             }
         },
         {
-            "lineNumber": 561,
-            "endLineNumber": 568,
+            "lineNumber": 562,
+            "endLineNumber": 569,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -3161,8 +3161,8 @@
             }
         },
         {
-            "lineNumber": 570,
-            "endLineNumber": 577,
+            "lineNumber": 571,
+            "endLineNumber": 578,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -3188,8 +3188,8 @@
             }
         },
         {
-            "lineNumber": 636,
-            "endLineNumber": 644,
+            "lineNumber": 637,
+            "endLineNumber": 645,
             "filePath": "src/character/base/Character.coffee",
             "fileName": "Character.coffee",
             "desc": {
@@ -3559,7 +3559,7 @@
                 {
                     "name": "statPerLevel",
                     "type": "con",
-                    "basicInfo": "1"
+                    "basicInfo": "2"
                 },
                 {
                     "name": "statPerLevel",
@@ -4043,6 +4043,96 @@
             "mp": {
                 "name": "mp",
                 "basicInfo": "100+[level*4]+[int*4]"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Classes"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Player"
+            }
+        },
+        {
+            "lineNumber": 4,
+            "endLineNumber": 25,
+            "filePath": "src/character/classes/Necromancer.coffee",
+            "fileName": "Necromancer.coffee",
+            "statPerLevel": [
+                {
+                    "name": "statPerLevel",
+                    "type": "str",
+                    "basicInfo": "3"
+                },
+                {
+                    "name": "statPerLevel",
+                    "type": "dex",
+                    "basicInfo": "3"
+                },
+                {
+                    "name": "statPerLevel",
+                    "type": "con",
+                    "basicInfo": "0"
+                },
+                {
+                    "name": "statPerLevel",
+                    "type": "int",
+                    "basicInfo": "1"
+                },
+                {
+                    "name": "statPerLevel",
+                    "type": "wis",
+                    "basicInfo": "7"
+                },
+                {
+                    "name": "statPerLevel",
+                    "type": "agi",
+                    "basicInfo": "-2"
+                },
+                {
+                    "name": "statPerLevel",
+                    "type": "luck",
+                    "basicInfo": "-1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This class is a summoning class that focuses on debuffing its foes so its minions can take them down."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "Necromancer"
+            },
+            "special": {
+                "name": "special",
+                "basicInfo": "Minions",
+                "extendedInfo": "The Necromancer gets +1 minion every 25 levels."
+            },
+            "magical": {
+                "name": "magical"
+            },
+            "dps": {
+                "name": "dps"
+            },
+            "hp": {
+                "name": "hp",
+                "basicInfo": "10+[level*3]+[con*3]"
+            },
+            "mp": {
+                "name": "mp",
+                "basicInfo": "300+[level*10]+[int*4]+[wis*15]"
+            },
+            "itemScore": {
+                "name": "itemScore",
+                "basicInfo": "int*0.1 + wis*2 + str*0.7 + dex*0.7 - agi*0.8 - con*0.5"
+            },
+            "minDamage": {
+                "name": "minDamage",
+                "basicInfo": "15%"
+            },
+            "mpregen": {
+                "name": "mpregen",
+                "basicInfo": "3%"
             },
             "category": {
                 "name": "category",
@@ -4559,7 +4649,7 @@
                 {
                     "name": "requirement",
                     "type": "guild-level",
-                    "basicInfo": "80"
+                    "basicInfo": "70"
                 },
                 {
                     "name": "requirement",
@@ -5000,7 +5090,7 @@
                 {
                     "name": "requirement",
                     "type": "guild-level",
-                    "basicInfo": "80"
+                    "basicInfo": "70"
                 },
                 {
                     "name": "requirement",
@@ -5441,7 +5531,7 @@
                 {
                     "name": "requirement",
                     "type": "guild-level",
-                    "basicInfo": "80"
+                    "basicInfo": "70"
                 },
                 {
                     "name": "requirement",
@@ -5906,7 +5996,7 @@
                 {
                     "name": "requirement",
                     "type": "guild-level",
-                    "basicInfo": "80"
+                    "basicInfo": "70"
                 },
                 {
                     "name": "requirement",
@@ -6359,7 +6449,7 @@
                 {
                     "name": "requirement",
                     "type": "guild-level",
-                    "basicInfo": "80"
+                    "basicInfo": "70"
                 },
                 {
                     "name": "requirement",
@@ -6800,7 +6890,7 @@
                 {
                     "name": "requirement",
                     "type": "guild-level",
-                    "basicInfo": "80"
+                    "basicInfo": "70"
                 },
                 {
                     "name": "requirement",
@@ -7241,7 +7331,7 @@
                 {
                     "name": "requirement",
                     "type": "guild-level",
-                    "basicInfo": "80"
+                    "basicInfo": "70"
                 },
                 {
                     "name": "requirement",
@@ -7682,7 +7772,7 @@
                 {
                     "name": "requirement",
                     "type": "guild-level",
-                    "basicInfo": "80"
+                    "basicInfo": "70"
                 },
                 {
                     "name": "requirement",
@@ -12539,13 +12629,6 @@
             "endLineNumber": 37,
             "filePath": "src/character/spells/combat-skills/multi/SweepingGeneralization.coffee",
             "fileName": "SweepingGeneralization.coffee",
-            "prerequisite": [
-                {
-                    "name": "prerequisite",
-                    "type": "collectible",
-                    "basicInfo": "Generalist's Guidebook"
-                }
-            ],
             "requirement": [
                 {
                     "name": "requirement",
@@ -12561,6 +12644,11 @@
                     "name": "requirement",
                     "type": "level",
                     "basicInfo": "15"
+                },
+                {
+                    "name": "requirement",
+                    "type": "collectible",
+                    "basicInfo": "Generalist's Guidebook"
                 }
             ],
             "desc": {
@@ -12591,6 +12679,60 @@
             "category": {
                 "name": "category",
                 "basicInfo": "MagicalMonster"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 8,
+            "endLineNumber": 20,
+            "filePath": "src/character/spells/combat-skills/necromancer/Bonecraft.coffee",
+            "fileName": "Bonecraft.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "resurrect at 25% hp"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Necromancer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "0.3*maxMp"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "85"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This spell revives a dead enemy to the casters side."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "bonecraft"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "heal"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Necromancer"
             },
             "package": {
                 "name": "package",
@@ -13793,13 +13935,6 @@
             "endLineNumber": 46,
             "filePath": "src/character/spells/combat-skills/single/DoubleTap.coffee",
             "fileName": "DoubleTap.coffee",
-            "prerequisite": [
-                {
-                    "name": "prerequisite",
-                    "type": "collectible",
-                    "basicInfo": "Fighter's Manual"
-                }
-            ],
             "requirement": [
                 {
                     "name": "requirement",
@@ -13815,6 +13950,11 @@
                     "name": "requirement",
                     "type": "level",
                     "basicInfo": "25"
+                },
+                {
+                    "name": "requirement",
+                    "type": "collectible",
+                    "basicInfo": "Fighter's Manual"
                 }
             ],
             "desc": {
@@ -14022,6 +14162,537 @@
             }
         },
         {
+            "lineNumber": 8,
+            "endLineNumber": 20,
+            "filePath": "src/character/spells/debuffs/single/Deathtouch.coffee",
+            "fileName": "Deathtouch.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "poison"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Necromancer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "500"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This spell does a minor amount of damage, and leeches it back to the caster as HP."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "poisontouch"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "holy, debuff, physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Necromancer"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 22,
+            "endLineNumber": 35,
+            "filePath": "src/character/spells/debuffs/single/Deathtouch.coffee",
+            "fileName": "Deathtouch.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "poison"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "stun"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Necromancer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "1500"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "35"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This spell does a minor amount of damage, and leeches it back to the caster as HP."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "poisontouch"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "holy, debuff, physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Necromancer"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 37,
+            "endLineNumber": 51,
+            "filePath": "src/character/spells/debuffs/single/Deathtouch.coffee",
+            "fileName": "Deathtouch.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "poison"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "stun"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "venom"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Necromancer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "3500"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "55"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This spell does a minor amount of damage, and leeches it back to the caster as HP."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "venomtouch"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "holy, debuff, physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Necromancer"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 53,
+            "endLineNumber": 70,
+            "filePath": "src/character/spells/debuffs/single/Deathtouch.coffee",
+            "fileName": "Deathtouch.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "poison"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "stun"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "venom"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Necromancer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "10000"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "15"
+                },
+                {
+                    "name": "requirement",
+                    "type": "collectible",
+                    "basicInfo": "Forbidden Cleric's Text"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This spell does a minor amount of damage, and leeches it back to the caster as HP."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "deathtouch"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "holy, debuff, physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
+            "minDamage": {
+                "name": "minDamage",
+                "basicInfo": "target.maximumHp * 0.25"
+            },
+            "maxDamage": {
+                "name": "maxDamage",
+                "basicInfo": "target.maximumHp * 0.5"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Necromancer"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 8,
+            "endLineNumber": 21,
+            "filePath": "src/character/spells/debuffs/single/Siphon.coffee",
+            "fileName": "Siphon.coffee",
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Necromancer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "100"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "1"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This spell does a minor amount of damage, and leeches it back to the caster as HP."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "siphon"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "energy, holy, debuff, physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
+            "minDamage": {
+                "name": "minDamage",
+                "basicInfo": "[wis/8]"
+            },
+            "maxDamage": {
+                "name": "maxDamage",
+                "basicInfo": "[wis/4]"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Necromancer"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 23,
+            "endLineNumber": 38,
+            "filePath": "src/character/spells/debuffs/single/Siphon.coffee",
+            "fileName": "Siphon.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "-5% STR"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "vampirism"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Necromancer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "100"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "15"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This spell does a minor amount of damage, and leeches it back to the caster as HP. It also leaves a minor debuff."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "drain"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "energy, holy, debuff, physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
+            "minDamage": {
+                "name": "minDamage",
+                "basicInfo": "1.25*[wis/8]"
+            },
+            "maxDamage": {
+                "name": "maxDamage",
+                "basicInfo": "1.25*[wis/4]"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Necromancer"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 40,
+            "endLineNumber": 56,
+            "filePath": "src/character/spells/debuffs/single/Siphon.coffee",
+            "fileName": "Siphon.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "-5% STR"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "-5% HP"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "vampirism"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Necromancer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "(maxHp-currentHp)/5"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "35"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This spell does a moderate amount of damage, and leeches it back to the caster as HP. It also leaves a moderate debuff."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "deteriorate"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "energy, holy, debuff, physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
+            "minDamage": {
+                "name": "minDamage",
+                "basicInfo": "1.5*[wis/8]"
+            },
+            "maxDamage": {
+                "name": "maxDamage",
+                "basicInfo": "1.5*[wis/4]"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Necromancer"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 58,
+            "endLineNumber": 79,
+            "filePath": "src/character/spells/debuffs/single/Siphon.coffee",
+            "fileName": "Siphon.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "basicInfo": "-5% STR"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "-5% DEX"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "-5% CON"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "-5% AGI"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "-5% WIS"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "-5% INT"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "-5% HP"
+                },
+                {
+                    "name": "effect",
+                    "basicInfo": "vampirism"
+                }
+            ],
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Necromancer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "(maxHp-currentHp)/2"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "75"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This spell does a moderate amount of damage, and leeches it back to the caster as HP. It also leaves a major debuff."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "wither"
+            },
+            "element": {
+                "name": "element",
+                "basicInfo": "energy, holy, debuff, physical"
+            },
+            "targets": {
+                "name": "targets",
+                "type": "enemy",
+                "basicInfo": "1"
+            },
+            "minDamage": {
+                "name": "minDamage",
+                "basicInfo": "1.5*[wis/8]"
+            },
+            "maxDamage": {
+                "name": "maxDamage",
+                "basicInfo": "1.5*[wis/4]"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Necromancer"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
             "lineNumber": 9,
             "endLineNumber": 22,
             "filePath": "src/character/spells/heals/multi/CureGroup.coffee",
@@ -14186,13 +14857,6 @@
             "endLineNumber": 37,
             "filePath": "src/character/spells/heals/single/Cure.coffee",
             "fileName": "Cure.coffee",
-            "prerequisite": [
-                {
-                    "name": "prerequisite",
-                    "type": "collectible",
-                    "basicInfo": "Cleric's Text"
-                }
-            ],
             "requirement": [
                 {
                     "name": "requirement",
@@ -14208,6 +14872,11 @@
                     "name": "requirement",
                     "type": "level",
                     "basicInfo": "10"
+                },
+                {
+                    "name": "requirement",
+                    "type": "collectible",
+                    "basicInfo": "Cleric's Text"
                 }
             ],
             "desc": {
@@ -14357,6 +15026,13 @@
             "endLineNumber": 24,
             "filePath": "src/character/spells/magical/elemental/FrostBite.coffee",
             "fileName": "FrostBite.coffee",
+            "effect": [
+                {
+                    "name": "effect",
+                    "type": "25%-chance",
+                    "basicInfo": "STUN"
+                }
+            ],
             "requirement": [
                 {
                     "name": "requirement",
@@ -14401,7 +15077,7 @@
             },
             "duration": {
                 "name": "duration",
-                "basicInfo": "3 rounds effect {25%-chance} STUN"
+                "basicInfo": "3 rounds"
             },
             "category": {
                 "name": "category",
@@ -14815,13 +15491,6 @@
             "endLineNumber": 67,
             "filePath": "src/character/spells/magical/energy/EnergyMissile.coffee",
             "fileName": "EnergyMissile.coffee",
-            "prerequisite": [
-                {
-                    "name": "prerequisite",
-                    "type": "collectible",
-                    "basicInfo": "Mage's Tome"
-                }
-            ],
             "requirement": [
                 {
                     "name": "requirement",
@@ -14837,6 +15506,11 @@
                     "name": "requirement",
                     "type": "level",
                     "basicInfo": "1"
+                },
+                {
+                    "name": "requirement",
+                    "type": "collectible",
+                    "basicInfo": "Mage's Tome"
                 }
             ],
             "desc": {
@@ -15087,6 +15761,45 @@
             "category": {
                 "name": "category",
                 "basicInfo": "Cleric"
+            },
+            "package": {
+                "name": "package",
+                "basicInfo": "Spells"
+            }
+        },
+        {
+            "lineNumber": 27,
+            "endLineNumber": 36,
+            "filePath": "src/character/spells/misc/Summon.coffee",
+            "fileName": "Summon.coffee",
+            "requirement": [
+                {
+                    "name": "requirement",
+                    "type": "class",
+                    "basicInfo": "Necromancer"
+                },
+                {
+                    "name": "requirement",
+                    "type": "mp",
+                    "basicInfo": "0.15*maxMp"
+                },
+                {
+                    "name": "requirement",
+                    "type": "level",
+                    "basicInfo": "85"
+                }
+            ],
+            "desc": {
+                "name": "desc",
+                "basicInfo": "This spell summons a variety of monsters under the command of the caster."
+            },
+            "name": {
+                "name": "name",
+                "basicInfo": "summon"
+            },
+            "category": {
+                "name": "category",
+                "basicInfo": "Necromancer"
             },
             "package": {
                 "name": "package",
@@ -16474,11 +17187,11 @@
             }
         }
     ],
-    "startTime": 1421375530147,
-    "endTime": 1421375530289,
+    "startTime": 1421817483700,
+    "endTime": 1421817483792,
     "git": {
-        "short": "b4e2693",
-        "long": "b4e26931c0b8620254a6253ec23c83b9d66d1391",
+        "short": "14fc1de",
+        "long": "14fc1de7ed4f4ce2cf4210d81e04d3a0a91d910d",
         "branch": "master",
         "tag": "0.5.0"
     },
@@ -17177,6 +17890,152 @@
                     }
                 ]
             },
+            "Green Draygon": {
+                "respawn": 10800,
+                "availableScore": 5150,
+                "stats": {
+                    "class": "Mage",
+                    "hp": 28312,
+                    "mp": 53000,
+                    "level": 53,
+                    "str": 230,
+                    "int": 3370,
+                    "agi": 570,
+                    "wis": 1800,
+                    "con": 876,
+                    "venom": 2,
+                    "poison": 2
+                },
+                "items": [
+                    {
+                        "name": "Noxious Amulet",
+                        "dropPercent": 80
+                    }
+                ]
+            },
+            "Fighter Guardian": {
+                "respawn": 10800,
+                "availableScore": 3700,
+                "stats": {
+                    "class": "Fighter",
+                    "hp": 23200,
+                    "level": 40,
+                    "str": 2000,
+                    "con": 1120,
+                    "dex": 400,
+                    "defense": 1,
+                    "offense": 1,
+                    "glowing": 1
+                },
+                "items": [
+                    {
+                        "name": "Guardian Longsword",
+                        "dropPercent": 80
+                    }
+                ]
+            },
+            "Mage Guardian": {
+                "respawn": 10800,
+                "availableScore": 2400,
+                "stats": {
+                    "class": "Mage",
+                    "hp": 26705,
+                    "mp": 44000,
+                    "level": 44,
+                    "str": 400,
+                    "int": 2015,
+                    "wis": 700,
+                    "con": 100,
+                    "fire": 350,
+                    "earth": 350,
+                    "crit": 3,
+                    "lethal": 1,
+                    "glowing": 1
+                },
+                "items": [
+                    {
+                        "name": "Guardian Staff",
+                        "dropPercent": 80
+                    }
+                ]
+            },
+            "Cleric Guardian": {
+                "respawn": 10800,
+                "availableScore": 2400,
+                "stats": {
+                    "class": "Cleric",
+                    "hp": 35000,
+                    "mp": 48000,
+                    "level": 48,
+                    "str": 1950,
+                    "int": 1000,
+                    "wis": 1950,
+                    "dex": 600,
+                    "agi": 500,
+                    "con": 825,
+                    "defense": 2,
+                    "sturdy": 1,
+                    "glowing": 1
+                },
+                "items": [
+                    {
+                        "name": "Guardian Mace",
+                        "dropPercent": 80
+                    }
+                ]
+            },
+            "Generalist Guardian": {
+                "respawn": 10800,
+                "availableScore": 2400,
+                "stats": {
+                    "class": "Generalist",
+                    "hp": 35000,
+                    "mp": 15000,
+                    "level": 52,
+                    "str": 1800,
+                    "int": 1800,
+                    "dex": 1500,
+                    "agi": 1200,
+                    "wis": 900,
+                    "con": 900,
+                    "luck": 100,
+                    "parry": 1,
+                    "crit": 1,
+                    "glowing": 1
+                },
+                "items": [
+                    {
+                        "name": "Guardian Guidebook",
+                        "dropPercent": 80
+                    }
+                ]
+            },
+            "Guardian Lord": {
+                "respawn": 10800,
+                "availableScore": 5150,
+                "stats": {
+                    "class": "Fighter",
+                    "hp": 73000,
+                    "level": 60,
+                    "str": 2500,
+                    "dex": 1500,
+                    "agi": 1500,
+                    "con": 2000,
+                    "luck": 100,
+                    "sturdy": 1,
+                    "defense": 1,
+                    "offense": 1,
+                    "parry": 1,
+                    "crit": 2,
+                    "glowing": 2
+                },
+                "items": [
+                    {
+                        "name": "Guardian Tower Shield",
+                        "dropPercent": 80
+                    }
+                ]
+            },
             "Gryffyndor House Representative": {
                 "respawn": 10800,
                 "availableScore": 2400,
@@ -17447,6 +18306,58 @@
                 "con": 190,
                 "fire": 10000
             },
+            "Noxious Amulet": {
+                "type": "neck",
+                "int": 250,
+                "fire": 100,
+                "water": 100,
+                "thunder": 100,
+                "earth": 100,
+                "ice": 100,
+                "venom": 1,
+                "poison": 1
+            },
+            "Guardian Longsword": {
+                "type": "mainhand",
+                "str": 450,
+                "con": 350,
+                "offense": 1,
+                "glowing": 1
+            },
+            "Guardian Staff": {
+                "type": "mainhand",
+                "int": 350,
+                "wis": 50,
+                "lethal": 1,
+                "crit": 3,
+                "glowing": 1
+            },
+            "Guardian Mace": {
+                "type": "mainhand",
+                "str": 100,
+                "wis": 900,
+                "con": 50,
+                "hpregen": 250,
+                "glowing": 1
+            },
+            "Guardian Guidebook": {
+                "type": "mainhand",
+                "str": 400,
+                "dex": 400,
+                "agi": 400,
+                "int": 400,
+                "wis": 400,
+                "luck": 1,
+                "glowing": 1
+            },
+            "Guardian Tower Shield": {
+                "type": "offhand",
+                "str": 1000,
+                "con": 1000,
+                "conPercent": 5,
+                "defense": 2,
+                "glowing": 1
+            },
             "Gryffyndor Sword": {
                 "type": "mainhand",
                 "int": 350,
@@ -17628,7 +18539,7 @@
                 {
                     "type": "blessXpParty",
                     "min": 1,
-                    "max": 650,
+                    "max": 3500,
                     "party": 1
                 },
                 {
@@ -17644,7 +18555,7 @@
                 {
                     "type": "blessGoldParty",
                     "min": 1,
-                    "max": 2000,
+                    "max": 4500,
                     "party": 1
                 },
                 {
@@ -17660,7 +18571,7 @@
                 {
                     "type": "battle",
                     "min": 1,
-                    "max": 2500
+                    "max": 3500
                 }
             ],
             "eventEffects": {
@@ -19463,6 +20374,12 @@
                     "map": "Minotaur Maze -3",
                     "formalName": "the MagicalMonster Trainer",
                     "x": 22,
+                    "y": 2
+                },
+                "necromancer": {
+                    "map": "Dark Tower -1",
+                    "formalName": "the Necromancer Trainer",
+                    "x": 9,
                     "y": 2
                 },
                 "pirate": {
