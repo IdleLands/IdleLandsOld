@@ -78,13 +78,17 @@ class Summon extends Spell
 
     monster.equipment.push new Equipment basePhylact
 
-    message = "%casterName summoned <player.name>#{monster.getName()}</player.name> to the battlefield!"
+    message = "%casterName summoned <player.name>#{monster.getName()}</player.name> to the battlefield#{if isFail then ', but failed, and it ended up as a foe' else ''}!"
     @broadcast @caster, message
-    @caster.party.recruit [monster]
 
-    @caster.party.currentBattle.turnOrder.push monster
+    otherParty = _.sample _.without @caster.party.currentBattle.parties, @caster.party
+    joinParty = if isFail then otherParty else @caster.party
 
-    @caster.special.add 1 if not isFail
+    joinParty.recruit [monster]
+
+    monster.party.currentBattle.turnOrder.push monster
+
+    @caster.special.add chosenBaseMonster.slotCost if not isFail
 
     monster.on "combat.self.killed", =>
       monster.canFade = yes
@@ -96,7 +100,7 @@ class Summon extends Spell
         return
 
       return if not monster.canFade
-      @caster.special.sub 1 if not isFail
+      @caster.special.sub chosenBaseMonster.slotCost if not isFail
       monster.party.playerLeave monster, yes
       @caster.party.currentBattle.calculateTurnOrder()
 
