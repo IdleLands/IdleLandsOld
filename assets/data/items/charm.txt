@@ -57,6 +57,7 @@
 # luck/wis
 "bauble"  luck=1 wis=7
 "bead"  luck=5 wis=50
+"superstitious button" luck=50 wis=100
 
 # str/wis
 "10 pound earring" str=40 wis=-5
