@@ -4340,6 +4340,24 @@
                  "width":0,
                  "x":240,
                  "y":3216
+                }, 
+                {
+                 "gid":35,
+                 "height":0,
+                 "name":"ToDopple-1",
+                 "properties":
+                    {
+                     "destx":"11",
+                     "desty":"2",
+                     "map":"Doppleganger Lair -1",
+                     "movementType":"fall"
+                    },
+                 "rotation":0,
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":816,
+                 "y":3488
                 }],
          "opacity":1,
          "type":"objectgroup",
