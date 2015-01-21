@@ -227,6 +227,58 @@
         "con": 190,
         "fire": 10000
     },
+    "Noxious Amulet": {
+        "type": "neck",
+        "int": 250,
+        "fire": 100,
+	"water": 100,
+	"thunder": 100,
+	"earth": 100,
+	"ice": 100,
+        "venom": 1,
+	"poison": 1
+    },
+    "Guardian Longsword": {
+        "type": "mainhand",
+        "str": 450,
+        "con": 350,
+	"offense": 1,
+        "glowing": 1
+    },
+    "Guardian Staff": {
+        "type": "mainhand",
+        "int": 350,
+	"wis": 50,
+        "lethal": 1,
+        "crit": 3,
+	"glowing": 1
+    },
+    "Guardian Mace": {
+        "type": "mainhand",
+        "str": 100,
+	"wis": 900,
+        "con": 50,
+	"hpregen": 250,
+        "glowing": 1
+    },
+    "Guardian Guidebook": {
+        "type": "mainhand",
+	"str": 400,
+	"dex": 400,
+	"agi": 400,
+	"int": 400,
+	"wis": 400,
+	"luck": 1,
+	"glowing": 1
+    },
+    "Guardian Tower Shield": {
+        "type": "offhand",
+        "str": 1000,
+        "con": 1000,
+	"conPercent": 5,
+	"defense": 2,
+        "glowing": 1
+    },
     "Gryffyndor Sword": {
         "type": "mainhand",
         "int": 350,
