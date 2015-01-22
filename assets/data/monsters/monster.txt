@@ -1,4 +1,5 @@
 # misc
+"tetradigm"             level=1 class=SandwichArtist int=-1000
 "rarespawn"             level=1
 "chunk of meat"         level=4
 "blob of meat"          level=10
@@ -15,7 +16,6 @@
 "subsonic wave"         level=64
 "nightmare"             level=70
 "mysterious presence"   level=89
-"tetradigm"             level=97 class=SandwichArtist int=-1000
 
 # town creatures
 "pedestrian"            zone=town level=2
@@ -130,12 +130,12 @@
 "ghost"                     zone=town level=26 class=Fighter dex=150 str=200 agi=-100 con=200
 "healghost"                 zone=town level=29 class=Cleric wis=1000 con=-100 str=-100 dex=-100
 "spiteghost"                zone=town level=33 class=Barbarian con=300 str=300 dex=200
-"ghoul"                     zone=town level=37
+"ghoul"                     zone=town level=37 poison=10
 "poltergeist"               zone=town level=41
 "spooky thing"              zone=town level=45 dex=1500 agi=1500
 "vengeful soul"             zone=town level=50 str=3500
 "ghost pirate"              zone=town level=52 con=2500 str=1500
-"vampire"                   zone=town level=55 str=2000 int=1000 dex=1000
+"vampire"                   zone=town level=55 str=2000 int=1000 dex=1000 vampire=4
 "vampyre"                   zone=town level=55 class=Mage int=1000 fire=5000
 "abomination"               zone=town level=65 class=Barbarian str=2000 con=2000 dex=1000 agi=1000 hp=10000
 "wandering spirit"          zone=town level=75 class=Rogue str=3000 dex=5000 agi=5000
@@ -157,8 +157,8 @@
 "succubus"                  zone=other level=69
 "deity avatar"              zone=other level=75
 "anonymous"                 zone=other level=77 class=Bitomancer str=4500 con=4500 int=2000
-"demigod"                   zone=other level=81 class=Random agi=1000 dex=1000 wis=1000 con=1000 luck=1000 int=1000 str=1000
-"incubator"                 zone=other level=120 class=Mage int=40000
+"demigod"                   zone=other level=81 class=Random agi=5000 dex=5000 wis=5000 con=5000 luck=1000 int=5000 str=5000
+"incubator"                 zone=other level=100 class=Mage int=40000
 
 # other civilized beings
 "will-o-wisp"               level=3 hp=100
@@ -225,8 +225,11 @@
 "druid"                 zone=forest level=9 class=Druid wis=40 str=10 dex=10 int=30
 "sandwich artist"       zone=forest level=10 class=SandwichArtist dex=70 str=30 wis=60
 "archer"                zone=forest level=11 class=Archer
-"pirate"                zone=forest level=12 class=Fighter
+"pirate"                zone=forest level=12 class=Pirate
 "bitomancer"            zone=forest level=13 class=Bitomancer int=100 agi=20
+"magical monster"       zone=forest level=14 class=MagicalMonster
+"monster"               zone=forest level=15 class=Monster
+"necromancer"           zone=forest level=13 class=Necromancer
 
 # gnomish beings
 "gnome"                 zone=forest level=13
@@ -243,6 +246,7 @@
 "gnome swashbuckler"    zone=water  level=13 class=Pirate con=100 str=50
 "gnome bitwizard"       zone=forest level=13 class=Bitomancer int=100 agi=30 dex=50
 "gnome scout"           zone=forest level=13 class=Archer dex=100 agi=30 con=50
+"gnome deadwizard"      zone=forest level=13 class=Necromancer dex=50 str=50 wis=200
 "procrastination gnome" zone=forest level=1
 "garden gnome"          zone=town   level=1
 
@@ -262,6 +266,7 @@
 "human buccaneer"       zone=town level=18 class=Pirate con=500 str=500
 "human bitomancer"      zone=town level=18 class=Bitomancer int=500 agi=250 dex=250
 "human archer"          zone=town level=18 class=Archer dex=500 agi=300 str=200
+"human necromancer"     zone=town level=18 class=Necromancer dex=400 str=400 wis=700
 "human professor"
 
 # kobold beings
@@ -279,6 +284,7 @@
 "kobold privateer"      zone=water level=26 class=Pirate con=1000 str=750
 "kobold computerer"     zone=cave level=26 class=Bitomancer int=750 str=500
 "kobold ranger"         zone=cave level=26 class=Archer dex=750 agi=500
+"kobold deathsinger"    zone=cave level=26 class=Necromancer dex=700 str=700 wis=1000
 
 # orcish beings
 "orc"                   zone=cave level=35
@@ -297,6 +303,7 @@
 "orc drunkard"          zone=cave level=35 class=Pirate con=1000 str=500
 "orc technologist"      zone=cave level=35 class=Bitomancer int=1000 dex=500
 "orc stickflinger"      zone=cave level=35 class=Archer dex=1000 agi=500
+"orc darkwizard"        zone=cave level=35 class=Necromancer dex=1000 str=1000 wis=800
 
 # skeletal beings
 "skeleton"              zone=cave level=41
@@ -313,21 +320,23 @@
 "skeleton pirate"       zone=cave level=41 class=Pirate con=1350 str=550
 "skeleton bitmaster"    zone=cave level=41 class=Bitomancer int=1900
 "skeleton archer"       zone=cave level=41 class=Archer dex=1800
+"skeleton deathchanter" zone=cave level=41 class=Necromancer dex=300 str=300 wis=1400
 
 # half-orc beings
-"half-orc"              zone=cave level=46
-"half-orc shuffler"     zone=cave level=46 class=Random str=600 dex=600 int=600 con=600 wis=600 agi=600 luck=100
-"half-orc nudist"       zone=cave level=46 class=Generalist str=600 dex=600 int=600 con=600 wis=600 agi=600 luck=100
-"half-orc giant"        zone=cave level=46 class=Barbarian str=2500
-"half-orc fighter"      zone=cave level=46 class=Fighter str=1200 dex=400 con=500
-"half-orc magicer"      zone=cave level=46 class=Mage int=2100
-"half-orc jester"       zone=cave level=46 class=Jester luck=700
-"half-orc hider"        zone=cave level=46 class=Rogue str=1000 agi=800 dex=400
-"half-orc healer"       zone=cave level=46 class=Cleric wis=1800 con=400
-"half-orc sandwicher"   zone=cave level=46 class=SandwichArtist dex=1500 str=300 wis=500
-"half-orc cave pirate"  zone=cave level=46 class=Pirate con=1500 str=700
-"half-orc byter"        zone=cave level=46 class=Bitomancer int=1500 dex=500 str=300
-"half-orc hunter"       zone=cave level=46 class=Archer dex=1700 agi=600
+"half-orc"                  zone=cave level=46
+"half-orc shuffler"         zone=cave level=46 class=Random str=600 dex=600 int=600 con=600 wis=600 agi=600 luck=100
+"half-orc nudist"           zone=cave level=46 class=Generalist str=600 dex=600 int=600 con=600 wis=600 agi=600 luck=100
+"half-orc giant"            zone=cave level=46 class=Barbarian str=2500
+"half-orc fighter"          zone=cave level=46 class=Fighter str=1200 dex=400 con=500
+"half-orc magicer"          zone=cave level=46 class=Mage int=2100
+"half-orc jester"           zone=cave level=46 class=Jester luck=700
+"half-orc hider"            zone=cave level=46 class=Rogue str=1000 agi=800 dex=400
+"half-orc healer"           zone=cave level=46 class=Cleric wis=1800 con=400
+"half-orc sandwicher"       zone=cave level=46 class=SandwichArtist dex=1500 str=300 wis=500
+"half-orc cave pirate"      zone=cave level=46 class=Pirate con=1500 str=700
+"half-orc byter"            zone=cave level=46 class=Bitomancer int=1500 dex=500 str=300
+"half-orc hunter"           zone=cave level=46 class=Archer dex=1700 agi=600
+"half-decaying half-orc"    zone=cave level=46 class=Necromancer dex=800 str=800 wis=1800
 
 # goblish beings
 "goblin"                zone=cave level=51
@@ -343,6 +352,7 @@
 "goblin corsair"        zone=cave level=51 class=Pirate con=2000 str=750
 "goblin bitbitbit"      zone=cave level=51 class=Bitomancer int=1700 str=700 dex=200
 "goblin shooter"        zone=cave level=51 class=Archer dex=1700 agi=700 con=200
+"goblin evilspirit"     zone=cave level=51 class=Necromancer dex=800 str=800 wis=1800
 
 # giant beings
 "giant"                 zone=cave level=57
@@ -361,6 +371,7 @@
 "half-elf giant"        zone=cave level=57 class=SandwichArtist dex=3000
 "half-giant elf"        zone=cave level=57 class=Archer dex=3000
 "half-drunk giant"      zone=cave level=57 class=Pirate con=2000 str=1000
+"half-dead giant"       zone=cave level=57 class=Necromancer dex=1300 str=1300 wis=1500
 
 # elvish beings
 "elf"                   zone=town level=63
@@ -376,6 +387,7 @@
 "elf privateer"         zone=town level=63 class=Pirate str=5500 con=5500 dex=4000 agi=1000
 "elf bitcaster"         zone=town level=63 class=Bitomancer int=2500 wis=2500 agi=2500 con=2500 luck=500
 "elf bowmaster"         zone=town level=63 class=Archer dex=5000 agi=5000 str=3500 con=2500 luck=200
+"elf necromancer"       zone=cave level=63 class=Necromancer dex=2500 str=2500 wis=5000
 
 # dwarven beings
 "dwarf"                 zone=town level=69
@@ -387,7 +399,7 @@
 "dwarf jester"          zone=town level=69 class=Jester luck=6500
 "dwarf king"            zone=town level=69 class=Pirate str=6500 con=6000 dex=3500 agi=2500
 "dwarf queen"           zone=town level=69 class=Bitomancer int=4500 wis=2500 agi=2500 con=2500 luck=500
-"dwarf shadowknight"    zone=town level=69 class=Druid
+"dwarf shadowknight"    zone=town level=69 class=Necromancer wis=5000 dex=5000 str=5000
 "dwarf sandwichknight"  zone=town level=69 class=SandwichArtist str=4500 int=4500 wis=1500 luck=-100 agi=1500
 "dwarf shadowcaster"    zone=town level=69 class=Mage int=5000 wis=1500 con=2500 agi=1500 luck=200
 "dwarf shadowdancer"    zone=town level=69 class=Rogue dex=5000 agi=5000 con=5000
@@ -410,6 +422,7 @@
 "pygmy thief"           zone=cave level=76 class=Rogue dex=7000 agi=7000 str=6000 con=1000
 "pygmy crier"           zone=cave level=76 class=Bard int=5500 wis=5500 con=2500 str=2500
 "pygmy shooter"         zone=cave level=76 class=Archer dex=10000 agi=5000 str=1500
+"pygmy ritualist"       zone=cave level=76 class=Necromancer wis=10000 dex=3500 str=3500 con=1000 hp=1000
 
 # ogre beings
 "ogre"                  zone=cave level=85
@@ -426,6 +439,7 @@
 "ogre singer"           zone=cave level=85 class=Bard int=6500 wis=6500 con=2500 str=2500
 "ogre pewpewer"         zone=cave level=85 class=Archer dex=10000 agi=5000 str=5000
 "ogre roidrager"        zone=cave level=85 class=Barbarian str=12000 con=12000
+"ogre scarycaster"      zone=cave level=85 class=Necromancer wis=7500 dex=1500 str=9500 con=2000 hp=3000
 
 # holywater beings
 "holywater"                 zone=town level=93
@@ -439,9 +453,10 @@
 "holywater jester"          zone=town level=93 class=Jester luck=9000
 "holywater rogue"           zone=town level=93 class=Rogue dex=7000 agi=7000 str=5000 con=5000
 "holywater sandwich artist" zone=town level=93 class=SandwichArtist int=3500 str=3500 wis=750 luck=-200 agi=2500 con=2500
-"holywater buccaneer"       zone=town level=93 class=Pirate str=75000 dex=1500 con=7500 agi=2500
+"holywater buccaneer"       zone=town level=93 class=Pirate str=7500 dex=1500 con=7500 agi=2500
 "holywater bitomancer"      zone=town level=93 class=Bitomancer int=7500 wis=1500 agi=3500 con=4500
 "holywater archer"          zone=town level=93 class=Archer dex=8500 agi=4500 str=4500 con=2500
+"holywater evil cleric"     zone=town level=93 class=Necromancer wis=12000 dex=7500 str=5500 hp=5000
 
 # shadowflame beings
 "shadowflame"                 zone=town level=99
@@ -458,6 +473,7 @@
 "shadowflame buccaneer"       zone=town level=99 class=Pirate str=75000 dex=1500 con=7500 agi=2500
 "shadowflame bitomancer"      zone=town level=99 class=Bitomancer int=10000 wis=750 agi=2500 con=1500
 "shadowflame archer"          zone=town level=99 class=Archer dex=2500 agi=2500 str=10000 con=1500
+"shadowflame spirit twister"  zone=town level=99 class=Necromancer wis=15000 dex=6500 str=6500 hp=15000
 
 # kin beings
 "embryo-kin"            zone=town   level=1     class=Jester
@@ -514,6 +530,6 @@
 "dryad-kin"             zone=forest level=93    class=Jester
 "omni-kin"              zone=cave   level=94    class=Jester
 "sylveon-kin"           zone=cave   level=95    class=Jester
-"kawaii-kin"            zone=town   level=110   class=Jester
-"tableflip-kin"         zone=town   level=115   class=Jester
-"dickbutt-kin"          zone=town   level=120   class=Jester
+"kawaii-kin"            zone=town   level=96   class=Jester
+"tableflip-kin"         zone=town   level=97   class=Jester
+"dickbutt-kin"          zone=town   level=100   class=Jester

@@ -38,9 +38,9 @@ class DoubleTap extends Spell
      * @requirement {class} MagicalMonster
      * @requirement {mp} 1000
      * @requirement {level} 25
+     * @requirement {collectible} Fighter's Manual
      * @targets {enemy} 1
      * @element physical
-     * @prerequisite {collectible} Fighter's Manual
      * @category MagicalMonster
      * @package Spells
      */`

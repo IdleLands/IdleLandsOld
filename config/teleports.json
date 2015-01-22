@@ -238,6 +238,12 @@
             "x": 22,
             "y": 2
         },
+        "necromancer": {
+            "map": "Dark Tower -1",
+            "formalName": "the Necromancer Trainer",
+            "x": 9,
+            "y": 2
+        },
         "pirate": {
             "map": "Norkos",
             "formalName": "the Pirate Trainer",

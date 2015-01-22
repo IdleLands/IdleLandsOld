@@ -60,7 +60,7 @@ class Event
 
   ignoreKeys: ['_calcScore', 'enchantLevel']
 
-  specialStats: [
+  specialStats: Event::specialStats = [
     'absolute'
     'aegis'
     'crit'

@@ -18,7 +18,7 @@ class FrostBite extends Spell
       * @minDamage [int/6]
       * @maxDamage [int/4]
       * @duration 3 rounds
-      * effect {25%-chance} STUN
+      * @effect {25%-chance} STUN
       * @category Mage
       * @package Spells
     */`

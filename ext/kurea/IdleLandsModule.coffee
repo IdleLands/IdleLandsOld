@@ -339,6 +339,7 @@ module.exports = (Module) ->
       `/**
         * Reset a password for a player.
         *
+        * @name idle-resetpassword
         * @gmOnly
         * @syntax !idle-resetpassword "identifier" "newPassword"
         * @example !idle-resetpassword "local-server/Danret" "my new awesome password"

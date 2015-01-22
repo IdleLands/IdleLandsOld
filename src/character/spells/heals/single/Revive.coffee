@@ -39,7 +39,7 @@ class Revive extends Spell
     Spell.areAnyPartyMembersDead caster
 
   determineTargets: ->
-    @targetAllAllies includeDead: yes, includeLiving: no
+    @targetSomeAllies includeDead: yes, includeLiving: no
 
   calcDamage: ->
     super() + (25 * @spellPower)

@@ -27,8 +27,8 @@ class SweepingGeneralization extends Spell
      * @requirement {class} MagicalMonster
      * @requirement {mp} 600
      * @requirement {level} 15
+     * @requirement {collectible} Generalist's Guidebook
      * @element physical
-     * @prerequisite {collectible} Generalist's Guidebook
      * @targets {enemy} all
      * @minDamage 1.3*[str+dex]/4
      * @maxDamage 1.3*[str+dex]/2

@@ -33,11 +33,21 @@ class Spell
       .filter (member) -> member.hp.atMin()
       .value()
 
+  deadEnemies = @deadEnemies = (player) ->
+    return [] if not player.party?.currentBattle
+    _(player.party.currentBattle.turnOrder)
+      .reject (member) -> member.party is player.party
+      .filter (member) -> member.hp.atMin()
+      .value()
+
   @areAnyPartyMembersBelowMaxHealth = (player, min = 0) ->
     gpmbmh(player).length > min
 
   @areAnyPartyMembersDead = (player) ->
     deadPartyMembers(player).length > 0
+
+  @areAnyEnemiesDead = (player) ->
+    deadEnemies(player).length > 0
 
   ## / utility chooser functions
 
@@ -104,12 +114,21 @@ class Spell
 
   ## / targetting functions
 
+  @hasCollectibles = Spell::hasCollectibles = hasCollectibles = (player, collectibles = []) ->
+    hasAll = yes
+
+    _.each collectibles, (collectible) ->
+      hasAll = no if not _.findWhere player.collectibles, {name: collectible}
+
+    hasAll
+
   calcTier: (player) ->
     tiers = _.compact @tiers
     return if tiers.length is 0
-    spellTier = _.reject tiers, (tier) -> (tier.level > player.level.getValue()) or (player.professionName != tier.class)
+
+    spellTier = _.reject tiers, (tier) => (tier.level > player.level.getValue()) or (player.professionName isnt tier.class) or (not player.isMonster and not (@hasCollectibles player, tier.collectibles))
     spellTier = _.max spellTier, (tier) -> tier.level
-    @name = spellTier.name
+    @tierName = @name = spellTier.name
     @spellPower = spellTier.spellPower
     if _.isFunction spellTier.cost
       @cost = spellTier.cost.bind null, @caster
@@ -243,6 +262,7 @@ class Spell
     premsg = @caster.messages?[@__proto__.constructor.name]
     message = "<#{@caster.name}> #{premsg}"
     @game.currentBattle?.broadcast @caster, message if premsg
+
 
     @game.errorHandler.captureMessage "ERROR NO CASTER FOR #{@name}" if not @caster
 
