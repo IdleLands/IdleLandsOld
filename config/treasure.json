@@ -23,6 +23,49 @@
     "agi": 300,
     "dex": 300
   },
+  "Pirate Hat": {
+    "type": "head",
+    "con": 150,
+    "agi": 150,
+    "dex": 450,
+    "luck": 50
+  },
+  "Pirate Hook": {
+    "type": "offhand",
+    "agi": 450,
+    "dex": 150,
+    "punish": 1
+  },
+  "Star Amulet": {
+    "type": "neck",
+    "str": 25,
+    "agi": 25,
+    "dex": 25,
+    "con": 25,
+    "int": 25,
+    "wis": 25,
+    "luck": 25,
+    "strPercent": 3,
+    "agiPercent": 3,
+    "dexPercent": 3,
+    "conPercent": 3,
+    "intPercent": 3,
+    "wisPercent": 3,
+    "luckPercent": 3
+  },
+  "Bag of Booty": {
+    "type": "mainhand",
+    "str": 450,
+    "gold": 15,
+    "goldPercent": 3
+  },
+  "Seajewel": {
+    "type": "charm",
+    "wis": 450,
+    "water": 1000,
+    "thunder": 1000,
+    "mp": 500
+  },
   "Red Tunic": {
     "type": "body",
     "str": 600,
