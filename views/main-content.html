@@ -38,7 +38,7 @@
 
                     <ui-select on-select="doFilter($item)" ng-model="searchValue" class="searchbox" bs-affix data-offset-top="-15" ng-if="config.options.nav.useSearchBar">
                         <ui-select-match placeholder="Search doks...">{{$select.selected.name}}</ui-select-match>
-                        <ui-select-choices repeat="dok in data.parsed | filter: $select.search">
+                        <ui-select-choices repeat="dok in flatData | filter: $select.search">
 
                             <div ng-if="isCategory(dok)">
                                 <span ng-bind-html="dok[config.keys.category].basicInfo | highlight: $select.search"></span>
@@ -60,20 +60,21 @@
             <div class="row hidden-xs hidden-sm">
                 <div class="col-md-12">
                     <div class="panel panel-default" bs-affix data-offset-top="-71">
-                        <div class="panel-heading">Navigate Doks</div>
+                        <div class="panel-heading">Navigate Doks <span ng-if="pageParams.filter">(filtered: {{pageParams.filter}})</span></div>
                         <div class="panel-body nav-container" ng-class="{'no-padding-top': config.options.nav.categorySeparate || config.options.nav.mainTypeRight}">
 
-                            <div ng-repeat="category in orderedData" ng-hide="urlParams.category && category._name !== urlParams.category">
-                                <ng-include src="'nav-template'" ng-init="mainObj = category" ng-class="{'special-category': config.options.nav.categorySeparate}"></ng-include>
+                            <div ng-repeat="category in data.parsed" ng-hide="urlParams.category && category._name !== urlParams.category">
+                                <!--<ng-include src="'nav-template'" ng-init="mainObj = category" ng-class="{'special-category': config.options.nav.categorySeparate}"></ng-include>-->
 
                                 <div ng-repeat="mainType in category._children track by $index"  ng-hide="urlParams.mainType && mainType._name !== urlParams.mainType">
                                     <ng-include src="'nav-template'" ng-hide="urlParams.subType" ng-init="mainObj = mainType" ng-class="{'text-right special-main-type': config.options.nav.mainTypeRight}"></ng-include>
 
                                     <div ng-repeat="mainObj in mainType._children" ng-hide="urlParams.subType && mainObj[config.keys.subType].basicInfo !== urlParams.subType">
-                                        <ng-include src="'nav-template'"></ng-include>
+                                        <ng-include src="'nav-template'" ng-if="checkItemVisibility(category, mainType, mainObj)"></ng-include>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -84,15 +85,16 @@
                 <div class="col-md-12" ncy-breadcrumb></div>
             </div>
             <div class="row">
-                <div ng-repeat="category in orderedData" ng-hide="urlParams.category && category._name !== urlParams.category">
+                <div ng-repeat="category in data.parsed" ng-hide="urlParams.category && category._name !== urlParams.category">
 
                     <div ng-repeat="mainType in category._children track by $index" ng-hide="urlParams.mainType && mainType._name !== urlParams.mainType">
                         <ng-include src="'item-template'" ng-hide="urlParams.subType" ng-init="mainObj = mainType"></ng-include>
 
                         <div ng-repeat="mainObj in mainType._children" ng-hide="urlParams.subType && mainObj[config.keys.subType].basicInfo !== urlParams.subType">
-                            <ng-include src="'item-template'"></ng-include>
+                            <ng-include src="'item-template'" ng-if="checkItemVisibility(category, mainType, mainObj)"></ng-include>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -165,9 +167,9 @@
                             <div class="tag-simple-properties">
                                 <span class="tag-data-symbol"></span><span>{{tag.name}}</span>
                                 <span class="tag-data-type badge badge-default" ng-if="tag.value && tag.value.type">({{tag.value.type}})</span>
-                                <span class="tag-data-basic" ng-if="!_.isUndefined(tag.value.basicInfo)">{{tag.value.basicInfo}}</span>
+                                <span class="tag-data-basic" ng-if="tag.value.basicInfo">{{tag.value.basicInfo}}</span>
                             </div>
-                            <p class="tag-desc-item" ng-if="tag.value.extendedInfo">{{tag.value.extendedInfo}}</p>
+                            <p class="tag-desc-item" ng-if="!_.isUndefined(tag.value.extendedInfo)">{{tag.value.extendedInfo}}</p>
                         </li>
                     </ul>
                 </div>

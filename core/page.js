@@ -82,60 +82,8 @@ angular.module('doks', ['mgcrea.ngStrap', 'ui.router', 'ui.select', 'ncy-angular
                 .split('%filePath').join(dok.filePath);
         };
 
-        var cleanList = function(list) {
-            return _.uniq(_.compact(list));
-        };
-
-        var filterArray = function(dataSet, configKey) {
-            return cleanList(_.map(dataSet, function(item) {
-                var key = item[$scope.config.keys[configKey]];
-                return key ? key.basicInfo : null;
-            }));
-        };
-
-        var orderArray = function(mainKey, subKey, nameKey) {
-            var keys = $scope.config.keys;
-            var hasMainKey = function(value) { return value[keys[mainKey]]; };
-            var hasSubKey = function(value) { return value[keys[subKey]]; };
-            var data = _.filter($scope.data.parsed, hasMainKey);
-
-            return _(data)
-                .map(function(value) { return value[keys[mainKey]].basicInfo; })
-                .uniq()
-                .sortBy()
-                .map(function(category) {
-                    var matchesCategory = function(value) { return value[keys[mainKey]].basicInfo === category; };
-
-                    return {
-                        _name: category,
-                        _children: _(data)
-                            .filter(hasSubKey)
-                            .filter(matchesCategory)
-                            .map(function(value) { return value[keys[subKey]].basicInfo; })
-                            .uniq()
-                            .sortBy()
-                            .map(function(objectKey) {
-                                return _.assign({
-                                    _name: objectKey,
-                                    _children: _(data)
-                                        .filter(hasSubKey)
-                                        .filter(matchesCategory)
-                                        .filter(function(value) { return value[keys[subKey]].basicInfo === objectKey; })
-                                        .reject(function(value) { return value[keys[nameKey]] && value[keys[nameKey]].basicInfo === objectKey; })
-                                        .each(function(value) { value._props = $scope.propsAsArray(value); })
-                                        .value()
-                                }, _.findWhere(data, function(item) {
-                                    return item[keys[mainKey]].basicInfo === category &&
-                                        item[keys[subKey]] &&
-                                        item[keys[subKey]].basicInfo === objectKey &&
-                                        item[keys[nameKey]] &&
-                                        item[keys[nameKey]].basicInfo === objectKey;
-                                }));
-                            })
-                            .value()
-                    };
-                })
-                .value();
+        var filterArray = function(dataSet) {
+            return _.pluck(dataSet, '_name');
         };
 
         $http.get('config.json')
@@ -145,19 +93,15 @@ angular.module('doks', ['mgcrea.ngStrap', 'ui.router', 'ui.select', 'ncy-angular
                 $http.get('output.json')
                     .success(function(data) {
                         $scope.data = data;
+                        $scope.flatData = _.flatten(_.flatten($scope.data.parsed, '_children'), '_children');
+                        $scope.categories = filterArray($scope.data.parsed);
                     });
             });
-
-        $scope.$watch('data', function(newVal, oldVal) {
-            if(newVal === oldVal) return;
-
-            $scope.categories = filterArray($scope.data.parsed, 'category');
-            $scope.orderedData = orderArray('category', 'mainType', 'subType');
-        });
     }])
 
-    .controller('Content', ['$scope', '$stateParams', '$state', function($scope, $stateParams, $state) {
+    .controller('Content', ['$scope', '$stateParams', '$state', '$location', function($scope, $stateParams, $state, $location) {
         $scope.urlParams = $stateParams;
+        $scope.pageParams = $location.search();
         $scope._ = window._;
 
         $scope.contentFilter = {};
@@ -165,6 +109,15 @@ angular.module('doks', ['mgcrea.ngStrap', 'ui.router', 'ui.select', 'ncy-angular
         if($scope.urlParams.category) $scope.contentFilter[$scope.$parent.config.keys.category] = $scope.urlParams.category;
         if($scope.urlParams.mainType) $scope.contentFilter[$scope.$parent.config.keys.mainType] = $scope.urlParams.mainType;
         if($scope.urlParams.subType)  $scope.contentFilter[$scope.$parent.config.keys.subType]  = $scope.urlParams.subType;
+
+        $scope.checkItemVisibility = function(category, mainType, item) {
+            var filter = $scope.pageParams.filter;
+            if(!filter) {
+                return true;
+            }
+            filter = filter.toLowerCase();
+            return category._name.toLowerCase().indexOf(filter) !== -1 || mainType._name.toLowerCase().indexOf(filter) !== -1 || item[$scope.config.keys.subType].basicInfo.toLowerCase().indexOf(filter) !== -1;
+        };
 
         $scope.doFilter = function($item) {
             var category = $item[$scope.config.keys.category];
