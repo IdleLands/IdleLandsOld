@@ -288,9 +288,11 @@ class Player extends Character
       when "fall" then      message = "<player.name>#{@name}</player.name> has fallen from <event.transfer.from>#{dest.fromName}</event.transfer.from> to <event.transfer.destination>#{dest.destName}</event.transfer.destination>!"
       when "teleport" then  message = "<player.name>#{@name}</player.name> was teleported from <event.transfer.from>#{dest.fromName}</event.transfer.from> to <event.transfer.destination>#{dest.destName}</event.transfer.destination>!"
 
-    if @hasPersonality "Wheelchair"
-      if dest.movementType is "descend"
-        message = "<player.name>#{@name}</player.name> went crashing down in a wheelchair to <event.transfer.destination>#{dest.destName}</event.transfer.destination>."
+    if @hasPersonality "Wheelchair" and dest.movementType is "descend"
+      message = "<player.name>#{@name}</player.name> went crashing down in a wheelchair to <event.transfer.destination>#{dest.destName}</event.transfer.destination>."
+
+    if dest.customMessage
+      message = dest.customMessage.split("%playerName").join("<player.name>#{@name}</player.name>").split("%destName").join("<event.transfer.destination>#{dest.destName}</event.transfer.destination>")
 
     @emit "explore.transfer", @, @map
     @emit "explore.transfer.#{dest.movementType}", @, @map
