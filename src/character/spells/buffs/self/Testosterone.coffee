@@ -7,7 +7,7 @@ class Testosterone extends Spell
     `/**
       * This spell buffs the strength of the caster dramatically.
       *
-      * @name Testosterone
+      * @name testosterone
       * @requirement {class} Fighter
       * @requirement {mp} 300
       * @requirement {level} 4

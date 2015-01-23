@@ -8,7 +8,7 @@ class Fortify extends Spell
     `/**
       * This spell buffs the max HP of the caster.
       *
-      * @name Fortify
+      * @name fortify
       * @requirement {class} Generalist
       * @requirement {mp} 300
       * @requirement {level} 15
