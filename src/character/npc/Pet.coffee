@@ -43,7 +43,7 @@ class Pet extends Character
       toClass = new (require "../classes/Monster")()
       toClassName = "Monster"
 
-    @profession?.unload @
+    @profession?.unload? @
     @profession = toClass
     toClass.load @
     @professionName = toClassName
