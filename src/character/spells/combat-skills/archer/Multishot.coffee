@@ -32,6 +32,7 @@ class Multishot extends Spell
       * @targets {enemy} 1-3 (This spell will fail subsequent hits if all valid targets are dead.)
       * @minDamage [dex*0.2*2]
       * @maxDamage [dex*0.3*2]
+      * @category Archer
       * @package Spells
     */`
     {name: "triple shot", spellPower: 2, cost: 25, class: "Archer", level: 30}
