@@ -562,15 +562,18 @@ class Battle
       attacker.emit "combat.self.darkside.damage", darksideDamage
 
   emitEventToAll: (event, data) ->
-    _.forEach @turnOrder, (player) ->
-      if player is data
-        player.emit "combat.self.#{event}", data
-      else if data instanceof Player and player.party is data.party
-        player.emit "combat.ally.#{event}", data
-      else if data instanceof Player and player.party isnt data.party
-        player.emit "combat.enemy.#{event}", data
-      else if event and event not in ['turn.end', 'turn.start', 'flee']
-        player.emit "combat.#{event}", data
+    _.each @turnOrder, (player) ->
+
+      if data instanceof Player
+        if player is data
+          player.emit "combat.self.#{event}", data
+        else if data instanceof Player and player.party is data.party
+          player.emit "combat.ally.#{event}", data
+        else if data instanceof Player and player.party isnt data.party
+          player.emit "combat.enemy.#{event}", data
+
+      else if not (event in ['turn.end', 'turn.start', 'flee'])
+        player.emit "combat.#{event}"
 
   emitEventsTo: (event, to, data) ->
     _.forEach to, (player) ->
