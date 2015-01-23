@@ -16805,110 +16805,6 @@
                     "_name": "SandwichArtist",
                     "_children": [
                         {
-                            "lineNumber": 10,
-                            "endLineNumber": 23,
-                            "filePath": "src/character/spells/combat-skills/sandwichArtist/SandwichAlly.coffee",
-                            "fileName": "SandwichAlly.coffee",
-                            "requirement": [
-                                {
-                                    "name": "requirement",
-                                    "type": "class",
-                                    "basicInfo": "SandwichArtist"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "mp",
-                                    "basicInfo": "200"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "level",
-                                    "basicInfo": "10"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "This skill feeds an ally. As for what that means, that depends on the sandwich made."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Sandwich Ally"
-                            },
-                            "element": {
-                                "name": "element",
-                                "basicInfo": "physical"
-                            },
-                            "targets": {
-                                "name": "targets",
-                                "type": "ally",
-                                "basicInfo": "1"
-                            },
-                            "minHeal": {
-                                "name": "minHeal",
-                                "basicInfo": "dex/1.5"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "SandwichArtist"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Spells"
-                            }
-                        },
-                        {
-                            "lineNumber": 9,
-                            "endLineNumber": 22,
-                            "filePath": "src/character/spells/combat-skills/sandwichArtist/Toasted.coffee",
-                            "fileName": "Toasted.coffee",
-                            "requirement": [
-                                {
-                                    "name": "requirement",
-                                    "type": "class",
-                                    "basicInfo": "SandwichArtist"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "mp",
-                                    "basicInfo": "50"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "level",
-                                    "basicInfo": "1"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "This skill burns up to 2 opponents. It also feeds them a sandwich, but it's most likely burnt to a crisp."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Toasted"
-                            },
-                            "element": {
-                                "name": "element",
-                                "basicInfo": "fire"
-                            },
-                            "targets": {
-                                "name": "targets",
-                                "type": "enemy",
-                                "basicInfo": "1-2"
-                            },
-                            "minDamage": {
-                                "name": "minDamage",
-                                "basicInfo": "dex/4"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "SandwichArtist"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Spells"
-                            }
-                        },
-                        {
                             "lineNumber": 9,
                             "endLineNumber": 24,
                             "filePath": "src/character/spells/combat-skills/sandwichArtist/DayOldBread.coffee",
@@ -17139,6 +17035,110 @@
                             "duration": {
                                 "name": "duration",
                                 "basicInfo": "1 round"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "SandwichArtist"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Spells"
+                            }
+                        },
+                        {
+                            "lineNumber": 10,
+                            "endLineNumber": 23,
+                            "filePath": "src/character/spells/combat-skills/sandwichArtist/SandwichAlly.coffee",
+                            "fileName": "SandwichAlly.coffee",
+                            "requirement": [
+                                {
+                                    "name": "requirement",
+                                    "type": "class",
+                                    "basicInfo": "SandwichArtist"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "mp",
+                                    "basicInfo": "200"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "level",
+                                    "basicInfo": "10"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This skill feeds an ally. As for what that means, that depends on the sandwich made."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "sandwich ally"
+                            },
+                            "element": {
+                                "name": "element",
+                                "basicInfo": "physical"
+                            },
+                            "targets": {
+                                "name": "targets",
+                                "type": "ally",
+                                "basicInfo": "1"
+                            },
+                            "minHeal": {
+                                "name": "minHeal",
+                                "basicInfo": "dex/1.5"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "SandwichArtist"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Spells"
+                            }
+                        },
+                        {
+                            "lineNumber": 9,
+                            "endLineNumber": 22,
+                            "filePath": "src/character/spells/combat-skills/sandwichArtist/Toasted.coffee",
+                            "fileName": "Toasted.coffee",
+                            "requirement": [
+                                {
+                                    "name": "requirement",
+                                    "type": "class",
+                                    "basicInfo": "SandwichArtist"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "mp",
+                                    "basicInfo": "50"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "level",
+                                    "basicInfo": "1"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This skill burns up to 2 opponents. It also feeds them a sandwich, but it's most likely burnt to a crisp."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "toasted"
+                            },
+                            "element": {
+                                "name": "element",
+                                "basicInfo": "fire"
+                            },
+                            "targets": {
+                                "name": "targets",
+                                "type": "enemy",
+                                "basicInfo": "1-2"
+                            },
+                            "minDamage": {
+                                "name": "minDamage",
+                                "basicInfo": "dex/4"
                             },
                             "category": {
                                 "name": "category",
@@ -17400,11 +17400,11 @@
             ]
         }
     ],
-    "startTime": 1421978332200,
-    "endTime": 1421978332265,
+    "startTime": 1421979778419,
+    "endTime": 1421979778486,
     "git": {
-        "short": "c2f04d7",
-        "long": "c2f04d7886665fa3cd681fbae1c2197938449954",
+        "short": "f8958d2",
+        "long": "f8958d2a225e1b732c61e0992aaf8b88cf9c4767",
         "branch": "master",
         "tag": "0.5.0"
     }
