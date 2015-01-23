@@ -90,7 +90,7 @@ class Summon extends Spell
 
     @caster.special.add chosenBaseMonster.slotCost if not isFail
 
-    monster.on "combat.self.killed", =>
+    monster.on "combat.self.killed", ->
       monster.canFade = yes
 
     monster.on "combat.round.end", =>
