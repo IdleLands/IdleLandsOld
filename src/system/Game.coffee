@@ -73,6 +73,7 @@ class Game
 
     @playerManager = new PlayerManager @
     @guildManager = new GuildManager @
+    @calendar = new Calendar @
     @componentDatabase = new ComponentDatabase @
     @componentDatabase.loadingAll.then =>
       @gmCommands = new GMCommands @
@@ -80,7 +81,6 @@ class Game
       @spellManager = new SpellManager @
       @eventHandler = new EventHandler @
       @globalEventHandler = new GlobalEventHandler @
-      @calendar = new Calendar @
       @equipmentGenerator = new EquipmentGenerator @
       @monsterGenerator = new MonsterGenerator @
       @achievementManager = new AchievementManager @
