@@ -72,13 +72,13 @@ class Game
     @loading = defer.promise
 
     @playerManager = new PlayerManager @
+    @guildManager = new GuildManager @
     @componentDatabase = new ComponentDatabase @
     @componentDatabase.loadingAll.then =>
       @gmCommands = new GMCommands @
       @petManager = new PetManager @
       @spellManager = new SpellManager @
       @eventHandler = new EventHandler @
-      @guildManager = new GuildManager @
       @globalEventHandler = new GlobalEventHandler @
       @calendar = new Calendar @
       @equipmentGenerator = new EquipmentGenerator @
