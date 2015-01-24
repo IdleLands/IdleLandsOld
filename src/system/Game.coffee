@@ -119,7 +119,7 @@ class Game
     player = @selectRandomNonPartyPlayer() if not player
     availableGuildies = _.filter @getAllNonPartyPlayers(), (member) -> member isnt player and member.guild is player.guild
 
-    players = _.without @playerManager.players, player
+    players = _.without @getAllNonPartyPlayers(), player
 
     partyAdditionSize = Math.min (players.length / 2), chance.integer({min: 1, max: Constants.defaults.game.maxPartyMembers})
 
