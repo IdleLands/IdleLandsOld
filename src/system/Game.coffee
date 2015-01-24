@@ -73,11 +73,11 @@ class Game
 
     @playerManager = new PlayerManager @
     @guildManager = new GuildManager @
+    @petManager = new PetManager @
     @calendar = new Calendar @
     @componentDatabase = new ComponentDatabase @
     @componentDatabase.loadingAll.then =>
       @gmCommands = new GMCommands @
-      @petManager = new PetManager @
       @spellManager = new SpellManager @
       @eventHandler = new EventHandler @
       @globalEventHandler = new GlobalEventHandler @
