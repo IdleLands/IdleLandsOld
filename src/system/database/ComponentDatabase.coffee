@@ -213,7 +213,7 @@ class ComponentDatabase
     ]
 
     npcs: [
-      "trainers"
+      "trainer"
     ]
 
     # here for posterity -- not currently submittable (partially due to conflicts w/ providence)
