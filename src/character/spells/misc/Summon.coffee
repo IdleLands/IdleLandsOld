@@ -95,7 +95,7 @@ class Summon extends Spell
 
     monster.on "combat.round.end", =>
       if monster.needsToRecalcCombat
-        @caster.party.currentBattle.calculateTurnOrder()
+        monster.party.currentBattle.calculateTurnOrder()
         monster.needsToRecalcCombat = no
         return
 

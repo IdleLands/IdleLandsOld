@@ -133,6 +133,7 @@ class Battle
 
   playersAlive: ->
     parties = _.uniq _.pluck @turnOrder, 'party'
+    console.log _.map parties, (p) -> {n: p.name, s: p.players.length}
     aliveParties = _.reduce parties, (alive, party) ->
       currentAlive = _.reduce party.players, (count, player) ->
         count+((not player.hp.atMin()) and (not player.fled))
