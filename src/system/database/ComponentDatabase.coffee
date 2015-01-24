@@ -67,7 +67,7 @@ class ComponentDatabase
       arr = item.split '='
       retval = {}
       testVal = parseInt arr[1]
-      retval[arr[0]] = if ((_.isNaN testVal) and (_.isUndefined arr[1])) then 1 else if arr[0] is 'class' then arr[1] else testVal
+      retval[arr[0]] = if ((_.isNaN testVal) and (_.isUndefined arr[1])) then 1 else if arr[0] in ['class','gender'] then arr[1] else testVal
       retval
     .reduce (cur, prev) ->
       _.extend prev, cur

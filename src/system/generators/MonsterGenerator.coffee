@@ -29,14 +29,14 @@ class MonsterGenerator extends Generator
     monsters = []
 
     while remainingScore > 0
-      newMonster = @experimentalMonsterGeneration (_.sample possibleMonsters), remainingScore
+      baseMonster = _.sample possibleMonsters
+      newMonster = @experimentalMonsterGeneration baseMonster, remainingScore, party
       monsters.push newMonster
       remainingScore -= newMonster.calc.totalItemScore()
 
-
     new Party @game, monsters
 
-  experimentalMonsterGeneration: (baseMonster, remainingScore) ->
+  experimentalMonsterGeneration: (baseMonster, remainingScore, party) ->
 
     itemList = @game.componentDatabase.itemStats
 
@@ -68,7 +68,7 @@ class MonsterGenerator extends Generator
     # sometimes, monsters get funny names
     nameMonster = (monster) ->
       nameOpts = {middle: chance.bool(), prefix: chance.bool(), suffix: chance.bool()}
-      nameOpts.gender = chance.gender().toLowerCase() if chance.bool()
+      nameOpts.gender = (if baseMonster.gender then baseMonster.gender else chance.gender().toLowerCase()) if chance.bool()
       monster.name = "#{chance.name nameOpts}, the #{monster.name}"
 
     # even monsters need gear, I guess
@@ -82,6 +82,7 @@ class MonsterGenerator extends Generator
       baseMonster.class = _.sample classes if baseMonster.class is 'Random'
 
       monster = new Monster baseMonster
+      monster.shouldMirror = baseMonster.mirror
 
       monster.calendar = @game.calendar
 
@@ -98,49 +99,9 @@ class MonsterGenerator extends Generator
 
       monster
 
-    doGenerate()
+    monster = doGenerate()
 
-  generateMonster: (maxScore = 99999, baseMonster = _.sample @game.componentDatabase.monsters) ->
-
-    itemList = @game.componentDatabase.itemStats
-
-    if not baseMonster?.level
-      @game.errorHandler.captureException (new Error "GENERATE ERROR, NO LEVEL"), extra: baseMonster: baseMonster
-      return
-
-    baseMonster.class = _.sample classes if baseMonster.class is 'Random'
-
-    monster = new Monster baseMonster
-
-    if chance.integer({min: 0, max: 2}) is 1
-      @mergePropInto monster, _.sample itemList['prefix']
-      (@mergePropInto monster,  _.sample itemList['prefix']) until chance.integer({min: -1, max: 7**(i = (i+1) or 0)}) isnt 1
-
-    (@mergePropInto monster,  _.sample itemList['prefix-special']) if chance.integer({min: 0, max: 21}) is 1
-
-    (@mergePropInto monster,  _.sample itemList['suffix']) if chance.integer({min: 0, max: 14}) is 1
-
-    _.each @types, (type) =>
-      return if monster.calc.totalItemScore() > maxScore
-      item = @game.equipmentGenerator.generateItem type
-      monster.equip item if item and monster.canEquip item
-
-    monster.personalities = []
-
-    personalityCount = chance.integer min: 0, max: 2
-
-    newPersonalities = _.sample personalities, personalityCount
-
-    (monster._addPersonality pers, Personality::getPersonality pers) for pers in newPersonalities
-
-    monster.personalities.push {alignment: chance.integer({min: -20, max: 20})}
-
-    monster.calendar = @game.calendar
-
-    nameOpts = {middle: chance.bool(), prefix: chance.bool(), suffix: chance.bool()}
-    nameOpts.gender = chance.gender().toLowerCase() if chance.bool()
-
-    monster.name = "#{chance.name nameOpts}, the #{monster.name}" if chance.bool likelihood: 1
+    monster.mirror party if monster.shouldMirror
 
     monster
 
@@ -152,7 +113,7 @@ class MonsterGenerator extends Generator
       name: name ? "Vector #{chosenClass}"
       level: Math.round party.level() or 1
 
-    monster = @generateMonster maxScore, baseMonster
+    monster = @experimentalMonsterGeneration baseMonster, maxScore
 
     for x in [0..100]
       _.each @types, (type) =>
