@@ -74,7 +74,7 @@ class Archer extends Class
         targetName: fledPlayer.getName()
         casterName: player.getName()
       newMessage = MessageCreator.doStringReplace message, player, extra
-      player.playerManager.game.currentBattle?.broadcast newMessage
+      player.playerManager?.game.currentBattle?.broadcast newMessage
 
   unload: (player) ->
     player.special.maximum = 0
