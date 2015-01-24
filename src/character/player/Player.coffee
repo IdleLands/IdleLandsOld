@@ -867,6 +867,9 @@ class Player extends Character
   getGuild: ->
     @playerManager.game.guildManager.getGuildByName @guild
 
+  getGlobalData: ->
+    calendar: @game.calendar.getRawDate()
+
   getExtraDataForREST: (options, base) ->
     opts = {}
 
@@ -875,6 +878,7 @@ class Player extends Character
     if options.pet          then opts.pet = @getPet()?.buildSaveObject()
     if options.guild        then opts.guild = @getGuild()?.buildSaveObject()
     if options.guildInvites then opts.guildInvites = @playerManager.game.guildManager.getPlayerInvites @
+    if options.global       then opts.global = @getGlobalData()
 
     _.extend base, opts
 

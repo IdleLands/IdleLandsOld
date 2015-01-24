@@ -141,7 +141,7 @@ class PlayerManager
         message: "Successful login. Welcome back to #{Constants.gameName}, #{player.getName()}!"
         token: player.tempSecureToken
 
-      defer.resolve player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guild: yes, guildInvites: yes}, results
+      defer.resolve player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guild: yes, guildInvites: yes, global: yes}, results
 
     defer.promise
 
@@ -177,7 +177,7 @@ class PlayerManager
 
       if @playerHash[identifier]
         player = @playerHash[identifier]
-        realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guildInvites: yes, guild: yes}, baseResults
+        realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guildInvites: yes, guild: yes, global: yes}, baseResults
         realResults.token = player.tempSecureToken
         realResults.message = "This is a duplicate login session."
         return defer.resolve realResults
@@ -186,7 +186,7 @@ class PlayerManager
         @addPlayer identifier
         .then (res) =>
           player = @playerHash[identifier]
-          realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guildInvites: yes, guild: yes}, baseResults
+          realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guildInvites: yes, guild: yes, global: yes}, baseResults
           realResults.token = player.tempSecureToken
           realResults.message = "Successful login. Welcome back to #{Constants.gameName}, #{player.getName()}!"
           return defer.resolve realResults
@@ -281,7 +281,7 @@ class PlayerManager
 
     return if not sendPlayerObject
 
-    Q player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guildInvites: yes, guild: yes}, {isSuccess: yes, code: 102, message: "Turn taken."}
+    Q player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guildInvites: yes, guild: yes, global: yes}, {isSuccess: yes, code: 102, message: "Turn taken."}
 
   registerLoadAllPlayersHandler: (@playerLoadHandler) ->
     console.log "Registered AllPlayerLoad handler."
