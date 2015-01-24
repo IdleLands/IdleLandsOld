@@ -150,8 +150,8 @@ class Spell
 
   doDamageTo: (player, damage, message = "") ->
     extra =
-      casterName: @caster.name
-      targetName: player.name
+      casterName: @caster.getName()
+      targetName: player.getName()
       spellName: @name
 
     damage = Math.round player.calcDamageTaken damage
