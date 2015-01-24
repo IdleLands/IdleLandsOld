@@ -16,7 +16,7 @@ monsters =
     {name: "vampire",         statMult: 1.0,  slotCost: 2, restrictLevel: 70,  baseStats: {vampire: 10}}
     {name: "plaguebringer",   statMult: 1.0,  slotCost: 2, restrictLevel: 70,  baseStats: {venom: 10}}
     {name: "ghoul",           statMult: 1.0,  slotCost: 2, restrictLevel: 70,  baseStats: {poison: 10}}
-    {name: "dracolich",       statMult: 1.35, slotCost: 2, restrictLevel: 85,  requireCollectibles: ["Undead Draygon Scale"]}
+    {name: "dracolich",       statMult: 1.35, slotCost: 2, restrictLevel: 85,  baseStats: {mirror: 1}, requireCollectibles: ["Undead Draygon Scale"]}
     {name: "demogorgon",      statMult: 1.75, slotCost: 4, restrictLevel: 150, requireCollectibles: ["Gorgon Snake"]}
   ]
 
@@ -56,7 +56,10 @@ class Summon extends Spell
 
     isFail = @chance.bool {likelihood: 5}
 
-    monster = @game.monsterGenerator.experimentalMonsterGeneration chosenBaseMonster, @caster.calc.totalItemScore()
+    otherParty = _.sample _.without @caster.party.currentBattle.parties, @caster.party
+    joinParty = if isFail then otherParty else @caster.party
+
+    monster = @game.monsterGenerator.experimentalMonsterGeneration chosenBaseMonster, @caster.calc.totalItemScore(), if isFail then @caster.party else otherParty
     monster.name = "#{@caster.name}'s #{monster.name}"
     monster.hp.toMaximum()
     monster.mp.toMaximum()
@@ -80,9 +83,6 @@ class Summon extends Spell
 
     message = "%casterName summoned <player.name>#{monster.getName()}</player.name> to the battlefield#{if isFail then ', but failed, and it ended up as a foe' else ''}!"
     @broadcast @caster, message
-
-    otherParty = _.sample _.without @caster.party.currentBattle.parties, @caster.party
-    joinParty = if isFail then otherParty else @caster.party
 
     joinParty.recruit [monster]
 

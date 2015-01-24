@@ -183,7 +183,7 @@
 "behemoth"                  level=70 hp=6500 prone=1 str=3000 con=1500 dex=1000
 "silver dragon"             level=75 hp=7000 class=Mage prone=1 thunder=1000
 "demogorgon"                level=85 hp=9000 prone=1
-"party-hat-wearing dragon"  level=105 hp=10000 class=Mage str=6000 fire=4000 agi=2000 con=2000 wis=5000 prone=1 silver=1
+"party-hat-wearing dragon"  level=100 hp=10000 class=Mage str=6000 fire=4000 agi=2000 con=2000 wis=5000 prone=1 silver=1
 
 # ancient beings
 "laser cannon"                      level=35
@@ -205,6 +205,7 @@
 "black night"       level=38
 "miniboss squad"    level=46
 "flying boar"       level=56
+"mirror"            level=1 mirror=1
 
 # symbolic beings
 ♥   level=50
@@ -247,8 +248,9 @@
 "gnome bitwizard"       zone=forest level=13 class=Bitomancer int=100 agi=30 dex=50
 "gnome scout"           zone=forest level=13 class=Archer dex=100 agi=30 con=50
 "gnome deadwizard"      zone=forest level=13 class=Necromancer dex=50 str=50 wis=200
-"procrastination gnome" zone=forest level=1
-"garden gnome"          zone=town   level=1
+"procrastination gnome" zone=forest level=7
+"garden gnome"          zone=town   level=6
+"gnomish mirror"        level=13 mirror=1
 
 # human beings
 "human"                 zone=town level=18
@@ -268,6 +270,7 @@
 "human archer"          zone=town level=18 class=Archer dex=500 agi=300 str=200
 "human necromancer"     zone=town level=18 class=Necromancer dex=400 str=400 wis=700
 "human professor"
+"manmade mirror"        level=18 mirror=1
 
 # kobold beings
 "kobold"                zone=cave level=26
@@ -285,6 +288,7 @@
 "kobold computerer"     zone=cave level=26 class=Bitomancer int=750 str=500
 "kobold ranger"         zone=cave level=26 class=Archer dex=750 agi=500
 "kobold deathsinger"    zone=cave level=26 class=Necromancer dex=700 str=700 wis=1000
+"kobbish mirror"        level=26 mirror=1
 
 # orcish beings
 "orc"                   zone=cave level=35
@@ -304,6 +308,7 @@
 "orc technologist"      zone=cave level=35 class=Bitomancer int=1000 dex=500
 "orc stickflinger"      zone=cave level=35 class=Archer dex=1000 agi=500
 "orc darkwizard"        zone=cave level=35 class=Necromancer dex=1000 str=1000 wis=800
+"orcish mirrorish"      level=35 mirror=1
 
 # skeletal beings
 "skeleton"              zone=cave level=41
@@ -321,6 +326,7 @@
 "skeleton bitmaster"    zone=cave level=41 class=Bitomancer int=1900
 "skeleton archer"       zone=cave level=41 class=Archer dex=1800
 "skeleton deathchanter" zone=cave level=41 class=Necromancer dex=300 str=300 wis=1400
+"skeletal mirror"       level=41 mirror=1
 
 # half-orc beings
 "half-orc"                  zone=cave level=46
@@ -337,6 +343,7 @@
 "half-orc byter"            zone=cave level=46 class=Bitomancer int=1500 dex=500 str=300
 "half-orc hunter"           zone=cave level=46 class=Archer dex=1700 agi=600
 "half-decaying half-orc"    zone=cave level=46 class=Necromancer dex=800 str=800 wis=1800
+"half-reflective mirror"    level=46 mirror=1
 
 # goblish beings
 "goblin"                zone=cave level=51
@@ -353,6 +360,7 @@
 "goblin bitbitbit"      zone=cave level=51 class=Bitomancer int=1700 str=700 dex=200
 "goblin shooter"        zone=cave level=51 class=Archer dex=1700 agi=700 con=200
 "goblin evilspirit"     zone=cave level=51 class=Necromancer dex=800 str=800 wis=1800
+"goblish mirror"        level=51 mirror=1
 
 # giant beings
 "giant"                 zone=cave level=57
@@ -372,6 +380,7 @@
 "half-giant elf"        zone=cave level=57 class=Archer dex=3000
 "half-drunk giant"      zone=cave level=57 class=Pirate con=2000 str=1000
 "half-dead giant"       zone=cave level=57 class=Necromancer dex=1300 str=1300 wis=1500
+"half-shiny mirror"     level=57 mirror=1
 
 # elvish beings
 "elf"                   zone=town level=63
@@ -388,6 +397,7 @@
 "elf bitcaster"         zone=town level=63 class=Bitomancer int=2500 wis=2500 agi=2500 con=2500 luck=500
 "elf bowmaster"         zone=town level=63 class=Archer dex=5000 agi=5000 str=3500 con=2500 luck=200
 "elf necromancer"       zone=cave level=63 class=Necromancer dex=2500 str=2500 wis=5000
+"elvish vanity mirror"  level=63 mirror=1
 
 # dwarven beings
 "dwarf"                 zone=town level=69
@@ -406,6 +416,7 @@
 "dwarf prince"          zone=town level=69 class=Bard int=4000 wis=4000 con=3500 str=2500 agi=1500
 "dwarf arbalest"        zone=town level=69 class=Archer dex=7500 agi=5000 str=3500 con=2500 luck=200
 "dwarf shadow"          zone=town level=69 class=Lich
+"dwarven ale bottle"    level=69 mirror=1
 
 # pygmy beings
 "pygmy"                 zone=cave level=76
@@ -423,6 +434,7 @@
 "pygmy crier"           zone=cave level=76 class=Bard int=5500 wis=5500 con=2500 str=2500
 "pygmy shooter"         zone=cave level=76 class=Archer dex=10000 agi=5000 str=1500
 "pygmy ritualist"       zone=cave level=76 class=Necromancer wis=10000 dex=3500 str=3500 con=1000 hp=1000
+"pygmish glass shard"   level=76 mirror=1
 
 # ogre beings
 "ogre"                  zone=cave level=85
@@ -440,6 +452,7 @@
 "ogre pewpewer"         zone=cave level=85 class=Archer dex=10000 agi=5000 str=5000
 "ogre roidrager"        zone=cave level=85 class=Barbarian str=12000 con=12000
 "ogre scarycaster"      zone=cave level=85 class=Necromancer wis=7500 dex=1500 str=9500 con=2000 hp=3000
+"crude mirror"          level=85 mirror=1
 
 # holywater beings
 "holywater"                 zone=town level=93
@@ -457,6 +470,7 @@
 "holywater bitomancer"      zone=town level=93 class=Bitomancer int=7500 wis=1500 agi=3500 con=4500
 "holywater archer"          zone=town level=93 class=Archer dex=8500 agi=4500 str=4500 con=2500
 "holywater evil cleric"     zone=town level=93 class=Necromancer wis=12000 dex=7500 str=5500 hp=5000
+"holywater mirror"          level=93 mirror=1
 
 # shadowflame beings
 "shadowflame"                 zone=town level=99
@@ -474,6 +488,7 @@
 "shadowflame bitomancer"      zone=town level=99 class=Bitomancer int=10000 wis=750 agi=2500 con=1500
 "shadowflame archer"          zone=town level=99 class=Archer dex=2500 agi=2500 str=10000 con=1500
 "shadowflame spirit twister"  zone=town level=99 class=Necromancer wis=15000 dex=6500 str=6500 hp=15000
+"shadowflame mirror"          level=99 mirror=1
 
 # kin beings
 "embryo-kin"            zone=town   level=1     class=Jester
