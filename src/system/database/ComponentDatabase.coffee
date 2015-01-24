@@ -16,6 +16,7 @@ class ComponentDatabase
   ingredientStats: {}
   monsters: []
   generatorCache: {}
+  npcs: []
 
   constructor: (@game) ->
     @eventsDb = new Datastore "events", (db) -> db.ensureIndex {random: '2dsphere'}, ->
@@ -101,6 +102,11 @@ class ComponentDatabase
 
     @insertIngredient parameters, ->
 
+  parseNPC: (str) ->
+    [name, parameters] = @_parseInitialArgs str
+    paramObj = if parameters then @_parseParameters {name: name}, parameters else {name: name}
+    @npcs.push paramObj
+
   importAllData: ->
 
     me = @
@@ -110,12 +116,14 @@ class ComponentDatabase
     eventDefer = Q.defer()
     stringDefer = Q.defer()
     monsterDefer = Q.defer()
+    npcDefer = Q.defer()
 
     loadingItems = itemDefer.promise
     loadingIngredients = ingredientDefer.promise
     loadingEvents = eventDefer.promise
     loadingStrings = stringDefer.promise
     loadingMonsters = monsterDefer.promise
+    loadingNpcs = npcDefer.promise
 
     stream = (path, callback) ->
       objStream = readdirp {root: path, fileFilter: "*.txt"}
@@ -133,7 +141,7 @@ class ComponentDatabase
           fs.readFile entry.fullPath, {}, (e, data) ->
             _.each data.toString().split("\n"), (line) -> me.parseItemString line, type
 
-          itemDefer.resolve()
+            itemDefer.resolve()
 
       @ingredientsDb.remove {}, {}, ->
         stream "#{basePath}/ingredients", (entry) ->
@@ -141,7 +149,7 @@ class ComponentDatabase
           fs.readFile entry.fullPath, {}, (e, data) ->
             _.each data.toString().split("\n"), (line) -> me.parseIngredientString line, type
 
-          ingredientDefer.resolve()
+            ingredientDefer.resolve()
 
       @eventsDb.remove {}, {}, ->
         stream "#{basePath}/events", (entry) ->
@@ -149,14 +157,14 @@ class ComponentDatabase
           fs.readFile entry.fullPath, {}, (e, data) ->
             _.each data.toString().split("\n"), (line) -> me.insertStatic type, line
 
-          eventDefer.resolve()
+            eventDefer.resolve()
 
       stream "#{basePath}/strings", (entry) ->
         type = entry.name.split(".")[0]
         fs.readFile entry.fullPath, {}, (e, data) ->
           _.each data.toString().split("\n"), (line) -> me.insertString type, line
 
-        stringDefer.resolve()
+          stringDefer.resolve()
 
       stream "#{basePath}/monsters/", (entry) ->
         fs.readFile entry.fullPath, {}, (e, data) ->
@@ -164,6 +172,13 @@ class ComponentDatabase
           _.each arr, (line) -> me.parseMonsterString line
 
           monsterDefer.resolve()
+
+      stream "#{basePath}/npcs/", (entry) ->
+        fs.readFile entry.fullPath, {}, (e, data) ->
+          arr = data.toString().split("\n")
+          _.each arr, (line) -> me.parseNPC line
+
+          npcDefer.resolve()
 
     loadPath "data"
     loadPath "custom" if fs.existsSync "#{__dirname}/../../../assets/custom"
@@ -174,6 +189,7 @@ class ComponentDatabase
       loadingEvents
       loadingStrings
       loadingMonsters
+      loadingNpcs
     ]
 
   contentFolders:
@@ -196,13 +212,17 @@ class ComponentDatabase
       "monster"
     ]
 
+    npcs: [
+      "trainers"
+    ]
+
     # here for posterity -- not currently submittable (partially due to conflicts w/ providence)
     strings: [
       "adjective", "article", "battleGrammar", "battleTitle", "conjunction", "noun", "partyGrammar"
       "preposition", "providence", "providenceGrammar"
     ]
 
-  allValidTypes: -> @contentFolders.events.concat @contentFolders.ingredients.concat @contentFolders.items.concat @contentFolders.monsters.concat @contentFolders.strings
+  allValidTypes: -> @contentFolders.events.concat @contentFolders.ingredients.concat @contentFolders.items.concat @contentFolders.monsters.concat @contentFolders.npcs.concat @contentFolders.strings
 
   commitAndPushAllFiles: (types, submitters) ->
     #if not config.githubUser or not config.githubPass
@@ -219,7 +239,7 @@ class ComponentDatabase
     repo.push "origin", "master", {###username: config.githubUser, password: config.githubPassword###}, ->
 
   writeNewContentToFile: (newItem) ->
-    validFolders = ["events", "ingredients", "items", "monsters"]
+    validFolders = ["events", "ingredients", "items", "monsters", "npcs"]
 
     _.each validFolders, (folder) =>
       return if not _.contains @contentFolders[folder], newItem.type
@@ -313,7 +333,6 @@ class ComponentDatabase
 
       if doc?.name is object.name
         duplicateCallback {name: doc.name}
-        @game.errorHandler.captureException new Error "DUPLICATE INGREDIENT NAME: #{doc.name}"
         return
       else if doc
         @game.errorHandler.captureException new Error "DUPLICATE INGREDIENT STATS: #{doc.name}"
@@ -338,7 +357,6 @@ class ComponentDatabase
       @game.errorHandler.captureException e if e
 
       if doc?.name is object.name
-        @game.errorHandler.captureException new Error "DUPLICATE ITEM NAME: #{doc.name}"
         return
       else if doc
         @game.errorHandler.captureException new Error "DUPLICATE ITEM STATS: #{doc.name}"

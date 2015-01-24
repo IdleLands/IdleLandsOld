@@ -1,0 +1,91 @@
+"Edrix"
+"Orfane"
+"Odisatije"
+"Sefakybeh"
+"Erdyinja"
+"Eninunagi"
+"Efesu"
+"Wetef"
+"Areyekuwe"
+"Uvecusof"
+"Veseci"
+"Lulalona"
+"Ivelet"
+"Ucal"
+"Wartberg"
+"Devew"
+"Sose"
+"Ophix"
+"Talon"
+"Nunit"
+"Meper"
+"Tegavad"
+"Sonja"
+"Esali"
+"Taxire"
+"Xanelel"
+"Enhailor"
+"Sujeb"
+"Elahioa"
+"Annalie"
+"Oivoi"
+"Tidiyiwi"
+"Elahica"
+"Erioalin"
+"Fidiv"
+"Feropit"
+"Nolid"
+"Illiwanu"
+"Itixas"
+"Deverilian"
+"Canub"
+"Welby"
+"Bolmixfon"
+"Dextra"
+"Vixgen"
+"Dutuyaxe"
+"Lenazodog"
+"Woden"
+"Darwin"
+"Dontdie"
+"Luth"
+"Adab"
+"Yuped"
+"Nediru"
+"Gorypegas"
+"Anut"
+"Eventine"
+"Mythe"
+"Avojindi"
+"Odufin"
+"Kiley"
+"Irebeq"
+"Tegono"
+"Azdan"
+"Oompha"
+"Rokoser"
+"Ihoxeqati"
+"Ohiwudeh"
+"Lexonycor"
+"Ecor"
+"Ebarad"
+"Ritova"
+"Nenaty"
+"Diptusoroy"
+"Shirley Eujest" class=Jester
+"Kan'ye Jest" class=Jester
+"Your Captain, J.P. Monfort" class=Generalist
+"Tetradigm" class=SandwichArtist
+"Bob Axetomouth" class=Fighter
+"MC Warhammer" class=Fighter
+"Cohen" class=Barbarian
+"Bangor" class=Barbarian
+"Wizard Khalifa" class=Mage
+"Kim Jong Heal" class=Cleric
+"Cap'n Stabbin'" class=Rogue
+"Lute-acris" class=Bard
+"Guybrush Threepwood" class=Pirate
+"Captain Smirk" class=Pirate
+"Sterling Mallory" class=Archer
+"Tron" class=Bitomancer
+"Deadhead" class=Necromancer

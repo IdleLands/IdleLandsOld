@@ -60,7 +60,7 @@ class Game
     errHandler = @errorHandler = client or {captureMessage: console.error, captureException: console.error}
 
     process.on 'uncaughtException', (err) ->
-      return if err.code in ['EADDRINUSE'] # swallow it
+      return if err.code in ['EADDRINUSE', 'EACCES'] # swallow it
       console.error (new Date).toUTCString() + ' uncaughtException:', err.message
       #console.error err.stack
       errHandler.captureException err
@@ -71,26 +71,27 @@ class Game
     defer = q.defer()
     @loading = defer.promise
 
-    @componentDatabase = new ComponentDatabase @
-    @gmCommands = new GMCommands @
-    @petManager = new PetManager @
-    @spellManager = new SpellManager @
-    @eventHandler = new EventHandler @
     @playerManager = new PlayerManager @
-    @guildManager = new GuildManager @
-    @globalEventHandler = new GlobalEventHandler @
-    @calendar = new Calendar @
-    @equipmentGenerator = new EquipmentGenerator @
-    @monsterGenerator = new MonsterGenerator @
-    @achievementManager = new AchievementManager @
-    @sandwichGenerator = new SandwichGenerator @
-    @shopGenerator = new ShopGenerator @
-    @bossFactory = new BossFactory @
-    @treasureFactory = new TreasureFactory @
-    @battleManager = new BattleManager @
-    @world = new World()
+    @componentDatabase = new ComponentDatabase @
+    @componentDatabase.loadingAll.then =>
+      @gmCommands = new GMCommands @
+      @petManager = new PetManager @
+      @spellManager = new SpellManager @
+      @eventHandler = new EventHandler @
+      @guildManager = new GuildManager @
+      @globalEventHandler = new GlobalEventHandler @
+      @calendar = new Calendar @
+      @equipmentGenerator = new EquipmentGenerator @
+      @monsterGenerator = new MonsterGenerator @
+      @achievementManager = new AchievementManager @
+      @sandwichGenerator = new SandwichGenerator @
+      @shopGenerator = new ShopGenerator @
+      @bossFactory = new BossFactory @
+      @treasureFactory = new TreasureFactory @
+      @battleManager = new BattleManager @
+      @world = new World @
 
-    defer.resolve()
+      defer.resolve()
 
     require "./accessibility/REST"
 
