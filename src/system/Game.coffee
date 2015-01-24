@@ -109,16 +109,24 @@ class Game
     else
       console.error "No broadcast handler registered. Cannot send: #{message}"
 
+  getAllNonPartyPlayers: ->
+    _.reject @playerManager.players, (player) -> player.party
+
   selectRandomNonPartyPlayer: ->
-    _.sample (_.reject @playerManager.players, (player) -> player.party)
+    _.sample @getAllNonPartyPlayers()
 
   createParty: (player = null) ->
     player = @selectRandomNonPartyPlayer() if not player
+    availableGuildies = _.filter @getAllNonPartyPlayers(), (member) -> member isnt player and member.guild is player.guild
 
     players = _.without @playerManager.players, player
 
     partyAdditionSize = Math.min (players.length / 2), chance.integer({min: 1, max: Constants.defaults.game.maxPartyMembers})
-    newPartyPlayers = _.sample (_.reject players, (player) -> player.party), partyAdditionSize
+
+    playerList = players
+    playerList = availableGuildies if partyAdditionSize < availableGuildies.length and chance.bool({likelihood: 65})
+
+    newPartyPlayers = _.sample playerList, partyAdditionSize
 
     return if newPartyPlayers.length is 0
 
