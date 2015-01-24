@@ -35,7 +35,7 @@ class API
         @gameInstance.playerManager.registerLoadAllPlayersHandler handler
     content:
       map: (mapName) =>
-        @gameInstance.world.maps[mapName]
+        _.omit @gameInstance.world.maps[mapName], 'game'
       battle: (battleId) =>
         @gameInstance.componentDatabase.retrieveBattle battleId
 
