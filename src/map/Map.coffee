@@ -102,6 +102,9 @@ class Map
         npcName = (_.sample possibleNames).name
         trainer.properties.realName = if chance.bool({likelihood: 30}) then chancedName else npcName
 
+  getMapData: ->
+    _.omit @, 'game'
+
   getTile: (x, y) ->
 
     #layers[0] will always be the terrain
