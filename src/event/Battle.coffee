@@ -566,9 +566,18 @@ class Battle
     _.each @turnOrder, (player) ->
       if data instanceof Character
         emitted = no
-        player.emit "combat.self.#{event}";  emitted = yes if not emitted and player is data
-        player.emit "combat.ally.#{event}";  emitted = yes if not emitted and player.party is data?.party
-        player.emit "combat.enemy.#{event}"; emitted = yes if not emitted and player.party isnt data?.party
+        if not emitted and player is data
+          emitted = yes
+          player.emit "combat.self.#{event}"
+
+        if not emitted and player.party is data?.party
+          emitted = yes
+          player.emit "combat.ally.#{event}"
+
+        if not emitted and player.party isnt data?.party
+          emitted = yes
+          player.emit "combat.enemy.#{event}"
+
       else
         player.emit "combat.#{event}", data
 

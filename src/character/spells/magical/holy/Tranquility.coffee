@@ -46,6 +46,6 @@ class Tranquility extends Spell
     @bindings =
       doSpellInit: @init
       doSpellUncast: @uncast
-      "combat.round.start": @tick
+      "combat.self.turn.start": @tick
 
 module.exports = exports = Tranquility
