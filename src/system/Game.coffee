@@ -121,10 +121,11 @@ class Game
 
     players = _.without @getAllNonPartyPlayers(), player
 
-    partyAdditionSize = Math.min (players.length / 2), chance.integer({min: 1, max: Constants.defaults.game.maxPartyMembers})
+    partyAdditionSize = Math.round Math.min (players.length / 2), chance.integer({min: 1, max: Constants.defaults.game.maxPartyMembers})
 
     playerList = players
     playerList = availableGuildies if availableGuildies.length > 0 and partyAdditionSize <= availableGuildies.length and chance.bool({likelihood: 65})
+    return if playerList.length is 0
 
     newPartyPlayers = _.sample playerList, partyAdditionSize
 
