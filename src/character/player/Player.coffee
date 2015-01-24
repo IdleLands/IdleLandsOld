@@ -868,7 +868,7 @@ class Player extends Character
     @playerManager.game.guildManager.getGuildByName @guild
 
   getGlobalData: ->
-    calendar: @game.calendar.getRawDate()
+    calendar: @playerManager.game.calendar.getRawDate()
 
   getExtraDataForREST: (options, base) ->
     opts = {}
