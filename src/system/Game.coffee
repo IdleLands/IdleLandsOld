@@ -75,6 +75,8 @@ class Game
     @guildManager = new GuildManager @
     @petManager = new PetManager @
     @calendar = new Calendar @
+    @bossFactory = new BossFactory @
+    @battleManager = new BattleManager @
     @componentDatabase = new ComponentDatabase @
     @componentDatabase.loadingAll.then =>
       @gmCommands = new GMCommands @
@@ -86,9 +88,7 @@ class Game
       @achievementManager = new AchievementManager @
       @sandwichGenerator = new SandwichGenerator @
       @shopGenerator = new ShopGenerator @
-      @bossFactory = new BossFactory @
       @treasureFactory = new TreasureFactory @
-      @battleManager = new BattleManager @
       @world = new World @
 
       defer.resolve()
