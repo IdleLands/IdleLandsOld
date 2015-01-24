@@ -210,7 +210,8 @@ class Player extends Character
     return if @isBusy or @stepCooldown > 0
     @isBusy = true
     className = tile.object.name
-    message = "<player.name>#{@name}</player.name> has met with the <player.class>#{className}</player.class> trainer!"
+    trainerName = tile.object.properties.realName
+    message = "<player.name>#{@name}</player.name> has met with <player.name>#{trainerName}</player.name>, the <player.class>#{className}</player.class> trainer!"
     if @professionName is className
       message += " Alas, <player.name>#{@name}</player.name> is already a <player.class>#{className}</player.class>!"
       @isBusy = false
