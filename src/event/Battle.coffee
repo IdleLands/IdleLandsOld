@@ -1,6 +1,7 @@
 
 MessageCreator = require "../system/handlers/MessageCreator"
 Player = require "../character/player/Player"
+Character = require "../character/base/Character"
 BattleCache = require "./BattleCache"
 Constants = require "../system/utilities/Constants"
 
@@ -157,8 +158,8 @@ class Battle
         @broadcast "ROUND #{@currentTurn} STATUS: #{@getAllStatStrings().join ' VS '}"
         @emitEventToAll "round.start", @turnOrder
 
-      @emitEventToAll "turn.start", player
       player = @turnOrder[@turnPosition]
+      @emitEventToAll "turn.start", player
       @takeTurn player
       @emitEventToAll "turn.end", player
 
@@ -563,16 +564,15 @@ class Battle
 
   emitEventToAll: (event, data) ->
     _.each @turnOrder, (player) ->
-
-      if data instanceof Player
-        if player is data
+      if data instanceof Character
+        if player.name is data.name
           player.emit "combat.self.#{event}", data
-        else if data instanceof Player and player.party is data.party
+        else if player.party is data.party
           player.emit "combat.ally.#{event}", data
-        else if data instanceof Player and player.party isnt data.party
+        else if player.party isnt data.party
           player.emit "combat.enemy.#{event}", data
 
-      else if not (event in ['turn.end', 'turn.start', 'flee'])
+      else
         player.emit "combat.#{event}"
 
   emitEventsTo: (event, to, data) ->
