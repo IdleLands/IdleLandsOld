@@ -422,7 +422,7 @@ class Battle
     winMessages = []
 
     _.each combatWinners, (player) ->
-      return if player.isMonster
+      return if player.isMonster and not player.isPet
 
       goldGain = player.personalityReduce 'combatEndGoldGain', [player, deadVariables]
       goldGain = player.calcGoldGain goldGain
@@ -438,7 +438,7 @@ class Battle
     #losing player xp distribution
 
     _.each deadVariables.deadPlayers, (player) ->
-      return if player.isMonster
+      return if player.isMonster and not player.isPet
       basePct = chance.integer min: 1, max: 6
       basePctValue = Math.floor player.xp.maximum * (basePct/100)
 
