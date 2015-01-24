@@ -369,7 +369,7 @@ class PlayerManager
 
     player.on "combat.self.kill", (defender) ->
       player.playerManager.game.battle?.broadcast "#{player.getName()}: #{player.messages.kill}" if player.messages?.kill
-      return if defender.isMonster
+      return if not defender or defender.isMonster
       defender.modifyRelationshipWith player.name, -4
       player.modifyRelationshipWith defender.name, -4
 
@@ -380,12 +380,12 @@ class PlayerManager
       player.playerManager.game.battle?.broadcast "#{player.getName()}: #{player.messages.flee}" if player.messages?.flee
 
     player.on "combat.ally.kill", (attacker) ->
-      return if attacker.isMonster
+      return if not attacker or attacker.isMonster
       player.modifyRelationshipWith attacker.name, 2
       attacker.modifyRelationshipWith player.name, 2
 
     player.on "combat.ally.flee", (fleer) ->
-      return if fleer.isMonster
+      return if not fleer or fleer.isMonster
       player.modifyRelationshipWith fleer.name, -10
 
     @beginWatchingPlayerStatistics player

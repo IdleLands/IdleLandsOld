@@ -26,7 +26,7 @@ class Resume extends Spell
 
   cantAct: -> @resumeRejected
 
-  cantActMessages: -> "#{@caster.name} is still fuming about the résumé %heshe gave to %player!"
+  cantActMessages: -> "<player.name>#{@caster.name}</player.name> is still fuming about the résumé %heshe gave to %player!"
 
   calcDuration: -> super()+1
 

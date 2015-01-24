@@ -133,7 +133,6 @@ class Battle
 
   playersAlive: ->
     parties = _.uniq _.pluck @turnOrder, 'party'
-    console.log _.map parties, (p) -> {n: p.name, s: p.players.length}
     aliveParties = _.reduce parties, (alive, party) ->
       currentAlive = _.reduce party.players, (count, player) ->
         count+((not player.hp.atMin()) and (not player.fled))
@@ -566,33 +565,30 @@ class Battle
   emitEventToAll: (event, data) ->
     _.each @turnOrder, (player) ->
       if data instanceof Character
-        if player.name is data.name
-          player.emit "combat.self.#{event}", data
-        else if player.party is data.party
-          player.emit "combat.ally.#{event}", data
-        else if player.party isnt data.party
-          player.emit "combat.enemy.#{event}", data
-
+        emitted = no
+        player.emit "combat.self.#{event}";  emitted = yes if not emitted and player is data
+        player.emit "combat.ally.#{event}";  emitted = yes if not emitted and player.party is data?.party
+        player.emit "combat.enemy.#{event}"; emitted = yes if not emitted and player.party isnt data?.party
       else
-        player.emit "combat.#{event}"
+        player.emit "combat.#{event}", data
 
   emitEventsTo: (event, to, data) ->
-    _.forEach to, (player) ->
+    _.each to, (player) ->
       player.emit "combat.#{event}", data
 
   emitEvents: (attackerEvent, defenderEvent, attacker, defender, extra = {}) ->
     return if (not defender) or (not attacker) or (not defender.party) or (not attacker.party)
-    _.forEach (_.without attacker.party.players, attacker), (partyMate) ->
+    _.each (_.without attacker.party.players, attacker), (partyMate) ->
       partyMate.emit "combat.ally.#{attackerEvent}", attacker, defender, extra
 
-    _.forEach (_.intersection @turnOrder, attacker.party.players), (foe) ->
+    _.each (_.intersection @turnOrder, attacker.party.players), (foe) ->
       foe.emit "combat.enemy.#{attackerEvent}", attacker, defender, extra
     attacker.emit "combat.self.#{attackerEvent}", defender, extra
 
-    _.forEach (_.without defender.party.players, defender), (partyMate) ->
+    _.each (_.without defender.party.players, defender), (partyMate) ->
       partyMate.emit "combat.ally.#{defenderEvent}", defender, attacker, extra
 
-    _.forEach (_.intersection @turnOrder, defender.party.players), (foe) ->
+    _.each (_.intersection @turnOrder, defender.party.players), (foe) ->
       foe.emit "combat.enemy.#{defenderEvent}", attacker, defender, extra
     defender.emit "combat.self.#{defenderEvent}", attacker, extra
 

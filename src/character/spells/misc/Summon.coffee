@@ -102,7 +102,7 @@ class Summon extends Spell
       return if not monster.canFade
       @caster.special.sub chosenBaseMonster.slotCost if not isFail
       monster.party.playerLeave monster, yes
-      @caster.party.currentBattle.calculateTurnOrder()
+      @caster.party?.currentBattle.calculateTurnOrder()
 
   constructor: (@game, @caster) ->
     super @game, @caster
