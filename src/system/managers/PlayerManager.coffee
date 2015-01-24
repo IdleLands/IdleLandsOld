@@ -171,7 +171,7 @@ class PlayerManager
     @checkPassword identifier, password
     .then (res) =>
 
-      return res if not res.isSuccess
+      return defer.resolve res if not res.isSuccess
 
       baseResults =
         isSuccess: yes
