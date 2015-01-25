@@ -419,7 +419,7 @@ class PlayerManager
       player.statistics[stat] = Math.max val, player.statistics[stat]
 
     addStat = (stat, val, intermediate) ->
-      player.statistics[intermediate] = {} if intermediate and not (intermediate of player.statistics)
+      player.statistics[intermediate] = {} if intermediate and not (intermediate of player.statistics) or _.isNaN player.statistics[intermediate]
       root = if intermediate then player.statistics[intermediate] else player.statistics
       val = Math.abs val
       root[stat] = 0 if not (stat of root) or _.isNaN root[stat]
