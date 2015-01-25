@@ -368,7 +368,7 @@ class API
 
         self: (identifier, taxPercent) =>
           @validateIdentifier identifier
-          .then (res) =>
+          .then (res) ->
             if res.isSuccess then res.player.setSelfGuildTax taxPercent else res
 
     shop:

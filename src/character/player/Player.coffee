@@ -699,18 +699,6 @@ class Player extends Character
 
     Q @getExtraDataForREST {pet: yes, pets: yes}, {isSuccess: yes, code: 230, message: "Successfully made #{newPet.name}, the #{newPet.type} your active pet!"}
 
-  swapToPet: (petId) ->
-    pet = @getPet()
-    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
-
-    newPet = _.findWhere pet.petManager.pets, (pet) => pet.createdAt is petId and pet.owner.name is @name
-    return Q {isSuccess: no, code: 228, message: "That pet does not exist!"} if not newPet
-    return Q {isSuccess: no, code: 229, message: "That pet is already active!"} if newPet is pet
-
-    pet.petManager.changePetForPlayer @, newPet
-
-    Q @getExtraDataForREST {pet: yes, pets: yes}, {isSuccess: yes, code: 230, message: "Successfully made #{newPet.name}, the #{newPet.type} your active pet!"}
-
   setSelfGuildTax: (taxPercent) ->
     @guildTax = Math.round Math.max 0, Math.min 85, taxPercent
     Q @getExtraDataForREST {player: yes}, {isSuccess: yes, code: 255, message: "Successfully set your personal tax rate to #{@guildTax}%!"}
