@@ -4,6 +4,7 @@ Q = require "q"
 class API
 
   @gameInstance: null
+  @logger: null
 
   @validateIdentifier: (identifier) ->
     defer = Q.defer()
@@ -43,77 +44,122 @@ class API
   @gm =
     custom:
       init: =>
+        @logger.debug "GM Command custom.init"
         @gameInstance.gmCommands.initializeCustomData()
 
       update: =>
+        @logger.debug "GM Command custom.update"
         @gameInstance.gmCommands.updateCustomData()
 
       list: (identifier) =>
         @validateContentModerator identifier
         .then (res) =>
-          if res.isSuccess then @gameInstance.componentDatabase.getContentList() else res
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.componentDatabase.getContentList() else actualRes = res
+          @logger.debug "GM Command custom.list"
+          @logger.verbose "GM Command custom.list", {res: actualRes}
 
       approve: (identifier, ids) =>
         @validateContentModerator identifier
         .then (res) =>
-          if res.isSuccess then @gameInstance.componentDatabase.approveContent ids else res
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.componentDatabase.approveContent ids else actualRes = res
+          @logger.debug "GM Command custom.approve"
+          @logger.verbose "GM Command custom.approve", {res: actualRes}
 
       reject: (identifier, ids) =>
         @validateContentModerator identifier
         .then (res) =>
-          if res.isSuccess then @gameInstance.componentDatabase.rejectContent ids else res
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.componentDatabase.rejectContent ids else actualRes = res
+          @logger.debug "GM Command custom.reject"
+          @logger.verbose "GM Command custom.reject", {res: actualRes}
 
       modModerator: (newModeratorIdentifier, isModerator = yes) =>
+        @logger.debug "GM Command custom.modModerator",
+        @logger.verbose "GM Command custom.modModerator", {newModeratorIdentifier: newModeratorIdentifier, isModerator: isModerator}
         @gameInstance.gmCommands.setModeratorStatus newModeratorIdentifier, isModerator
 
     teleport:
       location:
         single: (playerName, location) =>
           player = @gameInstance.playerManager.getPlayerByName playerName
+          @logger.debug "GM Command teleport.location.single"
+          @logger.verbose "GM Command teleport.location.single", {playerName: playerName, location: location, player: player}
           @gameInstance.gmCommands.teleportLocation player, location
           null
         mass: (location) =>
+          @logger.debug "GM Command teleport.location.mass"
+          @logger.verbose "GM Command teleport.location.mass", {location: location}
           @gameInstance.gmCommands.massTeleportLocation location
           null
       map:
         single: (playerName, map, x, y) =>
           player = @gameInstance.playerManager.getPlayerByName playerName
+          @logger.debug "GM Command teleport.map.single"
+          @logger.verbose "GM Command teleport.map.single", {playerName: playerName, map: map, x: x, y: y}
           @gameInstance.gmCommands.teleport player, map, x, y
           null
         mass: (map, x, y) =>
+          @logger.debug "GM Command teleport.map.mass"
+          @logger.verbose "GM Command teleport.map.mass", {map: map, x: x, y: y}
           @gameInstance.gmCommands.massTeleport map, x, y
           null
 
     data:
       update: =>
+        @logger.debug "GM Command data.update"
         @gameInstance.doCodeUpdate()
       reload: =>
+        @logger.debug "GM Command data.reload"
         @gameInstance.componentDatabase.importAllData()
       setPassword: (identifier, password) =>
+        @logger.debug "GM Command data.setPassword"
+        @logger.verbose "GM Command teleport.data.setPassword", {identifier: identifier, password: password}
         @gameInstance.playerManager.storePasswordFor identifier, password
 
     event:
       single: (player, eventType, callback) =>
-        @gameInstance.eventHandler.doEventForPlayer player, eventType, callback
+        @logger.debug "GM Command event.single"
+        @logger.verbose "GM Command event.single", {player: player, eventType: eventType, callback: callback}
+        @gameInstance.eventHandler.doEventForPlayer player, eventType, callback #TODO There are only 2 parameters, callback is ignored?
       global: (eventType, callback) =>
+        @logger.debug "GM Command event.global"
+        @logger.verbose "GM Command event.global", {eventType: eventType, callback: callback}
         @gameInstance.globalEventHandler.doEvent eventType, callback
+
+    log:
+      setLoggerLevel: (name, level) =>
+        @logger.debug "GM Command log.setLoggerLevel"
+        @logger.verbose "GM Command log.setLoggerLevel", {name, level}
+        @gameInstance.logManager.setLoggerLevel name, level
 
     status:
       ban: (name, callback) =>
+        @logger.debug "GM Command status.ban"
+        @logger.verbose "GM Command status.ban", {name, callback}
         @gameInstance.playerManager.banPlayer name, callback
       unban: (name, callback) =>
+        @logger.debug "GM Command status.unban"
+        @logger.verbose "GM Command status.unban", {name, callback}
         @gameInstance.playerManager.unbanPlayer name, callback
 
     player:
       createItem: (playerName, type, itemString) =>
         player = @gameInstance.playerManager.getPlayerByName playerName
+        @logger.debug "GM Command player.createItem"
+        @logger.verbose "GM Command player.createItem", {playerName, type, itemString, player}
         @gameInstance.gmCommands.createItemFor player, type, itemString
 
       giveGold: (playerName, gold) =>
         player = @gameInstance.playerManager.getPlayerByName playerName
+        @logger.debug "GM Command player.giveGold"
+        @logger.verbose "GM Command player.giveGold", {playerName, gold, player}
         player.gold.add gold
 
     arrangeBattle: (names) =>
+      @logger.debug "GM Command arrangeBattle"
+      @logger.verbose "GM Command arrangeBattle", {names}
       @gameInstance.gmCommands.arrangeBattle names
 
   # Invoked either automatically (by means of taking a turn), or when a player issues a command

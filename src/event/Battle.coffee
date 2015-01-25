@@ -17,15 +17,19 @@ class Battle
   constructor: (@game, @parties, @suppress = Constants.defaults.battle.suppress, @battleUrl = Constants.defaults.battle.showUrl) ->
     return if @parties.length < 2
     @game.battle = @
+    @logger = @game.logManager.getLogger "Battle"
     @startBattle()
 
+    @logger.warn "constructor is bad!" if @isBad
     return @cleanUpGlobals() if @isBad
 
     @endBattle()
 
   startBattle: ->
+    @logger.info "BATTLE START"
     @setupParties()
 
+    @logger.warn "startBattle is bad!" if @isBad
     return if @isBad
 
     @badTurns = 0
@@ -79,6 +83,7 @@ class Battle
     playerList = _.reduce @parties, ((prev, party) -> prev.concat party.players), []
     @turnOrder = _.sortBy playerList, (player) -> player.calc.stat 'agi'
                   .reverse()
+    @logger.info "battle order", {turnOrder: @turnOrder}
 
   getRelevantStats: (player) ->
     stats =
@@ -146,6 +151,7 @@ class Battle
     0 < _.reduce (_.difference @turnOrder, turntaker.party.players), ((prev, player) -> prev+player.calc[effect]()), 0
 
   beginTakingTurns: ->
+    @logger.info "battle.start"
     @emitEventToAll "battle.start", @turnOrder
     @currentTurn = 1
     while @playersAlive()
@@ -156,15 +162,19 @@ class Battle
 
       if @turnPosition is 0
         @broadcast "ROUND #{@currentTurn} STATUS: #{@getAllStatStrings().join ' VS '}"
+        @logger.info "round.start"
         @emitEventToAll "round.start", @turnOrder
 
       player = @turnOrder[@turnPosition]
+      @logger.verbose "turn.start", {player: player}
       @emitEventToAll "turn.start", player
       @takeTurn player
       @emitEventToAll "turn.end", player
+      @logger.verbose "turn.end", {player: player}
 
       @turnPosition++
       if @turnPosition is @turnOrder.length
+        @logger.info "round.end"
         @emitEventToAll "round.end", @turnOrder
         @turnPosition = 0
         @currentTurn++
