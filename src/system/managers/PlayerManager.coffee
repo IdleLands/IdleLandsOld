@@ -332,6 +332,8 @@ class PlayerManager
     player.isBusy = false
     player.loadCalc()
 
+    player.guildTax = 0 unless player.guildTax
+
     player.handleGuildStatus()
 
     player.calc.itemFindRange()
@@ -470,7 +472,10 @@ class PlayerManager
           addStat "calculated total gold spent", Math.abs arguments[1]
 
         when "player.gold.guildDonation"
-          addStat "calculated guild donations", Math.abs arguments[1]
+          addStat arguments[0], (Math.abs arguments[1]), "calculated guild donations"
+
+        when "player.gold.guildTax"
+          addStat arguments[0], (Math.abs arguments[1]), "calculated guild taxes paid"
 
         when "explore.transfer"
           addStat arguments[1], 1, "calculated map changes"

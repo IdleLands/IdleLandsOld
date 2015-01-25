@@ -359,6 +359,18 @@ class API
         .then (res) =>
           if res.isSuccess then @gameInstance.guildManager.addBuff identifier, type, tier else res
 
+      tax:
+        whole: (identifier, taxPercent) =>
+          @validateIdentifier identifier
+          .then (res) =>
+            guild = res.player.guild
+            if res.isSuccess then @gameInstance.guildManager.guildHash[guild].setTax identifier, taxPercent else res
+
+        self: (identifier, taxPercent) =>
+          @validateIdentifier identifier
+          .then (res) ->
+            if res.isSuccess then res.player.setSelfGuildTax taxPercent else res
+
     shop:
       buy: (identifier, slot) =>
         @validateIdentifier identifier

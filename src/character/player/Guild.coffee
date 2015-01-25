@@ -88,6 +88,22 @@ class Guild
 
     Q {isSuccess: yes, code: 68, message: "Successfully demoted #{memberName}.", guild: @buildSaveObject()}
 
+  setTax: (leaderId, newTax) ->
+    newTax = Math.round Math.min 15, Math.max 0, newTax
+    return Q {isSuccess: no, code: 50, message: "You're not the leader of your guild!"} if leaderId isnt @leader
+    @taxPercent = newTax
+    @save()
+
+    @notifyAllPossibleMembers "The tax rate of \"#{@name}\" is now #{@taxPercent}%."
+    Q {isSuccess: yes, code: 70, message: "Successfully set the tax rate of \"#{@name}\" to #{newTax}%!", guild: @buildSaveObject()}
+
+  calcTax: (player) ->
+    player.guildTax + @taxPercent
+
+  collectTax: (player, gold) ->
+    @gold.add gold
+    player.emit "player.gold.guildTax", @name, gold
+
   notifyAllPossibleMembers: (message) ->
     _.each @members, (member) =>
       player = @guildManager.game.playerManager.getPlayerById member.identifier

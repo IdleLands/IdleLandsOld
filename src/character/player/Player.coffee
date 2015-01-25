@@ -699,6 +699,10 @@ class Player extends Character
 
     Q @getExtraDataForREST {pet: yes, pets: yes}, {isSuccess: yes, code: 230, message: "Successfully made #{newPet.name}, the #{newPet.type} your active pet!"}
 
+  setSelfGuildTax: (taxPercent) ->
+    @guildTax = Math.round Math.max 0, Math.min 85, taxPercent
+    Q @getExtraDataForREST {player: yes}, {isSuccess: yes, code: 255, message: "Successfully set your personal tax rate to #{@guildTax}%!"}
+
   save: ->
     return if not @playerManager
     @playerManager.savePlayer @
@@ -709,11 +713,17 @@ class Player extends Character
   gainGold: (gold) ->
     if _.isNaN gold
       @playerManager.game.errorHandler.captureException new Error "BAD GOLD VALUE GOTTEN SOMEHOW"
-
       gold = 1
 
     if gold > 0
       @emit "player.gold.gain", @, gold
+
+      guild = @getGuild()
+      if guild
+        taxPaid = guild.calcTax @
+        goldPaid = Math.round gold*(taxPaid/100)
+        guild.collectTax @, goldPaid if goldPaid > 0
+
     else
       @emit "player.gold.lose", @, gold
 
