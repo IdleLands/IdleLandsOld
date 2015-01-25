@@ -470,7 +470,7 @@ class PlayerManager
           addStat "calculated total gold spent", Math.abs arguments[1]
 
         when "player.gold.guildDonation"
-          addStat "calculated guild donations", Math.abs arguments[1]
+          addStat arguments[0], (Math.abs arguments[1]), "calculated guild donations"
 
         when "explore.transfer"
           addStat arguments[1], 1, "calculated map changes"

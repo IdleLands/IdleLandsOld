@@ -279,7 +279,7 @@ class GuildManager
     guild.gold.add gold
     player.gold.sub gold
 
-    player.emit "player.gold.guildDonation", gold
+    player.emit "player.gold.guildDonation", guild.name, gold
 
     guild.save()
     player.save()
