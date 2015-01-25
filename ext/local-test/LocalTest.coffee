@@ -72,6 +72,7 @@ player = -> api().player
 game = -> api().game
 gm = -> api().gm
 pname = (name) -> pm().getPlayerByName name
+gname = (name) -> inst().guildManager.getGuildByName name
 pid = (id) -> pm().getPlayerById id
 
 colorMap =
