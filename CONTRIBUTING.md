@@ -24,6 +24,6 @@
 * If you've added a spell, you're good to go after you document it.
 * Documentation
 * If you've added or updated a personality, you're good to go after you document it. If you've created personality which increases fleePercent - please update [src/character/classes/Jester.coffee](https://github.com/IdleLands/IdleLands/blob/master/src/character/classes/Jester.coffee).
-* If you've added a class, please add some [monsters](https://github.com/IdleLands/IdleLands/blob/master/assets/data/monsters/monster.txt#L202) to reflect the new class and consider updating isPhysical/isMagical/isMedic/isDPS/isTank/isSupport functions in [the game constants](https://github.com/IdleLands/IdleLands/blob/master/src/system/Constants.coffee). Feel free to get creative when describing the orcish, kobold, etc versions of your class.
+* If you've added a class, please add some [monsters](https://github.com/IdleLands/IdleLands/blob/master/assets/data/monsters/monster.txt#L202) to reflect the new class and consider updating isPhysical/isMagical/isMedic/isDPS/isTank/isSupport functions in [the game constants](https://github.com/IdleLands/IdleLands/blob/master/src/system/utilities/Constants.coffee). Feel free to get creative when describing the orcish, kobold, etc versions of your class.
 * Please make sure your stuff is documented.
 * If you're working with the API, please [update the REST API wiki page](https://github.com/IdleLands/IdleLands/wiki/REST-API) and the [error code wiki page](https://github.com/IdleLands/IdleLands/wiki/REST-Error-Codes).
