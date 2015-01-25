@@ -836,6 +836,52 @@ module.exports = (Module) ->
             @reply origin, res.message
 
       `/**
+       * Adjust your guilds tax rate (anywhere from 0-15%). Only guild leaders can set this.
+       *
+       * @name !idle-guild tax
+       * @syntax !idle-guild tax taxPercent
+       * @example !idle-guild tax 15
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-guild tax :taxPercent", (origin, route) =>
+        [taxPercent] = [route.params.taxPercent]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to manage your guilds taxes!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          @IdleWrapper.api.player.guild.tax.whole identifier, parseInt taxPercent
+          .then (res) =>
+            @reply origin, res.message
+
+      `/**
+       * Adjust your personal tax rate to pay to your guild (anywhere from 0-85%).
+       *
+       * @name !idle-guild selftax
+       * @syntax !idle-guild selftax taxPercent
+       * @example !idle-guild selftax 15
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-guild selftax :taxPercent", (origin, route) =>
+        [taxPercent] = [route.params.taxPercent]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to manage your taxes!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          @IdleWrapper.api.player.guild.tax.self identifier, parseInt taxPercent
+          .then (res) =>
+            @reply origin, res.message
+
+      `/**
         * Manage your password, or authenticate.
         *
         * @name idle-secure
