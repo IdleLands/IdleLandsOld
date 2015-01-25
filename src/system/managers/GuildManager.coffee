@@ -285,6 +285,6 @@ class GuildManager
     guild.save()
     player.save()
 
-    Q player.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 157, message: "You have donated #{gold} gold to \"#{guild.name}.\""}
+    Q player.getExtraDataForREST {guild: yes}, {isSuccess: yes, code: 157, message: "You have donated #{gold} gold to \"#{guild.name}.\""}
 
 module.exports = exports = GuildManager
