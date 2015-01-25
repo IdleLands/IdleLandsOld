@@ -60,7 +60,7 @@ class ProvidenceEvent extends Event
       message = "#{message} Gender is now '#{gender}'!"
 
     if goldMod and (chance.bool {likelihood: 50})
-      @player.gold.add goldMod
+      @player.gainGold goldMod
       message = "#{message} #{if goldMod > 0 then 'Found' else 'Lost'} #{Math.abs goldMod} gold!"
 
     if classMod and @professionName isnt classMod and (chance.bool {likelihood: 15})

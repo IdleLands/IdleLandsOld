@@ -709,11 +709,17 @@ class Player extends Character
   gainGold: (gold) ->
     if _.isNaN gold
       @playerManager.game.errorHandler.captureException new Error "BAD GOLD VALUE GOTTEN SOMEHOW"
-
       gold = 1
 
     if gold > 0
       @emit "player.gold.gain", @, gold
+
+      guild = @getGuild()
+      if guild
+        taxPaid = guild.calcTax @
+        goldPaid = Math.round gold*(taxPaid/100)
+        guild.collectTax @, goldPaid if goldPaid > 0
+
     else
       @emit "player.gold.lose", @, gold
 

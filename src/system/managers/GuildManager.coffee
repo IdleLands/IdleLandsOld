@@ -90,6 +90,7 @@ class GuildManager
         guild.gold.__current = 0 if _.isNaN guild.gold.__current
         guild.gold.__proto__ = RestrictedNumber.prototype
         guild.buffs = _.compact guild.buffs
+        guild.taxPercent = 0 if not guild.taxPercent
         guild.invites = []
         _.each guild.buffs, (buff) ->
           if guildBuffs["Guild#{buff.type}"]
