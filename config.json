@@ -17,6 +17,7 @@
         },
         "content": {
             "showFileLabels": true,
+            "suppressProps": ["category","name","package"],
             "sourceLink": "https://github.com/IdleLands/IdleLands/tree/master/%filePath#L%lineNumber-L%endLineNumber"
         }
     }
