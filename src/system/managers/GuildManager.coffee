@@ -279,9 +279,12 @@ class GuildManager
 
     guild.gold.add gold
     player.gold.sub gold
-
-    player.emit "player.gold.guildDonation", guild.name, gold
     guild.save()
+
+    try
+      player.emit "player.gold.guildDonation", guild.name, gold
+    catch e
+      @game.errorHandler.captureException e
 
     Q player.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 157, message: "You have donated #{gold} gold to \"#{guild.name}.\""}
 
