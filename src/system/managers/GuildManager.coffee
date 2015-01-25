@@ -268,13 +268,13 @@ class GuildManager
   donate: (identifier, gold) ->
     player = @game.playerManager.getPlayerById identifier
 
-    return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} if not player.guild
+    return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} unless player.guild
     return Q {isSuccess: no, code: 56, message: "You don't have enough gold!"} if player.gold.getValue() < gold
     return Q {isSuccess: no, code: 63, message: "Stop trying to steal gold!"} if gold <= 0
     return Q {isSuccess: no, code: 64, message: "That's an invalid amount of gold! You might mess something up if you do that!"} if _.isNaN parseInt gold
 
     guild = @guildHash[player.guild]
-    guild.gold = new RestrictedNumber 0, 9999999999, 0 if not @guildHash[player.guild].gold
+    guild.gold = new RestrictedNumber 0, 9999999999, 0 unless guild.gold
     gold = Math.round Math.min gold, guild.gold.maximum-guild.gold.getValue() #Prevent overdonation
 
     guild.gold.add gold
@@ -285,6 +285,6 @@ class GuildManager
     guild.save()
     player.save()
 
-    Q player.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 157, message: "You have donated #{gold} gold to #{guild.name}."}
+    Q player.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 157, message: "You have donated #{gold} gold to \"#{guild.name}.\""}
 
 module.exports = exports = GuildManager
