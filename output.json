@@ -989,6 +989,76 @@
                     "_name": "IRC Commands",
                     "_children": [
                         {
+                            "lineNumber": 861,
+                            "endLineNumber": 869,
+                            "filePath": "ext/kurea/IdleLandsModule.coffee",
+                            "fileName": "IdleLandsModule.coffee",
+                            "example": [
+                                {
+                                    "name": "example",
+                                    "basicInfo": "!idle-guild selftax 15"
+                                }
+                            ],
+                            "syntax": [
+                                {
+                                    "name": "syntax",
+                                    "basicInfo": "!idle-guild selftax taxPercent"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "Adjust your personal tax rate to pay to your guild",
+                                "extendedInfo": "anywhere from 0-85%"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "!idle-guild selftax"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "IRC Commands"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Client"
+                            }
+                        },
+                        {
+                            "lineNumber": 838,
+                            "endLineNumber": 846,
+                            "filePath": "ext/kurea/IdleLandsModule.coffee",
+                            "fileName": "IdleLandsModule.coffee",
+                            "example": [
+                                {
+                                    "name": "example",
+                                    "basicInfo": "!idle-guild tax 15"
+                                }
+                            ],
+                            "syntax": [
+                                {
+                                    "name": "syntax",
+                                    "basicInfo": "!idle-guild tax taxPercent"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "Adjust your guilds tax rate",
+                                "extendedInfo": "anywhere from 0-15%"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "!idle-guild tax"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "IRC Commands"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Client"
+                            }
+                        },
+                        {
                             "lineNumber": 815,
                             "endLineNumber": 823,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
@@ -1244,8 +1314,8 @@
                             }
                         },
                         {
-                            "lineNumber": 964,
-                            "endLineNumber": 972,
+                            "lineNumber": 1010,
+                            "endLineNumber": 1018,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -1276,8 +1346,8 @@
                             }
                         },
                         {
-                            "lineNumber": 983,
-                            "endLineNumber": 992,
+                            "lineNumber": 1029,
+                            "endLineNumber": 1038,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1638,8 +1708,8 @@
                             }
                         },
                         {
-                            "lineNumber": 910,
-                            "endLineNumber": 935,
+                            "lineNumber": 956,
+                            "endLineNumber": 981,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1741,8 +1811,8 @@
                             }
                         },
                         {
-                            "lineNumber": 862,
-                            "endLineNumber": 870,
+                            "lineNumber": 908,
+                            "endLineNumber": 916,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1775,8 +1845,8 @@
                             }
                         },
                         {
-                            "lineNumber": 885,
-                            "endLineNumber": 895,
+                            "lineNumber": 931,
+                            "endLineNumber": 941,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1958,8 +2028,8 @@
                             }
                         },
                         {
-                            "lineNumber": 838,
-                            "endLineNumber": 847,
+                            "lineNumber": 884,
+                            "endLineNumber": 893,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -11088,7 +11158,7 @@
                             },
                             "maxDamage": {
                                 "name": "maxDamage",
-                                "basicInfo": "0.8*[wis+dex]"
+                                "basicInfo": "0.7*[wis+dex]"
                             },
                             "category": {
                                 "name": "category",
@@ -17400,12 +17470,12 @@
             ]
         }
     ],
-    "startTime": 1421981315219,
-    "endTime": 1421981315287,
+    "startTime": 1422155274784,
+    "endTime": 1422155274894,
     "git": {
-        "short": "f8958d2",
-        "long": "f8958d2a225e1b732c61e0992aaf8b88cf9c4767",
-        "branch": "master",
+        "short": "4c79fe5",
+        "long": "4c79fe54f35f0cf0f734a1544e65b827b4b7e323",
+        "branch": "guild-tax",
         "tag": "0.5.0"
     }
 }

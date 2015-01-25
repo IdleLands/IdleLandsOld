@@ -94,9 +94,6 @@ angular.module('doks', ['mgcrea.ngStrap', 'ui.router', 'ui.select', 'ncy-angular
                     .success(function(data) {
                         $scope.data = data;
                         $scope.flatData = _.flatten(_.flatten($scope.data.parsed, '_children'), '_children');
-                        _.each($scope.flatData, function(data) {
-                            data._props = $scope.propsAsArray(data);
-                        });
                         $scope.categories = filterArray($scope.data.parsed);
                     });
             });
