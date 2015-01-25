@@ -66,4 +66,9 @@ router
   API.player.guild.tax.whole identifier, taxPercent
   .then (resp) -> res.json resp
 
+.post "/player/manage/tax", hasValidToken, (req, res) ->
+  {identifier, taxPercent} = req.body
+  API.player.guild.tax.self identifier, taxPercent
+  .then (resp) -> res.json resp
+
 module.exports = router

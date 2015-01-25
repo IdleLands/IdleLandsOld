@@ -366,6 +366,11 @@ class API
             guild = res.player.guild
             if res.isSuccess then @gameInstance.guildManager.guildHash[guild].setTax identifier, taxPercent else res
 
+        self: (identifier, taxPercent) =>
+          @validateIdentifier identifier
+          .then (res) =>
+            if res.isSuccess then res.player.setSelfGuildTax taxPercent else res
+
     shop:
       buy: (identifier, slot) =>
         @validateIdentifier identifier
