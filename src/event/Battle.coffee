@@ -134,7 +134,7 @@ class Battle
   playersAlive: ->
     parties = _.uniq _.pluck @turnOrder, 'party'
     aliveParties = _.reduce parties, (alive, party) ->
-      currentAlive = _.reduce party.players, (count, player) ->
+      currentAlive = _.reduce party?.players, (count, player) ->
         count+((not player.hp.atMin()) and (not player.fled))
       , 0
       alive.concat if currentAlive>0 then [party.name] else []
@@ -568,15 +568,15 @@ class Battle
         emitted = no
         if not emitted and player is data
           emitted = yes
-          player.emit "combat.self.#{event}"
+          player.emit "combat.self.#{event}", data
 
         if not emitted and player.party is data?.party
           emitted = yes
-          player.emit "combat.ally.#{event}"
+          player.emit "combat.ally.#{event}", data
 
         if not emitted and player.party isnt data?.party
           emitted = yes
-          player.emit "combat.enemy.#{event}"
+          player.emit "combat.enemy.#{event}", data
 
       else
         player.emit "combat.#{event}", data
