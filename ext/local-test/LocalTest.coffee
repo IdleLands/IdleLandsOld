@@ -174,6 +174,8 @@ interactiveSession = ->
     else if line is "c"
       do IdleWrapper.api.gameInstance.playerManager.beginGameLoop
       do gameLoop
+    else if line is "exit"
+      process.exit 0
     else
       try
         broadcast "Evaluating `#{line}`"
