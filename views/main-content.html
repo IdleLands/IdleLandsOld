@@ -163,7 +163,7 @@
             <div class="row more-padding-top">
                 <div class="col-md-12">
                     <ul class="no-prefix">
-                        <li ng-repeat="tag in mainObj._props track by $index" class="tag-data">
+                        <li ng-repeat="tag in mainObj._props track by $index" class="tag-data" ng-if="config.options.content.suppressProps.indexOf(tag.name) === -1">
                             <div class="tag-simple-properties">
                                 <span class="tag-data-symbol"></span><span>{{tag.name}}</span>
                                 <span class="tag-data-type badge badge-default" ng-if="tag.value && tag.value.type">({{tag.value.type}})</span>
