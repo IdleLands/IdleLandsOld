@@ -726,6 +726,28 @@
             { "name": "Guardian Tower Shield", "dropPercent": 80 }
         ]
     },
+    "Barney": {
+        "respawn": 10800,
+        "availableScore": 5150,
+        "stats": {
+            "class": "Fighter",
+            "hp": 22500,
+	    "mp": 3700,
+            "level": 51,
+            "str": 1666,
+	    "dex": 1285,
+	    "agi": 1285,
+            "con": 481,
+	    "luck": 26,
+            "prone": 1,
+	    "parry": 1,
+	    "poison": 1,
+	    "venom": 1
+        },
+        "items": [
+            { "name": "Acid Amulet Shard", "dropPercent": 75 }
+        ]
+    },
     "Gryffyndor House Representative": {
         "respawn": 10800,
         "availableScore": 2400,
