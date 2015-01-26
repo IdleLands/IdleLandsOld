@@ -150,8 +150,8 @@ class Spell
 
   doDamageTo: (player, damage, message = "") ->
     extra =
-      casterName: @caster.name
-      targetName: player.name
+      casterName: @caster.getName()
+      targetName: player.getName()
       spellName: @name
 
     damage = Math.round player.calcDamageTaken damage
@@ -163,7 +163,7 @@ class Spell
   prepareCast: (enemies = null) ->
     enemies = @determineTargets() if not enemies
 
-    enemies = [enemies] if not _.isArray enemies
+    enemies = [enemies] unless _.isArray enemies
     targets = @caster.calc.magicalAttackTargets enemies, @baseTargets
     @affect targets
 
@@ -178,7 +178,7 @@ class Spell
 
     _.each @affected, (player) =>
       if not player
-        @game.errorHandler.captureException (new Error "INVALID PLAYER for #{@baseName}: #{player?.name}")
+        @game.errorHandler.captureException (new Error "INVALID PLAYER for #{@baseName}: #{player?.name}"), extra: personalities: @caster.personalityStrings
         return
 
       @baseTurns[player.name] = @turns[player.name] = turns[player.name] = @calcDuration player

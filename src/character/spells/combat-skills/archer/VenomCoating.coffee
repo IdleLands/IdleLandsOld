@@ -8,7 +8,7 @@ class VenomCoating extends Spell
     `/**
       * This spell gives one ally poison and venom temporarily. Only used at low Focus.
       *
-      * @name VenomCoating
+      * @name venom coating
       * @requirement {class} Archer
       * @requirement {mp} 150
       * @requirement {level} 15

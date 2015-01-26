@@ -560,6 +560,7 @@
         "availableScore": 9000,
         "stats": {
             "class": "Fighter",
+            "gender": "male",
             "hp": 75800,
 	    "mp": 10000,
             "level": 80,

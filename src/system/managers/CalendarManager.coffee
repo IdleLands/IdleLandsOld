@@ -43,6 +43,13 @@ CalendarManager::getDateEffects = ->
     timePeriods.day["#{@dayOrder[@date[2]]}Day"]
   ]
 
+CalendarManager::getRawDate = ->
+  [
+    @yearOrder[@date[0]]
+    @monthOrder[@date[1]]
+    @dayOrder[@date[2]]
+  ]
+
 CalendarManager::getDateName = ->
   date = @getDateEffects()
   "#{date[0].dateName}, #{date[1].dateName}, #{date[2].dateName}"

@@ -4,13 +4,13 @@ SandwichBuff = require "./SandwichBuff.coffee"
 Cookie = require "./Cookie.coffee"
 
 class SandwichAlly extends Spell
-  name: "Sandwich Ally"
+  name: "sandwich ally"
   @element = SandwichAlly::element = Spell::Element.physical
   @tiers = SandwichAlly::tiers = [
     `/**
       * This skill feeds an ally. As for what that means, that depends on the sandwich made.
       *
-      * @name Sandwich Ally
+      * @name sandwich ally
       * @requirement {class} SandwichArtist
       * @requirement {mp} 200
       * @requirement {level} 10

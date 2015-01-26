@@ -9,7 +9,7 @@ class NinetyNineBottles extends Spell
     `/**
       * This spell throws bottles at the opponent. Generally, people don't like that.
       *
-      * @name 99 Bottles of Ale
+      * @name 99 Bottles of ale
       * @requirement {class} Pirate
       * @requirement {hp} 1200
       * @requirement {level} 25

@@ -57,15 +57,6 @@ class BattleManager
     return if @inBattle
     return if parties.length < 2 and @game.playerManager.players.length < 2
 
-    oldLength = parties.length
-    parties = _.compact parties
-
-    if oldLength isnt parties.length
-      @game.errorHandler.captureException (new Error "Somehow, something came through and it was bad")
-      return
-
-    origPartyLength = parties.length
-
     # no parties = global event = pvp battle
     if parties.length is 0
       parties = @chooseBestPvPParties()
@@ -82,8 +73,6 @@ class BattleManager
 
     else
       _.each parties, (party) -> party.prepareForBattle()
-
-    @game.errorHandler.captureException (new Error "Bad parties for combat"), extra: partySize: origPartyLength if parties.length < 2
 
     @_startBattle parties, event
 

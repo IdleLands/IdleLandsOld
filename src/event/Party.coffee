@@ -75,12 +75,13 @@ class Party
       message = ''
 
       if @players.length <= 1
-        @disband()
         message = "<player.name>#{player.getName()}</player.name> has disbanded <event.partyName>#{@name}</event.partyName>."
       else
         message = "<player.name>#{player.getName()}</player.name> has left <event.partyName>#{@name}</event.partyName>."
 
       @game.eventHandler.broadcastEvent {message: message, player: player, type: 'party'}
+
+    @disband() if @players.length <= 1
 
     player.party = null
 

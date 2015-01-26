@@ -1,6 +1,7 @@
 
 MessageCreator = require "../system/handlers/MessageCreator"
 Player = require "../character/player/Player"
+Character = require "../character/base/Character"
 BattleCache = require "./BattleCache"
 Constants = require "../system/utilities/Constants"
 
@@ -104,7 +105,7 @@ class Battle
         string += " [ "
         string += "<stats.hp>HP #{stats.hp.getValue()}/#{stats.hp.maximum}</stats.hp> " if stats.hp
         string += "<stats.mp>MP #{stats.mp.getValue()}/#{stats.mp.maximum}</stats.mp> " if stats.mp
-        string += "<stats.sp>#{stats.special.name or "SP"} #{stats.special.getValue()}/#{stats.special.maximum}</stats.sp> " if stats.special
+        string += "<stats.sp>#{stats.special.name} #{stats.special.getValue()}/#{stats.special.maximum}</stats.sp> " if stats.special?.name
       string += "]"
 
     string
@@ -133,7 +134,7 @@ class Battle
   playersAlive: ->
     parties = _.uniq _.pluck @turnOrder, 'party'
     aliveParties = _.reduce parties, (alive, party) ->
-      currentAlive = _.reduce party.players, (count, player) ->
+      currentAlive = _.reduce party?.players, (count, player) ->
         count+((not player.hp.atMin()) and (not player.fled))
       , 0
       alive.concat if currentAlive>0 then [party.name] else []
@@ -157,8 +158,8 @@ class Battle
         @broadcast "ROUND #{@currentTurn} STATUS: #{@getAllStatStrings().join ' VS '}"
         @emitEventToAll "round.start", @turnOrder
 
-      @emitEventToAll "turn.start", player
       player = @turnOrder[@turnPosition]
+      @emitEventToAll "turn.start", player
       @takeTurn player
       @emitEventToAll "turn.end", player
 
@@ -422,7 +423,7 @@ class Battle
     winMessages = []
 
     _.each combatWinners, (player) ->
-      return if player.isMonster
+      return if player.isMonster and not player.isPet
 
       goldGain = player.personalityReduce 'combatEndGoldGain', [player, deadVariables]
       goldGain = player.calcGoldGain goldGain
@@ -438,7 +439,7 @@ class Battle
     #losing player xp distribution
 
     _.each deadVariables.deadPlayers, (player) ->
-      return if player.isMonster
+      return if player.isMonster and not player.isPet
       basePct = chance.integer min: 1, max: 6
       basePctValue = Math.floor player.xp.maximum * (basePct/100)
 
@@ -548,47 +549,55 @@ class Battle
     message = MessageCreator.doStringReplace message, attacker, extra
     @broadcast message if message and typeof message is "string"
 
-    if defenderPunishDamage > 0 and not doPropagate and not attacker.hp.atMin()
+    if defenderPunishDamage > 0 and not doPropagate and not attacker.hp.atMin() and attacker isnt defender
       refmsg = "<player.name>#{defender.name}</player.name> reflected <damage.hp>#{defenderPunishDamage}</damage.hp> damage back at <player.name>#{attacker.name}</player.name>!"
       @takeStatFrom defender, attacker, defenderPunishDamage, type, damageType, spell, refmsg, yes
       @emitEvents "effect.punish", "effect.punished", defender, attacker
       defender.emit "combat.self.punish.damage", defenderPunishDamage
       attacker.emit "combat.self.punished.damage", defenderPunishDamage
 
-    if darksideDamage > 0 and not doPropagate and not attacker.hp.atMin()
+    if darksideDamage > 0 and not doPropagate and not attacker.hp.atMin() and attacker isnt defender
       refmsg = "<player.name>#{attacker.name}</player.name> took <damage.hp>#{darksideDamage}</damage.hp> damage due to darkside!"
       @takeStatFrom attacker, attacker, darksideDamage, type, damageType, spell, refmsg, yes
       @emitEventToAll "effect.darkside", attacker
       attacker.emit "combat.self.darkside.damage", darksideDamage
 
   emitEventToAll: (event, data) ->
-    _.forEach @turnOrder, (player) ->
-      if player is data
-        player.emit "combat.self.#{event}", data
-      else if data instanceof Player and player.party is data.party
-        player.emit "combat.ally.#{event}", data
-      else if data instanceof Player and player.party isnt data.party
-        player.emit "combat.enemy.#{event}", data
-      else if event and event not in ['turn.end', 'turn.start', 'flee']
+    _.each @turnOrder, (player) ->
+      if data instanceof Character
+        emitted = no
+        if not emitted and player is data
+          emitted = yes
+          player.emit "combat.self.#{event}", data
+
+        if not emitted and player.party is data?.party
+          emitted = yes
+          player.emit "combat.ally.#{event}", data
+
+        if not emitted and player.party isnt data?.party
+          emitted = yes
+          player.emit "combat.enemy.#{event}", data
+
+      else
         player.emit "combat.#{event}", data
 
   emitEventsTo: (event, to, data) ->
-    _.forEach to, (player) ->
+    _.each to, (player) ->
       player.emit "combat.#{event}", data
 
   emitEvents: (attackerEvent, defenderEvent, attacker, defender, extra = {}) ->
     return if (not defender) or (not attacker) or (not defender.party) or (not attacker.party)
-    _.forEach (_.without attacker.party.players, attacker), (partyMate) ->
+    _.each (_.without attacker.party.players, attacker), (partyMate) ->
       partyMate.emit "combat.ally.#{attackerEvent}", attacker, defender, extra
 
-    _.forEach (_.intersection @turnOrder, attacker.party.players), (foe) ->
+    _.each (_.intersection @turnOrder, attacker.party.players), (foe) ->
       foe.emit "combat.enemy.#{attackerEvent}", attacker, defender, extra
     attacker.emit "combat.self.#{attackerEvent}", defender, extra
 
-    _.forEach (_.without defender.party.players, defender), (partyMate) ->
+    _.each (_.without defender.party.players, defender), (partyMate) ->
       partyMate.emit "combat.ally.#{defenderEvent}", defender, attacker, extra
 
-    _.forEach (_.intersection @turnOrder, defender.party.players), (foe) ->
+    _.each (_.intersection @turnOrder, defender.party.players), (foe) ->
       foe.emit "combat.enemy.#{defenderEvent}", attacker, defender, extra
     defender.emit "combat.self.#{defenderEvent}", attacker, extra
 

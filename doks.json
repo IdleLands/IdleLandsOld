@@ -10,7 +10,7 @@
     "syntax",
     "requirement"
   ],
-  "json": "config/*.json",
+  "keySort": ["package", "category", "name"],
   "outputOnly": true,
   "templateOptions": {
     "page": {

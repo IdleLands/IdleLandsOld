@@ -15,7 +15,7 @@ class Monster extends Character
     @level = new RestrictedNumber 0, 1000, 0
     @identifier = Date.now()
 
-    @gender = chance.gender().toLowerCase()
+    @gender = chance.gender().toLowerCase() or options.gender
 
     @level.set level
 
@@ -27,6 +27,16 @@ class Monster extends Character
     @isMonster = yes
 
   getGender: -> @gender
+
+  mirror: (party) ->
+    return if not party
+
+    monsterEquipment = _.filter @equipment, (item) -> item.type is "monster"
+    targetPlayer = _.sample party.players
+    @equipment = (_.cloneDeep targetPlayer.equipment).concat monsterEquipment
+    _.each @equipment, (item) -> item.__proto__ = Equipment.prototype
+    @level.set targetPlayer.level.getValue()
+    @setClassTo targetPlayer.professionName
 
   setClassTo: (newClass = 'Monster') ->
     toClass = null
@@ -40,6 +50,7 @@ class Monster extends Character
       toClass = new (require "../classes/Monster")()
       toClassName = "Monster"
 
+    @profession?.unload? @
     @profession = toClass
     toClass.load @
     @professionName = toClassName

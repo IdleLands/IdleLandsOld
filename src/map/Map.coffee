@@ -1,5 +1,6 @@
 
 _ = require "lodash"
+chance = new (require "chance")()
 
 class Map
   gidMap:
@@ -62,7 +63,7 @@ class Map
   blockers: [16, 17, 3, 33, 37, 38, 39, 44, 45, 46, 47, 50, 53, 54, 55]
   interactables: [1, 2, 12, 13, 14, 15, 18, 40, 41, 42, 43, 48, 51]
 
-  constructor: (path) ->
+  constructor: (path, @game) ->
     @map = require path
 
     @tileHeight = @map.tileheight
@@ -74,6 +75,7 @@ class Map
     @name = @map.properties.name
 
     @loadRegions()
+    @nameTrainers()
 
   loadRegions: ->
     @regionMap = []
@@ -89,6 +91,19 @@ class Map
       for x in [startX...(startX+width)]
         for y in [startY...(startY+height)]
           @regionMap[(y*@width)+x] = region.name
+
+  nameTrainers: ->
+    return if not @game
+    @game.loading.then =>
+      allTrainersOnMap = (_.filter @map.layers[2].objects, (obj) -> obj.type is "Trainer")
+      _.each allTrainersOnMap, (trainer) =>
+        possibleNames = _.reject @game.componentDatabase.npcs, (npc) -> npc.class and npc.class isnt trainer.name
+        chancedName = chance.name {middle: chance.bool(), prefix: chance.bool(), suffix: chance.bool()}
+        npcName = (_.sample possibleNames).name
+        trainer.properties.realName = if chance.bool({likelihood: 30}) then chancedName else npcName
+
+  getMapData: ->
+    _.omit @, 'game'
 
   getTile: (x, y) ->
 

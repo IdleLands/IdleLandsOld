@@ -7,13 +7,22 @@
             "Draygon Greaves"
         ]
     },
+    "Sunken Treasure": {
+        "items": [
+            "Pirate Hat",
+            "Pirate Hook",
+            "Star Amulet",
+            "Bag of Booty",
+	    "Seajewel"
+        ]
+    },
     "Christmas Gear": {
         "items": [
             "Red Tunic",
             "Thick Winter Gloves",
             "Decorative Red Pants",
             "Heavy Winter Boots",
-	        "Magical Snowball"
+	    "Magical Snowball"
         ]
     }
 }

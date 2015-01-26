@@ -210,7 +210,8 @@ class Player extends Character
     return if @isBusy or @stepCooldown > 0
     @isBusy = true
     className = tile.object.name
-    message = "<player.name>#{@name}</player.name> has met with the <player.class>#{className}</player.class> trainer!"
+    trainerName = tile.object.properties.realName
+    message = "<player.name>#{@name}</player.name> has met with <player.name>#{trainerName}</player.name>, the <player.class>#{className}</player.class> trainer!"
     if @professionName is className
       message += " Alas, <player.name>#{@name}</player.name> is already a <player.class>#{className}</player.class>!"
       @isBusy = false
@@ -288,9 +289,11 @@ class Player extends Character
       when "fall" then      message = "<player.name>#{@name}</player.name> has fallen from <event.transfer.from>#{dest.fromName}</event.transfer.from> to <event.transfer.destination>#{dest.destName}</event.transfer.destination>!"
       when "teleport" then  message = "<player.name>#{@name}</player.name> was teleported from <event.transfer.from>#{dest.fromName}</event.transfer.from> to <event.transfer.destination>#{dest.destName}</event.transfer.destination>!"
 
-    if @hasPersonality "Wheelchair"
-      if dest.movementType is "descend"
-        message = "<player.name>#{@name}</player.name> went crashing down in a wheelchair to <event.transfer.destination>#{dest.destName}</event.transfer.destination>."
+    if @hasPersonality "Wheelchair" and dest.movementType is "descend"
+      message = "<player.name>#{@name}</player.name> went crashing down in a wheelchair to <event.transfer.destination>#{dest.destName}</event.transfer.destination>."
+
+    if dest.customMessage
+      message = dest.customMessage.split("%playerName").join("<player.name>#{@name}</player.name>").split("%destName").join("<event.transfer.destination>#{dest.destName}</event.transfer.destination>")
 
     @emit "explore.transfer", @, @map
     @emit "explore.transfer.#{dest.movementType}", @, @map
@@ -696,6 +699,10 @@ class Player extends Character
 
     Q @getExtraDataForREST {pet: yes, pets: yes}, {isSuccess: yes, code: 230, message: "Successfully made #{newPet.name}, the #{newPet.type} your active pet!"}
 
+  setSelfGuildTax: (taxPercent) ->
+    @guildTax = Math.round Math.max 0, Math.min 85, taxPercent
+    Q @getExtraDataForREST {player: yes}, {isSuccess: yes, code: 255, message: "Successfully set your personal tax rate to #{@guildTax}%!"}
+
   save: ->
     return if not @playerManager
     @playerManager.savePlayer @
@@ -706,11 +713,17 @@ class Player extends Character
   gainGold: (gold) ->
     if _.isNaN gold
       @playerManager.game.errorHandler.captureException new Error "BAD GOLD VALUE GOTTEN SOMEHOW"
-
       gold = 1
 
     if gold > 0
       @emit "player.gold.gain", @, gold
+
+      guild = @getGuild()
+      if guild
+        taxPaid = guild.calcTax @
+        goldPaid = Math.round gold*(taxPaid/100)
+        guild.collectTax @, goldPaid if goldPaid > 0
+
     else
       @emit "player.gold.lose", @, gold
 
@@ -864,6 +877,9 @@ class Player extends Character
   getGuild: ->
     @playerManager.game.guildManager.getGuildByName @guild
 
+  getGlobalData: ->
+    calendar: @playerManager.game.calendar.getRawDate()
+
   getExtraDataForREST: (options, base) ->
     opts = {}
 
@@ -872,6 +888,7 @@ class Player extends Character
     if options.pet          then opts.pet = @getPet()?.buildSaveObject()
     if options.guild        then opts.guild = @getGuild()?.buildSaveObject()
     if options.guildInvites then opts.guildInvites = @playerManager.game.guildManager.getPlayerInvites @
+    if options.global       then opts.global = @getGlobalData()
 
     _.extend base, opts
 

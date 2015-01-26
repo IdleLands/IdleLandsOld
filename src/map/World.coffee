@@ -6,7 +6,7 @@ class World
 
   maps: {}
 
-  constructor: ->
+  constructor: (@game) ->
     walk = (dir) ->
       results = []
       list = fs.readdirSync dir
@@ -20,6 +20,6 @@ class World
       results
 
     _.each (walk "#{__dirname}/../../assets/map"), (mapObj) =>
-      @maps[mapObj.map] = new Map mapObj.path
+      @maps[mapObj.map] = new Map mapObj.path, @game
 
 module.exports = exports = World

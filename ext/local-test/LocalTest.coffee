@@ -68,11 +68,15 @@ w = getWrapper = -> IdleWrapper
 api = -> w().api
 inst = -> api().gameInstance
 pm = -> inst().playerManager
+petm = -> inst().petManager
 player = -> api().player
 game = -> api().game
 gm = -> api().gm
 pname = (name) -> pm().getPlayerByName name
+gname = (name) -> inst().guildManager.getGuildByName name
 pid = (id) -> pm().getPlayerById id
+event = (player, event) -> gm().event.single player, event
+gevent = (event) -> gm().event.global event
 
 colorMap =
   "player.name":                colors.bold
@@ -125,10 +129,13 @@ colorMap =
 ## API call functions ##
 loadIdle = ->
   try
+
     IdleWrapper.load()
     IdleWrapper.api.game.handlers.colorMap colorMap
     IdleWrapper.api.game.handlers.broadcastHandler broadcastHandler, null
-    do loadAllPlayers
+    IdleWrapper.api.gameInstance.loading.then ->
+      do loadAllPlayers
+
   catch e
     console.error e
 
@@ -171,6 +178,8 @@ interactiveSession = ->
     else if line is "c"
       do IdleWrapper.api.gameInstance.playerManager.beginGameLoop
       do gameLoop
+    else if line is "exit"
+      process.exit 0
     else
       try
         broadcast "Evaluating `#{line}`"
@@ -201,9 +210,12 @@ watchIdleFiles = ->
 ## ## initial load ## ##
 do buildHashes
 do loadIdle
-do registerAllPlayers
-do loadAllPlayers
+
+# let the game load before spamming it
+inst().loading.then ->
+  do registerAllPlayers
+  do adjustSpeed
+  do gameLoop
+
 do watchIdleFiles
-do adjustSpeed
-do gameLoop
 do interactiveSession

@@ -38,8 +38,10 @@ class BossFactory
     baseObj = BossInformation.bosses[name]
     statObj = baseObj.stats
     statObj.name = name
-    monster = @game.monsterGenerator.generateMonster baseObj.score, statObj
+
+    monster = @game.monsterGenerator.experimentalMonsterGeneration statObj, baseObj.score
     monster.bossPartyName = isParty
+
     _.each baseObj.items, (item) ->
       baseItem = _.clone BossInformation.items[item.name]
       baseItem.name = item.name

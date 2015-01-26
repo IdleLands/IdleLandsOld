@@ -141,7 +141,7 @@ class PlayerManager
         message: "Successful login. Welcome back to #{Constants.gameName}, #{player.getName()}!"
         token: player.tempSecureToken
 
-      defer.resolve player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guild: yes, guildInvites: yes}, results
+      defer.resolve player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guild: yes, guildInvites: yes, global: yes}, results
 
     defer.promise
 
@@ -171,13 +171,15 @@ class PlayerManager
     @checkPassword identifier, password
     .then (res) =>
 
+      return defer.resolve res if not res.isSuccess
+
       baseResults =
         isSuccess: yes
         code: 15
 
       if @playerHash[identifier]
         player = @playerHash[identifier]
-        realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guildInvites: yes, guild: yes}, baseResults
+        realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guildInvites: yes, guild: yes, global: yes}, baseResults
         realResults.token = player.tempSecureToken
         realResults.message = "This is a duplicate login session."
         return defer.resolve realResults
@@ -186,7 +188,7 @@ class PlayerManager
         @addPlayer identifier
         .then (res) =>
           player = @playerHash[identifier]
-          realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guildInvites: yes, guild: yes}, baseResults
+          realResults = player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guildInvites: yes, guild: yes, global: yes}, baseResults
           realResults.token = player.tempSecureToken
           realResults.message = "Successful login. Welcome back to #{Constants.gameName}, #{player.getName()}!"
           return defer.resolve realResults
@@ -281,7 +283,7 @@ class PlayerManager
 
     return if not sendPlayerObject
 
-    Q player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guildInvites: yes, guild: yes}, {isSuccess: yes, code: 102, message: "Turn taken."}
+    Q player.getExtraDataForREST {player: yes, pet: yes, pets: yes, guildInvites: yes, guild: yes, global: yes}, {isSuccess: yes, code: 102, message: "Turn taken."}
 
   registerLoadAllPlayersHandler: (@playerLoadHandler) ->
     console.log "Registered AllPlayerLoad handler."
@@ -330,6 +332,8 @@ class PlayerManager
     player.isBusy = false
     player.loadCalc()
 
+    player.guildTax = 0 unless player.guildTax
+
     player.handleGuildStatus()
 
     player.calc.itemFindRange()
@@ -369,7 +373,7 @@ class PlayerManager
 
     player.on "combat.self.kill", (defender) ->
       player.playerManager.game.battle?.broadcast "#{player.getName()}: #{player.messages.kill}" if player.messages?.kill
-      return if defender.isMonster
+      return if not defender or defender.isMonster
       defender.modifyRelationshipWith player.name, -4
       player.modifyRelationshipWith defender.name, -4
 
@@ -380,12 +384,12 @@ class PlayerManager
       player.playerManager.game.battle?.broadcast "#{player.getName()}: #{player.messages.flee}" if player.messages?.flee
 
     player.on "combat.ally.kill", (attacker) ->
-      return if attacker.isMonster
+      return if not attacker or attacker.isMonster
       player.modifyRelationshipWith attacker.name, 2
       attacker.modifyRelationshipWith player.name, 2
 
     player.on "combat.ally.flee", (fleer) ->
-      return if fleer.isMonster
+      return if not fleer or fleer.isMonster
       player.modifyRelationshipWith fleer.name, -10
 
     @beginWatchingPlayerStatistics player
@@ -415,7 +419,7 @@ class PlayerManager
       player.statistics[stat] = Math.max val, player.statistics[stat]
 
     addStat = (stat, val, intermediate) ->
-      player.statistics[intermediate] = {} if intermediate and not (intermediate of player.statistics)
+      player.statistics[intermediate] = {} if intermediate and not (intermediate of player.statistics) or _.isNaN player.statistics[intermediate]
       root = if intermediate then player.statistics[intermediate] else player.statistics
       val = Math.abs val
       root[stat] = 0 if not (stat of root) or _.isNaN root[stat]
@@ -468,7 +472,10 @@ class PlayerManager
           addStat "calculated total gold spent", Math.abs arguments[1]
 
         when "player.gold.guildDonation"
-          addStat "calculated guild donations", Math.abs arguments[1]
+          addStat arguments[0], (Math.abs arguments[1]), "calculated guild donations"
+
+        when "player.gold.guildTax"
+          addStat arguments[0], (Math.abs arguments[1]), "calculated guild taxes paid"
 
         when "explore.transfer"
           addStat arguments[1], 1, "calculated map changes"

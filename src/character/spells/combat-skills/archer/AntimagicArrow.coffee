@@ -18,7 +18,7 @@ class AntimagicArrow extends Spell
       * @targets {enemy} 1 (with most mp remaining)
       * @effect Drains mp
       * @minDamage 0.4*[wis+dex]
-      * @maxDamage 0.8*[wis+dex]
+      * @maxDamage 0.7*[wis+dex]
       * @category Archer
       * @package Spells
     */`
@@ -35,8 +35,8 @@ class AntimagicArrow extends Spell
 
   cast: (player) ->
     damage = @calcDamage()
-    message = "%casterName hits %targetName with an %spellName, halving MP and dealing %damage HP damage!"
-    player.mp.sub Math.floor(player.mp.getValue()/2)
+    message = "%casterName hits %targetName with an %spellName, halving %targetName's MP and dealing %damage HP damage!"
+    player.mp?.sub Math.floor(player.mp.getValue()/2)
     @doDamageTo player, damage, message
 
   constructor: (@game, @caster) ->

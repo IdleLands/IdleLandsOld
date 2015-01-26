@@ -123,6 +123,9 @@ class EventHandler
         member.y = player.y
         member.map = player.map
 
+      _.each bossParty.players, (boss) ->
+        boss.mirror player.party if boss.shouldMirror
+
       message = ">>> BOSS BATTLE: %player prepares for an epic battle against #{name}!"
       message = MessageCreator.doStringReplace message, player
       @game.broadcast MessageCreator.genericMessage message

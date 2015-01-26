@@ -60,7 +60,7 @@ class Game
     errHandler = @errorHandler = client or {captureMessage: console.error, captureException: console.error}
 
     process.on 'uncaughtException', (err) ->
-      return if err.code in ['EADDRINUSE'] # swallow it
+      return if err.code in ['EADDRINUSE', 'EACCES'] # swallow it
       console.error (new Date).toUTCString() + ' uncaughtException:', err.message
       #console.error err.stack
       errHandler.captureException err
@@ -71,26 +71,27 @@ class Game
     defer = q.defer()
     @loading = defer.promise
 
-    @componentDatabase = new ComponentDatabase @
-    @gmCommands = new GMCommands @
-    @petManager = new PetManager @
-    @spellManager = new SpellManager @
-    @eventHandler = new EventHandler @
     @playerManager = new PlayerManager @
     @guildManager = new GuildManager @
-    @globalEventHandler = new GlobalEventHandler @
+    @petManager = new PetManager @
     @calendar = new Calendar @
-    @equipmentGenerator = new EquipmentGenerator @
-    @monsterGenerator = new MonsterGenerator @
-    @achievementManager = new AchievementManager @
-    @sandwichGenerator = new SandwichGenerator @
-    @shopGenerator = new ShopGenerator @
     @bossFactory = new BossFactory @
-    @treasureFactory = new TreasureFactory @
     @battleManager = new BattleManager @
-    @world = new World()
+    @componentDatabase = new ComponentDatabase @
+    @componentDatabase.loadingAll.then =>
+      @gmCommands = new GMCommands @
+      @spellManager = new SpellManager @
+      @eventHandler = new EventHandler @
+      @globalEventHandler = new GlobalEventHandler @
+      @equipmentGenerator = new EquipmentGenerator @
+      @monsterGenerator = new MonsterGenerator @
+      @achievementManager = new AchievementManager @
+      @sandwichGenerator = new SandwichGenerator @
+      @shopGenerator = new ShopGenerator @
+      @treasureFactory = new TreasureFactory @
+      @world = new World @
 
-    defer.resolve()
+      defer.resolve()
 
     require "./accessibility/REST"
 
@@ -108,16 +109,25 @@ class Game
     else
       console.error "No broadcast handler registered. Cannot send: #{message}"
 
+  getAllNonPartyPlayers: ->
+    _.reject @playerManager.players, (player) -> player.party
+
   selectRandomNonPartyPlayer: ->
-    _.sample (_.reject @playerManager.players, (player) -> player.party)
+    _.sample @getAllNonPartyPlayers()
 
   createParty: (player = null) ->
     player = @selectRandomNonPartyPlayer() if not player
+    availableGuildies = if player.guild then _.filter @getAllNonPartyPlayers(), (member) -> member isnt player and member.guild is player.guild else []
 
-    players = _.without @playerManager.players, player
+    players = _.without @getAllNonPartyPlayers(), player
 
-    partyAdditionSize = Math.min (players.length / 2), chance.integer({min: 1, max: Constants.defaults.game.maxPartyMembers})
-    newPartyPlayers = _.sample (_.reject players, (player) -> player.party), partyAdditionSize
+    partyAdditionSize = Math.round Math.min (players.length / 2), chance.integer({min: 1, max: Constants.defaults.game.maxPartyMembers})
+
+    playerList = players
+    playerList = availableGuildies if availableGuildies.length > 0 and partyAdditionSize <= availableGuildies.length and chance.bool({likelihood: 65})
+    return if playerList.length is 0
+
+    newPartyPlayers = _.sample playerList, partyAdditionSize
 
     return if newPartyPlayers.length is 0
 

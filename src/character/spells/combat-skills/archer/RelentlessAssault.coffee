@@ -9,7 +9,7 @@ class RelentlessAssault extends Spell
     `/**
       * The caster performs two additional attacks every round, losing focus gradually.
       *
-      * @name RelentlessAssault
+      * @name relentless assault
       * @requirement {class} Archer
       * @requirement {Focus} 30 (only cast if Focus >= 70)
       * @requirement {level} 50
