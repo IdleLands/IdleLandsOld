@@ -593,10 +593,7 @@
             "con": 900,
             "fire": 10000,
             "sturdy": 1
-        },
-        "items": [
-            { "name": "Flame Polished Gauntlets", "dropPercent": 80 }
-        ]
+        }
     },
     "Green Draygon": {
         "respawn": 10800,
@@ -746,6 +743,74 @@
         },
         "items": [
             { "name": "Acid Amulet Shard", "dropPercent": 75 }
+        ]
+    },
+    "Necromancer Guardian": {
+        "respawn": 10800,
+        "availableScore": 6700,
+        "stats": {
+            "class": "Necromancer",
+            "hp": 70000,
+	    "mp": 54320,
+            "level": 90,
+            "str": 2200,
+	    "dex": 2200,
+            "wis": 5000,
+	    "luck": -10,
+            "power": 1,
+	    "punish": 1
+        },
+        "items": [
+            { "name": "Necromantic Essence", "dropPercent": 75 }
+        ]
+    },
+    "Fire Giant": {
+        "respawn": 10800,
+        "availableScore": 6150,
+        "stats": {
+            "class": "Fighter",
+            "hp": 80000,
+	    "mp": 600,
+            "level": 75,
+            "str": 3400,
+	    "dex": 2200,
+	    "agi": 1990,
+            "con": 2700,
+	    "fire": 2000,
+	    "luck": 15,
+            "prone": 1,
+	    "parry": 1,
+	    "defense": 1,
+	    "offense": 1,
+	    "sturdy": 1,
+	    "vorpal": 1
+        },
+        "items": [
+            { "name": "Halberd of the Fire Giants", "dropPercent": 75 }
+        ]
+    },
+    "Spot, the Dragon": {
+        "respawn": 10800,
+        "availableScore": 5150,
+        "stats": {
+            "class": "Mage",
+            "hp": 39000,
+	    "mp": 27000,
+            "level": 65,
+            "str": 1500,
+	    "dex": 1550,
+	    "agi": 1905,
+	    "int": 2000,
+	    "wis": 50,
+	    "fire": 2000,
+	    "mpregen": 100,
+            "con": 400,
+            "lethal": 1,
+	    "offense": 2,
+	    "fear": 1
+        },
+        "items": [
+            { "name": "Flame Polished Gauntlets", "dropPercent": 75 }
         ]
     },
     "Gryffyndor House Representative": {
