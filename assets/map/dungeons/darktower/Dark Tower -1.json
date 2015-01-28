@@ -337,8 +337,8 @@
                  "properties":
                     {
                      "destName":"Acid Caves",
-                     "destx":"7",
-                     "desty":"36",
+                     "destx":"16",
+                     "desty":"69",
                      "map":"Evil Norkos",
                      "movementType":"ascend"
                     },
