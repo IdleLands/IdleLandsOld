@@ -64,6 +64,9 @@ class GMCommands
     player = @game.playerManager.getPlayerById identifier
     player?.isContentModerator = status
 
+  setLoggerLevel: (name, level) ->
+    @game.logManager.setLoggerLevel name, level
+
   locations: _.extend {},
     teleports.towns,
     teleports.bosses,

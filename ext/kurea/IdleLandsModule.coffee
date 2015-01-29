@@ -1045,6 +1045,25 @@ module.exports = (Module) ->
             return
 
           @IdleWrapper.api.gm.custom.modModerator identifier, modStatus
+      `/**
+       * Set a logger's level. Example:
+       *
+       * @name idle-setloggerlevel
+       * @gmOnly
+       * @syntax !idle-setloggerlevel name level
+       * @example !idle-setloggerlevel battle debug
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-setloggerlevel \":name\" :level", "idle.game.gm", (origin, route) =>
+        [name, level] = [route.params.name, route.params.level]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to set log levels!"
+            return
+
+          @IdleWrapper.api.gm.log.setLoggerLevel name, level
 
       @initialize()
 
