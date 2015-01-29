@@ -9,7 +9,7 @@ if fs.existsSync "#{__dirname}/../../../config.json"
   databaseURL = config.storageURL
 
 #more info here: https://github.com/louischatriot/nedb/blob/master/README.md
-Database = if databaseEngine is 'mongo' then require('mongodb').MongoClient else require 'nedb'
+Database = require('mongodb').MongoClient
 
 class DatabaseWrapper
 

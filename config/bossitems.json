@@ -221,12 +221,6 @@
 	"shatter": 1,
 	"punish": 1
     },
-    "Flame Polished Gauntlets": {
-        "type": "hands",
-        "int": 350,
-        "con": 190,
-        "fire": 10000
-    },
     "Noxious Amulet": {
         "type": "neck",
         "int": 250,
@@ -278,6 +272,39 @@
 	"conPercent": 5,
 	"defense": 2,
         "glowing": 1
+    },
+    "Acid Amulet Shard": {
+        "type": "charm",
+        "dex": 270,
+        "str": 190,
+	"con": 70,
+        "luck": 17,
+	"poison": 1,
+        "venom": 2,
+	"glowing": 1
+    },
+    "Necromantic Essence": {
+        "type": "charm",
+        "wis": 1400,
+        "prone": 1,
+	"parry": 1,
+	"poison": 4,
+        "venom": 2
+    },
+    "Halberd of the Fire Giants": {
+        "type": "mainhand",
+        "dex": 250,
+        "str": 1000,
+	"con": 175,
+	"fire": 500,
+	"glowing": 1,
+	"enchantLevel": 6
+    },
+    "Flame Polished Gauntlets": {
+        "type": "hands",
+        "int": 350,
+        "con": 190,
+        "fire": 10000
     },
     "Gryffyndor Sword": {
         "type": "mainhand",
