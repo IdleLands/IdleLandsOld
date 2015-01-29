@@ -18,6 +18,11 @@ class Guild
     @members = []
     @invites = []
 
+    @base = "Norkos"
+    @buildingLevels = {}
+    @buildingLevelCosts = {}
+    @currentlyBuilt = {sm: {}, md: {}, lg: {}}
+
   add: (player) ->
     # Adding assumes that a player is online, i.e. they have accepted an invite.
     # Therefore, this function can use the player object directly.
@@ -116,9 +121,21 @@ class Guild
   buildBase: ->
     @guildManager.game.world.maps[@getGuildBaseName()] = new (require "../../map/guild-bases/#{@base}") @guildManager.game
 
-  moveToBase: (@base) ->
+  construct: (building) ->
+
+  _moveToBase: (@base) ->
     @currentlyBuilt = {}
     @buildBase()
+
+  moveToBase: (identifier, newBase) =>
+    return Q {isSuccess: no, code: 69, message: "You aren't the leader!"} if @leader isnt identifier
+    return Q {isSuccess: no, code: 702, message: "Your base is already #{newBase}!"} if @base is newBase
+
+    base = require "../../map/guild-bases/#{@base}"
+    return Q {isSuccess: no, code: 700, message: "Your guild doesn't have enough gold!"} if base.costs.moveIn > @gold.getValue()
+
+    @moveToBase newBase
+    Q {isSuccess: yes, code: 701, message: "You've successfully moved your base to #{newBase}!"}
 
   notifyAllPossibleMembers: (message) ->
     _.each @members, (member) =>

@@ -87,10 +87,6 @@ class GuildManager
         guild.invitesLeft()
         guild.avgLevel()
 
-        guild.base = "Norkos" unless guild.base
-        guild.buildingLevels = {} unless guild.buildingLevels
-        guild.buildingLevelCosts = {} unless guild.buildingLevelCosts
-        guild.currentlyBuilt = {} unless guild.currentlyBuilt
         guild.buildBase()
 
         guild.gold = new RestrictedNumber 0, 9999999999, 0 unless guild.gold

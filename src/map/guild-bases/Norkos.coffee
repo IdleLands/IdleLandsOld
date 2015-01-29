@@ -1,7 +1,5 @@
 GuildBase = require "../GuildBase"
 
-console.log GuildBase.mapGid
-
 class NorkosGuildHall extends GuildBase
   constructor: (game) ->
     super "Norkos", game
