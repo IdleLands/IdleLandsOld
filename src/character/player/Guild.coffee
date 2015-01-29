@@ -111,6 +111,15 @@ class Guild
     @addGold gold
     player.emit "player.gold.guildTax", @name, gold
 
+  getGuildBaseName: -> "#{@name}'s Guild Hall (#{@base})"
+
+  buildBase: ->
+    @guildManager.game.world.maps[@getGuildBaseName()] = new (require "../../map/guild-bases/#{@base}") @guildManager.game
+
+  moveToBase: (@base) ->
+    @currentlyBuilt = {}
+    @buildBase()
+
   notifyAllPossibleMembers: (message) ->
     _.each @members, (member) =>
       player = @guildManager.game.playerManager.getPlayerById member.identifier

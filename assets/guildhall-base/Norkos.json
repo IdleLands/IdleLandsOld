@@ -25,7 +25,21 @@
         {
          "height":30,
          "name":"Interactables",
-         "objects":[],
+         "objects":[
+                {
+                 "gid":30,
+                 "height":0,
+                 "name":"ToNorkos",
+                 "properties":
+                    {
+                     "toLoc":"norkos"
+                    },
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":208,
+                 "y":64
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -42,7 +56,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/..\/..\/img\/tiles.png",
+         "image":"..\/img\/tiles.png",
          "imageheight":112,
          "imagewidth":144,
          "margin":0,

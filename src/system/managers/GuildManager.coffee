@@ -87,7 +87,13 @@ class GuildManager
         guild.invitesLeft()
         guild.avgLevel()
 
-        guild.gold = new RestrictedNumber 0, 9999999999, 0 if not guild.gold
+        guild.base = "Norkos" unless guild.base
+        guild.buildingLevels = {} unless guild.buildingLevels
+        guild.buildingLevelCosts = {} unless guild.buildingLevelCosts
+        guild.currentlyBuilt = {} unless guild.currentlyBuilt
+        guild.buildBase()
+
+        guild.gold = new RestrictedNumber 0, 9999999999, 0 unless guild.gold
         guild.gold.__current = 0 if _.isNaN guild.gold.__current
         guild.gold.__proto__ = RestrictedNumber.prototype
 

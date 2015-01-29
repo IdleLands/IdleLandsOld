@@ -23,7 +23,6 @@
          "y":0
         }, 
         {
-         "draworder":"topdown",
          "height":100,
          "name":"Interactables",
          "objects":[
@@ -38,7 +37,6 @@
                      "map":"Ancient Dwarven Ruins -1",
                      "movementType":"descend"
                     },
-                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -56,7 +54,6 @@
                      "map":"Homlet Caves Entrance",
                      "movementType":"descend"
                     },
-                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -71,7 +68,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -86,7 +82,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -101,7 +96,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -116,7 +110,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -131,7 +124,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
@@ -146,7 +138,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"Collectible",
                  "visible":true,
                  "width":0,
@@ -161,7 +152,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"Boss",
                  "visible":true,
                  "width":0,
@@ -176,7 +166,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"Collectible",
                  "visible":true,
                  "width":0,
@@ -191,7 +180,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"Collectible",
                  "visible":true,
                  "width":0,
@@ -206,7 +194,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"Collectible",
                  "visible":true,
                  "width":0,
@@ -221,7 +208,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"Collectible",
                  "visible":true,
                  "width":0,
@@ -236,7 +222,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"Collectible",
                  "visible":true,
                  "width":0,
@@ -251,7 +236,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"Collectible",
                  "visible":true,
                  "width":0,
@@ -269,7 +253,6 @@
                      "map":"Norkos",
                      "movementType":"teleport"
                     },
-                 "rotation":0,
                  "type":"Teleport",
                  "visible":true,
                  "width":0,
@@ -284,18 +267,16 @@
          "y":0
         }, 
         {
-         "draworder":"topdown",
          "height":100,
          "name":"Regions",
          "objects":[
                 {
                  "height":192,
-                 "name":"Homlet",
+                 "name":"Homlet Town",
                  "properties":
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":256,
@@ -309,7 +290,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":144,
@@ -323,7 +303,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":336,
@@ -337,7 +316,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":464,
@@ -351,7 +329,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":176,
@@ -365,7 +342,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":80,
@@ -379,7 +355,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":560,
@@ -393,7 +368,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":992,
@@ -407,7 +381,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":560,
@@ -421,7 +394,6 @@
                     {
 
                     },
-                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":240,
@@ -440,7 +412,6 @@
     {
 
     },
- "renderorder":"right-down",
  "tileheight":16,
  "tilesets":[
         {
