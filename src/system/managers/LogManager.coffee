@@ -19,3 +19,5 @@ class LogManager
   setLoggerLevel: (name, level) ->
     if loggers[name]?
       loggers[name].transports.console.level = level
+
+module.exports = exports = LogManager
