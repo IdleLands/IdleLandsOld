@@ -97,11 +97,18 @@ class Guild
     @notifyAllPossibleMembers "The tax rate of \"#{@name}\" is now #{@taxPercent}%."
     Q {isSuccess: yes, code: 70, message: "Successfully set the tax rate of \"#{@name}\" to #{newTax}%!", guild: @buildSaveObject()}
 
+  subGold: (gold) ->
+    @gold.sub gold
+
+  addGold: (gold) ->
+    @gold = new RestrictedNumber 0, 9999999999, 0 unless @gold
+    @gold.add gold
+
   calcTax: (player) ->
     player.guildTax + @taxPercent
 
   collectTax: (player, gold) ->
-    @gold.add gold
+    @addGold gold
     player.emit "player.gold.guildTax", @name, gold
 
   notifyAllPossibleMembers: (message) ->

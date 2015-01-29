@@ -86,9 +86,11 @@ class GuildManager
         guild.guildManager = @
         guild.invitesLeft()
         guild.avgLevel()
+
         guild.gold = new RestrictedNumber 0, 9999999999, 0 if not guild.gold
         guild.gold.__current = 0 if _.isNaN guild.gold.__current
         guild.gold.__proto__ = RestrictedNumber.prototype
+
         guild.buffs = _.compact guild.buffs
         guild.taxPercent = 0 if not guild.taxPercent
         guild.invites = []
@@ -241,11 +243,9 @@ class GuildManager
     return Q {isSuccess: no, code: 152, message: "Your guild is not a high enough level! It needs to be level #{tierLevel} first!"} if tierLevel > guild.level
     return Q {isSuccess: no, code: 153, message: "Your guild does not have enough members! You need #{tierMembers} members!"} if tierMembers > guild.members.length
 
-    guild.gold = new RestrictedNumber 0, 9999999999, 0 if not guild.gold
-
     return Q {isSuccess: no, code: 56, message: "Your guild does not have enough gold! You need #{tierGold} gold!"} if tierGold > guild.gold.getValue()
 
-    guild.gold.sub guildBuffs[typeString].tiers[tier].cost
+    guild.subGold guildBuffs[typeString].tiers[tier].cost
 
     guild.buffs = [] if not guild.buffs
     current = _.findWhere guild.buffs, {type: type}
@@ -274,10 +274,9 @@ class GuildManager
     return Q {isSuccess: no, code: 64, message: "That's an invalid amount of gold! You might mess something up if you do that!"} if _.isNaN parseInt gold
 
     guild = @guildHash[player.guild]
-    guild.gold = new RestrictedNumber 0, 9999999999, 0 unless guild.gold
     gold = Math.round Math.min gold, guild.gold.maximum-guild.gold.getValue() #Prevent overdonation
 
-    guild.gold.add gold
+    guild.addGold gold
     player.gold.sub gold
     guild.save()
 
