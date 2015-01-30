@@ -388,9 +388,9 @@ class Player extends Character
 
   canEnterTile: (tile) ->
     props = tile.object?.properties
-    return no if props?.requireMap          and not @statistics['calculated map changes'][props.requireMap]
-    return no if props?.requireRegion       and not @statistics['calculated regions visited'][props.requireRegion]
-    return no if props?.requireBoss         and not @statistics['calculated boss kills'][props.requireBoss]
+    return no if props?.requireMap          and not @statistics['calculated map changes']?[props.requireMap]
+    return no if props?.requireRegion       and not @statistics['calculated regions visited']?[props.requireRegion]
+    return no if props?.requireBoss         and not @statistics['calculated boss kills']?[props.requireBoss]
     return no if props?.requireClass        and @professionName isnt props.requireClass
     return no if props?.requireCollectible  and not _.findWhere @collectibles, {name: props.requireCollectible}
     return no if props?.requireAchievement  and not _.findWhere @achievements, {name: props.requireAchievement}
