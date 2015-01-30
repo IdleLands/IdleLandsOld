@@ -50,7 +50,8 @@
     "rimraf": "^2.2.8",
     "roman-numerals": "~0.3.2",
     "underscore.string": "^3.0.2",
-    "watch": "^0.13.0"
+    "watch": "^0.13.0",
+	"winston": "^0.8.3"
   },
   "devDependencies": {
     "grunt-gh-pages": "^0.9.1"
