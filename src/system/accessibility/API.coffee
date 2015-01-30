@@ -58,6 +58,7 @@ class API
           if res.isSuccess then actualRes = @gameInstance.componentDatabase.getContentList() else actualRes = res
           @logger.debug "GM Command custom.list"
           @logger.verbose "GM Command custom.list", {res: actualRes}
+          actualRes
 
       approve: (identifier, ids) =>
         @validateContentModerator identifier
@@ -66,6 +67,7 @@ class API
           if res.isSuccess then actualRes = @gameInstance.componentDatabase.approveContent ids else actualRes = res
           @logger.debug "GM Command custom.approve"
           @logger.verbose "GM Command custom.approve", {res: actualRes}
+          actualRes
 
       reject: (identifier, ids) =>
         @validateContentModerator identifier
@@ -74,6 +76,7 @@ class API
           if res.isSuccess then actualRes = @gameInstance.componentDatabase.rejectContent ids else actualRes = res
           @logger.debug "GM Command custom.reject"
           @logger.verbose "GM Command custom.reject", {res: actualRes}
+          actualRes
 
       modModerator: (newModeratorIdentifier, isModerator = yes) =>
         @logger.debug "GM Command custom.modModerator",
@@ -167,260 +170,452 @@ class API
     takeTurn: (identifier, sendPlayerObject = yes) =>
       @validateIdentifier identifier
       .then (res) =>
-        if res.isSuccess then @gameInstance.playerManager.playerTakeTurn identifier, sendPlayerObject else res
+        actualRes = null
+        if res.isSuccess then actualRes = @gameInstance.playerManager.playerTakeTurn identifier, sendPlayerObject else actualRes = res
+        @logger.debug "Player Command takeTurn"
+        @logger.verbose "Player Command takeTurn", {identifier, sendPlayerObject}
+        actualRes
 
     action:
       teleport: (identifier, newLoc) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.manualTeleportToLocation newLoc else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.manualTeleportToLocation newLoc else actualRes = res
+          @logger.debug "Player Command action.teleport"
+          @logger.verbose "Player Command action.teleport", {identifier, newLoc}
+          actualRes
 
     custom:
       submit: (identifier, data) =>
         @validateIdentifier identifier
         .then (res) =>
-          if res.isSuccess then @gameInstance.componentDatabase.submitCustomContent identifier, data else res
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.componentDatabase.submitCustomContent identifier, data else actualRes = res
+          @logger.debug "Player Command custom.submit"
+          @logger.verbose "Player Command custom.submit", {identifier, data}
+          actualRes
 
     gender:
       set: (identifier, newGender) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.setGender newGender else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.setGender newGender else actualRes = res
+          @logger.debug "Player Command gender.set"
+          @logger.verbose "Player Command gender.set", {identifier, newGender}
+          actualRes
 
       remove: (identifier) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.setGender '' else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.setGender '' else actualRes = res
+          @logger.debug "Player Command gender.remove"
+          @logger.verbose "Player Command gender.remove", {identifier}
+          actualRes
 
     auth:
       register: (options) =>
+        @logger.debug "Player Command auth.register"
+        @logger.verbose "Player Command auth.register", {options}
         @gameInstance.playerManager.registerPlayer options
 
       login: (identifier, suppress) =>
+        @logger.debug "Player Command auth.login"
+        @logger.verbose "Player Command auth.login", {identifier, suppress}
         @gameInstance.playerManager.addPlayer identifier, suppress, no
 
       loginWithPassword: (identifier, password) =>
+        @logger.debug "Player Command auth.loginWithPassword"
+        @logger.verbose "Player Command auth.loginWithPassword", {identifier, password} #Do we really want to log passwords? Have to be careful.
         @gameInstance.playerManager.loginWithPassword identifier, password
 
       setPassword: (identifier, password) =>
         @validateIdentifier identifier
         .then (res) =>
-          if res.isSuccess then @gameInstance.playerManager.storePasswordFor identifier, password else res
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.playerManager.storePasswordFor identifier, password else actualRes = res
+          @logger.debug "Player Command auth.setPassword"
+          @logger.verbose "Player Command auth.setPassword", {identifier, password} #Do we really want to log passwords? Have to be careful.
+          actualRes
 
       authenticate: (identifier, password) =>
+        @logger.debug "Player Command auth.authenticate"
+        @logger.verbose "Player Command auth.authenticate", {identifier, password} #Do we really want to log passwords? Have to be careful.
         @gameInstance.playerManager.checkPassword identifier, password, yes
 
       logout: (identifier) =>
         @validateIdentifier identifier
         .then (res) =>
-          if res.isSuccess then @gameInstance.playerManager.removePlayer identifier else res
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.playerManager.removePlayer identifier else actualRes = res
+          @logger.debug "Player Command auth.logout"
+          @logger.verbose "Player Command auth.logout", {identifier}
+          actualRes
 
       isTokenValid: (identifier, token) =>
         @validateIdentifier identifier
         .then (res) =>
-          if res.isSuccess then @gameInstance.playerManager.checkToken identifier, token else res
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.playerManager.checkToken identifier, token else actualRes = res
+          @logger.debug "Player Command auth.isTokenValid"
+          @logger.verbose "Player Command auth.isTokenValid", {identifier, token}
+          actualRes
 
     overflow:
       add: (identifier, slot) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.manageOverflow "add", slot else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.manageOverflow "add", slot else actualRes = res
+          @logger.debug "Player Command overflow.add"
+          @logger.verbose "Player Command overflow.add", {identifier, slot}
+          actualRes
 
       sell: (identifier, slot) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.manageOverflow "sell", slot else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.manageOverflow "sell", slot else actualRes = res
+          @logger.debug "Player Command overflow.sell"
+          @logger.verbose "Player Command overflow.sell", {identifier, slot}
+          actualRes
 
       swap: (identifier, slot) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.manageOverflow "swap", slot else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.manageOverflow "swap", slot else actualRes = res
+          @logger.debug "Player Command overflow.swap"
+          @logger.verbose "Player Command overflow.swap", {identifier, slot}
+          actualRes
 
     personality:
       add: (identifier, personality) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.addPersonality personality else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.addPersonality personality else actualRes = res
+          @logger.debug "Player Command personality.add"
+          @logger.verbose "Player Command personality.add", {identifier, personality}
+          actualRes
 
       remove: (identifier, personality) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.removePersonality personality else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.removePersonality personality else actualRes = res
+          @logger.debug "Player Command personality.remove"
+          @logger.verbose "Player Command personality.remove", {identifier, personality}
+          actualRes
 
     priority:
       add: (identifier, stat, points) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.addPriority stat, points else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.addPriority stat, points else actualRes = res
+          @logger.debug "Player Command priority.add"
+          @logger.verbose "Player Command priority.add", {identifier, stat, points}
+          actualRes
 
       set: (identifier, stats) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.setPriorities stats else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.setPriorities stats else actualRes = res
+          @logger.debug "Player Command priority.set"
+          @logger.verbose "Player Command priority.set", {identifier, stats}
+          actualRes
 
       remove: (identifier, stat, points) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.addPriority stat, -points else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.addPriority stat, -points else actualRes = res
+          @logger.debug "Player Command priority.remove"
+          @logger.verbose "Player Command priority.remove", {identifier, stat, points}
+          actualRes
 
     pushbullet:
       set: (identifier, apiKey) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.setPushbulletKey apiKey else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.setPushbulletKey apiKey else actualRes = res
+          @logger.debug "Player Command pushbullet.set"
+          @logger.verbose "Player Command pushbullet.set", {identifier, apiKey}
+          actualRes
 
       remove: (identifier) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.setPushbulletKey '' else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.setPushbulletKey '' else actualRes = res
+          @logger.debug "Player Command pushbullet.remove"
+          @logger.verbose "Player Command pushbullet.remove", {identifier}
+          actualRes
 
     title:
       set: (identifier, newTitle) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.setTitle newTitle else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.setTitle newTitle else actualRes = res
+          @logger.debug "Player Command title.set"
+          @logger.verbose "Player Command title.set", {identifier, newTitle}
+          actualRes
 
     string:
       set: (identifier, stringType, string) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.setString stringType, string else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.setString stringType, string else actualRes = res
+          @logger.debug "Player Command string.set"
+          @logger.verbose "Player Command string.set", {identifier, stringType, string}
+          actualRes
 
       remove: (identifier, stringType) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.setString stringType else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.setString stringType else actualRes = res
+          @logger.debug "Player Command string.remove"
+          @logger.verbose "Player Command string.remove", {identifier, stringType}
+          actualRes
 
     pet:
       buy: (identifier, type, name, attr1, attr2) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.buyPet type, name, attr1, attr2 else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.buyPet type, name, attr1, attr2 else actualRes = res
+          @logger.debug "Player Command pet.buy"
+          @logger.verbose "Player Command pet.buy", {identifier, type, name, attr1, attr2}
+          actualRes
 
       upgrade: (identifier, stat) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.upgradePet stat else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.upgradePet stat else actualRes = res
+          @logger.debug "Player Command pet.upgrade"
+          @logger.verbose "Player Command pet.upgrade", {identifier, stat}
+          actualRes
 
       feed: (identifier) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.feedPet() else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.feedPet() else actualRes = res
+          @logger.debug "Player Command pet.feed"
+          @logger.verbose "Player Command pet.feed", {identifier}
+          actualRes
 
       takeGold: (identifier) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.takePetGold() else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.takePetGold() else actualRes = res
+          @logger.debug "Player Command pet.takeGold"
+          @logger.verbose "Player Command pet.takeGold", {identifier}
+          actualRes
 
       giveEquipment: (identifier, itemSlot) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.givePetItem itemSlot else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.givePetItem itemSlot else actualRes = res
+          @logger.debug "Player Command pet.giveEquipment"
+          @logger.verbose "Player Command pet.giveEquipment", {identifier, itemSlot}
+          actualRes
 
       sellEquipment: (identifier, itemSlot) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.sellPetItem itemSlot else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.sellPetItem itemSlot else actualRes = res
+          @logger.debug "Player Command pet.sellEquipment"
+          @logger.verbose "Player Command pet.sellEquipment", {identifier, itemSlot}
+          actualRes
 
       takeEquipment: (identifier, itemSlot) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.takePetItem itemSlot else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.takePetItem itemSlot else actualRes = res
+          @logger.debug "Player Command pet.takeEquipment"
+          @logger.verbose "Player Command pet.takeEquipment", {identifier, itemSlot}
+          actualRes
 
       equipItem: (identifier, itemSlot) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.equipPetItem itemSlot else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.equipPetItem itemSlot else actualRes = res
+          @logger.debug "Player Command pet.equipItem"
+          @logger.verbose "Player Command pet.equipItem", {identifier, itemSlot}
+          actualRes
 
       unequipItem: (identifier, itemUid) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.unequipPetItem itemUid else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.unequipPetItem itemUid else actualRes = res
+          @logger.debug "Player Command pet.unequipItem"
+          @logger.verbose "Player Command pet.unequipItem", {identifier, itemUid}
+          actualRes
 
       setOption: (identifier, option, value) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.setPetOption option, value else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.setPetOption option, value else actualRes = res
+          @logger.debug "Player Command pet.setOption"
+          @logger.verbose "Player Command pet.setOption", {identifier, option, value}
+          actualRes
 
       swapToPet: (identifier, petId) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.swapToPet petId else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.swapToPet petId else actualRes = res
+          @logger.debug "Player Command pet.swapToPet"
+          @logger.verbose "Player Command pet.swapToPet", {identifier, petId}
+          actualRes
 
       changeClass: (identifier, petClass) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.changePetClass petClass else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.changePetClass petClass else actualRes = res
+          @logger.debug "Player Command pet.changeClass"
+          @logger.verbose "Player Command pet.changeClass", {identifier, petClass}
+          actualRes
 
     guild:
       create: (identifier, guildName) =>
         @validateIdentifier identifier
         .then (res) =>
-          if res.isSuccess then @gameInstance.guildManager.createGuild identifier, guildName else res
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.guildManager.createGuild identifier, guildName else actualRes = res
+          @logger.debug "Player Command guild.create"
+          @logger.verbose "Player Command guild.create", {identifier, guildName}
+          actualRes
 
       invite: (identifier, invName) =>
         @validateIdentifier identifier
         .then (res) =>
-          if res.isSuccess then @gameInstance.guildManager.sendInvite identifier, invName else res
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.guildManager.sendInvite identifier, invName else actualRes = res
+          @logger.debug "Player Command guild.invite"
+          @logger.verbose "Player Command guild.invite", {identifier, invName}
+          actualRes
 
       manageInvite: (identifier, accepted, guildName) =>
         @validateIdentifier identifier
         .then (res) =>
-          if res.isSuccess then @gameInstance.guildManager.manageInvite identifier, accepted, guildName else res
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.guildManager.manageInvite identifier, accepted, guildName else actualRes = res
+          @logger.debug "Player Command guild.manageInvite"
+          @logger.verbose "Player Command guild.manageInvite", {identifier, accepted, guildName}
+          actualRes
 
       promote: (identifier, memberName) =>
         @validateIdentifier identifier
         .then (res) =>
+          actualRes = null
           guild = res.player.guild
-          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].promote identifier, memberName else res
+          if res.isSuccess then actualRes = @gameInstance.guildManager.guildHash[guild].promote identifier, memberName else actualRes = res
+          @logger.debug "Player Command guild.promote"
+          @logger.verbose "Player Command guild.promote", {identifier, memberName}
+          actualRes
 
       demote: (identifier, memberName) =>
         @validateIdentifier identifier
         .then (res) =>
+          actualRes = null
           guild = res.player.guild
-          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].demote identifier, memberName else res
+          if res.isSuccess then actualRes = @gameInstance.guildManager.guildHash[guild].demote identifier, memberName else actualRes = res
+          @logger.debug "Player Command guild.demote"
+          @logger.verbose "Player Command guild.demote", {identifier, memberName}
+          actualRes
 
       kick: (identifier, playerName) =>
         @validateIdentifier identifier
         .then (res) =>
-          if res.isSuccess then @gameInstance.guildManager.kickPlayer identifier, playerName else res
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.guildManager.kickPlayer identifier, playerName else actualRes = res
+          @logger.debug "Player Command guild.kick"
+          @logger.verbose "Player Command guild.kick", {identifier, playerName}
+          actualRes
 
       disband: (identifier) =>
         @validateIdentifier identifier
         .then (res) =>
-          if res.isSuccess then @gameInstance.guildManager.disband identifier else res
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.guildManager.disband identifier else actualRes = res
+          @logger.debug "Player Command guild.disband"
+          @logger.verbose "Player Command guild.disband", {identifier}
+          actualRes
 
       leave: (identifier) =>
         @validateIdentifier identifier
         .then (res) =>
-          if res.isSuccess then @gameInstance.guildManager.leaveGuild identifier else res
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.guildManager.leaveGuild identifier else actualRes = res
+          @logger.debug "Player Command guild.leave"
+          @logger.verbose "Player Command guild.leave", {identifier}
+          actualRes
 
       donate: (identifier, gold) =>
         @validateIdentifier identifier
         .then (res) =>
-          if res.isSuccess then @gameInstance.guildManager.donate identifier, gold else res
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.guildManager.donate identifier, gold else actualRes = res
+          @logger.debug "Player Command guild.donate"
+          @logger.verbose "Player Command guild.donate", {identifier, gold}
+          actualRes
 
       buff: (identifier, type, tier) =>
         @validateIdentifier identifier
         .then (res) =>
-          if res.isSuccess then @gameInstance.guildManager.addBuff identifier, type, tier else res
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.guildManager.addBuff identifier, type, tier else actualRes = res
+          @logger.debug "Player Command guild.buff"
+          @logger.verbose "Player Command guild.buff", {identifier, type, tier}
+          actualRes
 
       tax:
         whole: (identifier, taxPercent) =>
           @validateIdentifier identifier
           .then (res) =>
+            actualRes = null
             guild = res.player.guild
-            if res.isSuccess then @gameInstance.guildManager.guildHash[guild].setTax identifier, taxPercent else res
+            if res.isSuccess then actualRes = @gameInstance.guildManager.guildHash[guild].setTax identifier, taxPercent else actualRes = res
+            @logger.debug "Player Command tax.whole"
+            @logger.verbose "Player Command tax.whole", {identifier, taxPercent}
+            actualRes
 
         self: (identifier, taxPercent) =>
           @validateIdentifier identifier
           .then (res) ->
-            if res.isSuccess then res.player.setSelfGuildTax taxPercent else res
+            actualRes = null
+            if res.isSuccess then actualRes = res.player.setSelfGuildTax taxPercent else actualRes = res
+            @logger.debug "Player Command tax.self"
+            @logger.verbose "Player Command tax.self", {identifier, taxPercent}
+            actualRes
 
     shop:
       buy: (identifier, slot) =>
         @validateIdentifier identifier
         .then (res) ->
-          if res.isSuccess then res.player.buyShop slot else res
+          actualRes = null
+          if res.isSuccess then actualRes = res.player.buyShop slot else actualRes = res
+          @logger.debug "Player Command shop.buy"
+          @logger.verbose "Player Command shop.buy", {identifier, slot}
+          actualRes
       
 module.exports = exports = API
