@@ -21,7 +21,10 @@ class Guild
     @base = "Norkos"
     @buildingLevels = {}
     @buildingLevelCosts = {}
-    @currentlyBuilt = {sm: {}, md: {}, lg: {}}
+    @resetBuildings()
+
+  resetBuildings: ->
+    @currentlyBuilt = {sm: [], md: [], lg: []}
 
   add: (player) ->
     # Adding assumes that a player is online, i.e. they have accepted an invite.
@@ -116,25 +119,70 @@ class Guild
     @addGold gold
     player.emit "player.gold.guildTax", @name, gold
 
-  getGuildBaseName: -> "#{@name}'s Guild Hall (#{@base})"
+  getGuildBaseName: ->
+    "#{@name}'s Guild Hall (#{@base})"
+
+  getGuildBase: ->
+    @guildManager.game.world.maps[@getGuildBaseName()]
 
   buildBase: ->
     @guildManager.game.world.maps[@getGuildBaseName()] = new (require "../../map/guild-bases/#{@base}") @guildManager.game
+    @reconstructBuildings()
 
-  construct: (building) ->
+  reconstructBuildings: ->
+    base = @getGuildBase()
+
+    _.each ['sm', 'md', 'lg'], (size) =>
+      _.map base.instances[size], -> null
+      _.each @currentlyBuilt[size], (building, i) =>
+        base.instances[size][i] = new (require "../../map/guild-buildings/#{building}") @guildManager.game, @ if building
+
+  _construct: (building, slot, size) ->
+    @buildingLevels[building] = 1 unless @buildingLevels[building]
+    @currentlyBuilt[size][slot] = building
+    @reconstructBuildings()
+    @save()
+
+  construct: (identifier, newBuilding, slot) ->
+    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+
+    try
+      building = require "../../map/guild-buildings/#{newBuilding}"
+    catch e
+      return Q {isSuccess: no, code: 708, message: "That building doesn't exist!"}
+
+    base = @getGuildBase()
+    return Q {isSuccess: no, code: 703, message: "You already built a #{newBuilding} in #{@base}!"} if _.contains @currentlyBuilt[building.size], newBuilding
+    return Q {isSuccess: no, code: 704, message: "You've built the maximum of that size building already!"} if (_.compact @currentlyBuilt[building.size]).length is base.buildings[building.size].length
+
+    costDiff = base.costs.build[building.size] - @gold.getValue()
+    return Q {isSuccess: no, code: 700, message: "Your guild doesn't have enough gold! You need #{costDiff} more!"} if costDiff > 0
+
+    @gold.sub base.costs.build[building.size]
+    @_construct newBuilding, slot, building.size
+
+    Q {isSuccess: yes, code: 706, message: "Successfully built a #{newBuilding} in #{@base}!"}
 
   _moveToBase: (@base) ->
-    @currentlyBuilt = {}
+    @resetBuildings()
     @buildBase()
+    @save()
 
-  moveToBase: (identifier, newBase) =>
-    return Q {isSuccess: no, code: 69, message: "You aren't the leader!"} if @leader isnt identifier
+  moveToBase: (identifier, newBase) ->
+    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
     return Q {isSuccess: no, code: 702, message: "Your base is already #{newBase}!"} if @base is newBase
 
-    base = require "../../map/guild-bases/#{@base}"
-    return Q {isSuccess: no, code: 700, message: "Your guild doesn't have enough gold!"} if base.costs.moveIn > @gold.getValue()
+    try
+      base = require "../../map/guild-bases/#{newBase}"
+    catch e
+      return Q {isSuccess: no, code: 707, message: "That base doesn't exist!"}
 
+    costDiff = base.costs.moveIn - @gold.getValue()
+    return Q {isSuccess: no, code: 700, message: "Your guild doesn't have enough gold! You need #{costDiff} more!"} if costDiff > 0
+
+    @gold.sub base.costs.moveIn
     @moveToBase newBase
+
     Q {isSuccess: yes, code: 701, message: "You've successfully moved your base to #{newBase}!"}
 
   notifyAllPossibleMembers: (message) ->

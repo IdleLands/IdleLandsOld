@@ -4,7 +4,7 @@ class NorkosGuildHall extends GuildBase
   constructor: (game) ->
     super "Norkos", game
 
-  @costs =
+  @costs = NorkosGuildHall::costs =
     moveIn: 50000
     build:
       sm: 30000
@@ -15,6 +15,8 @@ class NorkosGuildHall extends GuildBase
     7
     3
   ]
+
+  startLoc: [12, 13]
 
   buildings:
     ## Small buildings
