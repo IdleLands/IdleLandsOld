@@ -118,7 +118,7 @@ class API
         @gameInstance.componentDatabase.importAllData()
       setPassword: (identifier, password) =>
         @logger.debug "GM Command data.setPassword"
-        @logger.verbose "GM Command teleport.data.setPassword", {identifier: identifier, password: password}
+        @logger.verbose "GM Command teleport.data.setPassword", {identifier, password: "*******"}
         @gameInstance.playerManager.storePasswordFor identifier, password
 
     event:
@@ -128,7 +128,7 @@ class API
         @gameInstance.eventHandler.doEventForPlayer player, eventType, callback #TODO There are only 2 parameters, callback is ignored?
       global: (eventType, callback) =>
         @logger.debug "GM Command event.global"
-        @logger.verbose "GM Command event.global", {eventType: eventType, callback: callback}
+        @logger.verbose "GM Command event.global", {eventType, callback}
         @gameInstance.globalEventHandler.doEvent eventType, callback
 
     log:
@@ -228,7 +228,7 @@ class API
 
       loginWithPassword: (identifier, password) =>
         @logger.debug "Player Command auth.loginWithPassword"
-        @logger.verbose "Player Command auth.loginWithPassword", {identifier, password} #Do we really want to log passwords? Have to be careful.
+        @logger.verbose "Player Command auth.loginWithPassword", {identifier, password: "*******"}
         @gameInstance.playerManager.loginWithPassword identifier, password
 
       setPassword: (identifier, password) =>
@@ -237,12 +237,12 @@ class API
           actualRes = null
           if res.isSuccess then actualRes = @gameInstance.playerManager.storePasswordFor identifier, password else actualRes = res
           @logger.debug "Player Command auth.setPassword"
-          @logger.verbose "Player Command auth.setPassword", {identifier, password} #Do we really want to log passwords? Have to be careful.
+          @logger.verbose "Player Command auth.setPassword", {identifier, password: "*******"}
           actualRes
 
       authenticate: (identifier, password) =>
         @logger.debug "Player Command auth.authenticate"
-        @logger.verbose "Player Command auth.authenticate", {identifier, password} #Do we really want to log passwords? Have to be careful.
+        @logger.verbose "Player Command auth.authenticate", {identifier, password: "*******"}
         @gameInstance.playerManager.checkPassword identifier, password, yes
 
       logout: (identifier) =>
