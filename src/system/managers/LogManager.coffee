@@ -20,5 +20,7 @@ class LogManager
     if loggers[name]?
       loggers[name].transports.console.level = level
       loggers[name].transports.file.level = level
+      return "Logger level of " + name + " set to " + level
+    return "No logger known with name " + name
 
 module.exports = exports = LogManager
