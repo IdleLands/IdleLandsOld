@@ -45,5 +45,8 @@ app.use (err, req, res, next) ->
     message: err.message
     stack: err.stack
 
+# log dir
+app.use express.static __dirname + '../../../logs'
+
 # spin it up
 http.createServer(app).listen port
