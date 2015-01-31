@@ -84,9 +84,4 @@ class GuildBase extends Map
 
       @map.layers[2].objects.push newObject
 
-    # remove old interactables (find any that is on one of the tiles above)
-    # add sign if not exists
-    # update sign
-    # allow for building over another building
-
 module.exports = exports = GuildBase

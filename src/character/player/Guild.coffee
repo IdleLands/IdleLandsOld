@@ -168,7 +168,6 @@ class Guild
 
     slot = Math.round slot
     return Q {isSuccess: no, code: 708, message: "That slot is out of range!"} if slot < 0 or slot > base.buildings[building.size].length-1
-    return Q {isSuccess: no, code: 704, message: "You've built the maximum of that size building already!"} if (_.compact @currentlyBuilt[building.size]).length is base.buildings[building.size].length
 
     @gold.sub base.costs.build[building.size]
     @_construct newBuilding, slot, building.size
