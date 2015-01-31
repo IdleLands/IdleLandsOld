@@ -20,6 +20,7 @@ class PetManager
 
     @db.findForEach {}, @loadPet, @
 
+    @logger = @game.logManager.getLogger "PetManager"
     @DELAY_INTERVAL = 10000
     @beginGameLoop()
 
@@ -28,11 +29,15 @@ class PetManager
       arr = _.keys @activePets
       _.each arr, (player, i) =>
         pet = @activePets[player]
-        setTimeout (pet.takeTurn.bind pet), @DELAY_INTERVAL/arr.length*i
+        setTimeout (pet?.takeTurn.bind pet), @DELAY_INTERVAL/arr.length*i
 
     , @DELAY_INTERVAL
 
   getActivePetFor: (player) ->
+    @logger?.debug "getActivePetFor parameters", {identifier: player.identifier}
+    @logger?.silly "getActivePetFor parameters", {identifier: player}
+    @logger?.verbose "getActivePetFor result", {pet: @activePets[player.identifier]}
+
     @activePets[player.identifier]
 
   createPet: (options) ->
@@ -138,8 +143,14 @@ class PetManager
       @game.errorHandler.captureException e if e
 
   getPetsForPlayer: (identifier) ->
+    @logger?.debug "getPetsForPlayer parameters", {identifier: identifier}
+
     filteredPets = _.filter @pets, (pet) -> pet.owner.identifier is identifier
-    _.map filteredPets, (pet) -> pet.buildSaveObject()
+    ret = _.map filteredPets, (pet) -> pet.buildSaveObject()
+
+    @logger?.silly "getPetsForPlayer result", {pets: ret}
+
+    ret
 
   changePetForPlayer: (player, newPet) ->
     @activePets[player.identifier]?.isActive = no
