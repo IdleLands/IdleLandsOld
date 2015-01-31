@@ -44,10 +44,10 @@ class GuildBase extends Map
       tileCoords.push x: startCoords[0]+j, y: i+startCoords[1] for j in [0...dim]
 
     _.each tileIndices, (index, myLookup) =>
-      @map.layers[0].data[index] = @baseTile
-      @map.layers[1].data[index] = tiles[myLookup]
+      @map.layers[0].data[index] = instance.baseTile or @baseTile
+      @map.layers[1].data[index] = tiles[myLookup] if tiles[myLookup] > 0
 
-    @map.layers[2].objects = _.without @map.layers[2].objects, (item) -> _.contains tileIndices, (item.y/16)*mapWidth + item.x/16
+    @map.layers[2].objects = _.reject @map.layers[2].objects, (item) -> _.contains tileIndices, (item.y/16)*mapWidth + item.x/16
 
     sign = _.findWhere @map.layers[2].objects, {x: signpostLoc[0]*16, y: signpostLoc[1]*16}
 
@@ -56,7 +56,7 @@ class GuildBase extends Map
         gid: 48
         height: 0
         width: 0
-        name: "#{building} Level (#{@guild.buildingLevels[building]})"
+        name: "Level #{@guild.buildingLevels[building]} #{building}"
         properties:
           flavorText: instance.desc
         type: "Sign"
@@ -65,7 +65,7 @@ class GuildBase extends Map
         y: (1+signpostLoc[1])*16
 
     else
-      sign.name = "#{building} Level (#{@guild.buildingLevels[building]})"
+      sign.name = "Level #{@guild.buildingLevels[building]} #{building}"
       sign.properties.flavorText = instance.desc
 
     _.each instance.tiles, (tile, index) =>
@@ -81,7 +81,6 @@ class GuildBase extends Map
         properties: {}
 
       _.merge newObject, tile if _.isObject tile
-      console.log newObject
 
       @map.layers[2].objects.push newObject
 

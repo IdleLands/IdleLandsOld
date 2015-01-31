@@ -7,4 +7,14 @@ class GuildBuilding
   @levelupCost = GuildBuilding::levelupCost = (level) -> 0
   level: 0
 
+  tiles: [
+    0,  0,  0,  0,  0,  0,  0,
+    0,  0,  0,  0,  0,  0,  0,
+    0,  0,  0,  0,  0,  0,  0,
+    0,  0,  0,  0,  0,  0,  0,
+    0,  0,  0,  0,  0,  0,  0,
+    0,  0,  0,  0,  0,  0,  0,
+    0,  0,  0,  0,  0,  0,  0
+  ]
+
 module.exports = exports = GuildBuilding

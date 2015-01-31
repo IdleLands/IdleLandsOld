@@ -26,6 +26,13 @@ class Guild
   resetBuildings: ->
     @currentlyBuilt = {sm: [], md: [], lg: []}
 
+  hasBuilt: (findBuilding) ->
+    ret = []
+    _.each ['sm', 'md', 'lg'], (size) =>
+      _.each @currentlyBuilt[size], (building) -> ret.push building
+
+    _.contains ret, findBuilding
+
   add: (player) ->
     # Adding assumes that a player is online, i.e. they have accepted an invite.
     # Therefore, this function can use the player object directly.
@@ -166,7 +173,7 @@ class Guild
     @gold.sub base.costs.build[building.size]
     @_construct newBuilding, slot, building.size
 
-    Q {isSuccess: yes, code: 706, message: "Successfully built a #{newBuilding} in #{@base}!"}
+    Q {isSuccess: yes, code: 706, message: "Successfully built a #{newBuilding} in #{@name}'s #{@base} guild hall!"}
 
   _moveToBase: (@base) ->
     @resetBuildings()
