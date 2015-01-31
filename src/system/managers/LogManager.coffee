@@ -12,7 +12,7 @@ class LogManager
 
     customLogger = new (winston.Logger)({ transports: [
       new (winston.transports.Console)({ level: 'warn' }),
-      new (winston.transports.File)({ filename: __dirname + '/logs/' + name + '-errors.log', level: 'warn' })
+      new (winston.transports.File)({ filename: __dirname + '/../../../logs/' + name + '-errors.log', level: 'warn' })
     ] })
 
     loggers[name] = customLogger
