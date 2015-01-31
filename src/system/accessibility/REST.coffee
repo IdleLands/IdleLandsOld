@@ -21,6 +21,7 @@ cors = require "cors"
 compression = require "compression"
 morgan = require "morgan"
 fs = require "fs"
+serveIndex = require "serve-index"
 
 #app.use (morgan('combined', {stream: fs.createWriteStream "#{__dirname}/../../access.log", flags: 'a'}))
 
@@ -36,6 +37,10 @@ _.each (_.values requireDir "./rest-routes"), (router) ->
 # init
 app.use "/img", express.static __dirname + '/../../../assets/img'
 
+# log dir
+app.use "/logs", express.static __dirname + '/../../../logs'
+app.use "/logs", serveIndex __dirname + '/../../../logs', icons: yes
+
 # errarz
 app.use (err, req, res, next) ->
 #  API.gameInstance.errorHandler.captureException err
@@ -44,9 +49,6 @@ app.use (err, req, res, next) ->
     err: err
     message: err.message
     stack: err.stack
-
-# log dir
-app.use "/logs", express.static __dirname + '../../../logs'
 
 # spin it up
 http.createServer(app).listen port
