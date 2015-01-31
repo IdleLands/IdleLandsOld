@@ -120,13 +120,13 @@ class Guild
     player.emit "player.gold.guildTax", @name, gold
 
   getGuildBaseName: ->
-    "#{@name}'s Guild Hall (#{@base})"
+    "Guild Hall - #{@name}"
 
   getGuildBase: ->
     @guildManager.game.world.maps[@getGuildBaseName()]
 
   buildBase: ->
-    @guildManager.game.world.maps[@getGuildBaseName()] = new (require "../../map/guild-bases/#{@base}") @guildManager.game
+    @guildManager.game.world.maps[@getGuildBaseName()] = new (require "../../map/guild-bases/#{@base}") @guildManager.game, @
     @reconstructBuildings()
 
   reconstructBuildings: ->
@@ -135,7 +135,9 @@ class Guild
     _.each ['sm', 'md', 'lg'], (size) =>
       _.map base.instances[size], -> null
       _.each @currentlyBuilt[size], (building, i) =>
-        base.instances[size][i] = new (require "../../map/guild-buildings/#{building}") @guildManager.game, @ if building
+        return unless building
+        inst = base.instances[size][i] = new (require "../../map/guild-buildings/#{building}") @guildManager.game, @
+        base.build building, size, i, inst
 
   _construct: (building, slot, size) ->
     @buildingLevels[building] = 1 unless @buildingLevels[building]
@@ -153,10 +155,13 @@ class Guild
 
     base = @getGuildBase()
     return Q {isSuccess: no, code: 703, message: "You already built a #{newBuilding} in #{@base}!"} if _.contains @currentlyBuilt[building.size], newBuilding
-    return Q {isSuccess: no, code: 704, message: "You've built the maximum of that size building already!"} if (_.compact @currentlyBuilt[building.size]).length is base.buildings[building.size].length
 
     costDiff = base.costs.build[building.size] - @gold.getValue()
-    return Q {isSuccess: no, code: 700, message: "Your guild doesn't have enough gold! You need #{costDiff} more!"} if costDiff > 0
+    return Q {isSuccess: no, code: 708, message: "Your guild doesn't have enough gold! You need #{costDiff} more!"} if costDiff > 0
+
+    slot = Math.round slot
+    return Q {isSuccess: no, code: 708, message: "That slot is out of range!"} if slot < 0 or slot > base.buildings[building.size].length-1
+    return Q {isSuccess: no, code: 704, message: "You've built the maximum of that size building already!"} if (_.compact @currentlyBuilt[building.size]).length is base.buildings[building.size].length
 
     @gold.sub base.costs.build[building.size]
     @_construct newBuilding, slot, building.size

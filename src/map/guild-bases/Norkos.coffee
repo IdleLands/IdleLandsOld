@@ -1,8 +1,8 @@
 GuildBase = require "../GuildBase"
 
 class NorkosGuildHall extends GuildBase
-  constructor: (game) ->
-    super "Norkos", game
+  constructor: (game, guild) ->
+    super "Norkos", game, guild
 
   @costs = NorkosGuildHall::costs =
     moveIn: 50000
@@ -11,10 +11,7 @@ class NorkosGuildHall extends GuildBase
       md: 40000
       lg: 50000
 
-  tileRef: [
-    7
-    3
-  ]
+  baseTile: 7
 
   startLoc: [12, 13]
 
@@ -38,22 +35,22 @@ class NorkosGuildHall extends GuildBase
         startCoords: [9, 23]
         signpostLoc: [12, 22]
         tiles: [
-          1, 1, 0, 1, 1,
-          1, 0, 0, 0, 1,
-          1, 0, 0, 0, 1,
-          1, 0, 0, 0, 1,
-          1, 1, 1, 1, 1
+          3, 3, 0, 3, 3,
+          3, 0, 0, 0, 3,
+          3, 0, 0, 0, 3,
+          3, 0, 0, 0, 3,
+          3, 3, 3, 3, 3
         ]
       }
       {
         startCoords: [18, 23]
         signpostLoc: [19, 22]
         tiles: [
-          1, 1, 0, 1, 1,
-          1, 0, 0, 0, 1,
-          1, 0, 0, 0, 1,
-          1, 0, 0, 0, 1,
-          1, 1, 1, 1, 1
+          3, 3, 0, 3, 3,
+          3, 0, 0, 0, 3,
+          3, 0, 0, 0, 3,
+          3, 0, 0, 0, 3,
+          3, 3, 3, 3, 3
         ]
       }
     ]
@@ -65,25 +62,25 @@ class NorkosGuildHall extends GuildBase
         signpostLoc: [25, 7]
         tiles: [
           0, 0, 0, 0, 0, 0, 0,
-          1, 0, 0, 0, 0, 0, 0,
-          1, 0, 0, 0, 0, 0, 0,
-          1, 0, 0, 0, 0, 0, 0,
-          1, 0, 0, 0, 0, 0, 0,
-          1, 0, 0, 0, 0, 0, 0,
-          1, 1, 1, 0, 1, 1, 0
+          3, 0, 0, 0, 0, 0, 0,
+          3, 0, 0, 0, 0, 0, 0,
+          3, 0, 0, 0, 0, 0, 0,
+          3, 0, 0, 0, 0, 0, 0,
+          3, 0, 0, 0, 0, 0, 0,
+          3, 3, 3, 0, 3, 3, 0
         ]
       }
       {
         startCoords: [2, 9]
         signpostLoc: [9, 13]
         tiles: [
-          1, 1, 1, 1, 1, 1, 1,
-          1, 0, 0, 0, 0, 0, 1,
-          1, 0, 0, 0, 0, 0, 1,
-          1, 0, 0, 0, 0, 0, 0,
-          1, 0, 0, 0, 0, 0, 1,
-          1, 0, 0, 0, 0, 0, 1,
-          1, 1, 1, 1, 1, 1, 1
+          3, 3, 3, 3, 3, 3, 3,
+          3, 0, 0, 0, 0, 0, 3,
+          3, 0, 0, 0, 0, 0, 3,
+          3, 0, 0, 0, 0, 0, 0,
+          3, 0, 0, 0, 0, 0, 3,
+          3, 0, 0, 0, 0, 0, 3
+          3, 3, 3, 3, 3, 3, 3
         ]
       }
     ]
