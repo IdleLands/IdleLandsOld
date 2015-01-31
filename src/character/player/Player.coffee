@@ -894,8 +894,11 @@ class Player extends Character
 
     @logger?.verbose "getExtraDataForRest results", {opts}
 
-    if opts.pet?.owner.identifier != opts.player?.identifier
-      @logger?.error "pet owner does not match player", {pet: opts.pet, player: opts.player}
+    try
+      if opts.pet?.owner.identifier != opts.player?.identifier
+        @logger?.error "pet owner does not match player", {pet: opts.pet, player: opts.player}
+    catch error
+      console.log error
 
     _.extend base, opts
 
