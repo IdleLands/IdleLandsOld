@@ -22,7 +22,6 @@ class API
     defer.resolve {isSuccess: no, code: 510, message: "You aren't a content moderator!"} if not player?.isContentModerator
     defer.resolve {isSuccess: yes, code: 999999, player: player} if player #lol
     defer.resolve {isSuccess: no, code: 10, message: "You aren't logged in!"}
-\
     defer.promise
 
   # Called on game initialization
