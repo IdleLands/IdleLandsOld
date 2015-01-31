@@ -22,6 +22,7 @@ class Player extends Character
 
   constructor: (player) ->
     super player
+    @logger = @game.logManager.getLogger "Player"
 
   canEquip: (item, rangeBoost = 1) ->
     myItem = _.findWhere @equipment, {type: item.type}
@@ -882,12 +883,19 @@ class Player extends Character
   getExtraDataForREST: (options, base) ->
     opts = {}
 
+    @logger?.verbose "getExtraDataForRest parameters", {options, base}
+
     if options.player       then opts.player = @buildRESTObject()
     if options.pets         then opts.pets = @playerManager.game.petManager.getPetsForPlayer @identifier
     if options.pet          then opts.pet = @getPet()?.buildSaveObject()
     if options.guild        then opts.guild = @getGuild()?.buildSaveObject()
     if options.guildInvites then opts.guildInvites = @playerManager.game.guildManager.getPlayerInvites @
     if options.global       then opts.global = @getGlobalData()
+
+    @logger?.verbose "getExtraDataForRest results", {opts}
+
+    if opts.pet?.owner.identifier != opts.player?.identifier
+      @logger?.error "pet owner does not match player", {pet: opts.pet, player: opts.player}
 
     _.extend base, opts
 
