@@ -136,6 +136,11 @@ class API
         @logger?.verbose "GM Command log.setLoggerLevel", {name, level}
         @gameInstance.logManager.setLoggerLevel name, level
 
+      clearLog: (name) =>
+        @logger?.debug "GM Command log.clearLog"
+        @logger?.verbose "GM Command log.clearLog", {name}
+        @gameInstance.logManager.clearLog name
+
     status:
       ban: (name, callback) =>
         @logger?.debug "GM Command status.ban"
