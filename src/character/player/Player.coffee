@@ -310,9 +310,26 @@ class Player extends Character
       when "Trainer" then @handleTrainerOnTile tile
       when "Treasure" then @handleTreasure tile.object.name
       when "Collectible" then @handleCollectible tile.object
+      when "GuildTeleport" then @handleGuildTeleport tile.object.name
 
     if tile.object?.properties?.forceEvent
       @playerManager.game.eventHandler.doEventForPlayer @name, tile.object.properties.forceEvent
+
+  handleGuildTeleport: (baseName) ->
+    guild = @getGuild()
+    return if not guild
+
+    base = guild.getGuildBase()
+    baseName = guild.getGuildBaseName()
+
+    message = "<player.name>#{@getName()}</player.name> was whisked away to <player.name>#{@guild}</player.name>'s Guild Hall!"
+
+    [@map, @x, @y] = [baseName, base.startLoc[0], base.startLoc[1]]
+
+    @emit "explore.transfer", @, @map
+    @emit "explore.transfer.guildTeleport", @, @map
+
+    @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'explore'}
 
   handleCollectible: (collectible) ->
     @collectibles = [] if not @collectibles

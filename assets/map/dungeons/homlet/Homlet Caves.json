@@ -258,6 +258,20 @@
                  "width":0,
                  "x":416,
                  "y":960
+                }, 
+                {
+                 "gid":30,
+                 "height":0,
+                 "name":"Homlet",
+                 "properties":
+                    {
+
+                    },
+                 "type":"GuildTeleport",
+                 "visible":true,
+                 "width":0,
+                 "x":1072,
+                 "y":96
                 }],
          "opacity":1,
          "type":"objectgroup",
