@@ -359,6 +359,24 @@ class API
         .then (res) =>
           if res.isSuccess then @gameInstance.guildManager.addBuff identifier, type, tier else res
 
+      move: (identifier, newLoc) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          guild = res.player.guild
+          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].moveToBase identifier, newLoc else res
+
+      construct: (identifier, building, slot) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          guild = res.player.guild
+          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].construct identifier, building, slot else res
+
+      upgrade: (identifier, building) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          guild = res.player.guild
+          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].upgrade identifier, building, slot else res
+
       tax:
         whole: (identifier, taxPercent) =>
           @validateIdentifier identifier
