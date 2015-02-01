@@ -1,6 +1,15 @@
 
 GuildBuilding = require "../GuildBuilding"
 
+`/**
+ * The Enchantress allows you to get better enchantments on your items, for a price!
+ *
+ * @name Enchantress
+ * @category Buildings
+ * @package Guild Bases
+ * @cost {level-up} level*5000
+ * @size {sm}
+ */`
 class Enchantress extends GuildBuilding
 
   @size = Enchantress::size = "sm"

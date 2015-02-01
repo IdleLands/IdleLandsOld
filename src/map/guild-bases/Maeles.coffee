@@ -1,5 +1,19 @@
 GuildBase = require "../GuildBase"
 
+`/**
+ * This guild base is located in Maeles.
+ *
+ * @name Maeles
+ * @category Locations
+ * @package Guild Bases
+ * @cost {move-in} 100000
+ * @cost {build-sm} 60000
+ * @cost {build-md} 75000
+ * @cost {build-lg} 100000
+ * @buildings {sm} 3
+ * @buildings {md} 2
+ * @buildings {lg} 3
+ */`
 class MaelesGuildHall extends GuildBase
   constructor: (game, guild) ->
     super "Maeles", game, guild

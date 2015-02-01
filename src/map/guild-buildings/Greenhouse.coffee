@@ -1,6 +1,15 @@
 
 GuildBuilding = require "../GuildBuilding"
 
+`/**
+ * The Greenhouse allows you to have a permanent storage of usable items, as well as slowly producing some items.
+ *
+ * @name Greenhouse
+ * @category Buildings
+ * @package Guild Bases
+ * @cost {level-up} level*85000
+ * @size {lg}
+ */`
 class Greenhouse extends GuildBuilding
 
   @size = Greenhouse::size = "lg"

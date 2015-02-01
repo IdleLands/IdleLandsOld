@@ -1,6 +1,15 @@
 
 GuildBuilding = require "../GuildBuilding"
 
+`/**
+ * The GuildHall increases the maximum level of your other guild buildings!
+ *
+ * @name GuildHall
+ * @category Buildings
+ * @package Guild Bases
+ * @cost {level-up} level*10000
+ * @size {lg}
+ */`
 class GuildHall extends GuildBuilding
 
   @size = GuildHall::size = "lg"

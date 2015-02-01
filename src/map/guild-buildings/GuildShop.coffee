@@ -1,6 +1,15 @@
 
 GuildBuilding = require "../GuildBuilding"
 
+`/**
+ * The GuildShop allows you to buy items, and upgrading it allows you to buy better items!
+ *
+ * @name GuildShop
+ * @category Buildings
+ * @package Guild Bases
+ * @cost {level-up} level*25000
+ * @size {md}
+ */`
 class GuildShop extends GuildBuilding
 
   @size = GuildShop::size = "md"

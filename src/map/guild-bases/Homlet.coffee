@@ -1,5 +1,19 @@
 GuildBase = require "../GuildBase"
 
+`/**
+ * This guild base is located in the Cave Homlet area.
+ *
+ * @name Homlet
+ * @category Locations
+ * @package Guild Bases
+ * @cost {move-in} 65000
+ * @cost {build-sm} 25000
+ * @cost {build-md} 45000
+ * @cost {build-lg} 65000
+ * @buildings {sm} 2
+ * @buildings {md} 2
+ * @buildings {lg} 2
+ */`
 class HomletGuildHall extends GuildBase
   constructor: (game, guild) ->
     super "Homlet", game, guild

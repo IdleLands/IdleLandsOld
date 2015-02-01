@@ -1,5 +1,19 @@
 GuildBase = require "../GuildBase"
 
+`/**
+ * This guild base is located in Frigri.
+ *
+ * @name Frigri
+ * @category Locations
+ * @package Guild Bases
+ * @cost {move-in} 150000
+ * @cost {build-sm} 70000
+ * @cost {build-md} 120000
+ * @cost {build-lg} 150000
+ * @buildings {sm} 2
+ * @buildings {md} 4
+ * @buildings {lg} 3
+ */`
 class FrigriGuildHall extends GuildBase
   constructor: (game, guild) ->
     super "Frigri", game, guild

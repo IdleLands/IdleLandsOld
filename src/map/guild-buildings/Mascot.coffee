@@ -1,6 +1,15 @@
 
 GuildBuilding = require "../GuildBuilding"
 
+`/**
+ * The Mascot looks really nice in the courtyard. Upgrading it provides bragging rights!
+ *
+ * @name Mascot
+ * @category Buildings
+ * @package Guild Bases
+ * @cost {level-up} level*1000
+ * @size {sm}
+ */`
 class Mascot extends GuildBuilding
 
   @size = Mascot::size = "sm"

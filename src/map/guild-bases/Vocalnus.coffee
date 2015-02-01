@@ -1,5 +1,19 @@
 GuildBase = require "../GuildBase"
 
+`/**
+ * This guild base is located above Vocalnus.
+ *
+ * @name Vocalnus
+ * @category Locations
+ * @package Guild Bases
+ * @cost {move-in} 25000
+ * @cost {build-sm} 15000
+ * @cost {build-md} 20000
+ * @cost {build-lg} 25000
+ * @buildings {sm} 2
+ * @buildings {md} 1
+ * @buildings {lg} 1
+ */`
 class VocalnusGuildHall extends GuildBase
   constructor: (game, guild) ->
     super "Vocalnus", game, guild

@@ -1,6 +1,15 @@
 
 GuildBuilding = require "../GuildBuilding"
 
+`/**
+ * The Teleport allows you to specify a teleport to anywhere in the world!
+ *
+ * @name Teleport
+ * @category Buildings
+ * @package Guild Bases
+ * @cost {level-up} level*15000
+ * @size {sm}
+ */`
 class Teleport extends GuildBuilding
 
   @size = Teleport::size = "sm"

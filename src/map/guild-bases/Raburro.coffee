@@ -1,5 +1,19 @@
 GuildBase = require "../GuildBase"
 
+`/**
+ * This guild base is located in Raburro, in Norkos -5.
+ *
+ * @name Raburro
+ * @category Locations
+ * @package Guild Bases
+ * @cost {move-in} 65000
+ * @cost {build-sm} 25000
+ * @cost {build-md} 45000
+ * @cost {build-lg} 65000
+ * @buildings {sm} 4
+ * @buildings {md} 1
+ * @buildings {lg} 2
+ */`
 class RaburroGuildHall extends GuildBase
   constructor: (game, guild) ->
     super "Raburro", game, guild

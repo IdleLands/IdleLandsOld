@@ -1,6 +1,15 @@
 
 GuildBuilding = require "../GuildBuilding"
 
+`/**
+ * The Academy affects the capability of your minor permanent buffs as well as the major buffs you can purchase for a limited time.
+ *
+ * @name Academy
+ * @category Buildings
+ * @package Guild Bases
+ * @cost {level-up} level*50000
+ * @size {md}
+ */`
 class Academy extends GuildBuilding
 
   @size = Academy::size = "md"

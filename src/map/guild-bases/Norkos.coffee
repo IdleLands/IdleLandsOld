@@ -1,5 +1,19 @@
 GuildBase = require "../GuildBase"
 
+`/**
+ * This guild base is located in Norkos.
+ *
+ * @name Norkos
+ * @category Locations
+ * @package Guild Bases
+ * @cost {move-in} 50000
+ * @cost {build-sm} 30000
+ * @cost {build-md} 40000
+ * @cost {build-lg} 50000
+ * @buildings {sm} 1
+ * @buildings {md} 2
+ * @buildings {lg} 2
+ */`
 class NorkosGuildHall extends GuildBase
   constructor: (game, guild) ->
     super "Norkos", game, guild

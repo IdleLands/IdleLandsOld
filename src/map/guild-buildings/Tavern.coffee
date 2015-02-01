@@ -1,6 +1,15 @@
 
 GuildBuilding = require "../GuildBuilding"
 
+`/**
+ * The Tavern provides you a place to get drunk with your guildies!
+ *
+ * @name Tavern
+ * @category Buildings
+ * @package Guild Bases
+ * @cost {level-up} level*50000
+ * @size {lg}
+ */`
 class Tavern extends GuildBuilding
 
   @size = Tavern::size = "lg"

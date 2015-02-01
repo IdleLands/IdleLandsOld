@@ -1,6 +1,15 @@
 
 GuildBuilding = require "../GuildBuilding"
 
+`/**
+ * The FortuneTeller allows you to get better providences!
+ *
+ * @name FortuneTeller
+ * @category Buildings
+ * @package Guild Bases
+ * @cost {level-up} level*100000
+ * @size {sm}
+ */`
 class FortuneTeller extends GuildBuilding
 
   @size = FortuneTeller::size = "sm"

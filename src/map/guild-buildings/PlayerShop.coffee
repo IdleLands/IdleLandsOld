@@ -1,6 +1,15 @@
 
 GuildBuilding = require "../GuildBuilding"
 
+`/**
+ * The PlayerShop allows you to sell items, and upgrading it allows you to sell more items!
+ *
+ * @name PlayerShop
+ * @category Buildings
+ * @package Guild Bases
+ * @cost {level-up} level*15000
+ * @size {md}
+ */`
 class PlayerShop extends GuildBuilding
 
   @size = PlayerShop::size = "md"
