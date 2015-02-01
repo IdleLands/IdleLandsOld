@@ -87,6 +87,14 @@ class GuildManager
         guild.invitesLeft()
         guild.avgLevel()
 
+        if not guild.base
+          @base = "Norkos"
+          @buildingLevels = {}
+          @buildingLevelCosts = {}
+          @buildingProps = {}
+          @resetBuildings()
+          @save()
+
         guild.buildBase()
 
         guild.gold.__current = 0 if _.isNaN guild.gold.__current
@@ -98,13 +106,6 @@ class GuildManager
           if guildBuffs["Guild#{buff.type}"]
             buff.__proto__ = guildBuffs["Guild#{buff.type}"].prototype
           else guild.buffs = _.without buff
-
-        if not guild.base
-          @base = "Norkos"
-          @buildingLevels = {}
-          @buildingLevelCosts = {}
-          @buildingProps = {}
-          @resetBuildings()
 
         @guilds.push guild
         @guildHash[guild.name] = guild
