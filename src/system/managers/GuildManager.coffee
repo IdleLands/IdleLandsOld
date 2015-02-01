@@ -88,12 +88,12 @@ class GuildManager
         guild.avgLevel()
 
         if not guild.base
-          @base = "Norkos"
-          @buildingLevels = {}
-          @buildingLevelCosts = {}
-          @buildingProps = {}
-          @resetBuildings()
-          @save()
+          guild.base = "Norkos"
+          guild.buildingLevels = {}
+          guild.buildingLevelCosts = {}
+          guild.buildingProps = {}
+          guild.resetBuildings()
+          guild.save()
 
         guild.buildBase()
 
