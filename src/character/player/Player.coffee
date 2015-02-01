@@ -405,9 +405,9 @@ class Player extends Character
 
   canEnterTile: (tile) ->
     props = tile.object?.properties
-    return no if props?.requireMap          and not @statistics['calculated map changes'][props.requireMap]
-    return no if props?.requireRegion       and not @statistics['calculated regions visited'][props.requireRegion]
-    return no if props?.requireBoss         and not @statistics['calculated boss kills'][props.requireBoss]
+    return no if props?.requireMap          and not @statistics['calculated map changes']?[props.requireMap]
+    return no if props?.requireRegion       and not @statistics['calculated regions visited']?[props.requireRegion]
+    return no if props?.requireBoss         and not @statistics['calculated boss kills']?[props.requireBoss]
     return no if props?.requireClass        and @professionName isnt props.requireClass
     return no if props?.requireCollectible  and not _.findWhere @collectibles, {name: props.requireCollectible}
     return no if props?.requireAchievement  and not _.findWhere @achievements, {name: props.requireAchievement}
@@ -706,13 +706,12 @@ class Player extends Character
 
   swapToPet: (petId) ->
     pet = @getPet()
-    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
 
-    newPet = _.findWhere pet.petManager.pets, (pet) => pet.createdAt is petId and pet.owner.name is @name
+    newPet = _.findWhere @playerManager.game.petManager.pets, (pet) => pet.createdAt is petId and pet.owner.name is @name
     return Q {isSuccess: no, code: 228, message: "That pet does not exist!"} if not newPet
-    return Q {isSuccess: no, code: 229, message: "That pet is already active!"} if newPet is pet
+    return Q {isSuccess: no, code: 229, message: "That pet is already active!"} if newPet is pet?
 
-    pet.petManager.changePetForPlayer @, newPet
+    @playerManager.game.petManager.changePetForPlayer @, newPet
 
     Q @getExtraDataForREST {pet: yes, pets: yes}, {isSuccess: yes, code: 230, message: "Successfully made #{newPet.name}, the #{newPet.type} your active pet!"}
 
@@ -900,12 +899,22 @@ class Player extends Character
   getExtraDataForREST: (options, base) ->
     opts = {}
 
+    @logger?.verbose "getExtraDataForRest parameters", {options, base}
+
     if options.player       then opts.player = @buildRESTObject()
     if options.pets         then opts.pets = @playerManager.game.petManager.getPetsForPlayer @identifier
     if options.pet          then opts.pet = @getPet()?.buildSaveObject()
     if options.guild        then opts.guild = @getGuild()?.buildSaveObject()
     if options.guildInvites then opts.guildInvites = @playerManager.game.guildManager.getPlayerInvites @
     if options.global       then opts.global = @getGlobalData()
+
+    @logger?.verbose "getExtraDataForRest results", {opts}
+
+    try
+      if opts.pet?.owner.identifier != opts.player?.identifier
+        @logger?.error "pet owner does not match player", {pet: opts.pet, player: opts.player}
+    catch error
+      console.log error
 
     _.extend base, opts
 

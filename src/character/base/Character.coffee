@@ -59,9 +59,10 @@ class Character extends EventEmitter2
     return probabilities[0] if probabilities.length < 2
 
     sortedProbabilities = _.sortBy probabilities, (prob) -> prob.probability
+    minProbability = sortedProbabilities[0].probability
     sum = _.reduce sortedProbabilities, ((prev, prob) -> prev + prob.probability), 0
     sortedProbabilities[i].probability = sortedProbabilities[i].probability + sortedProbabilities[i-1].probability for i in [1...sortedProbabilities.length]
-    chosenInt = chance.integer {min: 0, max: sum}
+    chosenInt = chance.integer {min: minProbability, max: sum}
     (_.reject sortedProbabilities, (val) -> val.probability < chosenInt)[0]
 
   personalityReduce: (appFunctionName, args = [], baseValue = 0) ->

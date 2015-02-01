@@ -16,6 +16,7 @@ BattleManager = require "./managers/BattleManager"
 BossFactory = require "../event/BossFactory"
 TreasureFactory = require "../event/TreasureFactory"
 SpellManager = require "./managers/SpellManager"
+LogManager = require "./managers/LogManager"
 Constants = require "./utilities/Constants"
 GMCommands = require "./utilities/GMCommands"
 Party = require "../event/Party"
@@ -73,6 +74,7 @@ class Game
 
     @playerManager = new PlayerManager @
     @guildManager = new GuildManager @
+    @logManager = new LogManager
     @petManager = new PetManager @
     @calendar = new Calendar @
     @bossFactory = new BossFactory @
