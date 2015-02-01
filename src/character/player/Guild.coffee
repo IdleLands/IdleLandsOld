@@ -21,6 +21,8 @@ class Guild
     @base = "Norkos"
     @buildingLevels = {}
     @buildingLevelCosts = {}
+    @buildingProps = {}
+    @taxPercent = 0
     @resetBuildings()
 
   resetBuildings: ->
@@ -28,9 +30,7 @@ class Guild
 
   hasBuilt: (findBuilding) ->
     ret = []
-    _.each ['sm', 'md', 'lg'], (size) =>
-      _.each @currentlyBuilt[size], (building) -> ret.push building
-
+    ret.push @currentlyBuilt[size]... for size in ['sm', 'md', 'lg']
     _.contains ret, findBuilding
 
   add: (player) ->
@@ -117,6 +117,7 @@ class Guild
 
   addGold: (gold) ->
     @gold = new RestrictedNumber 0, 9999999999, 0 unless @gold
+    @gold.__current = 0 if _.isNaN @gold.getValue()
     @gold.add gold
 
   calcTax: (player) ->
@@ -146,6 +147,32 @@ class Guild
         inst = base.instances[size][i] = new (require "../../map/guild-buildings/#{building}") @guildManager.game, @
         base.build building, size, i, inst
 
+  _upgrade: (building) ->
+    @buildingLevels[building]++
+    @save()
+
+    @reconstructBuildings()
+
+  upgrade: (identifier, building) ->
+    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+    return Q {isSuccess: no, code: 80, message: "You don't have that building constructed!"} unless @hasBuilt building
+
+    #check cost
+    ghLevel = @buildingLevels['GuildHall']
+    nextLevel = @buildingLevels[building]+1
+    return Q {isSuccess: no, code: 81, message: "You must first upgrade your Guild Hall!"} unless building is "GuildHall" or nextLevel <= ghLevel
+
+    buildingProto = (require "../../map/guild-buildings/#{building}")
+    cost = buildingProto.levelupCost nextLevel
+    costDiff = cost - @gold.getValue()
+    return Q {isSuccess: no, code: 708, message: "Your guild doesn't have enough gold! You need #{costDiff} more!"} if costDiff > 0
+
+    @buildingLevelCosts[building] = buildingProto.levelupCost nextLevel+1
+    @gold.sub cost
+    @_upgrade building
+
+    Q {isSuccess: no, code: 82, message: "Successfully upgraded #{building} to level #{nextLevel}!"}
+
   _construct: (building, slot, size) ->
     @buildingLevels[building] = 1 unless @buildingLevels[building]
     @currentlyBuilt[size][slot] = building
@@ -169,6 +196,7 @@ class Guild
     slot = Math.round slot
     return Q {isSuccess: no, code: 708, message: "That slot is out of range!"} if slot < 0 or slot > base.buildings[building.size].length-1
 
+    @buildingLevelCosts[newBuilding] = building.levelupCost 2
     @gold.sub base.costs.build[building.size]
     @_construct newBuilding, slot, building.size
 

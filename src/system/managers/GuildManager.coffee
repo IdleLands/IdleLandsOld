@@ -89,17 +89,16 @@ class GuildManager
 
         guild.buildBase()
 
-        guild.gold = new RestrictedNumber 0, 9999999999, 0 unless guild.gold
         guild.gold.__current = 0 if _.isNaN guild.gold.__current
         guild.gold.__proto__ = RestrictedNumber.prototype
 
         guild.buffs = _.compact guild.buffs
-        guild.taxPercent = 0 if not guild.taxPercent
         guild.invites = []
         _.each guild.buffs, (buff) ->
           if guildBuffs["Guild#{buff.type}"]
             buff.__proto__ = guildBuffs["Guild#{buff.type}"].prototype
           else guild.buffs = _.without buff
+
         @guilds.push guild
         @guildHash[guild.name] = guild
       @checkBuffs()
