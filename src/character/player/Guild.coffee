@@ -220,7 +220,7 @@ class Guild
     return Q {isSuccess: no, code: 700, message: "Your guild doesn't have enough gold! You need #{costDiff} more!"} if costDiff > 0
 
     @gold.sub base.costs.moveIn
-    @moveToBase newBase
+    @_moveToBase newBase
 
     Q {isSuccess: yes, code: 701, message: "You've successfully moved your base to #{newBase}!"}
 
