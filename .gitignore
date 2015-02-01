@@ -28,5 +28,8 @@ node_modules
 
 .vagrant
 
+assets/custom/
+doks/
+
 # commit -f if you really need to change this
 config.json
