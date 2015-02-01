@@ -18,6 +18,21 @@ class Guild
     @members = []
     @invites = []
 
+    @base = "Norkos"
+    @buildingLevels = {}
+    @buildingLevelCosts = {}
+    @buildingProps = {}
+    @taxPercent = 0
+    @resetBuildings()
+
+  resetBuildings: ->
+    @currentlyBuilt = {sm: [], md: [], lg: []}
+
+  hasBuilt: (findBuilding) ->
+    ret = []
+    ret.push @currentlyBuilt[size]... for size in ['sm', 'md', 'lg']
+    _.contains ret, findBuilding
+
   add: (player) ->
     # Adding assumes that a player is online, i.e. they have accepted an invite.
     # Therefore, this function can use the player object directly.
@@ -97,12 +112,117 @@ class Guild
     @notifyAllPossibleMembers "The tax rate of \"#{@name}\" is now #{@taxPercent}%."
     Q {isSuccess: yes, code: 70, message: "Successfully set the tax rate of \"#{@name}\" to #{newTax}%!", guild: @buildSaveObject()}
 
+  subGold: (gold) ->
+    @gold.sub gold
+
+  addGold: (gold) ->
+    @gold = new RestrictedNumber 0, 9999999999, 0 unless @gold
+    @gold.__current = 0 if _.isNaN @gold.getValue()
+    @gold.add gold
+
   calcTax: (player) ->
     player.guildTax + @taxPercent
 
   collectTax: (player, gold) ->
-    @gold.add gold
+    @addGold gold
     player.emit "player.gold.guildTax", @name, gold
+
+  getGuildBaseName: ->
+    "Guild Hall - #{@name}"
+
+  getGuildBase: ->
+    @guildManager.game.world.maps[@getGuildBaseName()]
+
+  buildBase: ->
+    @guildManager.game.world.maps[@getGuildBaseName()] = new (require "../../map/guild-bases/#{@base}") @guildManager.game, @
+    @reconstructBuildings()
+
+  reconstructBuildings: ->
+    base = @getGuildBase()
+
+    _.each ['sm', 'md', 'lg'], (size) =>
+      _.map base.instances[size], -> null
+      _.each @currentlyBuilt[size], (building, i) =>
+        return unless building
+        inst = base.instances[size][i] = new (require "../../map/guild-buildings/#{building}") @guildManager.game, @
+        base.build building, size, i, inst
+
+  _upgrade: (building) ->
+    @buildingLevels[building]++
+    @save()
+
+    @reconstructBuildings()
+
+  upgrade: (identifier, building) ->
+    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+    return Q {isSuccess: no, code: 80, message: "You don't have that building constructed!"} unless @hasBuilt building
+
+    #check cost
+    ghLevel = @buildingLevels['GuildHall']
+    nextLevel = @buildingLevels[building]+1
+    return Q {isSuccess: no, code: 81, message: "You must first upgrade your Guild Hall!"} unless building is "GuildHall" or nextLevel <= ghLevel
+
+    buildingProto = (require "../../map/guild-buildings/#{building}")
+    cost = buildingProto.levelupCost nextLevel
+    costDiff = cost - @gold.getValue()
+    return Q {isSuccess: no, code: 708, message: "Your guild doesn't have enough gold! You need #{costDiff} more!"} if costDiff > 0
+
+    @buildingLevelCosts[building] = buildingProto.levelupCost nextLevel+1
+    @gold.sub cost
+    @_upgrade building
+
+    Q {isSuccess: no, code: 82, message: "Successfully upgraded #{building} to level #{nextLevel}!"}
+
+  _construct: (building, slot, size) ->
+    @buildingLevels[building] = 1 unless @buildingLevels[building]
+    @currentlyBuilt[size][slot] = building
+    @reconstructBuildings()
+    @save()
+
+  construct: (identifier, newBuilding, slot) ->
+    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+
+    try
+      building = require "../../map/guild-buildings/#{newBuilding}"
+    catch e
+      return Q {isSuccess: no, code: 708, message: "That building doesn't exist!"}
+
+    base = @getGuildBase()
+    return Q {isSuccess: no, code: 703, message: "You already built a #{newBuilding} in #{@base}!"} if _.contains @currentlyBuilt[building.size], newBuilding
+
+    costDiff = base.costs.build[building.size] - @gold.getValue()
+    return Q {isSuccess: no, code: 708, message: "Your guild doesn't have enough gold! You need #{costDiff} more!"} if costDiff > 0
+
+    slot = Math.round slot
+    return Q {isSuccess: no, code: 708, message: "That slot is out of range!"} if slot < 0 or slot > base.buildings[building.size].length-1
+
+    @buildingLevelCosts[newBuilding] = building.levelupCost 2
+    @gold.sub base.costs.build[building.size]
+    @_construct newBuilding, slot, building.size
+
+    Q {isSuccess: yes, code: 706, message: "Successfully built a #{newBuilding} in #{@name}'s #{@base} guild hall!"}
+
+  _moveToBase: (@base) ->
+    @resetBuildings()
+    @buildBase()
+    @save()
+
+  moveToBase: (identifier, newBase) ->
+    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+    return Q {isSuccess: no, code: 702, message: "Your base is already #{newBase}!"} if @base is newBase
+
+    try
+      base = require "../../map/guild-bases/#{newBase}"
+    catch e
+      return Q {isSuccess: no, code: 707, message: "That base doesn't exist!"}
+
+    costDiff = base.costs.moveIn - @gold.getValue()
+    return Q {isSuccess: no, code: 700, message: "Your guild doesn't have enough gold! You need #{costDiff} more!"} if costDiff > 0
+
+    @gold.sub base.costs.moveIn
+    @moveToBase newBase
+
+    Q {isSuccess: yes, code: 701, message: "You've successfully moved your base to #{newBase}!"}
 
   notifyAllPossibleMembers: (message) ->
     _.each @members, (member) =>

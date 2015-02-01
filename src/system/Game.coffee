@@ -79,6 +79,7 @@ class Game
     @calendar = new Calendar @
     @bossFactory = new BossFactory @
     @battleManager = new BattleManager @
+    @world = new World @
     @componentDatabase = new ComponentDatabase @
     @componentDatabase.loadingAll.then =>
       @gmCommands = new GMCommands @
@@ -91,7 +92,6 @@ class Game
       @sandwichGenerator = new SandwichGenerator @
       @shopGenerator = new ShopGenerator @
       @treasureFactory = new TreasureFactory @
-      @world = new World @
 
       defer.resolve()
 

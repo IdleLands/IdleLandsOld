@@ -740,6 +740,75 @@ module.exports = (Module) ->
             @reply origin, res.message
 
       `/**
+       * Manage your guild's current location.
+       *
+       * @name !idle-guild move
+       * @syntax !idle-guild move newLoc
+       * @example !idle-guild move Vocalnus
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-guild move :newLoc", (origin, route) =>
+        [newLoc] = [route.params.newLoc]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to administer a guild!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.guild.move identifier, newLoc)
+          .then (res) =>
+            @reply origin, res.message
+
+      `/**
+       * Construct a new building in your Guild Hall.
+       *
+       * @name !idle-guild construct
+       * @syntax !idle-guild construct building slot
+       * @example !idle-guild construct GuildHall 0
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-guild construct :building :slot", (origin, route) =>
+        [building, slot] = [route.params.building, parseInt route.params.slot]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to administer a guild!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.guild.construct identifier, building, slot)
+          .then (res) =>
+            @reply origin, res.message
+
+      `/**
+       * Upgrade a building in your guild hall.
+       *
+       * @name !idle-guild upgrade
+       * @syntax !idle-guild upgrade building
+       * @example !idle-guild upgrade GuildHall
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-guild upgrade :building", (origin, route) =>
+        [building] = [route.params.building]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to administer a guild!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.guild.upgrade identifier, building)
+          .then (res) =>
+            @reply origin, res.message
+
+      `/**
         * Manage your guild status.
         *
         * @name Guild Status

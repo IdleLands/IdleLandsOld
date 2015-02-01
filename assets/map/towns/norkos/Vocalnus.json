@@ -228,6 +228,20 @@
                  "width":0,
                  "x":816,
                  "y":560
+                }, 
+                {
+                 "gid":30,
+                 "height":0,
+                 "name":"Vocalnus",
+                 "properties":
+                    {
+
+                    },
+                 "type":"GuildTeleport",
+                 "visible":true,
+                 "width":0,
+                 "x":400,
+                 "y":560
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -309,7 +323,7 @@
         {
          "firstgid":1,
          "image":"..\/..\/..\/img\/tiles.png",
-         "imageheight":64,
+         "imageheight":112,
          "imagewidth":144,
          "margin":0,
          "name":"tiles",
