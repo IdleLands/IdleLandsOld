@@ -99,8 +99,16 @@ class GuildManager
             buff.__proto__ = guildBuffs["Guild#{buff.type}"].prototype
           else guild.buffs = _.without buff
 
+        if not guild.base
+          @base = "Norkos"
+          @buildingLevels = {}
+          @buildingLevelCosts = {}
+          @buildingProps = {}
+          @resetBuildings()
+
         @guilds.push guild
         @guildHash[guild.name] = guild
+
       @checkBuffs()
       @defer.resolve()
 
