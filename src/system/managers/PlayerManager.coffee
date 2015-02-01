@@ -214,6 +214,7 @@ class PlayerManager
 
     playerObject = new Player options
     playerObject.playerManager = @
+    playerObject.logger = @game.logManager.getLogger "Player"
     playerObject.initialize()
     playerObject.isOnline = yes
     playerObject.registrationDate = new Date()
