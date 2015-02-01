@@ -18,7 +18,7 @@ class Mascot extends GuildBuilding
 
   f =
     name: "Mascot"
-    gid: 23
+    gid: 26
     type: "Guild NPC"
     properties: {}
 
