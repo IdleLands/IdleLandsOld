@@ -22,7 +22,7 @@ class Player extends Character
 
   constructor: (player) ->
     super player
-    @logger = @game.logManager.getLogger "Player"
+    @logger = @playerManager.game.logManager.getLogger "Player"
 
   canEquip: (item, rangeBoost = 1) ->
     myItem = _.findWhere @equipment, {type: item.type}

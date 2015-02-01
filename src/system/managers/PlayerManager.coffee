@@ -204,7 +204,7 @@ class PlayerManager
 
     options.name = options.name?.trim()
 
-    return Q {isSuccess: no, code: 6, message: "You need a name for your character!"} if not options.name
+    return Q {isSuccess: no, code: 6, message: "You need a name for your character!"} unless options.name
     return Q {isSuccess: no, code: 2, message: "You have to make your name above 2 characters!"} if options.name.length < 2
     return Q {isSuccess: no, code: 3, message: "You have to keep your name under 20 characters!"} if options.name.length > 20
     return Q {isSuccess: no, code: 4, message: "You have to send a unique identifier for this player!"} if not options.identifier
@@ -258,6 +258,7 @@ class PlayerManager
                 'stepCooldown'
                 '_oldAchievements'
                 '_id'
+                'logger'
                 'pushbullet']
     ret = _.omit player, badStats
     ret._baseStats = calc
@@ -331,6 +332,8 @@ class PlayerManager
     player.playerManager = @
     player.isBusy = false
     player.loadCalc()
+
+    player.logger = @game.logManager.getLogger "Player"
 
     player.guildTax = 0 unless player.guildTax
 
