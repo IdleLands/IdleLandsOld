@@ -5,7 +5,7 @@ class Greenhouse extends GuildBuilding
 
   @size = Greenhouse::size = "lg"
   @desc = Greenhouse::desc = "Upgrade this area to produce more items for your guildies!"
-  @levelupCost = Greenhouse::levelupCost = (level) -> level * 150000
+  @levelupCost = Greenhouse::levelupCost = (level) -> level * 85000
 
   baseTile: 4
 
