@@ -16,9 +16,15 @@ class Mascot extends GuildBuilding
   @desc = Mascot::desc = "Upgrade this guy for bragging rights!"
   @levelupCost = Mascot::levelupCost = (level) -> level * 1000
 
+  f =
+    name: "Mascot"
+    gid: 23
+    type: "Guild NPC"
+    properties: {}
+
   tiles: [
     0,  0,  0,
-    0,  26, 0,
+    0,  f,  0,
     0,  0,  0
   ]
 
