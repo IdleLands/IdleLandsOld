@@ -989,8 +989,76 @@
                     "_name": "IRC Commands",
                     "_children": [
                         {
-                            "lineNumber": 861,
-                            "endLineNumber": 869,
+                            "lineNumber": 765,
+                            "endLineNumber": 773,
+                            "filePath": "ext/kurea/IdleLandsModule.coffee",
+                            "fileName": "IdleLandsModule.coffee",
+                            "example": [
+                                {
+                                    "name": "example",
+                                    "basicInfo": "!idle-guild construct GuildHall 0"
+                                }
+                            ],
+                            "syntax": [
+                                {
+                                    "name": "syntax",
+                                    "basicInfo": "!idle-guild construct building slot"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "Construct a new building in your Guild Hall."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "!idle-guild construct"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "IRC Commands"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Client"
+                            }
+                        },
+                        {
+                            "lineNumber": 742,
+                            "endLineNumber": 750,
+                            "filePath": "ext/kurea/IdleLandsModule.coffee",
+                            "fileName": "IdleLandsModule.coffee",
+                            "example": [
+                                {
+                                    "name": "example",
+                                    "basicInfo": "!idle-guild move Vocalnus"
+                                }
+                            ],
+                            "syntax": [
+                                {
+                                    "name": "syntax",
+                                    "basicInfo": "!idle-guild move newLoc"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "Manage your guild's current location."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "!idle-guild move"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "IRC Commands"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Client"
+                            }
+                        },
+                        {
+                            "lineNumber": 930,
+                            "endLineNumber": 938,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1024,8 +1092,8 @@
                             }
                         },
                         {
-                            "lineNumber": 838,
-                            "endLineNumber": 846,
+                            "lineNumber": 907,
+                            "endLineNumber": 915,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1059,8 +1127,42 @@
                             }
                         },
                         {
-                            "lineNumber": 815,
-                            "endLineNumber": 823,
+                            "lineNumber": 788,
+                            "endLineNumber": 796,
+                            "filePath": "ext/kurea/IdleLandsModule.coffee",
+                            "fileName": "IdleLandsModule.coffee",
+                            "example": [
+                                {
+                                    "name": "example",
+                                    "basicInfo": "!idle-guild upgrade GuildHall"
+                                }
+                            ],
+                            "syntax": [
+                                {
+                                    "name": "syntax",
+                                    "basicInfo": "!idle-guild upgrade building"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "Upgrade a building in your guild hall."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "!idle-guild upgrade"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "IRC Commands"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Client"
+                            }
+                        },
+                        {
+                            "lineNumber": 884,
+                            "endLineNumber": 892,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1127,8 +1229,8 @@
                             }
                         },
                         {
-                            "lineNumber": 792,
-                            "endLineNumber": 800,
+                            "lineNumber": 861,
+                            "endLineNumber": 869,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1161,8 +1263,8 @@
                             }
                         },
                         {
-                            "lineNumber": 767,
-                            "endLineNumber": 776,
+                            "lineNumber": 836,
+                            "endLineNumber": 845,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1245,8 +1347,8 @@
                             }
                         },
                         {
-                            "lineNumber": 742,
-                            "endLineNumber": 751,
+                            "lineNumber": 811,
+                            "endLineNumber": 820,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1314,8 +1416,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1010,
-                            "endLineNumber": 1018,
+                            "lineNumber": 1079,
+                            "endLineNumber": 1087,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -1346,8 +1448,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1029,
-                            "endLineNumber": 1038,
+                            "lineNumber": 1098,
+                            "endLineNumber": 1107,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1708,8 +1810,8 @@
                             }
                         },
                         {
-                            "lineNumber": 956,
-                            "endLineNumber": 981,
+                            "lineNumber": 1025,
+                            "endLineNumber": 1050,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1811,8 +1913,8 @@
                             }
                         },
                         {
-                            "lineNumber": 908,
-                            "endLineNumber": 916,
+                            "lineNumber": 977,
+                            "endLineNumber": 985,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1845,8 +1947,8 @@
                             }
                         },
                         {
-                            "lineNumber": 931,
-                            "endLineNumber": 941,
+                            "lineNumber": 1000,
+                            "endLineNumber": 1010,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2028,8 +2130,8 @@
                             }
                         },
                         {
-                            "lineNumber": 884,
-                            "endLineNumber": 893,
+                            "lineNumber": 953,
+                            "endLineNumber": 962,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2840,6 +2942,717 @@
                             "package": {
                                 "name": "package",
                                 "basicInfo": "Events"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "_name": "Guild Bases",
+            "_children": [
+                {
+                    "_name": "Buildings",
+                    "_children": [
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 12,
+                            "filePath": "src/map/guild-buildings/Academy.coffee",
+                            "fileName": "Academy.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "level*50000"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Academy affects the capability of your minor permanent buffs as well as the major buffs you can purchase for a limited time."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Academy"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Bases"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "md"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 12,
+                            "filePath": "src/map/guild-buildings/Enchantress.coffee",
+                            "fileName": "Enchantress.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "level*5000"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Enchantress allows you to get better enchantments on your items, for a price!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Enchantress"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Bases"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "sm"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 12,
+                            "filePath": "src/map/guild-buildings/FortuneTeller.coffee",
+                            "fileName": "FortuneTeller.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "level*100000"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The FortuneTeller allows you to get better providences!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "FortuneTeller"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Bases"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "sm"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 12,
+                            "filePath": "src/map/guild-buildings/Greenhouse.coffee",
+                            "fileName": "Greenhouse.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "level*85000"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Greenhouse allows you to have a permanent storage of usable items, as well as slowly producing some items."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Greenhouse"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Bases"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "lg"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 12,
+                            "filePath": "src/map/guild-buildings/GuildHall.coffee",
+                            "fileName": "GuildHall.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "level*10000"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The GuildHall increases the maximum level of your other guild buildings!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "GuildHall"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Bases"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "lg"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 12,
+                            "filePath": "src/map/guild-buildings/GuildShop.coffee",
+                            "fileName": "GuildShop.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "level*25000"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The GuildShop allows you to buy items, and upgrading it allows you to buy better items!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "GuildShop"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Bases"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "md"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 12,
+                            "filePath": "src/map/guild-buildings/Mascot.coffee",
+                            "fileName": "Mascot.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "level*1000"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Mascot looks really nice in the courtyard. Upgrading it provides bragging rights!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Mascot"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Bases"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "sm"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 12,
+                            "filePath": "src/map/guild-buildings/PlayerShop.coffee",
+                            "fileName": "PlayerShop.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "level*15000"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The PlayerShop allows you to sell items, and upgrading it allows you to sell more items!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "PlayerShop"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Bases"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "md"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 12,
+                            "filePath": "src/map/guild-buildings/Tavern.coffee",
+                            "fileName": "Tavern.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "level*50000"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Tavern provides you a place to get drunk with your guildies!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Tavern"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Bases"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "lg"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 12,
+                            "filePath": "src/map/guild-buildings/Teleport.coffee",
+                            "fileName": "Teleport.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "level*15000"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Teleport allows you to specify a teleport to anywhere in the world!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Teleport"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Bases"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "sm"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "_name": "Locations",
+                    "_children": [
+                        {
+                            "lineNumber": 3,
+                            "endLineNumber": 16,
+                            "filePath": "src/map/guild-bases/Frigri.coffee",
+                            "fileName": "Frigri.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "move-in",
+                                    "basicInfo": "150000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-sm",
+                                    "basicInfo": "70000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-md",
+                                    "basicInfo": "120000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-lg",
+                                    "basicInfo": "150000"
+                                }
+                            ],
+                            "buildings": [
+                                {
+                                    "name": "buildings",
+                                    "type": "sm",
+                                    "basicInfo": "2"
+                                },
+                                {
+                                    "name": "buildings",
+                                    "type": "md",
+                                    "basicInfo": "4"
+                                },
+                                {
+                                    "name": "buildings",
+                                    "type": "lg",
+                                    "basicInfo": "3"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This guild base is located in Frigri."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Frigri"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Locations"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Bases"
+                            }
+                        },
+                        {
+                            "lineNumber": 3,
+                            "endLineNumber": 16,
+                            "filePath": "src/map/guild-bases/Homlet.coffee",
+                            "fileName": "Homlet.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "move-in",
+                                    "basicInfo": "65000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-sm",
+                                    "basicInfo": "25000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-md",
+                                    "basicInfo": "45000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-lg",
+                                    "basicInfo": "65000"
+                                }
+                            ],
+                            "buildings": [
+                                {
+                                    "name": "buildings",
+                                    "type": "sm",
+                                    "basicInfo": "2"
+                                },
+                                {
+                                    "name": "buildings",
+                                    "type": "md",
+                                    "basicInfo": "2"
+                                },
+                                {
+                                    "name": "buildings",
+                                    "type": "lg",
+                                    "basicInfo": "2"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This guild base is located in the Cave Homlet area."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Homlet"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Locations"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Bases"
+                            }
+                        },
+                        {
+                            "lineNumber": 3,
+                            "endLineNumber": 16,
+                            "filePath": "src/map/guild-bases/Maeles.coffee",
+                            "fileName": "Maeles.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "move-in",
+                                    "basicInfo": "100000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-sm",
+                                    "basicInfo": "60000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-md",
+                                    "basicInfo": "75000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-lg",
+                                    "basicInfo": "100000"
+                                }
+                            ],
+                            "buildings": [
+                                {
+                                    "name": "buildings",
+                                    "type": "sm",
+                                    "basicInfo": "3"
+                                },
+                                {
+                                    "name": "buildings",
+                                    "type": "md",
+                                    "basicInfo": "2"
+                                },
+                                {
+                                    "name": "buildings",
+                                    "type": "lg",
+                                    "basicInfo": "3"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This guild base is located in Maeles."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Maeles"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Locations"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Bases"
+                            }
+                        },
+                        {
+                            "lineNumber": 3,
+                            "endLineNumber": 16,
+                            "filePath": "src/map/guild-bases/Norkos.coffee",
+                            "fileName": "Norkos.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "move-in",
+                                    "basicInfo": "50000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-sm",
+                                    "basicInfo": "30000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-md",
+                                    "basicInfo": "40000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-lg",
+                                    "basicInfo": "50000"
+                                }
+                            ],
+                            "buildings": [
+                                {
+                                    "name": "buildings",
+                                    "type": "sm",
+                                    "basicInfo": "1"
+                                },
+                                {
+                                    "name": "buildings",
+                                    "type": "md",
+                                    "basicInfo": "2"
+                                },
+                                {
+                                    "name": "buildings",
+                                    "type": "lg",
+                                    "basicInfo": "2"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This guild base is located in Norkos."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Norkos"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Locations"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Bases"
+                            }
+                        },
+                        {
+                            "lineNumber": 3,
+                            "endLineNumber": 16,
+                            "filePath": "src/map/guild-bases/Raburro.coffee",
+                            "fileName": "Raburro.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "move-in",
+                                    "basicInfo": "65000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-sm",
+                                    "basicInfo": "25000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-md",
+                                    "basicInfo": "45000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-lg",
+                                    "basicInfo": "65000"
+                                }
+                            ],
+                            "buildings": [
+                                {
+                                    "name": "buildings",
+                                    "type": "sm",
+                                    "basicInfo": "4"
+                                },
+                                {
+                                    "name": "buildings",
+                                    "type": "md",
+                                    "basicInfo": "1"
+                                },
+                                {
+                                    "name": "buildings",
+                                    "type": "lg",
+                                    "basicInfo": "2"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This guild base is located in Raburro, in Norkos -5."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Raburro"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Locations"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Bases"
+                            }
+                        },
+                        {
+                            "lineNumber": 3,
+                            "endLineNumber": 16,
+                            "filePath": "src/map/guild-bases/Vocalnus.coffee",
+                            "fileName": "Vocalnus.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "move-in",
+                                    "basicInfo": "25000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-sm",
+                                    "basicInfo": "15000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-md",
+                                    "basicInfo": "20000"
+                                },
+                                {
+                                    "name": "cost",
+                                    "type": "build-lg",
+                                    "basicInfo": "25000"
+                                }
+                            ],
+                            "buildings": [
+                                {
+                                    "name": "buildings",
+                                    "type": "sm",
+                                    "basicInfo": "2"
+                                },
+                                {
+                                    "name": "buildings",
+                                    "type": "md",
+                                    "basicInfo": "1"
+                                },
+                                {
+                                    "name": "buildings",
+                                    "type": "lg",
+                                    "basicInfo": "1"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This guild base is located above Vocalnus."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Vocalnus"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Locations"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Bases"
                             }
                         }
                     ]
@@ -17470,12 +18283,12 @@
             ]
         }
     ],
-    "startTime": 1422155274784,
-    "endTime": 1422155274894,
+    "startTime": 1422812789682,
+    "endTime": 1422812789765,
     "git": {
-        "short": "4c79fe5",
-        "long": "4c79fe54f35f0cf0f734a1544e65b827b4b7e323",
-        "branch": "guild-tax",
+        "short": "c498821",
+        "long": "c498821511188b1e836c72ba6dd676d1d35b49a5",
+        "branch": "guild-buildings",
         "tag": "0.5.0"
     }
 }
