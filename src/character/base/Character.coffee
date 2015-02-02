@@ -492,12 +492,13 @@ class Character extends EventEmitter2
       # * Sturdy allows you to survive a fatal attack with 1 hp.
       # *
       # * @name sturdy
+      # * @requirement {max-hp} 5000
       # * @combat
       # * @stacks no
       # * @category Equipment Effects
       # * @package Item
       # */`
-      sturdy:  -> Math.max 0, @self.calc.stat 'sturdy'
+      sturdy:  -> @self.hp.maximum > 5000 and Math.max 0, @self.calc.stat 'sturdy'
 
       #`/**
       # * Vampire is a DoT that returns health to the attacker. The duration is determined by how many points of vampire the caster has.
