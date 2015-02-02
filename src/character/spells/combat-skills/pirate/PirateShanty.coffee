@@ -41,9 +41,11 @@ class PirateShanty extends Spell
     @broadcast player, message
     player.profession.drunkPct.add @chance.integer({min: 20, max: 30})
     player.special.sub @chance.integer({min: 10, max: 15})
+
     if player.profession.drunkPct.lessThan 100
       message = "%casterName is #{player.profession.drunkPct.getValue()}% drunk."
       @broadcast player, message
+
     else if @isValidTarget @caster
       stupor = new DrunkenStupor @game, @caster
       stupor.prepareCast()
