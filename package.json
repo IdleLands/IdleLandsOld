@@ -6,7 +6,7 @@
   "scripts": {
     "start": "coffee ext/local-test/LocalTest.coffee",
     "test": "grunt && coffee ext/local-test/Travis.coffee",
-	"mocha": "mocha --compilers coffee:coffee-script/register --require coffee-script/register src/test"
+	"mocha": "mocha --recursive --compilers coffee:coffee-script/register --require coffee-script/register test"
   },
   "repository": {
     "type": "git",
