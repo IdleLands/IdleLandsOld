@@ -52,3 +52,5 @@ app.use (err, req, res, next) ->
 
 # spin it up
 http.createServer(app).listen port
+
+console.log "REST API started on port #{port}."

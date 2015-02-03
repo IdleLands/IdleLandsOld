@@ -52,6 +52,7 @@
     "serve-index": "^1.6.0",
     "underscore.string": "^3.0.2",
     "watch": "^0.13.0",
+    "webrepl": "^0.4.7",
     "winston": "^0.8.3"
   },
   "devDependencies": {
