@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "coffee ext/local-test/LocalTest.coffee",
-    "test": "grunt && coffee ext/local-test/Travis.coffee",
+    "test": "grunt && coffee ext/local-test/Travis.coffee && mocha --recursive --compilers coffee:coffee-script/register --require coffee-script/register test",
 	"mocha": "mocha --recursive --compilers coffee:coffee-script/register --require coffee-script/register test"
   },
   "repository": {
