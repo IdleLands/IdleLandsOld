@@ -20,6 +20,11 @@ describe "LogManager", () ->
 
   describe "setLoggerLevel", () ->
     it "Should return success", (done) ->
+      if not fs.existsSync basedir + "../logs"
+        fs.mkdirSync basedir + "../logs"
+        mocha.after () ->
+          fs.rmdirSync basedir + "../logs"
+
       logManager = new LogManager
       logger = logManager.getLogger "LogManagerTest"
       promise = logManager.setLoggerLevel "LogManagerTest", "verbose"
@@ -32,6 +37,11 @@ describe "LogManager", () ->
 
   describe "logging", () ->
     it "Should write stuff in a file", (done) ->
+      if not fs.existsSync basedir + "../logs"
+        fs.mkdirSync basedir + "../logs"
+        mocha.after () ->
+          fs.rmdirSync basedir + "../logs"
+
       if fs.existsSync basedir + "../logs/LogManagerTest-errors.log"
         fs.unlinkSync basedir + "../logs/LogManagerTest-errors.log"
 
