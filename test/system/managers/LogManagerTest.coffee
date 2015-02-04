@@ -19,13 +19,15 @@ describe "LogManager", () ->
       expect(logManager.getLogger "LogManagerTest").to.exist()
 
   describe "setLoggerLevel", () ->
-    it "Should return success (will fail)", () ->
+    it "Should return success", (done) ->
       logManager = new LogManager
       logger = logManager.getLogger "LogManagerTest"
-      ret = logManager.setLoggerLevel "LogManagerTest", "verbose"
-      expect(ret.isSuccess).to.equal(yes)
-      expect(ret.code).to.equal(75)
-      expect(ret.message).to.equal('Logger level of LogManagerTest set to verbose')
+      promise = logManager.setLoggerLevel "LogManagerTest", "verbose"
+      promise.then (res) ->
+        expect(res.isSuccess).to.equal(yes)
+        expect(res.code).to.equal(75)
+        expect(res.message).to.equal('Logger level of LogManagerTest set to verbose')
+        done()
 
 
   describe "logging", () ->
@@ -58,14 +60,13 @@ describe "LogManager", () ->
         contents = fs.readFileSync basedir + "../logs/LogManagerTest2-errors.log", {flag: 'rs'}
         expect(contents.toString()).to.contain('testpattern')
 
-        ret = logManager.clearLog "LogManagerTest2"
-        console.log ret
-        console.log ret.code
-        expect(ret.isSuccess).to.equal(yes)
-        expect(ret.code).to.equal(76)
+        promise = logManager.clearLog "LogManagerTest2"
+        promise.then (res) ->
+          expect(res.isSuccess).to.equal(yes)
+          expect(res.code).to.equal(76)
 
-        contents = fs.readFileSync basedir + "../logs/LogManagerTest2-errors.log", {flag: 'rs'}
-        expect(contents.toString()).to.be.empty()
+          contents = fs.readFileSync basedir + "../logs/LogManagerTest2-errors.log", {flag: 'rs'}
+          expect(contents.toString()).to.be.empty()
 
-        done()
+          done()
       , 1000
