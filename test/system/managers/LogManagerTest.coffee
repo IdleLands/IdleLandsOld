@@ -3,6 +3,7 @@ basedir = __dirname + "/../../../src/"
 chai = require "chai"
 mocha = require "mocha"
 sinon = require "sinon"
+rmdir = require "rimraf"
 fs = require "fs"
 stream = require('stream')
 
@@ -11,8 +12,16 @@ describe = mocha.describe
 
 LogManager = require basedir + "system/managers/LogManager"
 
+deleteLogs = false
+
+if not fs.existsSync basedir + "../logs"
+  deleteLogs = true
+  fs.mkdirSync basedir + "../logs"
+  fs.chmodSync basedir + "../logs", 0o777
+
 describe "LogManager", () ->
   describe "getLogger", () ->
+
     it "Should return logger", () ->
       #manager = new petManager game
       logManager = new LogManager
@@ -20,10 +29,12 @@ describe "LogManager", () ->
 
   describe "setLoggerLevel", () ->
     it "Should return success", (done) ->
-      if not fs.existsSync basedir + "../logs"
-        fs.mkdirSync basedir + "../logs"
-        mocha.after () ->
-          fs.rmdirSync basedir + "../logs"
+
+      mocha.afterEach () ->
+        if deleteLogs
+          path = basedir + "../logs"
+          rmdir path, (err) ->
+            console.log err
 
       logManager = new LogManager
       logger = logManager.getLogger "LogManagerTest"
@@ -37,11 +48,6 @@ describe "LogManager", () ->
 
   describe "logging", () ->
     it "Should write stuff in a file", (done) ->
-      if not fs.existsSync basedir + "../logs"
-        fs.mkdirSync basedir + "../logs"
-        mocha.after () ->
-          fs.rmdirSync basedir + "../logs"
-
       if fs.existsSync basedir + "../logs/LogManagerTest-errors.log"
         fs.unlinkSync basedir + "../logs/LogManagerTest-errors.log"
 
