@@ -1154,6 +1154,24 @@ module.exports = (Module) ->
 
           @IdleWrapper.api.gm.log.clearLog name
 
+      `/**
+       * Clear all log.
+       *
+       * @name idle-clearalllogs
+       * @gmOnly
+       * @syntax !idle-clearalllogs
+       * @example !idle-clearalllogs
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-clearalllogs", "idle.game.gm", (origin, route) =>
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to set log levels!"
+            return
+
+          @IdleWrapper.api.gm.log.clearAllLogs()
+
       @initialize()
 
       #@on "notice", (bot, sender, channel, message) =>

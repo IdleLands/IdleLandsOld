@@ -141,6 +141,10 @@ class API
         @logger?.verbose "GM Command log.clearLog", {name}
         @gameInstance.logManager.clearLog name
 
+      clearAllLogs: () =>
+        @logger?.debug "GM Command log.clearAllLogs"
+        @gameInstance.logManager.clearAllLogs()
+
     status:
       ban: (name, callback) =>
         @logger?.debug "GM Command status.ban"
