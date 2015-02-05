@@ -18,17 +18,16 @@ describe "LogManager", () ->
 
   beforeEach (done) ->
     if not fs.existsSync basedir + "../logs"
-      console.log "creating logs dir"
       fs.mkdirSync basedir + "../logs"
       deleteLogs = true
     done()
 
   afterEach (done) ->
     if deleteLogs
-      console.log "deleting logs dir"
       path = basedir + "../logs"
       rmdir path, (err) ->
-        console.log err
+        if err isnt null
+          console.log err
     done()
 
   describe "getLogger", () ->
