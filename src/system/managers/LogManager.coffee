@@ -39,9 +39,7 @@ class LogManager
   clearAllLogs: () ->
     deferred = Q.defer()
     rmdir __dirname + '/../../../logs/', (err) ->
-      console.log err
       if err is null
-        console.log "success"
         fs.mkdirSync __dirname + '/../../../logs/'
         deferred.resolve {isSuccess: yes, code: 76, message: "All logs cleared"}
       else
