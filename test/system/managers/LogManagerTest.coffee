@@ -12,30 +12,10 @@ describe = mocha.describe
 
 LogManager = require basedir + "system/managers/LogManager"
 
-deleteLogs = false
+if not fs.existsSync basedir + "../logs"
+  fs.mkdirSync basedir + "../logs"
 
 describe "LogManager", () ->
-
-  beforeEach (done) ->
-    if not fs.existsSync basedir + "../logs"
-      fs.mkdirSync basedir + "../logs"
-      deleteLogs = true
-
-    setTimeout () ->
-      done()
-    , 200
-
-  afterEach (done) ->
-    if deleteLogs
-      path = basedir + "../logs"
-      rmdir path, (err) ->
-        if err isnt null
-          console.log err
-
-    setTimeout () ->
-      done()
-    , 200
-
   describe "getLogger", () ->
 
     it "Should return logger", () ->
