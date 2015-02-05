@@ -20,7 +20,10 @@ describe "LogManager", () ->
     if not fs.existsSync basedir + "../logs"
       fs.mkdirSync basedir + "../logs"
       deleteLogs = true
-    done()
+
+    setTimeout () ->
+      done()
+    , 200
 
   afterEach (done) ->
     if deleteLogs
@@ -28,7 +31,10 @@ describe "LogManager", () ->
       rmdir path, (err) ->
         if err isnt null
           console.log err
-    done()
+
+    setTimeout () ->
+      done()
+    , 200
 
   describe "getLogger", () ->
 
