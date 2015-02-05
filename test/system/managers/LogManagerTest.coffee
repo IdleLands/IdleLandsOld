@@ -14,12 +14,23 @@ LogManager = require basedir + "system/managers/LogManager"
 
 deleteLogs = false
 
-if not fs.existsSync basedir + "../logs"
-  deleteLogs = true
-  fs.mkdirSync basedir + "../logs"
-  fs.chmodSync basedir + "../logs", 0o777
-
 describe "LogManager", () ->
+
+  beforeEach (done) ->
+    if not fs.existsSync basedir + "../logs"
+      console.log "creating logs dir"
+      fs.mkdirSync basedir + "../logs"
+      deleteLogs = true
+    done()
+
+  afterEach (done) ->
+    if deleteLogs
+      console.log "deleting logs dir"
+      path = basedir + "../logs"
+      rmdir path, (err) ->
+        console.log err
+    done()
+
   describe "getLogger", () ->
 
     it "Should return logger", () ->
@@ -29,13 +40,6 @@ describe "LogManager", () ->
 
   describe "setLoggerLevel", () ->
     it "Should return success", (done) ->
-
-      mocha.afterEach () ->
-        if deleteLogs
-          path = basedir + "../logs"
-          rmdir path, (err) ->
-            console.log err
-
       logManager = new LogManager
       logger = logManager.getLogger "LogManagerTest"
       promise = logManager.setLoggerLevel "LogManagerTest", "verbose"
@@ -48,9 +52,6 @@ describe "LogManager", () ->
 
   describe "logging", () ->
     it "Should write stuff in a file", (done) ->
-      if not fs.existsSync basedir + "../logs"
-        fs.mkdirSync basedir + "../logs"
-
       if fs.existsSync basedir + "../logs/LogManagerTest-errors.log"
         fs.unlinkSync basedir + "../logs/LogManagerTest-errors.log"
 
@@ -66,9 +67,6 @@ describe "LogManager", () ->
       , 1000
 
     it "Should clear a file", (done) ->
-      if not fs.existsSync basedir + "../logs"
-        fs.mkdirSync basedir + "../logs"
-        
       if fs.existsSync basedir + "../logs/LogManagerTest2-errors.log"
         fs.unlinkSync basedir + "../logs/LogManagerTest2-errors.log"
 
