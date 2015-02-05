@@ -16,11 +16,20 @@ class XpPartyEvent extends Event
       @game.errorHandler.captureException new Error ("XP PARTY EVENT FAILURE"), extra: @event
       return
 
-    return if not @player.party
+    return unless @player.party
+
+    rangeManage =
+      blessXpParty:
+        f: 'max'
+        v: 1
+      forsakeXpParty:
+        f: 'min'
+        v: -1
 
     message = []
     for member in @player.party.players
       boost = member.calcXpGain @calcXpEventGain @event.type, member
+      boost = Math[rangeManage[@event.type].f] boost, rangeManage[@event.type].v
       member.gainXp boost
 
       percent = boost/member.xp.maximum*100
@@ -34,7 +43,8 @@ class XpPartyEvent extends Event
 
       if @event.type is "blessXpParty"
         message.push "<player.name>#{member.name}</player.name> gained <event.xp>#{Math.abs boost}</event.xp>xp [~<event.xp>#{+(percent).toFixed 3}</event.xp>%]"
-      else message.push "<player.name>#{member.name}</player.name> lost <event.xp>#{Math.abs boost}</event.xp>xp [~<event.xp>#{+(percent).toFixed 3}</event.xp>%]"
+      else
+        message.push "<player.name>#{member.name}</player.name> lost <event.xp>#{Math.abs boost}</event.xp>xp [~<event.xp>#{+(percent).toFixed 3}</event.xp>%]"
 
     extra =
       partyName: @player.party.name

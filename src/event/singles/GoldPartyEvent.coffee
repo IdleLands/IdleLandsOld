@@ -16,7 +16,15 @@ class GoldPartyEvent extends Event
       @game.errorHandler.captureException (new Error "GOLD PARTY EVENT FAILURE"), extra: @event
       return
 
-    return if not @player.party
+    return unless @player.party
+
+    rangeManage =
+      blessGoldParty:
+        f: 'max'
+        v: 1
+      forsakeGoldParty:
+        f: 'min'
+        v: -1
 
     extra =
       partyName: @player.party.name
@@ -24,6 +32,7 @@ class GoldPartyEvent extends Event
     message = []
     for member in @player.party.players
       boost = @player.calcGoldGain @calcGoldEventGain @event.type, @player
+      boost = Math[rangeManage[@event.type].f] boost, rangeManage[@event.type].v
 
       extra =
         gold: Math.abs boost
