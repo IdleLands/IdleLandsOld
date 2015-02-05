@@ -1,6 +1,7 @@
 winston = require "winston"
 Q = require "q"
 fs = require "fs"
+rmdir = require "rimraf"
 
 class LogManager
 
@@ -34,5 +35,15 @@ class LogManager
         deferred.resolve {isSuccess: yes, code: 76, message: "log " + name + " cleared"}
       return deferred.promise
     return Q {isSuccess: no, code: 130, message: "No logger known with name " + name}
+
+  clearAllLogs: () ->
+    deferred = Q.defer()
+    rmdir __dirname + '/../../../logs/', (err) ->
+      if err is null
+        fs.mkdirSync __dirname + '/../../../logs/'
+        deferred.resolve {isSuccess: yes, code: 76, message: "All logs cleared"}
+      else
+        deferred.resolve {isSuccess: no, code: 131, message: "Clearing logs returned error: " + err.message}
+    return deferred.promise
 
 module.exports = exports = LogManager

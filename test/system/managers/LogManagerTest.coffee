@@ -3,7 +3,6 @@ basedir = __dirname + "/../../../src/"
 chai = require "chai"
 mocha = require "mocha"
 sinon = require "sinon"
-rmdir = require "rimraf"
 fs = require "fs"
 stream = require('stream')
 
@@ -72,6 +71,43 @@ describe "LogManager", () ->
 
           contents = fs.readFileSync basedir + "../logs/LogManagerTest2-errors.log", {flag: 'rs'}
           expect(contents.toString()).to.be.empty()
+
+          done()
+      , 1000
+
+
+    it "Should clear all files", (done) -> # doesn't work on windows due to EPERM
+      this.timeout 5000
+      if fs.existsSync basedir + "../logs/LogManagerTest3-errors.log"
+        fs.unlinkSync basedir + "../logs/LogManagerTest3-errors.log"
+
+      if fs.existsSync basedir + "../logs/LogManagerTest4-errors.log"
+        fs.unlinkSync basedir + "../logs/LogManagerTest4-errors.log"
+
+      logManager = new LogManager
+      logger = logManager.getLogger "LogManagerTest3"
+      logger2 = logManager.getLogger "LogManagerTest4"
+      logger.error "testpattern"
+      logger2.error "testpattern"
+      logger.transports.file.close()
+      logger2.transports.file.close()
+      logger.close()
+      logger2.close()
+      setTimeout () ->
+        expect(fs.existsSync basedir + "../logs/LogManagerTest3-errors.log").to.equal(yes)
+        expect(fs.existsSync basedir + "../logs/LogManagerTest4-errors.log").to.equal(yes)
+        contents = fs.readFileSync basedir + "../logs/LogManagerTest3-errors.log", {flag: 'rs'}
+        contents2 = fs.readFileSync basedir + "../logs/LogManagerTest4-errors.log", {flag: 'rs'}
+        expect(contents.toString()).to.contain('testpattern')
+        expect(contents2.toString()).to.contain('testpattern')
+
+        promise = logManager.clearAllLogs()
+        promise.then (res) ->
+          expect(res.isSuccess).to.equal(yes)
+          expect(res.code).to.equal(76)
+
+          files = fs.readdirSync(basedir + "../logs")
+          expect(files).to.have.length(0)
 
           done()
       , 1000
