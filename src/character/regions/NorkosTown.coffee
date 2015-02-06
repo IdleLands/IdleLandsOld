@@ -22,5 +22,6 @@ class NorkosTown extends Region
   @shopMult: -> 1
   @shopSlots: -> 4
   @shopQuality: -> 1
+  @eventModifier: (player, event) -> if event.type is "advertisement" then 500
 
 module.exports = exports = NorkosTown

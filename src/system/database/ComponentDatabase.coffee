@@ -68,7 +68,7 @@ class ComponentDatabase
       arr = item.split '='
       retval = {}
       testVal = parseInt arr[1]
-      retval[arr[0]] = if ((_.isNaN testVal) and (_.isUndefined arr[1])) then 1 else if arr[0] in ['class','gender'] then arr[1] else testVal
+      retval[arr[0]] = if ((_.isNaN testVal) and (_.isUndefined arr[1])) then 1 else if arr[0] in ['class','gender','link'] then arr[1] else testVal
       retval
     .reduce (cur, prev) ->
       _.extend prev, cur
@@ -196,7 +196,7 @@ class ComponentDatabase
     events: [
       "battle","blessGold","blessGoldParty","blessItem","blessXp","blessXpParty",
       "enchant","findItem","flipStat","forsakeGold","forsakeItem","forsakeXp","levelDown"
-      "merchant","party","providence","tinker"
+      "merchant","party","providence","tinker","advertisement"
     ]
 
     ingredients: [
@@ -265,6 +265,16 @@ class ComponentDatabase
 
     defer.promise
 
+  putAdvertisementInDatabase: (ad) ->
+
+    [content, parameters] = @_parseInitialArgs str
+    return unless parameters
+    parameters = @_parseParameters {content: content}, parameters
+    parameters.random = [Math.random(), 0]
+    [parameters.submitter, parameters.submitterName, parameters.type] = [ad.submitter, ad.submitterName, "advertisement"]
+
+    @eventsDb.insert parameters, ->
+
   approveContent: (ids) ->
     oids = _.map ids, ObjectID
 
@@ -274,16 +284,21 @@ class ComponentDatabase
 
     @submissionsDb.find {_id: {$in: oids}}, (e, docs) =>
 
-      return defer.resolve { isSuccess: no, code: 502, message: "None of those items are valid targets for approval." } if docs.length is 0
+      return defer.resolve {isSuccess: no, code: 502, message: "None of those items are valid targets for approval."} if docs.length is 0
 
       _.each docs, (doc) =>
+
+        if doc.type is "advertisement"
+          @putAdvertisementInDatabase doc
+          return
+
         @writeNewContentToFile doc
         @game.playerManager.incrementPlayerSubmissions doc.submitter
 
       @commitAndPushAllFiles (_.sortBy _.uniq _.pluck docs, "type"), (_.sortBy _.uniq _.pluck docs, "submitterName")
 
       @submissionsDb.remove {_id: {$in: oids}}, {multi: yes}, (e) ->
-        defer.resolve isSuccess: yes, code: 503, message: "Successfully approved #{docs.length} new items."
+        defer.resolve {isSuccess: yes, code: 503, message: "Successfully approved #{docs.length} new items."}
 
     defer.promise
 

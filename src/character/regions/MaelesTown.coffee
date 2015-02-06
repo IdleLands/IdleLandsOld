@@ -21,5 +21,6 @@ class MaelesTown extends Region
   @shopMult: -> 2
   @shopSlots: -> 2
   @shopQuality: -> 1.5
+  @eventModifier: (player, event) -> if event.type is "advertisement" then 500
 
 module.exports = exports = MaelesTown

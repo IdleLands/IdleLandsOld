@@ -80,6 +80,9 @@ class EventHandler
           when 'battle'
             (new allEvents.MonsterBattleEvent @game, event, player).go()
 
+          when 'advertisement'
+            (new allEvents.AdvertisementEvent @game, event, player).go()
+
       catch e
         @game.errorHandler.captureException e, extra: name: player.name, gear: player.equipment, inv: player.overflow
 

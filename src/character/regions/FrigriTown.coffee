@@ -22,4 +22,6 @@ class FrigriTown extends Region
   @shopSlots: -> 3
   @shopQuality: -> 2.5
 
+  @eventModifier: (player, event) -> if event.type is "advertisement" then 500
+
 module.exports = exports = FrigriTown
