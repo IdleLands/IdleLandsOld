@@ -15,6 +15,7 @@ class DrunkenFrenzy extends Spell
     super() + @minMax minStat, maxStat
 
   cast: (player) ->
+    return if @suppressed
     damage = @calcDamage()
     message = "%casterName assaults %targetName in a %spellName for %damage damage!"
     @doDamageTo player, damage, message

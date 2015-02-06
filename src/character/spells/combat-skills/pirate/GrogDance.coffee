@@ -43,9 +43,11 @@ class GrogDance extends Spell
       # This would be @caster, but an issue arose.
       player.profession.drunkPct.add @chance.integer({min: 15, max: 30})
       @caster.special.sub @chance.integer({min: 10, max: 15})
+
       if @caster.profession.drunkPct.lessThan 100
         message = "%casterName is #{@caster.profession.drunkPct.getValue()}% drunk."
         @broadcast @caster, message
+
       else
       # End the dance. Stupor occurs in uncast so it can follow the frenzy.
         @turns[@caster.name] = 0
@@ -59,6 +61,7 @@ class GrogDance extends Spell
 
       frenzy = @game.spellManager.modifySpell new DrunkenFrenzy @game, @caster
       frenzy.prepareCast @caster
+
       if @caster.profession.drunkPct.atMax()
         stupor = new DrunkenStupor @game, @caster
         stupor.prepareCast @caster
