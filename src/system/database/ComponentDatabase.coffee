@@ -68,7 +68,7 @@ class ComponentDatabase
       arr = item.split '='
       retval = {}
       testVal = parseInt arr[1]
-      retval[arr[0]] = if ((_.isNaN testVal) and (_.isUndefined arr[1])) then 1 else if arr[0] in ['class','gender','link'] then arr[1] else testVal
+      retval[arr[0]] = if ((_.isNaN testVal) and (_.isUndefined arr[1])) then 1 else if arr[0] in ['class','gender','link','expiration'] then arr[1] else testVal
       retval
     .reduce (cur, prev) ->
       _.extend prev, cur
@@ -151,7 +151,7 @@ class ComponentDatabase
 
             ingredientDefer.resolve()
 
-      @eventsDb.remove {}, {}, ->
+      @eventsDb.remove {$not: [{type: "towncrier"}]}, {}, ->
         stream "#{basePath}/events", (entry) ->
           type = entry.name.split(".")[0]
           fs.readFile entry.fullPath, {}, (e, data) ->
@@ -196,7 +196,7 @@ class ComponentDatabase
     events: [
       "battle","blessGold","blessGoldParty","blessItem","blessXp","blessXpParty",
       "enchant","findItem","flipStat","forsakeGold","forsakeItem","forsakeXp","levelDown"
-      "merchant","party","providence","tinker","advertisement"
+      "merchant","party","providence","tinker","towncrier"
     ]
 
     ingredients: [
@@ -265,13 +265,29 @@ class ComponentDatabase
 
     defer.promise
 
+  lowerAdViewCount: (id, byCount = 1) ->
+    @eventsDb.update {_id: ObjectID id}, {$inc: {views: -byCount}}, =>
+      @removeBadOrOldAds()
+
+  removeBadOrOldAds: ->
+    expireOlderThan = new Date()
+    @eventsDb.update {type: "towncrier", $or: [ {views: {$lte: 0}}, {expirationDate: {$lt: expireOlderThan}} ]}, {$set: {expiredOn: new Date()}}, ->
+
   putAdvertisementInDatabase: (ad) ->
 
-    [content, parameters] = @_parseInitialArgs str
+    [message, parameters] = @_parseInitialArgs ad.content
     return unless parameters
-    parameters = @_parseParameters {content: content}, parameters
+    parameters = @_parseParameters {message: message}, parameters
+
     parameters.random = [Math.random(), 0]
-    [parameters.submitter, parameters.submitterName, parameters.type] = [ad.submitter, ad.submitterName, "advertisement"]
+    _.extend parameters, ad
+
+    parameters.clicked = []
+    parameters.created = new Date()
+    parameters.days = parameters.expiration or 30
+    parameters.expirationDate = new Date()
+    parameters.expirationDate.setDate parameters.expirationDate.getDate() + parameters.days
+    parameters.type = "towncrier"
 
     @eventsDb.insert parameters, ->
 
@@ -288,7 +304,7 @@ class ComponentDatabase
 
       _.each docs, (doc) =>
 
-        if doc.type is "advertisement"
+        if doc.type is "towncrier"
           @putAdvertisementInDatabase doc
           return
 
@@ -386,15 +402,17 @@ class ComponentDatabase
     object.random = [Math.random(), 0]
     @ingredientsDb.insert object, ->
 
-  getRandomEvent: (type, callback) ->
-    @eventsDb.findOne
+  getRandomEvent: (type, extra = {}, callback) ->
+    opts =
       type: type
       random:
         $near:
           $geometry:
             type: "Point"
             coordinates: [Math.random(), 0]
-    , callback
+
+    _.extend opts, extra
+    @eventsDb.findOne opts, callback
 
   addItemToHash: (object) ->
     copy = _.extend {}, object

@@ -185,7 +185,7 @@ interactiveSession = ->
         broadcast "Evaluating `#{line}`"
         result = eval line
         broadcast result
-        result?.then?((res) -> broadcast res.message).done?()
+        result?.then?((res) -> broadcast res?.message).done?()
       catch error
         console.error error.name, error.message, error.stack
       
