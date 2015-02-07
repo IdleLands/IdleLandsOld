@@ -35,6 +35,7 @@ describe "LogManager", () ->
 
 
   describe "logging", () ->
+    this.timeout 5000
     it "Should write stuff in a file", (done) ->
       if fs.existsSync basedir + "../logs/LogManagerTest-errors.log"
         fs.unlinkSync basedir + "../logs/LogManagerTest-errors.log"
@@ -51,6 +52,7 @@ describe "LogManager", () ->
       , 1000
 
     it "Should clear a file", (done) ->
+      this.timeout 5000
       if fs.existsSync basedir + "../logs/LogManagerTest2-errors.log"
         fs.unlinkSync basedir + "../logs/LogManagerTest2-errors.log"
 
