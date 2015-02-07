@@ -283,6 +283,7 @@ class ComponentDatabase
     _.extend parameters, ad
 
     parameters.clicked = []
+    parameters.awardFor = []
     parameters.created = new Date()
     parameters.days = parameters.expiration or 30
     parameters.expirationDate = new Date()
@@ -320,9 +321,24 @@ class ComponentDatabase
 
   submitCustomContent: (identifier, content) ->
 
-    return Q {isSuccess: no, code: 500, message: "That type is invalid."} if not (content.type in @allValidTypes())
+    return Q {isSuccess: no, code: 500, message: "That type is invalid."} unless (content.type in @allValidTypes())
 
-    content.submitterName = @game.playerManager.playerHash[identifier].name
+    player = @game.playerManager.playerHash[identifier]
+
+    if content.type is "towncrier"
+      [message, parameters] = @_parseInitialArgs content.content
+      parsed = @_parseParameters {message: message}, parameters
+      parsed.gift = +parsed.gift
+      parsed.views = +parsed.views
+      perPerson = if parsed.gift < 100 then 100 else parsed.gift+100
+      views = if parsed.views < 100 then 100 else parsed.views
+      cost = views*perPerson
+
+      return Q {isSuccess: no, code: 500, message: "You don't have enough gold for that ad. It costs a total of #{cost} gold."} if player.gold.getValue() < cost
+
+      player.gold.sub cost
+
+    content.submitterName = player.name
     content.submitter = identifier
     content.submissionTime = new Date()
 
