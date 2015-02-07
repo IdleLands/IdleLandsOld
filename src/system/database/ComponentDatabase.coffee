@@ -325,7 +325,8 @@ class ComponentDatabase
 
     player = @game.playerManager.playerHash[identifier]
 
-    if content.type is "towncrier"
+    # only fire for unpaid events that are town crier
+    if content.type is "towncrier" and -1 is content.content.indexOf "paid=1"
       [message, parameters] = @_parseInitialArgs content.content
       parsed = @_parseParameters {message: message}, parameters
       parsed.gift = +parsed.gift
@@ -334,7 +335,7 @@ class ComponentDatabase
       views = if parsed.views < 100 then 100 else parsed.views
       cost = views*perPerson
 
-      return Q {isSuccess: no, code: 500, message: "You don't have enough gold for that ad. It costs a total of #{cost} gold."} if player.gold.getValue() < cost
+      return Q {isSuccess: no, code: 500, message: "You don't have enough gold for that town crier statement. It costs a total of #{cost} gold. We have to pay him somehow!"} if player.gold.getValue() < cost
 
       player.gold.sub cost
 
