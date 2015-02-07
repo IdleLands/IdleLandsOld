@@ -21,6 +21,6 @@ class HomletTown extends Region
   @shopSlots: -> 1
   @shopQuality: -> 2.3
 
-  @eventModifier: (player, event) -> if event.type is "advertisement" then 500
+  @eventModifier: (player, event) -> if event.type is "towncrier" then 500
 
 module.exports = exports = HomletTown

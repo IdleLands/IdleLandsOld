@@ -21,6 +21,6 @@ class VocalnusTown extends Region
   @shopSlots: -> 3
   @shopQuality: -> 1.4
 
-  @eventModifier: (player, event) -> if event.type is "advertisement" then 500
+  @eventModifier: (player, event) -> if event.type is "towncrier" then 500
 
 module.exports = exports = VocalnusTown
