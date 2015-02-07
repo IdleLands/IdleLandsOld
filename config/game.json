@@ -12,6 +12,10 @@
         {
             "type": "advanceDate",
             "duration": 600
+        },
+        {
+            "type": "towncrier",
+            "duration": 3600
         }
     ],
     "eventRates": [
@@ -93,7 +97,7 @@
             "max": 3500
         },
         {
-            "type": "advertisement",
+            "type": "towncrier",
             "min": 1,
             "max": 5000
         }
