@@ -708,7 +708,7 @@ class Player extends Character
     pet = @getPet()
 
     newPet = (_.filter @playerManager.game.petManager.pets, (pet) => pet.createdAt is petId and pet.owner.name is @name)[0]
-    return Q {isSuccess: no, code: 228, message: "That pet does not exist or isnt yours!"} if not newPet
+    return Q {isSuccess: no, code: 228, message: "That pet does not exist or isn't yours!"} if not newPet
     return Q {isSuccess: no, code: 229, message: "That pet is already active!"} if newPet is pet?
 
     @playerManager.game.petManager.changePetForPlayer @, newPet

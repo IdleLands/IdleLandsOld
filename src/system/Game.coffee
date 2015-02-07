@@ -92,6 +92,7 @@ class Game
       @sandwichGenerator = new SandwichGenerator @
       @shopGenerator = new ShopGenerator @
       @treasureFactory = new TreasureFactory @
+      (require "./accessibility/Debug")(@)
 
       defer.resolve()
 
