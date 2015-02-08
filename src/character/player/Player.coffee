@@ -586,10 +586,11 @@ class Player extends Character
     Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 212, message: "Successfully upgraded your pets (#{pet.name}) #{stat} to level #{curLevel+2}!"}
 
   changePetClass: (newClass) ->
-    myClasses = _.keys @statistics['calculated class changes']
+    myClasses = (_.keys @statistics['calculated class changes']).join('|').toLowerCase().split('|');
     pet = @getPet()
+
     return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
-    return Q {isSuccess: no, code: 207, message: "You haven't been that class yet, so you can't teach your pet how to do it!"} if (myClasses.indexOf newClass) is -1 and newClass isnt "Monster"
+    return Q {isSuccess: no, code: 207, message: "You haven't been that class yet, so you can't teach your pet how to do it!"} if (myClasses.indexOf newClass.toLowerCase()) is -1 and newClass isnt "Monster"
 
     pet.setClassTo newClass
 
