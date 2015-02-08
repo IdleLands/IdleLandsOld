@@ -171,7 +171,7 @@ class Guild
     @gold.sub cost
     @_upgrade building
 
-    Q {isSuccess: no, code: 82, message: "Successfully upgraded #{building} to level #{nextLevel}!"}
+    Q {isSuccess: yes, code: 82, message: "Successfully upgraded #{building} to level #{nextLevel}!"}
 
   _construct: (building, slot, size) ->
     @buildingLevels[building] = 1 unless @buildingLevels[building]
