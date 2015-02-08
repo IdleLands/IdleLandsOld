@@ -275,7 +275,7 @@ class ComponentDatabase
       player = @game.playerManager.playerHash[identifier]
       player.gold.add doc.gift
       defer.resolve {isSuccess: yes, code: 598, message: "Successfully claimed your gift of #{doc.gift} gold!"}
-      @eventsDb.update {_id: ObjectID crierId}, {$push: {clicked: {player: identifier, id: giftId}}}, ->
+      @eventsDb.update {_id: ObjectID crierId}, {$push: {clicked: {player: identifier, id: giftId, click: new Date()}}}, ->
 
     defer.promise
 
