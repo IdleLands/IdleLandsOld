@@ -588,8 +588,16 @@ class Player extends Character
   changePetClass: (newClass) ->
     myClasses = _.keys @statistics['calculated class changes']
     pet = @getPet()
+
     return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
-    return Q {isSuccess: no, code: 207, message: "You haven't been that class yet, so you can't teach your pet how to do it!"} if (myClasses.indexOf newClass) is -1 and newClass isnt "Monster"
+
+    if (myClasses.indexOf newClass) is -1 and newClass isnt "Monster"
+      myClassesLower = myClasses.join('|').toLowerCase().split('|')
+      index = myClassesLower.indexOf newClass.toLowerCase()
+      if index isnt -1
+        return Q {isSuccess: no, code: 207, message: "Class \"" + newClass + "\" not found. Did you mean \"" + myClasses[index] + "\"?" } # Code should maybe be different?
+      else
+        return Q {isSuccess: no, code: 207, message: "You haven't been that class yet, so you can't teach your pet how to do it!"}
 
     pet.setClassTo newClass
 

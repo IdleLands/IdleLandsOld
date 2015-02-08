@@ -1155,7 +1155,7 @@ module.exports = (Module) ->
           @IdleWrapper.api.gm.log.clearLog name
 
       `/**
-       * Clear all log. 
+       * Clear all log.
        *
        * @name idle-clearalllogs
        * @gmOnly
