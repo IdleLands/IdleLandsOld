@@ -200,6 +200,15 @@ class API
           @logger?.verbose "Player Command custom.submit", {identifier, data}
           actualRes
 
+      redeemGift: (identifier, crierId, giftId) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.componentDatabase.redeemGift identifier, crierId, giftId else actualRes = res
+          @logger?.debug "Player Command custom.redeemGift"
+          @logger?.verbose "Player Command custom.redeemGift", {identifier, crierId, giftId}
+          actualRes
+
     gender:
       set: (identifier, newGender) =>
         @validateIdentifier identifier

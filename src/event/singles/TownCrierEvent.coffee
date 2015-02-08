@@ -13,8 +13,11 @@ crypto = require "crypto"
  */`
 class TownCrierEvent extends Event
   go: ->
+    id = "#{@player.name}-#{Date.now()}"
     @player.emit "event.#{@event.type}", @player, @event
     @game.componentDatabase.lowerAdViewCount @event._id
-    @game.eventHandler.broadcastEvent {message: @event.message, player: @player, extra: {link: @event.link, paid: @event.paid, id: "#{@player.name}-#{Date.now()}"}, type: 'towncrier', sendMessage: no, link: @event.link}
+    @game.componentDatabase.addPotentialGift @event._id, {player: @player.identifier, id: id}
+    console.log id
+    @game.eventHandler.broadcastEvent {message: @event.message, player: @player, extra: {link: @event.link, gift: @event.gift, paid: @event.paid, giftClaim: id}, type: 'towncrier', sendMessage: no, link: @event.link}
 
 module.exports = exports = TownCrierEvent

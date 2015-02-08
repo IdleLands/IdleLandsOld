@@ -265,6 +265,23 @@ class ComponentDatabase
 
     defer.promise
 
+  redeemGift: (identifier, crierId, giftId) ->
+    defer = Q.defer()
+
+    @eventsDb.findOne {_id: ObjectID(crierId), awardFor: {$elemMatch: {id: giftId}}, clicked: {$not: {$elemMatch: {id: giftId}}}}, (e, doc) =>
+      return defer.resolve {isSuccess: no, code: 597, message: "That gift does not exist, or has already been redeemed!"} unless doc
+      return defer.resolve {isSuccess: no, code: 596, message: "That gift is not redeemable!"} unless doc.gift and doc.gift > 0
+
+      player = @game.playerManager.playerHash[identifier]
+      player.gold.add doc.gift
+      defer.resolve {isSuccess: yes, code: 598, message: "Successfully claimed your gift of #{doc.gift} gold!"}
+      @eventsDb.update {_id: ObjectID crierId}, {$push: {clicked: {player: identifier, id: giftId}}}, ->
+
+    defer.promise
+
+  addPotentialGift: (id, user) ->
+    @eventsDb.update {_id: ObjectID id}, {$push: {awardFor: user}}, ->
+
   lowerAdViewCount: (id, byCount = 1) ->
     @eventsDb.update {_id: ObjectID id}, {$inc: {views: -byCount}}, =>
       @removeBadOrOldAds()
