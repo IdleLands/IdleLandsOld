@@ -613,7 +613,7 @@ class API
         @validateIdentifier identifier
         .then (res) =>
           guild = res.player.guild
-          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].upgrade identifier, building, slot else res
+          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].upgrade identifier, building else res
 
       tax:
         whole: (identifier, taxPercent) =>

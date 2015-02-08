@@ -71,4 +71,21 @@ router
   API.player.guild.tax.self identifier, taxPercent
   .then (resp) -> res.json resp
 
+# Base / Buildings
+
+.put "/guild/building/construct", hasValidToken, (req, res) ->
+  {identifier, building, slot} = req.body
+  API.player.guild.construct identifier, building, slot
+  .then (resp) -> res.json resp
+
+.post "/guild/building/upgrade", hasValidToken, (req, res) ->
+  {identifier, building} = req.body
+  API.player.guild.upgrade identifier, building
+  .then (resp) -> res.json resp
+
+.put "/guild/move", hasValidToken, (req, res) ->
+  {identifier, newLoc} = req.body
+  API.player.guild.move identifier, newLoc
+  .then (resp) -> res.json resp
+
 module.exports = router

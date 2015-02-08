@@ -742,7 +742,7 @@ module.exports = (Module) ->
       `/**
        * Manage your guild's current location.
        *
-       * @name !idle-guild move
+       * @name idle-guild move
        * @syntax !idle-guild move newLoc
        * @example !idle-guild move Vocalnus
        * @category IRC Commands
@@ -765,7 +765,7 @@ module.exports = (Module) ->
       `/**
        * Construct a new building in your Guild Hall.
        *
-       * @name !idle-guild construct
+       * @name idle-guild construct
        * @syntax !idle-guild construct building slot
        * @example !idle-guild construct GuildHall 0
        * @category IRC Commands
@@ -788,7 +788,7 @@ module.exports = (Module) ->
       `/**
        * Upgrade a building in your guild hall.
        *
-       * @name !idle-guild upgrade
+       * @name idle-guild upgrade
        * @syntax !idle-guild upgrade building
        * @example !idle-guild upgrade GuildHall
        * @category IRC Commands
@@ -907,7 +907,7 @@ module.exports = (Module) ->
       `/**
        * Adjust your guilds tax rate (anywhere from 0-15%). Only guild leaders can set this.
        *
-       * @name !idle-guild tax
+       * @name idle-guild tax
        * @syntax !idle-guild tax taxPercent
        * @example !idle-guild tax 15
        * @category IRC Commands
@@ -930,7 +930,7 @@ module.exports = (Module) ->
       `/**
        * Adjust your personal tax rate to pay to your guild (anywhere from 0-85%).
        *
-       * @name !idle-guild selftax
+       * @name idle-guild selftax
        * @syntax !idle-guild selftax taxPercent
        * @example !idle-guild selftax 15
        * @category IRC Commands
