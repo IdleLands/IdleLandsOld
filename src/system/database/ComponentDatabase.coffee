@@ -294,6 +294,7 @@ class ComponentDatabase
 
     [message, parameters] = @_parseInitialArgs ad.content
     return unless parameters
+    message = message.substring 0, 225
     parameters = @_parseParameters {message: message}, parameters
 
     parameters.random = [Math.random(), 0]
