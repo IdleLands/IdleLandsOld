@@ -382,9 +382,8 @@ class Battle
 
     @game.errorHandler.captureException e if e
 
-    _.chain(@turnOrder)
-    .filter (entity) -> entity instanceof Player
-    .each (player) =>
+    players = _.reject @turnOrder, (member) -> member.isMonster
+    _.each players, (player) =>
       @game.eventHandler.broadcastEvent
         sendMessage: no
         extra: {battleId: docs[0]._id, linkTitle: @battleCache.name}
