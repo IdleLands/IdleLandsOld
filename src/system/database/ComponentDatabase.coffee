@@ -229,6 +229,16 @@ class ComponentDatabase
     #  @game.errorHandler.captureException new Error "No githubUser or githubPass specified in config.json"
     #  return
 
+    types = _.reject types, (type, i) ->
+      if type is "towncrier"
+        submitters[i] = null
+        return yes
+      no
+
+    return if types.length is 0
+
+    submitters = _.compact submitters
+
     repo = require("gitty") "#{__dirname}/../../../assets/custom"
 
     message = "New #{types.join ", "}\n\nThanks to #{submitters.join ", "}"
