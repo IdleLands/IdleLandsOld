@@ -22,5 +22,6 @@ class RaburroTown extends Region
   @shopSlots: -> 10
   @shopQuality: -> 0.9
   @drunk: -> 3
+  @eventModifier: (player, event) -> if event.type is "towncrier" then 500
 
 module.exports = exports = RaburroTown
