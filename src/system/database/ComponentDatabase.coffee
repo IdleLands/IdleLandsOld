@@ -306,6 +306,7 @@ class ComponentDatabase
     parameters.days = parameters.expiration or 30
     parameters.expirationDate = new Date()
     parameters.expirationDate.setDate parameters.expirationDate.getDate() + parameters.days
+    parameters.setViews = parameters.views
     parameters.type = "towncrier"
 
     @eventsDb.insert parameters, ->
