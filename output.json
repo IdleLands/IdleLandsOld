@@ -989,178 +989,6 @@
                     "_name": "IRC Commands",
                     "_children": [
                         {
-                            "lineNumber": 765,
-                            "endLineNumber": 773,
-                            "filePath": "ext/kurea/IdleLandsModule.coffee",
-                            "fileName": "IdleLandsModule.coffee",
-                            "example": [
-                                {
-                                    "name": "example",
-                                    "basicInfo": "!idle-guild construct GuildHall 0"
-                                }
-                            ],
-                            "syntax": [
-                                {
-                                    "name": "syntax",
-                                    "basicInfo": "!idle-guild construct building slot"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "Construct a new building in your Guild Hall."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "!idle-guild construct"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "IRC Commands"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Client"
-                            }
-                        },
-                        {
-                            "lineNumber": 742,
-                            "endLineNumber": 750,
-                            "filePath": "ext/kurea/IdleLandsModule.coffee",
-                            "fileName": "IdleLandsModule.coffee",
-                            "example": [
-                                {
-                                    "name": "example",
-                                    "basicInfo": "!idle-guild move Vocalnus"
-                                }
-                            ],
-                            "syntax": [
-                                {
-                                    "name": "syntax",
-                                    "basicInfo": "!idle-guild move newLoc"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "Manage your guild's current location."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "!idle-guild move"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "IRC Commands"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Client"
-                            }
-                        },
-                        {
-                            "lineNumber": 930,
-                            "endLineNumber": 938,
-                            "filePath": "ext/kurea/IdleLandsModule.coffee",
-                            "fileName": "IdleLandsModule.coffee",
-                            "example": [
-                                {
-                                    "name": "example",
-                                    "basicInfo": "!idle-guild selftax 15"
-                                }
-                            ],
-                            "syntax": [
-                                {
-                                    "name": "syntax",
-                                    "basicInfo": "!idle-guild selftax taxPercent"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "Adjust your personal tax rate to pay to your guild",
-                                "extendedInfo": "anywhere from 0-85%"
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "!idle-guild selftax"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "IRC Commands"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Client"
-                            }
-                        },
-                        {
-                            "lineNumber": 907,
-                            "endLineNumber": 915,
-                            "filePath": "ext/kurea/IdleLandsModule.coffee",
-                            "fileName": "IdleLandsModule.coffee",
-                            "example": [
-                                {
-                                    "name": "example",
-                                    "basicInfo": "!idle-guild tax 15"
-                                }
-                            ],
-                            "syntax": [
-                                {
-                                    "name": "syntax",
-                                    "basicInfo": "!idle-guild tax taxPercent"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "Adjust your guilds tax rate",
-                                "extendedInfo": "anywhere from 0-15%"
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "!idle-guild tax"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "IRC Commands"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Client"
-                            }
-                        },
-                        {
-                            "lineNumber": 788,
-                            "endLineNumber": 796,
-                            "filePath": "ext/kurea/IdleLandsModule.coffee",
-                            "fileName": "IdleLandsModule.coffee",
-                            "example": [
-                                {
-                                    "name": "example",
-                                    "basicInfo": "!idle-guild upgrade GuildHall"
-                                }
-                            ],
-                            "syntax": [
-                                {
-                                    "name": "syntax",
-                                    "basicInfo": "!idle-guild upgrade building"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "Upgrade a building in your guild hall."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "!idle-guild upgrade"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "IRC Commands"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Client"
-                            }
-                        },
-                        {
                             "lineNumber": 884,
                             "endLineNumber": 892,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
@@ -1416,6 +1244,80 @@
                             }
                         },
                         {
+                            "lineNumber": 1157,
+                            "endLineNumber": 1166,
+                            "filePath": "ext/kurea/IdleLandsModule.coffee",
+                            "fileName": "IdleLandsModule.coffee",
+                            "example": [
+                                {
+                                    "name": "example",
+                                    "basicInfo": "!idle-clearalllogs"
+                                }
+                            ],
+                            "syntax": [
+                                {
+                                    "name": "syntax",
+                                    "basicInfo": "!idle-clearalllogs"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "Clear all log."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "idle-clearalllogs"
+                            },
+                            "gmOnly": {
+                                "name": "gmOnly"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "IRC Commands"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Client"
+                            }
+                        },
+                        {
+                            "lineNumber": 1137,
+                            "endLineNumber": 1146,
+                            "filePath": "ext/kurea/IdleLandsModule.coffee",
+                            "fileName": "IdleLandsModule.coffee",
+                            "example": [
+                                {
+                                    "name": "example",
+                                    "basicInfo": "!idle-clearlog battle"
+                                }
+                            ],
+                            "syntax": [
+                                {
+                                    "name": "syntax",
+                                    "basicInfo": "!idle-clearlog name"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "Clear a log."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "idle-clearlog"
+                            },
+                            "gmOnly": {
+                                "name": "gmOnly"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "IRC Commands"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Client"
+                            }
+                        },
+                        {
                             "lineNumber": 1079,
                             "endLineNumber": 1087,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
@@ -1608,6 +1510,178 @@
                             },
                             "gmOnly": {
                                 "name": "gmOnly"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "IRC Commands"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Client"
+                            }
+                        },
+                        {
+                            "lineNumber": 765,
+                            "endLineNumber": 773,
+                            "filePath": "ext/kurea/IdleLandsModule.coffee",
+                            "fileName": "IdleLandsModule.coffee",
+                            "example": [
+                                {
+                                    "name": "example",
+                                    "basicInfo": "!idle-guild construct GuildHall 0"
+                                }
+                            ],
+                            "syntax": [
+                                {
+                                    "name": "syntax",
+                                    "basicInfo": "!idle-guild construct building slot"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "Construct a new building in your Guild Hall."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "idle-guild construct"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "IRC Commands"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Client"
+                            }
+                        },
+                        {
+                            "lineNumber": 742,
+                            "endLineNumber": 750,
+                            "filePath": "ext/kurea/IdleLandsModule.coffee",
+                            "fileName": "IdleLandsModule.coffee",
+                            "example": [
+                                {
+                                    "name": "example",
+                                    "basicInfo": "!idle-guild move Vocalnus"
+                                }
+                            ],
+                            "syntax": [
+                                {
+                                    "name": "syntax",
+                                    "basicInfo": "!idle-guild move newLoc"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "Manage your guild's current location."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "idle-guild move"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "IRC Commands"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Client"
+                            }
+                        },
+                        {
+                            "lineNumber": 930,
+                            "endLineNumber": 938,
+                            "filePath": "ext/kurea/IdleLandsModule.coffee",
+                            "fileName": "IdleLandsModule.coffee",
+                            "example": [
+                                {
+                                    "name": "example",
+                                    "basicInfo": "!idle-guild selftax 15"
+                                }
+                            ],
+                            "syntax": [
+                                {
+                                    "name": "syntax",
+                                    "basicInfo": "!idle-guild selftax taxPercent"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "Adjust your personal tax rate to pay to your guild",
+                                "extendedInfo": "anywhere from 0-85%"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "idle-guild selftax"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "IRC Commands"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Client"
+                            }
+                        },
+                        {
+                            "lineNumber": 907,
+                            "endLineNumber": 915,
+                            "filePath": "ext/kurea/IdleLandsModule.coffee",
+                            "fileName": "IdleLandsModule.coffee",
+                            "example": [
+                                {
+                                    "name": "example",
+                                    "basicInfo": "!idle-guild tax 15"
+                                }
+                            ],
+                            "syntax": [
+                                {
+                                    "name": "syntax",
+                                    "basicInfo": "!idle-guild tax taxPercent"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "Adjust your guilds tax rate",
+                                "extendedInfo": "anywhere from 0-15%"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "idle-guild tax"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "IRC Commands"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Client"
+                            }
+                        },
+                        {
+                            "lineNumber": 788,
+                            "endLineNumber": 796,
+                            "filePath": "ext/kurea/IdleLandsModule.coffee",
+                            "fileName": "IdleLandsModule.coffee",
+                            "example": [
+                                {
+                                    "name": "example",
+                                    "basicInfo": "!idle-guild upgrade GuildHall"
+                                }
+                            ],
+                            "syntax": [
+                                {
+                                    "name": "syntax",
+                                    "basicInfo": "!idle-guild upgrade building"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "Upgrade a building in your guild hall."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "idle-guild upgrade"
                             },
                             "category": {
                                 "name": "category",
@@ -2157,6 +2231,43 @@
                             "name": {
                                 "name": "name",
                                 "basicInfo": "idle-secure"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "IRC Commands"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Client"
+                            }
+                        },
+                        {
+                            "lineNumber": 1117,
+                            "endLineNumber": 1126,
+                            "filePath": "ext/kurea/IdleLandsModule.coffee",
+                            "fileName": "IdleLandsModule.coffee",
+                            "example": [
+                                {
+                                    "name": "example",
+                                    "basicInfo": "!idle-setloggerlevel battle debug"
+                                }
+                            ],
+                            "syntax": [
+                                {
+                                    "name": "syntax",
+                                    "basicInfo": "!idle-setloggerlevel name level"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "Set a logger's level."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "idle-setloggerlevel"
+                            },
+                            "gmOnly": {
+                                "name": "gmOnly"
                             },
                             "category": {
                                 "name": "category",
@@ -2824,6 +2935,28 @@
                             "name": {
                                 "name": "name",
                                 "basicInfo": "Switcheroo"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Player"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Events"
+                            }
+                        },
+                        {
+                            "lineNumber": 7,
+                            "endLineNumber": 13,
+                            "filePath": "src/event/singles/TownCrierEvent.coffee",
+                            "fileName": "TownCrierEvent.coffee",
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This event handles being advertised at."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Town Crier"
                             },
                             "category": {
                                 "name": "category",
@@ -10338,6 +10471,34 @@
                     "_children": [
                         {
                             "lineNumber": 4,
+                            "endLineNumber": 11,
+                            "filePath": "src/character/personalities/Adophile.coffee",
+                            "fileName": "Adophile.coffee",
+                            "prerequisite": [
+                                {
+                                    "name": "prerequisite",
+                                    "basicInfo": "Receive 10 town crier events"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This personality increases the probability of seeing random town crier events."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Adophile"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Personalities"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Player"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
                             "endLineNumber": 14,
                             "filePath": "src/character/personalities/Brave.coffee",
                             "fileName": "Brave.coffee",
@@ -10770,6 +10931,34 @@
                             "name": {
                                 "name": "name",
                                 "basicInfo": "Drunk"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Personalities"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Player"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 11,
+                            "filePath": "src/character/personalities/Earplugs.coffee",
+                            "fileName": "Earplugs.coffee",
+                            "prerequisite": [
+                                {
+                                    "name": "prerequisite",
+                                    "basicInfo": "Receive 10 town crier events"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This personality makes it so you see very few town crier events, if at all."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Earplugs"
                             },
                             "category": {
                                 "name": "category",
@@ -18101,6 +18290,34 @@
                         {
                             "lineNumber": 4,
                             "endLineNumber": 11,
+                            "filePath": "src/character/regions/HomletTown.coffee",
+                            "fileName": "HomletTown.coffee",
+                            "effect": [
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "Exquisite shops"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This region grants you a surprisingly good shop. Niche goods for niche explorers."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Homlet Town"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Norkos"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "World Regions"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 11,
                             "filePath": "src/character/regions/MaelesCaveArea.coffee",
                             "fileName": "MaelesCaveArea.coffee",
                             "effect": [
@@ -18277,18 +18494,46 @@
                                 "name": "package",
                                 "basicInfo": "World Regions"
                             }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 11,
+                            "filePath": "src/character/regions/VocalnusTown.coffee",
+                            "fileName": "VocalnusTown.coffee",
+                            "effect": [
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "Small shops"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This region grants you a small shop."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Vocalnus Town"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Norkos"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "World Regions"
+                            }
                         }
                     ]
                 }
             ]
         }
     ],
-    "startTime": 1422812789682,
-    "endTime": 1422812789765,
+    "startTime": 1423457195849,
+    "endTime": 1423457195930,
     "git": {
-        "short": "c498821",
-        "long": "c498821511188b1e836c72ba6dd676d1d35b49a5",
-        "branch": "guild-buildings",
+        "short": "6600255",
+        "long": "6600255469ebaf8f4ae9f1ef40e625b59baf5864",
+        "branch": "master",
         "tag": "0.5.0"
     }
 }
