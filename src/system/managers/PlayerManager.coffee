@@ -73,6 +73,8 @@ class PlayerManager
     @hashPassword password, (e, hash) ->
 
       if e
+        logger = @game.logManager.getLogger "bcrypt"
+        logger.error "error with bcrypt!", {e}
         defer.resolve {isSuccess: no, code: 9999, message: "Something went wrong. ¯\_(ツ)_/¯"}
       else
         player.password = hash
@@ -104,6 +106,8 @@ class PlayerManager
 
       bcrypt.compare password, player.password, (e, res) ->
         if not res
+          logger = @game.logManager.getLogger "bcrypt"
+          logger.error "error with bcrypt!", {e}
           defer.resolve {isSuccess: no, code: 14, message: "Authentication failure (bad password)."}
         else
           defer.resolve {isSuccess: yes, code: 999999, message: "Successful login. Welcome back!"} #lol
