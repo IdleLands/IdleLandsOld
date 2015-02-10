@@ -32,6 +32,7 @@
                  "name":"ToMaeles",
                  "properties":
                     {
+                     "movementType":"teleport",
                      "toLoc":"maeles"
                     },
                  "type":"Teleport",

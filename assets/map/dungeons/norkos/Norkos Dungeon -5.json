@@ -963,7 +963,7 @@
                  "y":560
                 }, 
                 {
-                 "gid":30,
+                 "gid":1,
                  "height":0,
                  "name":"Raburro",
                  "properties":
@@ -973,7 +973,7 @@
                  "type":"GuildTeleport",
                  "visible":true,
                  "width":0,
-                 "x":720,
+                 "x":704,
                  "y":560
                 }],
          "opacity":1,
