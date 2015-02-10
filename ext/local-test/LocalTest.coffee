@@ -16,7 +16,7 @@ idlePath = __dirname + "/../../src"
 players = [
   'Jombocom'
   'Carple'
-  'Danret'
+  'Danret4'
   'Goop'
   'Jeut'
   'Axce'
