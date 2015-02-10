@@ -9,7 +9,6 @@ MessageCreator = require "./../handlers/MessageCreator"
 Constants = require "./../utilities/Constants"
 bcrypt = require "bcrypt"
 crypto = require "crypto"
-LogManager = require "LogManager"
 
 class PlayerManager
 
