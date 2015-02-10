@@ -154,6 +154,10 @@ class API
         @logger?.debug "GM Command status.unban"
         @logger?.verbose "GM Command status.unban", {name, callback}
         @gameInstance.playerManager.unbanPlayer name, callback
+      identifierChange: (oldIdent, newIdent) =>
+        @logger?.debug "GM Command status.identifierChange"
+        @logger?.verbose "GM Command status.identifierChange", {oldIdent, newIdent}
+        @gameInstance.gmCommands.changeIdentifier oldIdent, newIdent
 
     player:
       createItem: (playerName, type, itemString) =>

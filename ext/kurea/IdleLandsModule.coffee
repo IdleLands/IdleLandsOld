@@ -351,6 +351,20 @@ module.exports = (Module) ->
         @gameInstance.playerManager.storePasswordFor identifier, password
 
       `/**
+       * Change a players identifier.
+       *
+       * @name idle-changeident
+       * @gmOnly
+       * @syntax !idle-changeident "identifier" "newIdentifier"
+       * @example !idle-changeident "local-server/Danret" "local-server/AlsoDanret"
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute 'idle-changeident ":identifier" ":newIdentifier"', "idle.game.gm", (origin, route) =>
+        [identifier, newIdentifier] = [route.params.identifier, route.params.newIdentifier]
+        @gameInstance.api.gm.status.identifierChange identifier, newIdentifier
+
+      `/**
         * Force the bot to update IdleLands and reboot.
         *
         * @name idle-update

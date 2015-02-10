@@ -67,6 +67,24 @@ class GMCommands
   setLoggerLevel: (name, level) ->
     @game.logManager.setLoggerLevel name, level
 
+  changeIdentifier: (from, to) ->
+    player = @game.playerManager.getPlayerById from
+    guild = @game.guildManager.getGuildByName player?.guild
+    pets = @game.petManager.getPetsForPlayer from
+
+    return unless player
+
+    player.identifier = to
+    _.each pets, (pet) -> pet.owner.identifier = to
+    _.each guild?.members, (member) -> member.identifier = to if member.identifier is from
+
+    guild.save()
+
+    @game.playerManager.playerHash[to] = player
+    @game.playerManager.playerHash[from] = null
+
+    null
+
   locations: _.extend {},
     teleports.towns,
     teleports.bosses,
