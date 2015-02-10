@@ -9,6 +9,10 @@ watch = require "node-watch"
 c = require "irc-colors"
 
 idlePath = __dirname + "/../../src"
+try
+  LogManager = require "../../src/system/managers/LogManager"
+catch
+  console.log "haha" # This is just here to not break stuff
 
 module.exports = (Module) ->
 
@@ -199,6 +203,12 @@ module.exports = (Module) ->
 
       @IdleWrapper = require("../../src/system/accessibility/ExternalWrapper")()
       @db = @newDatabase 'channels'
+      try
+        @logManager = new LogManager()
+        logger = @logManager.getLogger "kureaModule"
+        logger.warn "This is actually a success"
+      catch
+        console.log "useless catch to satisfy stuff." #it's here so that if it doesn't work, it won't break.
 
       @on "join", (bot, channel, sender) =>
         if bot.config.nick is sender
@@ -347,8 +357,15 @@ module.exports = (Module) ->
         * @package Client
       */`
       @addRoute 'idle-resetpassword ":identifier" ":newPassword"', "idle.game.gm", (origin, route) =>
-        [identifier, password] = [route.params.identifier, route.params.newPassword]
-        @gameInstance.playerManager.storePasswordFor identifier, password
+        try
+          [identifier, password] = [route.params.identifier, route.params.newPassword]
+          if @gameInstance and @gameInstance.playerManager
+            @gameInstance.playerManager.storePasswordFor identifier, password
+          else
+            @IdleWrapper.api.gm.auth.setPassword identifier, password
+        catch e
+          logger = @logManager.getLogger "kureaModule"
+          logger.error "!idle-resetpassword error", {e}
 
       `/**
         * Force the bot to update IdleLands and reboot.
