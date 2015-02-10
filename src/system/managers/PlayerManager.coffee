@@ -9,6 +9,7 @@ MessageCreator = require "./../handlers/MessageCreator"
 Constants = require "./../utilities/Constants"
 bcrypt = require "bcrypt"
 crypto = require "crypto"
+LogManager = require "./LogManager"
 
 class PlayerManager
 
@@ -71,9 +72,13 @@ class PlayerManager
     defer = Q.defer()
 
     @hashPassword password, (e, hash) ->
-
       if e
-        logger = @game.logManager.getLogger "bcrypt"
+        logger = {}
+        if @game and @game.logManager
+          logger = @game.logManager.getLogger "bcrypt"
+        else
+          logManager = new LogManager()
+          logger = logManager.getLogger "bcrypt"
         logger.error "error with bcrypt!", {e}
         defer.resolve {isSuccess: no, code: 9999, message: "Something went wrong. ¯\_(ツ)_/¯"}
       else
@@ -106,7 +111,12 @@ class PlayerManager
 
       bcrypt.compare password, player.password, (e, res) ->
         if not res
-          logger = @game.logManager.getLogger "bcrypt"
+          logger = {}
+          if @game and @game.logManager
+            logger = @game.logManager.getLogger "bcrypt"
+          else
+            logManager = new LogManager()
+            logger = logManager.getLogger "bcrypt"
           logger.error "error with bcrypt!", {e}
           defer.resolve {isSuccess: no, code: 14, message: "Authentication failure (bad password)."}
         else
