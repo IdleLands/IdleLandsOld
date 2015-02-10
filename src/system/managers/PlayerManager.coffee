@@ -68,8 +68,6 @@ class PlayerManager
     return Q {isSuccess: no, code: 1, message: "Please use a password > 3 characters."} if password.length < 3
     return Q {isSuccess: no, code: 10, message: "You're not logged in!"} if not player
 
-    player.password = @hashPassword password
-
     defer = Q.defer()
 
     @hashPassword password, (e, hash) ->
