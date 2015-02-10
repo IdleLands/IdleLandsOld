@@ -78,7 +78,7 @@ class GMCommands
     _.each pets, (pet) -> pet.owner.identifier = to
     _.each guild?.members, (member) -> member.identifier = to if member.identifier is from
 
-    guild.save()
+    guild?.save()
 
     @game.playerManager.playerHash[to] = player
     @game.playerManager.playerHash[from] = null
