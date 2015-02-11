@@ -23,6 +23,12 @@ class PlayerManager
 
       db.update {}, {$set:{isOnline: no}}, {multi: yes}, (e) -> console.error "PLAYER SETINACTIVE ERROR",e.stack if e
 
+    if @game and @game.logManager
+      @logManager = @game.logManager
+    else
+      @logManager = new LogManager()
+      @logManager.getLogger("PlayerManager").warn "@game.logManager not set, using isolated LogManager instance, not able to set logger level via !idle-setloggerlevel"
+
     @interval = null
     @DELAY_INTERVAL = 10000
     @beginGameLoop()
@@ -62,45 +68,43 @@ class PlayerManager
     bcrypt.genSalt 10, (e, salt) ->
       bcrypt.hash password, salt, callback
 
+  storePasswordForHash: (password, player, defer) ->
+    logger = @logManager.getLogger "bcrypt"
+    @hashPassword password, (e, hash) ->
+      if e
+        logger.error "error with bcrypt!", {e}
+        defer.resolve {isSuccess: no, code: 9999, message: "Something went wrong. ¯\_(ツ)_/¯"}
+      else
+        player.password = hash
+        logger.info "Success with set storePasswordFor!"
+        defer.resolve {isSuccess: yes, code: 17, message: "Your password has been set! Extraneous spaces at be beginning and end have been removed!"}
+
   storePasswordFor: (identifier, password) ->
     try
       password = password.trim()
-      player = @playerHash[identifier]
 
-      return Q {isSuccess: no, code: 1, message: "Please use a password > 3 characters."} if password.length < 3
-      return Q {isSuccess: no, code: 10, message: "You're not logged in!"} if not player
+      return Q {isSuccess: no, code: 1, message: "Please use a password >= 3 characters."} if password.length < 3
+
+      player = @playerHash[identifier]
 
       defer = Q.defer()
 
-      @hashPassword password, (e, hash) ->
-        if e
-          logger = {}
-          if @game and @game.logManager
-            logger = @game.logManager.getLogger "bcrypt"
-          else
-            logManager = new LogManager()
-            logger = logManager.getLogger "bcrypt"
-          logger.error "error with bcrypt!", {e}
-          defer.resolve {isSuccess: no, code: 9999, message: "Something went wrong. ¯\_(ツ)_/¯"}
-        else
-          player.password = hash
-          logger = {}
-          if @game and @game.logManager
-            logger = @game.logManager.getLogger "bcrypt"
-          else
-            logManager = new LogManager()
-            logger = logManager.getLogger "bcrypt"
-          logger.error "Success with set storePasswordFor!"
-          defer.resolve {isSuccess: yes, code: 17, message: "Your password has been set! Extraneous spaces at be beginning and end have been removed!"}
+      if not player
+        @db.findOne {identifier: identifier}, (e, player) =>
+          if e
+            logger = @logManager.getLogger "bcrypt"
+            logger.error "error with db.findOne!", {e}
+            @game.errorHandler.captureException e, extra: identifier: identifier if e
 
-      defer.promise
-    catch e
-      logger = {}
-      if @game and @game.logManager
-        logger = @game.logManager.getLogger "bcrypt"
+          defer.resolve {isSuccess: no, code: 10, message: "You're not logged in!"} if not player
+
+          @storePasswordForHash password, player, defer
       else
-        logManager = new LogManager()
-        logger = logManager.getLogger "bcrypt"
+        @storePasswordForHash password, player, defer
+
+      return defer.promise
+    catch e
+      logger = @logManager.getLogger "bcrypt"
       logger.error "error with storePasswordFor!", {e}
       Q {isSuccess: no, code: 14, message: "Authentication failure (bad password)."}
 
@@ -118,18 +122,12 @@ class PlayerManager
     defer = Q.defer()
 
     try
-
       return Q {isSuccess: no, code: 12, message: "You're not currently logged in, so you can't auth via password."} if isIRC and not @playerHash[identifier]
       return Q {isSuccess: no, code: 16, message: "You can't login without a password, silly!"} if not password
 
+      logger = @logManager.getLogger "bcrypt"
       @db.findOne {identifier: identifier}, (e, player) =>
         if e
-          logger = {}
-          if @game and @game.logManager
-            logger = @game.logManager.getLogger "bcrypt"
-          else
-            logManager = new LogManager()
-            logger = logManager.getLogger "bcrypt"
           logger.error "error with db.findOne!", {e}
         @game.errorHandler.captureException e, extra: identifier: identifier if e
 
@@ -138,12 +136,6 @@ class PlayerManager
 
         bcrypt.compare password, player.password, (e, res) ->
           if not res
-            logger = {}
-            if @game and @game.logManager
-              logger = @game.logManager.getLogger "bcrypt"
-            else
-              logManager = new LogManager()
-              logger = logManager.getLogger "bcrypt"
             logger.error "error with bcrypt!", {e}
             defer.resolve {isSuccess: no, code: 14, message: "Authentication failure (bad password)."}
           else
@@ -151,12 +143,7 @@ class PlayerManager
 
       defer.promise
     catch e
-      logger = {}
-      if @game and @game.logManager
-        logger = @game.logManager.getLogger "bcrypt"
-      else
-        logManager = new LogManager()
-        logger = logManager.getLogger "bcrypt"
+      logger = @logManager.getLogger "bcrypt"
       logger.error "error with checkPassword!", {e}
       Q {isSuccess: no, code: 14, message: "Authentication failure (bad password)."}
 
