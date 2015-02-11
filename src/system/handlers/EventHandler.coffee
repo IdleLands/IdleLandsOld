@@ -30,7 +30,7 @@ class EventHandler
 
   doEvent: (eventType, player) ->
     defer = Q.defer()
-    @game.componentDatabase.getRandomEvent eventType, (e, event) =>
+    @game.componentDatabase.getRandomEvent eventType, {expiredOn: {$exists: no}}, (e, event) =>
       @game.errorHandler.captureException e if e
       return if not event or not player
 
@@ -79,6 +79,9 @@ class EventHandler
 
           when 'battle'
             (new allEvents.MonsterBattleEvent @game, event, player).go()
+
+          when 'towncrier'
+            (new allEvents.TownCrierEvent @game, event, player).go()
 
       catch e
         @game.errorHandler.captureException e, extra: name: player.name, gear: player.equipment, inv: player.overflow
@@ -151,7 +154,7 @@ class EventHandler
   broadcastEvent: (options) ->
     {message, player, extra, sendMessage, type, link} = options
     sendMessage = yes if _.isUndefined sendMessage
-    extra = {} if not extra
+    extra = {} unless extra
 
     # monsters can't receive messages :(
     return if player.isMonster

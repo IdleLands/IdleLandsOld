@@ -27,11 +27,12 @@
          "name":"Interactables",
          "objects":[
                 {
-                 "gid":30,
+                 "gid":2,
                  "height":0,
                  "name":"ToRaburro",
                  "properties":
                     {
+                     "movementType":"ascend",
                      "toLoc":"raburro"
                     },
                  "type":"Teleport",

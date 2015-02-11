@@ -322,7 +322,7 @@ class PlayerManager
   savePlayer: (player) ->
     savePlayer = @buildPlayerSaveObject player
     savePlayer.lastLogin = new Date()
-    @db.update { identifier: player.identifier }, savePlayer, {upsert: true}, (e) =>
+    @db.update { name: player.name }, savePlayer, {upsert: true}, (e) =>
       @game.errorHandler.captureException e if e
 
   playerTakeTurn: (identifier, sendPlayerObject) ->

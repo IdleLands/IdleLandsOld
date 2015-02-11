@@ -32,6 +32,7 @@
                  "name":"ToHomlet",
                  "properties":
                     {
+                     "movementType":"teleport",
                      "toLoc":"homlet"
                     },
                  "type":"Teleport",

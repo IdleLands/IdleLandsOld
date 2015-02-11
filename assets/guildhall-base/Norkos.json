@@ -32,6 +32,7 @@
                  "name":"ToNorkos",
                  "properties":
                     {
+                     "movementType":"teleport",
                      "toLoc":"norkos"
                     },
                  "type":"Teleport",

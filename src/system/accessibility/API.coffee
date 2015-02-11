@@ -154,6 +154,10 @@ class API
         @logger?.debug "GM Command status.unban"
         @logger?.verbose "GM Command status.unban", {name, callback}
         @gameInstance.playerManager.unbanPlayer name, callback
+      identifierChange: (oldIdent, newIdent) =>
+        @logger?.debug "GM Command status.identifierChange"
+        @logger?.verbose "GM Command status.identifierChange", {oldIdent, newIdent}
+        @gameInstance.gmCommands.changeIdentifier oldIdent, newIdent
 
     player:
       createItem: (playerName, type, itemString) =>
@@ -202,6 +206,15 @@ class API
           if res.isSuccess then actualRes = @gameInstance.componentDatabase.submitCustomContent identifier, data else actualRes = res
           @logger?.debug "Player Command custom.submit"
           @logger?.verbose "Player Command custom.submit", {identifier, data}
+          actualRes
+
+      redeemGift: (identifier, crierId, giftId) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.componentDatabase.redeemGift identifier, crierId, giftId else actualRes = res
+          @logger?.debug "Player Command custom.redeemGift"
+          @logger?.verbose "Player Command custom.redeemGift", {identifier, crierId, giftId}
           actualRes
 
     gender:
@@ -613,7 +626,7 @@ class API
         @validateIdentifier identifier
         .then (res) =>
           guild = res.player.guild
-          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].upgrade identifier, building, slot else res
+          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].upgrade identifier, building else res
 
       tax:
         whole: (identifier, taxPercent) =>

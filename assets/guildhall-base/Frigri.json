@@ -32,6 +32,7 @@
                  "name":"ToFrigri",
                  "properties":
                     {
+                     "movementType":"teleport",
                      "toLoc":"frigri"
                     },
                  "type":"Teleport",
@@ -46,6 +47,7 @@
                  "name":"ToFrigri",
                  "properties":
                     {
+                     "movementType":"teleport",
                      "toLoc":"frigri"
                     },
                  "type":"Teleport",
@@ -60,6 +62,7 @@
                  "name":"ToFrigri",
                  "properties":
                     {
+                     "movementType":"teleport",
                      "toLoc":"frigri"
                     },
                  "type":"Teleport",
@@ -74,6 +77,7 @@
                  "name":"ToFrigri",
                  "properties":
                     {
+                     "movementType":"teleport",
                      "toLoc":"frigri"
                     },
                  "type":"Teleport",

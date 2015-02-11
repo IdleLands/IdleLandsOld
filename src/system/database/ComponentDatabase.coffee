@@ -68,7 +68,7 @@ class ComponentDatabase
       arr = item.split '='
       retval = {}
       testVal = parseInt arr[1]
-      retval[arr[0]] = if ((_.isNaN testVal) and (_.isUndefined arr[1])) then 1 else if arr[0] in ['class','gender'] then arr[1] else testVal
+      retval[arr[0]] = if ((_.isNaN testVal) and (_.isUndefined arr[1])) then 1 else if arr[0] in ['class','gender','link','expiration'] then arr[1] else testVal
       retval
     .reduce (cur, prev) ->
       _.extend prev, cur
@@ -151,7 +151,7 @@ class ComponentDatabase
 
             ingredientDefer.resolve()
 
-      @eventsDb.remove {}, {}, ->
+      @eventsDb.remove {$not: [{type: "towncrier"}]}, {}, ->
         stream "#{basePath}/events", (entry) ->
           type = entry.name.split(".")[0]
           fs.readFile entry.fullPath, {}, (e, data) ->
@@ -196,7 +196,7 @@ class ComponentDatabase
     events: [
       "battle","blessGold","blessGoldParty","blessItem","blessXp","blessXpParty",
       "enchant","findItem","flipStat","forsakeGold","forsakeItem","forsakeXp","levelDown"
-      "merchant","party","providence","tinker"
+      "merchant","party","providence","tinker","towncrier"
     ]
 
     ingredients: [
@@ -228,6 +228,16 @@ class ComponentDatabase
     #if not config.githubUser or not config.githubPass
     #  @game.errorHandler.captureException new Error "No githubUser or githubPass specified in config.json"
     #  return
+
+    types = _.reject types, (type, i) ->
+      if type is "towncrier"
+        submitters[i] = null
+        return yes
+      no
+
+    return if types.length is 0
+
+    submitters = _.compact submitters
 
     repo = require("gitty") "#{__dirname}/../../../assets/custom"
 
@@ -265,6 +275,52 @@ class ComponentDatabase
 
     defer.promise
 
+  redeemGift: (identifier, crierId, giftId) ->
+    defer = Q.defer()
+
+    @eventsDb.findOne {_id: ObjectID(crierId), awardFor: {$elemMatch: {id: giftId}}, clicked: {$not: {$elemMatch: {id: giftId}}}}, (e, doc) =>
+      return defer.resolve {isSuccess: no, code: 597, message: "That gift does not exist, or has already been redeemed!"} unless doc
+      return defer.resolve {isSuccess: no, code: 596, message: "That gift is not redeemable!"} unless doc.gift and doc.gift > 0
+
+      player = @game.playerManager.playerHash[identifier]
+      player.gold.add doc.gift
+      defer.resolve {isSuccess: yes, code: 598, message: "Successfully claimed your gift of #{doc.gift} gold!"}
+      @eventsDb.update {_id: ObjectID crierId}, {$push: {clicked: {player: identifier, id: giftId, click: new Date()}}}, ->
+
+    defer.promise
+
+  addPotentialGift: (id, user) ->
+    @eventsDb.update {_id: ObjectID id}, {$push: {awardFor: user}}, ->
+
+  lowerAdViewCount: (id, byCount = 1) ->
+    @eventsDb.update {_id: ObjectID id}, {$inc: {views: -byCount}}, =>
+      @removeBadOrOldAds()
+
+  removeBadOrOldAds: ->
+    expireOlderThan = new Date()
+    @eventsDb.update {type: "towncrier", $or: [ {views: {$lte: 0}}, {expirationDate: {$lt: expireOlderThan}} ]}, {$set: {expiredOn: new Date()}}, ->
+
+  putAdvertisementInDatabase: (ad) ->
+
+    [message, parameters] = @_parseInitialArgs ad.content
+    return unless parameters
+    message = message.substring 0, 225
+    parameters = @_parseParameters {message: message}, parameters
+
+    parameters.random = [Math.random(), 0]
+    _.extend parameters, ad
+
+    parameters.clicked = []
+    parameters.awardFor = []
+    parameters.created = new Date()
+    parameters.days = parameters.expiration or 30
+    parameters.expirationDate = new Date()
+    parameters.expirationDate.setDate parameters.expirationDate.getDate() + parameters.days
+    parameters.setViews = parameters.views
+    parameters.type = "towncrier"
+
+    @eventsDb.insert parameters, ->
+
   approveContent: (ids) ->
     oids = _.map ids, ObjectID
 
@@ -274,24 +330,45 @@ class ComponentDatabase
 
     @submissionsDb.find {_id: {$in: oids}}, (e, docs) =>
 
-      return defer.resolve { isSuccess: no, code: 502, message: "None of those items are valid targets for approval." } if docs.length is 0
+      return defer.resolve {isSuccess: no, code: 502, message: "None of those items are valid targets for approval."} if docs.length is 0
 
       _.each docs, (doc) =>
+
+        if doc.type is "towncrier"
+          @putAdvertisementInDatabase doc
+          return
+
         @writeNewContentToFile doc
         @game.playerManager.incrementPlayerSubmissions doc.submitter
 
       @commitAndPushAllFiles (_.sortBy _.uniq _.pluck docs, "type"), (_.sortBy _.uniq _.pluck docs, "submitterName")
 
       @submissionsDb.remove {_id: {$in: oids}}, {multi: yes}, (e) ->
-        defer.resolve isSuccess: yes, code: 503, message: "Successfully approved #{docs.length} new items."
+        defer.resolve {isSuccess: yes, code: 503, message: "Successfully approved #{docs.length} new items."}
 
     defer.promise
 
   submitCustomContent: (identifier, content) ->
 
-    return Q {isSuccess: no, code: 500, message: "That type is invalid."} if not (content.type in @allValidTypes())
+    return Q {isSuccess: no, code: 500, message: "That type is invalid."} unless (content.type in @allValidTypes())
 
-    content.submitterName = @game.playerManager.playerHash[identifier].name
+    player = @game.playerManager.playerHash[identifier]
+
+    # only fire for unpaid events that are town crier
+    if content.type is "towncrier" and -1 is content.content.indexOf "paid=1"
+      [message, parameters] = @_parseInitialArgs content.content
+      parsed = @_parseParameters {message: message}, parameters
+      parsed.gift = +parsed.gift
+      parsed.views = +parsed.views
+      perPerson = if parsed.gift < 100 then 100 else parsed.gift+100
+      views = if parsed.views < 100 then 100 else parsed.views
+      cost = views*perPerson
+
+      return Q {isSuccess: no, code: 500, message: "You don't have enough gold for that town crier statement. It costs a total of #{cost} gold. We have to pay him somehow!"} if player.gold.getValue() < cost
+
+      player.gold.sub cost
+
+    content.submitterName = player.name
     content.submitter = identifier
     content.submissionTime = new Date()
 
@@ -371,15 +448,17 @@ class ComponentDatabase
     object.random = [Math.random(), 0]
     @ingredientsDb.insert object, ->
 
-  getRandomEvent: (type, callback) ->
-    @eventsDb.findOne
+  getRandomEvent: (type, extra = {}, callback) ->
+    opts =
       type: type
       random:
         $near:
           $geometry:
             type: "Point"
             coordinates: [Math.random(), 0]
-    , callback
+
+    _.extend opts, extra
+    @eventsDb.findOne opts, callback
 
   addItemToHash: (object) ->
     copy = _.extend {}, object

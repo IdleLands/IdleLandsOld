@@ -6,6 +6,7 @@ _ = require "lodash"
 requireDir = require "require-dir"
 
 cataclysms = requireDir "../../event/cataclysms"
+MessageCreator = require "./MessageCreator"
 
 class GlobalEventHandler
 
@@ -28,10 +29,13 @@ class GlobalEventHandler
       when 'advanceDate'
         do @doAdvanceDate
 
+      when 'towncrier'
+        do @doAdvertisement
+
     callback true
 
   doBattle: ->
-    @game.componentDatabase.getRandomEvent 'battle', (e, event = {}) =>
+    @game.componentDatabase.getRandomEvent 'battle', {}, (e, event = {}) =>
       event.player = @game.playerManager.randomPlayer()
       @game.battleManager.startBattle [], event
 
@@ -42,5 +46,19 @@ class GlobalEventHandler
   doAdvanceDate: ->
     @game.calendar.advance 1
     @game.broadcast ">>> CALENDAR: It is now the #{@game.calendar.getDateName()}."
+
+  doAdvertisement: ->
+    @game.componentDatabase.getRandomEvent 'towncrier', {blast: 1, expiredOn: {$exists: no}}, (e, event = {}) =>
+      return unless event._id
+
+      # Explanation of "6"
+      # It is assumed that some players have multiple characters, so we don't want to count duplicates
+      # It is assumed that few people watch IRC (and there is no way to know for sure), so we take off a few more
+      # This is not broadcast to WebFE, so we have to cut off some players to account for that loss as well
+      numPlayers = @game.playerManager.players.length / 6
+      @game.componentDatabase.lowerAdViewCount event._id, numPlayers
+
+      linkText = if event.link then "[ #{event.link} ] " else ""
+      @game.broadcast MessageCreator.genericMessage ">>> TOWN CRIER: #{linkText}#{event.message}"
 
 module.exports = exports = GlobalEventHandler
