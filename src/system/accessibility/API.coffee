@@ -117,7 +117,7 @@ class API
         @gameInstance.componentDatabase.importAllData()
       setPassword: (identifier, password) =>
         @logger?.debug "GM Command data.setPassword"
-        @logger?.verbose "GM Command teleport.data.setPassword", {identifier, password: "*******"}
+        @logger?.verbose "GM Command data.setPassword", {identifier, password: "*******"}
         @gameInstance.playerManager.storePasswordFor identifier, password
 
     event:

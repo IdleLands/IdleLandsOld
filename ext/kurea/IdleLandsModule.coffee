@@ -357,18 +357,14 @@ module.exports = (Module) ->
         * @package Client
       */`
       @addRoute 'idle-resetpassword ":identifier" ":newPassword"', "idle.game.gm", (origin, route) =>
-        logger = @logManager.getLogger "kureaModule"
         try
-          logger.error "!idle-resetpassword start", {route, params: route.params}
           [identifier, password] = [route.params.identifier, route.params.newPassword]
-          logger.error "!idle-resetpassword start 2"
           if @gameInstance and @gameInstance.playerManager
-            logger.error "!idle-resetpassword gameinstance"
             @gameInstance.playerManager.storePasswordFor identifier, password
           else
-            logger.error "!idle-resetpassword gm.auth"
-            @IdleWrapper.api.gm.auth.setPassword identifier, password
+            @IdleWrapper.api.gm.data.setPassword identifier, password
         catch e
+          logger = @logManager.getLogger "kureaModule"
           logger.error "!idle-resetpassword error", {e}
 
       `/**
