@@ -4,6 +4,7 @@ router = (require "express").Router()
 router
 
 # take turn
+## TAG:APIROUTE: POST | /game/battle | {battleId} | {battle}
 .route "/game/battle"
 .post (req, res) ->
   {battleId} = req.body

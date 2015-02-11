@@ -188,7 +188,7 @@ class GuildManager
       return @disband player.identifier
     else
       @guildHash[player.guild].remove player.name
-      return Q player.getExtraDataForREST {player: yes}, {isSuccess: yes, code: 72, message: "You've successfully left the guild."}
+      return Q player.getExtraDataForREST {player: yes}, {isSuccess: yes, code: 72, message: "You've successfully left the guild.", guild: null}
 
   kickPlayer: (adminId, playerName) ->
     admin = @game.playerManager.getPlayerById adminId
@@ -229,7 +229,7 @@ class GuildManager
     delete @guildHash[guild.name]
     @db.remove {name: guild.name}
 
-    Q player.getExtraDataForREST {player: yes}, {isSuccess: yes, code: 74, message: "You've successfully disbanded your guild."}
+    Q player.getExtraDataForREST {player: yes}, {isSuccess: yes, code: 74, message: "You've successfully disbanded your guild.", guild: null}
 
   checkBuffs: ->
     for guild in @guilds
