@@ -2,6 +2,12 @@
     "storage": "mongo",
     "storageURL": "localhost:27017",
     "useREST": true,
-    "restPort": 80,
-    "captureLocal": true
+    "restPort": 5964,
+    "captureLocal": true,
+    "debug": {
+        "enabled": true,
+        "port": 7965,
+        "user": "admin",
+        "pass": "password"
+    }
 }

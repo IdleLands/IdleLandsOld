@@ -9,6 +9,7 @@ MessageCreator = require "./../handlers/MessageCreator"
 Constants = require "./../utilities/Constants"
 bcrypt = require "bcrypt"
 crypto = require "crypto"
+LogManager = require "./LogManager"
 
 class PlayerManager
 
@@ -21,6 +22,12 @@ class PlayerManager
       db.ensureIndex { name: 1 }, { unique: true }, ->
 
       db.update {}, {$set:{isOnline: no}}, {multi: yes}, (e) -> console.error "PLAYER SETINACTIVE ERROR",e.stack if e
+
+    if @game and @game.logManager
+      @logManager = @game.logManager
+    else
+      @logManager = new LogManager()
+      @logManager.getLogger("PlayerManager").warn "@game.logManager not set, using isolated LogManager instance, not able to set logger level via !idle-setloggerlevel"
 
     @interval = null
     @DELAY_INTERVAL = 10000
@@ -61,26 +68,45 @@ class PlayerManager
     bcrypt.genSalt 10, (e, salt) ->
       bcrypt.hash password, salt, callback
 
-  storePasswordFor: (identifier, password) ->
-    password = password.trim()
-    player = @playerHash[identifier]
-
-    return Q {isSuccess: no, code: 1, message: "Please use a password > 3 characters."} if password.length < 3
-    return Q {isSuccess: no, code: 10, message: "You're not logged in!"} if not player
-
-    player.password = @hashPassword password
-
-    defer = Q.defer()
-
+  storePasswordForHash: (password, player, defer) ->
+    logger = @logManager.getLogger "bcrypt"
     @hashPassword password, (e, hash) ->
-
       if e
+        logger.error "error with bcrypt!", {e}
         defer.resolve {isSuccess: no, code: 9999, message: "Something went wrong. ¯\_(ツ)_/¯"}
       else
         player.password = hash
+        logger.info "Success with set storePasswordFor!"
         defer.resolve {isSuccess: yes, code: 17, message: "Your password has been set! Extraneous spaces at be beginning and end have been removed!"}
 
-    defer.promise
+  storePasswordFor: (identifier, password) ->
+    try
+      password = password.trim()
+
+      return Q {isSuccess: no, code: 1, message: "Please use a password >= 3 characters."} if password.length < 3
+
+      player = @playerHash[identifier]
+
+      defer = Q.defer()
+
+      if not player
+        @db.findOne {identifier: identifier}, (e, player) =>
+          if e
+            logger = @logManager.getLogger "bcrypt"
+            logger.error "error with db.findOne!", {e}
+            @game.errorHandler.captureException e, extra: identifier: identifier if e
+
+          defer.resolve {isSuccess: no, code: 10, message: "You're not logged in!"} if not player
+
+          @storePasswordForHash password, player, defer
+      else
+        @storePasswordForHash password, player, defer
+
+      return defer.promise
+    catch e
+      logger = @logManager.getLogger "bcrypt"
+      logger.error "error with storePasswordFor!", {e}
+      Q {isSuccess: no, code: 14, message: "Authentication failure (bad password)."}
 
   checkToken: (identifier, token) ->
 
@@ -95,22 +121,31 @@ class PlayerManager
 
     defer = Q.defer()
 
-    return Q {isSuccess: no, code: 12, message: "You're not currently logged in, so you can't auth via password."} if isIRC and not @playerHash[identifier]
-    return Q {isSuccess: no, code: 16, message: "You can't login without a password, silly!"} if not password
+    try
+      return Q {isSuccess: no, code: 12, message: "You're not currently logged in, so you can't auth via password."} if isIRC and not @playerHash[identifier]
+      return Q {isSuccess: no, code: 16, message: "You can't login without a password, silly!"} if not password
 
-    @db.findOne {identifier: identifier}, (e, player) =>
-      @game.errorHandler.captureException e, extra: identifier: identifier if e
+      logger = @logManager.getLogger "bcrypt"
+      @db.findOne {identifier: identifier}, (e, player) =>
+        if e
+          logger.error "error with db.findOne!", {e}
+        @game.errorHandler.captureException e, extra: identifier: identifier if e
 
-      return defer.resolve {isSuccess: no, code: 13, message: "Authentication failure (player doesn't exist)."} if not player
-      return defer.resolve {isSuccess: no, code: 12, message: "You haven't set up a password yet!"} if not player?.password
+        return defer.resolve {isSuccess: no, code: 13, message: "Authentication failure (player doesn't exist)."} if not player
+        return defer.resolve {isSuccess: no, code: 12, message: "You haven't set up a password yet!"} if not player?.password
 
-      bcrypt.compare password, player.password, (e, res) ->
-        if not res
-          defer.resolve {isSuccess: no, code: 14, message: "Authentication failure (bad password)."}
-        else
-          defer.resolve {isSuccess: yes, code: 999999, message: "Successful login. Welcome back!"} #lol
+        bcrypt.compare password, player.password, (e, res) ->
+          if not res
+            logger.error "error with bcrypt!", {e}
+            defer.resolve {isSuccess: no, code: 14, message: "Authentication failure (bad password)."}
+          else
+            defer.resolve {isSuccess: yes, code: 999999, message: "Successful login. Welcome back!"} #lol
 
-    defer.promise
+      defer.promise
+    catch e
+      logger = @logManager.getLogger "bcrypt"
+      logger.error "error with checkPassword!", {e}
+      Q {isSuccess: no, code: 14, message: "Authentication failure (bad password)."}
 
   generateTempToken: ->
     crypto.randomBytes 48
@@ -204,7 +239,7 @@ class PlayerManager
 
     options.name = options.name?.trim()
 
-    return Q {isSuccess: no, code: 6, message: "You need a name for your character!"} if not options.name
+    return Q {isSuccess: no, code: 6, message: "You need a name for your character!"} unless options.name
     return Q {isSuccess: no, code: 2, message: "You have to make your name above 2 characters!"} if options.name.length < 2
     return Q {isSuccess: no, code: 3, message: "You have to keep your name under 20 characters!"} if options.name.length > 20
     return Q {isSuccess: no, code: 4, message: "You have to send a unique identifier for this player!"} if not options.identifier
@@ -214,6 +249,7 @@ class PlayerManager
 
     playerObject = new Player options
     playerObject.playerManager = @
+    playerObject.logger = @game.logManager.getLogger "Player"
     playerObject.initialize()
     playerObject.isOnline = yes
     playerObject.registrationDate = new Date()
@@ -258,6 +294,7 @@ class PlayerManager
                 'stepCooldown'
                 '_oldAchievements'
                 '_id'
+                'logger'
                 'pushbullet']
     ret = _.omit player, badStats
     ret._baseStats = calc
@@ -272,7 +309,7 @@ class PlayerManager
   savePlayer: (player) ->
     savePlayer = @buildPlayerSaveObject player
     savePlayer.lastLogin = new Date()
-    @db.update { identifier: player.identifier }, savePlayer, {upsert: true}, (e) =>
+    @db.update { name: player.name }, savePlayer, {upsert: true}, (e) =>
       @game.errorHandler.captureException e if e
 
   playerTakeTurn: (identifier, sendPlayerObject) ->
@@ -331,6 +368,8 @@ class PlayerManager
     player.playerManager = @
     player.isBusy = false
     player.loadCalc()
+
+    player.logger = @game.logManager.getLogger "Player"
 
     player.guildTax = 0 unless player.guildTax
 

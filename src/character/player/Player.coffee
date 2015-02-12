@@ -310,9 +310,26 @@ class Player extends Character
       when "Trainer" then @handleTrainerOnTile tile
       when "Treasure" then @handleTreasure tile.object.name
       when "Collectible" then @handleCollectible tile.object
+      when "GuildTeleport" then @handleGuildTeleport tile.object.name
 
     if tile.object?.properties?.forceEvent
       @playerManager.game.eventHandler.doEventForPlayer @name, tile.object.properties.forceEvent
+
+  handleGuildTeleport: (baseName) ->
+    guild = @getGuild()
+    return if not guild
+
+    base = guild.getGuildBase()
+    baseName = guild.getGuildBaseName()
+
+    message = "<player.name>#{@getName()}</player.name> was whisked away to <player.name>#{@guild}</player.name>'s Guild Hall!"
+
+    [@map, @x, @y] = [baseName, base.startLoc[0], base.startLoc[1]]
+
+    @emit "explore.transfer", @, @map
+    @emit "explore.transfer.guildTeleport", @, @map
+
+    @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'explore'}
 
   handleCollectible: (collectible) ->
     @collectibles = [] if not @collectibles
@@ -571,8 +588,16 @@ class Player extends Character
   changePetClass: (newClass) ->
     myClasses = _.keys @statistics['calculated class changes']
     pet = @getPet()
+
     return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
-    return Q {isSuccess: no, code: 207, message: "You haven't been that class yet, so you can't teach your pet how to do it!"} if (myClasses.indexOf newClass) is -1 and newClass isnt "Monster"
+
+    if (myClasses.indexOf newClass) is -1 and newClass isnt "Monster"
+      myClassesLower = myClasses.join('|').toLowerCase().split('|')
+      index = myClassesLower.indexOf newClass.toLowerCase()
+      if index isnt -1
+        return Q {isSuccess: no, code: 207, message: "Class \"" + newClass + "\" not found. Did you mean \"" + myClasses[index] + "\"?" } # Code should maybe be different?
+      else
+        return Q {isSuccess: no, code: 207, message: "You haven't been that class yet, so you can't teach your pet how to do it!"}
 
     pet.setClassTo newClass
 
@@ -689,13 +714,12 @@ class Player extends Character
 
   swapToPet: (petId) ->
     pet = @getPet()
-    return Q {isSuccess: no, code: 206, message: "You don't have a pet."} if not pet
 
-    newPet = _.findWhere pet.petManager.pets, (pet) => pet.createdAt is petId and pet.owner.name is @name
-    return Q {isSuccess: no, code: 228, message: "That pet does not exist!"} if not newPet
-    return Q {isSuccess: no, code: 229, message: "That pet is already active!"} if newPet is pet
+    newPet = (_.filter @playerManager.game.petManager.pets, (pet) => pet.createdAt is petId and pet.owner.name is @name)[0]
+    return Q {isSuccess: no, code: 228, message: "That pet does not exist or isn't yours!"} if not newPet
+    return Q {isSuccess: no, code: 229, message: "That pet is already active!"} if newPet is pet?
 
-    pet.petManager.changePetForPlayer @, newPet
+    @playerManager.game.petManager.changePetForPlayer @, newPet
 
     Q @getExtraDataForREST {pet: yes, pets: yes}, {isSuccess: yes, code: 230, message: "Successfully made #{newPet.name}, the #{newPet.type} your active pet!"}
 
@@ -883,12 +907,21 @@ class Player extends Character
   getExtraDataForREST: (options, base) ->
     opts = {}
 
+    @logger?.verbose "getExtraDataForRest parameters", {options, base}
+
     if options.player       then opts.player = @buildRESTObject()
     if options.pets         then opts.pets = @playerManager.game.petManager.getPetsForPlayer @identifier
     if options.pet          then opts.pet = @getPet()?.buildSaveObject()
     if options.guild        then opts.guild = @getGuild()?.buildSaveObject()
     if options.guildInvites then opts.guildInvites = @playerManager.game.guildManager.getPlayerInvites @
     if options.global       then opts.global = @getGlobalData()
+
+    @logger?.verbose "getExtraDataForRest results", {opts}
+
+    if opts.pet?.owner?.identifier?
+      if opts.player?
+        if opts.pet.owner.identifier != opts.player.identifier
+          @logger?.error "pet owner does not match player", {pet: opts.pet.owner.identifier, player: opts.player.identifier}
 
     _.extend base, opts
 

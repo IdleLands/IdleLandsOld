@@ -12,6 +12,10 @@
         {
             "type": "advanceDate",
             "duration": 600
+        },
+        {
+            "type": "towncrier",
+            "duration": 3600
         }
     ],
     "eventRates": [
@@ -91,6 +95,11 @@
             "type": "battle",
             "min": 1,
             "max": 3500
+        },
+        {
+            "type": "towncrier",
+            "min": 1,
+            "max": 5000
         }
     ],
     "eventEffects": {

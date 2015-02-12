@@ -40,13 +40,20 @@ class Character extends EventEmitter2
 
     @spellsAffectedBy = []
 
-  probabilityReduce: (appFunctionName, args = [], baseObject) ->
-    args = [args] if not _.isArray args
-    array = []
+  _getAffectingFactors: ->
+    []
     .concat @profession ? []
     .concat @personalities ? []
     .concat @spellsAffectedBy ? []
     .concat @achievements ? []
+    .concat @playerManager?.game.calendar.getDateEffects()
+    .concat @calendar?.game.calendar.getDateEffects() # for monsters
+    .concat @getRegion?()
+    .concat @playerManager?.game.guildManager.guildHash[@guild]?.buffs ? []
+
+  probabilityReduce: (appFunctionName, args = [], baseObject) ->
+    args = [args] if not _.isArray args
+    array = @_getAffectingFactors()
 
     baseProbabilities = if baseObject then [baseObject] else []
 
@@ -67,15 +74,7 @@ class Character extends EventEmitter2
 
   personalityReduce: (appFunctionName, args = [], baseValue = 0) ->
     args = [args] if not _.isArray args
-    array = []
-    .concat @profession ? []
-    .concat @personalities ? []
-    .concat @spellsAffectedBy ? []
-    .concat @achievements ? []
-    .concat @playerManager?.game.calendar.getDateEffects()
-    .concat @calendar?.game.calendar.getDateEffects() # for monsters
-    .concat @getRegion?()
-    .concat @playerManager?.game.guildManager.guildHash[@guild]?.buffs ? []
+    array = @_getAffectingFactors()
 
     _.reduce array, (combined, iter) ->
       applied = if _.isFunction iter?[appFunctionName] then iter?[appFunctionName]?.apply iter, args else iter?[appFunctionName]

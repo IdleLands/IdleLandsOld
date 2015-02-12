@@ -9,6 +9,10 @@ watch = require "node-watch"
 c = require "irc-colors"
 
 idlePath = __dirname + "/../../src"
+try
+  LogManager = require "../../src/system/managers/LogManager"
+catch
+  console.log "haha" # This is just here to not break stuff
 
 module.exports = (Module) ->
 
@@ -199,6 +203,12 @@ module.exports = (Module) ->
 
       @IdleWrapper = require("../../src/system/accessibility/ExternalWrapper")()
       @db = @newDatabase 'channels'
+      try
+        @logManager = new LogManager()
+        logger = @logManager.getLogger "kureaModule"
+        logger.warn "This is actually a success"
+      catch
+        console.log "useless catch to satisfy stuff." #it's here so that if it doesn't work, it won't break.
 
       @on "join", (bot, channel, sender) =>
         if bot.config.nick is sender
@@ -347,8 +357,29 @@ module.exports = (Module) ->
         * @package Client
       */`
       @addRoute 'idle-resetpassword ":identifier" ":newPassword"', "idle.game.gm", (origin, route) =>
-        [identifier, password] = [route.params.identifier, route.params.newPassword]
-        @gameInstance.playerManager.storePasswordFor identifier, password
+        try
+          [identifier, password] = [route.params.identifier, route.params.newPassword]
+          if @gameInstance and @gameInstance.playerManager
+            @gameInstance.playerManager.storePasswordFor identifier, password
+          else
+            @IdleWrapper.api.gm.data.setPassword identifier, password
+        catch e
+          logger = @logManager.getLogger "kureaModule"
+          logger.error "!idle-resetpassword error", {e}
+
+      `/**
+       * Change a players identifier.
+       *
+       * @name idle-changeident
+       * @gmOnly
+       * @syntax !idle-changeident "identifier" "newIdentifier"
+       * @example !idle-changeident "local-server/Danret" "local-server/AlsoDanret"
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute 'idle-changeident ":identifier" ":newIdentifier"', "idle.game.gm", (origin, route) =>
+        [identifier, newIdentifier] = [route.params.identifier, route.params.newIdentifier]
+        @gameInstance.api.gm.status.identifierChange identifier, newIdentifier
 
       `/**
         * Force the bot to update IdleLands and reboot.
@@ -740,6 +771,75 @@ module.exports = (Module) ->
             @reply origin, res.message
 
       `/**
+       * Manage your guild's current location.
+       *
+       * @name idle-guild move
+       * @syntax !idle-guild move newLoc
+       * @example !idle-guild move Vocalnus
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-guild move :newLoc", (origin, route) =>
+        [newLoc] = [route.params.newLoc]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to administer a guild!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.guild.move identifier, newLoc)
+          .then (res) =>
+            @reply origin, res.message
+
+      `/**
+       * Construct a new building in your Guild Hall.
+       *
+       * @name idle-guild construct
+       * @syntax !idle-guild construct building slot
+       * @example !idle-guild construct GuildHall 0
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-guild construct :building :slot", (origin, route) =>
+        [building, slot] = [route.params.building, parseInt route.params.slot]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to administer a guild!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.guild.construct identifier, building, slot)
+          .then (res) =>
+            @reply origin, res.message
+
+      `/**
+       * Upgrade a building in your guild hall.
+       *
+       * @name idle-guild upgrade
+       * @syntax !idle-guild upgrade building
+       * @example !idle-guild upgrade GuildHall
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-guild upgrade :building", (origin, route) =>
+        [building] = [route.params.building]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to administer a guild!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.guild.upgrade identifier, building)
+          .then (res) =>
+            @reply origin, res.message
+
+      `/**
         * Manage your guild status.
         *
         * @name Guild Status
@@ -838,7 +938,7 @@ module.exports = (Module) ->
       `/**
        * Adjust your guilds tax rate (anywhere from 0-15%). Only guild leaders can set this.
        *
-       * @name !idle-guild tax
+       * @name idle-guild tax
        * @syntax !idle-guild tax taxPercent
        * @example !idle-guild tax 15
        * @category IRC Commands
@@ -861,7 +961,7 @@ module.exports = (Module) ->
       `/**
        * Adjust your personal tax rate to pay to your guild (anywhere from 0-85%).
        *
-       * @name !idle-guild selftax
+       * @name idle-guild selftax
        * @syntax !idle-guild selftax taxPercent
        * @example !idle-guild selftax 15
        * @category IRC Commands
@@ -1046,7 +1146,7 @@ module.exports = (Module) ->
 
           @IdleWrapper.api.gm.custom.modModerator identifier, modStatus
       `/**
-       * Set a logger's level. Example:
+       * Set a logger's level.
        *
        * @name idle-setloggerlevel
        * @gmOnly
@@ -1064,6 +1164,44 @@ module.exports = (Module) ->
             return
 
           @IdleWrapper.api.gm.log.setLoggerLevel name, level
+
+      `/**
+       * Clear a log.
+       *
+       * @name idle-clearlog
+       * @gmOnly
+       * @syntax !idle-clearlog name
+       * @example !idle-clearlog battle
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-clearlog \":name\"", "idle.game.gm", (origin, route) =>
+        [name] = [route.params.name]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to set log levels!"
+            return
+
+          @IdleWrapper.api.gm.log.clearLog name
+
+      `/**
+       * Clear all log.
+       *
+       * @name idle-clearalllogs
+       * @gmOnly
+       * @syntax !idle-clearalllogs
+       * @example !idle-clearalllogs
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-clearalllogs", "idle.game.gm", (origin, route) =>
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to set log levels!"
+            return
+
+          @IdleWrapper.api.gm.log.clearAllLogs()
 
       @initialize()
 

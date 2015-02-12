@@ -34,19 +34,25 @@ class NinetyNineBottles extends Spell
   cast: (player) ->
     message = "%casterName throws some of his %spellName at %targetName!"
     @broadcast player, message
+
     toThrow = @chance.integer({min: 8, max: 8 + @caster.level.getValue()})
+
     if @caster.special.lessThan toThrow
       toThrow = @caster.special.getValue()
+
     @caster.profession.drunkPct.add Math.floor(toThrow*0.02*@chance.integer({min: 80, max: 125}))
+
     while toThrow >= 9 and not player.hp.atMin()
       damage = @calcDamage()
       message = "%casterName throws 9 bottles at %targetName, dealing %damage damage!"
       @doDamageTo player, damage, message
       @caster.special.sub 9
       toThrow -= 9
+
     if toThrow and not player.hp.atMin()
       if @caster.special.lessThan toThrow
         toThrow = @caster.special.getValue()
+
       damage = Math.ceil(@calcDamage()*toThrow/9)
       message = "%casterName throws #{toThrow} bottles at %targetName, dealing %damage damage!"
       @doDamageTo player, damage, message

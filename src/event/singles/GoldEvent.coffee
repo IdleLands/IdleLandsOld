@@ -16,6 +16,16 @@ class GoldEvent extends Event
 
     boost = @player.calcGoldGain @calcGoldEventGain @event.type, @player
 
+    rangeManage =
+      blessGold:
+        f: 'max'
+        v: 1
+      forsakeGold:
+        f: 'min'
+        v: -1
+
+    boost = Math[rangeManage[@event.type].f] boost, rangeManage[@event.type].v
+
     extra =
       gold: Math.abs boost
       realGold: boost

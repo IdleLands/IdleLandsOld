@@ -27,3 +27,9 @@ node_modules
 .idea
 
 .vagrant
+
+assets/custom/
+doks/
+
+# commit -f if you really need to change this
+config.json

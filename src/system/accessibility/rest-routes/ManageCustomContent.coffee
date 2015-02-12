@@ -11,6 +11,11 @@ router
   API.player.custom.submit identifier, data
   .then (resp) -> res.json resp
 
+.post "/custom/redeem", hasValidToken, (req, res) ->
+  {identifier, crierId, giftId} = req.body
+  API.player.custom.redeemGift identifier, crierId, giftId
+  .then (resp) -> res.json resp
+
 .post "/custom/mod/list", hasValidToken, (req, res) ->
   {identifier} = req.body
   API.gm.custom.list identifier

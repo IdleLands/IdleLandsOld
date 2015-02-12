@@ -16,7 +16,7 @@ idlePath = __dirname + "/../../src"
 players = [
   'Jombocom'
   'Carple'
-  'Danret'
+  'Danret4'
   'Goop'
   'Jeut'
   'Axce'
@@ -185,7 +185,7 @@ interactiveSession = ->
         broadcast "Evaluating `#{line}`"
         result = eval line
         broadcast result
-        result?.then? (res) -> broadcast res.message
+        result?.then?((res) -> broadcast res?.message).done?()
       catch error
         console.error error.name, error.message, error.stack
       

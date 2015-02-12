@@ -8,7 +8,9 @@
     "statPerLevel",
     "effect",
     "syntax",
-    "requirement"
+    "requirement",
+    "cost",
+    "buildings"
   ],
   "keySort": ["package", "category", "name"],
   "outputOnly": true,

@@ -16,6 +16,16 @@ class XpEvent extends Event
 
     boost = @player.calcXpGain @calcXpEventGain @event.type, @player
 
+    rangeManage =
+      blessXp:
+        f: 'max'
+        v: 1
+      forsakeXp:
+        f: 'min'
+        v: -1
+
+    boost = Math[rangeManage[@event.type].f] boost, rangeManage[@event.type].v
+
     extra =
       xp: Math.abs boost
       realXp: boost
