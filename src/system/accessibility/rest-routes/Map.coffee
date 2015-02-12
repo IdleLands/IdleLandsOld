@@ -5,6 +5,7 @@ router = (require "express").Router()
 router
 
 # take turn
+## TAG:APIROUTE: POST | /game/map | {map} | {map}
 .route "/game/map"
 .post (req, res) ->
   {map} = req.body
