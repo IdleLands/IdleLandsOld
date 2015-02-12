@@ -7,7 +7,7 @@ files = glob.sync "../../src/**/*.coffee", cwd: __dirname
 baseUrl = "https://github.com/IdleLands/IdleLands/blob/master"
 
 class Markdoc
-  constructor: (@tag, @headers, @sortIndex, @files) ->
+  constructor: (@doc, @headers, @sortIndex, @files) ->
     @parseFiles()
     @sortLines()
     @getFragments()
@@ -15,7 +15,8 @@ class Markdoc
 
   parseFiles: ->
 
-    @lines = []
+    @lines = {}
+    _.each @doc.tags, (tag) => @lines[tag] = []
 
     _.each @files, (file) =>
 
@@ -27,38 +28,46 @@ class Markdoc
         continue if -1 is spliced.indexOf "##TAG:"
 
         [empty, tag, params] = lines[i].split ":"
-        continue unless tag is @tag
+        continue unless tag in @doc.tags
 
         arr = _.map (params.split "|"), (s) -> s.trim()
 
         trimmedFile = file.substring file.indexOf "src"
         arr[@sortIndex] = "[#{arr[@sortIndex]}](#{baseUrl}/#{trimmedFile}#L#{i})"
 
-        @lines.push arr
+        @lines[tag].push arr
 
   sortLines: ->
-    @lines = _.sortBy @lines, (line) => line[@sortIndex]
+    _.each (_.keys @lines), (key) =>
+      @lines[key] = _.sortBy @lines[key], (line) => line[@sortIndex]
 
   getFragments: ->
-    @head = fs.readFileSync "#{__dirname}/base/#{@tag}_head.md", encoding: "UTF-8" if fs.existsSync "#{__dirname}/base/#{@tag}_head.md"
-    @foot = fs.readFileSync "#{__dirname}/base/#{@tag}_foot.md", encoding: "UTF-8" if fs.existsSync "#{__dirname}/base/#{@tag}_foot.md"
+    @head = fs.readFileSync "#{__dirname}/base/#{@doc.key}_head.md", encoding: "UTF-8" if fs.existsSync "#{__dirname}/base/#{@doc.key}_head.md"
+    @foot = fs.readFileSync "#{__dirname}/base/#{@doc.key}_foot.md", encoding: "UTF-8" if fs.existsSync "#{__dirname}/base/#{@doc.key}_foot.md"
 
   buildFile: ->
     string = ""
     string += @head if @head
 
     string += "\n\n"
-    string += @headers.join " | "
-    string += "\n"
-    string += (_.map @headers, -> "---").join " | "
-    string += "\n"
-    _.each @lines, (line) ->
-      string += "#{line.join "|"}\n"
+
+    _.each @doc.tags, (tag) =>
+      string += @headers.join " | "
+      string += "\n"
+      string += (_.map @headers, -> "---").join " | "
+      string += "\n"
+      _.each @lines[tag], (line) ->
+        string += "#{line.join " | "}\n"
+
     string += "\n\n"
 
     string += @foot if @foot
 
-    fs.writeFileSync "#{__dirname}/../../docs/#{@tag}.md", string
+    fs.writeFileSync "#{__dirname}/../../docs/#{@doc.key}.md", string
+
+docs = [
+  {key: 'APIROUTE', tags: ['APIROUTE']}
+]
 
 tags = [
   'APIROUTE'
@@ -72,4 +81,4 @@ sortIndexes = [
   1
 ]
 
-_.each tags, (tag, i) -> new Markdoc tag, headers[i], sortIndexes[i], files
+_.each docs, (doc, i) -> new Markdoc doc, headers[i], sortIndexes[i], files
