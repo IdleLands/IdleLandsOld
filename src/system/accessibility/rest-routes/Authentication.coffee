@@ -8,6 +8,13 @@ router = (require "express").Router()
 # player routes
 router
 
+##TAG:APIROUTE_PARAM: identifier | string | The players unique identifier | None
+##TAG:APIROUTE_PARAM: token | string | The token issued to the player on login | None
+##TAG:APIROUTE_PARAM: password | string | The token issued to the player on login | >3 characters
+
+##TAG:APIROUTE_RETVAL: player | object | The player object
+##TAG:APIROUTE_RETVAL: token | string | The players temporary secure token
+
 # register
 ## TAG:APIROUTE: PUT | /player/auth/register | {identifier, name, password} | {player, token}
 .put "/player/auth/register", charCreateTimeout.prevent, (req, res) ->

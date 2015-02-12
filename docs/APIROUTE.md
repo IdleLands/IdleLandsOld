@@ -18,7 +18,7 @@ POST | [/custom/mod/list](https://github.com/IdleLands/IdleLands/blob/master/src
 PATCH | [/custom/mod/reject](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageCustomContent.coffee#L31) | {identifier} | {}
 PUT | [/custom/player/submit](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageCustomContent.coffee#L7) | {identifier, data
 POST | [/custom/redeem](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageCustomContent.coffee#L13) | {identifier, crierId, giftId} | {}
-POST | [/game/battle](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Battle.coffee#L6) | {battleId} | {battle}
+POST | [/game/battle](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Battle.coffee#L10) | {battleId} | {battle}
 POST | [/game/map](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Map.coffee#L7) | {map} | {map}
 PUT | [/guild/building/construct](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L87) | {identifier, building, slot, token} | {player}
 POST | [/guild/building/upgrade](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L93) | {identifier, building, token} | {player}
@@ -49,10 +49,10 @@ POST | [/pet/takeGold](https://github.com/IdleLands/IdleLands/blob/master/src/sy
 POST | [/pet/upgrade](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManagePet.coffee#L15) | {identifier, stat, token} | {}
 POST | [/player/action/teleport](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/PlayerActions.coffee#L7) | {identifier, newLoc, token} | {}
 POST | [/player/action/turn](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/TurnAction.coffee#L8) | {identifier, token} | {player, pet}
-POST | [/player/auth/login](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L26) | {identifier, password} | {player, token}
-POST | [/player/auth/logout](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L19) | {identifier, token} | {}
-POST | [/player/auth/password](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L33) | {identifier, password, token} | {}
-PUT | [/player/auth/register](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L11) | {identifier, name, password} | {player, token}
+POST | [/player/auth/login](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L33) | {identifier, password} | {player, token}
+POST | [/player/auth/logout](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L26) | {identifier, token} | {}
+POST | [/player/auth/password](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L40) | {identifier, password, token} | {}
+PUT | [/player/auth/register](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L18) | {identifier, name, password} | {player, token}
 PUT | [/player/manage/gender/set](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGender.coffee#L7) | {identifier, gender, token} | {}
 PUT | [/player/manage/inventory/add](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageInventory.coffee#L8) | {identifier, itemSlot, token} | {player}
 POST | [/player/manage/inventory/sell](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageInventory.coffee#L14) | {identifier, invSlot, token} | {player}
@@ -70,6 +70,21 @@ PUT | [/player/manage/string/set](https://github.com/IdleLands/IdleLands/blob/ma
 POST | [/player/manage/tax](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L79) | {identifier, taxPercent, token} | {player}
 POST | [/player/manage/title/remove](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageTitle.coffee#L13) | {identifier, token} | {}
 PUT | [/player/manage/title/set](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageTitle.coffee#L7) | {identifier, newTitle, token} | {}
+
+
+Parameter | Type | Definition | Restrictions
+--- | --- | --- | ---
+[battleId](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Battle.coffee#L5) | string | The id representing the battle | 16 character Mongo ID
+[identifier](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L10) | string | The players unique identifier | None
+[password](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L12) | string | The token issued to the player on login | >3 characters
+[token](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L11) | string | The token issued to the player on login | None
+
+
+Return Value | Type | Description
+--- | --- | ---
+[battle](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Battle.coffee#L7) | object | The battle object
+[player](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L14) | object | The player object
+[token](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L15) | string | The players temporary secure token
 
 
 API Notes

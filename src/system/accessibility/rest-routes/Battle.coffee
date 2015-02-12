@@ -3,6 +3,10 @@ router = (require "express").Router()
 
 router
 
+##TAG:APIROUTE_PARAM: battleId | string | The id representing the battle | 16 character Mongo ID
+
+##TAG:APIROUTE_RETVAL: battle | object | The battle object
+
 # take turn
 ## TAG:APIROUTE: POST | /game/battle | {battleId} | {battle}
 .route "/game/battle"

@@ -7,11 +7,14 @@ files = glob.sync "../../src/**/*.coffee", cwd: __dirname
 baseUrl = "https://github.com/IdleLands/IdleLands/blob/master"
 
 class Markdoc
-  constructor: (@doc, @headers, @sortIndex, @files) ->
+  constructor: (@doc, @files) ->
     @parseFiles()
     @sortLines()
     @getFragments()
     @buildFile()
+
+  getSortIndex: (key) ->
+    @doc.sortIndexes[@doc.tags.indexOf key]
 
   parseFiles: ->
 
@@ -33,13 +36,13 @@ class Markdoc
         arr = _.map (params.split "|"), (s) -> s.trim()
 
         trimmedFile = file.substring file.indexOf "src"
-        arr[@sortIndex] = "[#{arr[@sortIndex]}](#{baseUrl}/#{trimmedFile}#L#{i})"
+        arr[@getSortIndex tag] = "[#{arr[@getSortIndex tag]}](#{baseUrl}/#{trimmedFile}#L#{i})"
 
         @lines[tag].push arr
 
   sortLines: ->
     _.each (_.keys @lines), (key) =>
-      @lines[key] = _.sortBy @lines[key], (line) => line[@sortIndex]
+      @lines[key] = _.sortBy @lines[key], (line) => line[@getSortIndex key]
 
   getFragments: ->
     @head = fs.readFileSync "#{__dirname}/base/#{@doc.key}_head.md", encoding: "UTF-8" if fs.existsSync "#{__dirname}/base/#{@doc.key}_head.md"
@@ -51,34 +54,35 @@ class Markdoc
 
     string += "\n\n"
 
-    _.each @doc.tags, (tag) =>
-      string += @headers.join " | "
+    _.each @doc.tags, (tag, i) =>
+      string += @doc.headers[i].join " | "
       string += "\n"
-      string += (_.map @headers, -> "---").join " | "
+      string += (_.map @doc.headers[i], -> "---").join " | "
       string += "\n"
       _.each @lines[tag], (line) ->
         string += "#{line.join " | "}\n"
 
-    string += "\n\n"
+      string += "\n\n"
 
     string += @foot if @foot
 
     fs.writeFileSync "#{__dirname}/../../docs/#{@doc.key}.md", string
 
 docs = [
-  {key: 'APIROUTE', tags: ['APIROUTE']}
+  {
+    key: 'APIROUTE',
+    tags: ['APIROUTE', 'APIROUTE_PARAM', 'APIROUTE_RETVAL']
+    headers: [
+      ['Verb', 'Route', 'Request Data', 'Return Data']
+      ['Parameter', 'Type', 'Definition', 'Restrictions']
+      ['Return Value', 'Type', 'Description']
+    ]
+    sortIndexes: [
+      1
+      0
+      0
+    ]
+  }
 ]
 
-tags = [
-  'APIROUTE'
-]
-
-headers = [
-  ['Verb', 'Route', 'Request Data', 'Return Data']
-]
-
-sortIndexes = [
-  1
-]
-
-_.each docs, (doc, i) -> new Markdoc doc, headers[i], sortIndexes[i], files
+_.each docs, (doc, i) -> new Markdoc doc, files
