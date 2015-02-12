@@ -4,6 +4,7 @@ glob = require "glob"
 fs = require "fs"
 
 files = glob.sync "../../src/**/*.coffee", cwd: __dirname
+baseUrl = "https://github.com/IdleLands/IdleLands/blob/master"
 
 class Markdoc
   constructor: (@tag, @headers, @sortIndex, @files) ->
@@ -28,7 +29,12 @@ class Markdoc
         [empty, tag, params] = lines[i].split ":"
         continue unless tag is @tag
 
-        @lines.push params.split "|"
+        arr = _.map (params.split "|"), (s) -> s.trim()
+
+        trimmedFile = file.substring file.indexOf "src"
+        arr[@sortIndex] = "[#{arr[@sortIndex]}](#{baseUrl}/#{trimmedFile}#L#{i})"
+
+        @lines.push arr
 
   sortLines: ->
     @lines = _.sortBy @lines, (line) => line[@sortIndex]
