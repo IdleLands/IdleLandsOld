@@ -116,9 +116,12 @@ class Guild
     @gold.sub gold
 
   addGold: (gold) ->
-    @gold = new RestrictedNumber 0, 9999999999, 0 unless @gold
+    initGold() unless @gold
     @gold.__current = 0 if _.isNaN @gold.getValue()
     @gold.add gold
+
+  initGold: ->
+    @gold = new RestrictedNumber 0, 9999999999, 0
 
   calcTax: (player) ->
     player.guildTax + @taxPercent
