@@ -36,7 +36,7 @@ class Markdoc
         arr = _.map (params.split "|"), (s) -> s.trim()
 
         trimmedFile = file.substring file.indexOf "src"
-        arr[@getSortIndex tag] = "[#{arr[@getSortIndex tag]}](#{baseUrl}/#{trimmedFile}#L#{i})"
+        arr[@getSortIndex tag] = "[#{arr[@getSortIndex tag]}](#{baseUrl}/#{trimmedFile}#L#{i+1})"
 
         @lines[tag].push arr
 
