@@ -597,36 +597,42 @@ class Character extends EventEmitter2
         @base.mp = @self.calc.stat 'mp'
         Math.round Math.max 0, @base.mp
 
+      ##TAG:REDUCTION: dodge | agi | self, baseDodge | Called when attempting to dodge
       dodge: ->
         @base.dodge = @self.calc.stat 'agi'
         value = @self.personalityReduce 'dodge', [@self, @base.dodge], @base.dodge
         value += @self.calc.boosts ['dance', 'glowing', 'defense'], @base.dodge
         value
 
+      ##TAG:REDUCTION: beatDodge | dex+str+agi+wis+con+int | self, baseBeatDodge | Called when attempting to prevent opponent dodging
       beatDodge: ->
         @base.beatDodge = Math.max 10, @self.calc.stats ['dex','str','agi','wis','con','int']
         value = @self.personalityReduce 'beatDodge', [@self, @base.beatDodge], @base.beatDodge
         value += @self.calc.boosts ['deadeye', 'glowing', 'offense'], @base.beatDodge
         value
 
+      ##TAG:REDUCTION: hit | dex+agi+con/6 | self, baseHit | Called when attempting to not get hit
       hit: ->
         @base.hit = (@self.calc.stats ['dex', 'agi', 'con']) / 6
         value = @self.personalityReduce 'hit', [@self, @base.hit], @base.hit
         value += @self.calc.boosts ['defense', 'glowing'], @base.hit
         value
 
+      ##TAG:REDUCTION: beatHit | str+dex/2 | self, baseBeatHit | Called when attempting to hit opponent
       beatHit: ->
         @base.beatHit = Math.max 10, (@self.calc.stats ['str', 'dex']) / 2
         value = @self.personalityReduce 'beatHit', [@self, @base.beatHit], @base.beatHit
         value += @self.calc.boosts ['offense', 'glowing'], @base.beatHit
         value
 
+      ##TAG:REDUCTION: damage | str | self, baseDamage | Called when rolling any kind of damage
       damage: ->
         @base.damage = Math.max 10, @self.calc.stats ['str']
         value = @self.personalityReduce 'damage', [@self, @base.damage], @base.damage
         value += @self.calc.boosts ['power', 'offense', 'glowing', 'vorpal'], @base.damage
         Math.round value
 
+      ##TAG:REDUCTION: minDamage | 1 | self, baseMinDamage | Called when rolling any kind of damage
       minDamage: ->
         @base.minDamage = 1
         maxDamage = @self.calc.damage()
@@ -643,133 +649,165 @@ class Character extends EventEmitter2
       # * @category Equipment Effects
       # * @package Item
       # */`
+      ##TAG:REDUCTION: damageReduction | 0 | self, baseDamageReduction | Called when calculating damage
       damageReduction: ->
-        @base.damageMultiplier = 0
+        @base.damageReduction = 0
         @self.personalityReduce 'damageReduction', [@self, @base.damageReduction], @base.damageReduction
 
+      ##TAG:REDUCTION: damageMultiplier | 1 | self, baseDamageMultiplier | Called when calculating damage
       damageMultiplier: ->
         @base.damageMultiplier = 1
         @self.personalityReduce 'damageMultiplier', [@self, @base.damageMultiplier], @base.damageMultiplier
 
+      ##TAG:REDUCTION: criticalChance | 1+luck+dex/2 | self, baseCriticalChance | Called when attempting to do a critical hit, before calculating damage
       criticalChance: ->
         @base.criticalChance = 1 + ((@self.calc.stats ['luck', 'dex']) / 2)
         value = @self.personalityReduce 'criticalChance', [@self, @base.criticalChance], @base.criticalChance
         value += @self.calc.boosts ['crit'], @base.criticalChance
         value
 
+      ##TAG:REDUCTION: physicalAttackChance | 65 | self, basePhysicalAttackChance | Called when determining whether to do a physical or magical attack at the beginning of the turn
       physicalAttackChance: ->
         @base.physicalAttackChance = 65
         Math.max 0, Math.min 100, @self.personalityReduce 'physicalAttackChance', [@self, @base.physicalAttackChance], @base.physicalAttackChance
 
+      ##TAG:REDUCTION: combatEndXpGain | 0 | self, baseCombatEndXpGain | Called when calculating the base xp gain after combat
       combatEndXpGain: (oppParty) ->
         @base.combatEndXpGain = 0
         @self.personalityReduce 'combatEndXpGain', [@self, oppParty, @base.combatEndXpGain], @base.combatEndXpGain
 
+      ##TAG:REDUCTION: combatEndXpLoss | maxXp/10 | self, baseCombatEndXpLoss | Called when calculating the base xp loss after combat
       combatEndXpLoss: ->
         @base.combatEndXpLoss = Math.floor @self.xp.maximum / 10
         @self.personalityReduce 'combatEndXpLoss', [@self, @base.combatEndXpLoss], @base.combatEndXpLoss
 
+      ##TAG:REDUCTION: combatEndGoldGain | 0 | self, baseCombatEndGoldGain | Called when calculating the base gold gain after combat
       combatEndGoldGain: (oppParty) ->
         @base.combatEndGoldGain = 0
         @self.personalityReduce 'combatEndGoldGain', [@self, oppParty, @base.combatEndGoldGain], @base.combatEndGoldGain
 
+      ##TAG:REDUCTION: combatEndXpLoss | gold/100 | self, baseCombatEndGoldLoss | Called when calculating the base gold loss after combat
       combatEndGoldLoss: ->
         @base.combatEndGoldLoss = Math.floor @self.gold.getValue() / 100
         @self.personalityReduce 'combatEndGoldLoss', [@self, @base.combatEndGoldLoss], @base.combatEndGoldLoss
 
+      ##TAG:REDUCTION: itemFindRange | (level+1)*itemFindRangeMultiplier | self, baseItemFindRange | Called when a player finds or attempts to equip a new item
       itemFindRange: ->
         baseRange = (@self.level.getValue()+1) * Constants.defaults.player.defaultItemFindModifier
         @base.itemFindRange = baseRange * @self.calc.itemFindRangeMultiplier()
         @base._upperlimitItemFindRange = baseRange * @base.itemFindRangeMultiplier
         @self.personalityReduce 'itemFindRange', [@self, @base.itemFindRange], @base.itemFindRange
 
+      ##TAG:REDUCTION: itemFindRangeMultiplier | 1+(0.2*level/10) | self, baseItemFindRangeMultiplier | Called when a player finds or attempts to equip a new item
       itemFindRangeMultiplier: ->
         @base.itemFindRangeMultiplier = 1 + (0.2 * Math.floor @self.level.getValue()/10)
         @self.personalityReduce 'itemFindRangeMultiplier', [@self, @base.itemFindRangeMultiplier], @base.itemFindRangeMultiplier
 
+      ##TAG:REDUCTION: itemScore | item.score() | self, item, baseItemScore | Called when checking the score of a new-found item
       itemScore: (item) ->
         if not item?.score and not item?._calcScore then @self.playerManager.game.errorHandler.captureError (new Error "Bad item for itemScore calculation"), extra: item
         baseValue = item?.score?() or item?._calcScore or 0
         (Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue) + @self.itemPriority item
 
+      ##TAG:REDUCTION: totalItemScore | all item scores | none | Called when calculating the score of a party
       totalItemScore: ->
         _.reduce @self.equipment, ((prev, item) =>
           if not item?.score and not item?._calcScore then @self.playerManager.game.errorHandler.captureError (new Error "Bad item for totalItemScore calculation"), extra: item
           prev+(item?.score?() or item?._calcScore or 0)
         ), 0
 
+      ##TAG:REDUCTION: itemReplaceChancePercent | 100 | self, baseItemReplaceChancePercent | Called when seeing if the player will swap items
       itemReplaceChancePercent: ->
         @base.itemReplaceChancePercent = 100
         Math.max 0, Math.min 100, @self.personalityReduce 'itemReplaceChancePercent', [@self, @base.itemReplaceChancePercent], @base.itemReplaceChancePercent
 
+      ##TAG:REDUCTION: eventFumble | 25 | self, baseEventFumblePercent | Called when determining if an event should fumble. Most event fumbles mean the difference between a % boost and a static number boost.
       eventFumble: ->
         @base.eventFumble = 25
         @self.personalityReduce 'eventFumble', [@self, @base.eventFumble], @base.eventFumble
 
+      ##TAG:REDUCTION: eventModifier | 0 | self, eventObject, baseEventModifier | Called before doing any kind of event so the probability can be adjusted
       eventModifier: (event) ->
         @base.eventModifier = 0
-        @self.personalityReduce 'eventModifier', [@self, event, @base.eventModifier], 0
+        @self.personalityReduce 'eventModifier', [@self, event, @base.eventModifier], @base.eventModifier
 
+      ##TAG:REDUCTION: skillCrit | 1 | self, spellObject, baseSkillCrit | Called when casting any spell to see if it should be modified
       skillCrit: (spell) ->
         @base.skillCrit = 1
         @self.personalityReduce 'skillCrit', [@self, spell, @base.skillCrit], @base.skillCrit
 
+      ##TAG:REDUCTION: itemSellMultiplier | 0.05 (5%) | self, item, baseItemSellMultiplier | Called when selling an item
       itemSellMultiplier: (item) ->
         @base.itemSellMultiplier = 0.05
         @self.personalityReduce 'itemSellMultiplier', [@self, item, @base.itemSellMultiplier], @base.itemSellMultiplier
 
+      ##TAG:REDUCTION: damageTaken | 0 | self, attacker, damageTotal, skillType, spellObject, reductionType | Called when any damage is taken
       damageTaken: (attacker, damage, skillType, spell, reductionType) ->
         baseValue = 0
         @self.personalityReduce 'damageTaken', [@self, attacker, damage, skillType, spell, reductionType], baseValue
 
+      ##TAG:REDUCTION: cantAct | 0 | self, baseCantAct | Called when a spell stops a players turn
       cantAct: ->
         baseValue = 0
         @self.personalityReduce 'cantAct', [@self, baseValue], baseValue
 
+      ##TAG:REDUCTION: cantActMessages | [] | self, baseCantActMessages | Called when a spell stops a players turn
       cantActMessages: ->
         baseValue = []
         @self.personalityReduce 'cantActMessages', [@self, baseValue], baseValue
 
+      ##TAG:REDUCTION: luckBonus | varies | self, baseLuckBonus
+      # for actual derivation of luckBonus, see function calcLuckBonusFromValue above | Called when the RNG is generating items or modifying skills
       luckBonus: ->
         @baseValue = @self.calcLuckBonusFromValue @self.calc.stat 'luck'
         @self.personalityReduce 'luckBonus', [@self, @baseValue], @baseValue
 
+      ##TAG:REDUCTION: fleePercent | 0.1 (0.1%) | self, baseFleePercent | Called every turn in combat before other actions
       fleePercent: ->
         @base.fleePercent = 0.1
         Math.max 0, Math.min 100, @self.personalityReduce 'fleePercent', [@self, @base.fleePercent], @base.fleePercent
 
+      ##TAG:REDUCTION: partyLeavePercent | 0.1 (0.1%, constant) | self, basePartyLeavePercent | Called every step on the map
       partyLeavePercent: ->
         @base.partyLeavePercent = Constants.defaults.player.defaultPartyLeavePercent
         Math.max 0, Math.min 100, @self.personalityReduce 'partyLeavePercent', [@self, @base.partyLeavePercent], @base.partyLeavePercent
 
+      ##TAG:REDUCTION: classChangePercent | 100 | self, potentialNewClass, baseClassChangePercent | Called every time a player meets with a trainer
       classChangePercent: (potential) ->
         @base.classChangePercent = 100
         Math.max 0, Math.min 100, @self.personalityReduce 'classChangePercent', [@self, potential, @base.classChangePercent], @base.classChangePercent
 
+      ##TAG:REDUCTION: alignment | 0 | self, baseAlignment | Called mostly by the calendar to determine alignment-specific day boosts/reductions
       alignment: ->
         @base.alignment = 0
         Math.max -10, Math.min 10, @self.personalityReduce 'alignment', [@self, @base.alignment], @base.alignment
 
+      ##TAG:REDUCTION: ascendChance | 100 | self, baseAscendChance | Called when stepping on stairs up
       ascendChance: ->
         @base.ascendChance = 100
         Math.max 0, Math.min 100, @self.personalityReduce 'ascendChance', [@self, @base.ascendChance], @base.ascendChance
 
+      ##TAG:REDUCTION: descendChance | 100 | self, baseDescendChance | Called when stepping on stairs down
       descendChance: ->
         @base.descendChance = 100
         Math.max 0, Math.min 100, @self.personalityReduce 'descendChance', [@self, @base.descendChance], @base.descendChance
 
+      ##TAG:REDUCTION: teleportChance | 100 | self, baseTeleportChance | Called when stepping on a non-guild teleport
       teleportChance: ->
         @base.teleportChance = 100
         Math.max 0, Math.min 100, @self.personalityReduce 'teleportChance', [@self, @base.teleportChance], @base.teleportChance
 
+      ##TAG:REDUCTION: fallChance | 100 | self, baseFallChance | Called when stepping on a hole
       fallChance: ->
         @base.fallChance = 100
         Math.max 0, Math.min 100, @self.personalityReduce 'fallChance', [@self, @base.fallChance], @base.fallChance
 
+      ##TAG:REDUCTION: physicalAttackTargets | allEnemies | self, allEnemies, allCombatMembers | Called when making a physical attack to attempt to determine a better target
       physicalAttackTargets: (allEnemies, allCombatMembers) ->
         allEnemies = {probability: 100, result: allEnemies} if _.isArray allEnemies
         (@self.probabilityReduce 'physicalAttackTargets', [@self, allEnemies, allCombatMembers], allEnemies).result
 
+      ##TAG:REDUCTION: magicalAttackTargets | allEnemies | self, allEnemies, allCombatMembers | Called when making a magical attack to attempt to determine a better target
       magicalAttackTargets: (allEnemies, allCombatMembers) ->
         allEnemies = {probability: 100, result: allEnemies} if _.isArray allEnemies
         (@self.probabilityReduce 'magicalAttackTargets', [@self, allEnemies, allCombatMembers], allEnemies).result
