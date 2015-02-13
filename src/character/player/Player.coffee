@@ -791,6 +791,7 @@ class Player extends Character
 
   setString: (type, val = '') ->
     @messages = {} if not @messages
+    type = convenienceFunctions.sanitizeStringNoPunctuation type
     @messages[type] = convenienceFunctions.sanitizeString val.substring 0, 99
     if not @messages[type]
       delete @messages[type]

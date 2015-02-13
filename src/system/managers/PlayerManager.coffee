@@ -238,7 +238,7 @@ class PlayerManager
 
   registerPlayer: (options) ->
 
-    options.name = convenienceFunctions.sanitizeString options.name?.trim()
+    options.name = convenienceFunctions.sanitizeStringNoPunctuation options.name?.trim()
 
     return Q {isSuccess: no, code: 6, message: "You need a name for your character!"} unless options.name
     return Q {isSuccess: no, code: 2, message: "You have to make your name above 2 characters!"} if options.name.length < 2
