@@ -83,6 +83,16 @@ docs = [
       0
     ]
   }
+  {
+    key: 'REDUCTION',
+    tags: ['REDUCTION']
+    headers: [
+      ['Reduction', 'Base Value', 'Arguments Passed', 'Description']
+    ]
+    sortIndexes: [
+      0
+    ]
+  }
 ]
 
 _.each docs, (doc, i) -> new Markdoc doc, files
