@@ -23,6 +23,7 @@ class Guild
     @buildingLevelCosts = {}
     @buildingProps = {}
     @taxPercent = 0
+    @initGold()
     @resetBuildings()
 
   resetBuildings: ->
