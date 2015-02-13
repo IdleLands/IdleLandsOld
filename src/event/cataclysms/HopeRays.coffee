@@ -11,6 +11,8 @@ _ = require "lodash"
 */`
 class HopeRays extends Cataclysm
   constructor: (game) ->
+
+    ##TAG:EVENT_EVENT: cataclysm.hoperays | cataclysm | Emitted when a player is affected by the hoperays cataclysm
     super game, "hoperays"
 
   go: ->

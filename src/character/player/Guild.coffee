@@ -125,6 +125,8 @@ class Guild
 
   collectTax: (player, gold) ->
     @addGold gold
+
+    ##TAG:EVENT_PLAYER: gold.guildTax   | guildName, goldTaxed | Emitted when a guild collects tax from a member
     player.emit "player.gold.guildTax", @name, gold
 
   getGuildBaseName: ->

@@ -11,6 +11,8 @@ _ = require "lodash"
 */`
 class HatredWave extends Cataclysm
   constructor: (game) ->
+
+    ##TAG:EVENT_EVENT: cataclysm.hatredwave | cataclysm | Emitted when a player is affected by the hatredwave cataclysm
     super game, "hatredwave"
 
   go: ->

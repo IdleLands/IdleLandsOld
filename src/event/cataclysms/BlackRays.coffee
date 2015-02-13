@@ -11,6 +11,8 @@ _ = require "lodash"
 */`
 class BlackRays extends Cataclysm
   constructor: (game) ->
+
+    ##TAG:EVENT_EVENT: cataclysm.blackrays | cataclysm | Emitted when a player is affected by the blackrays cataclysm
     super game, "blackrays"
 
   go: ->

@@ -84,6 +84,7 @@ class ProvidenceEvent extends Event
 
     @game.eventHandler.broadcastEvent {message: message, player: @player, type: 'item-switcheroo'}
 
+    ##TAG:EVENT_EVENT: providence | player | Emitted when a player gets really unlucky
     @player.emit "event.providence", @player
 
 module.exports = exports = ProvidenceEvent

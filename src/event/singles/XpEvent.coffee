@@ -37,6 +37,8 @@ class XpEvent extends Event
 
     @player.gainXp boost
 
+    ##TAG:EVENT_EVENT: blessXp   | player, {xp, realXp, percentXp} | Emitted when a player gets some free xp
+    ##TAG:EVENT_EVENT: forsakeXp | player, {xp, realXp, percentXp} | Emitted when a player loses xp
     @player.emit "event.#{@event.type}", @player, extra
 
 module.exports = exports = XpEvent

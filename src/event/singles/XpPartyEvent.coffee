@@ -39,6 +39,8 @@ class XpPartyEvent extends Event
         realXp: boost
         percentXp: +(boost/member.xp.maximum*100).toFixed 3
 
+      ##TAG:EVENT_EVENT: blessXpParty   | player, {xp, realXp, percentXp} | Emitted when a player gets some free xp while in a party
+      ##TAG:EVENT_EVENT: forsakeXpParty | player, {xp, realXp, percentXp} | Emitted when a player loses xp while in a party
       member.emit "event.#{@event.type}", member, extra
 
       if @event.type is "blessXpParty"
