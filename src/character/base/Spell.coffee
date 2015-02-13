@@ -183,14 +183,14 @@ class Spell
 
       @baseTurns[player.name] = @turns[player.name] = turns[player.name] = @calcDuration player
 
-      ##TAG:EVENT_COMBAT: skill.use  | caster, player, {skill} | Emitted by the caster of the skill
-      ##TAG:EVENT_COMBAT: skill.used | caster, player, {skill} | Emitted by the recipient of the skill used
+      ##TAG:EVENT_COMBAT: [sea].skill.use  | caster, player, {skill} | Emitted by the caster of the skill
+      ##TAG:EVENT_COMBAT: [sea].skill.used | caster, player, {skill} | Emitted by the recipient of the skill used
       battleInstance.emitEvents "skill.use", "skill.used", @caster, player, skill: @
 
-      ##TAG:EVENT_COMBAT: skill.physical.use  | caster, player, {skill} | Emitted by the caster of the skill (if the skill is physical)
-      ##TAG:EVENT_COMBAT: skill.physical.used | caster, player, {skill} | Emitted by the recipient of the skill used (if the skill is physical)
-      ##TAG:EVENT_COMBAT: skill.magical.use   | caster, player, {skill} | Emitted by the caster of the skill (if the skill is magical)
-      ##TAG:EVENT_COMBAT: skill.magical.used  | caster, player, {skill} | Emitted by the recipient of the skill used (if the skill is magical)
+      ##TAG:EVENT_COMBAT: [sea].skill.physical.use  | caster, player, {skill} | Emitted by the caster of the skill (if the skill is physical)
+      ##TAG:EVENT_COMBAT: [sea].skill.physical.used | caster, player, {skill} | Emitted by the recipient of the skill used (if the skill is physical)
+      ##TAG:EVENT_COMBAT: [sea].skill.magical.use   | caster, player, {skill} | Emitted by the caster of the skill (if the skill is magical)
+      ##TAG:EVENT_COMBAT: [sea].skill.magical.used  | caster, player, {skill} | Emitted by the recipient of the skill used (if the skill is magical)
       battleInstance.emitEvents "skill.#{@determineType()}.use", "skill.#{@determineType()}.used", @caster, player, skill: @
 
       if turns[player.name] is 0
@@ -204,8 +204,8 @@ class Spell
           oldSpell.suppressed = yes
           oldSpell.unaffect player
 
-          ##TAG:EVENT_COMBAT: skill.duration.refresh   | caster, player, {skill, turns} | Emitted by the caster of the refreshed skill
-          ##TAG:EVENT_COMBAT: skill.duration.refreshed | caster, player, {skill, turns} | Emitted by the recipient of the refreshed skill
+          ##TAG:EVENT_COMBAT: [sea].skill.duration.refresh   | caster, player, {skill, turns} | Emitted by the caster of the refreshed skill
+          ##TAG:EVENT_COMBAT: [sea].skill.duration.refreshed | caster, player, {skill, turns} | Emitted by the recipient of the refreshed skill
           battleInstance.emitEvents "skill.duration.refresh", "skill.duration.refreshed", @caster, player, skill: @, turns: @turns
           ##
 
@@ -213,8 +213,8 @@ class Spell
           player?.spellsAffectedBy = [] if not _.isArray player?.spellsAffectedBy
           player?.spellsAffectedBy.push @ # got an error here once
 
-          ##TAG:EVENT_COMBAT: skill.duration.begin   | caster, player, {skill, turns} | Emitted by the caster of the over-time skill
-          ##TAG:EVENT_COMBAT: skill.duration.beginAt | caster, player, {skill, turns} | Emitted by the recipient of the over-time skill
+          ##TAG:EVENT_COMBAT: [sea].skill.duration.begin   | caster, player, {skill, turns} | Emitted by the caster of the over-time skill
+          ##TAG:EVENT_COMBAT: [sea].skill.duration.beginAt | caster, player, {skill, turns} | Emitted by the recipient of the over-time skill
           battleInstance.emitEvents "skill.duration.begin", "skill.duration.beginAt", @caster, player, skill: @, turns: @turns
 
           @eventList = _.keys _.omit @bindings, 'doSpellCast', 'doSpellUncast', 'doSpellInit'
@@ -246,8 +246,8 @@ class Spell
 
     (@bindings.doSpellUncast.apply @, [player]) if 'doSpellUncast' of @bindings
 
-    ##TAG:EVENT_COMBAT: skill.duration.end   | caster, player | Emitted by the caster of the ended skill
-    ##TAG:EVENT_COMBAT: skill.duration.endAt | caster, player | Emitted by the recipient of the ended skill
+    ##TAG:EVENT_COMBAT: [sea].skill.duration.end   | caster, player | Emitted by the caster of the ended skill
+    ##TAG:EVENT_COMBAT: [sea].skill.duration.endAt | caster, player | Emitted by the recipient of the ended skill
     @caster.party?.currentBattle?.emitEvents "skill.duration.end", "skill.duration.endAt", @caster, player, skill: @
 
   broadcastBuffMessage: (target, message) ->
