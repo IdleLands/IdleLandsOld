@@ -8,6 +8,7 @@ MessageCreator = require "./../handlers/MessageCreator"
 Constants = require "./../utilities/Constants"
 requireDir = require "require-dir"
 guildBuffs = requireDir "../../character/guildBuffs", recurse: yes
+convenienceFunctions = require "../../system/utilities/ConvenienceFunctions"
 
 class GuildManager
 
@@ -35,7 +36,7 @@ class GuildManager
     defer = Q.defer()
     player = @game.playerManager.getPlayerById identifier
 
-    cleanedName = name.trim()
+    cleanedName = convenienceFunctions.sanitizeStringNoPunctuation name.trim()
 
     return Q {isSuccess: no, code: 51, message: "That player does not exist!"} if not player
     return Q {isSuccess: no, code: 53, message: "You're already in a guild (#{player.guild})!"} if player.guild
