@@ -9,6 +9,7 @@ Q = require "q"
 Personality = require "../base/Personality"
 requireDir = require "require-dir"
 regions = requireDir "../regions"
+convenienceFunctions = require "../../system/utilities/ConvenienceFunctions"
 
 PushBullet = require "pushbullet"
 
@@ -475,7 +476,7 @@ class Player extends Character
     if @gender then @gender else "female"
 
   setGender: (newGender) ->
-    @gender = newGender.substring 0,15
+    @gender = convenienceFunctions.sanitizeString newGender.substring 0,15
     @gender = 'indeterminate' if not @gender
     Q {isSuccess: yes, code: 97, message: "Your gender is now #{@gender}."}
 
@@ -790,11 +791,11 @@ class Player extends Character
 
   setString: (type, val = '') ->
     @messages = {} if not @messages
-    @messages[type] = val.substring 0, 99
+    @messages[type] = convenienceFunctions.sanitizeString val.substring 0, 99
     if not @messages[type]
       delete @messages[type]
       return Q {isSuccess: yes, code: 95, message: "Successfully updated your string settings. Removed string type \"#{type}.\""}
-    Q {isSuccess: yes, code: 95, message: "Successfully updated your string settings. String \"#{type}\" is now: #{if val then val else 'empty!'}"}
+    Q {isSuccess: yes, code: 95, message: "Successfully updated your string settings. String \"#{type}\" is now: #{if val then @messages[type] else 'empty!'}"}
 
   checkAchievements: (silent = no) ->
     @_oldAchievements = _.clone @achievements
