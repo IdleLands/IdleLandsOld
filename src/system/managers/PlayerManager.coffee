@@ -410,6 +410,9 @@ class PlayerManager
     player.statistics = {} if not player.statistics
     player.permanentAchievements = {} if not player.permanentAchievements
 
+    player.on "explore.walk.void", (player) =>
+      @game.errorHandler.captureException (new Error "Player is walking on the void!"), {player: player.name, map: player.map, x: player.x, y: player.y}
+
     player.on "combat.self.kill", (defender) ->
       player.playerManager.game.battle?.broadcast "#{player.getName()}: #{player.messages.kill}" if player.messages?.kill
       return if not defender or defender.isMonster
