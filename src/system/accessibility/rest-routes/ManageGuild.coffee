@@ -77,7 +77,7 @@ router
   API.player.guild.tax.whole identifier, taxPercent
   .then (resp) -> res.json resp
 
-## TAG:APIROUTE: POST | /player/manage/tax | {identifier, taxPercent, token} | {player}
+## TAG:APIROUTE: POST | /player/manage/tax | {identifier, taxPercent, token} | {guild}
 .post "/player/manage/tax", hasValidToken, (req, res) ->
   {identifier, taxPercent} = req.body
   API.player.guild.tax.self identifier, taxPercent
@@ -85,22 +85,28 @@ router
 
 # Base / Buildings
 
-## TAG:APIROUTE: PUT | /guild/building/construct | {identifier, building, slot, token} | {player}
+## TAG:APIROUTE: PUT | /guild/building/construct | {identifier, building, slot, token} | {guild}
 .put "/guild/building/construct", hasValidToken, (req, res) ->
   {identifier, building, slot} = req.body
   API.player.guild.construct identifier, building, slot
   .then (resp) -> res.json resp
 
-## TAG:APIROUTE: POST | /guild/building/upgrade | {identifier, building, token} | {player}
+## TAG:APIROUTE: POST | /guild/building/upgrade | {identifier, building, token} | {guild}
 .post "/guild/building/upgrade", hasValidToken, (req, res) ->
   {identifier, building} = req.body
   API.player.guild.upgrade identifier, building
   .then (resp) -> res.json resp
 
-## TAG:APIROUTE: PUT | /guild/move | {identifier, newLoc, token} | {player}
+## TAG:APIROUTE: PUT | /guild/move | {identifier, newLoc, token} | {guild}
 .put "/guild/move", hasValidToken, (req, res) ->
   {identifier, newLoc} = req.body
   API.player.guild.move identifier, newLoc
+  .then (resp) -> res.json resp
+
+## TAG:APIROUTE: PATCH | /guild/changeLeader | {identifier, newLeaderName} | {guild}
+.patch "/guild/changeLeader", hasValidToken, (req, res) ->
+  {identifier, newLeaderName} = req.body
+  API.player.guild.changeLeader identifier, newLeaderName
   .then (resp) -> res.json resp
 
 module.exports = router

@@ -147,6 +147,24 @@ class Guild
         inst = base.instances[size][i] = new (require "../../map/guild-buildings/#{building}") @guildManager.game, @
         base.build building, size, i, inst
 
+  changeLeader: (identifier, newLeaderName) ->
+    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+
+    me = @guildManager.game.playerManager.getPlayerById identifier
+    targetPlayer = @guildManager.game.playerManager.getPlayerByName newLeaderName
+    return Q {isSuccess: no, code: 951, message: "That member is not online!"} unless targetPlayer
+    return Q {isSuccess: no, code: 952, message: "That member is not in your guild!"} unless targetPlayer.guild is me.guild
+
+    @leader = targetPlayer.identifier
+    targetPlayer.guildStatus = 2
+    me.guildStatus = 1
+    meEntry = _.findWhere @members, {identifier: identifier}
+    meEntry.isAdmin = yes
+
+    @save()
+
+    Q {isSuccess: yes, code: 953, message: "Successfully changed leadership to #{newLeaderName}!", guild: @buildSaveObject()}
+
   _upgrade: (building) ->
     @buildingLevels[building]++
     @save()
