@@ -97,6 +97,7 @@ class GuildManager
 
         guild.buildBase()
 
+        guild.initGold() unless guild.gold
         guild.gold.__current = 0 if _.isNaN guild.gold.__current
         guild.gold.__proto__ = RestrictedNumber.prototype
 
@@ -166,11 +167,11 @@ class GuildManager
     ret
 
   checkAdmin: (playerName, guildName = @game.playerManager.getPlayerByName(playerName).guild) ->
-    return false if not guildName
+    return false unless guildName
     (@findMember playerName, guildName)?.isAdmin
 
   findMember: (playerName, guildName) ->
-    return false if not @guildHash[guildName]
+    return false unless @guildHash[guildName]
     _.findWhere @guildHash[guildName].members, {name: playerName}
 
   getGuildByName: (guildName) ->
@@ -182,7 +183,7 @@ class GuildManager
   leaveGuild: (identifier) ->
     player = @game.playerManager.getPlayerById identifier
 
-    return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} if not player.guild
+    return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} unless player.guild
 
     if player.identifier is @guildHash[player.guild].leader
       return @disband player.identifier
@@ -192,9 +193,9 @@ class GuildManager
 
   kickPlayer: (adminId, playerName) ->
     admin = @game.playerManager.getPlayerById adminId
-    return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} if not admin.guild
-    return Q {isSuccess: no, code: 61, message: "You aren't a guild administrator!"} if not @checkAdmin admin.name
-    return Q {isSuccess: no, code: 61, message: "That player isn't in your guild!"} if not @findMember playerName, admin.guild
+    return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} unless admin.guild
+    return Q {isSuccess: no, code: 61, message: "You aren't a guild administrator!"} unless @checkAdmin admin.name
+    return Q {isSuccess: no, code: 61, message: "That player isn't in your guild!"} unless @findMember playerName, admin.guild
     return Q {isSuccess: no, code: 66, message: "You can't kick another administrator!"} if @checkAdmin playerName, admin.guild
 
     guild = @guildHash[admin.guild]
@@ -233,18 +234,18 @@ class GuildManager
 
   checkBuffs: ->
     for guild in @guilds
-      guild.buffs = [] if not guild.buffs
+      guild.buffs = [] unless guild.buffs
       guild.buffs = _.reject guild.buffs, ((buff) -> buff.expire < Date.now())
 
   addBuff: (identifier, type, tier) ->
     player = @game.playerManager.getPlayerById identifier
 
-    return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} if not player.guild
-    return Q {isSuccess: no, code: 61, message: "You aren't a guild admin!"} if not @checkAdmin player.name
+    return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} unless player.guild
+    return Q {isSuccess: no, code: 61, message: "You aren't a guild administrator!"} unless @checkAdmin player.name, player.guild
     typeString = "Guild#{type}"
 
-    return Q {isSuccess: no, code: 150, message: "That is not a valid guild buff type!"} if not guildBuffs[typeString]
-    return Q {isSuccess: no, code: 151, message: "That is not a valid tier!"} if not guildBuffs[typeString].tiers[tier]
+    return Q {isSuccess: no, code: 150, message: "That is not a valid guild buff type!"} unless guildBuffs[typeString]
+    return Q {isSuccess: no, code: 151, message: "That is not a valid tier!"} unless guildBuffs[typeString].tiers[tier]
     guild = @guildHash[player.guild]
 
     tierLevel = guildBuffs[typeString].tiers[tier].level
@@ -252,7 +253,6 @@ class GuildManager
     tierGold = guildBuffs[typeString].tiers[tier].cost
     return Q {isSuccess: no, code: 152, message: "Your guild is not a high enough level! It needs to be level #{tierLevel} first!"} if tierLevel > guild.level
     return Q {isSuccess: no, code: 153, message: "Your guild does not have enough members! You need #{tierMembers} members!"} if tierMembers > guild.members.length
-
     return Q {isSuccess: no, code: 56, message: "Your guild does not have enough gold! You need #{tierGold} gold!"} if tierGold > guild.gold.getValue()
 
     guild.subGold guildBuffs[typeString].tiers[tier].cost
