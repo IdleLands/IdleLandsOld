@@ -40,6 +40,8 @@ class GoldPartyEvent extends Event
 
       member.gainGold boost
 
+      ##TAG:EVENT_EVENT: blessGoldParty   | player, {gold, realGold} | Emitted when a player gets free money while in a party
+      ##TAG:EVENT_EVENT: forsakeGoldParty | player, {gold, realGold} | Emitted when a player gets loses money while in a party
       member.emit "event.#{@event.type}", member, extra
 
       if @event.type is "blessGoldParty"

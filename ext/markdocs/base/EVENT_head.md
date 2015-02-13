@@ -1,0 +1,5 @@
+Events are the driving force behind IdleLands. They can happen in or outside of combat. These can be bound to by a `Class`, `Personality`, or a `Spell`, but take note that any spell effects binding to a duration are removed when battle is exited, and any events bound to by a personality should be removed as well.
+
+The domain below implies the first part of the event. For example, in the Player domain, the `party.join` event should be watched for as `player.party.join`.
+
+Any event in the `combat` domain can optionally take on some other forms `self`, `ally`, or `enemy`. Some events are emitted to all players, and the side will be determined automatically, ie, `combat.self.turn.end`. Self is emitted to the target of the action, ally is emitted to the party members of self, and enemy is emitted to everyone else. Events that follow this format will be denoted `[sea]`.

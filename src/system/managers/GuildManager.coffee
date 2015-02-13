@@ -290,6 +290,7 @@ class GuildManager
     player.gold.sub gold
     guild.save()
 
+    ##TAG:EVENT_PLAYER: gold.guildDonation | guild.name, gold | Emitted when a player willingly donates gold to their guild
     player.emit "player.gold.guildDonation", guild.name, gold
 
     Q player.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 157, message: "You have donated #{gold} gold to \"#{guild.name}.\""}

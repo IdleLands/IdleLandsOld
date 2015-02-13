@@ -11,6 +11,8 @@ _ = require "lodash"
 */`
 class SkyShinesBright extends Cataclysm
   constructor: (game) ->
+
+    ##TAG:EVENT_EVENT: cataclysm.skybrightshine | cataclysm | Emitted when a player is affected by the skybrightshine cataclysm
     super game, "skybrightshine"
 
   go: ->

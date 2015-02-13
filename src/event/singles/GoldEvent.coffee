@@ -32,6 +32,8 @@ class GoldEvent extends Event
 
     @player.gainGold boost
 
+    ##TAG:EVENT_EVENT: blessGold   | player, {gold, realGold} | Emitted when a player gets free money
+    ##TAG:EVENT_EVENT: forsakeGold | player, {gold, realGold} | Emitted when a player gets loses money
     @player.emit "event.#{@event.type}", @player, extra
 
     message = @event.remark + " [%realGold gold]"

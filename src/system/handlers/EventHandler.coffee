@@ -219,6 +219,8 @@ class EventHandler
     totalString = "#{messageString} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (#{normalizedPerceivedScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
     
     @broadcastEvent {message: totalString, player: player, extra: extra, type: 'item-find'}
+
+    ##TAG:EVENT_EVENT: findItem | player, item | Emitted when a player finds an item on the ground
     player.emit "event.findItem", player, item
 
   tryToEquipItem: (event, player, item) ->
@@ -233,6 +235,8 @@ class EventHandler
       multiplier = player.calc.itemSellMultiplier item
       value = Math.floor item.score() * multiplier
       player.gainGold value
+
+      ##TAG:EVENT_PLAYER: sellItem | player, item, value | Emitted when a player sells an item
       player.emit "player.sellItem", player, item, value
 
 module.exports = exports = EventHandler

@@ -93,6 +93,22 @@ docs = [
       0
     ]
   }
+  {
+    key: 'EVENT',
+    tags: ['EVENT_PLAYER', 'EVENT_EVENT', 'EVENT_EXPLORE', 'EVENT_COMBAT']
+    headers: [
+      ['Player Emit', 'Arguments Passed', 'Description']
+      ['Event Emit', 'Arguments Passed', 'Description']
+      ['Explore Emit', 'Arguments Passed', 'Description']
+      ['Combat Emit', 'Arguments Passed', 'Description']
+    ]
+    sortIndexes: [
+      0
+      0
+      0
+      0
+    ]
+  }
 ]
 
 _.each docs, (doc, i) -> new Markdoc doc, files

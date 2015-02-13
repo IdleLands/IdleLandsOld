@@ -92,6 +92,7 @@ class Player extends Character
     @gold.sub newLoc.cost
     message = "<player.name>#{@getName()}</player.name> took a one way trip on the Wind Express and got dropped off at <event.transfer.destination>#{newLoc.formalName}</event.transfer.destination>!"
 
+    ##TAG:EVENT_EXPLORE: transfer.manualWarp | player, newMap | Emitted when a player warps somewhere manually
     @emit "explore.transfer.manualWarp", @, @map
 
     @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'explore'}
@@ -214,7 +215,9 @@ class Player extends Character
     message = "<player.name>#{@name}</player.name> has met with <player.name>#{trainerName}</player.name>, the <player.class>#{className}</player.class> trainer!"
     if @professionName is className
       message += " Alas, <player.name>#{@name}</player.name> is already a <player.class>#{className}</player.class>!"
-      @isBusy = false
+      @isBusy =
+
+      ##TAG:EVENT_PLAYER: trainer.isAlready | player, newClass | Emitted when a player talks to a trainer but is already a class
       @emit "player.trainer.isAlready", @, className
       @stepCooldown = 10
 
@@ -224,9 +227,12 @@ class Player extends Character
       @playerManager.game.eventHandler.doYesNo {}, @, (result) =>
         @isBusy = false
         if not result
+
+          ##TAG:EVENT_PLAYER: trainer.ignore | player, newClass | Emitted when a player talks to a trainer but didn't change classes
           @emit "player.trainer.ignore", @, className
           return
 
+        ##TAG:EVENT_PLAYER: trainer.speak | player, newClass | Emitted when a player talks to a trainer and changed classes
         @emit "player.trainer.speak", @, className
         @changeProfession className
 
@@ -295,7 +301,13 @@ class Player extends Character
     if dest.customMessage
       message = dest.customMessage.split("%playerName").join("<player.name>#{@name}</player.name>").split("%destName").join("<event.transfer.destination>#{dest.destName}</event.transfer.destination>")
 
+    ##TAG:EVENT_EXPLORE: transfer | player, newMap | Emitted when a player changes maps
     @emit "explore.transfer", @, @map
+
+    ##TAG:EVENT_EXPLORE: transfer.fall     | player, newMap | Emitted when a player changes maps via falling
+    ##TAG:EVENT_EXPLORE: transfer.ascend   | player, newMap | Emitted when a player changes maps via ascending
+    ##TAG:EVENT_EXPLORE: transfer.descend  | player, newMap | Emitted when a player changes maps via descending
+    ##TAG:EVENT_EXPLORE: transfer.teleport | player, newMap | Emitted when a player changes maps via teleporting
     @emit "explore.transfer.#{dest.movementType}", @, @map
 
     @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'explore'}
@@ -327,6 +339,8 @@ class Player extends Character
     [@map, @x, @y] = [baseName, base.startLoc[0], base.startLoc[1]]
 
     @emit "explore.transfer", @, @map
+
+    ##TAG:EVENT_EXPLORE: transfer.guildTeleport | player, newMap | Emitted when a player goes to their guild hall
     @emit "explore.transfer.guildTeleport", @, @map
 
     @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'explore'}
@@ -434,12 +448,28 @@ class Player extends Character
         @lastDir = null
         @ignoreDir.push dir
 
+        ##TAG:EVENT_EXPLORE: hit.wall | player | Emitted when a player hits a wall
         @emit 'explore.hit.wall', @
 
       @oldRegion = @mapRegion
       @mapRegion = tile.region
 
+      ##TAG:EVENT_EXPLORE: walk | player | Emitted when a player takes a step
       @emit 'explore.walk', @
+
+      ##TAG:EVENT_EXPLORE: walk.grass  | player | Emitted when a player takes a step on grass
+      ##TAG:EVENT_EXPLORE: walk.water  | player | Emitted when a player takes a step on water
+      ##TAG:EVENT_EXPLORE: walk.dirt   | player | Emitted when a player takes a step on dirt
+      ##TAG:EVENT_EXPLORE: walk.gravel | player | Emitted when a player takes a step on gravel
+      ##TAG:EVENT_EXPLORE: walk.carpet | player | Emitted when a player takes a step on carpet
+      ##TAG:EVENT_EXPLORE: walk.sand   | player | Emitted when a player takes a step on sand
+      ##TAG:EVENT_EXPLORE: walk.snow   | player | Emitted when a player takes a step on snow
+      ##TAG:EVENT_EXPLORE: walk.swamp  | player | Emitted when a player takes a step on swamp
+      ##TAG:EVENT_EXPLORE: walk.ice    | player | Emitted when a player takes a step on ice
+      ##TAG:EVENT_EXPLORE: walk.lava   | player | Emitted when a player takes a step on lava
+      ##TAG:EVENT_EXPLORE: walk.tile   | player | Emitted when a player takes a step on tile
+      ##TAG:EVENT_EXPLORE: walk.wood   | player | Emitted when a player takes a step on wood
+      ##TAG:EVENT_EXPLORE: walk.void   | player | Emitted when a player takes a step on the void (aka, off the map)
       @emit "explore.walk.#{tile.terrain or "void"}".toLowerCase(), @
 
       @playerManager.game.errorHandler.captureException (new Error "INVALID TILE"), extra: x: @x, y: @y, map: @map, tile: tile if not tile.terrain and not tile.blocked
@@ -467,6 +497,7 @@ class Player extends Character
 
     @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'profession'} if not suppress
 
+    ##TAG:EVENT_PLAYER: profession.change | player, oldClass, newClass | Emitted when a player changes class
     @emit "player.profession.change", @, oldProfessionName, @professionName
 
     @recalculateStats()
@@ -506,6 +537,8 @@ class Player extends Character
     resolved = Q @getExtraDataForREST {player: yes}, {isSuccess: yes, code: 125, message: "Successfully purchased #{@shop.slots[slot].item.name} for #{@shop.slots[slot].price} gold."}
 
     @gold.sub @shop.slots[slot].price
+
+    ##TAG:EVENT_PLAYER: shop.buy | player, item, itemCost | Emitted when a player buys an item from the shop manually
     @emit "player.shop.buy", @, @shop.slots[slot].item, @shop.slots[slot].price
 
     @equip @shop.slots[slot].item
@@ -559,9 +592,10 @@ class Player extends Character
       attr1: attr1
       attr2: attr2
 
-    @emit "player.shop.pet"
-
     pet = petManager.getActivePetFor @
+
+    ##TAG:EVENT_PLAYER: shop.pet | player, pet | Emitted when a player buys a pet
+    @emit "player.shop.pet", @, pet
 
     Q @getExtraDataForREST {pet: yes, pets: yes}, {isSuccess: yes, code: 205, message: "Successfully purchased a new pet (#{pet.type}) named '#{name}'!"}
 
@@ -581,7 +615,8 @@ class Player extends Character
 
     pet.increaseStat stat
 
-    @emit "player.shop.petupgrade", cost
+    ##TAG:EVENT_PLAYER: shop.pet | player, pet, cost | Emitted when a player upgrades a pet
+    @emit "player.shop.petupgrade", player, pet, cost
 
     Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 212, message: "Successfully upgraded your pets (#{pet.name}) #{stat} to level #{curLevel+2}!"}
 
@@ -740,6 +775,7 @@ class Player extends Character
       gold = 1
 
     if gold > 0
+      ##TAG:EVENT_PLAYER: gold.gain | player, goldGained | Emitted when a player gains gold
       @emit "player.gold.gain", @, gold
 
       guild = @getGuild()
@@ -749,6 +785,7 @@ class Player extends Character
         guild.collectTax @, goldPaid if goldPaid > 0
 
     else
+      ##TAG:EVENT_PLAYER: gold.lose | player, goldLost | Emitted when a player loses gold
       @emit "player.gold.lose", @, gold
 
     @gold.add gold
@@ -759,8 +796,10 @@ class Player extends Character
       xp = 1
 
     if xp > 0
+      ##TAG:EVENT_PLAYER: xp.gain | player, xpGained | Emitted when a player gains xp
       @emit "player.xp.gain", @, xp
     else
+      ##TAG:EVENT_PLAYER: xp.lose | player, xpLost | Emitted when a player loses xp
       @emit "player.xp.lose", @, xp
 
     @xp.set 0 if _.isNaN @xp.__current
@@ -780,6 +819,8 @@ class Player extends Character
     @recalculateStats()
     @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'levelup'} if not suppress
     @recalcGuildLevel()
+
+    ##TAG:EVENT_PLAYER: level.up | player | Emitted when a player levels up
     @emit "player.level.up", @
 
     @playerManager.addForAnalytics @
