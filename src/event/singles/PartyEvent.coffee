@@ -13,6 +13,7 @@ Constants = require "../../system/utilities/Constants"
 class PartyEvent extends Event
   go: ->
     return if @game.inBattle or @player.party?.players.length >= Constants.defaults.game.maxPartyMembers
+    return if @player.hasPersonality "Solo"
 
     # recruit a new member if this event comes up and the party size is small enough
     if @player.party
