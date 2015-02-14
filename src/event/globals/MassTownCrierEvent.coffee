@@ -2,7 +2,6 @@
 _ = require "lodash"
 
 GlobalEvent = require "../GlobalEvent"
-MessageCreator = require "./MessageCreator"
 
 `/**
  * This event broadcasts town crier events to a larger audience all at once.
@@ -25,6 +24,6 @@ class MassTownCrierEvent extends GlobalEvent
       @game.componentDatabase.lowerAdViewCount event._id, numPlayers
 
       linkText = if event.link then "[ #{event.link} ] " else ""
-      @game.broadcast MessageCreator.genericMessage ">>> TOWN CRIER: #{linkText}#{event.message}"
+      @game.broadcast ">>> TOWN CRIER: #{linkText}#{event.message}"
 
 module.exports = exports = MassTownCrierEvent
