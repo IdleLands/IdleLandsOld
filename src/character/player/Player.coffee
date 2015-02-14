@@ -34,22 +34,22 @@ class Player extends Character
     score > myScore and realScore < @calc.itemFindRange()*rangeBoost
 
   initialize: ->
-    if not @xp
-      @xp = new RestrictedNumber 0, (@levelUpXpCalc 0), 0
-      @gold = new RestrictedNumber 0, 9999999999, 0
-      @x = 10
-      @y = 10
-      @map = 'Norkos'
+    return if @xp
+    @xp = new RestrictedNumber 0, (@levelUpXpCalc 0), 0
+    @gold = new RestrictedNumber 0, 9999999999, 0
+    @x = 10
+    @y = 10
+    @map = 'Norkos'
 
-      norkosClasses = ['Generalist', 'Mage', 'Fighter', 'Cleric']
-      @changeProfession (_.sample norkosClasses), yes
-      @levelUp yes
-      @generateBaseEquipment()
-      @overflow = []
-      @lastLogin = new Date()
-      @gender = _.sample ["female", "male", "not a bear", "glowcloud"]
-      @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
-      @calc.itemFindRange()
+    norkosClasses = ['Generalist', 'Mage', 'Fighter', 'Cleric']
+    @changeProfession (_.sample norkosClasses), yes
+    @levelUp yes
+    @generateBaseEquipment()
+    @overflow = []
+    @lastLogin = new Date()
+    @gender = _.sample ["female", "male", "not a bear", "glowcloud"]
+    @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
+    @calc.itemFindRange()
 
   generateBaseEquipment: ->
     @equipment = [
