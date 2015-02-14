@@ -7,7 +7,7 @@ It can be run with a backend of IRC, or a console, or really just about anything
 
 Developing
 ==========
-Whether you want to create events, or create the next best class, all of the information is housed in the [wiki](https://github.com/seiyria/IdleLands/wiki/New-Developer-Guide)!
+Whether you want to create events, or create the next best class, all of the information is housed in the [wiki](https://github.com/seiyria/IdleLands/wiki/New-Developer-Guide) and the [docs folder](https://github.com/IdleLands/IdleLands/blob/master/docs/)!
 
 If you're more interested in content development (events, monsters, items, etc) click [here](https://github.com/seiyria/IdleLands/wiki/New-Developer-Guide#content-development).
 
