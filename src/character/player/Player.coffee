@@ -47,7 +47,7 @@ class Player extends Character
       @generateBaseEquipment()
       @overflow = []
       @lastLogin = new Date()
-      @gender = "female"
+      @gender = _.sample ["female", "male", "not a bear", "glowcloud"]
       @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
       @calc.itemFindRange()
 
