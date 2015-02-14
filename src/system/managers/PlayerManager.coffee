@@ -261,7 +261,9 @@ class PlayerManager
 
       return defer.resolve {isSuccess: no, code: 5, message: "Player creation error: #{iErr} (you probably already registered a character to that ident, that identifier is already taken, or that name is taken)."} if iErr
 
-      @game.broadcast MessageCreator.genericMessage "Welcome #{options.name} to #{Constants.gameName}!"
+      item = _.sample playerObject.equipment
+      message = MessageCreator.doStringReplace "Welcome #{options.name} to #{Constants.gameName}! The level #{playerObject.level.getValue()} #{playerObject.professionName} left home armed with only %hisher #{item.getName()} (and other gear), and is ready to take on the world!", playerObject
+      @game.broadcast MessageCreator.genericMessage message
       @playerHash[options.identifier] = playerObject
       @players.push playerObject
 

@@ -40,6 +40,7 @@ class Player extends Character
     @x = 10
     @y = 10
     @map = 'Norkos'
+    @region = 'Wilderness'
 
     norkosClasses = ['Generalist', 'Mage', 'Fighter', 'Cleric']
     @changeProfession (_.sample norkosClasses), yes
