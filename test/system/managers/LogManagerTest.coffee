@@ -4,7 +4,7 @@ chai = require "chai"
 mocha = require "mocha"
 sinon = require "sinon"
 fs = require "fs"
-stream = require('stream')
+stream = require "stream"
 
 expect = chai.expect
 describe = mocha.describe
@@ -79,7 +79,7 @@ describe "LogManager", () ->
 
 
     it "Should clear all files", (done) -> # doesn't work on windows due to EPERM
-      this.timeout 5000
+      this.timeout 500
       if fs.existsSync basedir + "../logs/LogManagerTest3-errors.log"
         fs.unlinkSync basedir + "../logs/LogManagerTest3-errors.log"
 

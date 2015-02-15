@@ -3,31 +3,22 @@ basedir = "../../../src/"
 chai = require "chai"
 mocha = require "mocha"
 sinon = require "sinon"
-proxyquire =  require('proxyquire')
-DataStore = require basedir + "system/database/DatabaseWrapper"
+proxyquire =  require "proxyquire"
 
 expect = chai.expect
 describe = mocha.describe
 
-LogManager = require basedir + "system/managers/LogManager"
+GameStub = require "../../stubs/GameStub"
 Pet = require basedir + "character/npc/Pet"
 
 #stubs
-logManager = new LogManager
-game = {}
-game.logManager = logManager
-
-sinon.stub logManager, "getLogger", (name) ->
-  {
-    debug: (args...) ->
-    silly: (args...) ->
-  }
+game = GameStub.getGameStub()
 
 describe "LogManager", () ->
   describe "getLogger", () ->
     it "Should return empty string", () ->
       #manager = new petManager game
-      expect(logManager.getLogger "PetManager").to.exist()
+      expect(game.logManager.getLogger "PetManager").to.exist()
 
 
 describe "PetManager", () ->
