@@ -17,7 +17,7 @@ class MonsterBattleEvent extends Event
     new Party @game, @player if not @player.party or _.isNaN @player.party
     return if not @player.party
 
-    @game.battleManager.startBattle [@player.party],
+    @game.battleManager.startBattle [@player.party], @event
 
     ##TAG:EVENT_EVENT: monsterbattle | player | Emitted when a player gets causes a battle with monsters
     @player.emit "event.monsterbattle", @player
