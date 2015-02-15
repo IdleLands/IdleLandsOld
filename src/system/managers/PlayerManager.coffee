@@ -263,7 +263,13 @@ class PlayerManager
 
       item = _.sample playerObject.equipment
       message = MessageCreator.doStringReplace "Welcome #{options.name} to #{Constants.gameName}! The level #{playerObject.level.getValue()} #{playerObject.professionName} left home armed with only %hisher #{item.getName()} (and other gear), and is ready to take on the world!", playerObject
-      @game.broadcast MessageCreator.genericMessage message
+
+      @game.eventHandler.broadcastEvent
+        sendMessage: yes
+        player: playerObject
+        message: message
+        type: "levelup"
+
       @playerHash[options.identifier] = playerObject
       @players.push playerObject
 
