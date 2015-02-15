@@ -204,7 +204,6 @@ class MessageCreator
         else 'they'
 
   @handleCustomVariables = (string) ->
-
     varCache = {}
 
     getCache = (domain, funct, cacheNum) ->
@@ -256,8 +255,8 @@ class MessageCreator
     @handleCustomVariables string
       .split('%player').join "<player.name>#{player?.getName()}</player.name>"
       .split('%pet').join "<player.name>#{OwnedDomainHandler.pet player}</player.name>"
-      .split('%guild').join "<event.guildName>#{OwnedDomainHandler.guild player}</event.guildName>"
       .split('%guildMember').join "<player.name>#{OwnedDomainHandler.guildMember player}</player.name>"
+      .split('%guild').join "<event.guildName>#{OwnedDomainHandler.guild player}</event.guildName>"
       .split('%hishers').join getGenderPronoun gender, '%hishers'
       .split('%hisher').join getGenderPronoun gender, '%hisher'
       .split('%himher').join getGenderPronoun gender, '%himher'
