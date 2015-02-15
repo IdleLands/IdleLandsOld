@@ -10,7 +10,8 @@
     "syntax",
     "requirement",
     "cost",
-    "buildings"
+    "buildings",
+    "property"
   ],
   "keySort": ["package", "category", "name"],
   "outputOnly": true,

@@ -3,6 +3,8 @@ Character = require "../base/Character"
 RestrictedNumber = require "restricted-number"
 MessageCreator = require "../../system/handlers/MessageCreator"
 Constants = require "../../system/utilities/Constants"
+ConvenienceFunctions = require "../../system/utilities/ConvenienceFunctions"
+
 _ = require "lodash"
 Q = require "q"
 
@@ -152,6 +154,25 @@ class Guild
         return unless building
         inst = base.instances[size][i] = new (require "../../map/guild-buildings/#{building}") @guildManager.game, @
         base.build building, size, i, inst
+
+  _setProperty: (building, property, value) ->
+    property = ConvenienceFunctions.sanitizeStringNoPunctuation property
+    value = ConvenienceFunctions.sanitizeString value.substring 0, 1000
+
+    @buildingProps[building] = {} unless @buildingProps[building]
+    @buildingProps[building][property] = value
+
+    @save()
+
+    @reconstructBuildings()
+
+  setProperty: (identifier, building, property, value) ->
+    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+    return Q {isSuccess: no, code: 80, message: "You don't have that building constructed!"} unless @hasBuilt building
+
+    @_setProperty building, property, value
+
+    Q {isSuccess: yes, code: 87, message: "Successfully set property \"#{property}\" for #{building} to \"#{value}\"!"}
 
   _upgrade: (building) ->
     @buildingLevels[building]++

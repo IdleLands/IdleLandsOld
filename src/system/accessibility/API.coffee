@@ -628,6 +628,16 @@ class API
           guild = res.player.guild
           if res.isSuccess then @gameInstance.guildManager.guildHash[guild].upgrade identifier, building else res
 
+      setProperty: (identifier, building, property, value) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          actualRes = null
+          guild = res.player.guild
+          actualRes = if res.isSuccess then @gameInstance.guildManager.guildHash[guild].setProperty identifier, building, property, value else res
+          @logger?.debug "Player Command guild.setProperty"
+          @logger?.verbose "Player Command guild.setProperty", {identifier, building, property, value}
+          actualRes
+
       tax:
         whole: (identifier, taxPercent) =>
           @validateIdentifier identifier
