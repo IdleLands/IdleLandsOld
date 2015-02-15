@@ -989,8 +989,8 @@
                     "_name": "IRC Commands",
                     "_children": [
                         {
-                            "lineNumber": 884,
-                            "endLineNumber": 892,
+                            "lineNumber": 915,
+                            "endLineNumber": 923,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1023,8 +1023,8 @@
                             }
                         },
                         {
-                            "lineNumber": 693,
-                            "endLineNumber": 701,
+                            "lineNumber": 724,
+                            "endLineNumber": 732,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1057,8 +1057,8 @@
                             }
                         },
                         {
-                            "lineNumber": 861,
-                            "endLineNumber": 869,
+                            "lineNumber": 892,
+                            "endLineNumber": 900,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1091,8 +1091,8 @@
                             }
                         },
                         {
-                            "lineNumber": 836,
-                            "endLineNumber": 845,
+                            "lineNumber": 867,
+                            "endLineNumber": 876,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1129,8 +1129,8 @@
                             }
                         },
                         {
-                            "lineNumber": 716,
-                            "endLineNumber": 727,
+                            "lineNumber": 747,
+                            "endLineNumber": 758,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1175,8 +1175,8 @@
                             }
                         },
                         {
-                            "lineNumber": 811,
-                            "endLineNumber": 820,
+                            "lineNumber": 842,
+                            "endLineNumber": 851,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1213,8 +1213,8 @@
                             }
                         },
                         {
-                            "lineNumber": 365,
-                            "endLineNumber": 373,
+                            "lineNumber": 396,
+                            "endLineNumber": 404,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -1244,8 +1244,45 @@
                             }
                         },
                         {
-                            "lineNumber": 1157,
-                            "endLineNumber": 1166,
+                            "lineNumber": 370,
+                            "endLineNumber": 379,
+                            "filePath": "ext/kurea/IdleLandsModule.coffee",
+                            "fileName": "IdleLandsModule.coffee",
+                            "example": [
+                                {
+                                    "name": "example",
+                                    "basicInfo": "!idle-changeident \"local-server/Danret\" \"local-server/AlsoDanret\""
+                                }
+                            ],
+                            "syntax": [
+                                {
+                                    "name": "syntax",
+                                    "basicInfo": "!idle-changeident \"identifier\" \"newIdentifier\""
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "Change a players identifier."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "idle-changeident"
+                            },
+                            "gmOnly": {
+                                "name": "gmOnly"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "IRC Commands"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Client"
+                            }
+                        },
+                        {
+                            "lineNumber": 1188,
+                            "endLineNumber": 1197,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1281,8 +1318,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1137,
-                            "endLineNumber": 1146,
+                            "lineNumber": 1168,
+                            "endLineNumber": 1177,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1318,8 +1355,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1079,
-                            "endLineNumber": 1087,
+                            "lineNumber": 1110,
+                            "endLineNumber": 1118,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -1350,8 +1387,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1098,
-                            "endLineNumber": 1107,
+                            "lineNumber": 1129,
+                            "endLineNumber": 1138,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1387,8 +1424,8 @@
                             }
                         },
                         {
-                            "lineNumber": 308,
-                            "endLineNumber": 316,
+                            "lineNumber": 318,
+                            "endLineNumber": 326,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -1418,8 +1455,8 @@
                             }
                         },
                         {
-                            "lineNumber": 577,
-                            "endLineNumber": 585,
+                            "lineNumber": 608,
+                            "endLineNumber": 616,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1452,8 +1489,8 @@
                             }
                         },
                         {
-                            "lineNumber": 324,
-                            "endLineNumber": 332,
+                            "lineNumber": 334,
+                            "endLineNumber": 342,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -1484,8 +1521,8 @@
                             }
                         },
                         {
-                            "lineNumber": 465,
-                            "endLineNumber": 474,
+                            "lineNumber": 496,
+                            "endLineNumber": 505,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1521,8 +1558,8 @@
                             }
                         },
                         {
-                            "lineNumber": 765,
-                            "endLineNumber": 773,
+                            "lineNumber": 796,
+                            "endLineNumber": 804,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1555,8 +1592,8 @@
                             }
                         },
                         {
-                            "lineNumber": 742,
-                            "endLineNumber": 750,
+                            "lineNumber": 773,
+                            "endLineNumber": 781,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1589,8 +1626,8 @@
                             }
                         },
                         {
-                            "lineNumber": 930,
-                            "endLineNumber": 938,
+                            "lineNumber": 961,
+                            "endLineNumber": 969,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1624,8 +1661,8 @@
                             }
                         },
                         {
-                            "lineNumber": 907,
-                            "endLineNumber": 915,
+                            "lineNumber": 938,
+                            "endLineNumber": 946,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1659,8 +1696,8 @@
                             }
                         },
                         {
-                            "lineNumber": 788,
-                            "endLineNumber": 796,
+                            "lineNumber": 819,
+                            "endLineNumber": 827,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1693,8 +1730,8 @@
                             }
                         },
                         {
-                            "lineNumber": 643,
-                            "endLineNumber": 653,
+                            "lineNumber": 674,
+                            "endLineNumber": 684,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1735,8 +1772,8 @@
                             }
                         },
                         {
-                            "lineNumber": 451,
-                            "endLineNumber": 460,
+                            "lineNumber": 482,
+                            "endLineNumber": 491,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1772,8 +1809,8 @@
                             }
                         },
                         {
-                            "lineNumber": 435,
-                            "endLineNumber": 444,
+                            "lineNumber": 466,
+                            "endLineNumber": 475,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1809,8 +1846,8 @@
                             }
                         },
                         {
-                            "lineNumber": 421,
-                            "endLineNumber": 430,
+                            "lineNumber": 452,
+                            "endLineNumber": 461,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1846,8 +1883,8 @@
                             }
                         },
                         {
-                            "lineNumber": 479,
-                            "endLineNumber": 488,
+                            "lineNumber": 510,
+                            "endLineNumber": 519,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1884,8 +1921,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1025,
-                            "endLineNumber": 1050,
+                            "lineNumber": 1056,
+                            "endLineNumber": 1081,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1987,8 +2024,8 @@
                             }
                         },
                         {
-                            "lineNumber": 977,
-                            "endLineNumber": 985,
+                            "lineNumber": 1008,
+                            "endLineNumber": 1016,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2021,8 +2058,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1000,
-                            "endLineNumber": 1010,
+                            "lineNumber": 1031,
+                            "endLineNumber": 1041,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2063,8 +2100,8 @@
                             }
                         },
                         {
-                            "lineNumber": 554,
-                            "endLineNumber": 563,
+                            "lineNumber": 585,
+                            "endLineNumber": 594,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2101,8 +2138,8 @@
                             }
                         },
                         {
-                            "lineNumber": 541,
-                            "endLineNumber": 550,
+                            "lineNumber": 572,
+                            "endLineNumber": 581,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2139,8 +2176,8 @@
                             }
                         },
                         {
-                            "lineNumber": 297,
-                            "endLineNumber": 304,
+                            "lineNumber": 307,
+                            "endLineNumber": 314,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -2167,8 +2204,8 @@
                             }
                         },
                         {
-                            "lineNumber": 339,
-                            "endLineNumber": 348,
+                            "lineNumber": 349,
+                            "endLineNumber": 358,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2204,8 +2241,8 @@
                             }
                         },
                         {
-                            "lineNumber": 953,
-                            "endLineNumber": 962,
+                            "lineNumber": 984,
+                            "endLineNumber": 993,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2242,8 +2279,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1117,
-                            "endLineNumber": 1126,
+                            "lineNumber": 1148,
+                            "endLineNumber": 1157,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2279,8 +2316,8 @@
                             }
                         },
                         {
-                            "lineNumber": 669,
-                            "endLineNumber": 677,
+                            "lineNumber": 700,
+                            "endLineNumber": 708,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2314,8 +2351,8 @@
                             }
                         },
                         {
-                            "lineNumber": 241,
-                            "endLineNumber": 249,
+                            "lineNumber": 251,
+                            "endLineNumber": 259,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -2345,8 +2382,8 @@
                             }
                         },
                         {
-                            "lineNumber": 259,
-                            "endLineNumber": 267,
+                            "lineNumber": 269,
+                            "endLineNumber": 277,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -2376,8 +2413,8 @@
                             }
                         },
                         {
-                            "lineNumber": 515,
-                            "endLineNumber": 524,
+                            "lineNumber": 546,
+                            "endLineNumber": 555,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2414,8 +2451,8 @@
                             }
                         },
                         {
-                            "lineNumber": 405,
-                            "endLineNumber": 414,
+                            "lineNumber": 436,
+                            "endLineNumber": 445,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2451,8 +2488,8 @@
                             }
                         },
                         {
-                            "lineNumber": 391,
-                            "endLineNumber": 400,
+                            "lineNumber": 422,
+                            "endLineNumber": 431,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2488,8 +2525,8 @@
                             }
                         },
                         {
-                            "lineNumber": 599,
-                            "endLineNumber": 607,
+                            "lineNumber": 630,
+                            "endLineNumber": 638,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2522,8 +2559,8 @@
                             }
                         },
                         {
-                            "lineNumber": 621,
-                            "endLineNumber": 629,
+                            "lineNumber": 652,
+                            "endLineNumber": 660,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2556,8 +2593,8 @@
                             }
                         },
                         {
-                            "lineNumber": 378,
-                            "endLineNumber": 386,
+                            "lineNumber": 409,
+                            "endLineNumber": 417,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -2587,8 +2624,8 @@
                             }
                         },
                         {
-                            "lineNumber": 353,
-                            "endLineNumber": 361,
+                            "lineNumber": 384,
+                            "endLineNumber": 392,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -7497,8 +7534,8 @@
                             }
                         },
                         {
-                            "lineNumber": 637,
-                            "endLineNumber": 645,
+                            "lineNumber": 643,
+                            "endLineNumber": 651,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -11714,6 +11751,44 @@
                             "name": {
                                 "name": "name",
                                 "basicInfo": "Seeker"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Personalities"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Player"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 13,
+                            "filePath": "src/character/personalities/Solo.coffee",
+                            "fileName": "Solo.coffee",
+                            "prerequisite": [
+                                {
+                                    "name": "prerequisite",
+                                    "basicInfo": "Join 500 parties"
+                                },
+                                {
+                                    "name": "prerequisite",
+                                    "basicInfo": "Have 5 allies flee while in your party"
+                                }
+                            ],
+                            "effect": [
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "You never seek out parties, nor are you placed in them"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This personality makes you never join parties."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Solo"
                             },
                             "category": {
                                 "name": "category",
@@ -18528,11 +18603,11 @@
             ]
         }
     ],
-    "startTime": 1423457195849,
-    "endTime": 1423457195930,
+    "startTime": 1424014425389,
+    "endTime": 1424014425517,
     "git": {
-        "short": "6600255",
-        "long": "6600255469ebaf8f4ae9f1ef40e625b59baf5864",
+        "short": "68a7a54",
+        "long": "68a7a548fc304d571934156feb4ebca9f65ee24a",
         "branch": "master",
         "tag": "0.5.0"
     }
