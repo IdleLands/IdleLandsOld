@@ -79,7 +79,7 @@ describe "LogManager", () ->
 
 
     it "Should clear all files", (done) -> # doesn't work on windows due to EPERM
-      this.timeout 500
+      this.timeout 5000
       if fs.existsSync basedir + "../logs/LogManagerTest3-errors.log"
         fs.unlinkSync basedir + "../logs/LogManagerTest3-errors.log"
 
