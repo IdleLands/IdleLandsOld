@@ -53,17 +53,32 @@ class Player extends Character
     @calc.itemFindRange()
 
   generateBaseEquipment: ->
+
+    possibleItems =
+      body:     ["Tattered Shirt", "Spray Tan", "Temporary Tattoos", "Hero's Tunic", "Grandma's Sweater"]
+      feet:     ["Cardboard Shoes", "Wheelie Shoes", "Sandals With Built-in Socks"]
+      finger:   ["Twisted Wire", "Candy Ring", "Hero Academy Graduation Ring"]
+      hands:    ["Pixelated Gloves", "Winter Gloves", "Mittens"]
+      head:     ["Miniature Top Hat", "Fruit Hat", "Beanie", "Sunglasses"]
+      legs:     ["Leaf", "Cargo Shorts", "Comfy Shorts"]
+      neck:     ["Old Brooch", "Candy Necklace", "Keyboard Cat Tie"]
+      mainhand: ["Empty and Broken Ale Bottle", "Father's Sword", "Butter Knife", "Hero's Axe", "Chocolate Drumstick", "Aged Toothbrush"]
+      offhand:  ["Chunk of Rust", "Shaking Fist", "Upside-down Map", "Sticker Book", "Stolen Dagger"]
+      charm:    ["Ancient Bracelet", "Family Photo", "Third Place Bowling Trophy", "Love Letter"]
+
+    r = -> chance.integer {min: -2, max: 5}
+
     @equipment = [
-      new Equipment {type: "body",    class: "newbie", name: "Tattered Shirt", con: 1}
-      new Equipment {type: "feet",    class: "newbie", name: "Cardboard Shoes", dex: 1}
-      new Equipment {type: "finger",  class: "newbie", name: "Twisted Wire", int: 1}
-      new Equipment {type: "hands",   class: "newbie", name: "Pixelated Gloves", str: 1}
-      new Equipment {type: "head",    class: "newbie", name: "Miniature Top Hat", wis: 1}
-      new Equipment {type: "legs",    class: "newbie", name: "Leaf", agi: 1}
-      new Equipment {type: "neck",    class: "newbie", name: "Old Brooch", wis: 1, int: 1}
-      new Equipment {type: "mainhand",class: "newbie", name: "Empty and Broken Ale Bottle", str: 1, con: -1}
-      new Equipment {type: "offhand", class: "newbie", name: "Chunk of Rust", dex: 1, str: 1}
-      new Equipment {type: "charm",   class: "newbie", name: "Ancient Bracelet", con: 1, dex: 1}
+      new Equipment {type: "body",    class: "newbie", name: (_.sample possibleItems.body),     str: r(), con: r(), dex: r(), int: r(), wis: r(), agi: r(), luck: r()}
+      new Equipment {type: "feet",    class: "newbie", name: (_.sample possibleItems.feet),     str: r(), con: r(), dex: r(), int: r(), wis: r(), agi: r(), luck: r()}
+      new Equipment {type: "finger",  class: "newbie", name: (_.sample possibleItems.finger),   str: r(), con: r(), dex: r(), int: r(), wis: r(), agi: r(), luck: r()}
+      new Equipment {type: "hands",   class: "newbie", name: (_.sample possibleItems.hands),    str: r(), con: r(), dex: r(), int: r(), wis: r(), agi: r(), luck: r()}
+      new Equipment {type: "head",    class: "newbie", name: (_.sample possibleItems.head),     str: r(), con: r(), dex: r(), int: r(), wis: r(), agi: r(), luck: r()}
+      new Equipment {type: "legs",    class: "newbie", name: (_.sample possibleItems.legs),     str: r(), con: r(), dex: r(), int: r(), wis: r(), agi: r(), luck: r()}
+      new Equipment {type: "neck",    class: "newbie", name: (_.sample possibleItems.neck),     str: r(), con: r(), dex: r(), int: r(), wis: r(), agi: r(), luck: r()}
+      new Equipment {type: "mainhand",class: "newbie", name: (_.sample possibleItems.mainhand), str: r(), con: r(), dex: r(), int: r(), wis: r(), agi: r(), luck: r()}
+      new Equipment {type: "offhand", class: "newbie", name: (_.sample possibleItems.offhand),  str: r(), con: r(), dex: r(), int: r(), wis: r(), agi: r(), luck: r()}
+      new Equipment {type: "charm",   class: "newbie", name: (_.sample possibleItems.charm),    str: r(), con: r(), dex: r(), int: r(), wis: r(), agi: r(), luck: r()}
     ]
 
   setPushbulletKey: (key) ->

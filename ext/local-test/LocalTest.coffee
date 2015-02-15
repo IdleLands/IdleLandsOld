@@ -42,6 +42,7 @@ players = [
   'Sengai'
   'El Shibe'
   'La Gpoy'
+  'Wizzrobu'
 ]
 
 hashes = []
