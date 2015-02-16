@@ -112,8 +112,14 @@ class Game
     else
       console.error "No broadcast handler registered. Cannot send: #{message}"
 
+  getAllNonPartyPlayers: ->
+    _.reject @playerManager.players, (player) -> player.party
+
+  selectRandomNonPartyPlayer: ->
+    _.sample @getAllNonPartyPlayers()
+
   getAllNonPartyMembersOnMap: (map) ->
-    _.reject @playerManager.players, (player) -> player.map isnt map or player.party
+    _.reject @playerManager.players, (player) -> player.map isnt map or player.party or player.hasPersonality "Solo"
 
   selectRandomNonPartyMemberOnMap: (map) ->
     _.sample @getAllNonPartyMembersOnMap map

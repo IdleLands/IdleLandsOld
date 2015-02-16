@@ -610,6 +610,16 @@ class API
           @logger?.verbose "Player Command guild.buff", {identifier, type, tier}
           actualRes
 
+      changeLeader: (identifier, newLeaderName) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          actualRes = null
+          guild = res.player.guild
+          if res.isSuccess then actualRes = @gameInstance.guildManager.guildHash[guild].changeLeader identifier, newLeaderName else actualRes = res
+          @logger?.debug "Player Command guild.changeLeader"
+          @logger?.verbose "Player Command guild.changeLeader", {identifier, newLeaderName}
+          actualRes
+
       move: (identifier, newLoc) =>
         @validateIdentifier identifier
         .then (res) =>
@@ -627,6 +637,16 @@ class API
         .then (res) =>
           guild = res.player.guild
           if res.isSuccess then @gameInstance.guildManager.guildHash[guild].upgrade identifier, building else res
+
+      setProperty: (identifier, building, property, value) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          actualRes = null
+          guild = res.player.guild
+          actualRes = if res.isSuccess then @gameInstance.guildManager.guildHash[guild].setProperty identifier, building, property, value else res
+          @logger?.debug "Player Command guild.setProperty"
+          @logger?.verbose "Player Command guild.setProperty", {identifier, building, property, value}
+          actualRes
 
       tax:
         whole: (identifier, taxPercent) =>

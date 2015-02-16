@@ -840,6 +840,29 @@ module.exports = (Module) ->
             @reply origin, res.message
 
       `/**
+       * Set a specific property for a building in your Guild Hall.
+       *
+       * @name idle-guild setprop
+       * @syntax !idle-guild setprop building prop "value"
+       * @example !idle-guild setprop Mascot MascotID "Skeleton"
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-guild setprop :building :prop \":value\"", (origin, route) =>
+        [building, prop, value] = [route.params.building, route.params.prop, route.params.value]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to administer a guild!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          (@IdleWrapper.api.player.guild.setProperty identifier, building, prop, value)
+          .then (res) =>
+            @reply origin, res.message
+
+      `/**
         * Manage your guild status.
         *
         * @name Guild Status
