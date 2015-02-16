@@ -24,5 +24,10 @@
             "Heavy Winter Boots",
 	    "Magical Snowball"
         ]
+    },
+    "Basilisk Gear": {
+        "items": [
+            "Basilisk Shield"
+        ]
     }
 }
