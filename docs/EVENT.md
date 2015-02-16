@@ -6,22 +6,22 @@ Any event in the `combat` domain can optionally take on some other forms `self`,
 
 Player Emit | Arguments Passed | Description
 --- | --- | ---
-[gold.gain](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L795) | player, goldGained | Emitted when a player gains gold
+[gold.gain](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L796) | player, goldGained | Emitted when a player gains gold
 [gold.guildDonation](https://github.com/IdleLands/IdleLands/blob/master/src/system/managers/GuildManager.coffee#L294) | guild.name, gold | Emitted when a player willingly donates gold to their guild
-[gold.guildTax](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Guild.coffee#L133) | guildName, goldTaxed | Emitted when a guild collects tax from a member
-[gold.lose](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L805) | player, goldLost | Emitted when a player loses gold
+[gold.guildTax](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Guild.coffee#L135) | guildName, goldTaxed | Emitted when a guild collects tax from a member
+[gold.lose](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L806) | player, goldLost | Emitted when a player loses gold
 [level.down](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/LevelDownEvent.coffee#L26) | player, currentLevel, newLevel | Emitted when a player loses a level
-[level.up](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L840) | player | Emitted when a player levels up
-[profession.change](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L517) | player, oldClass, newClass | Emitted when a player changes class
+[level.up](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L841) | player | Emitted when a player levels up
+[profession.change](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L518) | player, oldClass, newClass | Emitted when a player changes class
 [sellItem](https://github.com/IdleLands/IdleLands/blob/master/src/system/handlers/EventHandler.coffee#L253) | player, item, value | Emitted when a player sells an item
-[shop.buy](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L558) | player, item, itemCost | Emitted when a player buys an item from the shop manually
-[shop.pet](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L614) | player, pet | Emitted when a player buys a pet
-[shop.pet](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L635) | player, pet, cost | Emitted when a player upgrades a pet
-[trainer.ignore](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L248) | player, newClass | Emitted when a player talks to a trainer but didn't change classes
-[trainer.isAlready](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L237) | player, newClass | Emitted when a player talks to a trainer but is already a class
-[trainer.speak](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L252) | player, newClass | Emitted when a player talks to a trainer and changed classes
-[xp.gain](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L816) | player, xpGained | Emitted when a player gains xp
-[xp.lose](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L819) | player, xpLost | Emitted when a player loses xp
+[shop.buy](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L559) | player, item, itemCost | Emitted when a player buys an item from the shop manually
+[shop.pet](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L615) | player, pet | Emitted when a player buys a pet
+[shop.pet](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L636) | player, pet, cost | Emitted when a player upgrades a pet
+[trainer.ignore](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L249) | player, newClass | Emitted when a player talks to a trainer but didn't change classes
+[trainer.isAlready](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L238) | player, newClass | Emitted when a player talks to a trainer but is already a class
+[trainer.speak](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L253) | player, newClass | Emitted when a player talks to a trainer and changed classes
+[xp.gain](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L817) | player, xpGained | Emitted when a player gains xp
+[xp.lose](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L820) | player, xpLost | Emitted when a player loses xp
 
 
 Event Emit | Arguments Passed | Description
@@ -64,28 +64,28 @@ Event Emit | Arguments Passed | Description
 
 Explore Emit | Arguments Passed | Description
 --- | --- | ---
-[hit.wall](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L468) | player | Emitted when a player hits a wall
-[transfer.ascend](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L325) | player, newMap | Emitted when a player changes maps via ascending
-[transfer.descend](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L326) | player, newMap | Emitted when a player changes maps via descending
-[transfer.fall](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L324) | player, newMap | Emitted when a player changes maps via falling
-[transfer.guildTeleport](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L360) | player, newMap | Emitted when a player goes to their guild hall
-[transfer.manualWarp](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L112) | player, newMap | Emitted when a player warps somewhere manually
-[transfer.teleport](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L327) | player, newMap | Emitted when a player changes maps via teleporting
-[transfer](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L321) | player, newMap | Emitted when a player changes maps
-[walk.carpet](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L481) | player | Emitted when a player takes a step on carpet
-[walk.dirt](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L479) | player | Emitted when a player takes a step on dirt
-[walk.grass](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L477) | player | Emitted when a player takes a step on grass
-[walk.gravel](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L480) | player | Emitted when a player takes a step on gravel
-[walk.ice](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L485) | player | Emitted when a player takes a step on ice
-[walk.lava](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L486) | player | Emitted when a player takes a step on lava
-[walk.sand](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L482) | player | Emitted when a player takes a step on sand
-[walk.snow](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L483) | player | Emitted when a player takes a step on snow
-[walk.swamp](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L484) | player | Emitted when a player takes a step on swamp
-[walk.tile](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L487) | player | Emitted when a player takes a step on tile
-[walk.void](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L489) | player | Emitted when a player takes a step on the void (aka, off the map)
-[walk.water](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L478) | player | Emitted when a player takes a step on water
-[walk.wood](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L488) | player | Emitted when a player takes a step on wood
-[walk](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L474) | player | Emitted when a player takes a step
+[hit.wall](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L469) | player | Emitted when a player hits a wall
+[transfer.ascend](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L326) | player, newMap | Emitted when a player changes maps via ascending
+[transfer.descend](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L327) | player, newMap | Emitted when a player changes maps via descending
+[transfer.fall](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L325) | player, newMap | Emitted when a player changes maps via falling
+[transfer.guildTeleport](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L361) | player, newMap | Emitted when a player goes to their guild hall
+[transfer.manualWarp](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L113) | player, newMap | Emitted when a player warps somewhere manually
+[transfer.teleport](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L328) | player, newMap | Emitted when a player changes maps via teleporting
+[transfer](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L322) | player, newMap | Emitted when a player changes maps
+[walk.carpet](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L482) | player | Emitted when a player takes a step on carpet
+[walk.dirt](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L480) | player | Emitted when a player takes a step on dirt
+[walk.grass](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L478) | player | Emitted when a player takes a step on grass
+[walk.gravel](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L481) | player | Emitted when a player takes a step on gravel
+[walk.ice](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L486) | player | Emitted when a player takes a step on ice
+[walk.lava](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L487) | player | Emitted when a player takes a step on lava
+[walk.sand](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L483) | player | Emitted when a player takes a step on sand
+[walk.snow](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L484) | player | Emitted when a player takes a step on snow
+[walk.swamp](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L485) | player | Emitted when a player takes a step on swamp
+[walk.tile](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L488) | player | Emitted when a player takes a step on tile
+[walk.void](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L490) | player | Emitted when a player takes a step on the void (aka, off the map)
+[walk.water](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L479) | player | Emitted when a player takes a step on water
+[walk.wood](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L489) | player | Emitted when a player takes a step on wood
+[walk](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L475) | player | Emitted when a player takes a step
 
 
 Combat Emit | Arguments Passed | Description

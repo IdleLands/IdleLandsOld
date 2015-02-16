@@ -23,8 +23,10 @@ POST | [/game/events/large](https://github.com/IdleLands/IdleLands/blob/master/s
 POST | [/game/events/medium](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L19) | {filterPlayers, newerThan} | {events}
 POST | [/game/events/small](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L13) | {filterPlayers, newerThan} | {events}
 POST | [/game/map](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Map.coffee#L8) | {map} | {map}
-PUT | [/guild/building/construct](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L88) | {identifier, building, slot, token} | {player}
-POST | [/guild/building/upgrade](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L94) | {identifier, building, token} | {player}
+PUT | [/guild/building/construct](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L88) | {identifier, building, slot, token} | {guild}
+PATCH | [/guild/building/setProperty](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L100) | {identifier, building, property, value} | {guild}
+POST | [/guild/building/upgrade](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L94) | {identifier, building, token} | {guild}
+PATCH | [/guild/changeLeader](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L112) | {identifier, newLeaderName} | {guild}
 PUT | [/guild/create](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L10) | {identifier, guildName, token} | {guild}
 POST | [/guild/invite/manage](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L36) | {identifier, accepted, token} | {guild}
 PUT | [/guild/invite/player](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L30) | {identifier, invName, token} | {guild}
@@ -36,7 +38,7 @@ POST | [/guild/manage/donate](https://github.com/IdleLands/IdleLands/blob/master
 POST | [/guild/manage/kick](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L56) | {identifier, memberName, token} | {guild}
 POST | [/guild/manage/promote](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L44) | {identifier, memberName, token} | {guild}
 POST | [/guild/manage/tax](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L74) | {identifier, taxPercent, token} | {guild}
-PUT | [/guild/move](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L100) | {identifier, newLoc, token} | {player}
+PUT | [/guild/move](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L106) | {identifier, newLoc, token} | {player}
 GET | [/img/tiles.png](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/REST.coffee#L38) | {} | IdleLands Tileset
 PUT | [/pet/buy](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManagePet.coffee#L10) | {identifier, type, name, attrs, token} | {}
 PATCH | [/pet/class](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManagePet.coffee#L46) | {identifier, petClass, token} | {}
@@ -70,7 +72,7 @@ PUT | [/player/manage/pushbullet/set](https://github.com/IdleLands/IdleLands/blo
 PUT | [/player/manage/shop/buy](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageShop.coffee#L9) | {identifier, shopSlot, token} | {player}
 POST | [/player/manage/string/set](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageString.coffee#L14) | {identifier, type, token} | {}
 PUT | [/player/manage/string/set](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageString.coffee#L8) | {identifier, type, msg, token} | {}
-POST | [/player/manage/tax](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L80) | {identifier, taxPercent, token} | {player}
+POST | [/player/manage/tax](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L80) | {identifier, taxPercent, token} | {guild}
 POST | [/player/manage/title/remove](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageTitle.coffee#L14) | {identifier, token} | {}
 PUT | [/player/manage/title/set](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageTitle.coffee#L8) | {identifier, newTitle, token} | {}
 
