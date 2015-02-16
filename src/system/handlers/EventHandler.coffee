@@ -213,7 +213,7 @@ class EventHandler
       (@broadcastEvent message: event.n, player: player, type: 'miscellaneous') if event.n
       callback false
 
-  doItemEquip: (player, item, messageString) ->
+  doItemEquip: (player, item, messageString, type = "item-find") ->
     myItem = _.findWhere player.equipment, {type: item.type}
     score = (player.calc.itemScore item).toFixed 1
     myScore = (player.calc.itemScore myItem).toFixed 1
@@ -232,7 +232,7 @@ class EventHandler
 
     totalString = "#{messageString} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (#{normalizedPerceivedScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
     
-    @broadcastEvent {message: totalString, player: player, extra: extra, type: 'item-find'}
+    @broadcastEvent {message: totalString, player: player, extra: extra, type: type}
 
     ##TAG:EVENT_EVENT: findItem | player, item | Emitted when a player finds an item on the ground
     player.emit "event.findItem", player, item
@@ -242,7 +242,7 @@ class EventHandler
     rangeBoost = event.rangeBoost ?= 1
 
     if (player.canEquip item, rangeBoost) and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
-      @doItemEquip player, item, event.remark
+      @doItemEquip player, item, event.remark, event._type
       return true
 
     else
