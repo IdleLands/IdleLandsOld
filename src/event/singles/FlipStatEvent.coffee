@@ -28,6 +28,8 @@ class FlipStatEvent extends Event
     string = "#{@event.remark} [<event.flip.stat>#{stat}</event.flip.stat> <event.flip.value>#{start} -> #{end}</event.flip.value>]"
 
     @game.eventHandler.broadcastEvent {message: string, player: @player, extra: extra, type: 'item-switcheroo'}
+
+    ##TAG:EVENT_EVENT: flipStat | player, item, stat, val | Emitted when a player has a switcheroo happen
     @player.emit "event.flipStat", @player, item, stat, val
 
 module.exports = exports = FlipStatEvent

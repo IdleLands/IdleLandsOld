@@ -18,6 +18,8 @@ class MonsterBattleEvent extends Event
     return if not @player.party
 
     @game.battleManager.startBattle [@player.party], @event
+
+    ##TAG:EVENT_EVENT: monsterbattle | player | Emitted when a player gets causes a battle with monsters
     @player.emit "event.monsterbattle", @player
 
 module.exports = exports = MonsterBattleEvent

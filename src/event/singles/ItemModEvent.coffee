@@ -43,6 +43,9 @@ class ItemModEvent extends Event
     string += " [<event.blessItem.stat>#{stat}</event.blessItem.stat> <event.blessItem.value>#{start} -> #{end}</event.blessItem.value>]"
 
     @game.eventHandler.broadcastEvent {message: string, player: @player, type: 'item-mod'}
+
+    ##TAG:EVENT_EVENT: blessItem   | player, item, boost | Emitted when a player gets a blessing on an item
+    ##TAG:EVENT_EVENT: forsakeItem | player, item, boost | Emitted when a player gets an anti-blessing on an item
     @player.emit "event.#{@event.type}", @player, item, boost
 
 module.exports = exports = ItemModEvent

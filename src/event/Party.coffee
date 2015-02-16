@@ -59,6 +59,8 @@ class Party
   recruit: (players) ->
     _.forEach players, (player) =>
       return if player in @players
+
+      ##TAG:EVENT_EVENT: party.join | none | Emitted when a player joins a party
       player.emit "player.party.join"
       player.party = @
       player.partyName = @name
@@ -66,6 +68,8 @@ class Party
 
   playerLeave: (player, forced = no) ->
     @players = _.without @players, player
+
+    ##TAG:EVENT_EVENT: party.leave | none | Emitted when a player leaves a party
     player.emit "player.party.leave", player, @
     player.partyName = ''
 

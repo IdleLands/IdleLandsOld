@@ -258,7 +258,7 @@ class ComponentDatabase
   getContentList: ->
     defer = Q.defer()
 
-    @submissionsDb.find {}, (e, docs) ->
+    @submissionsDb.find {}, {}, (e, docs) ->
       defer.resolve {isSuccess: yes, code: 510, message: "Successfully retrieved custom content listing.", customs: docs}
 
     defer.promise
@@ -328,7 +328,7 @@ class ComponentDatabase
 
     return Q {isSuccess: no, code: 505, message: "You didn't specify any targets."} if ids.length is 0
 
-    @submissionsDb.find {_id: {$in: oids}}, (e, docs) =>
+    @submissionsDb.find {_id: {$in: oids}}, {}, (e, docs) =>
 
       return defer.resolve {isSuccess: no, code: 502, message: "None of those items are valid targets for approval."} if docs.length is 0
 

@@ -35,6 +35,7 @@ _.each (_.values requireDir "./rest-routes"), (router) ->
   app.use "/", router
 
 # init
+## TAG:APIROUTE: GET | /img/tiles.png | {} | IdleLands Tileset
 app.use "/img", express.static __dirname + '/../../../assets/img'
 
 # log dir

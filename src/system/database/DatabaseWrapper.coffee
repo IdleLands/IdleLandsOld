@@ -42,8 +42,8 @@ class DatabaseWrapper
       _isReady.resolve @db
 
   insert: (data, callback) =>
-    Q.when @databaseReady, () =>
-      @db.insert data, callback
+    Q.when @databaseReady, =>
+      @db.insert data, {w:1}, callback
 
   remove: (query, options, callback) =>
     Q.when @databaseReady, =>
@@ -64,33 +64,24 @@ class DatabaseWrapper
     Q.when @databaseReady, =>
       @db.update query, update, options, callback
 
-  find: (terms, callback) =>
+  find: (query, options, callback) =>
     Q.when @databaseReady, =>
-      if databaseEngine is 'mongo'
-        @db.find terms, (e, docs) ->
-          docs.toArray callback
-      else
-        @db.find terms, callback
+      @db.find query, options, (e, docs) ->
+        docs.toArray callback
 
   findForEach: (terms, callback, context = null) =>
-    if databaseEngine is 'mongo'
-      Q.when @databaseReady, =>
-        stream = @db.find(terms).stream()
-        stream.on 'error', (err) => @game.errorHandler.captureMessage err
-        stream.on 'data', (data) -> callback.call context, data
-    else
-      @db.find terms, (e, docs) ->
-        docs.forEach (doc) ->
-          callback e, doc
+    Q.when @databaseReady, =>
+      stream = @db.find(terms).stream()
+      stream.on 'error', (err) => @game.errorHandler.captureMessage err
+      stream.on 'data', (data) -> callback.call context, data
 
   ensureIndex: (data, index) =>
     Q.when @databaseReady, =>
       @db.ensureIndex data, index, ->
 
   aggregate: (query, callback) =>
-    if databaseEngine is 'mongo'
-      Q.when @databaseReady, =>
-        @db.aggregate query, callback
+    Q.when @databaseReady, =>
+      @db.aggregate query, callback
 
   # Sorts documents by given properties to compare.
   # Each property in the object should either be
@@ -105,7 +96,6 @@ class DatabaseWrapper
         if a[prop] > b[prop]
           return order
       return 0
-
 
   destroy: (callback) =>
     return if databaseEngine is 'mongo'

@@ -37,6 +37,10 @@ class BossFactory
 
     baseObj = BossInformation.bosses[name]
     statObj = baseObj.stats
+
+    statObj.hp = statObj.hp ? 0
+    statObj.hp += statObj.level * 1000
+
     statObj.name = name
 
     monster = @game.monsterGenerator.experimentalMonsterGeneration statObj, baseObj.score
@@ -67,6 +71,8 @@ class BossFactory
           event = rangeBoost: 2, remark: "%player looted %item from the corpse of <player.name>#{name}</player.name>."
 
           if @game.eventHandler.tryToEquipItem event, member, itemInst
+
+            ##TAG:EVENT_EVENT: bossbattle.loot | member, itemName, item | Emitted when a party member loots a boss item
             member.emit "event.bossbattle.loot", member, name, item
 
         _.each baseObj.collectibles, (item) ->
@@ -79,8 +85,10 @@ class BossFactory
 
           member.handleCollectible baseCollectible
 
+          ##TAG:EVENT_EVENT: bossbattle.lootcollectible | member, bossBaseName, item | Emitted when a party member loots a boss collectible
           member.emit "event.bossbattle.lootcollectible", member, name, item
 
+        ##TAG:EVENT_EVENT: bossbattle.win | member, bossBaseName | Emitted when a party member wins a boss battle
         member.emit "event.bossbattle.win", member, name
 
       if monster.bossPartyName
@@ -91,6 +99,7 @@ class BossFactory
     monster.on "combat.party.win", (losingParty) ->
 
       _.each losingParty, (member) ->
+        ##TAG:EVENT_EVENT: bossbattle.lose | member, bossBaseName | Emitted when a party member loses a boss battle
         member.emit "event.bossbattle.lose", member, name
 
         member.handleTeleport tile: object: properties: toLoc: baseObj.teleportOnDeath, movementType: "teleport" if baseObj.teleportOnDeath

@@ -152,7 +152,9 @@ class Battle
 
   beginTakingTurns: ->
     @logger?.info "battle.start"
-    @emitEventToAll "battle.start", @turnOrder
+
+    ##TAG:EVENT_COMBAT: battle.start | turnorder | Emitted when the battle starts
+    @emitEventToAll "battle.start", null, [@turnOrder]
     @currentTurn = 1
     while @playersAlive()
       @turnPosition = @turnPosition or 0
@@ -163,19 +165,27 @@ class Battle
       if @turnPosition is 0
         @broadcast "ROUND #{@currentTurn} STATUS: #{@getAllStatStrings().join ' VS '}"
         @logger?.info "round.start"
-        @emitEventToAll "round.start", @turnOrder
+
+        ##TAG:EVENT_COMBAT: round.start | turnorder | Emitted when a new round starts
+        @emitEventToAll "round.start", null, [@turnOrder]
 
       player = @turnOrder[@turnPosition]
       @logger?.verbose "turn.start", {player: player}
-      @emitEventToAll "turn.start", player
+
+      ##TAG:EVENT_COMBAT: [sea].turn.start | player | Emitted when a player takes a turn
+      @emitEventToAll "turn.start", player, [player]
       @takeTurn player
-      @emitEventToAll "turn.end", player
+
+      ##TAG:EVENT_COMBAT: [sea].turn.end | player | Emitted when a player ends a turn
+      @emitEventToAll "turn.end", player, [player]
       @logger?.verbose "turn.end", {player: player}
 
       @turnPosition++
       if @turnPosition is @turnOrder.length
         @logger?.info "round.end"
-        @emitEventToAll "round.end", @turnOrder
+
+        ##TAG:EVENT_COMBAT: round.end | turnorder | Emitted when the round is over
+        @emitEventToAll "round.end", null, [@turnOrder]
         @turnPosition = 0
         @currentTurn++
 
@@ -193,7 +203,9 @@ class Battle
     if @currentTurn is 1 and @checkIfOpponentHasBattleEffect player, "startle"
       message = "#{player.getName()} is startled!"
       @broadcast message
-      @emitEventToAll "startled", player
+
+      ##TAG:EVENT_COMBAT: [sea].startled | player | Emitted when a player gets startled
+      @emitEventToAll "startled", player, [player]
       return
 
     if player.calc.cantAct() > 0
@@ -205,7 +217,9 @@ class Battle
     if (chance.bool {likelihood: player.calc.fleePercent()}) and not @checkIfOpponentHasBattleEffect player, "fear"
       @broadcast "<player.name>#{player.getName()}</player.name> has fled from combat!", player
       player.fled = true
-      @emitEventToAll "flee", player
+
+      ##TAG:EVENT_COMBAT: [sea].flee | player | Emitted when a player flees combat
+      @emitEventToAll "flee", player, [player]
       return
 
     availableSpells = @game.spellManager.getSpellsAvailableFor player
@@ -243,6 +257,9 @@ class Battle
     if dodgeChance <= 0
       message += ", but <player.name>#{target.getName()}</player.name> dodged!"
       battleMessage message, target
+
+      ##TAG:EVENT_COMBAT: [sea].dodge  | attacked, attacker | Emitted when a player (`attacked`) dodges an attack
+      ##TAG:EVENT_COMBAT: [sea].dodged | attacked, attacker | Emitted when a player (`attacker`) is dodged
       @emitEvents "dodge", "dodged", target, player
       @tryParry target, player
       @badTurns++
@@ -255,6 +272,9 @@ class Battle
     if -(target.calc.stat 'luck') <= hitChance <= 0
       message += ", but <player.name>#{player.getName()}</player.name> missed!"
       battleMessage message, target
+
+      ##TAG:EVENT_COMBAT: [sea].miss   | attacker, attacked | Emitted when a player (`attacker`) misses an attack
+      ##TAG:EVENT_COMBAT: [sea].missed | attacker, attacked | Emitted when a player (`attacked`) is missed
       @emitEvents "miss", "missed", player, target
       @tryParry target, player
       @badTurns++
@@ -264,6 +284,9 @@ class Battle
       deflectItem = _.sample target.equipment
       message += ", but <player.name>#{target.name}</player.name> deflected it with %hisher <event.item.#{deflectItem.itemClass}>#{deflectItem.getName()}</event.item.#{deflectItem.itemClass}>!"
       battleMessage message, target
+
+      ##TAG:EVENT_COMBAT: [sea].deflect   | attacked, attacker | Emitted when a player (`attacked`) deflects an attack
+      ##TAG:EVENT_COMBAT: [sea].deflected | attacked, attacker | Emitted when a player (`attacker`) is deflected
       @emitEvents "deflect", "deflected", target, player
       @tryParry target, player
       @badTurns++
@@ -306,9 +329,21 @@ class Battle
 
     @checkBattleEffects player, target if not fatal
 
+    ##TAG:EVENT_COMBAT: [sea].target   | attacker, attacked | Emitted when a player (`attacker`) targets `attacked`
+    ##TAG:EVENT_COMBAT: [sea].targeted | attacker, attacked | Emitted when a player (`attacked`) is targetted
     @emitEvents "target", "targeted", player, target
+
+
+    ##TAG:EVENT_COMBAT: [sea].target   | attacker, attacked | Emitted when a player (`attacker`) attacks `attacked`
+    ##TAG:EVENT_COMBAT: [sea].targeted | attacker, attacked | Emitted when a player (`attacked`) is attacked
     @emitEvents "attack", "attacked", player, target
+
+    ##TAG:EVENT_COMBAT: [sea].critical    | attacker, attacked | Emitted when a player (`attacker`) scores a critical hit on `attacked`
+    ##TAG:EVENT_COMBAT: [sea].criticalled | attacker, attacked | Emitted when a player (`attacked`) is hit by a critical hit
     @emitEvents "critical", "criticalled", player, target if damage is maxDamage
+
+    ##TAG:EVENT_COMBAT: [sea].kill   | attacker, attacked, {dead} | Emitted when a player (`attacker`) scores a lethal blow on `attacked`
+    ##TAG:EVENT_COMBAT: [sea].killed | attacker, attacked, {dead} | Emitted when a player (`attacked`) is killed
     (@emitEvents "kill", "killed", player, target, {dead: target}) if fatal
 
   doMagicalAttack: (player, spellClass) ->
@@ -331,10 +366,24 @@ class Battle
     findSpell = (name) => _.findWhere @game.spellManager.spells, name: name
 
     eventMap =
+      ##TAG:EVENT_COMBAT: [sea].effect.prone  | attacker, attacked | Emitted when a player (`attacker`) prones `attacked`
+      ##TAG:EVENT_COMBAT: [sea].effect.proned | attacker, attacked | Emitted when a player (`attacked`) is knocked prone
       "Prone":   ['effect.prone', 'effect.proned']
+
+      ##TAG:EVENT_COMBAT: [sea].effect.shatter   | attacker, attacked | Emitted when a player (`attacker`) shatters `attacked`s defenses
+      ##TAG:EVENT_COMBAT: [sea].effect.shattered | attacker, attacked | Emitted when a player (`attacked`) has defenses shattered
       "Shatter": ['effect.shatter', 'effect.shattered']
+
+      ##TAG:EVENT_COMBAT: [sea].effect.poison   | attacker, attacked | Emitted when a player (`attacker`) poisons `attacked`
+      ##TAG:EVENT_COMBAT: [sea].effect.poisoned | attacker, attacked | Emitted when a player (`attacked`) is poisoned
       "Poison":  ['effect.poison', 'effect.poisoned']
+
+      ##TAG:EVENT_COMBAT: [sea].effect.venom   | attacker, attacked | Emitted when a player (`attacker`) venoms `attacked`
+      ##TAG:EVENT_COMBAT: [sea].effect.venomed | attacker, attacked | Emitted when a player (`attacked`) is venomed
       "Venom":   ['effect.venom', 'effect.venomed']
+
+      ##TAG:EVENT_COMBAT: [sea].effect.vampire  | attacker, attacked | Emitted when a player (`attacker`) vampires `attacked`
+      ##TAG:EVENT_COMBAT: [sea].effect.vampired | attacker, attacked | Emitted when a player (`attacked`) is vampired
       "Vampire": ['effect.vampire', 'effect.vampired']
 
     _.each effects, (effect) =>
@@ -348,12 +397,15 @@ class Battle
   endBattle: ->
 
     if @badTurns > @BAD_TURN_THRESHOLD or @currentTurn >= @BAD_ROUND_THRESHOLD
-      @emitEventToAll "battle.stale", @turnOrder
+
+      ##TAG:EVENT_COMBAT: battle.stale | turnorder | Emitted when a battle goes stale
+      @emitEventToAll "battle.stale", null, [@turnOrder]
       @broadcast "Thalynas, The Goddess of Destruction And Stopping Battles Prematurely decided that you mortals were taking too long. Try better to amuse her next time!", {}, not @battleUrl
       @cleanUp()
       return
 
-    @emitEventToAll "battle.end", @turnOrder
+    ##TAG:EVENT_COMBAT: battle.end | turnorder | Emitted when a battle ends properly
+    @emitEventToAll "battle.end", null, [@turnOrder]
     randomWinningPlayer = _.sample(_.filter @turnOrder, (player) -> (not player.hp.atMin()) and (not player.fled))
     if not randomWinningPlayer
 
@@ -370,7 +422,10 @@ class Battle
     @losingPlayers  = _.reject (_.difference @turnOrder, @winningParty.players), (player) -> player.fled
     @winningParty.players = _.reject @winningParty.players, (player) -> player.fled
 
+    ##TAG:EVENT_COMBAT: party.lose | losers, winners | Emitted when a party loses combat
     @emitEventsTo "party.lose", @losingPlayers, @winningParty.players
+
+    ##TAG:EVENT_COMBAT: party.win  | winners, losers | Emitted when a party wins combat
     @emitEventsTo "party.win",  @winningParty.players, @losingPlayers
 
     @broadcast "The battle was won by <event.partyName>#{winnerName}</event.partyName>.", {}, not @battleUrl
@@ -528,12 +583,20 @@ class Battle
 
     if damageType is "hp"
       if damage < 0
+
+        ##TAG:EVENT_COMBAT: [sea].heal   | attacker, defender, {type, damage} | Emitted when a player (`attacker`) heals `defender` (hp)
+        ##TAG:EVENT_COMBAT: [sea].healed | attacker, defender, {type, damage} | Emitted when a player (`defender`) is healed (hp)
         @emitEvents "heal", "healed", attacker, defender, type: type, damage: damage
       else
+
+        ##TAG:EVENT_COMBAT: [sea].damage  | attacker, defender, {type, damage} | Emitted when a player (`attacker`) damages `defender` (hp)
+        ##TAG:EVENT_COMBAT: [sea].damaged | attacker, defender, {type, damage} | Emitted when a player (`defender`) is damaged (hp)
         @emitEvents "damage", "damaged", attacker, defender, type: type, damage: damage
 
       if defender.calc.sturdy() and defender.hp.atMin() and canFireSturdy
-        @emitEventToAll "effect.sturdy", defender
+
+        ##TAG:EVENT_COMBAT: [sea].effect.sturdy | player | Emitted when a player triggers sturdy
+        @emitEventToAll "effect.sturdy", defender, [defender]
         defender.hp.set 1
         message = "#{message} [STURDY]" if message
 
@@ -548,8 +611,14 @@ class Battle
 
     else if damageType is "mp"
       if damage < 0
+
+        ##TAG:EVENT_COMBAT: [sea].energize  | attacker, defender, {type, damage} | Emitted when a player (`attacker`) healed `defender` (mp)
+        ##TAG:EVENT_COMBAT: [sea].energized | attacker, defender, {type, damage} | Emitted when a player (`defender`) is healed (mp)
         @emitEvents "energize", "energized", attacker, defender, type: type, damage: damage
       else
+
+        ##TAG:EVENT_COMBAT: [sea].vitiate  | attacker, defender, {type, damage} | Emitted when a player (`attacker`) attacked `defender` (mp)
+        ##TAG:EVENT_COMBAT: [sea].vitiated | attacker, defender, {type, damage} | Emitted when a player (`defender`) is attacked (mp)
         @emitEvents "vitiate", "vitiated", attacker, defender, type: type, damage: damage
 
     extra =
@@ -561,34 +630,36 @@ class Battle
     if defenderPunishDamage > 0 and not doPropagate and not attacker.hp.atMin() and attacker isnt defender
       refmsg = "<player.name>#{defender.name}</player.name> reflected <damage.hp>#{defenderPunishDamage}</damage.hp> damage back at <player.name>#{attacker.name}</player.name>!"
       @takeStatFrom defender, attacker, defenderPunishDamage, type, damageType, spell, refmsg, yes
-      @emitEvents "effect.punish", "effect.punished", defender, attacker
-      defender.emit "combat.self.punish.damage", defenderPunishDamage
-      attacker.emit "combat.self.punished.damage", defenderPunishDamage
+
+      ##TAG:EVENT_COMBAT: effect.punish.damage   | attacker, defender, {damage} | Emitted when a defender hits an attacker with punish damage
+      ##TAG:EVENT_COMBAT: effect.punished.damage | attacker, defender, {damage} | Emitted when an attacker is punished by a defender
+      @emitEvents "effect.punish", "effect.punished", defender, attacker, {damage: defenderPunishDamage}
 
     if darksideDamage > 0 and not doPropagate and not attacker.hp.atMin() and attacker isnt defender
       refmsg = "<player.name>#{attacker.name}</player.name> took <damage.hp>#{darksideDamage}</damage.hp> damage due to darkside!"
       @takeStatFrom attacker, attacker, darksideDamage, type, damageType, spell, refmsg, yes
-      @emitEventToAll "effect.darkside", attacker
-      attacker.emit "combat.self.darkside.damage", darksideDamage
 
-  emitEventToAll: (event, data) ->
+      ##TAG:EVENT_COMBAT: effect.darkside | attacker, darksideDamage | Emitted when an attacker deals darkside damage to itself
+      @emitEventToAll "effect.darkside", attacker, [attacker, darksideDamage]
+
+  emitEventToAll: (event, context, data = []) ->
     _.each @turnOrder, (player) ->
-      if data instanceof Character
+      if (context instanceof Character)
         emitted = no
-        if not emitted and player is data
+        if not emitted and player is context
           emitted = yes
-          player.emit "combat.self.#{event}", data
+          player.emit.apply player, ["combat.self.#{event}"].concat data
 
-        if not emitted and player.party is data?.party
+        if not emitted and player.party is data?
           emitted = yes
-          player.emit "combat.ally.#{event}", data
+          player.emit.apply player, ["combat.ally.#{event}"].concat data
 
         if not emitted and player.party isnt data?.party
           emitted = yes
-          player.emit "combat.enemy.#{event}", data
+          player.emit.apply player, ["combat.enemy.#{event}"].concat data
 
       else
-        player.emit "combat.#{event}", data
+        player.emit.apply player, ["combat.#{event}"].concat data
 
   emitEventsTo: (event, to, data) ->
     _.each to, (player) ->

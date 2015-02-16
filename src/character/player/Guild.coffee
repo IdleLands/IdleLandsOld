@@ -3,6 +3,8 @@ Character = require "../base/Character"
 RestrictedNumber = require "restricted-number"
 MessageCreator = require "../../system/handlers/MessageCreator"
 Constants = require "../../system/utilities/Constants"
+ConvenienceFunctions = require "../../system/utilities/ConvenienceFunctions"
+
 _ = require "lodash"
 Q = require "q"
 
@@ -23,6 +25,7 @@ class Guild
     @buildingLevelCosts = {}
     @buildingProps = {}
     @taxPercent = 0
+    @initGold()
     @resetBuildings()
 
   resetBuildings: ->
@@ -116,15 +119,20 @@ class Guild
     @gold.sub gold
 
   addGold: (gold) ->
-    @gold = new RestrictedNumber 0, 9999999999, 0 unless @gold
+    initGold() unless @gold
     @gold.__current = 0 if _.isNaN @gold.getValue()
     @gold.add gold
+
+  initGold: ->
+    @gold = new RestrictedNumber 0, 9999999999, 0
 
   calcTax: (player) ->
     player.guildTax + @taxPercent
 
   collectTax: (player, gold) ->
     @addGold gold
+
+    ##TAG:EVENT_PLAYER: gold.guildTax   | guildName, goldTaxed | Emitted when a guild collects tax from a member
     player.emit "player.gold.guildTax", @name, gold
 
   getGuildBaseName: ->
@@ -146,6 +154,43 @@ class Guild
         return unless building
         inst = base.instances[size][i] = new (require "../../map/guild-buildings/#{building}") @guildManager.game, @
         base.build building, size, i, inst
+
+  changeLeader: (identifier, newLeaderName) ->
+    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+
+    me = @guildManager.game.playerManager.getPlayerById identifier
+    targetPlayer = @guildManager.game.playerManager.getPlayerByName newLeaderName
+    return Q {isSuccess: no, code: 951, message: "That member is not online!"} unless targetPlayer
+    return Q {isSuccess: no, code: 952, message: "That member is not in your guild!"} unless targetPlayer.guild is me.guild
+
+    @leader = targetPlayer.identifier
+    targetPlayer.guildStatus = 2
+    me.guildStatus = 1
+    meEntry = _.findWhere @members, {identifier: identifier}
+    meEntry.isAdmin = yes
+
+    @save()
+
+    Q {isSuccess: yes, code: 953, message: "Successfully changed leadership to #{newLeaderName}!", guild: @buildSaveObject()}
+
+  _setProperty: (building, property, value) ->
+    property = ConvenienceFunctions.sanitizeStringNoPunctuation property
+    value = ConvenienceFunctions.sanitizeString value.substring 0, 1000
+
+    @buildingProps[building] = {} unless @buildingProps[building]
+    @buildingProps[building][property] = value
+
+    @save()
+
+    @reconstructBuildings()
+
+  setProperty: (identifier, building, property, value) ->
+    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+    return Q {isSuccess: no, code: 80, message: "You don't have that building constructed!"} unless @hasBuilt building
+
+    @_setProperty building, property, value
+
+    Q {isSuccess: yes, code: 87, message: "Successfully set property \"#{property}\" for #{building} to \"#{value}\"!"}
 
   _upgrade: (building) ->
     @buildingLevels[building]++
@@ -205,6 +250,13 @@ class Guild
   _moveToBase: (@base) ->
     @resetBuildings()
     @buildBase()
+
+    base = @getGuildBase()
+    inBase = _.filter @guildManager.game.playerManager.players, (player) => player.map is @getGuildBaseName()
+    _.each inBase, (player) ->
+      player.x = base.startLoc[0]
+      player.y = base.startLoc[1]
+
     @save()
 
   moveToBase: (identifier, newBase) ->
