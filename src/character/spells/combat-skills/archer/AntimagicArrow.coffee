@@ -36,7 +36,11 @@ class AntimagicArrow extends Spell
   cast: (player) ->
     damage = @calcDamage()
     message = "%casterName hits %targetName with an %spellName, halving %targetName's MP and dealing %damage HP damage!"
-    player.mp?.sub Math.floor(player.mp.getValue()/2)
+
+    if player.mp and player.mp.getValue() > 0
+      damage = Math.floor player.mp.getValue()/2
+      @caster.party?.currentBattle?.takeMp @caster, player, damage, @determineType(), @
+
     @doDamageTo player, damage, message
 
   constructor: (@game, @caster) ->
