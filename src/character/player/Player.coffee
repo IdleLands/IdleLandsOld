@@ -51,6 +51,7 @@ class Player extends Character
     @gender = _.sample ["female", "male", "not a bear", "glowcloud"]
     @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
     @calc.itemFindRange()
+    @guildTax = 0
 
   generateBaseEquipment: ->
 
