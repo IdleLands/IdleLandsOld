@@ -97,7 +97,13 @@ router
   API.player.guild.upgrade identifier, building
   .then (resp) -> res.json resp
 
-## TAG:APIROUTE: PUT | /guild/move | {identifier, newLoc, token} | {guild}
+## TAG:APIROUTE: PATCH | /guild/building/setProperty | {identifier, building, property, value} | {guild}
+.patch "/guild/building/setProperty", hasValidToken, (req, res) ->
+  {identifier, building, property, value} = req.body
+  API.player.guild.setProperty identifier, building, property, value
+  .then (resp) -> res.json resp
+
+## TAG:APIROUTE: PUT | /guild/move | {identifier, newLoc, token} | {player}
 .put "/guild/move", hasValidToken, (req, res) ->
   {identifier, newLoc} = req.body
   API.player.guild.move identifier, newLoc

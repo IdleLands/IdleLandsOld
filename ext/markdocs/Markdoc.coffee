@@ -36,7 +36,7 @@ class Markdoc
         arr = _.map (params.split "|"), (s) -> s.trim()
 
         trimmedFile = file.substring file.indexOf "src"
-        arr[@getSortIndex tag] = "[#{arr[@getSortIndex tag]}](#{baseUrl}/#{trimmedFile}#L#{i})"
+        arr[@getSortIndex tag] = "[#{arr[@getSortIndex tag]}](#{baseUrl}/#{trimmedFile}#L#{i+1})"
 
         @lines[tag].push arr
 
@@ -90,6 +90,22 @@ docs = [
       ['Reduction', 'Base Value', 'Arguments Passed', 'Description']
     ]
     sortIndexes: [
+      0
+    ]
+  }
+  {
+    key: 'EVENT',
+    tags: ['EVENT_PLAYER', 'EVENT_EVENT', 'EVENT_EXPLORE', 'EVENT_COMBAT']
+    headers: [
+      ['Player Emit', 'Arguments Passed', 'Description']
+      ['Event Emit', 'Arguments Passed', 'Description']
+      ['Explore Emit', 'Arguments Passed', 'Description']
+      ['Combat Emit', 'Arguments Passed', 'Description']
+    ]
+    sortIndexes: [
+      0
+      0
+      0
       0
     ]
   }

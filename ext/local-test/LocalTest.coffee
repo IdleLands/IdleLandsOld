@@ -17,6 +17,8 @@ players = [
   'Jombocom'
   'Carple'
   'Danret'
+  'Swilia'
+  'Bripz'
   'Goop'
   'Jeut'
   'Axce'
@@ -31,11 +33,17 @@ players = [
   'Plez'
   'Zep'
   'Shet'
+  'Jezza'
   'Lord Sirpy'
   'Sir Pipe'
   'Pleb'
   'Rekter'
   'Pilu'
+  'Sengai'
+  'El Shibe'
+  'La Gpoy'
+  'Wizzrobu'
+  'Azerty'
 ]
 
 hashes = []
@@ -141,6 +149,7 @@ loadIdle = ->
 
 registerAllPlayers = ->
   _.each hashes, (playerHashInList) ->
+    # WARNING: You may have to restart your game after registering new players. Strange things happen, yo.
     IdleWrapper.api.player.auth.register {identifier: playerHashInList, name: playerHash[playerHashInList]}, null
 
 loadAllPlayers = ->

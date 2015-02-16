@@ -49,6 +49,8 @@ class MerchantEvent extends Event
 
       totalString = "#{string} #{response} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (#{normalizedPerceivedScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
       @game.eventHandler.broadcastEvent {message: totalString, player: @player, extra: extra, type: 'shop'}
+
+      ##TAG:EVENT_EVENT: merchant | player, {item, gold, shopGold} | Emitted when a player buys an item from a shop
       @player.emit "event.merchant", @player, extra
       @player.gold.sub shop.price
 

@@ -10,6 +10,7 @@ Constants = require "./../utilities/Constants"
 bcrypt = require "bcrypt"
 crypto = require "crypto"
 LogManager = require "./LogManager"
+convenienceFunctions = require "../../system/utilities/ConvenienceFunctions"
 
 class PlayerManager
 
@@ -237,7 +238,7 @@ class PlayerManager
 
   registerPlayer: (options) ->
 
-    options.name = options.name?.trim()
+    options.name = convenienceFunctions.sanitizeStringNoPunctuation options.name?.trim()
 
     return Q {isSuccess: no, code: 6, message: "You need a name for your character!"} unless options.name
     return Q {isSuccess: no, code: 2, message: "You have to make your name above 2 characters!"} if options.name.length < 2
@@ -260,7 +261,15 @@ class PlayerManager
 
       return defer.resolve {isSuccess: no, code: 5, message: "Player creation error: #{iErr} (you probably already registered a character to that ident, that identifier is already taken, or that name is taken)."} if iErr
 
-      @game.broadcast MessageCreator.genericMessage "Welcome #{options.name} to #{Constants.gameName}!"
+      item = _.sample playerObject.equipment
+      message = MessageCreator.doStringReplace "Welcome #{options.name} to #{Constants.gameName}! The level #{playerObject.level.getValue()} #{playerObject.professionName} left home armed with only %hisher #{item.getName()} (and other gear), and is ready to take on the world!", playerObject
+
+      @game.eventHandler.broadcastEvent
+        sendMessage: yes
+        player: playerObject
+        message: message
+        type: "levelup"
+
       @playerHash[options.identifier] = playerObject
       @players.push playerObject
 

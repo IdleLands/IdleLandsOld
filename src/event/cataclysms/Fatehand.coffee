@@ -11,6 +11,8 @@ _ = require "lodash"
 */`
 class Fatehand extends Cataclysm
   constructor: (game) ->
+
+    ##TAG:EVENT_EVENT: cataclysm.fatehand | cataclysm | Emitted when a player is affected by the fatehand cataclysm
     super game, "fatehand"
 
   go: ->

@@ -4,7 +4,7 @@ chai = require "chai"
 mocha = require "mocha"
 sinon = require "sinon"
 fs = require "fs"
-stream = require('stream')
+stream = require "stream"
 
 expect = chai.expect
 describe = mocha.describe

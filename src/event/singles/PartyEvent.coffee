@@ -13,11 +13,13 @@ Constants = require "../../system/utilities/Constants"
 class PartyEvent extends Event
   go: ->
     return if @game.inBattle or @player.party?.players.length >= Constants.defaults.game.maxPartyMembers
+    return if @player.hasPersonality "Solo"
 
     # recruit a new member if this event comes up and the party size is small enough
     if @player.party
-      newMember = @game.selectRandomNonPartyPlayer()
-      return if not newMember
+      newMember = @game.selectRandomNonPartyMemberOnMap @player.map
+      return unless newMember
+
       message = "<player.name>#{@player.getName()}</player.name> recruited <player.name>#{newMember.getName()}</player.name> into <event.partyName>#{@player.partyName}</event.partyName>!"
       messageObj = @game.eventHandler.broadcastEvent {message: message, player: @player, type: 'party'}
       @game.eventHandler.broadcastEvent {message: messageObj, player: newMember, sendMessage: no, type: 'party'}
@@ -27,7 +29,7 @@ class PartyEvent extends Event
 
     # build a new party
     newParty = @game.createParty @player
-    return if not newParty?.name
+    return unless newParty?.name
 
     newPartyPlayers = _.without newParty.players, @player
 

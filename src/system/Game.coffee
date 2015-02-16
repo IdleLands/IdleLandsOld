@@ -118,11 +118,18 @@ class Game
   selectRandomNonPartyPlayer: ->
     _.sample @getAllNonPartyPlayers()
 
-  createParty: (player = null) ->
-    player = @selectRandomNonPartyPlayer() if not player
-    availableGuildies = if player.guild then _.filter @getAllNonPartyPlayers(), (member) -> member isnt player and member.guild is player.guild else []
+  getAllNonPartyMembersOnMap: (map) ->
+    _.reject @playerManager.players, (player) -> player.map isnt map or player.party or player.hasPersonality "Solo"
 
-    players = _.without @getAllNonPartyPlayers(), player
+  selectRandomNonPartyMemberOnMap: (map) ->
+    _.sample @getAllNonPartyMembersOnMap map
+
+  createParty: (player = null) ->
+    player = @selectRandomNonPartyPlayer() unless player
+    allMembers = @getAllNonPartyMembersOnMap player.map
+    availableGuildies = if player.guild then _.filter allMembers, (member) -> member isnt player and member.guild is player.guild else []
+
+    players = _.without allMembers, player
 
     partyAdditionSize = Math.round Math.min (players.length / 2), chance.integer({min: 1, max: Constants.defaults.game.maxPartyMembers})
 

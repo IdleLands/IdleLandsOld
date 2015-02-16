@@ -25,8 +25,9 @@ class Cataclysm
     _.sample @allPlayers()
 
   affect: (player) ->
-    player.emit "event.cataclysms"
-    player.emit "event.cataclysms.#{@name}"
+    ##TAG:EVENT_EVENT: cataclysm | cataclysm | Emitted when a player is affected by a cataclysm
+    player.emit "event.cataclysm", @
+    player.emit "event.cataclysm.#{@name}", @
 
   go: ->
     @game.errorHandler.captureException new Error "ERROR: THIS CATACLYSM DOESN'T SEEM TO WORK"

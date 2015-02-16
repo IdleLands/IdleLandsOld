@@ -19,7 +19,11 @@ class LevelDownEvent extends Event
     @game.eventHandler.broadcastEvent {message: string, player: @player, type: 'levelup'}
     @player.level.sub 1
     @player.resetMaxXp()
+
+    ##TAG:EVENT_EVENT: levelDown | player, currentLevel, newLevel | Emitted when a player loses a level
     @player.emit "event.levelDown", @player, currentLevel, newLevel
-    @player.emit "player.level.down", @player
+
+    ##TAG:EVENT_PLAYER: level.down | player, currentLevel, newLevel | Emitted when a player loses a level
+    @player.emit "player.level.down", @player, currentLevel, newLevel
 
 module.exports = exports = LevelDownEvent
