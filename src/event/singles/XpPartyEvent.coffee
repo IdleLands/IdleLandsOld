@@ -16,7 +16,7 @@ class XpPartyEvent extends Event
       @game.errorHandler.captureException new Error ("XP PARTY EVENT FAILURE"), extra: @event
       return
 
-    return unless @player.party
+    return unless @player.party?.members?.length > 0
 
     rangeManage =
       blessXpParty:
