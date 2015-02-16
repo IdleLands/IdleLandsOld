@@ -37,6 +37,10 @@ class BossFactory
 
     baseObj = BossInformation.bosses[name]
     statObj = baseObj.stats
+
+    statObj.hp = statObj.hp ? 0
+    statObj.hp += statObj.level * 1000
+
     statObj.name = name
 
     monster = @game.monsterGenerator.experimentalMonsterGeneration statObj, baseObj.score
