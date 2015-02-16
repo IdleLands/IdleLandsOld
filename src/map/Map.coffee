@@ -1,64 +1,10 @@
 
 _ = require "lodash"
 chance = new (require "chance")()
+Constants = require "../system/utilities/Constants"
 
 class Map
-  gidMap:
-    1: "StairsDown"
-    2: "StairsUp"
-    3: "BrickWall"
-    4: "Grass"
-    5: "Water"
-    6: "Lava"
-    7: "Tile"
-    8: "Ice"
-    9: "Forest"
-    10: "Sand"
-    11: "Swamp"
-    12: "BlueNPC"
-    13: "RedNPC"
-    14: "GreenNPC"
-    15: "QuestionMark"
-    16: "Tree"
-    17: "Mountain"
-    18: "Door"
-    19: "Dirt"
-    20: "FighterTrainer"
-    21: "MageTrainer"
-    22: "ClericTrainer"
-    23: "JesterTrainer"
-    24: "RogueTrainer"
-    25: "GeneralistTrainer"
-    26: "Boss"
-    27: "Chest"
-    28: "PurpleTeleport"
-    29: "RedTeleport"
-    30: "YellowTeleport"
-    31: "GreenTeleport"
-    32: "BlueTeleport"
-    33: "Cloud"
-    34: "Wood"
-    35: "Hole"
-    36: "Gravel"
-    37: "Mushroom"
-    38: "Stone Wall"
-    39: "Box"
-    40: "Ladder Up"
-    41: "Ladder Down"
-    42: "Rope Up"
-    43: "Rope Down"
-    44: "Table"
-    45: "Pot"
-    46: "Barrel"
-    47: "Bed"
-    48: "Sign"
-    49: "Carpet"
-    50: "Crumbling Brick"
-    51: "Skeleton"
-    52: "Snow"
-    53: "Fence"
-    54: "Dead Tree"
-    55: "Palm Tree"
+  gidMap: Constants.gidMap
 
   blockers: [16, 17, 3, 33, 37, 38, 39, 44, 45, 46, 47, 50, 53, 54, 55]
   interactables: [1, 2, 12, 13, 14, 15, 18, 40, 41, 42, 43, 48, 51]
@@ -93,7 +39,7 @@ class Map
           @regionMap[(y*@width)+x] = region.name
 
   nameTrainers: ->
-    return if not @game
+    return unless @game
     @game.loading.then =>
       allTrainersOnMap = (_.filter @map.layers[2].objects, (obj) -> obj.type is "Trainer")
       _.each allTrainersOnMap, (trainer) =>

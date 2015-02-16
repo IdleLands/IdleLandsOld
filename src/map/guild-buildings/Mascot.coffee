@@ -1,5 +1,8 @@
 
+_ = require "lodash"
+
 GuildBuilding = require "../GuildBuilding"
+Constants = require "../../system/utilities/Constants"
 
 `/**
  * The Mascot looks really nice in the courtyard. Upgrading it provides bragging rights!
@@ -8,6 +11,7 @@ GuildBuilding = require "../GuildBuilding"
  * @category Buildings
  * @package Guild Bases
  * @cost {level-up} level*1000
+ * @property MascotID (Any valid string ID referencing the tile map in the game)
  * @size {sm}
  */`
 class Mascot extends GuildBuilding
@@ -16,16 +20,27 @@ class Mascot extends GuildBuilding
   @desc = Mascot::desc = "Upgrade this guy for bragging rights!"
   @levelupCost = Mascot::levelupCost = (level) -> level * 1000
 
-  f =
-    name: "Mascot"
-    gid: 26
-    type: "Guild NPC"
-    properties: {}
-
   tiles: [
     0,  0,  0,
-    0,  f,  0,
+    0,  0,  0,
     0,  0,  0
   ]
+
+  constructor: (@game, @guild, @name) ->
+    super @game, @guild, @name
+
+    mascotId = parseInt Constants.revGidMap[@getProperty "MascotID"]
+
+    f =
+      name: "Mascot"
+      gid:  if _.isNaN mascotId then 26 else mascotId
+      type: "Guild NPC"
+      properties: {}
+
+    @tiles = [
+      0,  0,  0,
+      0,  f,  0,
+      0,  0,  0
+    ]
 
 module.exports = exports = Mascot
