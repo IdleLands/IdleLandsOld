@@ -211,6 +211,13 @@ class Guild
   _moveToBase: (@base) ->
     @resetBuildings()
     @buildBase()
+
+    base = @getGuildBase()
+    inBase = _.filter @guildManager.game.playerManager.players, (player) => player.map is @getGuildBaseName()
+    _.each inBase, (player) ->
+      player.x = base.startLoc[0]
+      player.y = base.startLoc[1]
+
     @save()
 
   moveToBase: (identifier, newBase) ->
