@@ -35,7 +35,7 @@ class MerchantEvent extends Event
       response = MessageCreator.doStringReplace "Unfortunately, %player only has %gold gold, and walked away in disappointment.", @player, extra
       @game.eventHandler.broadcastEvent {message: "#{string} #{response}", player: @player, type: 'shop'}
 
-    else if score > myScore and (chance.bool likelihood: @player.calc.itemReplaceChancePercent()) and @game.eventHandler.tryToEquipItem affirmativeResponseEvent, @player, shop.item
+    else if score > myScore and @game.eventHandler.tryToEquipItem affirmativeResponseEvent, @player, shop.item
       ##TAG:EVENT_EVENT: merchant | player, {item, gold, shopGold} | Emitted when a player buys an item from a shop
       @player.emit "event.merchant", @player, extra
       @player.gold.sub shop.price
