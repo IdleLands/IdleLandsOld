@@ -20,8 +20,8 @@ PUT | [/custom/player/submit](https://github.com/IdleLands/IdleLands/blob/master
 POST | [/custom/redeem](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageCustomContent.coffee#L14) | {identifier, crierId, giftId} | {}
 POST | [/game/battle](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Battle.coffee#L11) | {battleId} | {battle}
 POST | [/game/events/large](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L25) | {filterPlayers, newerThan} | {events}
-POST | [/game/events/medium](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L18) | {filterPlayers, newerThan} | {events}
-POST | [/game/events/small](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L11) | {filterPlayers, newerThan} | {events}
+POST | [/game/events/medium](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L19) | {filterPlayers, newerThan} | {events}
+POST | [/game/events/small](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L13) | {filterPlayers, newerThan} | {events}
 POST | [/game/map](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Map.coffee#L8) | {map} | {map}
 PUT | [/guild/building/construct](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L88) | {identifier, building, slot, token} | {player}
 POST | [/guild/building/upgrade](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L94) | {identifier, building, token} | {player}
@@ -78,9 +78,9 @@ PUT | [/player/manage/title/set](https://github.com/IdleLands/IdleLands/blob/mas
 Parameter | Type | Definition | Restrictions
 --- | --- | --- | ---
 [battleId](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Battle.coffee#L6) | string | The id representing the battle | 16 character Mongo ID
-[filterPlayers](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L6) | (optional) array | A list of players to filter events down to, if any | Array of player names
+[filterPlayers](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L8) | (optional) array | A list of players to filter events down to, if any | Array of player names
 [identifier](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L11) | string | The players unique identifier | None
-[newerThan](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L7) | (optional) date | A timestamp which signifies the last event in your catalog | none
+[newerThan](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L9) | (optional) date | A timestamp which signifies the last event in your catalog | none
 [password](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L13) | string | The token issued to the player on login | >3 characters
 [token](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L12) | string | The token issued to the player on login | None
 
@@ -88,7 +88,7 @@ Parameter | Type | Definition | Restrictions
 Return Value | Type | Description
 --- | --- | ---
 [battle](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Battle.coffee#L8) | object | The battle object
-[events](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L9) | array | A list of events, if any were selected by given filters
+[events](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L11) | array | A list of events, if any were selected by given filters
 [player](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L15) | object | The player object
 [token](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L16) | string | The players temporary secure token
 
@@ -104,6 +104,7 @@ API Notes
 * Error codes can be found [here](https://github.com/IdleLands/IdleLands/wiki/REST-Error-Codes)
 * Pets can *always* have the Monster class, even if the player has not yet been that class.
 * Calls to `/custom/player/submit` are throttled at a minimum of 10 seconds, but scales upwards depending on the intensity of the possible spam.
+* Event timers are throttled to 5, 30, and 600 seconds respectively, to account for the sheer quantity of events that could possibly be sent. The advised route to go if you absolutely need the large event set is to make your first query be the large one, and then patch in the small event set afterwards, using `newerThan`.
 * You can determine if a player is a content moderator by checking `player.isContentModerator`.
 
 Sample Player Object

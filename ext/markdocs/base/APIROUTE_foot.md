@@ -9,6 +9,7 @@ API Notes
 * Error codes can be found [here](https://github.com/IdleLands/IdleLands/wiki/REST-Error-Codes)
 * Pets can *always* have the Monster class, even if the player has not yet been that class.
 * Calls to `/custom/player/submit` are throttled at a minimum of 10 seconds, but scales upwards depending on the intensity of the possible spam.
+* Event timers are throttled to 5, 30, and 600 seconds respectively, to account for the sheer quantity of events that could possibly be sent. The advised route to go if you absolutely need the large event set is to make your first query be the large one, and then patch in the small event set afterwards, using `newerThan`.
 * You can determine if a player is a content moderator by checking `player.isContentModerator`.
 
 Sample Player Object
