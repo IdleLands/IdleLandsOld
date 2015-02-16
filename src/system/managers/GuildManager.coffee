@@ -116,7 +116,7 @@ class GuildManager
       @defer.resolve()
 
   retrieveAllGuilds: (callback) ->
-    @db.find {}, (e, guilds) =>
+    @db.find {}, {}, (e, guilds) =>
       @game.errorHandler.captureException e if e
       callback guilds
 

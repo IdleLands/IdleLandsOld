@@ -38,6 +38,13 @@ class API
         @gameInstance.world.maps[mapName].getMapData()
       battle: (battleId) =>
         @gameInstance.componentDatabase.retrieveBattle battleId
+    events:
+      small:  (filterPlayers, newerThan) =>
+        @gameInstance.eventHandler.retrieveEvents 10, filterPlayers, newerThan
+      medium: (filterPlayers, newerThan) =>
+        @gameInstance.eventHandler.retrieveEvents 100, filterPlayers, newerThan
+      large:  (filterPlayers, newerThan) =>
+        @gameInstance.eventHandler.retrieveEvents 1000, filterPlayers, newerThan
 
   # Invoked manually to either update or mess with the game
   @gm =

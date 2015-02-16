@@ -17,7 +17,8 @@ allEvents = requireDir "../../event/singles"
 class EventHandler
 
   constructor: (@game) ->
-    @playerEventsDb = new Datastore "playerEvents", (db) -> db.ensureIndex {createdAt: 1}, {expiresAfterSeconds: 7200}, ->
+    @playerEventsDb = new Datastore "playerEvents", (db) ->
+      db.ensureIndex {createdAt: 1}, {expiresAfterSeconds: 7200}, ->
 
   doEventForPlayer: (playerName, eventType = null) ->
     player = @game.playerManager.getPlayerByName playerName
@@ -188,7 +189,20 @@ class EventHandler
     player.recentEvents.unshift event
     player.recentEvents.pop() if player.recentEvents.length > Constants.defaults.player.maxRecentEvents
 
-    @playerEventsDb.insert event, ->
+    @playerEventsDb.insert event, (e, docs) =>
+      @game.errorHandler.captureException (new Error "Could not insert event"), event if e
+
+  retrieveEvents: (count = 10, filter = [], newerThan) ->
+    defer = Q.defer()
+
+    args = {}
+    args.player = {$in: filter} if filter.length > 0
+    args.createdAt = {$gt: newerThan} if newerThan
+
+    @playerEventsDb.find args, {limit: count}, (e, docs) ->
+      defer.resolve {events: docs}
+
+    defer.promise
 
   doYesNo: (event, player, callback) ->
     #player.emit "yesno"
