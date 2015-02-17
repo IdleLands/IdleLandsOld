@@ -82,7 +82,7 @@ Parameter | Type | Definition | Restrictions
 [battleId](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Battle.coffee#L6) | string | The id representing the battle | 16 character Mongo ID
 [filterPlayers](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L8) | (optional) array | A list of players to filter events down to, if any | Array of player names
 [identifier](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L11) | string | The players unique identifier | None
-[newerThan](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L9) | (optional) date | A timestamp which signifies the last event in your catalog | none
+[newerThan](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L9) | (optional) int | A timestamp which signifies the last event in your catalog (should be specified in milliseconds) | none
 [password](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L13) | string | The token issued to the player on login | >3 characters
 [token](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Authentication.coffee#L12) | string | The token issued to the player on login | None
 

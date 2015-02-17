@@ -195,9 +195,9 @@ class EventHandler
   retrieveEvents: (count = 10, filter = [], newerThan) ->
     defer = Q.defer()
 
-    args = {}
+    args = {type: {$not: {$eq: 'towncrier'}}}
     args.player = {$in: filter} if filter.length > 0
-    args.createdAt = {$gt: newerThan} if newerThan
+    args.createdAt = {$gt: new Date newerThan} if newerThan
 
     @playerEventsDb.find args, {limit: count, sort: {createdAt: -1}}, (e, docs) ->
       filtered = _.uniq docs, (doc) -> doc.extra?.battleId or doc.extra?.partyName or doc.createdAt

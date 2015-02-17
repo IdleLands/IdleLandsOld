@@ -6,7 +6,7 @@ router = (require "express").Router()
 router
 
 ##TAG:APIROUTE_PARAM: filterPlayers | (optional) array | A list of players to filter events down to, if any | Array of player names
-##TAG:APIROUTE_PARAM: newerThan | (optional) date | A timestamp which signifies the last event in your catalog | none
+##TAG:APIROUTE_PARAM: newerThan | (optional) int | A timestamp which signifies the last event in your catalog (should be specified in milliseconds) | none
 
 ##TAG:APIROUTE_RETVAL: events | array | A list of events, if any were selected by given filters
 
