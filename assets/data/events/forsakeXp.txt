@@ -40,7 +40,7 @@
 %player picked %hisher nose and some pink squishy ooze fell out. That ooze turned out to be %xpxp seeping out.
 %player skipped through a field of poppies and became addicted to heroin. %player had to spend %xpxp breaking %hisher addiction.
 %player "donates" blood to an entire village of vampires. The vampires all sucked %xpxp from %himher!
-%player practiced cake making, and failed so greatly that it managed to explode all over the nearby tree. %player spent %xp in cleaning up the huge mess.
+%player practiced cake making, and failed so greatly that it managed to explode all over the nearby tree. %player spent %xpxp in cleaning up the huge mess.
 %player got a ticket for peeing on a tree. The ticket cost %xpxp.
 %player found a magikarp! Unfortunately, it splashed its way back into the water. Silly magikarp. Too bad it also stole %xpxp from %player.
 %player tried to divide by zero, and caused a nearby city to sink into the ground. %she had to pay %xpxp in damages.
