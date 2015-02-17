@@ -200,7 +200,7 @@ class EventHandler
     args.createdAt = {$gt: new Date newerThan} if newerThan
 
     @playerEventsDb.find args, {limit: count, sort: {createdAt: -1}}, (e, docs) ->
-      filtered = _.uniq docs, (doc) -> doc.extra?.battleId or doc.extra?.partyName or doc.createdAt
+      filtered = _.uniq docs, (doc) -> doc.extra?.linkTitle or doc.extra?.partyName or doc.createdAt
       defer.resolve {events: filtered}
 
     defer.promise
