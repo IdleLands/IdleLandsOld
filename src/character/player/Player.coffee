@@ -386,10 +386,30 @@ class Player extends Character
     @playerManager.game.treasureFactory.createTreasure treasure, @
 
   handleBossBattle: (bossName) ->
+    return unless @canBattleBoss bossName
     @playerManager.game.eventHandler.bossBattle @, bossName
 
   handleBossBattleParty: (bossParty) ->
+    return unless @canBattleBoss bossParty
     @playerManager.game.eventHandler.bossPartyBattle @, bossParty
+
+  resetBossTimer: (boss) ->
+    @bossTimers = {} unless @bossTimers
+    # 60 seconds for next fight
+    @bossTimers[boss] = Date.now() + (60 * 1000)
+
+  canBattleBoss: (boss) ->
+    @bossTimers = {} unless @bossTimers
+
+    now = Date.now()
+
+    @bossTimers[boss] = now unless @bossTimers[boss]
+
+    if @bossTimers[boss] - now <= 0
+      @resetBossTimer boss
+      return yes
+
+    no
 
   pickRandomTile: ->
     @ignoreDir = [] if not @ignoreDir

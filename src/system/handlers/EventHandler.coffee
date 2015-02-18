@@ -127,6 +127,8 @@ class EventHandler
         member.y = player.y
         member.map = player.map
 
+        member.resetBossTimer name
+
       _.each bossParty.players, (boss) ->
         boss.mirror player.party if boss.shouldMirror
 
