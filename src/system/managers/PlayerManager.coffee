@@ -11,6 +11,8 @@ bcrypt = require "bcrypt"
 crypto = require "crypto"
 LogManager = require "./LogManager"
 convenienceFunctions = require "../../system/utilities/ConvenienceFunctions"
+requireDir = require "require-dir"
+playerBuffs = requireDir "../../character/timedEffects", recurse: yes
 
 class PlayerManager
 
@@ -29,6 +31,11 @@ class PlayerManager
     else
       @logManager = new LogManager()
       @logManager.getLogger("PlayerManager").warn "@game.logManager not set, using isolated LogManager instance, not able to set logger level via !idle-setloggerlevel"
+
+    # Check player buffs every minute, which is 60000 ms
+    @checkBuffInterval = setInterval =>
+      @checkBuffs()
+    , 60000
 
     @interval = null
     @DELAY_INTERVAL = 10000
@@ -339,6 +346,11 @@ class PlayerManager
     clearTimeout player.autoLogoutId if player.autoLogoutId
     player.autoLogoutId = setTimeout (@removePlayer.bind @, player.identifier), Constants.defaults.api.autoLogoutTime
 
+  checkBuffs: ->
+    for player in @players
+      player.buffsAffectedBy = [] if not player.buffsAffectedBy
+      player.buffsAffectedBy = _.reject player.buffsAffectedBy, ((buff) -> buff.expire < Date.now())
+
   migratePlayer: (player) ->
     return if not player
 
@@ -413,6 +425,9 @@ class PlayerManager
     player.recalculateStats()
 
     player.spellsAffectedBy = []
+
+    _.forEach player.buffsAffectedBy, (buff) ->
+      buff.__proto__ = playerBuffs[(buff.name)].prototype
 
     player.lastLogin = new Date()
 

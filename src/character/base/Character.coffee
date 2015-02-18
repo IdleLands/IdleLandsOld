@@ -50,6 +50,7 @@ class Character extends EventEmitter2
     .concat @calendar?.game.calendar.getDateEffects() # for monsters
     .concat @getRegion?()
     .concat @playerManager?.game.guildManager.guildHash[@guild]?.buffs ? []
+    .concat @buffsAffectedBy ? []
 
   probabilityReduce: (appFunctionName, args = [], baseObject) ->
     args = [args] if not _.isArray args
