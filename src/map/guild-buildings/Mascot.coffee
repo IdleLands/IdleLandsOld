@@ -10,15 +10,17 @@ Constants = require "../../system/utilities/Constants"
  * @name Mascot
  * @category Buildings
  * @package Guild Bases
- * @cost {level-up} level*1000
+ * @cost {level-up} level*15000
  * @property MascotID (Any valid string ID referencing the tile map in the game)
+ * @property Quote (Any string)
+ * @property Name (Any string)
  * @size {sm}
  */`
 class Mascot extends GuildBuilding
 
   @size = Mascot::size = "sm"
   @desc = Mascot::desc = "Upgrade this guy for bragging rights!"
-  @levelupCost = Mascot::levelupCost = (level) -> level * 1000
+  @levelupCost = Mascot::levelupCost = (level) -> level * 15000
 
   tiles: [
     0,  0,  0,
