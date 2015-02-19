@@ -8,6 +8,7 @@ GuildBuilding = require "../GuildBuilding"
  * @category Buildings
  * @package Guild Bases
  * @cost {level-up} level*5000
+ * @property Name (Any string)
  * @size {sm}
  */`
 class Enchantress extends GuildBuilding
