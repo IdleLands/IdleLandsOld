@@ -32,11 +32,6 @@ class PlayerManager
       @logManager = new LogManager()
       @logManager.getLogger("PlayerManager").warn "@game.logManager not set, using isolated LogManager instance, not able to set logger level via !idle-setloggerlevel"
 
-    # Check player buffs every minute, which is 60000 ms
-    @checkBuffInterval = setInterval =>
-      @checkBuffs()
-    , 60000
-
     @interval = null
     @DELAY_INTERVAL = 10000
     @beginGameLoop()
@@ -345,11 +340,6 @@ class PlayerManager
     return if player.cannotBeLoggedOut
     clearTimeout player.autoLogoutId if player.autoLogoutId
     player.autoLogoutId = setTimeout (@removePlayer.bind @, player.identifier), Constants.defaults.api.autoLogoutTime
-
-  checkBuffs: ->
-    for player in @players
-      player.buffsAffectedBy = [] if not player.buffsAffectedBy
-      player.buffsAffectedBy = _.reject player.buffsAffectedBy, ((buff) -> buff.expire < Date.now())
 
   migratePlayer: (player) ->
     return if not player

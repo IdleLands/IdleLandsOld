@@ -40,7 +40,11 @@ class Character extends EventEmitter2
 
     @spellsAffectedBy = []
 
+  checkBuffs: ->
+    @buffsAffectedBy = _.reject @buffsAffectedBy, ((buff) -> buff.expire < Date.now())
+
   _getAffectingFactors: ->
+    @checkBuffs() if @buffsAffectedBy
     []
     .concat @profession ? []
     .concat @personalities ? []
