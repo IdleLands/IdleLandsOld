@@ -453,7 +453,7 @@ class Player extends Character
     lookAtTile x,y
 
   getRegion: ->
-    regions[@getTileAt().region.replace(/\s/g, '')]
+    regions[@getTileAt().region.split(' ').join('')]
 
   canEnterTile: (tile) ->
     props = tile.object?.properties
@@ -562,9 +562,17 @@ class Player extends Character
     return if not chance.bool {likelihood: @calc.partyLeavePercent()}
     @party.playerLeave @
 
+  # this function is intended to return 0 if you don't have a guild
+  # or if you're not in your own guild hall
+  getGuildBuildingLevel: (building) ->
+    guild = @getGuild()
+    return 0 unless @map is guild?.getGuildBaseName()
+
+    guild.getBuildingLevel building
+
   checkShop: ->
-    @shop = null if @shop and ((not @getRegion()?.shopSlots?()) or (@getRegion()?.name isnt @shop.region))
-    @shop = @playerManager.game.shopGenerator.regionShop @ if not @shop and @getRegion()?.shopSlots?()
+    @shop = null if @shop and ((not @getRegion()?.shopSlots?(@)) or (@getRegion()?.name isnt @shop.region))
+    @shop = @playerManager.game.shopGenerator.regionShop @ unless @shop and @getRegion()?.shopSlots?(@)
 
   buyShop: (slot) ->
     if not @shop.slots[slot]

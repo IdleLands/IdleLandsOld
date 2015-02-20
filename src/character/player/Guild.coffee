@@ -192,6 +192,11 @@ class Guild
 
     Q {isSuccess: yes, code: 87, message: "Successfully set property \"#{property}\" for #{building} to \"#{value}\"!"}
 
+  # It is intentional to return 0 if the building isn't built
+  getBuildingLevel: (building) ->
+    return 0 unless @hasBuilt building
+    @buildingLevels[building]
+
   _upgrade: (building) ->
     @buildingLevels[building]++
     @save()
