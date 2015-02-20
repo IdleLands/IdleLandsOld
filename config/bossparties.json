@@ -13,5 +13,13 @@
       "Angry Elf",
       "Toy Maker Elf"
     ]
+  },
+  "Spooky Scary Skeletons": {
+    "respawn": 7200,
+    "members": [
+      "Andy The Skeleton",
+      "Goldy The Skeleton",
+      "Mr. Bones"
+    ]
   }
 }
