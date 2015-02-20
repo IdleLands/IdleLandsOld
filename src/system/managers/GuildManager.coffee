@@ -52,7 +52,7 @@ class GuildManager
     guildObject.guildManager = @
     guildObject.leaderName = player.name
     guildObject.members.push {identifier: player.identifier, name: player.name, isAdmin: yes}
-    saveObj = @buildGuildSaveObject guildObject
+    saveObj = @buildGuildSaveObject guildObject, true
 
     @db.insert saveObj, (iErr) =>
 
@@ -75,7 +75,7 @@ class GuildManager
     defer.promise
 
   saveGuild: (guild) ->
-    saveGuild = @buildGuildSaveObject guild
+    saveGuild = @buildGuildSaveObject guild, true
     @db.update { name: guild.name }, saveGuild, {upsert: true}, (e) =>
       @game.errorHandler.captureException e if e
 
@@ -86,6 +86,22 @@ class GuildManager
         guild.__proto__ = Guild.prototype
         guild.guildManager = @
         guild.invitesLeft()
+
+        guild.buffs = _.compact guild.buffs
+        guild.invites = [] if not guild.invites
+
+        for key, val of guild.invites
+          @invites[val] = [] if not @invites[val]
+          @invites[val].push guild.name
+
+        _.each guild.buffs, (buff) ->
+          if guildBuffs["Guild#{buff.type}"]
+            buff.__proto__ = guildBuffs["Guild#{buff.type}"].prototype
+            buff.tiers = guildBuffs["Guild#{buff.type}"].tiers
+          else guild.buffs = _.without guild.buffs, buff
+
+        #keep anything that saves the guild after the guild buff tiers removal, otherwise it gets added back in due to awesome async stuff. Lovely.
+
         guild.avgLevel()
 
         if not guild.base
@@ -101,13 +117,6 @@ class GuildManager
         guild.initGold() unless guild.gold
         guild.gold.__current = 0 if _.isNaN guild.gold.__current
         guild.gold.__proto__ = RestrictedNumber.prototype
-
-        guild.buffs = _.compact guild.buffs
-        guild.invites = []
-        _.each guild.buffs, (buff) ->
-          if guildBuffs["Guild#{buff.type}"]
-            buff.__proto__ = guildBuffs["Guild#{buff.type}"].prototype
-          else guild.buffs = _.without buff
 
         @guilds.push guild
         @guildHash[guild.name] = guild
@@ -163,8 +172,11 @@ class GuildManager
     _.each @invites[player.identifier], ((guild) => @manageInvite player, no, guild), @
     @invites[player.identifier] = []
 
-  buildGuildSaveObject: (guild) ->
+  buildGuildSaveObject: (guild, db = false) ->
     ret = _.omit guild, 'guildManager', '_id'
+    if db and guild.buffs?
+      for i in [0...len = guild.buffs.length]
+        guild.buffs[i] = _.omit guild.buffs[i], 'tiers'
     ret
 
   checkAdmin: (playerName, guildName = @game.playerManager.getPlayerByName(playerName).guild) ->
@@ -179,6 +191,7 @@ class GuildManager
     @guildHash[guildName]
 
   getPlayerInvites: (player) ->
+    console.log @invites
     @invites[player.identifier]
 
   leaveGuild: (identifier) ->
@@ -271,7 +284,7 @@ class GuildManager
         guild.buffs = _.without guild.buffs, current
 
     buff = new guildBuffs[typeString] tier
-    guild.buffs.push (new guildBuffs[typeString] tier)
+    guild.buffs.push (buff)
     guild.save()
 
     Q player.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 156, message: "You have purchased the #{buff.name} guild buff."}

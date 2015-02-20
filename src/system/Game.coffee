@@ -72,9 +72,9 @@ class Game
     defer = q.defer()
     @loading = defer.promise
 
+    @logManager = new LogManager
     @playerManager = new PlayerManager @
     @guildManager = new GuildManager @
-    @logManager = new LogManager
     @petManager = new PetManager @
     @calendar = new Calendar @
     @bossFactory = new BossFactory @
