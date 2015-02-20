@@ -7,14 +7,14 @@ GuildBuilding = require "../GuildBuilding"
  * @name Academy
  * @category Buildings
  * @package Guild Bases
- * @cost {level-up} level*50000
+ * @cost {level-up} 15000 (if level <= 100)
  * @size {md}
  */`
 class Academy extends GuildBuilding
 
   @size = Academy::size = "md"
   @desc = Academy::desc = "Upgrade this building to make your buffs better and get some permanent ones!"
-  @levelupCost = Academy::levelupCost = (level) -> level * 50000
+  @levelupCost = Academy::levelupCost = (level) -> if level > 100 then 100000 * level else 15000
 
   f =
     name: "Instructor"

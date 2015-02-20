@@ -5,14 +5,9 @@ chance = new (require "chance")()
 
 class BossFactory
 
-  RECHALLENGE_TIME: 30
-
   constructor: (@game) ->
 
   cantDoBossPartyBattle: (partyName) ->
-
-    lastChallenge = BossInformation.challengesMade[partyName] or 0
-    return if lastChallenge and ((new Date) - lastChallenge) < @RECHALLENGE_TIME * 1000
 
     currentTimer = BossInformation.timers[partyName] or 0
     respawnTimer = BossInformation.parties[partyName].respawn or 3600
@@ -23,14 +18,12 @@ class BossFactory
 
   createBoss: (name, isParty = no) ->
     currentTimer = BossInformation.timers[name]
-    lastChallenge = BossInformation.challengesMade[name] or 0
 
     try
       respawnTimer = BossInformation.bosses[name].respawn or 3600
     catch e
       @game.errorHandler.captureException new Error "INVALID BOSS RESPAWN/NAME: #{name}"
 
-    return if lastChallenge and ((new Date) - lastChallenge) < @RECHALLENGE_TIME * 1000
     return if (not isParty) and ((new Date) - currentTimer) < respawnTimer * 1000
 
     setAllItemClasses = "guardian"
@@ -108,7 +101,6 @@ class BossFactory
 
 class BossInformation
   @timers = {}
-  @challengesMade = {}
   @parties = require "../../config/bossparties.json"
   @items = _.extend (require "../../config/bossitems.json"), (require "../../config/treasure.json")
   @bosses = require "../../config/boss.json"

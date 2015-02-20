@@ -92,6 +92,30 @@
          "width":35,
          "x":0,
          "y":0
+        }, 
+        {
+         "height":35,
+         "name":"Regions",
+         "objects":[
+                {
+                 "height":560,
+                 "name":"Guild Hall",
+                 "properties":
+                    {
+
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":560,
+                 "x":0,
+                 "y":0
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":35,
+         "x":0,
+         "y":0
         }],
  "orientation":"orthogonal",
  "properties":

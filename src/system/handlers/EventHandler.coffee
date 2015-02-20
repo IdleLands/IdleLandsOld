@@ -127,6 +127,8 @@ class EventHandler
         member.y = player.y
         member.map = player.map
 
+        member.resetBossTimer name
+
       _.each bossParty.players, (boss) ->
         boss.mirror player.party if boss.shouldMirror
 
@@ -195,12 +197,13 @@ class EventHandler
   retrieveEvents: (count = 10, filter = [], newerThan) ->
     defer = Q.defer()
 
-    args = {}
+    args = {type: {$not: {$eq: 'towncrier'}}}
     args.player = {$in: filter} if filter.length > 0
-    args.createdAt = {$gt: newerThan} if newerThan
+    args.createdAt = {$gt: new Date newerThan} if newerThan
 
-    @playerEventsDb.find args, {limit: count}, (e, docs) ->
-      defer.resolve {events: docs}
+    @playerEventsDb.find args, {limit: count, sort: {createdAt: -1}}, (e, docs) ->
+      filtered = _.uniq docs, (doc) -> doc.extra?.linkTitle or doc.extra?.partyName or doc.createdAt
+      defer.resolve {events: filtered}
 
     defer.promise
 
@@ -213,7 +216,7 @@ class EventHandler
       (@broadcastEvent message: event.n, player: player, type: 'miscellaneous') if event.n
       callback false
 
-  doItemEquip: (player, item, messageString) ->
+  doItemEquip: (player, item, messageString, type = "item-find") ->
     myItem = _.findWhere player.equipment, {type: item.type}
     score = (player.calc.itemScore item).toFixed 1
     myScore = (player.calc.itemScore myItem).toFixed 1
@@ -232,7 +235,7 @@ class EventHandler
 
     totalString = "#{messageString} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (#{normalizedPerceivedScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
     
-    @broadcastEvent {message: totalString, player: player, extra: extra, type: 'item-find'}
+    @broadcastEvent {message: totalString, player: player, extra: extra, type: type}
 
     ##TAG:EVENT_EVENT: findItem | player, item | Emitted when a player finds an item on the ground
     player.emit "event.findItem", player, item
@@ -242,7 +245,7 @@ class EventHandler
     rangeBoost = event.rangeBoost ?= 1
 
     if (player.canEquip item, rangeBoost) and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
-      @doItemEquip player, item, event.remark
+      @doItemEquip player, item, event.remark, event._type
       return true
 
     else

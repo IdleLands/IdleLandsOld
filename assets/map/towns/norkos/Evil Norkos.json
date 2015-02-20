@@ -30,6 +30,7 @@
                 {
                  "gid":48,
                  "height":0,
+                 "id":1,
                  "name":"",
                  "properties":
                     {
@@ -45,6 +46,7 @@
                 {
                  "gid":2,
                  "height":0,
+                 "id":2,
                  "name":"ToNorkos",
                  "properties":
                     {
@@ -63,6 +65,7 @@
                 {
                  "gid":15,
                  "height":0,
+                 "id":3,
                  "name":"Bottle of Acid",
                  "properties":
                     {
@@ -78,6 +81,7 @@
                 {
                  "gid":15,
                  "height":0,
+                 "id":4,
                  "name":"Evil Pebble",
                  "properties":
                     {
@@ -93,6 +97,7 @@
                 {
                  "gid":1,
                  "height":0,
+                 "id":5,
                  "name":"ToDarkTower-1",
                  "properties":
                     {
@@ -111,6 +116,7 @@
                 {
                  "gid":26,
                  "height":0,
+                 "id":6,
                  "name":"Barney",
                  "properties":
                     {
@@ -126,6 +132,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":7,
                  "name":"",
                  "properties":
                     {
@@ -141,6 +148,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":8,
                  "name":"",
                  "properties":
                     {
@@ -156,6 +164,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":9,
                  "name":"",
                  "properties":
                     {
@@ -171,6 +180,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":10,
                  "name":"",
                  "properties":
                     {
@@ -186,6 +196,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":11,
                  "name":"",
                  "properties":
                     {
@@ -201,6 +212,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":12,
                  "name":"",
                  "properties":
                     {
@@ -216,6 +228,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":13,
                  "name":"",
                  "properties":
                     {
@@ -231,6 +244,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":14,
                  "name":"",
                  "properties":
                     {
@@ -246,6 +260,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":15,
                  "name":"",
                  "properties":
                     {
@@ -261,6 +276,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":16,
                  "name":"",
                  "properties":
                     {
@@ -276,6 +292,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":17,
                  "name":"",
                  "properties":
                     {
@@ -291,6 +308,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":18,
                  "name":"",
                  "properties":
                     {
@@ -306,6 +324,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":19,
                  "name":"",
                  "properties":
                     {
@@ -321,6 +340,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":20,
                  "name":"",
                  "properties":
                     {
@@ -336,6 +356,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":21,
                  "name":"",
                  "properties":
                     {
@@ -351,6 +372,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":22,
                  "name":"",
                  "properties":
                     {
@@ -366,6 +388,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":23,
                  "name":"",
                  "properties":
                     {
@@ -381,6 +404,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":24,
                  "name":"",
                  "properties":
                     {
@@ -396,6 +420,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":25,
                  "name":"",
                  "properties":
                     {
@@ -411,6 +436,7 @@
                 {
                  "gid":35,
                  "height":0,
+                 "id":26,
                  "name":"ToFire",
                  "properties":
                     {
@@ -429,6 +455,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":27,
                  "name":"",
                  "properties":
                     {
@@ -444,6 +471,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":28,
                  "name":"",
                  "properties":
                     {
@@ -459,6 +487,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":29,
                  "name":"",
                  "properties":
                     {
@@ -474,6 +503,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":30,
                  "name":"",
                  "properties":
                     {
@@ -489,6 +519,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":31,
                  "name":"",
                  "properties":
                     {
@@ -504,6 +535,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":32,
                  "name":"",
                  "properties":
                     {
@@ -519,6 +551,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":33,
                  "name":"",
                  "properties":
                     {
@@ -534,6 +567,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":34,
                  "name":"",
                  "properties":
                     {
@@ -549,6 +583,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":35,
                  "name":"",
                  "properties":
                     {
@@ -564,6 +599,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":36,
                  "name":"",
                  "properties":
                     {
@@ -579,6 +615,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":37,
                  "name":"",
                  "properties":
                     {
@@ -594,6 +631,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":38,
                  "name":"",
                  "properties":
                     {
@@ -609,6 +647,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":39,
                  "name":"",
                  "properties":
                     {
@@ -624,6 +663,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":40,
                  "name":"",
                  "properties":
                     {
@@ -639,6 +679,7 @@
                 {
                  "gid":18,
                  "height":0,
+                 "id":41,
                  "name":"",
                  "properties":
                     {
@@ -654,6 +695,7 @@
                 {
                  "gid":26,
                  "height":0,
+                 "id":42,
                  "name":"Necromancer Guardian",
                  "properties":
                     {
@@ -669,6 +711,7 @@
                 {
                  "gid":15,
                  "height":0,
+                 "id":43,
                  "name":"Evil Haystack",
                  "properties":
                     {
@@ -684,6 +727,7 @@
                 {
                  "gid":15,
                  "height":0,
+                 "id":44,
                  "name":"Evil Bank Coin",
                  "properties":
                     {
@@ -699,6 +743,7 @@
                 {
                  "gid":15,
                  "height":0,
+                 "id":45,
                  "name":"Last Chance Die",
                  "properties":
                     {
@@ -710,6 +755,22 @@
                  "width":0,
                  "x":256,
                  "y":96
+                }, 
+                {
+                 "gid":15,
+                 "height":0,
+                 "id":55,
+                 "name":"Forbidden Cleric's Text",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"Collectible",
+                 "visible":true,
+                 "width":0,
+                 "x":528,
+                 "y":416
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -725,6 +786,7 @@
          "objects":[
                 {
                  "height":224,
+                 "id":46,
                  "name":"Acid Caves",
                  "properties":
                     {
@@ -739,6 +801,7 @@
                 }, 
                 {
                  "height":80,
+                 "id":47,
                  "name":"Acid Caves",
                  "properties":
                     {
@@ -753,6 +816,7 @@
                 }, 
                 {
                  "height":16,
+                 "id":48,
                  "name":"Acid Caves",
                  "properties":
                     {
@@ -767,6 +831,7 @@
                 }, 
                 {
                  "height":112,
+                 "id":49,
                  "name":"Acid Caves",
                  "properties":
                     {
@@ -781,6 +846,7 @@
                 }, 
                 {
                  "height":288,
+                 "id":50,
                  "name":"Denaba Caves",
                  "properties":
                     {
@@ -795,6 +861,7 @@
                 }, 
                 {
                  "height":32,
+                 "id":51,
                  "name":"Denaba Caves",
                  "properties":
                     {
@@ -809,6 +876,7 @@
                 }, 
                 {
                  "height":272,
+                 "id":52,
                  "name":"Denaba Caves",
                  "properties":
                     {
@@ -823,6 +891,7 @@
                 }, 
                 {
                  "height":176,
+                 "id":53,
                  "name":"Denaba Caves",
                  "properties":
                     {
@@ -837,6 +906,7 @@
                 }, 
                 {
                  "height":528,
+                 "id":54,
                  "name":"Evil Norkos Town",
                  "properties":
                     {
@@ -856,6 +926,7 @@
          "x":0,
          "y":0
         }],
+ "nextobjectid":56,
  "orientation":"orthogonal",
  "properties":
     {

@@ -13,7 +13,7 @@ Player Emit | Arguments Passed | Description
 [level.down](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/LevelDownEvent.coffee#L26) | player, currentLevel, newLevel | Emitted when a player loses a level
 [level.up](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L841) | player | Emitted when a player levels up
 [profession.change](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L518) | player, oldClass, newClass | Emitted when a player changes class
-[sellItem](https://github.com/IdleLands/IdleLands/blob/master/src/system/handlers/EventHandler.coffee#L253) | player, item, value | Emitted when a player sells an item
+[sellItem](https://github.com/IdleLands/IdleLands/blob/master/src/system/handlers/EventHandler.coffee#L254) | player, item, value | Emitted when a player sells an item
 [shop.buy](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L559) | player, item, itemCost | Emitted when a player buys an item from the shop manually
 [shop.pet](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L615) | player, pet | Emitted when a player buys a pet
 [shop.pet](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L636) | player, pet, cost | Emitted when a player upgrades a pet
@@ -31,10 +31,10 @@ Event Emit | Arguments Passed | Description
 [blessItem](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/ItemModEvent.coffee#L47) | player, item, boost | Emitted when a player gets a blessing on an item
 [blessXpParty](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/XpPartyEvent.coffee#L42) | player, {xp, realXp, percentXp} | Emitted when a player gets some free xp while in a party
 [blessXp](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/XpEvent.coffee#L40) | player, {xp, realXp, percentXp} | Emitted when a player gets some free xp
-[bossbattle.loot](https://github.com/IdleLands/IdleLands/blob/master/src/event/BossFactory.coffee#L71) | member, itemName, item | Emitted when a party member loots a boss item
-[bossbattle.lootcollectible](https://github.com/IdleLands/IdleLands/blob/master/src/event/BossFactory.coffee#L84) | member, bossBaseName, item | Emitted when a party member loots a boss collectible
-[bossbattle.lose](https://github.com/IdleLands/IdleLands/blob/master/src/event/BossFactory.coffee#L98) | member, bossBaseName | Emitted when a party member loses a boss battle
-[bossbattle.win](https://github.com/IdleLands/IdleLands/blob/master/src/event/BossFactory.coffee#L87) | member, bossBaseName | Emitted when a party member wins a boss battle
+[bossbattle.loot](https://github.com/IdleLands/IdleLands/blob/master/src/event/BossFactory.coffee#L75) | member, itemName, item | Emitted when a party member loots a boss item
+[bossbattle.lootcollectible](https://github.com/IdleLands/IdleLands/blob/master/src/event/BossFactory.coffee#L88) | member, bossBaseName, item | Emitted when a party member loots a boss collectible
+[bossbattle.lose](https://github.com/IdleLands/IdleLands/blob/master/src/event/BossFactory.coffee#L102) | member, bossBaseName | Emitted when a party member loses a boss battle
+[bossbattle.win](https://github.com/IdleLands/IdleLands/blob/master/src/event/BossFactory.coffee#L91) | member, bossBaseName | Emitted when a party member wins a boss battle
 [cataclysm.blackrays](https://github.com/IdleLands/IdleLands/blob/master/src/event/cataclysms/BlackRays.coffee#L15) | cataclysm | Emitted when a player is affected by the blackrays cataclysm
 [cataclysm.fatehand](https://github.com/IdleLands/IdleLands/blob/master/src/event/cataclysms/Fatehand.coffee#L15) | cataclysm | Emitted when a player is affected by the fatehand cataclysm
 [cataclysm.hatredwave](https://github.com/IdleLands/IdleLands/blob/master/src/event/cataclysms/HatredWave.coffee#L15) | cataclysm | Emitted when a player is affected by the hatredwave cataclysm
@@ -43,7 +43,7 @@ Event Emit | Arguments Passed | Description
 [cataclysm.skyscornglow](https://github.com/IdleLands/IdleLands/blob/master/src/event/cataclysms/SkyGlowsScornfully.coffee#L15) | cataclysm | Emitted when a player is affected by the skyscornglow cataclysm
 [cataclysm](https://github.com/IdleLands/IdleLands/blob/master/src/event/Cataclysm.coffee#L28) | cataclysm | Emitted when a player is affected by a cataclysm
 [enchant](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/EnchantEvent.coffee#L38) | player, item, newEnchantLevel | Emitted when a player has an enchant event happen
-[findItem](https://github.com/IdleLands/IdleLands/blob/master/src/system/handlers/EventHandler.coffee#L237) | player, item | Emitted when a player finds an item on the ground
+[findItem](https://github.com/IdleLands/IdleLands/blob/master/src/system/handlers/EventHandler.coffee#L238) | player, item | Emitted when a player finds an item on the ground
 [flipStat](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/FlipStatEvent.coffee#L32) | player, item, stat, val | Emitted when a player has a switcheroo happen
 [forsakeGoldParty](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/GoldPartyEvent.coffee#L44) | player, {gold, realGold} | Emitted when a player gets loses money while in a party
 [forsakeGold](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/GoldEvent.coffee#L36) | player, {gold, realGold} | Emitted when a player gets loses money

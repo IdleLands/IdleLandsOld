@@ -11,7 +11,7 @@ class ShopGenerator extends Generator
   generateShop: (player) ->
     shop = {}
     shop.item = @generateItem player
-    return if not shop.item
+    return unless shop.item
     shop.item = @generateItem player while shop.item.score() > player.calc.itemFindRange()*Constants.defaults.game.shopRangeBoost
     shop.price = Math.floor(shop.item.score()*
                 (chance.floating {min: 1, max: 1 + Constants.defaults.game.shopPriceFlux, fixed: 3})*
@@ -21,16 +21,18 @@ class ShopGenerator extends Generator
     shop
 
   regionShop: (player) ->
+
+    console.log "generating"
     shop = {}
     shop.slots = []
     region = player.getRegion()
     shop.region = region.name
-    for i in [0...region.shopSlots()]
+    for i in [0...region.shopSlots(player)]
       item = @generateItem player
-      return if not item
-      item = @generateItem player while item?.score() > player.calc.itemFindRange()*Constants.defaults.game.shopRangeBoost*region.shopQuality()
-      return if not item
-      price = Math.floor(item.score()*region.shopMult()*
+      return unless item
+      item = @generateItem player while item?.score() > player.calc.itemFindRange()*Constants.defaults.game.shopRangeBoost*region.shopQuality(player)
+      return unless item
+      price = Math.floor(item.score()*region.shopMult(player)*
                 (chance.floating {min: 1, max: 1 + Constants.defaults.game.shopPriceFlux, fixed: 3})*
                 (1 + player.calc.stat('shopPercent')/100))
       price = 1 if price <= 0
