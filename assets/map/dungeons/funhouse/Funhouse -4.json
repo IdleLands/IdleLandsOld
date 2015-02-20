@@ -223,13 +223,13 @@
                  "gid":26,
                  "height":0,
                  "id":18,
-                 "name":"",
+                 "name":"Spooky Scary Skeletons",
                  "properties":
                     {
 
                     },
                  "rotation":0,
-                 "type":"",
+                 "type":"BossParty",
                  "visible":true,
                  "width":0,
                  "x":144,
