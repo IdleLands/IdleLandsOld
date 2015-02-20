@@ -98,7 +98,8 @@
                  "name":"",
                  "properties":
                     {
-
+                     "flavorText":"Wax statue of a man in blue robes.",
+                     "requireAchievement":"Impossible I"
                     },
                  "rotation":0,
                  "type":"",
@@ -114,7 +115,8 @@
                  "name":"",
                  "properties":
                     {
-
+                     "flavorText":"Wax statue of a barbarian.",
+                     "requireAchievement":"Impossible I"
                     },
                  "rotation":0,
                  "type":"",
@@ -130,7 +132,8 @@
                  "name":"",
                  "properties":
                     {
-
+                     "flavorText":"Wax Statue of a woman.",
+                     "requireAchievement":"Impossible I"
                     },
                  "rotation":0,
                  "type":"",
@@ -146,7 +149,8 @@
                  "name":"",
                  "properties":
                     {
-
+                     "flavorText":"Wax statue of a fighter.",
+                     "requireAchievement":"Impossible I"
                     },
                  "rotation":0,
                  "type":"",
@@ -162,7 +166,8 @@
                  "name":"",
                  "properties":
                     {
-
+                     "flavorText":"Wax statue of a cleric.",
+                     "requireAchievement":"Impossible I"
                     },
                  "rotation":0,
                  "type":"",
@@ -178,7 +183,8 @@
                  "name":"",
                  "properties":
                     {
-
+                     "flavorText":"Wax statue of a rogue.",
+                     "requireAchievement":"Impossible I"
                     },
                  "rotation":0,
                  "type":"",
@@ -194,7 +200,8 @@
                  "name":"",
                  "properties":
                     {
-
+                     "flavorText":"Wax statue of a generalist.",
+                     "requireAchievement":"Impossible I"
                     },
                  "rotation":0,
                  "type":"",
@@ -210,7 +217,8 @@
                  "name":"",
                  "properties":
                     {
-
+                     "flavorText":"Wax statue of a mage.",
+                     "requireAchievement":"Impossible I"
                     },
                  "rotation":0,
                  "type":"",
@@ -226,7 +234,8 @@
                  "name":"",
                  "properties":
                     {
-
+                     "flavorText":"Wax statue of a jester.",
+                     "requireAchievement":"Impossible I"
                     },
                  "rotation":0,
                  "type":"",
