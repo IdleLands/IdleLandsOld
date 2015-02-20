@@ -32,12 +32,15 @@ class Mascot extends GuildBuilding
     super @game, @guild, @name
 
     mascotId = parseInt Constants.revGidMap[@getProperty "MascotID"]
+    mascotQuote = @getProperty "Quote"
+    mascotName = @getProperty "Name"
 
     f =
-      name: "Mascot"
+      name: mascotName or "Mascot"
       gid:  if _.isNaN mascotId then 26 else mascotId
       type: "Guild NPC"
-      properties: {}
+      properties:
+        flavorText: mascotQuote
 
     @tiles = [
       0,  0,  0,
