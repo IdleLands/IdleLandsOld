@@ -51,6 +51,7 @@ class Player extends Character
     @gender = _.sample ["female", "male", "not a bear", "glowcloud"]
     @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
     @calc.itemFindRange()
+    @guildTax = 0
 
   generateBaseEquipment: ->
 
@@ -385,10 +386,30 @@ class Player extends Character
     @playerManager.game.treasureFactory.createTreasure treasure, @
 
   handleBossBattle: (bossName) ->
+    return unless @canBattleBoss bossName
     @playerManager.game.eventHandler.bossBattle @, bossName
 
   handleBossBattleParty: (bossParty) ->
+    return unless @canBattleBoss bossParty
     @playerManager.game.eventHandler.bossPartyBattle @, bossParty
+
+  resetBossTimer: (boss) ->
+    @bossTimers = {} unless @bossTimers
+    # 60 seconds for next fight
+    @bossTimers[boss] = Date.now() + (60 * 1000)
+
+  canBattleBoss: (boss) ->
+    @bossTimers = {} unless @bossTimers
+
+    now = Date.now()
+
+    @bossTimers[boss] = now unless @bossTimers[boss]
+
+    if @bossTimers[boss] - now <= 0
+      @resetBossTimer boss
+      return yes
+
+    no
 
   pickRandomTile: ->
     @ignoreDir = [] if not @ignoreDir
@@ -432,7 +453,7 @@ class Player extends Character
     lookAtTile x,y
 
   getRegion: ->
-    regions[@getTileAt().region.replace(/\s/g, '')]
+    regions[@getTileAt().region.split(' ').join('')]
 
   canEnterTile: (tile) ->
     props = tile.object?.properties
@@ -541,9 +562,17 @@ class Player extends Character
     return if not chance.bool {likelihood: @calc.partyLeavePercent()}
     @party.playerLeave @
 
+  # this function is intended to return 0 if you don't have a guild
+  # or if you're not in your own guild hall
+  getGuildBuildingLevel: (building) ->
+    guild = @getGuild()
+    return 0 unless @map is guild?.getGuildBaseName()
+
+    guild.getBuildingLevel building
+
   checkShop: ->
-    @shop = null if @shop and ((not @getRegion()?.shopSlots?()) or (@getRegion()?.name isnt @shop.region))
-    @shop = @playerManager.game.shopGenerator.regionShop @ if not @shop and @getRegion()?.shopSlots?()
+    @shop = null if @shop and ((not @getRegion()?.shopSlots?(@)) or (@getRegion()?.name isnt @shop.region))
+    @shop = @playerManager.game.shopGenerator.regionShop @ unless @shop and @getRegion()?.shopSlots?(@)
 
   buyShop: (slot) ->
     if not @shop.slots[slot]

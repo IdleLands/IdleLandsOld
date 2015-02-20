@@ -278,6 +278,9 @@
         },
         "items": [
             { "name": "Fire Infused Dragon Tooth", "dropPercent": 75 }
+        ],
+        "collectibles": [
+            { "name": "Red Draygon Scale", "dropPercent": 50 }
         ]
     },
     "Mama Red Draygon": {
@@ -813,6 +816,188 @@
             { "name": "Flame Polished Gauntlets", "dropPercent": 75 }
         ]
     },
+    "Little Yeti": {
+        "respawn": 10800,
+        "availableScore": 400,
+        "stats": {
+            "class": "Monster",
+            "hp": 500,
+            "mp": 300,
+            "level": 5,
+            "str": 100,
+            "dex": 100,
+            "agi": 100
+        },
+        "items": [
+            { "name": "Yeti Sized Club", "dropPercent": 80 }
+        ]
+    },
+    "Leviathan": {
+        "respawn": 10800,
+        "availableScore": 2000,
+        "stats": {
+            "class": "Random",
+            "hp": 13652,
+            "mp": 20000,
+            "level": 34,
+            "str": 1200,
+            "int": 1000,
+            "dex": 805,
+	    "agi": 620,
+	    "poison": 4,
+	    "prone": 1,
+	    "sturdy": 1
+        },
+        "items": [
+            { "name": "Leviathan Claw", "dropPercent": 80 }
+        ],
+        "collectibles": [
+            { "name": "Leviathan Egg", "dropPercent": 45 }
+        ]
+    },
+    "Snowbeast": {
+        "respawn": 10800,
+        "availableScore": 2400,
+        "stats": {
+            "class": "Mage",
+            "hp": 16350,
+            "mp": 15000,
+            "level": 45,
+            "str": 1500,
+            "int": 1750,
+	    "dex": 1000,
+            "agi": 1200,
+	    "wis": 1000,
+	    "ice": 4000,
+	    "deadeye": 1,
+	    "startle": 1
+        },
+        "collectibles": [
+            { "name": "Snowbeast Skull", "dropPercent": 90 }
+        ]
+    },
+    "Unspeakably Horrible Cave Creature": {
+        "respawn": 10800,
+        "availableScore": 666,
+        "stats": {
+            "class": "Monster",
+            "hp": 17666,
+            "mp": 333,
+            "level": 25,
+            "str": 730,
+            "dex": 400,
+            "agi": 400,
+	    "int": 100,
+	    "poison": 1,
+	    "vampire": 1,
+	    "lethal": 1,
+	    "hpregen": 50
+        },
+        "items": [
+            { "name": "Slime Covered Jerkin", "dropPercent": 80 }
+        ]
+    },
+    "Basilisk": {
+        "respawn": 10800,
+        "availableScore": 1000,
+        "stats": {
+            "class": "Monster",
+            "hp": 7400,
+            "mp": 1000,
+            "level": 15,
+            "str": 475,
+            "dex": 300,
+            "agi": 210,
+	    "prone": 3,
+	    "defense": 1,
+	    "venom": 1,
+	    "startle": 1
+        },
+        "collectibles": [
+            { "name": "Gorgon Snake", "dropPercent": 5 },
+	    { "name": "Basilisk Scale", "dropPercent": 95 }
+        ]
+    },
+    "Slicer": {
+        "respawn": 10800,
+        "availableScore": 3400,
+        "stats": {
+            "class": "Fighter",
+            "gender": "male",
+	    "hp": 39000,
+            "level": 55,
+            "str": 2400,
+            "dex": 1000,
+	    "con": 800,
+            "agi": 1000,
+	    "int": 250,
+	    "glowing": 1,
+	    "silver": 1,
+	    "power": 1,
+	    "defense": 1,
+	    "vorpal": 1
+        },
+        "items": [
+            { "name": "Slicer's Sabre", "dropPercent": 80 }
+        ]
+    },
+    "Smasher": {
+        "respawn": 10800,
+        "availableScore": 3400,
+        "stats": {
+            "class": "Barbarian",
+            "gender": "male",
+            "hp": 39000,
+            "level": 55,
+            "str": 2670,
+            "dex": 900,
+	    "con": 1400,
+            "agi": 900,
+	    "int": -123,
+	    "wis": -456,
+	    "glowing": 1,
+	    "prone": 1,
+	    "power": 1,
+	    "defense": 2
+        },
+        "items": [
+            { "name": "Smasher's Smashin' Club", "dropPercent": 75 }
+        ]
+    },
+    "Naga Necromancer": {
+        "respawn": 10800,
+        "availableScore": 10000,
+        "stats": {
+            "class": "Necromancer",
+	    "gender": "female",
+            "hp": 185000,
+	    "mp": 200000,
+            "level": 55,
+            "str": 6900,
+            "dex": 4000,
+	    "con": 3000,
+            "agi": 2100,
+	    "int": 6700,
+	    "wis": 1400,
+	    "aegis": 1,
+	    "crit": 5,
+	    "dance": 1,
+	    "deadeye": 1,
+	    "fear": 1,
+	    "lethal": 1,
+	    "offense": 1,
+	    "parry": 2,
+	    "poison": 4,
+	    "prone": 1,
+	    "punish": 1,
+	    "silver": 1,
+	    "startle": 1,
+	    "vorpal": 2
+        },
+        "items": [
+            { "name": "Naga Resurrection Trident", "dropPercent": 60 }
+        ]
+    },
     "Gryffyndor House Representative": {
         "respawn": 10800,
         "availableScore": 2400,
@@ -825,7 +1010,6 @@
             "dex": 1500,
             "agi": 1400,
             "con": 1000
-
         },
         "items": [
             { "name": "Gryffyndor Sword", "dropPercent": 80 }
@@ -843,7 +1027,6 @@
             "wis": 1500,
             "int": 1400,
             "con": 1000
-
         },
         "items": [
             { "name": "Nimbus Cloud Mace", "dropPercent": 80 }

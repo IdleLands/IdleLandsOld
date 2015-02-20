@@ -79,12 +79,12 @@ class Game
     @calendar = new Calendar @
     @bossFactory = new BossFactory @
     @battleManager = new BattleManager @
+    @eventHandler = new EventHandler @
     @world = new World @
     @componentDatabase = new ComponentDatabase @
     @componentDatabase.loadingAll.then =>
       @gmCommands = new GMCommands @
       @spellManager = new SpellManager @
-      @eventHandler = new EventHandler @
       @globalEventHandler = new GlobalEventHandler @
       @equipmentGenerator = new EquipmentGenerator @
       @monsterGenerator = new MonsterGenerator @

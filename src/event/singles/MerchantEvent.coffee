@@ -28,28 +28,14 @@ class MerchantEvent extends Event
     score = @player.calc.itemScore shop.item
     myScore = @player.calc.itemScore myItem
 
+    affirmativeResponse = MessageCreator.doStringReplace "%player gladly buys %item for %shopGold gold! What a deal!", @player, extra
+    affirmativeResponseEvent = remark: "#{string} #{affirmativeResponse}", rangeBoost: 1.2, _type: 'shop'
+
     if @player.gold.getValue() < shop.price
       response = MessageCreator.doStringReplace "Unfortunately, %player only has %gold gold, and walked away in disappointment.", @player, extra
       @game.eventHandler.broadcastEvent {message: "#{string} #{response}", player: @player, type: 'shop'}
 
-    else if score > myScore and (chance.bool likelihood: @player.calc.itemReplaceChancePercent())
-      response = MessageCreator.doStringReplace "%player gladly buys %item for %shopGold gold! What a deal!", @player, extra
-
-      score = score.toFixed 1
-      myScore = myScore.toFixed 1
-      realScore = shop.item.score().toFixed 1
-      myRealScore = myItem.score().toFixed 1
-
-      @player.equip shop.item
-
-      realScoreDiff = (realScore-myRealScore).toFixed 1
-      perceivedScoreDiff = (score-myScore).toFixed 1
-      normalizedRealScore = if realScoreDiff > 0 then "+#{realScoreDiff}" else realScoreDiff
-      normalizedPerceivedScore = if perceivedScoreDiff > 0 then "+#{perceivedScoreDiff}" else perceivedScoreDiff
-
-      totalString = "#{string} #{response} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (#{normalizedPerceivedScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
-      @game.eventHandler.broadcastEvent {message: totalString, player: @player, extra: extra, type: 'shop'}
-
+    else if score > myScore and @game.eventHandler.tryToEquipItem affirmativeResponseEvent, @player, shop.item
       ##TAG:EVENT_EVENT: merchant | player, {item, gold, shopGold} | Emitted when a player buys an item from a shop
       @player.emit "event.merchant", @player, extra
       @player.gold.sub shop.price
