@@ -1005,6 +1005,29 @@ module.exports = (Module) ->
             @reply origin, res.message
 
       `/**
+       * Set buff auto renewal upon expiration
+       *
+       * @name idle-guild autoRenew
+       * @syntax !idle-guild autoRenew on|off
+       * @example !idle-guild autoRenew on
+       * @category IRC Commands
+       * @package Client
+       */`
+      @addRoute "idle-guild autoRenew :value", (origin, route) =>
+        [value] = [route.params.value]
+
+        origin.bot.userManager.getUsername origin, (e, username) =>
+          if not username
+            @reply origin, "You must be logged in to manage your taxes!"
+            return
+
+          identifier = @generateIdent origin.bot.config.server, username
+
+          @IdleWrapper.api.player.guild.setAutoRenew identifier, value
+          .then (res) =>
+            @reply origin, res.message
+
+      `/**
         * Manage your password, or authenticate.
         *
         * @name idle-secure

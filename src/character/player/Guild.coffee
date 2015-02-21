@@ -25,6 +25,7 @@ class Guild
     @buildingLevelCosts = {}
     @buildingProps = {}
     @taxPercent = 0
+    @autoRenew = no
     @initGold()
     @resetBuildings()
 
@@ -105,6 +106,13 @@ class Guild
     @save()
 
     Q {isSuccess: yes, code: 68, message: "Successfully demoted #{memberName}.", guild: @buildSaveObject()}
+
+  setAutoRenew: (leaderId, value) ->
+    return Q {isSuccess: no, code: 50, message: "You're not the leader of your guild!"} if leaderId isnt @leader
+    @autoRenew = if typeof value is "boolean" then value else (value is "on")
+    @save()
+
+    Q {isSuccess: yes, code: 77, message: "Successfully set the auto renewal to #{value}%!", guild: @buildSaveObject()}
 
   setTax: (leaderId, newTax) ->
     newTax = Math.round Math.min 15, Math.max 0, newTax

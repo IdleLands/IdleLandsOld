@@ -631,19 +631,28 @@ class API
         @validateIdentifier identifier
         .then (res) =>
           guild = res.player.guild
-          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].moveToBase identifier, newLoc else res
+          actualRes = if res.isSuccess then @gameInstance.guildManager.guildHash[guild].moveToBase identifier, newLoc else res
+          @logger?.debug "Player Command guild.move"
+          @logger?.verbose "Player Command guild.move", {identifier, newLoc}
+          actualRes
 
       construct: (identifier, building, slot) =>
         @validateIdentifier identifier
         .then (res) =>
           guild = res.player.guild
-          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].construct identifier, building, slot else res
+          actualRes = if res.isSuccess then @gameInstance.guildManager.guildHash[guild].construct identifier, building, slot else res
+          @logger?.debug "Player Command guild.construct"
+          @logger?.verbose "Player Command guild.construct", {identifier, building, slot}
+          actualRes
 
       upgrade: (identifier, building) =>
         @validateIdentifier identifier
         .then (res) =>
           guild = res.player.guild
-          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].upgrade identifier, building else res
+          actualRes = if res.isSuccess then @gameInstance.guildManager.guildHash[guild].upgrade identifier, building else res
+          @logger?.debug "Player Command guild.upgrade"
+          @logger?.verbose "Player Command guild.upgrade", {identifier, building}
+          actualRes
 
       setProperty: (identifier, building, property, value) =>
         @validateIdentifier identifier
@@ -655,6 +664,16 @@ class API
           @logger?.verbose "Player Command guild.setProperty", {identifier, building, property, value}
           actualRes
 
+      setAutoRenew: (identifier, value) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          actualRes = null
+          guild = res.player.guild
+          actualRes = if res.isSuccess then @gameInstance.guildManager.guildHash[guild].setAutoRenew identifier, value else res
+          @logger?.debug "Player Command guild.setAutoRenew"
+          @logger?.verbose "Player Command guild.setAutoRenew", {identifier, value}
+          actualRes
+
       tax:
         whole: (identifier, taxPercent) =>
           @validateIdentifier identifier
@@ -662,8 +681,8 @@ class API
             actualRes = null
             guild = res.player.guild
             if res.isSuccess then actualRes = @gameInstance.guildManager.guildHash[guild].setTax identifier, taxPercent else actualRes = res
-            @logger?.debug "Player Command tax.whole"
-            @logger?.verbose "Player Command tax.whole", {identifier, taxPercent}
+            @logger?.debug "Player Command guild.tax.whole"
+            @logger?.verbose "Player Command guild.tax.whole", {identifier, taxPercent}
             actualRes
 
         self: (identifier, taxPercent) =>
@@ -671,8 +690,8 @@ class API
           .then (res) ->
             actualRes = null
             if res.isSuccess then actualRes = res.player.setSelfGuildTax taxPercent else actualRes = res
-            @logger?.debug "Player Command tax.self"
-            @logger?.verbose "Player Command tax.self", {identifier, taxPercent}
+            @logger?.debug "Player Command guild.tax.self"
+            @logger?.verbose "Player Command guild.tax.self", {identifier, taxPercent}
             actualRes
 
     shop:
