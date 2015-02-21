@@ -566,7 +566,6 @@ class Player extends Character
   # or if you're not in your own guild hall
   getGuildBuildingLevel: (building) ->
     guild = @getGuild()
-    console.log @map, guild?.getGuildBaseName()
     return 0 unless @map is guild?.getGuildBaseName()
 
     guild.getBuildingLevel building

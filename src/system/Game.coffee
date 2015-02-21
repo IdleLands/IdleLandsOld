@@ -82,7 +82,8 @@ class Game
     @eventHandler = new EventHandler @
     @world = new World @
     @componentDatabase = new ComponentDatabase @
-    @componentDatabase.loadingAll.then =>
+    @componentDatabase.loadingAll
+    .then =>
       @gmCommands = new GMCommands @
       @spellManager = new SpellManager @
       @globalEventHandler = new GlobalEventHandler @
@@ -95,6 +96,8 @@ class Game
       (require "./accessibility/Debug")(@)
 
       defer.resolve()
+    .catch (err) ->
+      errHandler.captureException err
 
     require "./accessibility/REST"
 
