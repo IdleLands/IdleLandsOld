@@ -190,13 +190,10 @@ interactiveSession = ->
     else if line is "exit"
       process.exit 0
     else
-      try
-        broadcast "Evaluating `#{line}`"
-        result = eval line
-        broadcast result
-        result?.then?((res) -> broadcast res?.message).done?()
-      catch error
-        console.error error.name, error.message, error.stack
+      broadcast "Evaluating `#{line}`"
+      result = eval line
+      broadcast result
+      result?.then?((res) -> broadcast res?.message).catch?((err) -> console.error err.stack).done?()
       
       cli.prompt()
   
