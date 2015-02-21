@@ -21,8 +21,6 @@ class ShopGenerator extends Generator
     shop
 
   regionShop: (player) ->
-
-    console.log "generating"
     shop = {}
     shop.slots = []
     region = player.getRegion()
@@ -41,6 +39,6 @@ class ShopGenerator extends Generator
     shop
 
   generateItem: (player) ->
-    item = @game.equipmentGenerator.generateItem null, player.calc.luckBonus()
+    @game.equipmentGenerator.generateItem null, player.calc.luckBonus()
 
 module.exports = exports = ShopGenerator

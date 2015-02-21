@@ -343,7 +343,7 @@ class Player extends Character
       when "GuildTeleport" then @handleGuildTeleport tile.object.name
 
     if tile.object?.properties?.forceEvent
-      @playerManager.game.eventHandler.doEventForPlayer @name, tile.object.properties.forceEvent
+      @playerManager.game.eventHandler.doEventForPlayer @name, tile.object.properties.forceEvent, tile.object.properties.isGuild
 
   handleGuildTeleport: (baseName) ->
     guild = @getGuild()
@@ -571,8 +571,11 @@ class Player extends Character
     guild.getBuildingLevel building
 
   checkShop: ->
-    @shop = null if @shop and ((not @getRegion()?.shopSlots?(@)) or (@getRegion()?.name isnt @shop.region))
-    @shop = @playerManager.game.shopGenerator.regionShop @ unless @shop and @getRegion()?.shopSlots?(@)
+    region = @getRegion()
+    slots = region?.shopSlots? @
+    return unless region
+    return (@shop = null) if region.name isnt @shop?.region or slots <= 0
+    @shop = @playerManager.game.shopGenerator.regionShop @ unless @shop
 
   buyShop: (slot) ->
     if not @shop.slots[slot]
