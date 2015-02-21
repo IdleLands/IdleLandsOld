@@ -175,7 +175,7 @@ class Guild
 
   _setProperty: (building, property, value) ->
     property = ConvenienceFunctions.sanitizeStringNoPunctuation property
-    value = ConvenienceFunctions.sanitizeString value.substring 0, 1000
+    value = ConvenienceFunctions.sanitizeString value.substring 0, 250
 
     @buildingProps[building] = {} unless @buildingProps[building]
     @buildingProps[building][property] = value
