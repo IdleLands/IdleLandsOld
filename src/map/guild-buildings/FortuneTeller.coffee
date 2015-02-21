@@ -34,6 +34,7 @@ class FortuneTeller extends GuildBuilding
       type: "Guild NPC"
       properties:
         forceEvent: "providence"
+        isGuild: yes
 
     @tiles = [
       0,  0,  0,

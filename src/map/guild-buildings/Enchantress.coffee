@@ -35,6 +35,7 @@ class Enchantress extends GuildBuilding
       type: "Guild NPC"
       properties:
         forceEvent: "enchant"
+        isGuild: yes
 
     @tiles = [
       0,  0,  0,
