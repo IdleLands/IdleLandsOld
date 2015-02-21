@@ -1,4 +1,4 @@
-ConvenienceFunctions = require "../../system/utilities/ConvenienceFunctions"
+{toRoman} = require "roman-numerals"
 
 class GuildBuff
 
@@ -19,7 +19,7 @@ class GuildBuff
   getTier: (tier = 1) ->
     tier = parseInt tier, 10 if typeof tier isnt "number"
     {
-      name: @type + ' ' + ConvenienceFunctions.romanize(tier),
+      name: @type + ' ' + toRoman(tier),
       level: (tier+1) * 10,
       members: (tier-1)*2 + 1,
       cost: Math.pow(tier+1, 2) * 1000,
