@@ -36,6 +36,10 @@ game.eventHandler =
   broadcastEvent: (obj) ->
   addEventToDb: (msg, player, str) ->
 }
+game.world =
+{
+  maps: {}
+}
 
 describe "GuildManager", () ->
   describe "Buffs", () ->
@@ -167,7 +171,7 @@ describe "GuildManager", () ->
           guildManager.checkBuffs()
           expect(guildManager.guilds[0].buffs.length).to.equal(0)
 
-    it "Should add not renew a buff", () ->
+    it "Should not renew a buff", () ->
       NewGuildManager = proxyquire(basedir + 'system/managers/GuildManager', { "./../database/DatabaseWrapper": class DatabaseWrapper
         constructor: (@label, @indexCallback) ->
         find: (query, something, callback) ->
@@ -191,12 +195,27 @@ describe "GuildManager", () ->
         promise2.then (res2) ->
           expect(res2.isSuccess).to.equal(yes)
           guildManager.guilds[0].buffs[0].expire = 0
-          guildManager.guilds[0].gold.add 4000
-          guildManager.guilds[0].autoRenew = on
-          guildManager.checkBuffs()
-          expect(guildManager.guilds[0].buffs.length).to.equal(0)
+          guildManager.guilds[0].gold.add 15000
+          game.world.maps[guildManager.guilds[0].getGuildBaseName()] =
+          {
+            buildings: {"md": [0, 0, 0]},
+            costs: {build: {"md": 15000}}
+            instances: {"sm": 0, "md": 0, "lg": 0}
+            build: (building, smth, smthelse, hahano) ->
+          }
+          promise3 = guildManager.guilds[0].construct "Oipo", "Academy", 0
+          promise3.then (res3) ->
+            expect(res3.isSuccess).to.equal(yes)
+            expect(res3.code).to.equal(706)
+            promise4 = guildManager.guilds[0].setProperty "Oipo", "Academy", "AutoRenew", "Yes"
+            promise4.then (res4) ->
+              expect(res4.isSuccess).to.equal(yes)
+              expect(res4.code).to.equal(87)
+              guildManager.guilds[0].gold.add 4000
+              guildManager.checkBuffs()
+              expect(guildManager.guilds[0].buffs.length).to.equal(0)
 
-    it "Should add renew a buff", () ->
+    it "Should renew a buff", () ->
       NewGuildManager = proxyquire(basedir + 'system/managers/GuildManager', { "./../database/DatabaseWrapper": class DatabaseWrapper
         constructor: (@label, @indexCallback) ->
         find: (query, something, callback) ->
@@ -220,9 +239,24 @@ describe "GuildManager", () ->
         promise2.then (res2) ->
           expect(res2.isSuccess).to.equal(yes)
           guildManager.guilds[0].buffs[0].expire = 0
-          guildManager.guilds[0].gold.add 400000
-          guildManager.guilds[0].autoRenew = on
-          guildManager.checkBuffs()
-          expect(guildManager.guilds[0].buffs.length).to.equal(1)
+          guildManager.guilds[0].gold.add 15000
+          game.world.maps[guildManager.guilds[0].getGuildBaseName()] =
+          {
+            buildings: {"md": [0, 0, 0]},
+            costs: {build: {"md": 15000}}
+            instances: {"sm": 0, "md": 0, "lg": 0}
+            build: (building, smth, smthelse, hahano) ->
+          }
+          promise3 = guildManager.guilds[0].construct "Oipo", "Academy", 0
+          promise3.then (res3) ->
+            expect(res3.isSuccess).to.equal(yes)
+            expect(res3.code).to.equal(706)
+            promise4 = guildManager.guilds[0].setProperty "Oipo", "Academy", "AutoRenew", "Yes"
+            promise4.then (res4) ->
+              expect(res4.isSuccess).to.equal(yes)
+              expect(res4.code).to.equal(87)
+              guildManager.guilds[0].gold.add 400000
+              guildManager.checkBuffs()
+              expect(guildManager.guilds[0].buffs.length).to.equal(1)
 
 

@@ -95,7 +95,6 @@ class GuildManager
 
         guild.buffs = _.compact guild.buffs
         guild.invites = [] if not guild.invites
-        guild.autoRenew = off if not guild.autoRenew
 
         for key, val of guild.invites
           @invites[val] = [] if not @invites[val]
@@ -250,7 +249,7 @@ class GuildManager
     for guild in @guilds
       guild.buffs = [] unless guild.buffs
       rejectedBuffs = _.filter guild.buffs, ((buff) -> buff.expire < Date.now())
-      if guild.autoRenew
+      if guild.hasBuilt("Academy") and (guild.buildingProps?.Academy?.AutoRenew is "Yes")
         for buff in rejectedBuffs
           renewCost = buff.getTier(buff.tier).cost * Constants.defaults.game.guildRenewMultiplier
 

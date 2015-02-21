@@ -664,16 +664,6 @@ class API
           @logger?.verbose "Player Command guild.setProperty", {identifier, building, property, value}
           actualRes
 
-      setAutoRenew: (identifier, value) =>
-        @validateIdentifier identifier
-        .then (res) =>
-          actualRes = null
-          guild = res.player.guild
-          actualRes = if res.isSuccess then @gameInstance.guildManager.guildHash[guild].setAutoRenew identifier, value else res
-          @logger?.debug "Player Command guild.setAutoRenew"
-          @logger?.verbose "Player Command guild.setAutoRenew", {identifier, value}
-          actualRes
-
       tax:
         whole: (identifier, taxPercent) =>
           @validateIdentifier identifier
