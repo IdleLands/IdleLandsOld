@@ -128,14 +128,14 @@ class API
         @gameInstance.playerManager.storePasswordFor identifier, password
 
     event:
-      single: (player, eventType, callback) =>
+      single: (player, eventType, isGuild) =>
         @logger?.debug "GM Command event.single"
-        @logger?.verbose "GM Command event.single", {player: player, eventType: eventType, callback: callback}
-        @gameInstance.eventHandler.doEventForPlayer player, eventType, callback #TODO There are only 2 parameters, callback is ignored?
-      global: (eventType, callback) =>
+        @logger?.verbose "GM Command event.single", {player, eventType, isGuild}
+        @gameInstance.eventHandler.doEventForPlayer player, eventType, isGuild
+      global: (eventType) =>
         @logger?.debug "GM Command event.global"
-        @logger?.verbose "GM Command event.global", {eventType, callback}
-        @gameInstance.globalEventHandler.doEvent eventType, callback
+        @logger?.verbose "GM Command event.global", {eventType}
+        @gameInstance.globalEventHandler.doEvent eventType
 
     log:
       setLoggerLevel: (name, level) =>

@@ -25,7 +25,7 @@ class EventHandler
     eventType = Constants.pickRandomNormalEventType(player) if not eventType
     if not player
       console.error "Attempting to do event #{eventType} for #{playerName}, but player was not there."
-      return callback?()
+      return
 
     @doEvent eventType, player, isGuild
 

@@ -83,7 +83,7 @@ gm = -> api().gm
 pname = (name) -> pm().getPlayerByName name
 gname = (name) -> inst().guildManager.getGuildByName name
 pid = (id) -> pm().getPlayerById id
-event = (player, event) -> gm().event.single player, event
+event = (player, event, ig) -> gm().event.single player, event, ig
 gevent = (event) -> gm().event.global event
 
 colorMap =

@@ -17,7 +17,7 @@ class GlobalEventHandler
     _.each timers, (timer) =>
       setInterval (@doEvent.bind @,timer.type), timer.duration*1000
 
-  doEvent: (event = Constants.pickRandomGlobalEvent(), callback = ->) ->
+  doEvent: (event = Constants.pickRandomGlobalEvent()) ->
     switch event
       when 'battle'
         (new allEvents.PvPEvent @game).go()
@@ -30,7 +30,5 @@ class GlobalEventHandler
 
       when 'towncrier'
         (new allEvents.MassTownCrierEvent @game).go()
-
-    callback true
 
 module.exports = exports = GlobalEventHandler
