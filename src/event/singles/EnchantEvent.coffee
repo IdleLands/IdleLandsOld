@@ -98,6 +98,7 @@ class EnchantEvent extends Event
     return unless message
 
     extra =
+      ##TAG:EVENTVAR_SIMPLE: %item | the name of the item affected (only applies to events that involve items)
       item: "<event.item.#{item.itemClass}>#{item.getName()}</event.item.#{item.itemClass}>"
 
     @game.eventHandler.broadcastEvent {message: message, player: @player, extra: extra, type: 'item-enchant'}

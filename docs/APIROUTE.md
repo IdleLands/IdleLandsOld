@@ -16,7 +16,7 @@ Verb | Route | Request Data | Return Data
 PATCH | [/custom/mod/approve](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageCustomContent.coffee#L26) | {identifier} | {}
 POST | [/custom/mod/list](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageCustomContent.coffee#L20) | {identifier} | {customs}
 PATCH | [/custom/mod/reject](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageCustomContent.coffee#L32) | {identifier} | {}
-PUT | [/custom/player/submit](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageCustomContent.coffee#L8) | {identifier, data
+PUT | [/custom/player/submit](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageCustomContent.coffee#L8) | {identifier, data: {type, content}} | {}
 POST | [/custom/redeem](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageCustomContent.coffee#L14) | {identifier, crierId, giftId} | {}
 POST | [/game/battle](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Battle.coffee#L11) | {battleId} | {battle}
 POST | [/game/events/large](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/Events.coffee#L25) | {filterPlayers, newerThan} | {events}
