@@ -818,6 +818,12 @@ class Character extends EventEmitter2
         allEnemies = {probability: 100, result: allEnemies} if _.isArray allEnemies
         (@self.probabilityReduce 'magicalAttackTargets', [@self, allEnemies, allCombatMembers], allEnemies).result
 
+      ##TAG:REDUCTION: bossRechallengeTime | 60 (sec) | self, baseBossRechallengeTime, bossData | Called when challenging a boss
+      bossRechallengeTime: (bossData) ->
+        @base.bossRechallengeTime = 60
+        @self.personalityReduce 'bossRechallengeTime', [@self, @base.bossRechallengeTime, bossData], @base.bossRechallengeTime
+
+
 Character::num2dir = (dir,x,y) ->
   switch dir
     when 1 then return {x: x-1, y: y-1}
