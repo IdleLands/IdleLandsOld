@@ -40,7 +40,11 @@ class Character extends EventEmitter2
 
     @spellsAffectedBy = []
 
+  checkBuffs: ->
+    @buffsAffectedBy = _.reject @buffsAffectedBy, ((buff) -> buff.expire < Date.now())
+
   _getAffectingFactors: ->
+    @checkBuffs() if @buffsAffectedBy
     []
     .concat @profession ? []
     .concat @personalities ? []
@@ -50,6 +54,7 @@ class Character extends EventEmitter2
     .concat @calendar?.game.calendar.getDateEffects() # for monsters
     .concat @getRegion?()
     .concat @playerManager?.game.guildManager.guildHash[@guild]?.buffs ? []
+    .concat @buffsAffectedBy ? []
 
   probabilityReduce: (appFunctionName, args = [], baseObject) ->
     args = [args] if not _.isArray args

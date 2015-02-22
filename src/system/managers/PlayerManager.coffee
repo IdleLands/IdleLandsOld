@@ -11,6 +11,8 @@ bcrypt = require "bcrypt"
 crypto = require "crypto"
 LogManager = require "./LogManager"
 convenienceFunctions = require "../../system/utilities/ConvenienceFunctions"
+requireDir = require "require-dir"
+playerBuffs = requireDir "../../character/timedEffects", recurse: yes
 
 class PlayerManager
 
@@ -413,6 +415,9 @@ class PlayerManager
     player.recalculateStats()
 
     player.spellsAffectedBy = []
+
+    _.forEach player.buffsAffectedBy, (buff) ->
+      buff.__proto__ = playerBuffs[(buff.name)].prototype
 
     player.lastLogin = new Date()
 
