@@ -40,7 +40,7 @@ class EnchantEvent extends Event
 
     return no if item.enchantLevel >= Constants.defaults.game.maxEnchantLevel
 
-    [item, stat] = @getStatForItem item
+    [stat, boost] = @getStatForItem item
 
     item[stat] = boost
 
