@@ -8,6 +8,7 @@ Achievement = require "../base/Achievement"
   * @name Consumerist
   * @prerequisite Spend 100000*[3*[n-1]+1] total gold.
   * @reward +0.07 itemSellMultiplier
+  * @reward +1 inventory slot (This only applies once for every 3 levels of Consumerist.)
   * @category Achievements
   * @package Player
 */`
@@ -30,6 +31,9 @@ class Consumerist extends Achievement
         type: "event"
 
       item.title = "Consumerist" if level is 5
+
+      if level%%3 is 0
+        item.inventorySize = -> 1
 
       achieved.push item
 

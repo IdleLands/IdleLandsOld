@@ -818,6 +818,11 @@ class Character extends EventEmitter2
         allEnemies = {probability: 100, result: allEnemies} if _.isArray allEnemies
         (@self.probabilityReduce 'magicalAttackTargets', [@self, allEnemies, allCombatMembers], allEnemies).result
 
+      ##TAG:REDUCTION: inventorySize | 3 (constant) | self, baseInventorySize | Called when checking max inventory size
+      inventorySize: ->
+        @base.inventorySize = Constants.defaults.player.maxOverflow
+        @self.personalityReduce 'inventorySize', [@self, @base.inventorySize], @base.inventorySize
+
 Character::num2dir = (dir,x,y) ->
   switch dir
     when 1 then return {x: x-1, y: y-1}
