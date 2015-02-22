@@ -1,0 +1,141 @@
+{
+  "globalEventTimers": [
+    {
+      "type": "battle",
+      "duration": 2400
+    },
+    {
+      "type": "cataclysm",
+      "duration": 4800
+    },
+    {
+      "type": "advanceDate",
+      "duration": 600
+    },
+    {
+      "type": "towncrier",
+      "duration": 3600
+    }
+  ],
+  "eventRates": [
+    {
+      "type": "findItem",
+      "min": 1,
+      "max": 10
+    },
+    {
+      "type": "merchant",
+      "min": 101,
+      "max": 3000
+    },
+    {
+      "type": "enchant",
+      "min": 21,
+      "max": 11500
+    },
+    {
+      "type": "tinker",
+      "min": 11,
+      "max": 18000
+    },
+    {
+      "type": "flipStat",
+      "min": 1,
+      "max": 25000
+    },
+    {
+      "type": "blessItem",
+      "min": 11,
+      "max": 790
+    },
+    {
+      "type": "forsakeItem",
+      "min": 11,
+      "max": 1050
+    },
+    {
+      "type": "blessXp",
+      "min": 11,
+      "max": 650
+    },
+    {
+      "type": "blessXpParty",
+      "min": 1,
+      "max": 3500,
+      "party": 1
+    },
+    {
+      "type": "forsakeXp",
+      "min": 11,
+      "max": 1500
+    },
+    {
+      "type": "blessGold",
+      "min": 11,
+      "max": 2000
+    },
+    {
+      "type": "blessGoldParty",
+      "min": 1,
+      "max": 4500,
+      "party": 1
+    },
+    {
+      "type": "forsakeGold",
+      "min": 11,
+      "max": 2000
+    },
+    {
+      "type": "party",
+      "min": 1,
+      "max": 400
+    },
+    {
+      "type": "battle",
+      "min": 11,
+      "max": 3500
+    },
+    {
+      "type": "towncrier",
+      "min": 11,
+      "max": 5000
+    }
+  ],
+  "eventEffects": {
+    "blessXp": {
+      "fail": 1,
+      "flux": 1.5,
+      "minPercent": 3,
+      "maxPercent": 9
+    },
+    "blessXpParty": {
+      "fail": 1,
+      "flux": 1.5,
+      "minPercent": 1,
+      "maxPercent": 5
+    },
+    "forsakeXp": {
+      "fail": -2,
+      "flux": 2.5,
+      "minPercent": -8,
+      "maxPercent": -15
+    },
+    "blessGold": {
+      "amount": [1, 60, 100, 400, 1000, 1300]
+    },
+    "blessGoldParty": {
+      "amount": [1, 30, 50, 125, 400, 750]
+    },
+    "forsakeGold": {
+      "amount": [-1, -90, -300, -550, -1050, -1500]
+    },
+    "blessItem": {
+      "amount": 1,
+      "percent": 5
+    },
+    "forsakeItem": {
+      "amount": -3,
+      "percent": -9
+    }
+  }
+}
