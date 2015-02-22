@@ -77,4 +77,37 @@ CharCreateTimer = new brute store,
   lifetime: 24*60*60
   failCallback: (req, res) -> res.json {isSuccess: no, code: 101, message: "You can only create a new character once per day!"}
 
-module.exports = {CharCreateTimer, TurnTimeoutTimer, MapRequestTimer, LoginRequestTimer, CustomContentTimer}
+ShortEventTimer =
+  new brute store,
+    freeRetries: 0
+    proxyDepth: 1
+    minWait: 5*1000
+    maxWait: 6*10*1000
+    attachResetToRequest: no
+    refreshTimeoutOnRequest: yes
+    lifetime: 5
+    failCallback: (req, res) -> res.json {isSuccess: no, code: 100, message: "You can only make this request once every 5 seconds!"}
+
+MediumEventTimer =
+  new brute store,
+    freeRetries: 0
+    proxyDepth: 1
+    minWait: 30*1000
+    maxWait: 6*10*1000
+    attachResetToRequest: no
+    refreshTimeoutOnRequest: yes
+    lifetime: 10
+    failCallback: (req, res) -> res.json {isSuccess: no, code: 100, message: "You can only make this request once every 30 seconds!"}
+
+LargeEventTimer =
+  new brute store,
+    freeRetries: 0
+    proxyDepth: 1
+    minWait: 60*1000*10
+    maxWait: 60*10*1000
+    attachResetToRequest: no
+    refreshTimeoutOnRequest: yes
+    lifetime: 10
+    failCallback: (req, res) -> res.json {isSuccess: no, code: 100, message: "You can only make this request once every 10 minutes!"}
+
+module.exports = {CharCreateTimer, TurnTimeoutTimer, MapRequestTimer, LoginRequestTimer, CustomContentTimer, ShortEventTimer, MediumEventTimer, LargeEventTimer}

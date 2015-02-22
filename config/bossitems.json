@@ -306,6 +306,75 @@
         "con": 190,
         "fire": 10000
     },
+    "Yeti Sized Club": {
+        "type": "mainhand",
+        "str": 75,
+	"con": 10,
+	"ice": 25,
+	"icePercent": 10       
+    },
+    "Leviathan Claw": {
+        "type": "offhand",
+        "str": 404,
+	"con": 200,
+	"water": 300,
+	"crit": 1,
+	"poison": 1       
+    },
+    "Slime Covered Jerkin": {
+        "type": "body",
+        "str": 255,
+	"con": -10,
+	"dex": 155,
+	"agi": 100,
+	"conPercent": -1,
+	"sticky": 1,
+	"poison": 2      
+    },
+    "Slicer's Sabre": {
+        "type": "mainhand",
+        "str": 800,
+	"con": 75,
+	"dex": 75,
+	"agi": 75,
+	"agiPercent": 3,
+	"silver": 1,
+	"glowing": 1,
+	"power": 1,
+	"vorpal": 1      
+    },
+    "Smasher's Smashin' Club": {
+        "type": "mainhand",
+        "str": 1100,
+	"con": 150,
+	"int": -123,
+	"wis": -123,
+	"glowing": 1,
+	"prone": 1,
+	"power": 1,
+	"parry": 1      
+    },
+    "Naga Resurrection Trident": {
+        "type": "mainhand",
+        "str": 1500,
+	"conPercent": 10,
+	"int": 1000,
+	"wis": 500,
+	"glowing": 1,
+	"silver": 1,
+	"parry": 1,
+	"poison": 1,
+	"sturdy": 1,
+	"luck": -50,
+	"luckPercent": -2,
+	"hpregen": 525     
+    },
+    "Lord Waxington's Top Hat": {
+        "type": "head",
+	"agi": 175,
+	"dex": 200,
+	"crit": 5  
+    },
     "Gryffyndor Sword": {
         "type": "mainhand",
         "int": 350,

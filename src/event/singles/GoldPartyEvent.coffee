@@ -16,7 +16,7 @@ class GoldPartyEvent extends Event
       @game.errorHandler.captureException (new Error "GOLD PARTY EVENT FAILURE"), extra: @event
       return
 
-    return unless @player.party
+    return unless @player.party?.members?.length > 0
 
     rangeManage =
       blessGoldParty:

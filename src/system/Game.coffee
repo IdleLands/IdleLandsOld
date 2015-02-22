@@ -72,19 +72,20 @@ class Game
     defer = q.defer()
     @loading = defer.promise
 
+    @logManager = new LogManager
     @playerManager = new PlayerManager @
     @guildManager = new GuildManager @
-    @logManager = new LogManager
     @petManager = new PetManager @
     @calendar = new Calendar @
     @bossFactory = new BossFactory @
     @battleManager = new BattleManager @
+    @eventHandler = new EventHandler @
     @world = new World @
     @componentDatabase = new ComponentDatabase @
-    @componentDatabase.loadingAll.then =>
+    @componentDatabase.loadingAll
+    .then =>
       @gmCommands = new GMCommands @
       @spellManager = new SpellManager @
-      @eventHandler = new EventHandler @
       @globalEventHandler = new GlobalEventHandler @
       @equipmentGenerator = new EquipmentGenerator @
       @monsterGenerator = new MonsterGenerator @
@@ -95,6 +96,8 @@ class Game
       (require "./accessibility/Debug")(@)
 
       defer.resolve()
+    .catch (err) ->
+      errHandler.captureException err
 
     require "./accessibility/REST"
 

@@ -1,5 +1,6 @@
 
 Spell = require "../../../base/Spell"
+DazeEffect = require "../../../timedEffects/DazeEffect.coffee"
 _ = require "lodash"
 
 class AntimagicArrow extends Spell
@@ -17,6 +18,7 @@ class AntimagicArrow extends Spell
       * @element physical
       * @targets {enemy} 1 (with most mp remaining)
       * @effect Drains mp
+      * @effect Dazes for 5 minutes
       * @minDamage 0.4*[wis+dex]
       * @maxDamage 0.7*[wis+dex]
       * @category Archer
@@ -36,8 +38,15 @@ class AntimagicArrow extends Spell
   cast: (player) ->
     damage = @calcDamage()
     message = "%casterName hits %targetName with an %spellName, halving %targetName's MP and dealing %damage HP damage!"
-    player.mp?.sub Math.floor(player.mp.getValue()/2)
+
+    if player.mp and player.mp.getValue() > 0
+      damage = Math.floor player.mp.getValue()/2
+      @caster.party?.currentBattle?.takeMp @caster, player, damage, @determineType(), @
+
     @doDamageTo player, damage, message
+
+    daze = new DazeEffect
+    daze.apply player, {minutes: 5}
 
   constructor: (@game, @caster) ->
     super @game, @caster

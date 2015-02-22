@@ -17,71 +17,43 @@ allEvents = requireDir "../../event/singles"
 class EventHandler
 
   constructor: (@game) ->
-    @playerEventsDb = new Datastore "playerEvents", (db) -> db.ensureIndex {createdAt: 1}, {expiresAfterSeconds: 7200}, ->
+    @playerEventsDb = new Datastore "playerEvents", (db) ->
+      db.ensureIndex {createdAt: 1}, {expiresAfterSeconds: 7200}, ->
 
-  doEventForPlayer: (playerName, eventType = null) ->
+  doEventForPlayer: (playerName, eventType = null, isGuild = no) ->
     player = @game.playerManager.getPlayerByName playerName
     eventType = Constants.pickRandomNormalEventType(player) if not eventType
     if not player
       console.error "Attempting to do event #{eventType} for #{playerName}, but player was not there."
-      return callback?()
+      return
 
-    @doEvent eventType, player
+    @doEvent eventType, player, isGuild
 
-  doEvent: (eventType, player) ->
+  doEvent: (eventType, player, isGuild = no) ->
     defer = Q.defer()
     @game.componentDatabase.getRandomEvent eventType, {expiredOn: {$exists: no}}, (e, event) =>
       @game.errorHandler.captureException e if e
       return if not event or not player
 
-      callback = (res) -> if res then player.emit "event", event
-
       try
-        switch eventType
-          when 'yesno'
-            @doYesNo event, player, callback
+        event = switch eventType
+          when 'providence' then                          new allEvents.ProvidenceEvent @game, event, player
+          when 'levelDown' then                           new allEvents.LevelDownEvent @game, event, player
+          when 'blessXp', 'forsakeXp' then                new allEvents.XpEvent @game, event, player
+          when 'blessXpParty', 'forsakeXpParty' then      new allEvents.XpPartyEvent @game, event, player
+          when 'blessGold', 'forsakeGold' then            new allEvents.GoldEvent @game, event, player
+          when 'blessGoldParty', 'forsakeGoldParty' then  new allEvents.GoldPartyEvent @game, event, player
+          when 'blessItem', 'forsakeItem' then            new allEvents.ItemModEvent @game, event, player
+          when 'findItem' then                            new allEvents.FindItemEvent @game, event, player
+          when 'merchant' then                            new allEvents.MerchantEvent @game, event, player
+          when 'party' then                               new allEvents.PartyEvent @game, event, player
+          when 'enchant', 'tinker' then                   new allEvents.EnchantEvent @game, event, player
+          when 'flipStat' then                            new allEvents.FlipStatEvent @game, event, player
+          when 'battle' then                              new allEvents.MonsterBattleEvent @game, event, player
+          when 'towncrier' then                           new allEvents.TownCrierEvent @game, event, player
 
-          when 'providence'
-            (new allEvents.ProvidenceEvent @game, event, player).go()
-
-          when 'levelDown'
-            (new allEvents.LevelDownEvent @game, event, player).go()
-
-          when 'blessXp', 'forsakeXp'
-            (new allEvents.XpEvent @game, event, player).go()
-
-          when 'blessXpParty', 'forsakeXpParty'
-            (new allEvents.XpPartyEvent @game, event, player).go()
-
-          when 'blessGold', 'forsakeGold'
-            (new allEvents.GoldEvent @game, event, player).go()
-
-          when 'blessGoldParty', 'forsakeGoldParty'
-            (new allEvents.GoldPartyEvent @game, event, player).go()
-
-          when 'blessItem', 'forsakeItem'
-            (new allEvents.ItemModEvent @game, event, player).go()
-
-          when 'findItem'
-            (new allEvents.FindItemEvent @game, event, player).go()
-
-          when 'merchant'
-            (new allEvents.MerchantEvent @game, event, player).go()
-
-          when 'party'
-            (new allEvents.PartyEvent @game, event, player).go()
-
-          when 'enchant', 'tinker'
-            (new allEvents.EnchantEvent @game, event, player).go()
-
-          when 'flipStat'
-            (new allEvents.FlipStatEvent @game, event, player).go()
-
-          when 'battle'
-            (new allEvents.MonsterBattleEvent @game, event, player).go()
-
-          when 'towncrier'
-            (new allEvents.TownCrierEvent @game, event, player).go()
+        event?.isGuild = isGuild
+        event?.go()
 
       catch e
         @game.errorHandler.captureException e, extra: name: player.name, gear: player.equipment, inv: player.overflow
@@ -125,6 +97,8 @@ class EventHandler
         member.x = player.x
         member.y = player.y
         member.map = player.map
+
+        member.resetBossTimer name
 
       _.each bossParty.players, (boss) ->
         boss.mirror player.party if boss.shouldMirror
@@ -188,7 +162,21 @@ class EventHandler
     player.recentEvents.unshift event
     player.recentEvents.pop() if player.recentEvents.length > Constants.defaults.player.maxRecentEvents
 
-    @playerEventsDb.insert event, ->
+    @playerEventsDb.insert event, (e, docs) =>
+      @game.errorHandler.captureException (new Error "Could not insert event"), event if e
+
+  retrieveEvents: (count = 10, filter = [], newerThan) ->
+    defer = Q.defer()
+
+    args = {type: {$not: {$eq: 'towncrier'}}}
+    args.player = {$in: filter} if filter.length > 0
+    args.createdAt = {$gt: new Date newerThan} if newerThan
+
+    @playerEventsDb.find args, {limit: count, sort: {createdAt: -1}}, (e, docs) ->
+      filtered = _.uniq docs, (doc) -> doc.extra?.linkTitle or doc.extra?.partyName or doc.createdAt
+      defer.resolve {events: filtered}
+
+    defer.promise
 
   doYesNo: (event, player, callback) ->
     #player.emit "yesno"
@@ -199,7 +187,7 @@ class EventHandler
       (@broadcastEvent message: event.n, player: player, type: 'miscellaneous') if event.n
       callback false
 
-  doItemEquip: (player, item, messageString) ->
+  doItemEquip: (player, item, messageString, type = "item-find") ->
     myItem = _.findWhere player.equipment, {type: item.type}
     score = (player.calc.itemScore item).toFixed 1
     myScore = (player.calc.itemScore myItem).toFixed 1
@@ -218,7 +206,7 @@ class EventHandler
 
     totalString = "#{messageString} [perceived: <event.finditem.perceived>#{myScore} -> #{score} (#{normalizedPerceivedScore})</event.finditem.perceived> | real: <event.finditem.real>#{myRealScore} -> #{realScore} (#{normalizedRealScore})</event.finditem.real>]"
     
-    @broadcastEvent {message: totalString, player: player, extra: extra, type: 'item-find'}
+    @broadcastEvent {message: totalString, player: player, extra: extra, type: type}
 
     ##TAG:EVENT_EVENT: findItem | player, item | Emitted when a player finds an item on the ground
     player.emit "event.findItem", player, item
@@ -228,7 +216,7 @@ class EventHandler
     rangeBoost = event.rangeBoost ?= 1
 
     if (player.canEquip item, rangeBoost) and (chance.bool likelihood: player.calc.itemReplaceChancePercent())
-      @doItemEquip player, item, event.remark
+      @doItemEquip player, item, event.remark, event._type
       return true
 
     else

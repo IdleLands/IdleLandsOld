@@ -8,6 +8,8 @@ GuildBuilding = require "../GuildBuilding"
  * @category Buildings
  * @package Guild Bases
  * @cost {level-up} level*5000
+ * @property Name (Any string)
+ * @property AttemptEnchant (Yes/No; whether or not to attempt unsafe enchantments)
  * @size {sm}
  */`
 class Enchantress extends GuildBuilding
@@ -16,17 +18,29 @@ class Enchantress extends GuildBuilding
   @desc = Enchantress::desc = "Upgrade this magic user to get better enchanting capabilities!"
   @levelupCost = Enchantress::levelupCost = (level) -> level * 5000
 
-  f =
-    name: "Enchantress"
-    gid: 21
-    type: "Guild NPC"
-    properties:
-      forceEvent: "enchant"
-
   tiles: [
     0,  0,  0,
-    0,  f,  0,
+    0,  0,  0,
     0,  0,  0
   ]
+
+  constructor: (@game, @guild, @name) ->
+    super @game, @guild, @name
+
+    name = @getProperty "Name"
+
+    f =
+      name: name or "Enchantress"
+      gid: 21
+      type: "Guild NPC"
+      properties:
+        forceEvent: "enchant"
+        isGuild: yes
+
+    @tiles = [
+      0,  0,  0,
+      0,  f,  0,
+      0,  0,  0
+    ]
 
 module.exports = exports = Enchantress

@@ -40,7 +40,11 @@ class Character extends EventEmitter2
 
     @spellsAffectedBy = []
 
+  checkBuffs: ->
+    @buffsAffectedBy = _.reject @buffsAffectedBy, ((buff) -> buff.expire < Date.now())
+
   _getAffectingFactors: ->
+    @checkBuffs() if @buffsAffectedBy
     []
     .concat @profession ? []
     .concat @personalities ? []
@@ -50,6 +54,7 @@ class Character extends EventEmitter2
     .concat @calendar?.game.calendar.getDateEffects() # for monsters
     .concat @getRegion?()
     .concat @playerManager?.game.guildManager.guildHash[@guild]?.buffs ? []
+    .concat @buffsAffectedBy ? []
 
   probabilityReduce: (appFunctionName, args = [], baseObject) ->
     args = [args] if not _.isArray args
@@ -491,12 +496,13 @@ class Character extends EventEmitter2
       # * Sturdy allows you to survive a fatal attack with 1 hp.
       # *
       # * @name sturdy
+      # * @requirement {max-hp} 5000
       # * @combat
       # * @stacks no
       # * @category Equipment Effects
       # * @package Item
       # */`
-      sturdy:  -> Math.max 0, @self.calc.stat 'sturdy'
+      sturdy:  -> @self.hp.maximum > 5000 and Math.max 0, @self.calc.stat 'sturdy'
 
       #`/**
       # * Vampire is a DoT that returns health to the attacker. The duration is determined by how many points of vampire the caster has.

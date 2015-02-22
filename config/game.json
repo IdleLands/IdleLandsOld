@@ -148,6 +148,7 @@
             "maxEnchantLevel": 10,
             "maxPartyScorePercentDifference": 0.85,
             "guildCreateCost": 100000,
+            "guildRenewMultiplier": 1.5,
             "shopRangeBoost": 1.3,
             "shopPriceFlux": 0.3
         },

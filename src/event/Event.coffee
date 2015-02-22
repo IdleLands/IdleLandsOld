@@ -117,7 +117,7 @@ class Event
   pickValidItem: (player, isEnchant = no) ->
     items = player.equipment
 
-    goodItems = _.reject items, (item) -> item.type in ["providence"]
+    goodItems = _.reject items, (item) -> item.type in ["providence"] or item.name is "empty"
 
     forsaken = _.filter goodItems, (item) -> item.forsaken
 

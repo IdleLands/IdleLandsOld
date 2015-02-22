@@ -9,4 +9,4 @@
 %player puts %hisher %item in the microwave. After %heshe puts out the resulting fire, it looks a little... different.
 %player takes an online course in nuclear physics, and applies %hisher new knowledge to %hisher %item.
 %player gives %hisher %item a fresh coat of plutonium paint.
-%player met with the local toymaker, $chance:name#1$, and requested to get %hisher item buffed. $chance:name#1$ delivered.
+%player met with the local toymaker, $chance:name#1$, and requested to get %hisher %item buffed. $chance:name#1$ delivered.
