@@ -8,7 +8,7 @@ class DiseaseEffect extends TimedEffect
     * Decreases CON and hp regen.
     *
     * @name Disease
-    * @effect -5% of max hp regenerated
+    * @effect -5% of max hp lost per turn
     * @effect -10% CON
     * @package TimedEffects
   */`

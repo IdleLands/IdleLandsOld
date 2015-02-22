@@ -1,13 +1,13 @@
 
 TimedEffect = require "../base/TimedEffect"
 
-class CurseEffect extends TimedEffect
-  @name = CurseEffect::name = "CurseEffect"
+class ForsakeEffect extends TimedEffect
+  @name = ForsakeEffect::name = "ForsakeEffect"
 
   `/**
-    * Increases all stats.
+    * Decreases all stats.
     *
-    * @name Curse
+    * @name Forsake
     * @effect -5% AGI
     * @effect -5% DEX
     * @effect -5% STR
@@ -29,4 +29,4 @@ class CurseEffect extends TimedEffect
   constructor: ->
     super
 
-module.exports = exports = CurseEffect
+module.exports = exports = ForsakeEffect
