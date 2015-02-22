@@ -377,6 +377,7 @@ class Player extends Character
       map: @map
       region: @mapRegion
       rarity: collectibleRarity
+      description: collectible.properties?.flavorText
       foundAt: Date.now()
 
     message = "<player.name>#{@name}</player.name> stumbled across a rare, shiny, and collectible <event.item.#{collectibleRarity}>#{collectibleName}</event.item.#{collectibleRarity}> in #{@map} - #{@mapRegion}!"
