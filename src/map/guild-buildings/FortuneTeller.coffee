@@ -7,7 +7,7 @@ GuildBuilding = require "../GuildBuilding"
  * @name FortuneTeller
  * @category Buildings
  * @package Guild Bases
- * @cost {level-up} 40000
+ * @cost {level-up} 55000+[20000*level/100]
  * @property Name (Any string)
  * @size {sm}
  */`
@@ -15,7 +15,7 @@ class FortuneTeller extends GuildBuilding
 
   @size = FortuneTeller::size = "sm"
   @desc = FortuneTeller::desc = "Upgrade this crystal ball user to get better providences!"
-  @levelupCost = FortuneTeller::levelupCost = (level) -> 40000
+  @levelupCost = FortuneTeller::levelupCost = (level) -> 55000+(20000*Math.floor level/100)
 
   tiles: [
     0,  0,  0,

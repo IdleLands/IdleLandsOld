@@ -14,7 +14,7 @@ class Academy extends GuildBuilding
 
   @size = Academy::size = "md"
   @desc = Academy::desc = "Upgrade this building to make your buffs better and get some permanent ones!"
-  @levelupCost = Academy::levelupCost = (level) -> if level > 100 then 100000 * level else 15000
+  @levelupCost = Academy::levelupCost = (level) -> if level > 100 then level * (50000 + (25000*Math.floor level/100)) else 15000
 
   f =
     name: "Instructor"

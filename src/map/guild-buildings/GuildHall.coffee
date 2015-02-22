@@ -7,14 +7,14 @@ GuildBuilding = require "../GuildBuilding"
  * @name GuildHall
  * @category Buildings
  * @package Guild Bases
- * @cost {level-up} level*2500
+ * @cost {level-up} level*[2500+level/100]
  * @size {lg}
  */`
 class GuildHall extends GuildBuilding
 
   @size = GuildHall::size = "lg"
   @desc = GuildHall::desc = "Upgrade this building to make your other buildings more upgradeable!"
-  @levelupCost = GuildHall::levelupCost = (level) -> level * 2500
+  @levelupCost = GuildHall::levelupCost = (level) -> level * (2500+(1000*Math.floor level/100))
 
   tiles: [
     0,  0,  0,  0,  0,  0,  0,
