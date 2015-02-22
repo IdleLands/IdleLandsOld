@@ -22,6 +22,12 @@ class GuildManager
     @db = new Datastore "guilds", (db) ->
       db.ensureIndex { name: 1 }, { unique: true }, ->
 
+    if @game and @game.logManager
+      @logManager = @game.logManager
+    else
+      @logManager = new LogManager()
+      @logManager.getLogger("GuildManager").warn "@game.logManager not set, using isolated LogManager instance, not able to set logger level via !idle-setloggerlevel"
+
     @loadAllGuilds()
 
     # Check guild buffs every minute, which is 60000 ms
@@ -86,6 +92,19 @@ class GuildManager
         guild.__proto__ = Guild.prototype
         guild.guildManager = @
         guild.invitesLeft()
+
+        guild.buffs = _.compact guild.buffs
+        guild.invites = [] if not guild.invites
+
+        for key, val of guild.invites
+          @invites[val] = [] if not @invites[val]
+          @invites[val].push guild.name
+
+        _.each guild.buffs, (buff) ->
+          if guildBuffs["Guild#{buff.type}"]
+            buff.__proto__ = guildBuffs["Guild#{buff.type}"].prototype
+          else guild.buffs = _.without guild.buffs, buff
+
         guild.avgLevel()
 
         if not guild.base
@@ -101,13 +120,6 @@ class GuildManager
         guild.initGold() unless guild.gold
         guild.gold.__current = 0 if _.isNaN guild.gold.__current
         guild.gold.__proto__ = RestrictedNumber.prototype
-
-        guild.buffs = _.compact guild.buffs
-        guild.invites = []
-        _.each guild.buffs, (buff) ->
-          if guildBuffs["Guild#{buff.type}"]
-            buff.__proto__ = guildBuffs["Guild#{buff.type}"].prototype
-          else guild.buffs = _.without buff
 
         @guilds.push guild
         @guildHash[guild.name] = guild
@@ -236,7 +248,21 @@ class GuildManager
   checkBuffs: ->
     for guild in @guilds
       guild.buffs = [] unless guild.buffs
-      guild.buffs = _.reject guild.buffs, ((buff) -> buff.expire < Date.now())
+      rejectedBuffs = _.filter guild.buffs, ((buff) -> buff.expire < Date.now())
+      if guild.hasBuilt("Academy") and (guild.buildingProps?.Academy?.AutoRenew is "Yes")
+        for buff in rejectedBuffs
+          renewCost = buff.getTier(buff.tier).cost * Constants.defaults.game.guildRenewMultiplier
+
+          if renewCost > guild.gold.getValue()
+            guild.buffs = _.without guild.buffs, buff
+            continue
+
+          guild.subGold renewCost
+          buff.refresh buff.tier
+
+        guild.save()
+      else
+        guild.buffs = _.reject guild.buffs, ((buff) -> buff.expire < Date.now())
 
   addBuff: (identifier, type, tier) ->
     player = @game.playerManager.getPlayerById identifier
@@ -246,17 +272,18 @@ class GuildManager
     typeString = "Guild#{type}"
 
     return Q {isSuccess: no, code: 150, message: "That is not a valid guild buff type!"} unless guildBuffs[typeString]
-    return Q {isSuccess: no, code: 151, message: "That is not a valid tier!"} unless guildBuffs[typeString].tiers[tier]
+    return Q {isSuccess: no, code: 151, message: "That is not a valid tier!"} unless tier > 0
     guild = @guildHash[player.guild]
 
-    tierLevel = guildBuffs[typeString].tiers[tier].level
-    tierMembers = guildBuffs[typeString].tiers[tier].members
-    tierGold = guildBuffs[typeString].tiers[tier].cost
+    tempBuff = new guildBuffs[typeString] tier
+    tierLevel = tempBuff.getTier(tier).level
+    tierMembers = tempBuff.getTier(tier).members
+    tierGold = tempBuff.getTier(tier).cost
     return Q {isSuccess: no, code: 152, message: "Your guild is not a high enough level! It needs to be level #{tierLevel} first!"} if tierLevel > guild.level
     return Q {isSuccess: no, code: 153, message: "Your guild does not have enough members! You need #{tierMembers} members!"} if tierMembers > guild.members.length
     return Q {isSuccess: no, code: 56, message: "Your guild does not have enough gold! You need #{tierGold} gold!"} if tierGold > guild.gold.getValue()
 
-    guild.subGold guildBuffs[typeString].tiers[tier].cost
+    guild.subGold tempBuff.getTier(tier).cost
 
     guild.buffs = [] if not guild.buffs
     current = _.findWhere guild.buffs, {type: type}
@@ -270,11 +297,11 @@ class GuildManager
       else
         guild.buffs = _.without guild.buffs, current
 
-    buff = new guildBuffs[typeString] tier
-    guild.buffs.push (new guildBuffs[typeString] tier)
+    guild.buffs.push (tempBuff)
     guild.save()
 
-    Q player.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 156, message: "You have purchased the #{buff.name} guild buff."}
+    Q player.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 156, message: "You have purchased the #{tempBuff.name} guild buff."}
+
 
   donate: (identifier, gold) ->
     player = @game.playerManager.getPlayerById identifier
