@@ -20,12 +20,15 @@ class ProvidenceEvent extends Event
       type: "providence"  #end of the alphabet, slotwise
       itemClass: "basic"
 
-    _.each @allValidStats(), (stat) ->
+    _.each @validProvidenceStats(), (stat) ->
       base[stat] = chance.integer {min: (Math.min -15, (-150+bigShift)*multiplier), max: (100+bigShift)*multiplier} if (stat.indexOf("Percent") is -1)   and chance.bool {likelihood: 50}
-      base[stat] = chance.integer {min: (Math.min -3, (-30+midShift)*multiplier), max: (20+midShift)*multiplier}   if (stat.indexOf("Percent") isnt -1) and chance.bool {likelihood: 25}
+      base[stat] = chance.integer {min: (Math.min -3, (-30+midShift)*multiplier), max: (20+midShift)*multiplier}    if (stat.indexOf("Percent") isnt -1) and chance.bool {likelihood: 25}
+
+    _.each @otherValidProvidenceStats(), (stat) ->
+      base[stat] = chance.integer {min: (Math.min -3, (-60+midShift)*multiplier), max: (40+midShift)*multiplier}    if chance.bool {likelihood: 15}
 
     _.each @specialStats, (stat) ->
-      base[stat] = chance.integer {min: (Math.min -1, (-3+smallShift)*multiplier), max: (2+smallShift)*multiplier} if chance.bool {likelihood: 25}
+      base[stat] = chance.integer {min: (Math.min -1, (-3+smallShift)*multiplier), max: (2+smallShift)*multiplier}  if chance.bool {likelihood: 25}
 
     new Equipment base
 
