@@ -100,6 +100,8 @@ class EnchantEvent extends Event
     extra =
       item: "<event.item.#{item.itemClass}>#{item.getName()}</event.item.#{item.itemClass}>"
 
+    @player.permanentAchievements.plus100 = yes if 100 <= @player.calc.stat 'enchantLevel'
+
     @game.eventHandler.broadcastEvent {message: message, player: @player, extra: extra, type: 'item-enchant'}
 
     ##TAG:EVENT_EVENT: tinker | player, item, newEnchantLevel | Emitted when a player has a tinker event happen
