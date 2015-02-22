@@ -1,3 +1,5 @@
+console.log "\n>>> BOSS ANALYSIS"
+
 _ = require "lodash"
 _.str = require "underscore.string"
 
@@ -12,12 +14,12 @@ overallClass = _.countBy bossImportant, 'class'
 perc = (min, max) ->
   Math.floor min/max*100
 
-console.log "\n\nBoss Class Breakdown (All)"
+console.log "\nBoss Class Breakdown (All)"
 classKeys = _.keys overallClass
 _.each (_.sortBy classKeys), (key) ->
   console.log "#{_.str.pad key, 15}:\t#{overallClass[key]}\t(#{perc overallClass[key], classKeys.length}%)"
 
-console.log "\n\nBoss Level Range Breakdown (All)"
+console.log "\nBoss Level Range Breakdown (All)"
 
 RANGE_GRANULARITY = 5
 

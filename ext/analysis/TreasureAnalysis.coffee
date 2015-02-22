@@ -1,3 +1,5 @@
+console.log "\n>>> TREASURE ANALYSIS"
+
 _ = require "lodash"
 _.str = require "underscore.string"
 
@@ -28,19 +30,19 @@ countBySlotType = _.reduce (_.keys sortedBySlot), (prev, slot) ->
                     prev
                   , {}
 
-console.log "\n\nAll Treasure Sources"
+console.log "\nAll Treasure Sources"
 
 _.each (_.keys sortedBySource), (source) ->
   header = _.str.pad source, 10
   console.log "#{header}:\t#{sortedBySource[source]} (#{perc sortedBySource[source], allTreasure.length}%)"
 
-console.log "\n\nTreasure Counts (Overall)"
+console.log "\nTreasure Counts (Overall)"
 
 _.each (_.keys sortedBySlot), (slot) ->
   header = _.str.pad slot, 10
   console.log "#{header}:\t#{sortedBySlot[slot]}\t(#{perc sortedBySlot[slot], allTreasure.length}%)"
 
-console.log "\n\nTreasure Acquisition By Slot"
+console.log "\nTreasure Acquisition By Slot"
 
 _.each (_.keys sortedBySlot), (slot) ->
   header = _.str.pad slot, 10
@@ -50,3 +52,5 @@ _.each (_.keys sortedBySlot), (slot) ->
     start = "#{start}\t#{source}: #{countBySlotType[slot][source] or 0} (#{perc (countBySlotType[slot][source] or 0), sortedBySlot[slot]}%)"
 
   console.log start
+
+console.log ""
