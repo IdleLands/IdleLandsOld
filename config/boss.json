@@ -998,6 +998,79 @@
             { "name": "Naga Resurrection Trident", "dropPercent": 60 }
         ]
     },
+    "Lord Waxington": {
+        "respawn": 10800,
+        "availableScore": 1500,
+        "stats": {
+            "class": "Rogue",
+            "hp": 4995,
+            "level": 20,
+            "str": 250,
+            "con": 130,
+            "dex": 600,
+            "agi": 250,
+	    "luck": 15,
+            "crit": 10,
+	    "sturdy": 1
+        },
+        "items": [
+            { "name": "Lord Waxington's Top Hat", "dropPercent": 80 }
+        ]
+    },
+    "Andy the Skeleton": {
+        "respawn": 10800,
+        "availableScore": 0,
+        "stats": {
+            "class": "Monster",
+            "hp": 2500,
+            "level": 23,
+            "luck": 30,
+            "dex": 225,
+	    "con": 175,
+	    "agi": 255,
+	    "str": 500,
+	    "int": 300,
+	    "wis": 200,
+	    "offense": 1
+        }
+		},
+    "Goldy the Skeleton": {
+        "respawn": 10800,
+        "availableScore": 0,
+        "stats": {
+            "class": "MagicalMonster",
+            "hp": 2500,
+	    "mp": 2500,
+            "level": 23,
+            "luck": 30,
+            "dex": 225,
+	    "con": 175,
+	    "agi": 255,
+	    "str": 500,
+	    "int": 300,
+	    "wis": 200,
+	    "lethal": 1
+        }
+		},
+    "Mr. Bones": {
+        "respawn": 10800,
+        "availableScore": 0,
+        "stats": {
+            "class": "Bard",
+	    "gender": "Male",
+            "hp": 2500,
+	    "mp": 2500,
+            "level": 23,
+            "luck": 30,
+            "dex": 225,
+	    "con": 175,
+	    "agi": 255,
+	    "str": 500,
+	    "int": 300,
+	    "wis": 200,
+	    "hpregen": 100
+        }
+		},
     "Gryffyndor House Representative": {
         "respawn": 10800,
         "availableScore": 2400,
