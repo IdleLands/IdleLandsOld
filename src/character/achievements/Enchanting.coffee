@@ -4,7 +4,7 @@ Personality = require "../base/Personality"
 _ = require "lodash"
 
 `/**
-  * This achievement is earned by getting and maintaining a +100
+  * This achievement is earned by getting 100 enchantments concurrently on your equipment.
   *
   * @name Enchanting
   * @prerequisite Get to +100 enchantment level
