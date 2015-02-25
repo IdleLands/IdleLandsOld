@@ -665,7 +665,7 @@ class Player extends Character
     pet.increaseStat stat
 
     ##TAG:EVENT_PLAYER: shop.pet | player, pet, cost | Emitted when a player upgrades a pet
-    @emit "player.shop.petupgrade", player, pet, cost
+    @emit "player.shop.petupgrade", @, pet, cost
 
     Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 212, message: "Successfully upgraded your pets (#{pet.name}) #{stat} to level #{curLevel+2}!"}
 
