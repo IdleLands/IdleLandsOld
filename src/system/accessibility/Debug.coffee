@@ -1,5 +1,6 @@
 
 config = require "../../../config.json"
+_ = require "lodash"
 useDebug = config.debug.enabled
 
 webrepl = require "webrepl"
@@ -14,6 +15,7 @@ module.exports = (game) ->
 
   webrepl.start(port, {username: user, password: pass, hostname: '0.0.0.0'}).context.idle =
     inst: game
+    _: _
 
     playerm: game.playerManager
     petm: game.petManager
