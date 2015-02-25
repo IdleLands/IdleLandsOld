@@ -318,16 +318,16 @@ class Guild
     _.each @members, (member) =>
       player = @guildManager.game.playerManager.getPlayerById member.identifier
 
-      isOnline = player?
-
-      if isOnline
+      if player
         member._cache =
-          online: isOnline
+          online: yes
           level: player.level.getValue()
           class: player.professionName
           lastSeen: Date.now()
       else
         member._cache?.online = no
+
+      null
 
     @guildManager.buildGuildSaveObject @
     
