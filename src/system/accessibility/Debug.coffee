@@ -23,7 +23,7 @@ module.exports = (game) ->
     gm: api.gm
 
     pname: (name) -> game.playerManager.getPlayerByName name
-    gname: (name) -> game.playerManager.getGuildByName name
+    gname: (name) -> game.guildManager.getGuildByName name
 
     pid: (id) -> game.playerManager.getPlayerById id
 
