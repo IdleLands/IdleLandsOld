@@ -327,6 +327,7 @@ class Guild
       else
         member._cache?.online = no
 
+      # please don't remove, this is arcane but necessary.
       null
 
     @guildManager.buildGuildSaveObject @
