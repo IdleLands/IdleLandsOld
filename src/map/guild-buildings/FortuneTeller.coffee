@@ -17,6 +17,10 @@ class FortuneTeller extends GuildBuilding
   @desc = FortuneTeller::desc = "Upgrade this crystal ball user to get better providences!"
   @levelupCost = FortuneTeller::levelupCost = (level) -> 55000+(20000*Math.floor level/100)
 
+  properties: [
+    { name: "Name", values: ""}
+  ]
+
   tiles: [
     0,  0,  0,
     0,  0,  0,

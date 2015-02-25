@@ -148,12 +148,16 @@ class Guild
   reconstructBuildings: ->
     base = @getGuildBase()
 
+    @_validProps = {}
+
     _.each ['sm', 'md', 'lg'], (size) =>
       _.map base.instances[size], -> null
       _.each @currentlyBuilt[size], (building, i) =>
         return unless building
         inst = base.instances[size][i] = new (require "../../map/guild-buildings/#{building}") @guildManager.game, @
         base.build building, size, i, inst
+
+        @_validProps[building] = inst.properties
 
   changeLeader: (identifier, newLeaderName) ->
     return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
