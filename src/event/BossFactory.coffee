@@ -32,7 +32,7 @@ class BossFactory
     statObj = baseObj.stats
 
     statObj.hp = statObj.hp ? 0
-    statObj.hp += statObj.level * 1000
+    statObj.hp += statObj.level * 250
 
     statObj.name = name
 
