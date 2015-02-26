@@ -136,7 +136,7 @@ class Guild
     player.emit "player.gold.guildTax", @name, gold
 
   getGuildBaseName: ->
-    "Guild Hall - #{@name}"
+    @baseName = "Guild Hall - #{@name}"
 
   getGuildBase: ->
     @guildManager.game.world.maps[@getGuildBaseName()]
