@@ -61,7 +61,6 @@
   "devDependencies": {
     "glob": "^4.3.5",
     "grunt-gh-pages": "^0.9.1",
-    "coffee-jshint": "~0.2.2",
     "grunt-coffeelint": "0.0.13",
     "grunt-contrib-watch": "^0.6.1"
   },
