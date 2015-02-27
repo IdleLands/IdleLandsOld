@@ -939,14 +939,14 @@ class Player extends Character
     if not @priorityPoints
       @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
 
-    if _.size stats != 6
+    if _.size stats isnt 6
       return Q {isSuccess: no, code: 111, message: "Priority list is invalid. Expected 6 items"}
 
     total = 0
     sanitizedStats = {}
 
     for key, stat of stats
-      if !_.isNumber stat
+      if not _.isNumber stat
         return Q {isSuccess: no, code: 112, message: "Priority \"" + key + "\" is not a number."}
 
       if not (key in ["dex", "str", "agi", "wis", "con", "int"])
@@ -955,7 +955,7 @@ class Player extends Character
       sanitizedStats[key] = Math.round stat
       total += Math.round stat
 
-    if total != Constants.defaults.player.priorityTotal
+    if total isnt Constants.defaults.player.priorityTotal
       return Q {isSuccess: no, code: 112, message: "Number of priority points are not equal to " + Constants.defaults.player.priorityTotal + "."}
 
     @priorityPoints = sanitizedStats
@@ -1011,7 +1011,7 @@ class Player extends Character
 
     if opts.pet?.owner?.identifier?
       if opts.player?
-        if opts.pet.owner.identifier != opts.player.identifier
+        if opts.pet.owner.identifier isnt opts.player.identifier
           @logger?.error "pet owner does not match player", {pet: opts.pet.owner.identifier, player: opts.player.identifier}
 
     _.extend base, opts
