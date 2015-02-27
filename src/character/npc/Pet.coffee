@@ -53,8 +53,8 @@ class Pet extends Character
 
   canEquip: (item) ->
     # are all slots filled?
-    itemsInSlot = (@equippedItemsOfType item.type).length
-    return no if itemsInSlot >= PetData[@type].slots[item.type]
+    # itemsInSlot = (@equippedItemsOfType item.type).length
+    # return no if itemsInSlot >= PetData[@type].slots[item.type]
 
     # if not, we just have to make sure it's within our current parameters for equipping
     item.score() < @calc.itemFindRange()
