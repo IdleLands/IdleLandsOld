@@ -69,7 +69,8 @@ class Player extends Character
 
     r = -> chance.integer {min: -2, max: 5}
 
-    @equipment = [
+    @equipment = []
+    newbies = [
       new Equipment {type: "body",    class: "newbie", name: (_.sample possibleItems.body),     str: r(), con: r(), dex: r(), int: r(), wis: r(), agi: r(), luck: r()}
       new Equipment {type: "feet",    class: "newbie", name: (_.sample possibleItems.feet),     str: r(), con: r(), dex: r(), int: r(), wis: r(), agi: r(), luck: r()}
       new Equipment {type: "finger",  class: "newbie", name: (_.sample possibleItems.finger),   str: r(), con: r(), dex: r(), int: r(), wis: r(), agi: r(), luck: r()}
@@ -81,6 +82,8 @@ class Player extends Character
       new Equipment {type: "offhand", class: "newbie", name: (_.sample possibleItems.offhand),  str: r(), con: r(), dex: r(), int: r(), wis: r(), agi: r(), luck: r()}
       new Equipment {type: "charm",   class: "newbie", name: (_.sample possibleItems.charm),    str: r(), con: r(), dex: r(), int: r(), wis: r(), agi: r(), luck: r()}
     ]
+
+    _.each newbies, (item) => @equip item
 
   setPushbulletKey: (key) ->
     @pushbulletApiKey = key
@@ -202,7 +205,7 @@ class Player extends Character
     current = _.findWhere @equipment, {type: @overflow[slot].type}
     inOverflow = @overflow[slot]
 
-    if not @canEquip inOverflow
+    if (not @canEquip inOverflow) and not _.contains inOverflow.equippedBy, @name
       return defer.resolve {isSuccess: no, code: 43, message: "A mysterious force compels you to not equip that item. It may be too powerful."}
 
     @equip inOverflow
