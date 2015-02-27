@@ -892,6 +892,8 @@ class Player extends Character
     @_oldAchievements = _.clone @achievements
     @achievements = []
 
+    @achievementTimes = {} unless @achievementTimes
+
     @_oldTitles = _.clone @titles
     @titles = []
 
@@ -900,6 +902,9 @@ class Player extends Character
     # achievements
     stringCurrent = _.map @_oldAchievements, (achievement) -> achievement.name
     stringAll = _.map achieved, (achievement) -> achievement.name
+
+    _.each stringAll, (achievement) =>
+      @achievementTimes[achievement] = new Date() unless @achievementTimes[achievement]
 
     newAchievements = _.difference stringAll, stringCurrent
 
