@@ -334,8 +334,8 @@ class Player extends Character
 
   handleTile: (tile) ->
     switch tile.object?.type
-      when "Boss" then @handleBossBattle tile.object.name
-      when "BossParty" then @handleBossBattleParty tile.object.name
+      when "Boss" then @handleBossBattle tile.object
+      when "BossParty" then @handleBossBattleParty tile.object
       when "Teleport" then @handleTeleport tile
       when "Trainer" then @handleTrainerOnTile tile
       when "Treasure" then @handleTreasure tile.object.name
@@ -386,28 +386,28 @@ class Player extends Character
   handleTreasure: (treasure) ->
     @playerManager.game.treasureFactory.createTreasure treasure, @
 
-  handleBossBattle: (bossName) ->
-    return unless @canBattleBoss bossName
-    @playerManager.game.eventHandler.bossBattle @, bossName
+  handleBossBattle: (bossData) ->
+    return unless @canBattleBoss bossData
+    @playerManager.game.eventHandler.bossBattle @, bossData.name
 
-  handleBossBattleParty: (bossParty) ->
-    return unless @canBattleBoss bossParty
-    @playerManager.game.eventHandler.bossPartyBattle @, bossParty
+  handleBossBattleParty: (bossPartyData) ->
+    return unless @canBattleBoss bossPartyData
+    @playerManager.game.eventHandler.bossPartyBattle @, bossPartyData.name
 
-  resetBossTimer: (boss) ->
+  resetBossTimer: (bossData) ->
     @bossTimers = {} unless @bossTimers
     # 60 seconds for next fight
-    @bossTimers[boss] = Date.now() + (60 * 1000)
+    @bossTimers[bossData.name] = Date.now() + (1000 * @calc.bossRechallengeTime bossData)
 
-  canBattleBoss: (boss) ->
+  canBattleBoss: (bossData) ->
     @bossTimers = {} unless @bossTimers
 
     now = Date.now()
 
-    @bossTimers[boss] = now unless @bossTimers[boss]
+    @bossTimers[bossData.name] = now unless @bossTimers[bossData.name]
 
-    if @bossTimers[boss] - now <= 0
-      @resetBossTimer boss
+    if @bossTimers[bossData.name] - now <= 0
+      @resetBossTimer bossData
       return yes
 
     no

@@ -818,6 +818,11 @@ class Character extends EventEmitter2
         allEnemies = {probability: 100, result: allEnemies} if _.isArray allEnemies
         (@self.probabilityReduce 'magicalAttackTargets', [@self, allEnemies, allCombatMembers], allEnemies).result
 
+      ##TAG:REDUCTION: bossRechallengeTime | 60 (sec) | self, baseBossRechallengeTime, bossData | Called when challenging a boss
+      bossRechallengeTime: (bossData) ->
+        @base.bossRechallengeTime = 60
+        @self.personalityReduce 'bossRechallengeTime', [@self, @base.bossRechallengeTime, bossData], @base.bossRechallengeTime
+
       ##TAG:REDUCTION: inventorySize | 3 (constant) | self, baseInventorySize | Called when checking max inventory size
       inventorySize: ->
         @base.inventorySize = Constants.defaults.player.maxOverflow
