@@ -75,6 +75,7 @@ class BossFactory
           baseCollectible =
             name: item.name
             rarity: "guardian"
+            description: item.flavorText
 
           member.handleCollectible baseCollectible
 

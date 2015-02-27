@@ -873,7 +873,7 @@
 	    "startle": 1
         },
         "collectibles": [
-            { "name": "Snowbeast Skull", "dropPercent": 90 }
+            { "name": "Snowbeast Skull", "dropPercent": 90, "flavorText": "What are you, the Bone Collector?" }
         ]
     },
     "Unspeakably Horrible Cave Creature": {
