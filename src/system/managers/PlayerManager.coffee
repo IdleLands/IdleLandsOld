@@ -421,8 +421,8 @@ class PlayerManager
 
     player.lastLogin = new Date()
 
-    player.statistics = {} if not player.statistics
-    player.permanentAchievements = {} if not player.permanentAchievements
+    player.statistics = {} unless player.statistics
+    player.permanentAchievements = {} unless player.permanentAchievements
 
     player.on "explore.walk.void", (player) =>
       @game.errorHandler.captureException (new Error "Player is walking on the void!"), {player: player.name, map: player.map, x: player.x, y: player.y}
