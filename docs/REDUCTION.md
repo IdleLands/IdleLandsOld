@@ -31,6 +31,7 @@ Reduction | Base Value | Arguments Passed | Description
 [fallChance](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L806) | 100 | self, baseFallChance | Called when stepping on a hole
 [fleePercent](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L771) | 0.1 (0.1%) | self, baseFleePercent | Called every turn in combat before other actions
 [hit](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L620) | dex+agi+con/6 | self, baseHit | Called when attempting to not get hit
+[inventorySize](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L821) | 3 (constant) | self, baseInventorySize | Called when checking max inventory size
 [itemFindRangeMultiplier](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L707) | 1+(0.2*level/10) | self, baseItemFindRangeMultiplier | Called when a player finds or attempts to equip a new item
 [itemFindRange](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L700) | (level+1)*itemFindRangeMultiplier | self, baseItemFindRange | Called when a player finds or attempts to equip a new item
 [itemReplaceChancePercent](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L725) | 100 | self, baseItemReplaceChancePercent | Called when seeing if the player will swap items

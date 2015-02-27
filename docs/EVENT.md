@@ -27,10 +27,10 @@ Player Emit | Arguments Passed | Description
 Event Emit | Arguments Passed | Description
 --- | --- | ---
 [blessGoldParty](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/GoldPartyEvent.coffee#L43) | player, {gold, realGold} | Emitted when a player gets free money while in a party
-[blessGold](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/GoldEvent.coffee#L35) | player, {gold, realGold} | Emitted when a player gets free money
+[blessGold](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/GoldEvent.coffee#L36) | player, {gold, realGold} | Emitted when a player gets free money
 [blessItem](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/ItemModEvent.coffee#L47) | player, item, boost | Emitted when a player gets a blessing on an item
 [blessXpParty](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/XpPartyEvent.coffee#L42) | player, {xp, realXp, percentXp} | Emitted when a player gets some free xp while in a party
-[blessXp](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/XpEvent.coffee#L40) | player, {xp, realXp, percentXp} | Emitted when a player gets some free xp
+[blessXp](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/XpEvent.coffee#L41) | player, {xp, realXp, percentXp} | Emitted when a player gets some free xp
 [bossbattle.loot](https://github.com/IdleLands/IdleLands/blob/master/src/event/BossFactory.coffee#L68) | member, itemName, item | Emitted when a party member loots a boss item
 [bossbattle.lootcollectible](https://github.com/IdleLands/IdleLands/blob/master/src/event/BossFactory.coffee#L81) | member, bossBaseName, item | Emitted when a party member loots a boss collectible
 [bossbattle.lose](https://github.com/IdleLands/IdleLands/blob/master/src/event/BossFactory.coffee#L95) | member, bossBaseName | Emitted when a party member loses a boss battle
@@ -42,14 +42,14 @@ Event Emit | Arguments Passed | Description
 [cataclysm.skybrightshine](https://github.com/IdleLands/IdleLands/blob/master/src/event/cataclysms/SkyShinesBright.coffee#L15) | cataclysm | Emitted when a player is affected by the skybrightshine cataclysm
 [cataclysm.skyscornglow](https://github.com/IdleLands/IdleLands/blob/master/src/event/cataclysms/SkyGlowsScornfully.coffee#L15) | cataclysm | Emitted when a player is affected by the skyscornglow cataclysm
 [cataclysm](https://github.com/IdleLands/IdleLands/blob/master/src/event/Cataclysm.coffee#L28) | cataclysm | Emitted when a player is affected by a cataclysm
-[enchant](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/EnchantEvent.coffee#L106) | player, item, newEnchantLevel | Emitted when a player has an enchant event happen
+[enchant](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/EnchantEvent.coffee#L107) | player, item, newEnchantLevel | Emitted when a player has an enchant event happen
 [findItem](https://github.com/IdleLands/IdleLands/blob/master/src/system/handlers/EventHandler.coffee#L211) | player, item | Emitted when a player finds an item on the ground
 [flipStat](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/FlipStatEvent.coffee#L32) | player, item, stat, val | Emitted when a player has a switcheroo happen
 [forsakeGoldParty](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/GoldPartyEvent.coffee#L44) | player, {gold, realGold} | Emitted when a player gets loses money while in a party
-[forsakeGold](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/GoldEvent.coffee#L36) | player, {gold, realGold} | Emitted when a player gets loses money
+[forsakeGold](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/GoldEvent.coffee#L37) | player, {gold, realGold} | Emitted when a player gets loses money
 [forsakeItem](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/ItemModEvent.coffee#L48) | player, item, boost | Emitted when a player gets an anti-blessing on an item
 [forsakeXpParty](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/XpPartyEvent.coffee#L43) | player, {xp, realXp, percentXp} | Emitted when a player loses xp while in a party
-[forsakeXp](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/XpEvent.coffee#L41) | player, {xp, realXp, percentXp} | Emitted when a player loses xp
+[forsakeXp](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/XpEvent.coffee#L42) | player, {xp, realXp, percentXp} | Emitted when a player loses xp
 [levelDown](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/LevelDownEvent.coffee#L23) | player, currentLevel, newLevel | Emitted when a player loses a level
 [merchant](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/MerchantEvent.coffee#L39) | player, {item, gold, shopGold} | Emitted when a player buys an item from a shop
 [monsterbattle](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/MonsterBattleEvent.coffee#L22) | player | Emitted when a player gets causes a battle with monsters
