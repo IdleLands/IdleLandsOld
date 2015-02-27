@@ -11,6 +11,9 @@ Q = require "q"
 Chance = require "chance"
 chance = new Chance Math.random
 
+requireDir = require "require-dir"
+buildings = _.keys requireDir "../../map/guild-buildings/"
+
 class Guild
 
   constructor: (options) ->
@@ -136,7 +139,7 @@ class Guild
     player.emit "player.gold.guildTax", @name, gold
 
   getGuildBaseName: ->
-    @baseName = "Guild Hall - #{@name}"
+    @baseMapName = "Guild Hall - #{@name}"
 
   getGuildBase: ->
     @guildManager.game.world.maps[@getGuildBaseName()]
@@ -146,6 +149,7 @@ class Guild
     @reconstructBuildings()
 
   reconstructBuildings: ->
+    @validBuildings = buildings
     base = @getGuildBase()
 
     @_validProps = {}

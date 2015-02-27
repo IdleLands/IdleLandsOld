@@ -39,7 +39,7 @@ class Teleport extends GuildBuilding
 
   tiles: [
     0,  0,  0,
-    0,  f,  0,
+    0,  0,  0,
     0,  0,  0
   ]
 

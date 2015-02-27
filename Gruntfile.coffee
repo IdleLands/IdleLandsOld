@@ -1,7 +1,6 @@
 module.exports = (grunt) ->
 
   grunt.task.loadNpmTasks 'grunt-contrib-watch'
-  grunt.task.loadNpmTasks 'grunt-coffee-jshint'
   grunt.task.loadNpmTasks 'grunt-coffeelint'
   grunt.task.loadNpmTasks 'grunt-gh-pages'
 
