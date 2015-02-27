@@ -823,6 +823,10 @@ class Character extends EventEmitter2
         @base.bossRechallengeTime = 60
         @self.personalityReduce 'bossRechallengeTime', [@self, @base.bossRechallengeTime, bossData], @base.bossRechallengeTime
 
+      ##TAG:REDUCTION: inventorySize | 3 (constant) | self, baseInventorySize | Called when checking max inventory size
+      inventorySize: ->
+        @base.inventorySize = Constants.defaults.player.maxOverflow
+        @self.personalityReduce 'inventorySize', [@self, @base.inventorySize], @base.inventorySize
 
 Character::num2dir = (dir,x,y) ->
   switch dir

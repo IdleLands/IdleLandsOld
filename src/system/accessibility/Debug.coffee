@@ -1,5 +1,6 @@
 
 config = require "../../../config.json"
+_ = require "lodash"
 useDebug = config.debug.enabled
 
 webrepl = require "webrepl"
@@ -14,6 +15,7 @@ module.exports = (game) ->
 
   webrepl.start(port, {username: user, password: pass, hostname: '0.0.0.0'}).context.idle =
     inst: game
+    _: _
 
     playerm: game.playerManager
     petm: game.petManager
@@ -23,7 +25,7 @@ module.exports = (game) ->
     gm: api.gm
 
     pname: (name) -> game.playerManager.getPlayerByName name
-    gname: (name) -> game.playerManager.getGuildByName name
+    gname: (name) -> game.guildManager.getGuildByName name
 
     pid: (id) -> game.playerManager.getPlayerById id
 

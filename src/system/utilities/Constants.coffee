@@ -4,6 +4,7 @@ Chance = require "chance"
 chance = new Chance()
 
 config = require "../../../config/game.json"
+_.extend config, require "../../../config/events.json"
 
 class Constants
   @gameName = config.gameName

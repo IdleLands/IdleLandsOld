@@ -11,6 +11,9 @@ Q = require "q"
 Chance = require "chance"
 chance = new Chance Math.random
 
+requireDir = require "require-dir"
+buildings = _.keys requireDir "../../map/guild-buildings/"
+
 class Guild
 
   constructor: (options) ->
@@ -136,7 +139,7 @@ class Guild
     player.emit "player.gold.guildTax", @name, gold
 
   getGuildBaseName: ->
-    "Guild Hall - #{@name}"
+    @baseMapName = "Guild Hall - #{@name}"
 
   getGuildBase: ->
     @guildManager.game.world.maps[@getGuildBaseName()]
@@ -146,7 +149,10 @@ class Guild
     @reconstructBuildings()
 
   reconstructBuildings: ->
+    @validBuildings = buildings
     base = @getGuildBase()
+
+    @_validProps = {}
 
     _.each ['sm', 'md', 'lg'], (size) =>
       _.map base.instances[size], -> null
@@ -154,6 +160,8 @@ class Guild
         return unless building
         inst = base.instances[size][i] = new (require "../../map/guild-buildings/#{building}") @guildManager.game, @
         base.build building, size, i, inst
+
+        @_validProps[building] = inst.properties
 
   changeLeader: (identifier, newLeaderName) ->
     return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
@@ -318,16 +326,17 @@ class Guild
     _.each @members, (member) =>
       player = @guildManager.game.playerManager.getPlayerById member.identifier
 
-      isOnline = player?
-
-      if isOnline
+      if player
         member._cache =
-          online: isOnline
+          online: yes
           level: player.level.getValue()
           class: player.professionName
           lastSeen: Date.now()
       else
         member._cache?.online = no
+
+      # please don't remove, this is arcane but necessary.
+      null
 
     @guildManager.buildGuildSaveObject @
     

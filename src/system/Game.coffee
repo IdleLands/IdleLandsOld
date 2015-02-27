@@ -57,7 +57,7 @@ else if config.captureLocal
 
 class Game
 
-  constructor: () ->
+  constructor: ->
     errHandler = @errorHandler = client or {captureMessage: console.error, captureException: console.error}
 
     process.on 'uncaughtException', (err) ->

@@ -34,7 +34,10 @@ class PartyEvent extends Event
     newPartyPlayers = _.without newParty.players, @player
 
     extra =
+      ##TAG:EVENTVAR_SIMPLE: %partyMembers | the string that represents the members of the party (not counting the leader; use %player for that)
       partyMembers: _.str.toSentence _.pluck newPartyPlayers, 'name'
+
+      ##TAG:EVENTVAR_SIMPLE: %partyName | the name of the party involved in the event
       partyName: newParty.name
 
     message = @game.eventHandler.broadcastEvent {message: @event.remark, player: @player, extra: extra, type: 'party'}

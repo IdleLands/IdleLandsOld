@@ -27,6 +27,7 @@ class XpEvent extends Event
     boost = Math[rangeManage[@event.type].f] boost, rangeManage[@event.type].v
 
     extra =
+      ##TAG:EVENTVAR_SIMPLE: %xp | the amount of experience gained (only applies to events that involve xp)
       xp: Math.abs boost
       realXp: boost
       percentXp: +(boost/@player.xp.maximum*100).toFixed 3

@@ -30,8 +30,11 @@ class Markdoc
         spliced = lines[i].split(' ').join('')
         continue if -1 is spliced.indexOf "##TAG:"
 
+
         [empty, tag, params] = lines[i].split ":"
         continue unless tag in @doc.tags
+
+        params = lines[i].substring tag.length+1+lines[i].indexOf tag
 
         arr = _.map (params.split "|"), (s) -> s.trim()
 
@@ -105,6 +108,18 @@ docs = [
     sortIndexes: [
       0
       0
+      0
+      0
+    ]
+  }
+  {
+    key: 'EVENTVAR',
+    tags: ['EVENTVAR_SIMPLE', 'EVENTVAR_DYNAMIC']
+    headers: [
+      ['Simple Variable', 'Returns']
+      ['Dynamic Variable', 'Returns']
+    ]
+    sortIndexes: [
       0
       0
     ]
