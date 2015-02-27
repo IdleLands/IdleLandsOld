@@ -13,7 +13,7 @@ Database = require('mongodb').MongoClient
 
 class DatabaseWrapper
 
-  load: () =>
+  load: =>
     if not @label?.length then throw new Error "Database must have a name."
 
     _isReady = Q.defer()
@@ -53,7 +53,7 @@ class DatabaseWrapper
         @db.remove query, options, callback
 
   findOne: (query, callback) =>
-    Q.when @databaseReady, () =>
+    Q.when @databaseReady, =>
       @db.findOne query, callback
 
   count: (data, callback) =>

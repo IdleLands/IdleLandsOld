@@ -148,7 +148,7 @@ class API
         @logger?.verbose "GM Command log.clearLog", {name}
         @gameInstance.logManager.clearLog name
 
-      clearAllLogs: () =>
+      clearAllLogs: =>
         @logger?.debug "GM Command log.clearAllLogs"
         @gameInstance.logManager.clearAllLogs()
 

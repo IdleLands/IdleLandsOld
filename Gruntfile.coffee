@@ -24,8 +24,8 @@ module.exports = (grunt) ->
           level: 'ignore'
         no_backticks:
           level: 'ignore'
-        #no_empty_param_list:
-        #  level: 'warn'
+        no_empty_param_list:
+          level: 'warn'
         prefer_english_operator:
           level: 'warn'
 
