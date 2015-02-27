@@ -52,7 +52,7 @@ class EventHandler
           when 'battle' then                              new allEvents.MonsterBattleEvent @game, event, player
           when 'towncrier' then                           new allEvents.TownCrierEvent @game, event, player
 
-        event?.isGuild = isGuild
+        event?.isGuild = isGuild if isGuild and _.isBoolean isGuild
         event?.go()
 
       catch e

@@ -14,6 +14,7 @@ _ = require "lodash"
   * @reward +1% CON
   * @reward +1% WIS
   * @reward +1% INT
+  * @reward +1 inventory slot (This only applies once for every 3 levels of Collector.)
   * @category Achievements
   * @package Player
 */`
@@ -35,6 +36,9 @@ class Collector extends Achievement
         type: "exploration"
 
       item.title = "Collector" if level is 5
+
+      if level%%3 is 0
+        item.inventorySize = -> 1
 
       achieved.push item
 

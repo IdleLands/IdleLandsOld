@@ -8,7 +8,7 @@ Player Emit | Arguments Passed | Description
 --- | --- | ---
 [gold.gain](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L827) | player, goldGained | Emitted when a player gains gold
 [gold.guildDonation](https://github.com/IdleLands/IdleLands/blob/master/src/system/managers/GuildManager.coffee#L321) | guild.name, gold | Emitted when a player willingly donates gold to their guild
-[gold.guildTax](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Guild.coffee#L135) | guildName, goldTaxed | Emitted when a guild collects tax from a member
+[gold.guildTax](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Guild.coffee#L138) | guildName, goldTaxed | Emitted when a guild collects tax from a member
 [gold.lose](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L837) | player, goldLost | Emitted when a player loses gold
 [level.down](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/LevelDownEvent.coffee#L26) | player, currentLevel, newLevel | Emitted when a player loses a level
 [level.up](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L872) | player | Emitted when a player levels up
@@ -56,7 +56,7 @@ Event Emit | Arguments Passed | Description
 [party.join](https://github.com/IdleLands/IdleLands/blob/master/src/event/Party.coffee#L63) | none | Emitted when a player joins a party
 [party.leave](https://github.com/IdleLands/IdleLands/blob/master/src/event/Party.coffee#L72) | none | Emitted when a player leaves a party
 [providence](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/ProvidenceEvent.coffee#L174) | player | Emitted when a player gets really unlucky
-[tinker](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/EnchantEvent.coffee#L106) | player, item, newEnchantLevel | Emitted when a player has a tinker event happen
+[tinker](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/EnchantEvent.coffee#L105) | player, item, newEnchantLevel | Emitted when a player has a tinker event happen
 [towncrier](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/TownCrierEvent.coffee#L21) | player | Emitted when a player gets their ears attacked by the nearest town crier
 [treasurechest.find](https://github.com/IdleLands/IdleLands/blob/master/src/event/TreasureFactory.coffee#L28) | player, chestName | Emitted when a player finds a treasure chest
 [treasurechest.loot](https://github.com/IdleLands/IdleLands/blob/master/src/event/TreasureFactory.coffee#L25) | player, chestName, item | Emitted when a player loots an item from a treasure chest

@@ -18,6 +18,11 @@ class Enchantress extends GuildBuilding
   @desc = Enchantress::desc = "Upgrade this magic user to get better enchanting capabilities!"
   @levelupCost = Enchantress::levelupCost = (level) -> level * 5000
 
+  properties: [
+    { name: "Name", values: ""}
+    { name: "AttemptEnchant", values: ["No", "Yes"]}
+  ]
+
   tiles: [
     0,  0,  0,
     0,  0,  0,

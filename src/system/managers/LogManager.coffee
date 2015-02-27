@@ -36,7 +36,7 @@ class LogManager
       return deferred.promise
     return Q {isSuccess: no, code: 130, message: "No logger known with name " + name}
 
-  clearAllLogs: () ->
+  clearAllLogs: ->
     deferred = Q.defer()
     rmdir __dirname + '/../../../logs/', (err) ->
       if err is null

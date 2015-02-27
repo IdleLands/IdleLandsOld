@@ -10,6 +10,7 @@ _ = require "lodash"
   * @prerequisite Explore 5*[5*[n-1]+1] maps.
   * @reward +2% CON
   * @reward +2% INT
+  * @reward +1 inventory slot (This only applies once for every 4 levels of Explorative.)
   * @reward +1 haste (This only applies once for every 5 levels of Explorative.)
   * @category Achievements
   * @package Player
@@ -34,6 +35,9 @@ class Explorative extends Achievement
         type: "exploration"
 
       item.title = "Explorer" if level is 5
+
+      if level%%4 is 0
+        item.inventorySize = -> 1
 
       if level%%5 is 0
         item.haste = -> 1
