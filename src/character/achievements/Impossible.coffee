@@ -24,6 +24,7 @@ class Impossible extends Achievement
         name: "Impossible I"
         desc: "Find a certain collectible in Norkos -9"
         reward: "Bragging rights"
+        title: "Leet H4x0r"
         type: "special"
 
     achieved
