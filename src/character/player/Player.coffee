@@ -182,7 +182,7 @@ class Player extends Character
     if not (slot in ["body","feet","finger","hands","head","legs","neck","mainhand","offhand","charm","trinket"])
       return defer.resolve {isSuccess: no, code: 40, message: "That slot is invalid."}
 
-    if @overflow.length is Constants.defaults.player.maxOverflow
+    if @overflow.length is @calc.inventorySize()
       return defer.resolve {isSuccess: no, code: 41, message: "Your inventory is currently full!"}
 
     currentItem = _.findWhere @equipment, {type: slot}
