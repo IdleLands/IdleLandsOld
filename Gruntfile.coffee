@@ -1,6 +1,7 @@
 module.exports = (grunt) ->
 
   grunt.task.loadNpmTasks 'grunt-contrib-watch'
+  grunt.task.loadNpmTasks 'grunt-coffee-jshint'
   grunt.task.loadNpmTasks 'grunt-coffeelint'
   grunt.task.loadNpmTasks 'grunt-gh-pages'
 
@@ -37,5 +38,6 @@ module.exports = (grunt) ->
   grunt.event.on 'coffee.error', (msg) ->
     grunt.log.write msg
 
-  grunt.registerTask 'default', [ 'coffeelint' ]
-  grunt.registerTask 'dev', [ 'coffeelint', 'watch' ]
+  grunt.registerTask 'default', [ 'test' ]
+  grunt.registerTask 'test', [ 'coffeelint' ]
+  grunt.registerTask 'dev', [ 'test', 'watch' ]
