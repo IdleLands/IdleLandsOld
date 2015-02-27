@@ -947,7 +947,7 @@ class Player extends Character
     sanitizedStats = {}
 
     for key, stat of stats
-      if not _.isNumber stat
+      if not _.isNaN stat and not _.isNumber stat
         return Q {isSuccess: no, code: 112, message: "Priority \"" + key + "\" is not a number."}
 
       if not (key in ["dex", "str", "agi", "wis", "con", "int"])
@@ -968,6 +968,7 @@ class Player extends Character
       @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
 
     points = if _.isNumber points then points else parseInt points
+    points = if _.isNaN points then 0 else points
     points = Math.round points
 
     if points is 0
