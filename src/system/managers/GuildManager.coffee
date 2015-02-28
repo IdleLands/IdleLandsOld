@@ -154,21 +154,19 @@ class GuildManager
 
     Q sender.getExtraDataForREST {player: yes, guild: yes}, {isSuccess: yes, code: 70, message: "Successfully sent an invite to #{invName}! You have #{@guildHash[sender.guild].invitesLeft()} invites remaining."}
 
-  rescindInvite: (adminId, invName) ->
+  rescindInvite: (adminId, invIdent) ->
     admin = @game.playerManager.getPlayerById adminId
-    invitee = @game.playerManager.getPlayerByName invName
 
     return Q {isSuccess: no, code: 59, message: "You aren't part of a guild!"} unless admin?.guild
     return Q {isSuccess: no, code: 61, message: "You're not an admin in that guild!"} unless @checkAdmin admin.name
-    return Q {isSuccess: no, code: 58, message: "You didn't specify a valid invitation target!"} unless invitee
-    return Q {isSuccess: no, code: 987, message: "That person does not have an invite to your guild!"} unless _.contains @invites[invitee.identifier], admin.guild
+    return Q {isSuccess: no, code: 987, message: "That person does not have an invite to your guild!"} unless _.contains @invites[invIdent], admin.guild
 
-    @manageInvite invitee.identifier, no, admin.guild
+    @manageInvite invIdent, no, admin.guild
 
     guild = @guildHash[admin.guild]
     guild.save()
 
-    Q admin.getExtraDataForREST {guild: yes}, {isSuccess: yes, code: 869, message: "Successfully took the invite from #{invName}! You have #{guild.invitesLeft()} invites remaining."}
+    Q admin.getExtraDataForREST {guild: yes}, {isSuccess: yes, code: 869, message: "Successfully took the invite from #{invIdent}! You have #{guild.invitesLeft()} invites remaining."}
 
 
   manageInvite: (invId, accepted, guildName) ->

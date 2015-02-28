@@ -556,13 +556,13 @@ class API
           @logger?.verbose "Player Command guild.invite", {identifier, invName}
           actualRes
 
-      rescindInvite: (identifier, invName) =>
+      rescindInvite: (identifier, invIdent) =>
         @validateIdentifier identifier
         .then (res) =>
           actualRes = null
-          if res.isSuccess then actualRes = @gameInstance.guildManager.rescindInvite identifier, invName else actualRes = res
+          if res.isSuccess then actualRes = @gameInstance.guildManager.rescindInvite identifier, invIdent else actualRes = res
           @logger?.debug "Player Command guild.rescindInvite"
-          @logger?.verbose "Player Command guild.rescindInvite", {identifier, invName}
+          @logger?.verbose "Player Command guild.rescindInvite", {identifier, invIdent}
           actualRes
 
       manageInvite: (identifier, accepted, guildName) =>

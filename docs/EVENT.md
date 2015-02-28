@@ -7,7 +7,7 @@ Any event in the `combat` domain can optionally take on some other forms `self`,
 Player Emit | Arguments Passed | Description
 --- | --- | ---
 [gold.gain](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L828) | player, goldGained | Emitted when a player gains gold
-[gold.guildDonation](https://github.com/IdleLands/IdleLands/blob/master/src/system/managers/GuildManager.coffee#L338) | guild.name, gold | Emitted when a player willingly donates gold to their guild
+[gold.guildDonation](https://github.com/IdleLands/IdleLands/blob/master/src/system/managers/GuildManager.coffee#L336) | guild.name, gold | Emitted when a player willingly donates gold to their guild
 [gold.guildTax](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Guild.coffee#L138) | guildName, goldTaxed | Emitted when a guild collects tax from a member
 [gold.lose](https://github.com/IdleLands/IdleLands/blob/master/src/character/player/Player.coffee#L838) | player, goldLost | Emitted when a player loses gold
 [level.down](https://github.com/IdleLands/IdleLands/blob/master/src/event/singles/LevelDownEvent.coffee#L26) | player, currentLevel, newLevel | Emitted when a player loses a level

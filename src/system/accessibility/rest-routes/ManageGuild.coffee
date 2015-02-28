@@ -33,10 +33,10 @@ router
   API.player.guild.invite identifier, invName
   .then (resp) -> res.json resp
 
-## TAG:APIROUTE: POST | /guild/invite/player/rescind | {identifier, invName, token} | {guild}
+## TAG:APIROUTE: POST | /guild/invite/player/rescind | {identifier, invIdent, token} | {guild}
 .post "/guild/invite/player/rescind", hasValidToken, (req, res) ->
-  {identifier, invName} = req.body
-  API.player.guild.rescindInvite identifier, invName
+  {identifier, invIdent} = req.body
+  API.player.guild.rescindInvite identifier, invIdent
   .then (resp) -> res.json resp
 
 ## TAG:APIROUTE: POST | /guild/invite/manage | {identifier, accepted, token} | {guild}

@@ -31,7 +31,7 @@ PATCH | [/guild/changeLeader](https://github.com/IdleLands/IdleLands/blob/master
 PUT | [/guild/create](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L10) | {identifier, guildName, token} | {guild}
 PUT | [/guild/disband](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L22) | {identifier, token} | {guild}
 POST | [/guild/invite/manage](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L42) | {identifier, accepted, token} | {guild}
-POST | [/guild/invite/player/rescind](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L36) | {identifier, invName, token} | {guild}
+POST | [/guild/invite/player/rescind](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L36) | {identifier, invIdent, token} | {guild}
 PUT | [/guild/invite/player](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L30) | {identifier, invName, token} | {guild}
 POST | [/guild/leave](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L16) | {identifier, token} | {guild}
 POST | [/guild/manage/buff](https://github.com/IdleLands/IdleLands/blob/master/src/system/accessibility/rest-routes/ManageGuild.coffee#L74) | {identifier, type, tier, token} | {guild}
