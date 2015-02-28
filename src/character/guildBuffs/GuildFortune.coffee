@@ -12,7 +12,7 @@ GuildBuff = require "../base/GuildBuff"
   * @effect +5% item find range per tier
   * @duration 6 hours + 6 hours per tier
   * @category Fortune
-  * @package GuildBuffs
+  * @package Guild Buffs
 */`
 
 class GuildFortune extends GuildBuff

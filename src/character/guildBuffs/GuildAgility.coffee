@@ -11,7 +11,7 @@ GuildBuff = require "../base/GuildBuff"
   * @effect +5% AGI per tier
   * @duration 12 hours + 12 hours per tier
   * @category Agility
-  * @package GuildBuffs
+  * @package Guild Buffs
 */`
 
 class GuildAgility extends GuildBuff

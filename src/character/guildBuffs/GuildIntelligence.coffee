@@ -11,7 +11,7 @@ GuildBuff = require "../base/GuildBuff"
   * @effect +5% INT per tier
   * @duration 12 hours + 12 hours per tier
   * @category Intelligence
-  * @package GuildBuffs
+  * @package Guild Buffs
 */`
 
 class GuildIntelligence extends GuildBuff

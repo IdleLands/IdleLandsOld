@@ -11,7 +11,7 @@ GuildBuff = require "../base/GuildBuff"
   * @effect +1% LUCK per tier
   * @duration 12 hours + 12 hours per tier
   * @category Luck
-  * @package GuildBuffs
+  * @package Guild Buffs
 */`
 
 class GuildLuck extends GuildBuff
