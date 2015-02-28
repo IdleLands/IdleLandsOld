@@ -49,7 +49,7 @@ class Battle
 
   setupParties: ->
     _.each @parties, (party) =>
-      if not party
+      if not party or party.members.length is 0
         @game.errorHandler.captureException new Error "INVALID PARTY ??? ABORTING"
         console.error @parties
         @isBad = yes
