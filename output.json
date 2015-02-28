@@ -4053,169 +4053,7 @@
             "_name": "Guild Buffs",
             "_children": [
                 {
-                    "_name": "Agility",
-                    "_children": [
-                        {
-                            "lineNumber": 4,
-                            "endLineNumber": 15,
-                            "filePath": "src/character/guildBuffs/GuildAgility.coffee",
-                            "fileName": "GuildAgility.coffee",
-                            "effect": [
-                                {
-                                    "name": "effect",
-                                    "basicInfo": "+5% AGI per tier"
-                                }
-                            ],
-                            "requirement": [
-                                {
-                                    "name": "requirement",
-                                    "type": "gold",
-                                    "basicInfo": "(tier+1)^2 + 1000"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "guild-level",
-                                    "basicInfo": "10 + 10 per tier"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "guild-members",
-                                    "basicInfo": "(tier-1)*2 + 1"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "The Agility guild buff increases Agility."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Agility"
-                            },
-                            "duration": {
-                                "name": "duration",
-                                "basicInfo": "12 hours + 12 hours per tier"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Agility"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Guild Buffs"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "_name": "Constitution",
-                    "_children": [
-                        {
-                            "lineNumber": 4,
-                            "endLineNumber": 15,
-                            "filePath": "src/character/guildBuffs/GuildConstitution.coffee",
-                            "fileName": "GuildConstitution.coffee",
-                            "effect": [
-                                {
-                                    "name": "effect",
-                                    "basicInfo": "+5% CON per tier"
-                                }
-                            ],
-                            "requirement": [
-                                {
-                                    "name": "requirement",
-                                    "type": "gold",
-                                    "basicInfo": "(tier+1)^2 + 1000"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "guild-level",
-                                    "basicInfo": "10 + 10 per tier"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "guild-members",
-                                    "basicInfo": "(tier-1)*2 + 1"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "The Constitution guild buff increases Constitution."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Constitution"
-                            },
-                            "duration": {
-                                "name": "duration",
-                                "basicInfo": "12 hours + 12 hours per tier"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Constitution"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Guild Buffs"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "_name": "Dexterity",
-                    "_children": [
-                        {
-                            "lineNumber": 4,
-                            "endLineNumber": 15,
-                            "filePath": "src/character/guildBuffs/GuildDexterity.coffee",
-                            "fileName": "GuildDexterity.coffee",
-                            "effect": [
-                                {
-                                    "name": "effect",
-                                    "basicInfo": "+5% DEX per tier"
-                                }
-                            ],
-                            "requirement": [
-                                {
-                                    "name": "requirement",
-                                    "type": "gold",
-                                    "basicInfo": "(tier+1)^2 + 1000"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "guild-level",
-                                    "basicInfo": "10 + 10 per tier"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "guild-members",
-                                    "basicInfo": "(tier-1)*2 + 1"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "The Dexterity guild buff increases Dexterity."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Dexterity"
-                            },
-                            "duration": {
-                                "name": "duration",
-                                "basicInfo": "12 hours + 12 hours per tier"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Dexterity"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Guild Buffs"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "_name": "Fortune",
+                    "_name": "Advanced",
                     "_children": [
                         {
                             "lineNumber": 4,
@@ -4263,7 +4101,7 @@
                             },
                             "category": {
                                 "name": "category",
-                                "basicInfo": "Fortune"
+                                "basicInfo": "Advanced"
                             },
                             "package": {
                                 "name": "package",
@@ -4273,8 +4111,155 @@
                     ]
                 },
                 {
-                    "_name": "Intelligence",
+                    "_name": "Basic",
                     "_children": [
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 15,
+                            "filePath": "src/character/guildBuffs/GuildAgility.coffee",
+                            "fileName": "GuildAgility.coffee",
+                            "effect": [
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "+5% AGI per tier"
+                                }
+                            ],
+                            "requirement": [
+                                {
+                                    "name": "requirement",
+                                    "type": "gold",
+                                    "basicInfo": "(tier+1)^2 + 1000"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "guild-level",
+                                    "basicInfo": "10 + 10 per tier"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "guild-members",
+                                    "basicInfo": "(tier-1)*2 + 1"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Agility guild buff increases Agility."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Agility"
+                            },
+                            "duration": {
+                                "name": "duration",
+                                "basicInfo": "12 hours + 12 hours per tier"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Basic"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Buffs"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 15,
+                            "filePath": "src/character/guildBuffs/GuildConstitution.coffee",
+                            "fileName": "GuildConstitution.coffee",
+                            "effect": [
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "+5% CON per tier"
+                                }
+                            ],
+                            "requirement": [
+                                {
+                                    "name": "requirement",
+                                    "type": "gold",
+                                    "basicInfo": "(tier+1)^2 + 1000"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "guild-level",
+                                    "basicInfo": "10 + 10 per tier"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "guild-members",
+                                    "basicInfo": "(tier-1)*2 + 1"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Constitution guild buff increases Constitution."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Constitution"
+                            },
+                            "duration": {
+                                "name": "duration",
+                                "basicInfo": "12 hours + 12 hours per tier"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Basic"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Buffs"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 15,
+                            "filePath": "src/character/guildBuffs/GuildDexterity.coffee",
+                            "fileName": "GuildDexterity.coffee",
+                            "effect": [
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "+5% DEX per tier"
+                                }
+                            ],
+                            "requirement": [
+                                {
+                                    "name": "requirement",
+                                    "type": "gold",
+                                    "basicInfo": "(tier+1)^2 + 1000"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "guild-level",
+                                    "basicInfo": "10 + 10 per tier"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "guild-members",
+                                    "basicInfo": "(tier-1)*2 + 1"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Dexterity guild buff increases Dexterity."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Dexterity"
+                            },
+                            "duration": {
+                                "name": "duration",
+                                "basicInfo": "12 hours + 12 hours per tier"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Basic"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild Buffs"
+                            }
+                        },
                         {
                             "lineNumber": 4,
                             "endLineNumber": 15,
@@ -4317,18 +4302,13 @@
                             },
                             "category": {
                                 "name": "category",
-                                "basicInfo": "Intelligence"
+                                "basicInfo": "Basic"
                             },
                             "package": {
                                 "name": "package",
                                 "basicInfo": "Guild Buffs"
                             }
-                        }
-                    ]
-                },
-                {
-                    "_name": "Luck",
-                    "_children": [
+                        },
                         {
                             "lineNumber": 4,
                             "endLineNumber": 15,
@@ -4367,22 +4347,17 @@
                             },
                             "duration": {
                                 "name": "duration",
-                                "basicInfo": "12 hours + 12 hours per tier"
+                                "basicInfo": "8 hours + 8 hours per tier"
                             },
                             "category": {
                                 "name": "category",
-                                "basicInfo": "Luck"
+                                "basicInfo": "Basic"
                             },
                             "package": {
                                 "name": "package",
                                 "basicInfo": "Guild Buffs"
                             }
-                        }
-                    ]
-                },
-                {
-                    "_name": "Strength",
-                    "_children": [
+                        },
                         {
                             "lineNumber": 4,
                             "endLineNumber": 15,
@@ -4425,18 +4400,13 @@
                             },
                             "category": {
                                 "name": "category",
-                                "basicInfo": "Strength"
+                                "basicInfo": "Basic"
                             },
                             "package": {
                                 "name": "package",
                                 "basicInfo": "Guild Buffs"
                             }
-                        }
-                    ]
-                },
-                {
-                    "_name": "Wisdom",
-                    "_children": [
+                        },
                         {
                             "lineNumber": 4,
                             "endLineNumber": 15,
@@ -4479,7 +4449,7 @@
                             },
                             "category": {
                                 "name": "category",
-                                "basicInfo": "Wisdom"
+                                "basicInfo": "Basic"
                             },
                             "package": {
                                 "name": "package",
@@ -7614,6 +7584,58 @@
                 {
                     "_name": "OOC Buffs",
                     "_children": [
+                        {
+                            "lineNumber": 7,
+                            "endLineNumber": 20,
+                            "filePath": "src/character/timedEffects/BlessEffect.coffee",
+                            "fileName": "BlessEffect.coffee",
+                            "effect": [
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "+5% AGI"
+                                },
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "+5% DEX"
+                                },
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "+5% STR"
+                                },
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "+5% CON"
+                                },
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "+5% INT"
+                                },
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "+5% WIS"
+                                },
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "+5% LUCK"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "Increases all stats."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Bless"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "OOC Buffs"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Player"
+                            }
+                        },
                         {
                             "lineNumber": 7,
                             "endLineNumber": 14,
@@ -15882,68 +15904,6 @@
             ]
         },
         {
-            "_name": "TimedEffects",
-            "_children": [
-                {
-                    "_name": "Effects",
-                    "_children": [
-                        {
-                            "lineNumber": 7,
-                            "endLineNumber": 20,
-                            "filePath": "src/character/timedEffects/BlessEffect.coffee",
-                            "fileName": "BlessEffect.coffee",
-                            "effect": [
-                                {
-                                    "name": "effect",
-                                    "basicInfo": "+5% AGI"
-                                },
-                                {
-                                    "name": "effect",
-                                    "basicInfo": "+5% DEX"
-                                },
-                                {
-                                    "name": "effect",
-                                    "basicInfo": "+5% STR"
-                                },
-                                {
-                                    "name": "effect",
-                                    "basicInfo": "+5% CON"
-                                },
-                                {
-                                    "name": "effect",
-                                    "basicInfo": "+5% INT"
-                                },
-                                {
-                                    "name": "effect",
-                                    "basicInfo": "+5% WIS"
-                                },
-                                {
-                                    "name": "effect",
-                                    "basicInfo": "+5% LUCK"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "Increases all stats."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Bless"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Effects"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "TimedEffects"
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
             "_name": "World Regions",
             "_children": [
                 {
@@ -16274,11 +16234,11 @@
             ]
         }
     ],
-    "startTime": 1425082077962,
-    "endTime": 1425082078025,
+    "startTime": 1425082523154,
+    "endTime": 1425082523216,
     "git": {
-        "short": "08e8072",
-        "long": "08e80726dfcb5f7ccf6c388680470c1a34f39ff4",
+        "short": "f25fa96",
+        "long": "f25fa9606b7f83bfc7ffbfc64910c44b7fd7852e",
         "branch": "master",
         "tag": "0.5.0"
     }
