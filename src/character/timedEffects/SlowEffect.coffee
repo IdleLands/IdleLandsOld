@@ -9,7 +9,8 @@ class SlowEffect extends TimedEffect
     *
     * @name Slow
     * @effect -20% Haste
-    * @package TimedEffects
+    * @category OOC Buffs
+    * @package Player
   */`
 
   haste: -> -1

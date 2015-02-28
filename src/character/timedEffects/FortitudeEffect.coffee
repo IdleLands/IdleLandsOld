@@ -10,7 +10,8 @@ class FortitudeEffect extends TimedEffect
     * @name Fortitude
     * @effect +20% STR
     * @effect +20% CON
-    * @package TimedEffects
+    * @category OOC Buffs
+    * @package Player
   */`
 
   strPercent: -> 20

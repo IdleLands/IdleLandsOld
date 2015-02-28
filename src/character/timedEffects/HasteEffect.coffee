@@ -9,7 +9,8 @@ class HasteEffect extends TimedEffect
     *
     * @name Haste
     * @effect +1 Haste
-    * @package TimedEffects
+    * @category OOC Buffs
+    * @package Player
   */`
 
   haste: -> 1

@@ -10,7 +10,8 @@ class WeaknessEffect extends TimedEffect
     * @name Weakness
     * @effect -20% STR
     * @effect -20% CON
-    * @package TimedEffects
+    * @category OOC Buffs
+    * @package Player
   */`
 
   strPercent: -> -20

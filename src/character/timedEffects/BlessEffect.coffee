@@ -15,6 +15,7 @@ class BlessEffect extends TimedEffect
     * @effect +5% INT
     * @effect +5% WIS
     * @effect +5% LUCK
+    * @category Effects
     * @package TimedEffects
   */`
 

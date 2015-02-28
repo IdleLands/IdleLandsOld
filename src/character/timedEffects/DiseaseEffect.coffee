@@ -10,7 +10,8 @@ class DiseaseEffect extends TimedEffect
     * @name Disease
     * @effect -5% of max hp lost per turn
     * @effect -10% CON
-    * @package TimedEffects
+    * @category OOC Buffs
+    * @package Player
   */`
 
   hpregen: (player) -> Math.floor(player.hp.maximum*-0.05)

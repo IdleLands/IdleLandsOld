@@ -15,7 +15,8 @@ class ForsakeEffect extends TimedEffect
     * @effect -5% INT
     * @effect -5% WIS
     * @effect -5% LUCK
-    * @package TimedEffects
+    * @category OOC Buffs
+    * @package Player
   */`
 
   agiPercent: -> -5

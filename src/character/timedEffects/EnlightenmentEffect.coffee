@@ -10,7 +10,8 @@ class EnlightenmentEffect extends TimedEffect
     * @name Enlightenment
     * @effect +20% INT
     * @effect +20% WIS
-    * @package TimedEffects
+    * @category OOC Buffs
+    * @package Player
   */`
 
   intPercent: -> 20

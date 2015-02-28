@@ -10,7 +10,8 @@ class DazeEffect extends TimedEffect
     * @name Daze
     * @effect -20% INT
     * @effect -20% WIS
-    * @package TimedEffects
+    * @category OOC Buffs
+    * @package Player
   */`
 
   intPercent: -> -20

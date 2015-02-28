@@ -9,7 +9,8 @@ class BurnEffect extends TimedEffect
     *
     * @name Burn
     * @effect -20% hp
-    * @package TimedEffects
+    * @category OOC Buffs
+    * @package Player
   */`
 
   hpPercent: -> -20

@@ -10,7 +10,8 @@ class ChillEffect extends TimedEffect
     * @name Chill
     * @effect -20% AGI
     * @effect -20% DEX
-    * @package TimedEffects
+    * @category OOC Buffs
+    * @package Player
   */`
 
   agiPercent: -> -20
