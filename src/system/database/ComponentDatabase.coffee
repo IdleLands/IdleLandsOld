@@ -8,6 +8,8 @@ fs = require "fs"
 Party = require "../../event/Party"
 Q = require "q"
 
+MessageCreator = require "../handlers/MessageCreator"
+
 config = require "../../../config.json"
 
 class ComponentDatabase
@@ -258,7 +260,7 @@ class ComponentDatabase
   getContentList: ->
     defer = Q.defer()
 
-    @submissionsDb.find {}, {}, (e, docs) ->
+    @submissionsDb.find {unAccepted: yes}, {}, (e, docs) ->
       defer.resolve {isSuccess: yes, code: 510, message: "Successfully retrieved custom content listing.", customs: docs}
 
     defer.promise
@@ -343,10 +345,25 @@ class ComponentDatabase
 
       @commitAndPushAllFiles (_.sortBy _.uniq _.pluck docs, "type"), (_.sortBy _.uniq _.pluck docs, "submitterName")
 
-      @submissionsDb.remove {_id: {$in: oids}}, {multi: yes}, (e) ->
+      @submissionsDb.update {_id: {$in: oids}}, {$set: {unAccepted: no}}, {multi: yes}, (e) ->
         defer.resolve {isSuccess: yes, code: 503, message: "Successfully approved #{docs.length} new items."}
 
     defer.promise
+
+  testContent: (identifier, content) ->
+
+    player = @game.playerManager.getPlayerById identifier
+
+    extra = {}
+
+    testType = content.type.toLowerCase()
+    extra.xp = 5670 if _.contains testType, "xp"
+    extra.gold = 10456 if _.contains testType, "gold"
+    extra.item = _.sample player.equipment if _.contains testType, "item"
+
+    text = MessageCreator._replaceMessageColors MessageCreator.doStringReplace content.content, player, extra
+
+    Q {isSuccess: yes, code: 1000, message: text}
 
   submitCustomContent: (identifier, content) ->
 
@@ -371,14 +388,34 @@ class ComponentDatabase
     content.submitterName = player.name
     content.submitter = identifier
     content.submissionTime = new Date()
+    content.unAccepted = yes
 
     content.voters = {}
     content.voters[content.submitterName] = 1
 
-    @submissionsDb.insert content, (e) =>
-      @game.errorHandler.captureException e if e
+    defer = Q.defer()
 
-    Q {isSuccess: yes, code: 501, message: "Successfully submitted new content!"}
+    if content.type in ["body", "charm", "feet", "finger", "hands", "head", "legs", "mainhand", "neck", "offhand", "prefix", "suffix", "bread", "meat", "veg", "monster"]
+
+      [name, parameters] = @_parseInitialArgs content.content
+
+      insert = =>
+        @submissionsDb.insert content, (e) =>
+          @game.errorHandler.captureException e if e
+          defer.resolve {isSuccess: yes, code: 501, message: "Successfully submitted new content!"}
+
+      if content.type is "monster"
+        if _.findWhere @monsters, {name: name}
+          defer.resolve {isSuccess: no, code: 1000, message: "That monster already exists!"}
+        else
+          insert()
+      else
+        if _.findWhere @itemStats[content.type], {name: name}
+          defer.resolve {isSuccess: no, code: 1000, message: "\"#{name}\" already exists as a #{content.type}!"}
+        else
+          insert()
+
+    defer.promise
 
   insertMonster: (monster) ->
     monster.random = [Math.random(), 0]

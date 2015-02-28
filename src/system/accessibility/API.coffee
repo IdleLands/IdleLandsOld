@@ -215,6 +215,15 @@ class API
           @logger?.verbose "Player Command custom.submit", {identifier, data}
           actualRes
 
+      validate: (identifier, data) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.componentDatabase.testContent identifier, data else actualRes = res
+          @logger?.debug "Player Command custom.validate"
+          @logger?.verbose "Player Command custom.validate", {identifier, data}
+          actualRes
+
       redeemGift: (identifier, crierId, giftId) =>
         @validateIdentifier identifier
         .then (res) =>
