@@ -376,10 +376,29 @@ class ComponentDatabase
     content.voters = {}
     content.voters[content.submitterName] = 1
 
-    @submissionsDb.insert content, (e) =>
-      @game.errorHandler.captureException e if e
+    defer = Q.defer()
 
-    Q {isSuccess: yes, code: 501, message: "Successfully submitted new content!"}
+    if content.type in ["body", "charm", "feet", "finger", "hands", "head", "legs", "mainhand", "neck", "offhand", "prefix", "suffix", "bread", "meat", "veg", "monster"]
+
+      [name, parameters] = @_parseInitialArgs content.content
+
+      insert = =>
+        @submissionsDb.insert content, (e) =>
+          @game.errorHandler.captureException e if e
+          defer.resolve {isSuccess: yes, code: 501, message: "Successfully submitted new content!"}
+
+      if content.type is "monster"
+        if _.findWhere @monsters, {name: name}
+          defer.resolve {isSuccess: no, code: 1000, message: "That monster already exists!"}
+        else
+          insert()
+      else
+        if _.findWhere @itemStats[content.type], {name: name}
+          defer.resolve {isSuccess: no, code: 1000, message: "\"#{name}\" already exists as a #{content.type}!"}
+        else
+          insert()
+
+    defer.promise
 
   insertMonster: (monster) ->
     monster.random = [Math.random(), 0]
