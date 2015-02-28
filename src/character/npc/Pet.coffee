@@ -98,6 +98,10 @@ class Pet extends Character
         @increaseStat stat
         @gold.sub cost
 
+  hasOpenSlotsOfType: (type) ->
+    itemsInSlot = @equippedItemsOfType type
+    itemsInSlot.length < PetData[@type].slots[type]
+
   tryToEquipToSelf: (item) ->
     return if not @smartEquip
     return if not PetData[@type].slots[item.type]

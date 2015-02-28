@@ -779,6 +779,7 @@ class Player extends Character
     return Q {isSuccess: no, code: 218, message: "Your pet does not have an item in that slot!"} if not item
     return Q {isSuccess: no, code: 224, message: "Your pet is not so talented as to have that item slot!"} if not pet.hasEquipmentSlot item.type
     return Q {isSuccess: no, code: 224, message: "Your pet cannot equip that item! Either it is too strong, or your pets equipment slots are full."} if not pet.canEquip item
+    return Q {isSuccess: no, code: 1024, message: "Your pet has too many items of that type equipped!"} unless pet.hasOpenSlotsOfType item.type
 
     pet.equip item
 
