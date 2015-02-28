@@ -13,7 +13,8 @@ chance = new Chance Math.random
 
 requireDir = require "require-dir"
 buildings = _.keys requireDir "../../map/guild-buildings/"
-bases = _.keys requireDir "../../map/guild-bases/"
+allBases = requireDir "../../map/guild-bases/"
+bases = _.map (_.keys allBases), (base) -> name: base, costs: allBases[base].costs
 
 class Guild
 
