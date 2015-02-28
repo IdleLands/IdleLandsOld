@@ -2833,6 +2833,116 @@
                     ]
                 },
                 {
+                    "_name": "Global",
+                    "_children": [
+                        {
+                            "lineNumber": 6,
+                            "endLineNumber": 13,
+                            "filePath": "src/event/globals/CalendarEvent.coffee",
+                            "fileName": "CalendarEvent.coffee",
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This event moves the calendar forward."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Calendar"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Global"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Events"
+                            },
+                            "happensEvery": {
+                                "name": "happensEvery",
+                                "basicInfo": "10 minutes"
+                            }
+                        },
+                        {
+                            "lineNumber": 6,
+                            "endLineNumber": 13,
+                            "filePath": "src/event/globals/CataclysmEvent.coffee",
+                            "fileName": "CataclysmEvent.coffee",
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This event causes larger or smaller-scale events to happen all over the world, generally causing chaos of some sort."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Cataclysm"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Global"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Events"
+                            },
+                            "happensEvery": {
+                                "name": "happensEvery",
+                                "basicInfo": "80 minutes"
+                            }
+                        },
+                        {
+                            "lineNumber": 6,
+                            "endLineNumber": 13,
+                            "filePath": "src/event/globals/MassTownCrierEvent.coffee",
+                            "fileName": "MassTownCrierEvent.coffee",
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This event broadcasts town crier events to a larger audience all at once."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "MassTownCrier"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Global"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Events"
+                            },
+                            "happensEvery": {
+                                "name": "happensEvery",
+                                "basicInfo": "60 minutes"
+                            }
+                        },
+                        {
+                            "lineNumber": 6,
+                            "endLineNumber": 13,
+                            "filePath": "src/event/globals/PvPEvent.coffee",
+                            "fileName": "PvPEvent.coffee",
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This event generates some player parties",
+                                "extendedInfo": "or uses existing ones"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "PvP"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Global"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Events"
+                            },
+                            "happensEvery": {
+                                "name": "happensEvery",
+                                "basicInfo": "40 minutes"
+                            }
+                        }
+                    ]
+                },
+                {
                     "_name": "Party",
                     "_children": [
                         {
@@ -3146,121 +3256,6 @@
                             "package": {
                                 "name": "package",
                                 "basicInfo": "Events"
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "_name": "Global Events",
-            "_children": [
-                {
-                    "_name": "Player",
-                    "_children": [
-                        {
-                            "lineNumber": 6,
-                            "endLineNumber": 13,
-                            "filePath": "src/event/globals/CalendarEvent.coffee",
-                            "fileName": "CalendarEvent.coffee",
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "This event moves the calendar forward."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Calendar"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Player"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Global Events"
-                            },
-                            "happensEvery": {
-                                "name": "happensEvery",
-                                "basicInfo": "10 minutes"
-                            }
-                        },
-                        {
-                            "lineNumber": 6,
-                            "endLineNumber": 13,
-                            "filePath": "src/event/globals/CataclysmEvent.coffee",
-                            "fileName": "CataclysmEvent.coffee",
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "This event causes larger or smaller-scale events to happen all over the world, generally causing chaos of some sort."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Cataclysm"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Player"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Global Events"
-                            },
-                            "happensEvery": {
-                                "name": "happensEvery",
-                                "basicInfo": "80 minutes"
-                            }
-                        },
-                        {
-                            "lineNumber": 6,
-                            "endLineNumber": 13,
-                            "filePath": "src/event/globals/MassTownCrierEvent.coffee",
-                            "fileName": "MassTownCrierEvent.coffee",
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "This event broadcasts town crier events to a larger audience all at once."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "MassTownCrier"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Player"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Global Events"
-                            },
-                            "happensEvery": {
-                                "name": "happensEvery",
-                                "basicInfo": "60 minutes"
-                            }
-                        },
-                        {
-                            "lineNumber": 6,
-                            "endLineNumber": 13,
-                            "filePath": "src/event/globals/PvPEvent.coffee",
-                            "fileName": "PvPEvent.coffee",
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "This event generates some player parties",
-                                "extendedInfo": "or uses existing ones"
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "PvP"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Player"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Global Events"
-                            },
-                            "happensEvery": {
-                                "name": "happensEvery",
-                                "basicInfo": "40 minutes"
                             }
                         }
                     ]
@@ -16234,11 +16229,11 @@
             ]
         }
     ],
-    "startTime": 1425082523154,
-    "endTime": 1425082523216,
+    "startTime": 1425082784148,
+    "endTime": 1425082784213,
     "git": {
-        "short": "f25fa96",
-        "long": "f25fa9606b7f83bfc7ffbfc64910c44b7fd7852e",
+        "short": "d38deae",
+        "long": "d38deae591a7cda56b2f5928ea78dd98813c5b00",
         "branch": "master",
         "tag": "0.5.0"
     }
