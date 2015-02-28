@@ -3,6 +3,8 @@
 "power" power=1
 
 "prone" prone=1
+"megaprone" prone=1 proneChance=10
+"stable" prone=-1 proneChance=-8
 
 "offensive" offense=1
 "slanderous" offense=2
@@ -42,20 +44,24 @@
 "usurped" royal=-1
 
 "shattering" shatter=1
-"rebuilding" shatter=-1
+"megashattering" shatter=1 shatterChance=5
+"rebuilding" shatter=-1 shatterChance=-5
 
 "poisonous" poison=1
-"antidote-ing" poison=-1
+"megapoisonous" poison=1 poisonChance=10
+"antidote-ing" poison=-1 poisonChance=-10
 
 "venomous" venom=1
-"anti-venom" venom=-1
+"megavenomous" venom=1 venomChance=5
+"anti-venom" venom=-1 venomChance=-3
 
 "vampiric" vampire=1
-"garlic" vampire=-1
+"megavampiric" vampire=1 vampireChance=10
+"garlic" vampire=-1 vampireChance=-5
 
 "absolutely-charged" absolute=10
 "absolutely-powered" absolute=100
-"absolutely-destructive" absolute=100
+"absolutely-destructive" absolute=1000
 
 "sticky" sticky=1
 "supersticky" sticky=2

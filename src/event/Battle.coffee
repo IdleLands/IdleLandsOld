@@ -353,11 +353,11 @@ class Battle
   checkBattleEffects: (attacker, defender) ->
 
     effects = []
-    effects.push "Prone"    if attacker.calc.prone() and chance.bool(likelihood: 15)
-    effects.push "Shatter"  if attacker.calc.shatter() and chance.bool(likelihood: 10)
-    effects.push "Poison"   if attacker.calc.poison() and chance.bool(likelihood: 20)
-    effects.push "Venom"    if attacker.calc.venom() and chance.bool(likelihood: 5)
-    effects.push "Vampire"  if attacker.calc.vampire() and chance.bool(likelihood: 10)
+    effects.push "Prone"    if attacker.calc.prone() and chance.bool(likelihood: attacker.calc.proneChance())
+    effects.push "Shatter"  if attacker.calc.shatter() and chance.bool(likelihood: attacker.calc.shatterChance())
+    effects.push "Poison"   if attacker.calc.poison() and chance.bool(likelihood: attacker.calc.poisonChance())
+    effects.push "Venom"    if attacker.calc.venom() and chance.bool(likelihood: attacker.calc.venomChance())
+    effects.push "Vampire"  if attacker.calc.vampire() and chance.bool(likelihood: attacker.calc.vampireChance())
     return if effects.length is 0
 
     @doBattleEffects effects, attacker, defender

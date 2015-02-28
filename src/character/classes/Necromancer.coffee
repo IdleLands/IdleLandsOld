@@ -53,8 +53,11 @@ class Necromancer extends Class
   physicalAttackChance: -> -15
 
   prone: -> 1
+  proneChance: -> 10
   venom: -> 1
+  venomChance: -> 15
   poison: -> 1
+  poisonChance: -> 20
   startle: -> 1
   hpPercent: -> -15
   agiPercent: -> -10

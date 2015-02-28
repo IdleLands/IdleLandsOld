@@ -224,6 +224,7 @@ class Character extends EventEmitter2
       base: {}
       statCache: {}
       self: @
+
       stat: (stat, ignoreNegative = yes, base = 0, basePct = 0) ->
         pct = "#{stat}Percent"
         @base[stat] = _.reduce @self.equipment, ((prev, item) -> prev+(item[stat] or 0)), base
@@ -403,6 +404,7 @@ class Character extends EventEmitter2
       # * @package Item
       # */`
       poison:    -> 0 < @self.calc.stat 'poison'
+      poisonChance: -> Math.max 0, Math.min 100, 20+@self.calc.stat 'poisonChance'
 
       #`/**
       # * Power adds a flat +10% to maximum damage possible.
@@ -425,6 +427,7 @@ class Character extends EventEmitter2
       # * @package Item
       # */`
       prone:    -> 0 < @self.calc.stat 'prone'
+      proneChance: -> Math.max 0, Math.min 100, 15+@self.calc.stat 'proneChance'
 
       #`/**
       # * Punish allows you to return some damage back to the attacker.
@@ -469,6 +472,7 @@ class Character extends EventEmitter2
       # * @package Item
       # */`
       shatter:   -> 0 < @self.calc.stat 'shatter'
+      shatterChance: -> Math.max 0, Math.min 100, 10+@self.calc.stat 'shatterChance'
 
       #`/**
       # * Silver increases your minimum damage range by +10%.
@@ -514,6 +518,7 @@ class Character extends EventEmitter2
       # * @package Item
       # */`
       vampire:    -> Math.max 0, @self.calc.stat 'vampire'
+      vampireChance: -> Math.max 0, Math.min 100, 10+@self.calc.stat 'vampireChance'
 
       #`/**
       # * Venom is a small DoT that does a static percentage of the victims health as damage.
@@ -525,6 +530,7 @@ class Character extends EventEmitter2
       # * @package Item
       # */`
       venom:    -> 0 < @self.calc.stat 'venom'
+      venomChance: -> Math.max 0, Math.min 100, 5+@self.calc.stat 'venomChance'
 
       #`/**
       # * Vorpal increases your minimum and maximum damage by +50%
