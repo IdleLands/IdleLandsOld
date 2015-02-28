@@ -395,14 +395,14 @@ class ComponentDatabase
 
     defer = Q.defer()
 
+    insert = =>
+      @submissionsDb.insert content, (e) =>
+        @game.errorHandler.captureException e if e
+        defer.resolve {isSuccess: yes, code: 501, message: "Successfully submitted new content!"}
+
     if content.type in ["body", "charm", "feet", "finger", "hands", "head", "legs", "mainhand", "neck", "offhand", "prefix", "suffix", "bread", "meat", "veg", "monster"]
 
       [name, parameters] = @_parseInitialArgs content.content
-
-      insert = =>
-        @submissionsDb.insert content, (e) =>
-          @game.errorHandler.captureException e if e
-          defer.resolve {isSuccess: yes, code: 501, message: "Successfully submitted new content!"}
 
       if content.type is "monster"
         if _.findWhere @monsters, {name: name}
