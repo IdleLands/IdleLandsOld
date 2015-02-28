@@ -359,7 +359,7 @@ class ComponentDatabase
     testType = content.type.toLowerCase()
     extra.xp = 5670 if _.contains testType, "xp"
     extra.gold = 10456 if _.contains testType, "gold"
-    extra.item = _.sample player.equipment if _.contains testType, "item"
+    extra.item = (_.sample player.equipment).getName() if _.contains testType, "item"
 
     text = MessageCreator._replaceMessageColors MessageCreator.doStringReplace content.content, player, extra
 
