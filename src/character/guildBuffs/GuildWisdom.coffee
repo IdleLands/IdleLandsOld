@@ -10,7 +10,7 @@ GuildBuff = require "../base/GuildBuff"
   * @requirement {guild-members} (tier-1)*2 + 1
   * @effect +5% WIS per tier
   * @duration 12 hours + 12 hours per tier
-  * @category Wisdom
+  * @category Basic
   * @package Guild Buffs
 */`
 class GuildWisdom extends GuildBuff

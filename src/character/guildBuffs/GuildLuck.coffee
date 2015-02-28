@@ -9,8 +9,8 @@ GuildBuff = require "../base/GuildBuff"
   * @requirement {guild-level} 10 + 10 per tier
   * @requirement {guild-members} (tier-1)*2 + 1
   * @effect +1% LUCK per tier
-  * @duration 12 hours + 12 hours per tier
-  * @category Luck
+  * @duration 8 hours + 8 hours per tier
+  * @category Basic
   * @package Guild Buffs
 */`
 
@@ -18,7 +18,7 @@ class GuildLuck extends GuildBuff
 
   constructor: (@tier = 1) ->
     @type = 'Luck'
-    super()
+    super(0.75)
 
   luckPercent: -> @tier
 

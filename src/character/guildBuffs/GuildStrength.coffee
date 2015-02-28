@@ -10,7 +10,7 @@ GuildBuff = require "../base/GuildBuff"
   * @requirement {guild-members} (tier-1)*2 + 1
   * @effect +5% STR per tier
   * @duration 12 hours + 12 hours per tier
-  * @category Strength
+  * @category Basic
   * @package Guild Buffs
 */`
 
