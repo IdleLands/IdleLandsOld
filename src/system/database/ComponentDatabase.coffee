@@ -8,6 +8,8 @@ fs = require "fs"
 Party = require "../../event/Party"
 Q = require "q"
 
+MessageCreator = require "../handlers/MessageCreator"
+
 config = require "../../../config.json"
 
 class ComponentDatabase
@@ -347,6 +349,21 @@ class ComponentDatabase
         defer.resolve {isSuccess: yes, code: 503, message: "Successfully approved #{docs.length} new items."}
 
     defer.promise
+
+  testContent: (identifier, content) ->
+
+    player = @game.playerManager.getPlayerById identifier
+
+    extra = {}
+
+    testType = content.type.toLowerCase()
+    extra.xp = 5670 if _.contains testType, "xp"
+    extra.gold = 10456 if _.contains testType, "gold"
+    extra.item = _.sample player.equipment if _.contains testType, "item"
+
+    text = MessageCreator._replaceMessageColors MessageCreator.doStringReplace content.content, player, extra
+
+    Q {isSuccess: yes, code: 1000, message: text}
 
   submitCustomContent: (identifier, content) ->
 

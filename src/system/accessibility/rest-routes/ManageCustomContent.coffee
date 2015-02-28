@@ -11,6 +11,12 @@ router
   API.player.custom.submit identifier, data
   .then (resp) -> res.json resp
 
+## TAG:APIROUTE: POST | /custom/player/validate | {identifier, data: {type, content}} | {}
+.post "/custom/player/validate", hasValidToken, (req, res) ->
+  {identifier, data} = req.body
+  API.player.custom.validate identifier, data
+  .then (resp) -> res.json resp
+
 ## TAG:APIROUTE: POST | /custom/redeem | {identifier, crierId, giftId} | {}
 .post "/custom/redeem", hasValidToken, (req, res) ->
   {identifier, crierId, giftId} = req.body
