@@ -1,6 +1,5 @@
 
 Achievement = require "../base/Achievement"
-{toRoman} = require "roman-numerals"
 _ = require "lodash"
 
 `/**
