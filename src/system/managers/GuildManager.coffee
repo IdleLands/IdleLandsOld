@@ -166,7 +166,7 @@ class GuildManager
     guild = @guildHash[admin.guild]
     guild.save()
 
-    Q admin.getExtraDataForREST {guild: yes}, {isSuccess: yes, code: 869, message: "Successfully took the invite from #{invIdent}! You have #{guild.invitesLeft()} invites remaining."}
+    Q admin.getExtraDataForREST {guild: yes, guildInvites: yes}, {isSuccess: yes, code: 869, message: "Successfully took the invite from #{invIdent}! You have #{guild.invitesLeft()} invites remaining."}
 
 
   manageInvite: (invId, accepted, guildName) ->
