@@ -13,6 +13,7 @@ chance = new Chance Math.random
 
 requireDir = require "require-dir"
 buildings = _.keys requireDir "../../map/guild-buildings/"
+bases = _.keys requireDir "../../map/guild-bases/"
 
 class Guild
 
@@ -145,10 +146,16 @@ class Guild
     @guildManager.game.world.maps[@getGuildBaseName()]
 
   buildBase: ->
-    @guildManager.game.world.maps[@getGuildBaseName()] = new (require "../../map/guild-bases/#{@base}") @guildManager.game, @
+    base = new (require "../../map/guild-bases/#{@base}") @guildManager.game, @
+    @guildManager.game.world.maps[@getGuildBaseName()] = base
+    @_validSlots = {}
+    _.each ['sm', 'md', 'lg'], (size) =>
+      @_validSlots[size] = base.buildings[size].length
+
     @reconstructBuildings()
 
   reconstructBuildings: ->
+    @validBases = bases
     @validBuildings = buildings
     base = @getGuildBase()
 
