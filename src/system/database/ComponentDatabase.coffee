@@ -415,6 +415,9 @@ class ComponentDatabase
         else
           insert()
 
+    else
+      insert()
+
     defer.promise
 
   insertMonster: (monster) ->
