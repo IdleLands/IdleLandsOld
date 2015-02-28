@@ -202,6 +202,24 @@ class PlayerManager
     @game.broadcast "#{name} has left #{Constants.gameName}!"
     Q {isSuccess: yes, code: 19, message: "Player successfully logged out."}
 
+  verifyPassword: (identifier, password) ->
+
+    defer = Q.defer()
+
+    @checkPassword identifier, password
+    .then (res) =>
+
+      return defer.resolve res unless res.isSuccess
+
+      if res.isSuccess
+        return defer.resolve {isSuccess: yes, code: 15, message: "Credentials are valid."}
+      else
+        return defer.resolve {isSuccess: no, code: res.code, message: res.message}
+
+      res
+
+    defer.promise
+
   loginWithPassword: (identifier, password) ->
 
     defer = Q.defer()

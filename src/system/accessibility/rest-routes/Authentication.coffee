@@ -37,6 +37,13 @@ router
   API.player.auth.loginWithPassword identifier, password
   .then (resp) -> res.json resp
 
+# login
+## TAG:APIROUTE: POST | /player/auth/validate | {identifier, password} | {player, token}
+.post "/player/auth/validate", loginRequestTimeout.prevent, (req, res) ->
+  {identifier, password} = req.body
+  API.player.auth.validateCredentials identifier, password
+  .then (resp) -> res.json resp
+
 # change pass
 ## TAG:APIROUTE: POST | /player/auth/password | {identifier, password, token} | {}
 .patch "/player/auth/password", hasValidToken, (req, res) ->
