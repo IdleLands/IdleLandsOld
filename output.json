@@ -4050,7 +4050,7 @@
             ]
         },
         {
-            "_name": "GuildBuffs",
+            "_name": "Guild Buffs",
             "_children": [
                 {
                     "_name": "Agility",
@@ -4101,7 +4101,7 @@
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "GuildBuffs"
+                                "basicInfo": "Guild Buffs"
                             }
                         }
                     ]
@@ -4155,7 +4155,7 @@
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "GuildBuffs"
+                                "basicInfo": "Guild Buffs"
                             }
                         }
                     ]
@@ -4209,7 +4209,7 @@
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "GuildBuffs"
+                                "basicInfo": "Guild Buffs"
                             }
                         }
                     ]
@@ -4267,7 +4267,7 @@
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "GuildBuffs"
+                                "basicInfo": "Guild Buffs"
                             }
                         }
                     ]
@@ -4321,7 +4321,7 @@
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "GuildBuffs"
+                                "basicInfo": "Guild Buffs"
                             }
                         }
                     ]
@@ -4375,7 +4375,7 @@
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "GuildBuffs"
+                                "basicInfo": "Guild Buffs"
                             }
                         }
                     ]
@@ -4429,7 +4429,7 @@
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "GuildBuffs"
+                                "basicInfo": "Guild Buffs"
                             }
                         }
                     ]
@@ -4483,7 +4483,7 @@
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "GuildBuffs"
+                                "basicInfo": "Guild Buffs"
                             }
                         }
                     ]
@@ -16274,11 +16274,11 @@
             ]
         }
     ],
-    "startTime": 1425081837054,
-    "endTime": 1425081837118,
+    "startTime": 1425082077962,
+    "endTime": 1425082078025,
     "git": {
-        "short": "6874b57",
-        "long": "6874b57091d782998a48714c00d48365a633e638",
+        "short": "08e8072",
+        "long": "08e80726dfcb5f7ccf6c388680470c1a34f39ff4",
         "branch": "master",
         "tag": "0.5.0"
     }
