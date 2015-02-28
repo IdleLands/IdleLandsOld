@@ -9,7 +9,7 @@ Constants = require "../../system/utilities/Constants"
  *
  * @name Mascot
  * @category Buildings
- * @package Guild Bases
+ * @package Guild
  * @cost {level-up} level*15000
  * @property MascotID (Any valid string ID referencing the tile map in the game)
  * @property Quote (Any string)

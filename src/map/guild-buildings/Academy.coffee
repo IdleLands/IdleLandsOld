@@ -6,7 +6,7 @@ GuildBuilding = require "../GuildBuilding"
  *
  * @name Academy
  * @category Buildings
- * @package Guild Bases
+ * @package Guild
  * @cost {level-up} 15000 (if level <= 100)
  * @property AutoRenew (Yes/No; whether or not to auto renew buffs upon expiration)
  * @size {md}

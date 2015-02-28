@@ -6,7 +6,7 @@ GuildBuilding = require "../GuildBuilding"
  *
  * @name Enchantress
  * @category Buildings
- * @package Guild Bases
+ * @package Guild
  * @cost {level-up} level*5000
  * @property Name (Any string)
  * @property AttemptEnchant (Yes/No; whether or not to attempt unsafe enchantments)

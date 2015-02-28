@@ -6,7 +6,7 @@ GuildBuilding = require "../GuildBuilding"
  *
  * @name FortuneTeller
  * @category Buildings
- * @package Guild Bases
+ * @package Guild
  * @cost {level-up} 55000+[20000*level/100]
  * @property Name (Any string)
  * @size {sm}

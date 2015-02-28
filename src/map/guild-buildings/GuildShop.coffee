@@ -6,7 +6,7 @@ GuildBuilding = require "../GuildBuilding"
  *
  * @name GuildShop
  * @category Buildings
- * @package Guild Bases
+ * @package Guild
  * @cost {level-up} 10000
  * @effect {level-interval} 2 (Every 2 levels the shop items become slightly cheaper)
  * @effect {level-interval} 5 (Every 5 levels the shop quality goes up)

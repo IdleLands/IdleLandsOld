@@ -6,7 +6,7 @@ GuildBuilding = require "../GuildBuilding"
  *
  * @name Teleport
  * @category Buildings
- * @package Guild Bases
+ * @package Guild
  * @cost {level-up} level*15000
  * @property Destination (Any valid teleport location)
  * @size {sm}

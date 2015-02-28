@@ -4,8 +4,8 @@ GuildBase = require "../GuildBase"
  * This guild base is located above Vocalnus.
  *
  * @name Vocalnus
- * @category Locations
- * @package Guild Bases
+ * @category Bases
+ * @package Guild
  * @cost {move-in} 25000
  * @cost {build-sm} 15000
  * @cost {build-md} 20000
