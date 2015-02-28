@@ -947,7 +947,7 @@ class Player extends Character
     sanitizedStats = {}
 
     for key, stat of stats
-      if not _.isNaN stat and not _.isNumber stat
+      if _.isNaN stat or not _.isNumber stat
         return Q {isSuccess: no, code: 112, message: "Priority \"" + key + "\" is not a number."}
 
       if not (key in ["dex", "str", "agi", "wis", "con", "int"])
