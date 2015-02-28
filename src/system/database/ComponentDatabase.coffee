@@ -258,7 +258,7 @@ class ComponentDatabase
   getContentList: ->
     defer = Q.defer()
 
-    @submissionsDb.find {}, {}, (e, docs) ->
+    @submissionsDb.find {unAccepted: yes}, {}, (e, docs) ->
       defer.resolve {isSuccess: yes, code: 510, message: "Successfully retrieved custom content listing.", customs: docs}
 
     defer.promise
@@ -343,7 +343,7 @@ class ComponentDatabase
 
       @commitAndPushAllFiles (_.sortBy _.uniq _.pluck docs, "type"), (_.sortBy _.uniq _.pluck docs, "submitterName")
 
-      @submissionsDb.remove {_id: {$in: oids}}, {multi: yes}, (e) ->
+      @submissionsDb.update {_id: {$in: oids}}, {$set: {unAccepted: no}}, {multi: yes}, (e) ->
         defer.resolve {isSuccess: yes, code: 503, message: "Successfully approved #{docs.length} new items."}
 
     defer.promise
@@ -371,6 +371,7 @@ class ComponentDatabase
     content.submitterName = player.name
     content.submitter = identifier
     content.submissionTime = new Date()
+    content.unAccepted = yes
 
     content.voters = {}
     content.voters[content.submitterName] = 1
