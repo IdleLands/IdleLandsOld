@@ -12,6 +12,7 @@ Reduction | Base Value | Arguments Passed | Description
 [ascendChance](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L791) | 100 | self, baseAscendChance | Called when stepping on stairs up
 [beatDodge](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L613) | dex+str+agi+wis+con+int | self, baseBeatDodge | Called when attempting to prevent opponent dodging
 [beatHit](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L627) | str+dex/2 | self, baseBeatHit | Called when attempting to hit opponent
+[bossRechallengeTime](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L821) | 60 (sec) | self, baseBossRechallengeTime, bossData | Called when challenging a boss
 [cantActMessages](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L760) | [] | self, baseCantActMessages | Called when a spell stops a players turn
 [cantAct](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L755) | 0 | self, baseCantAct | Called when a spell stops a players turn
 [classChangePercent](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L781) | 100 | self, potentialNewClass, baseClassChangePercent | Called every time a player meets with a trainer
@@ -31,7 +32,7 @@ Reduction | Base Value | Arguments Passed | Description
 [fallChance](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L806) | 100 | self, baseFallChance | Called when stepping on a hole
 [fleePercent](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L771) | 0.1 (0.1%) | self, baseFleePercent | Called every turn in combat before other actions
 [hit](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L620) | dex+agi+con/6 | self, baseHit | Called when attempting to not get hit
-[inventorySize](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L821) | 3 (constant) | self, baseInventorySize | Called when checking max inventory size
+[inventorySize](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L826) | 3 (constant) | self, baseInventorySize | Called when checking max inventory size
 [itemFindRangeMultiplier](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L707) | 1+(0.2*level/10) | self, baseItemFindRangeMultiplier | Called when a player finds or attempts to equip a new item
 [itemFindRange](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L700) | (level+1)*itemFindRangeMultiplier | self, baseItemFindRange | Called when a player finds or attempts to equip a new item
 [itemReplaceChancePercent](https://github.com/IdleLands/IdleLands/blob/master/src/character/base/Character.coffee#L725) | 100 | self, baseItemReplaceChancePercent | Called when seeing if the player will swap items
