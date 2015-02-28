@@ -19,7 +19,7 @@ router
   API.player.guild.leave identifier
   .then (resp) -> res.json resp
 
-## TAG:APIROUTE: PUT | /guild/leave | {identifier, token} | {guild}
+## TAG:APIROUTE: PUT | /guild/disband | {identifier, token} | {guild}
 .put "/guild/disband", hasValidToken, (req, res) ->
   {identifier} = req.body
   API.player.guild.disband identifier
