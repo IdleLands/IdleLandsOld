@@ -326,10 +326,7 @@ module.exports = (Module) ->
       */`
       @addRoute 'idle-event ":player" :event', "idle.game.gm", (origin, route) =>
         [player, event] = [route.params.player, route.params.event]
-        @IdleWrapper.api.gm.event.single player, event, (did) =>
-          @reply origin, "Your event is done." if did
-          @reply origin, "Your event failed (the player wasn't found)." if _.isUndefined did
-          @reply origin, "Your event has failed (mysterious error, check the logs, or the event was just negative)." if did is false
+        @IdleWrapper.api.gm.event.single player, event
 
       `/**
         * Run a global event (cataclysms, PvP battles, etc).
@@ -342,9 +339,7 @@ module.exports = (Module) ->
       */`
       @addRoute 'idle-globalevent :event?', "idle.game.gm", (origin, route) =>
         event = route.params.event
-        @IdleWrapper.api.gm.event.global event, (did) =>
-          @reply origin, "Your event is done." if did
-          @reply origin, "Your event failed (something weird went wrong)." if not did
+        @IdleWrapper.api.gm.event.global event
 
       `/**
         * Reset a password for a player.

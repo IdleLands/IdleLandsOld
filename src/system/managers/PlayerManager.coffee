@@ -11,6 +11,8 @@ bcrypt = require "bcrypt"
 crypto = require "crypto"
 LogManager = require "./LogManager"
 convenienceFunctions = require "../../system/utilities/ConvenienceFunctions"
+requireDir = require "require-dir"
+playerBuffs = requireDir "../../character/timedEffects", recurse: yes
 
 class PlayerManager
 
@@ -199,6 +201,24 @@ class PlayerManager
 
     @game.broadcast "#{name} has left #{Constants.gameName}!"
     Q {isSuccess: yes, code: 19, message: "Player successfully logged out."}
+
+  verifyPassword: (identifier, password) ->
+
+    defer = Q.defer()
+
+    @checkPassword identifier, password
+    .then (res) =>
+
+      return defer.resolve res unless res.isSuccess
+
+      if res.isSuccess
+        return defer.resolve {isSuccess: yes, code: 15, message: "Credentials are valid."}
+      else
+        return defer.resolve {isSuccess: no, code: res.code, message: res.message}
+
+      res
+
+    defer.promise
 
   loginWithPassword: (identifier, password) ->
 
@@ -414,10 +434,13 @@ class PlayerManager
 
     player.spellsAffectedBy = []
 
+    _.forEach player.buffsAffectedBy, (buff) ->
+      buff.__proto__ = playerBuffs[(buff.name)].prototype
+
     player.lastLogin = new Date()
 
-    player.statistics = {} if not player.statistics
-    player.permanentAchievements = {} if not player.permanentAchievements
+    player.statistics = {} unless player.statistics
+    player.permanentAchievements = {} unless player.permanentAchievements
 
     player.on "explore.walk.void", (player) =>
       @game.errorHandler.captureException (new Error "Player is walking on the void!"), {player: player.name, map: player.map, x: player.x, y: player.y}

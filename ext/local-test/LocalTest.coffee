@@ -83,7 +83,7 @@ gm = -> api().gm
 pname = (name) -> pm().getPlayerByName name
 gname = (name) -> inst().guildManager.getGuildByName name
 pid = (id) -> pm().getPlayerById id
-event = (player, event) -> gm().event.single player, event
+event = (player, event, ig) -> gm().event.single player, event, ig
 gevent = (event) -> gm().event.global event
 
 colorMap =
@@ -190,13 +190,10 @@ interactiveSession = ->
     else if line is "exit"
       process.exit 0
     else
-      try
-        broadcast "Evaluating `#{line}`"
-        result = eval line
-        broadcast result
-        result?.then?((res) -> broadcast res?.message).done?()
-      catch error
-        console.error error.name, error.message, error.stack
+      broadcast "Evaluating `#{line}`"
+      result = eval line
+      broadcast result
+      result?.then?((res) -> broadcast res?.message).catch?((err) -> console.error err.stack).done?()
       
       cli.prompt()
   

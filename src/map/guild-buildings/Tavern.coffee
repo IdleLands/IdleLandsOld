@@ -6,7 +6,7 @@ GuildBuilding = require "../GuildBuilding"
  *
  * @name Tavern
  * @category Buildings
- * @package Guild Bases
+ * @package Guild
  * @cost {level-up} level*50000
  * @size {lg}
  */`

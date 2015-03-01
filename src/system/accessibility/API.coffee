@@ -128,14 +128,14 @@ class API
         @gameInstance.playerManager.storePasswordFor identifier, password
 
     event:
-      single: (player, eventType, callback) =>
+      single: (player, eventType, isGuild) =>
         @logger?.debug "GM Command event.single"
-        @logger?.verbose "GM Command event.single", {player: player, eventType: eventType, callback: callback}
-        @gameInstance.eventHandler.doEventForPlayer player, eventType, callback #TODO There are only 2 parameters, callback is ignored?
-      global: (eventType, callback) =>
+        @logger?.verbose "GM Command event.single", {player, eventType, isGuild}
+        @gameInstance.eventHandler.doEventForPlayer player, eventType, isGuild
+      global: (eventType) =>
         @logger?.debug "GM Command event.global"
-        @logger?.verbose "GM Command event.global", {eventType, callback}
-        @gameInstance.globalEventHandler.doEvent eventType, callback
+        @logger?.verbose "GM Command event.global", {eventType}
+        @gameInstance.globalEventHandler.doEvent eventType
 
     log:
       setLoggerLevel: (name, level) =>
@@ -148,7 +148,7 @@ class API
         @logger?.verbose "GM Command log.clearLog", {name}
         @gameInstance.logManager.clearLog name
 
-      clearAllLogs: () =>
+      clearAllLogs: =>
         @logger?.debug "GM Command log.clearAllLogs"
         @gameInstance.logManager.clearAllLogs()
 
@@ -215,6 +215,15 @@ class API
           @logger?.verbose "Player Command custom.submit", {identifier, data}
           actualRes
 
+      validate: (identifier, data) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.componentDatabase.testContent identifier, data else actualRes = res
+          @logger?.debug "Player Command custom.validate"
+          @logger?.verbose "Player Command custom.validate", {identifier, data}
+          actualRes
+
       redeemGift: (identifier, crierId, giftId) =>
         @validateIdentifier identifier
         .then (res) =>
@@ -253,6 +262,11 @@ class API
         @logger?.debug "Player Command auth.login"
         @logger?.verbose "Player Command auth.login", {identifier, suppress}
         @gameInstance.playerManager.addPlayer identifier, suppress, no
+
+      validateCredentials: (identifier, password) =>
+        @logger?.debug "Player Command auth.validateCredentials"
+        @logger?.verbose "Player Command auth.validateCredentials", {identifier, password: "*******"}
+        @gameInstance.playerManager.verifyPassword identifier, password
 
       loginWithPassword: (identifier, password) =>
         @logger?.debug "Player Command auth.loginWithPassword"
@@ -542,6 +556,15 @@ class API
           @logger?.verbose "Player Command guild.invite", {identifier, invName}
           actualRes
 
+      rescindInvite: (identifier, invIdent) =>
+        @validateIdentifier identifier
+        .then (res) =>
+          actualRes = null
+          if res.isSuccess then actualRes = @gameInstance.guildManager.rescindInvite identifier, invIdent else actualRes = res
+          @logger?.debug "Player Command guild.rescindInvite"
+          @logger?.verbose "Player Command guild.rescindInvite", {identifier, invIdent}
+          actualRes
+
       manageInvite: (identifier, accepted, guildName) =>
         @validateIdentifier identifier
         .then (res) =>
@@ -631,19 +654,28 @@ class API
         @validateIdentifier identifier
         .then (res) =>
           guild = res.player.guild
-          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].moveToBase identifier, newLoc else res
+          actualRes = if res.isSuccess then @gameInstance.guildManager.guildHash[guild].moveToBase identifier, newLoc else res
+          @logger?.debug "Player Command guild.move"
+          @logger?.verbose "Player Command guild.move", {identifier, newLoc}
+          actualRes
 
       construct: (identifier, building, slot) =>
         @validateIdentifier identifier
         .then (res) =>
           guild = res.player.guild
-          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].construct identifier, building, slot else res
+          actualRes = if res.isSuccess then @gameInstance.guildManager.guildHash[guild].construct identifier, building, slot else res
+          @logger?.debug "Player Command guild.construct"
+          @logger?.verbose "Player Command guild.construct", {identifier, building, slot}
+          actualRes
 
       upgrade: (identifier, building) =>
         @validateIdentifier identifier
         .then (res) =>
           guild = res.player.guild
-          if res.isSuccess then @gameInstance.guildManager.guildHash[guild].upgrade identifier, building else res
+          actualRes = if res.isSuccess then @gameInstance.guildManager.guildHash[guild].upgrade identifier, building else res
+          @logger?.debug "Player Command guild.upgrade"
+          @logger?.verbose "Player Command guild.upgrade", {identifier, building}
+          actualRes
 
       setProperty: (identifier, building, property, value) =>
         @validateIdentifier identifier
@@ -662,8 +694,8 @@ class API
             actualRes = null
             guild = res.player.guild
             if res.isSuccess then actualRes = @gameInstance.guildManager.guildHash[guild].setTax identifier, taxPercent else actualRes = res
-            @logger?.debug "Player Command tax.whole"
-            @logger?.verbose "Player Command tax.whole", {identifier, taxPercent}
+            @logger?.debug "Player Command guild.tax.whole"
+            @logger?.verbose "Player Command guild.tax.whole", {identifier, taxPercent}
             actualRes
 
         self: (identifier, taxPercent) =>
@@ -671,8 +703,8 @@ class API
           .then (res) ->
             actualRes = null
             if res.isSuccess then actualRes = res.player.setSelfGuildTax taxPercent else actualRes = res
-            @logger?.debug "Player Command tax.self"
-            @logger?.verbose "Player Command tax.self", {identifier, taxPercent}
+            @logger?.debug "Player Command guild.tax.self"
+            @logger?.verbose "Player Command guild.tax.self", {identifier, taxPercent}
             actualRes
 
     shop:

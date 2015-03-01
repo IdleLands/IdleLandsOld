@@ -6,7 +6,7 @@ GuildBuilding = require "../GuildBuilding"
  *
  * @name Enchantress
  * @category Buildings
- * @package Guild Bases
+ * @package Guild
  * @cost {level-up} level*5000
  * @property Name (Any string)
  * @property AttemptEnchant (Yes/No; whether or not to attempt unsafe enchantments)
@@ -17,6 +17,11 @@ class Enchantress extends GuildBuilding
   @size = Enchantress::size = "sm"
   @desc = Enchantress::desc = "Upgrade this magic user to get better enchanting capabilities!"
   @levelupCost = Enchantress::levelupCost = (level) -> level * 5000
+
+  properties: [
+    { name: "Name", values: ""}
+    { name: "AttemptEnchant", values: ["No", "Yes"]}
+  ]
 
   tiles: [
     0,  0,  0,
@@ -35,6 +40,7 @@ class Enchantress extends GuildBuilding
       type: "Guild NPC"
       properties:
         forceEvent: "enchant"
+        isGuild: yes
 
     @tiles = [
       0,  0,  0,

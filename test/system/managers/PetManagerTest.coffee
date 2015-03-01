@@ -26,7 +26,7 @@ describe "PetManager", () ->
     it "Should have 0 active pets", () ->
       NewPetManager = proxyquire(basedir + 'system/managers/PetManager', { "./../database/DatabaseWrapper": class DatabaseWrapper
         constructor: (@label, @indexCallback) ->
-        findForEach: (terms, callback, context = null) =>
+        findForEach: (terms, callback, context = null) ->
       }, '@noCallThru': true )
       petManager = new NewPetManager game
       expect(petManager.activePets).to.be.empty

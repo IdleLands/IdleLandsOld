@@ -99,6 +99,8 @@ class Event
   t4: ['luckPercent']
 
   allValidStats: -> @t0.concat @t1.concat @t2.concat @t3.concat @t4
+  validProvidenceStats: -> @t0.concat @t1.concat @t3.concat @t4
+  otherValidProvidenceStats: -> @t2
 
   pickStatPresentOnItem: (item, base = @allValidStats()) ->
     nonZeroStats = _.reject (_.keys item), (stat) -> item[stat] is 0 or _.isNaN item[stat]
@@ -117,7 +119,7 @@ class Event
   pickValidItem: (player, isEnchant = no) ->
     items = player.equipment
 
-    goodItems = _.reject items, (item) -> item.type in ["providence"]
+    goodItems = _.reject items, (item) -> item.type in ["providence"] or item.name is "empty"
 
     forsaken = _.filter goodItems, (item) -> item.forsaken
 

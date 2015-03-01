@@ -4,8 +4,8 @@ GuildBase = require "../GuildBase"
  * This guild base is located in Maeles.
  *
  * @name Maeles
- * @category Locations
- * @package Guild Bases
+ * @category Bases
+ * @package Guild
  * @cost {move-in} 100000
  * @cost {build-sm} 60000
  * @cost {build-md} 75000

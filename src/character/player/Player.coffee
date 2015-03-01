@@ -182,7 +182,7 @@ class Player extends Character
     if not (slot in ["body","feet","finger","hands","head","legs","neck","mainhand","offhand","charm","trinket"])
       return defer.resolve {isSuccess: no, code: 40, message: "That slot is invalid."}
 
-    if @overflow.length is Constants.defaults.player.maxOverflow
+    if @overflow.length is @calc.inventorySize()
       return defer.resolve {isSuccess: no, code: 41, message: "Your inventory is currently full!"}
 
     currentItem = _.findWhere @equipment, {type: slot}
@@ -334,8 +334,8 @@ class Player extends Character
 
   handleTile: (tile) ->
     switch tile.object?.type
-      when "Boss" then @handleBossBattle tile.object.name
-      when "BossParty" then @handleBossBattleParty tile.object.name
+      when "Boss" then @handleBossBattle tile.object
+      when "BossParty" then @handleBossBattleParty tile.object
       when "Teleport" then @handleTeleport tile
       when "Trainer" then @handleTrainerOnTile tile
       when "Treasure" then @handleTreasure tile.object.name
@@ -343,7 +343,7 @@ class Player extends Character
       when "GuildTeleport" then @handleGuildTeleport tile.object.name
 
     if tile.object?.properties?.forceEvent
-      @playerManager.game.eventHandler.doEventForPlayer @name, tile.object.properties.forceEvent
+      @playerManager.game.eventHandler.doEventForPlayer @name, tile.object.properties.forceEvent, tile.object.properties.isGuild
 
   handleGuildTeleport: (baseName) ->
     guild = @getGuild()
@@ -377,6 +377,7 @@ class Player extends Character
       map: @map
       region: @mapRegion
       rarity: collectibleRarity
+      description: collectible.properties?.flavorText
       foundAt: Date.now()
 
     message = "<player.name>#{@name}</player.name> stumbled across a rare, shiny, and collectible <event.item.#{collectibleRarity}>#{collectibleName}</event.item.#{collectibleRarity}> in #{@map} - #{@mapRegion}!"
@@ -385,28 +386,28 @@ class Player extends Character
   handleTreasure: (treasure) ->
     @playerManager.game.treasureFactory.createTreasure treasure, @
 
-  handleBossBattle: (bossName) ->
-    return unless @canBattleBoss bossName
-    @playerManager.game.eventHandler.bossBattle @, bossName
+  handleBossBattle: (bossData) ->
+    return unless @canBattleBoss bossData
+    @playerManager.game.eventHandler.bossBattle @, bossData.name
 
-  handleBossBattleParty: (bossParty) ->
-    return unless @canBattleBoss bossParty
-    @playerManager.game.eventHandler.bossPartyBattle @, bossParty
+  handleBossBattleParty: (bossPartyData) ->
+    return unless @canBattleBoss bossPartyData
+    @playerManager.game.eventHandler.bossPartyBattle @, bossPartyData.name
 
-  resetBossTimer: (boss) ->
+  resetBossTimer: (bossData) ->
     @bossTimers = {} unless @bossTimers
     # 60 seconds for next fight
-    @bossTimers[boss] = Date.now() + (60 * 1000)
+    @bossTimers[bossData.name] = Date.now() + (1000 * @calc.bossRechallengeTime bossData)
 
-  canBattleBoss: (boss) ->
+  canBattleBoss: (bossData) ->
     @bossTimers = {} unless @bossTimers
 
     now = Date.now()
 
-    @bossTimers[boss] = now unless @bossTimers[boss]
+    @bossTimers[bossData.name] = now unless @bossTimers[bossData.name]
 
-    if @bossTimers[boss] - now <= 0
-      @resetBossTimer boss
+    if @bossTimers[bossData.name] - now <= 0
+      @resetBossTimer bossData
       return yes
 
     no
@@ -571,8 +572,11 @@ class Player extends Character
     guild.getBuildingLevel building
 
   checkShop: ->
-    @shop = null if @shop and ((not @getRegion()?.shopSlots?(@)) or (@getRegion()?.name isnt @shop.region))
-    @shop = @playerManager.game.shopGenerator.regionShop @ unless @shop and @getRegion()?.shopSlots?(@)
+    region = @getRegion()
+    slots = region?.shopSlots? @
+    return unless region
+    return (@shop = null) if region.name isnt @shop?.region or slots <= 0
+    @shop = @playerManager.game.shopGenerator.regionShop @ unless @shop
 
   buyShop: (slot) ->
     if not @shop.slots[slot]
@@ -662,7 +666,7 @@ class Player extends Character
     pet.increaseStat stat
 
     ##TAG:EVENT_PLAYER: shop.pet | player, pet, cost | Emitted when a player upgrades a pet
-    @emit "player.shop.petupgrade", player, pet, cost
+    @emit "player.shop.petupgrade", @, pet, cost
 
     Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 212, message: "Successfully upgraded your pets (#{pet.name}) #{stat} to level #{curLevel+2}!"}
 
@@ -888,6 +892,8 @@ class Player extends Character
     @_oldAchievements = _.clone @achievements
     @achievements = []
 
+    @achievementTimes = {} unless @achievementTimes
+
     @_oldTitles = _.clone @titles
     @titles = []
 
@@ -896,6 +902,9 @@ class Player extends Character
     # achievements
     stringCurrent = _.map @_oldAchievements, (achievement) -> achievement.name
     stringAll = _.map achieved, (achievement) -> achievement.name
+
+    _.each stringAll, (achievement) =>
+      @achievementTimes[achievement] = new Date() unless @achievementTimes[achievement]
 
     newAchievements = _.difference stringAll, stringCurrent
 
@@ -936,14 +945,14 @@ class Player extends Character
     if not @priorityPoints
       @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
 
-    if _.size stats != 6
+    if _.size stats isnt 6
       return Q {isSuccess: no, code: 111, message: "Priority list is invalid. Expected 6 items"}
 
     total = 0
     sanitizedStats = {}
 
     for key, stat of stats
-      if !_.isNumber stat
+      if _.isNaN stat or not _.isNumber stat
         return Q {isSuccess: no, code: 112, message: "Priority \"" + key + "\" is not a number."}
 
       if not (key in ["dex", "str", "agi", "wis", "con", "int"])
@@ -952,7 +961,7 @@ class Player extends Character
       sanitizedStats[key] = Math.round stat
       total += Math.round stat
 
-    if total != Constants.defaults.player.priorityTotal
+    if total isnt Constants.defaults.player.priorityTotal
       return Q {isSuccess: no, code: 112, message: "Number of priority points are not equal to " + Constants.defaults.player.priorityTotal + "."}
 
     @priorityPoints = sanitizedStats
@@ -964,6 +973,7 @@ class Player extends Character
       @priorityPoints = {dex: 1, str: 1, agi: 1, wis: 1, con: 1, int: 1}
 
     points = if _.isNumber points then points else parseInt points
+    points = if _.isNaN points then 0 else points
     points = Math.round points
 
     if points is 0
@@ -1008,7 +1018,7 @@ class Player extends Character
 
     if opts.pet?.owner?.identifier?
       if opts.player?
-        if opts.pet.owner.identifier != opts.player.identifier
+        if opts.pet.owner.identifier isnt opts.player.identifier
           @logger?.error "pet owner does not match player", {pet: opts.pet.owner.identifier, player: opts.player.identifier}
 
     _.extend base, opts

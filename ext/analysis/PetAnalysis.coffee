@@ -1,3 +1,5 @@
+console.log "\n>>> PET ANALYSIS"
+
 _ = require "lodash"
 _.str = require "underscore.string"
 
@@ -37,9 +39,8 @@ _.each sortedPets, (pet) ->
   upgradeCost = getPetCost petData
   petInfo = getPetInfo petData
 
-  console.log "#{pet} (#{petData.category})"
+  console.log "\n#{pet} (#{petData.category})"
   console.log "Max Level: #{petInfo.maxLevel} | XP Needed: #{_.str.numberFormat petInfo.totalXpNeeded}"
   console.log "#{_.str.numberFormat upgradeCost} gold spread across #{getNumPetUpgrades petData} upgrades"
   console.log "Min Gold (Feed): #{_.str.numberFormat petInfo.minXpCost} | Max Gold (Feed): #{_.str.numberFormat petInfo.maxXpCost}"
   console.log "Min Total Cost: #{_.str.numberFormat (petInfo.minXpCost+upgradeCost)} | Max Total Cost: #{_.str.numberFormat (petInfo.maxXpCost+upgradeCost)}"
-  console.log ""

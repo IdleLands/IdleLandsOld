@@ -20,69 +20,40 @@ class EventHandler
     @playerEventsDb = new Datastore "playerEvents", (db) ->
       db.ensureIndex {createdAt: 1}, {expiresAfterSeconds: 7200}, ->
 
-  doEventForPlayer: (playerName, eventType = null) ->
+  doEventForPlayer: (playerName, eventType = null, isGuild = no) ->
     player = @game.playerManager.getPlayerByName playerName
     eventType = Constants.pickRandomNormalEventType(player) if not eventType
     if not player
       console.error "Attempting to do event #{eventType} for #{playerName}, but player was not there."
-      return callback?()
+      return
 
-    @doEvent eventType, player
+    @doEvent eventType, player, isGuild
 
-  doEvent: (eventType, player) ->
+  doEvent: (eventType, player, isGuild = no) ->
     defer = Q.defer()
     @game.componentDatabase.getRandomEvent eventType, {expiredOn: {$exists: no}}, (e, event) =>
       @game.errorHandler.captureException e if e
       return if not event or not player
 
-      callback = (res) -> if res then player.emit "event", event
-
       try
-        switch eventType
-          when 'yesno'
-            @doYesNo event, player, callback
+        event = switch eventType
+          when 'providence' then                          new allEvents.ProvidenceEvent @game, event, player
+          when 'levelDown' then                           new allEvents.LevelDownEvent @game, event, player
+          when 'blessXp', 'forsakeXp' then                new allEvents.XpEvent @game, event, player
+          when 'blessXpParty', 'forsakeXpParty' then      new allEvents.XpPartyEvent @game, event, player
+          when 'blessGold', 'forsakeGold' then            new allEvents.GoldEvent @game, event, player
+          when 'blessGoldParty', 'forsakeGoldParty' then  new allEvents.GoldPartyEvent @game, event, player
+          when 'blessItem', 'forsakeItem' then            new allEvents.ItemModEvent @game, event, player
+          when 'findItem' then                            new allEvents.FindItemEvent @game, event, player
+          when 'merchant' then                            new allEvents.MerchantEvent @game, event, player
+          when 'party' then                               new allEvents.PartyEvent @game, event, player
+          when 'enchant', 'tinker' then                   new allEvents.EnchantEvent @game, event, player
+          when 'flipStat' then                            new allEvents.FlipStatEvent @game, event, player
+          when 'battle' then                              new allEvents.MonsterBattleEvent @game, event, player
+          when 'towncrier' then                           new allEvents.TownCrierEvent @game, event, player
 
-          when 'providence'
-            (new allEvents.ProvidenceEvent @game, event, player).go()
-
-          when 'levelDown'
-            (new allEvents.LevelDownEvent @game, event, player).go()
-
-          when 'blessXp', 'forsakeXp'
-            (new allEvents.XpEvent @game, event, player).go()
-
-          when 'blessXpParty', 'forsakeXpParty'
-            (new allEvents.XpPartyEvent @game, event, player).go()
-
-          when 'blessGold', 'forsakeGold'
-            (new allEvents.GoldEvent @game, event, player).go()
-
-          when 'blessGoldParty', 'forsakeGoldParty'
-            (new allEvents.GoldPartyEvent @game, event, player).go()
-
-          when 'blessItem', 'forsakeItem'
-            (new allEvents.ItemModEvent @game, event, player).go()
-
-          when 'findItem'
-            (new allEvents.FindItemEvent @game, event, player).go()
-
-          when 'merchant'
-            (new allEvents.MerchantEvent @game, event, player).go()
-
-          when 'party'
-            (new allEvents.PartyEvent @game, event, player).go()
-
-          when 'enchant', 'tinker'
-            (new allEvents.EnchantEvent @game, event, player).go()
-
-          when 'flipStat'
-            (new allEvents.FlipStatEvent @game, event, player).go()
-
-          when 'battle'
-            (new allEvents.MonsterBattleEvent @game, event, player).go()
-
-          when 'towncrier'
-            (new allEvents.TownCrierEvent @game, event, player).go()
+        event?.isGuild = isGuild if isGuild and _.isBoolean isGuild
+        event?.go()
 
       catch e
         @game.errorHandler.captureException e, extra: name: player.name, gear: player.equipment, inv: player.overflow

@@ -14,7 +14,7 @@ class Battle
   BAD_TURN_THRESHOLD: 100
   BAD_ROUND_THRESHOLD: 300
 
-  constructor: (@game, @parties, @suppress = Constants.defaults.battle.suppress, @battleUrl = Constants.defaults.battle.showUrl) ->
+  constructor: (@game, @parties, @event, @suppress = Constants.defaults.battle.suppress, @battleUrl = Constants.defaults.battle.showUrl) ->
     return if @parties.length < 2
     @game.battle = @
     @logger = @game.logManager.getLogger "Battle"
@@ -34,6 +34,9 @@ class Battle
 
     @badTurns = 0
     @battleCache = new BattleCache @game, @parties
+
+    @broadcast MessageCreator.genericMessage MessageCreator.doStringReplace @event.remark, @event.player if @event
+
     @game.currentBattle = @
     @initializePlayers()
     @link = Constants.defaults.battle.urlFormat.replace /%name/g, @battleCache.name.split(' ').join("%20")
@@ -49,7 +52,7 @@ class Battle
 
   setupParties: ->
     _.each @parties, (party) =>
-      if not party
+      if not party or party.players.length is 0
         @game.errorHandler.captureException new Error "INVALID PARTY ??? ABORTING"
         console.error @parties
         @isBad = yes

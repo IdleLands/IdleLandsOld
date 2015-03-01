@@ -57,7 +57,7 @@ else if config.captureLocal
 
 class Game
 
-  constructor: () ->
+  constructor: ->
     errHandler = @errorHandler = client or {captureMessage: console.error, captureException: console.error}
 
     process.on 'uncaughtException', (err) ->
@@ -72,9 +72,9 @@ class Game
     defer = q.defer()
     @loading = defer.promise
 
+    @logManager = new LogManager
     @playerManager = new PlayerManager @
     @guildManager = new GuildManager @
-    @logManager = new LogManager
     @petManager = new PetManager @
     @calendar = new Calendar @
     @bossFactory = new BossFactory @
@@ -82,7 +82,8 @@ class Game
     @eventHandler = new EventHandler @
     @world = new World @
     @componentDatabase = new ComponentDatabase @
-    @componentDatabase.loadingAll.then =>
+    @componentDatabase.loadingAll
+    .then =>
       @gmCommands = new GMCommands @
       @spellManager = new SpellManager @
       @globalEventHandler = new GlobalEventHandler @
@@ -95,6 +96,8 @@ class Game
       (require "./accessibility/Debug")(@)
 
       defer.resolve()
+    .catch (err) ->
+      errHandler.captureException err
 
     require "./accessibility/REST"
 

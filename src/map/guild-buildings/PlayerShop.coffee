@@ -6,7 +6,7 @@ GuildBuilding = require "../GuildBuilding"
  *
  * @name PlayerShop
  * @category Buildings
- * @package Guild Bases
+ * @package Guild
  * @cost {level-up} 75000
  * @size {md}
  */`

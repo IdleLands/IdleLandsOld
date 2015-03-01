@@ -7,8 +7,8 @@ GlobalEvent = require "../GlobalEvent"
  * This event broadcasts town crier events to a larger audience all at once.
  *
  * @name MassTownCrier
- * @category Player
- * @package Global Events
+ * @category Global
+ * @package Events
  * @happensEvery 60 minutes
  */`
 class MassTownCrierEvent extends GlobalEvent

@@ -1,8 +1,8 @@
 
 
-module.exports = exports = () ->
+module.exports = exports = ->
 
-  @load = () =>
+  @load = =>
 
     @api = require "./API"
     @api.gameInstance = new (require "./../Game")

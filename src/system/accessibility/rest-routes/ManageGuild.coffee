@@ -19,7 +19,7 @@ router
   API.player.guild.leave identifier
   .then (resp) -> res.json resp
 
-## TAG:APIROUTE: PUT | /guild/leave | {identifier, token} | {guild}
+## TAG:APIROUTE: PUT | /guild/disband | {identifier, token} | {guild}
 .put "/guild/disband", hasValidToken, (req, res) ->
   {identifier} = req.body
   API.player.guild.disband identifier
@@ -31,6 +31,12 @@ router
 .put "/guild/invite/player", hasValidToken, (req, res) ->
   {identifier, invName} = req.body
   API.player.guild.invite identifier, invName
+  .then (resp) -> res.json resp
+
+## TAG:APIROUTE: POST | /guild/invite/player/rescind | {identifier, invIdent, token} | {guild, guildInvites}
+.post "/guild/invite/player/rescind", hasValidToken, (req, res) ->
+  {identifier, invIdent} = req.body
+  API.player.guild.rescindInvite identifier, invIdent
   .then (resp) -> res.json resp
 
 ## TAG:APIROUTE: POST | /guild/invite/manage | {identifier, accepted, token} | {guild}

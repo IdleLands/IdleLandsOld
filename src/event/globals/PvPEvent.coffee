@@ -7,8 +7,8 @@ GlobalEvent = require "../GlobalEvent"
  * This event generates some player parties (or uses existing ones) and does some PvP!
  *
  * @name PvP
- * @category Player
- * @package Global Events
+ * @category Global
+ * @package Events
  * @happensEvery 40 minutes
  */`
 class PvPEvent extends GlobalEvent

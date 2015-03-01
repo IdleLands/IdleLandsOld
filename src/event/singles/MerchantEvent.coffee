@@ -28,6 +28,10 @@ class MerchantEvent extends Event
     score = @player.calc.itemScore shop.item
     myScore = @player.calc.itemScore myItem
 
+    # make items possibly more appealing if you have shopaholic
+    # because you like spending money, even if you're not necessarily getting something good out of it
+    myScore *= 0.8 if @player.hasPersonality "Shopaholic"
+
     affirmativeResponse = MessageCreator.doStringReplace "%player gladly buys %item for %shopGold gold! What a deal!", @player, extra
     affirmativeResponseEvent = remark: "#{string} #{affirmativeResponse}", rangeBoost: 1.2, _type: 'shop'
 

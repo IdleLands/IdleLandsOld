@@ -13,22 +13,7 @@ teleLocs = _.extend {},
   teleports.trainers,
   teleports.other
 
-maps = {}
-
-walk = (dir) ->
-  results = []
-  list = fs.readdirSync dir
-
-  list.forEach (baseFileName) ->
-    file = dir + '/' + baseFileName
-    stat = fs.statSync file
-    if stat and stat.isDirectory() then results = results.concat walk file
-    else results.push map: (baseFileName.split(".")[0]), path: file
-
-  results
-
-_.each (walk "#{__dirname}/../../../assets/map"), (mapObj) =>
-  maps[mapObj.map] = new Map mapObj.path
+{maps} = require "../DataAggregator"
 
 inBounds = (x1, y1, x2, y2) ->
   return no if x1 < 0 or y1 < 0
@@ -76,4 +61,4 @@ for teleport in allTeleportsOnMaps
   throw new Error "Teleport (#{teleName}) does not have a valid teleport type" if not (teleport.movementType.toLowerCase() in ['teleport', 'ascend', 'descend', 'fall'])
   throw new Error "Teleport (#{teleName}) does not have a matching staircase" if (teleport.movementType in ['ascend', 'descend']) and tileData.object?.type isnt 'Teleport'
 
-console.log "All map data seems to be correct"
+console.log "All map data seems to be correct."

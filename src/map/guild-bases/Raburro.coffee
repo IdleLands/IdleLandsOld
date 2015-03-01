@@ -4,8 +4,8 @@ GuildBase = require "../GuildBase"
  * This guild base is located in Raburro, in Norkos -5.
  *
  * @name Raburro
- * @category Locations
- * @package Guild Bases
+ * @category Bases
+ * @package Guild
  * @cost {move-in} 65000
  * @cost {build-sm} 25000
  * @cost {build-md} 45000

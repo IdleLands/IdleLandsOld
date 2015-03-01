@@ -24,6 +24,10 @@ module.exports = (grunt) ->
           level: 'ignore'
         no_backticks:
           level: 'ignore'
+        no_empty_param_list:
+          level: 'warn'
+        prefer_english_operator:
+          level: 'warn'
 
     watch:
       dist:
@@ -33,5 +37,6 @@ module.exports = (grunt) ->
   grunt.event.on 'coffee.error', (msg) ->
     grunt.log.write msg
 
-  grunt.registerTask 'default', [ 'coffeelint' ]
-  grunt.registerTask 'dev', [ 'coffeelint', 'watch' ]
+  grunt.registerTask 'default', [ 'test' ]
+  grunt.registerTask 'test', [ 'coffeelint' ]
+  grunt.registerTask 'dev', [ 'test', 'watch' ]

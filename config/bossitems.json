@@ -369,6 +369,12 @@
 	"luckPercent": -2,
 	"hpregen": 525     
     },
+    "Lord Waxington's Top Hat": {
+        "type": "head",
+	"agi": 175,
+	"dex": 200,
+	"crit": 5  
+    },
     "Gryffyndor Sword": {
         "type": "mainhand",
         "int": 350,

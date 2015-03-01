@@ -27,6 +27,7 @@ class GoldEvent extends Event
     boost = Math[rangeManage[@event.type].f] boost, rangeManage[@event.type].v
 
     extra =
+      ##TAG:EVENTVAR_SIMPLE: %gold | the amount of gold gained (only applies to events that involve gold)
       gold: Math.abs boost
       realGold: boost
 

@@ -7,8 +7,8 @@ GlobalEvent = require "../GlobalEvent"
  * This event moves the calendar forward.
  *
  * @name Calendar
- * @category Player
- * @package Global Events
+ * @category Global
+ * @package Events
  * @happensEvery 10 minutes
  */`
 class CalendarEvent extends GlobalEvent

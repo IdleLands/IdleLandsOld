@@ -4,8 +4,8 @@ GuildBase = require "../GuildBase"
  * This guild base is located in Frigri.
  *
  * @name Frigri
- * @category Locations
- * @package Guild Bases
+ * @category Bases
+ * @package Guild
  * @cost {move-in} 150000
  * @cost {build-sm} 70000
  * @cost {build-md} 120000
