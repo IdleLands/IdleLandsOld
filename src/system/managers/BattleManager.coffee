@@ -39,12 +39,10 @@ class BattleManager
   _startBattle: (parties, event) ->
     @game._battleParties = parties
 
-    @game.broadcast MessageCreator.genericMessage MessageCreator.doStringReplace event.remark, event.player if event
-
     @game.inBattle = true
 
     try
-      new Battle @game, parties
+      new Battle @game, parties, event
     catch e
       @game.errorHandler.captureException e
 
