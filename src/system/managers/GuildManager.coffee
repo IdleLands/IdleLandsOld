@@ -296,7 +296,7 @@ class GuildManager
     return Q {isSuccess: no, code: 78, message: "You need to build a guild academy first!"} unless guild.hasBuilt("Academy")
 
     requiredLevel = tier * 10 + 1
-    return Q {isSuccess: no, code: 78, message: "You need to build a upgrade the academy to level #{requiredLevel} first!"} unless tier <= guild.buildingProps.Academy.maxBuffLevel
+    return Q {isSuccess: no, code: 78, message: "You need to build a upgrade the academy to level #{requiredLevel} first!"} unless tier <= guild.buildingGlobals["Academy"]?.maxBuffLevel
 
     tempBuff = new guildBuffs[typeString] tier
     tierLevel = tempBuff.getTier(tier).level

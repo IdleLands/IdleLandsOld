@@ -11,6 +11,7 @@ expect = chai.expect
 describe = mocha.describe
 
 GameStub = require "../../stubs/GameStub"
+Academy = require "../../../src/map/guild-buildings/Academy"
 
 #stubs
 # WARNING: player object gets modified during tests, so keep track!
@@ -69,10 +70,10 @@ describe "Guild", () ->
         guild.gold = new RestrictedNumber 40000, 9999999999, 0
         guild.buildBase()
 
-        promise2 = guild.construct "Oipo", "Academy", 0
-        promise2.then (res2) ->
-          expect(res2.isSuccess).to.equal(yes)
-          expect(res2.code).to.equal(706)
+        promise = guild.construct "Oipo", "Academy", 0
+        promise.then (res) ->
+          expect(res.isSuccess).to.equal(yes)
+          expect(res.code).to.equal(706)
           expect(guild.buildingLevels["Academy"]).to.equal(1)
 
 
@@ -101,15 +102,15 @@ describe "Guild", () ->
         guild.gold = new RestrictedNumber 40000, 9999999999, 0
         guild.buildBase()
 
-        promise2 = guild.construct "Oipo", "Academy", 0
-        promise2.then (res2) ->
-          expect(res2.isSuccess).to.equal(yes)
+        promise = guild.construct "Oipo", "Academy", 0
+        promise.then (res) ->
+          expect(res.isSuccess).to.equal(yes)
 
           guild.gold = new RestrictedNumber 15000, 9999999999, 0
-          promise3 = guild.upgrade "Oipo", "Academy"
-          promise3.then (res3) ->
-            expect(res3.isSuccess).to.equal(no)
-            expect(res3.code).to.equal(81)
+          promise = guild.upgrade "Oipo", "Academy"
+          promise.then (res) ->
+            expect(res.isSuccess).to.equal(no)
+            expect(res.code).to.equal(81)
             expect(guild.buildingLevels["Academy"]).to.equal(1)
 
     it "Should upgrade a building", () ->
@@ -133,51 +134,28 @@ describe "Guild", () ->
         expect(res.isSuccess).to.equal(yes)
 
         guild = guildManager.guilds[0]
-        guild.gold = new RestrictedNumber 50000, 9999999999, 0
+        guild.gold.add 50000
         guild.buildBase()
 
-        promise2 = guild.construct "Oipo", "GuildHall", 0
-        promise2.then (res2) ->
-          expect(res2.isSuccess).to.equal(yes)
+        promise = guild.construct "Oipo", "GuildHall", 0
+        promise.then (res) ->
+          expect(res.isSuccess).to.equal(yes)
 
-          guild.gold = new RestrictedNumber 50000, 9999999999, 0
-          promise3 = guild.upgrade "Oipo", "GuildHall"
-          promise3.then (res3) ->
-            expect(res3.isSuccess).to.equal(yes)
-            expect(res3.code).to.equal(82)
+          guild.gold.add 50000
+          promise = guild.upgrade "Oipo", "GuildHall"
+          promise.then (res) ->
+            expect(res.isSuccess).to.equal(yes)
+            expect(res.code).to.equal(82)
             expect(guild.buildingLevels["GuildHall"]).to.equal(2)
 
-    it "Should increase str with 0.1%", () ->
-      NewGuildManager = proxyquire(basedir + 'system/managers/GuildManager', { "./../database/DatabaseWrapper": class DatabaseWrapper
-        constructor: (@label, @indexCallback) ->
-        find: (query, something, callback) ->
-        insert: (obj, callback) ->
-          callback()
-        findForEach: (terms, callback, context = null) ->
-        ensureIndex: (fieldOrSpec, options, callback) ->
-        update: (query, update, options) ->
-        aggregate: (pipeline, options, callback) ->
-      }, '@noCallThru': true )
-
-      player.reset()
-      guildManager = new NewGuildManager game
-      game.playerManager.db = guildManager.db
-      expect(guildManager.guilds.length).to.equal(0)
-      promise = guildManager.createGuild "Oipo", "Synology"
-      promise.then (res) ->
-        expect(res.isSuccess).to.equal(yes)
-
-        guild = guildManager.guilds[0]
-        guild.gold = new RestrictedNumber 50000, 9999999999, 0
-        guild.buildBase()
-
-        promise2 = guild.construct "Oipo", "GuildHall", 0
-        promise2.then (res2) ->
-          expect(res2.isSuccess).to.equal(yes)
-
-          guild.gold = new RestrictedNumber 50000, 9999999999, 0
-          promise3 = guild.upgrade "Oipo", "GuildHall"
-          promise3.then (res3) ->
-            expect(res3.isSuccess).to.equal(yes)
-            expect(res3.code).to.equal(82)
-            expect(guild.buildingLevels["GuildHall"]).to.equal(2)
+    it "Should calculate bonusses correctly", () ->
+      bonusses = Academy.getStatEffects 25
+      expect(bonusses.strPercent()).to.equal(0.3)
+      expect(bonusses.intPercent()).to.equal(0.3)
+      expect(bonusses.conPercent()).to.equal(0.3)
+      expect(bonusses.wisPercent()).to.equal(0.3)
+      expect(bonusses.dexPercent()).to.equal(0.2)
+      expect(bonusses.agiPercent()).to.equal(0.2)
+      expect(bonusses.goldPercent()).to.equal(0.2)
+      expect(bonusses.xpPercent()).to.equal(0.2)
+      expect(bonusses.itemFindRange()).to.equal(200)
