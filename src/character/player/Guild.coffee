@@ -31,6 +31,7 @@ class Guild
     @buildingLevels = {}
     @buildingLevelCosts = {}
     @buildingProps = {}
+    @buildingGlobals = {}
     @taxPercent = 0
     @initGold()
     @resetBuildings()
@@ -217,6 +218,11 @@ class Guild
 
   _upgrade: (building) ->
     @buildingLevels[building]++
+
+    if building is "Academy"
+      @buildingGlobals[building] = {} unless @buildingGlobals[building]
+      @buildingGlobals[building].maxBuffLevel = 1 + Math.floor (@buildingLevels[building] / 10)
+
     @save()
 
     @reconstructBuildings()
@@ -244,6 +250,11 @@ class Guild
   _construct: (building, slot, size) ->
     @buildingLevels[building] = 1 unless @buildingLevels[building]
     @currentlyBuilt[size][slot] = building
+
+    if building is "Academy"
+      @buildingGlobals[building] = {}
+      @buildingGlobals[building].maxBuffLevel = 1
+
     @reconstructBuildings()
     @save()
 
@@ -307,6 +318,10 @@ class Guild
 
   invitesLeft: ->
     @invitesAvailable = @cap() - (@members.length + @invites.length)
+
+  getStatEffects: ->
+    Academy = require "../../map/guild-buildings/Academy"
+    Academy.getStatEffects if @buildingLevels["Academy"] then @buildingLevels["Academy"] else 0
 
   avgLevel: ->
 

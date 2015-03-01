@@ -5,6 +5,7 @@ mocha = require "mocha"
 sinon = require "sinon"
 proxyquire =  require "proxyquire"
 RestrictedNumber = require "restricted-number"
+Q = require "q"
 
 expect = chai.expect
 describe = mocha.describe
@@ -40,6 +41,7 @@ game.world =
 {
   maps: {}
 }
+game.loading = Q {}
 
 describe "GuildManager", () ->
   describe "Buffs", () ->
@@ -110,9 +112,9 @@ describe "GuildManager", () ->
         expect(res.isSuccess).to.equal(yes)
         expect(guildManager.guilds.length).to.equal(1)
         promise2 = guildManager.disband "Oipo"
-        promise2.then (res2) ->
-          expect(res2.isSuccess).to.equal(yes)
-          expect(res2.code).to.equal(74)
+        promise2.then (res) ->
+          expect(res.isSuccess).to.equal(yes)
+          expect(res.code).to.equal(74)
           expect(guildManager.guilds.length).to.equal(0)
           expect(player.guild).to.not.exist()
           expect(player.guildStatus).to.equal(-1)
@@ -136,13 +138,27 @@ describe "GuildManager", () ->
       promise = guildManager.createGuild "Oipo", "Synology"
       promise.then (res) ->
         expect(res.isSuccess).to.equal(yes)
-        guildManager.guilds[0].gold.add 4000
-        promise2 = guildManager.addBuff "Oipo", "Agility", "1"
-        promise2.then (res2) ->
-          expect(res2.isSuccess).to.equal(yes)
-          expect(res2.code).to.equal(156)
-          expect(guildManager.guilds[0].buffs).to.exist()
-          expect(guildManager.guilds[0].buffs.length).to.equal(1)
+
+        guild = guildManager.guilds[0]
+
+        guild.gold.add 50000
+        guild.buildBase()
+
+        promise = guild.construct "Oipo", "GuildHall", 0
+        promise.then (res) ->
+          expect(res.isSuccess).to.equal(yes)
+
+          guild.gold.add 50000
+          promise = guild.construct "Oipo", "Academy", 0
+          promise.then (res) ->
+            expect(res.isSuccess).to.equal(yes)
+            guild.gold.set 4000
+            promise2 = guildManager.addBuff "Oipo", "Agility", "1"
+            promise2.then (res) ->
+              expect(res.isSuccess).to.equal(yes)
+              expect(res.code).to.equal(156)
+              expect(guild.buffs).to.exist()
+              expect(guild.buffs.length).to.equal(1)
 
     it "Should add expire a buff", () ->
       NewGuildManager = proxyquire(basedir + 'system/managers/GuildManager', { "./../database/DatabaseWrapper": class DatabaseWrapper
@@ -163,13 +179,26 @@ describe "GuildManager", () ->
       promise = guildManager.createGuild "Oipo", "Synology"
       promise.then (res) ->
         expect(res.isSuccess).to.equal(yes)
-        guildManager.guilds[0].gold.add 4000
-        promise2 = guildManager.addBuff "Oipo", "Agility", "1"
-        promise2.then (res2) ->
-          expect(res2.isSuccess).to.equal(yes)
-          guildManager.guilds[0].buffs[0].expire = 0
-          guildManager.checkBuffs()
-          expect(guildManager.guilds[0].buffs.length).to.equal(0)
+
+        guild = guildManager.guilds[0]
+        guild.gold.add 50000
+        guild.buildBase()
+
+        promise = guild.construct "Oipo", "GuildHall", 0
+        promise.then (res) ->
+          expect(res.isSuccess).to.equal(yes)
+
+          guild.gold.add 50000
+          promise = guild.construct "Oipo", "Academy", 0
+          promise.then (res) ->
+            expect(res.isSuccess).to.equal(yes)
+            guild.gold.set 4000
+            promise2 = guildManager.addBuff "Oipo", "Agility", "1"
+            promise2.then (res) ->
+              expect(res.isSuccess).to.equal(yes)
+              guild.buffs[0].expire = 0
+              guildManager.checkBuffs()
+              expect(guild.buffs.length).to.equal(0)
 
     it "Should not renew a buff", () ->
       NewGuildManager = proxyquire(basedir + 'system/managers/GuildManager', { "./../database/DatabaseWrapper": class DatabaseWrapper
@@ -190,30 +219,33 @@ describe "GuildManager", () ->
       promise = guildManager.createGuild "Oipo", "Synology"
       promise.then (res) ->
         expect(res.isSuccess).to.equal(yes)
-        guildManager.guilds[0].gold.add 4000
-        promise2 = guildManager.addBuff "Oipo", "Agility", "1"
-        promise2.then (res2) ->
-          expect(res2.isSuccess).to.equal(yes)
-          guildManager.guilds[0].buffs[0].expire = 0
-          guildManager.guilds[0].gold.add 15000
-          game.world.maps[guildManager.guilds[0].getGuildBaseName()] =
-          {
-            buildings: {"md": [0, 0, 0]},
-            costs: {build: {"md": 15000}}
-            instances: {"sm": 0, "md": 0, "lg": 0}
-            build: (building, smth, smthelse, hahano) ->
-          }
-          promise3 = guildManager.guilds[0].construct "Oipo", "Academy", 0
-          promise3.then (res3) ->
-            expect(res3.isSuccess).to.equal(yes)
-            expect(res3.code).to.equal(706)
-            promise4 = guildManager.guilds[0].setProperty "Oipo", "Academy", "AutoRenew", "Yes"
-            promise4.then (res4) ->
-              expect(res4.isSuccess).to.equal(yes)
-              expect(res4.code).to.equal(87)
-              guildManager.guilds[0].gold.add 4000
-              guildManager.checkBuffs()
-              expect(guildManager.guilds[0].buffs.length).to.equal(0)
+
+        guild = guildManager.guilds[0]
+        guild.gold.add 50000
+        guild.buildBase()
+
+        promise = guild.construct "Oipo", "GuildHall", 0
+        promise.then (res) ->
+          expect(res.isSuccess).to.equal(yes)
+
+          guild.gold.add 50000
+          promise = guild.construct "Oipo", "Academy", 0
+          promise.then (res) ->
+            expect(res.isSuccess).to.equal(yes)
+
+            guild.gold.add 4000
+            promise = guildManager.addBuff "Oipo", "Agility", "1"
+            promise.then (res) ->
+              expect(res.isSuccess).to.equal(yes)
+              guild.buffs[0].expire = 0
+              guild.gold.add 15000
+              promise = guild.setProperty "Oipo", "Academy", "AutoRenew", "Yes"
+              promise.then (res) ->
+                expect(res.isSuccess).to.equal(yes)
+                expect(res.code).to.equal(87)
+                guild.gold.set 4000
+                guildManager.checkBuffs()
+                expect(guild.buffs.length).to.equal(0)
 
     it "Should renew a buff", () ->
       NewGuildManager = proxyquire(basedir + 'system/managers/GuildManager', { "./../database/DatabaseWrapper": class DatabaseWrapper
@@ -234,29 +266,37 @@ describe "GuildManager", () ->
       promise = guildManager.createGuild "Oipo", "Synology"
       promise.then (res) ->
         expect(res.isSuccess).to.equal(yes)
-        guildManager.guilds[0].gold.add 4000
-        promise2 = guildManager.addBuff "Oipo", "Agility", "1"
-        promise2.then (res2) ->
-          expect(res2.isSuccess).to.equal(yes)
-          guildManager.guilds[0].buffs[0].expire = 0
-          guildManager.guilds[0].gold.add 15000
-          game.world.maps[guildManager.guilds[0].getGuildBaseName()] =
-          {
-            buildings: {"md": [0, 0, 0]},
-            costs: {build: {"md": 15000}}
-            instances: {"sm": 0, "md": 0, "lg": 0}
-            build: (building, smth, smthelse, hahano) ->
-          }
-          promise3 = guildManager.guilds[0].construct "Oipo", "Academy", 0
-          promise3.then (res3) ->
-            expect(res3.isSuccess).to.equal(yes)
-            expect(res3.code).to.equal(706)
-            promise4 = guildManager.guilds[0].setProperty "Oipo", "Academy", "AutoRenew", "Yes"
-            promise4.then (res4) ->
-              expect(res4.isSuccess).to.equal(yes)
-              expect(res4.code).to.equal(87)
-              guildManager.guilds[0].gold.add 400000
-              guildManager.checkBuffs()
-              expect(guildManager.guilds[0].buffs.length).to.equal(1)
 
+        guild = guildManager.guilds[0]
+        guild.gold.add 50000
+        guild.buildBase()
+
+        promise = guild.construct "Oipo", "GuildHall", 0
+        promise.then (res) ->
+          expect(res.isSuccess).to.equal(yes)
+
+          guild.gold.add 50000
+
+          promise = guild.construct "Oipo", "Academy", 0
+          promise.then (res) ->
+            expect(res.isSuccess).to.equal(yes)
+            expect(res.code).to.equal(706)
+
+            guild.gold.add 4000
+
+            promise = guildManager.addBuff "Oipo", "Agility", "1"
+            promise.then (res) ->
+              expect(res.isSuccess).to.equal(yes)
+
+              guild.buffs[0].expire = 0
+              guild.gold.add 15000
+
+              promise = guild.setProperty "Oipo", "Academy", "AutoRenew", "Yes"
+              promise.then (res) ->
+                expect(res.isSuccess).to.equal(yes)
+                expect(res.code).to.equal(87)
+
+                guild.gold.add 400000
+                guildManager.checkBuffs()
+                expect(guild.buffs.length).to.equal(1)
 
