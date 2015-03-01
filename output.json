@@ -3263,416 +3263,10 @@
             ]
         },
         {
-            "_name": "Guild Bases",
+            "_name": "Guild",
             "_children": [
                 {
-                    "_name": "Buildings",
-                    "_children": [
-                        {
-                            "lineNumber": 4,
-                            "endLineNumber": 13,
-                            "filePath": "src/map/guild-buildings/Academy.coffee",
-                            "fileName": "Academy.coffee",
-                            "cost": [
-                                {
-                                    "name": "cost",
-                                    "type": "level-up",
-                                    "basicInfo": "15000",
-                                    "extendedInfo": "if level <= 100"
-                                }
-                            ],
-                            "property": [
-                                {
-                                    "name": "property",
-                                    "basicInfo": "AutoRenew",
-                                    "extendedInfo": "Yes/No; whether or not to auto renew buffs upon expiration"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "The Academy affects the capability of your minor permanent buffs as well as the major buffs you can purchase for a limited time."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Academy"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Buildings"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Guild Bases"
-                            },
-                            "size": {
-                                "name": "size",
-                                "type": "md"
-                            }
-                        },
-                        {
-                            "lineNumber": 4,
-                            "endLineNumber": 14,
-                            "filePath": "src/map/guild-buildings/Enchantress.coffee",
-                            "fileName": "Enchantress.coffee",
-                            "cost": [
-                                {
-                                    "name": "cost",
-                                    "type": "level-up",
-                                    "basicInfo": "level*5000"
-                                }
-                            ],
-                            "property": [
-                                {
-                                    "name": "property",
-                                    "basicInfo": "Name",
-                                    "extendedInfo": "Any string"
-                                },
-                                {
-                                    "name": "property",
-                                    "basicInfo": "AttemptEnchant",
-                                    "extendedInfo": "Yes/No; whether or not to attempt unsafe enchantments"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "The Enchantress allows you to get better enchantments on your items, for a price!"
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Enchantress"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Buildings"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Guild Bases"
-                            },
-                            "size": {
-                                "name": "size",
-                                "type": "sm"
-                            }
-                        },
-                        {
-                            "lineNumber": 4,
-                            "endLineNumber": 13,
-                            "filePath": "src/map/guild-buildings/FortuneTeller.coffee",
-                            "fileName": "FortuneTeller.coffee",
-                            "cost": [
-                                {
-                                    "name": "cost",
-                                    "type": "level-up",
-                                    "basicInfo": "55000+[20000*level/100]"
-                                }
-                            ],
-                            "property": [
-                                {
-                                    "name": "property",
-                                    "basicInfo": "Name",
-                                    "extendedInfo": "Any string"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "The FortuneTeller allows you to get better providences!"
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "FortuneTeller"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Buildings"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Guild Bases"
-                            },
-                            "size": {
-                                "name": "size",
-                                "type": "sm"
-                            }
-                        },
-                        {
-                            "lineNumber": 4,
-                            "endLineNumber": 12,
-                            "filePath": "src/map/guild-buildings/Greenhouse.coffee",
-                            "fileName": "Greenhouse.coffee",
-                            "cost": [
-                                {
-                                    "name": "cost",
-                                    "type": "level-up",
-                                    "basicInfo": "level*85000"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "The Greenhouse allows you to have a permanent storage of usable items, as well as slowly producing some items."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Greenhouse"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Buildings"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Guild Bases"
-                            },
-                            "size": {
-                                "name": "size",
-                                "type": "lg"
-                            }
-                        },
-                        {
-                            "lineNumber": 4,
-                            "endLineNumber": 12,
-                            "filePath": "src/map/guild-buildings/GuildHall.coffee",
-                            "fileName": "GuildHall.coffee",
-                            "cost": [
-                                {
-                                    "name": "cost",
-                                    "type": "level-up",
-                                    "basicInfo": "level*[2500+level/100]"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "The GuildHall increases the maximum level of your other guild buildings!"
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "GuildHall"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Buildings"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Guild Bases"
-                            },
-                            "size": {
-                                "name": "size",
-                                "type": "lg"
-                            }
-                        },
-                        {
-                            "lineNumber": 4,
-                            "endLineNumber": 15,
-                            "filePath": "src/map/guild-buildings/GuildShop.coffee",
-                            "fileName": "GuildShop.coffee",
-                            "effect": [
-                                {
-                                    "name": "effect",
-                                    "type": "level-interval",
-                                    "basicInfo": "2",
-                                    "extendedInfo": "Every 2 levels the shop items become slightly cheaper"
-                                },
-                                {
-                                    "name": "effect",
-                                    "type": "level-interval",
-                                    "basicInfo": "5",
-                                    "extendedInfo": "Every 5 levels the shop quality goes up"
-                                },
-                                {
-                                    "name": "effect",
-                                    "type": "level-interval",
-                                    "basicInfo": "10",
-                                    "extendedInfo": "Every 10 levels the shop gets another inventory slot"
-                                }
-                            ],
-                            "cost": [
-                                {
-                                    "name": "cost",
-                                    "type": "level-up",
-                                    "basicInfo": "10000"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "The GuildShop allows you to buy items, and upgrading it allows you to buy better items!"
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "GuildShop"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Buildings"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Guild Bases"
-                            },
-                            "size": {
-                                "name": "size",
-                                "type": "md"
-                            }
-                        },
-                        {
-                            "lineNumber": 7,
-                            "endLineNumber": 18,
-                            "filePath": "src/map/guild-buildings/Mascot.coffee",
-                            "fileName": "Mascot.coffee",
-                            "cost": [
-                                {
-                                    "name": "cost",
-                                    "type": "level-up",
-                                    "basicInfo": "level*15000"
-                                }
-                            ],
-                            "property": [
-                                {
-                                    "name": "property",
-                                    "basicInfo": "MascotID",
-                                    "extendedInfo": "Any valid string ID referencing the tile map in the game"
-                                },
-                                {
-                                    "name": "property",
-                                    "basicInfo": "Quote",
-                                    "extendedInfo": "Any string"
-                                },
-                                {
-                                    "name": "property",
-                                    "basicInfo": "Name",
-                                    "extendedInfo": "Any string"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "The Mascot looks really nice in the courtyard. Upgrading it provides bragging rights!"
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Mascot"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Buildings"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Guild Bases"
-                            },
-                            "size": {
-                                "name": "size",
-                                "type": "sm"
-                            }
-                        },
-                        {
-                            "lineNumber": 4,
-                            "endLineNumber": 12,
-                            "filePath": "src/map/guild-buildings/PlayerShop.coffee",
-                            "fileName": "PlayerShop.coffee",
-                            "cost": [
-                                {
-                                    "name": "cost",
-                                    "type": "level-up",
-                                    "basicInfo": "75000"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "The PlayerShop allows you to sell items, and upgrading it allows you to sell more items!"
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "PlayerShop"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Buildings"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Guild Bases"
-                            },
-                            "size": {
-                                "name": "size",
-                                "type": "md"
-                            }
-                        },
-                        {
-                            "lineNumber": 4,
-                            "endLineNumber": 12,
-                            "filePath": "src/map/guild-buildings/Tavern.coffee",
-                            "fileName": "Tavern.coffee",
-                            "cost": [
-                                {
-                                    "name": "cost",
-                                    "type": "level-up",
-                                    "basicInfo": "level*50000"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "The Tavern provides you a place to get drunk with your guildies!"
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Tavern"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Buildings"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Guild Bases"
-                            },
-                            "size": {
-                                "name": "size",
-                                "type": "lg"
-                            }
-                        },
-                        {
-                            "lineNumber": 4,
-                            "endLineNumber": 13,
-                            "filePath": "src/map/guild-buildings/Teleport.coffee",
-                            "fileName": "Teleport.coffee",
-                            "cost": [
-                                {
-                                    "name": "cost",
-                                    "type": "level-up",
-                                    "basicInfo": "level*15000"
-                                }
-                            ],
-                            "property": [
-                                {
-                                    "name": "property",
-                                    "basicInfo": "Destination",
-                                    "extendedInfo": "Any valid teleport location"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "The Teleport allows you to specify a teleport to anywhere in the world!"
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Teleport"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Buildings"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Guild Bases"
-                            },
-                            "size": {
-                                "name": "size",
-                                "type": "sm"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "_name": "Locations",
+                    "_name": "Bases",
                     "_children": [
                         {
                             "lineNumber": 3,
@@ -3728,11 +3322,11 @@
                             },
                             "category": {
                                 "name": "category",
-                                "basicInfo": "Locations"
+                                "basicInfo": "Bases"
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "Guild Bases"
+                                "basicInfo": "Guild"
                             }
                         },
                         {
@@ -3789,11 +3383,11 @@
                             },
                             "category": {
                                 "name": "category",
-                                "basicInfo": "Locations"
+                                "basicInfo": "Bases"
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "Guild Bases"
+                                "basicInfo": "Guild"
                             }
                         },
                         {
@@ -3850,11 +3444,11 @@
                             },
                             "category": {
                                 "name": "category",
-                                "basicInfo": "Locations"
+                                "basicInfo": "Bases"
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "Guild Bases"
+                                "basicInfo": "Guild"
                             }
                         },
                         {
@@ -3911,11 +3505,11 @@
                             },
                             "category": {
                                 "name": "category",
-                                "basicInfo": "Locations"
+                                "basicInfo": "Bases"
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "Guild Bases"
+                                "basicInfo": "Guild"
                             }
                         },
                         {
@@ -3972,11 +3566,11 @@
                             },
                             "category": {
                                 "name": "category",
-                                "basicInfo": "Locations"
+                                "basicInfo": "Bases"
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "Guild Bases"
+                                "basicInfo": "Guild"
                             }
                         },
                         {
@@ -4033,23 +3627,165 @@
                             },
                             "category": {
                                 "name": "category",
-                                "basicInfo": "Locations"
+                                "basicInfo": "Bases"
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "Guild Bases"
+                                "basicInfo": "Guild"
                             }
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "_name": "Guild Buffs",
-            "_children": [
+                },
                 {
-                    "_name": "Advanced",
+                    "_name": "Buffs",
                     "_children": [
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 15,
+                            "filePath": "src/character/guildBuffs/GuildAgility.coffee",
+                            "fileName": "GuildAgility.coffee",
+                            "effect": [
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "+5% AGI per tier"
+                                }
+                            ],
+                            "requirement": [
+                                {
+                                    "name": "requirement",
+                                    "type": "gold",
+                                    "basicInfo": "(tier+1)^2 + 1000"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "guild-level",
+                                    "basicInfo": "10 + 10 per tier"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "guild-members",
+                                    "basicInfo": "(tier-1)*2 + 1"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Agility guild buff increases Agility."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Agility"
+                            },
+                            "duration": {
+                                "name": "duration",
+                                "basicInfo": "12 hours + 12 hours per tier"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buffs"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 15,
+                            "filePath": "src/character/guildBuffs/GuildConstitution.coffee",
+                            "fileName": "GuildConstitution.coffee",
+                            "effect": [
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "+5% CON per tier"
+                                }
+                            ],
+                            "requirement": [
+                                {
+                                    "name": "requirement",
+                                    "type": "gold",
+                                    "basicInfo": "(tier+1)^2 + 1000"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "guild-level",
+                                    "basicInfo": "10 + 10 per tier"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "guild-members",
+                                    "basicInfo": "(tier-1)*2 + 1"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Constitution guild buff increases Constitution."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Constitution"
+                            },
+                            "duration": {
+                                "name": "duration",
+                                "basicInfo": "12 hours + 12 hours per tier"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buffs"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 15,
+                            "filePath": "src/character/guildBuffs/GuildDexterity.coffee",
+                            "fileName": "GuildDexterity.coffee",
+                            "effect": [
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "+5% DEX per tier"
+                                }
+                            ],
+                            "requirement": [
+                                {
+                                    "name": "requirement",
+                                    "type": "gold",
+                                    "basicInfo": "(tier+1)^2 + 1000"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "guild-level",
+                                    "basicInfo": "10 + 10 per tier"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "guild-members",
+                                    "basicInfo": "(tier-1)*2 + 1"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Dexterity guild buff increases Dexterity."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Dexterity"
+                            },
+                            "duration": {
+                                "name": "duration",
+                                "basicInfo": "12 hours + 12 hours per tier"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buffs"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild"
+                            }
+                        },
                         {
                             "lineNumber": 4,
                             "endLineNumber": 16,
@@ -4096,163 +3832,11 @@
                             },
                             "category": {
                                 "name": "category",
-                                "basicInfo": "Advanced"
+                                "basicInfo": "Buffs"
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "Guild Buffs"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "_name": "Basic",
-                    "_children": [
-                        {
-                            "lineNumber": 4,
-                            "endLineNumber": 15,
-                            "filePath": "src/character/guildBuffs/GuildAgility.coffee",
-                            "fileName": "GuildAgility.coffee",
-                            "effect": [
-                                {
-                                    "name": "effect",
-                                    "basicInfo": "+5% AGI per tier"
-                                }
-                            ],
-                            "requirement": [
-                                {
-                                    "name": "requirement",
-                                    "type": "gold",
-                                    "basicInfo": "(tier+1)^2 + 1000"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "guild-level",
-                                    "basicInfo": "10 + 10 per tier"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "guild-members",
-                                    "basicInfo": "(tier-1)*2 + 1"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "The Agility guild buff increases Agility."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Agility"
-                            },
-                            "duration": {
-                                "name": "duration",
-                                "basicInfo": "12 hours + 12 hours per tier"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Basic"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Guild Buffs"
-                            }
-                        },
-                        {
-                            "lineNumber": 4,
-                            "endLineNumber": 15,
-                            "filePath": "src/character/guildBuffs/GuildConstitution.coffee",
-                            "fileName": "GuildConstitution.coffee",
-                            "effect": [
-                                {
-                                    "name": "effect",
-                                    "basicInfo": "+5% CON per tier"
-                                }
-                            ],
-                            "requirement": [
-                                {
-                                    "name": "requirement",
-                                    "type": "gold",
-                                    "basicInfo": "(tier+1)^2 + 1000"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "guild-level",
-                                    "basicInfo": "10 + 10 per tier"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "guild-members",
-                                    "basicInfo": "(tier-1)*2 + 1"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "The Constitution guild buff increases Constitution."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Constitution"
-                            },
-                            "duration": {
-                                "name": "duration",
-                                "basicInfo": "12 hours + 12 hours per tier"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Basic"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Guild Buffs"
-                            }
-                        },
-                        {
-                            "lineNumber": 4,
-                            "endLineNumber": 15,
-                            "filePath": "src/character/guildBuffs/GuildDexterity.coffee",
-                            "fileName": "GuildDexterity.coffee",
-                            "effect": [
-                                {
-                                    "name": "effect",
-                                    "basicInfo": "+5% DEX per tier"
-                                }
-                            ],
-                            "requirement": [
-                                {
-                                    "name": "requirement",
-                                    "type": "gold",
-                                    "basicInfo": "(tier+1)^2 + 1000"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "guild-level",
-                                    "basicInfo": "10 + 10 per tier"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "guild-members",
-                                    "basicInfo": "(tier-1)*2 + 1"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "The Dexterity guild buff increases Dexterity."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "Dexterity"
-                            },
-                            "duration": {
-                                "name": "duration",
-                                "basicInfo": "12 hours + 12 hours per tier"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Basic"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Guild Buffs"
+                                "basicInfo": "Guild"
                             }
                         },
                         {
@@ -4297,11 +3881,11 @@
                             },
                             "category": {
                                 "name": "category",
-                                "basicInfo": "Basic"
+                                "basicInfo": "Buffs"
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "Guild Buffs"
+                                "basicInfo": "Guild"
                             }
                         },
                         {
@@ -4346,11 +3930,11 @@
                             },
                             "category": {
                                 "name": "category",
-                                "basicInfo": "Basic"
+                                "basicInfo": "Buffs"
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "Guild Buffs"
+                                "basicInfo": "Guild"
                             }
                         },
                         {
@@ -4395,11 +3979,11 @@
                             },
                             "category": {
                                 "name": "category",
-                                "basicInfo": "Basic"
+                                "basicInfo": "Buffs"
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "Guild Buffs"
+                                "basicInfo": "Guild"
                             }
                         },
                         {
@@ -4444,11 +4028,417 @@
                             },
                             "category": {
                                 "name": "category",
-                                "basicInfo": "Basic"
+                                "basicInfo": "Buffs"
                             },
                             "package": {
                                 "name": "package",
-                                "basicInfo": "Guild Buffs"
+                                "basicInfo": "Guild"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "_name": "Buildings",
+                    "_children": [
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 13,
+                            "filePath": "src/map/guild-buildings/Academy.coffee",
+                            "fileName": "Academy.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "15000",
+                                    "extendedInfo": "if level <= 100"
+                                }
+                            ],
+                            "property": [
+                                {
+                                    "name": "property",
+                                    "basicInfo": "AutoRenew",
+                                    "extendedInfo": "Yes/No; whether or not to auto renew buffs upon expiration"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Academy affects the capability of your minor permanent buffs as well as the major buffs you can purchase for a limited time."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Academy"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "md"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 14,
+                            "filePath": "src/map/guild-buildings/Enchantress.coffee",
+                            "fileName": "Enchantress.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "level*5000"
+                                }
+                            ],
+                            "property": [
+                                {
+                                    "name": "property",
+                                    "basicInfo": "Name",
+                                    "extendedInfo": "Any string"
+                                },
+                                {
+                                    "name": "property",
+                                    "basicInfo": "AttemptEnchant",
+                                    "extendedInfo": "Yes/No; whether or not to attempt unsafe enchantments"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Enchantress allows you to get better enchantments on your items, for a price!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Enchantress"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "sm"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 13,
+                            "filePath": "src/map/guild-buildings/FortuneTeller.coffee",
+                            "fileName": "FortuneTeller.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "55000+[20000*level/100]"
+                                }
+                            ],
+                            "property": [
+                                {
+                                    "name": "property",
+                                    "basicInfo": "Name",
+                                    "extendedInfo": "Any string"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The FortuneTeller allows you to get better providences!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "FortuneTeller"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "sm"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 12,
+                            "filePath": "src/map/guild-buildings/Greenhouse.coffee",
+                            "fileName": "Greenhouse.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "level*85000"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Greenhouse allows you to have a permanent storage of usable items, as well as slowly producing some items."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Greenhouse"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "lg"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 12,
+                            "filePath": "src/map/guild-buildings/GuildHall.coffee",
+                            "fileName": "GuildHall.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "level*[2500+level/100]"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The GuildHall increases the maximum level of your other guild buildings!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "GuildHall"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "lg"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 15,
+                            "filePath": "src/map/guild-buildings/GuildShop.coffee",
+                            "fileName": "GuildShop.coffee",
+                            "effect": [
+                                {
+                                    "name": "effect",
+                                    "type": "level-interval",
+                                    "basicInfo": "2",
+                                    "extendedInfo": "Every 2 levels the shop items become slightly cheaper"
+                                },
+                                {
+                                    "name": "effect",
+                                    "type": "level-interval",
+                                    "basicInfo": "5",
+                                    "extendedInfo": "Every 5 levels the shop quality goes up"
+                                },
+                                {
+                                    "name": "effect",
+                                    "type": "level-interval",
+                                    "basicInfo": "10",
+                                    "extendedInfo": "Every 10 levels the shop gets another inventory slot"
+                                }
+                            ],
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "10000"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The GuildShop allows you to buy items, and upgrading it allows you to buy better items!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "GuildShop"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "md"
+                            }
+                        },
+                        {
+                            "lineNumber": 7,
+                            "endLineNumber": 18,
+                            "filePath": "src/map/guild-buildings/Mascot.coffee",
+                            "fileName": "Mascot.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "level*15000"
+                                }
+                            ],
+                            "property": [
+                                {
+                                    "name": "property",
+                                    "basicInfo": "MascotID",
+                                    "extendedInfo": "Any valid string ID referencing the tile map in the game"
+                                },
+                                {
+                                    "name": "property",
+                                    "basicInfo": "Quote",
+                                    "extendedInfo": "Any string"
+                                },
+                                {
+                                    "name": "property",
+                                    "basicInfo": "Name",
+                                    "extendedInfo": "Any string"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Mascot looks really nice in the courtyard. Upgrading it provides bragging rights!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Mascot"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "sm"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 12,
+                            "filePath": "src/map/guild-buildings/PlayerShop.coffee",
+                            "fileName": "PlayerShop.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "75000"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The PlayerShop allows you to sell items, and upgrading it allows you to sell more items!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "PlayerShop"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "md"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 12,
+                            "filePath": "src/map/guild-buildings/Tavern.coffee",
+                            "fileName": "Tavern.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "level*50000"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Tavern provides you a place to get drunk with your guildies!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Tavern"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "lg"
+                            }
+                        },
+                        {
+                            "lineNumber": 4,
+                            "endLineNumber": 13,
+                            "filePath": "src/map/guild-buildings/Teleport.coffee",
+                            "fileName": "Teleport.coffee",
+                            "cost": [
+                                {
+                                    "name": "cost",
+                                    "type": "level-up",
+                                    "basicInfo": "level*15000"
+                                }
+                            ],
+                            "property": [
+                                {
+                                    "name": "property",
+                                    "basicInfo": "Destination",
+                                    "extendedInfo": "Any valid teleport location"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "The Teleport allows you to specify a teleport to anywhere in the world!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Teleport"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Buildings"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Guild"
+                            },
+                            "size": {
+                                "name": "size",
+                                "type": "sm"
                             }
                         }
                     ]
@@ -16229,11 +16219,11 @@
             ]
         }
     ],
-    "startTime": 1425082784148,
-    "endTime": 1425082784213,
+    "startTime": 1425243321719,
+    "endTime": 1425243321875,
     "git": {
-        "short": "d38deae",
-        "long": "d38deae591a7cda56b2f5928ea78dd98813c5b00",
+        "short": "e45c8fa",
+        "long": "e45c8fae5517614d2bbe0d65a61aedf8488d93ab",
         "branch": "master",
         "tag": "0.5.0"
     }
