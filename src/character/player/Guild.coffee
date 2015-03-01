@@ -207,6 +207,10 @@ class Guild
 
   _upgrade: (building) ->
     @buildingLevels[building]++
+
+    if building is "Academy"
+      @buildingProps.Academy.maxBuffLevel = 1 + Math.floor (@buildingLevels[building] / 10)
+
     @save()
 
     @reconstructBuildings()

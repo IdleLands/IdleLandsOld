@@ -16,6 +16,18 @@ class Academy extends GuildBuilding
   @size = Academy::size = "md"
   @desc = Academy::desc = "Upgrade this building to make your buffs better and get some permanent ones!"
   @levelupCost = Academy::levelupCost = (level) -> if level > 100 then level * (50000 + (25000*Math.floor level/100)) else 15000
+  @getStatEffects: (level) ->
+    {
+      strPercent: -> Math.floor(level/10) * 0.1 + ((level % 10) > 1) ? 0.1 : 0
+      intPercent: -> Math.floor(level/10) * 0.1 + ((level % 10) > 2) ? 0.1 : 0
+      conPercent: -> Math.floor(level/10) * 0.1 + ((level % 10) > 3) ? 0.1 : 0
+      wisPercent: -> Math.floor(level/10) * 0.1 + ((level % 10) > 4) ? 0.1 : 0
+      dexPercent: -> Math.floor(level/10) * 0.1 + ((level % 10) > 5) ? 0.1 : 0
+      agiPercent: -> Math.floor(level/10) * 0.1 + ((level % 10) > 6) ? 0.1 : 0
+      goldPercent: -> Math.floor(level/10) * 0.1 + ((level % 10) > 7) ? 0.1 : 0
+      xpPercent: -> Math.floor(level/10) * 0.1 + ((level % 10) > 7) ? 0.1 : 0
+      itemFindRange: -> Math.floor(level/10) * 100 + ((level % 10) > 8) ? 100 : 0
+    }
 
   f =
     name: "Instructor"
