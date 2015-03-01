@@ -12,7 +12,9 @@ Chance = require "chance"
 chance = new Chance Math.random
 
 requireDir = require "require-dir"
-buildings = _.keys requireDir "../../map/guild-buildings/"
+allBuildings = requireDir "../../map/guild-buildings/"
+buildings = _.reduce (_.keys allBuildings), ((prev, building) -> prev[building] = {size: allBuildings[building].size, desc: allBuildings[building].desc}; prev), {}
+
 allBases = requireDir "../../map/guild-bases/"
 bases = _.map (_.keys allBases), (base) -> name: base, costs: allBases[base].costs
 
