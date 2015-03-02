@@ -244,6 +244,9 @@
         },
         "items": [
             { "name": "Halberd of the Giants", "dropPercent": 80 }
+        ],
+        "collectibles": [
+            { "name": "Crystal of Air", "dropPercent": 30 }
         ]
     },
     "Ghostly Pirate Captain": {
@@ -1071,6 +1074,115 @@
 	    "hpregen": 100
         }
 		},
+    "Norkian Necromancer": {
+        "respawn": 10800,
+        "availableScore": 2500,
+        "stats": {
+            "class": "Necromancer",
+            "hp": 17324,
+            "level": 35,
+            "str": 1100,
+            "con": 60,
+            "dex": 500,
+            "agi": 300,
+	    "int": 1500,
+            "lethal": 3,
+	    "sturdy": 1
+        } 
+    },
+    "Living Crystal": {
+        "respawn": 10800,
+        "availableScore": 9000,
+        "stats": {
+            "class": "Random",
+            "hp": 200000,
+            "level": 125,
+            "str": 10000,
+            "con": 7000,
+            "dex": 7000,
+            "agi": 7000,
+	    "int": 10000,
+	    "wis": 7000,
+	    "luck": 150,
+            "poison": 4,
+	    "venom": 3,
+	    "glowing": 1,
+	    "hpregen": 500
+        },
+        "items": [
+            { "name": "Crystal Crown", "dropPercent": 75 }
+        ]
+    },
+    "Astral Guard": {
+        "respawn": 10800,
+        "availableScore": 1500,
+        "stats": {
+            "class": "Fighter",
+            "hp": 200000,
+            "level": 150,
+            "str": 15000,
+            "con": 15000,
+            "dex": 9000,
+            "agi": 9000,
+	    "luck": 200,
+            "crit": 2,
+	    "aegis": 1,
+	    "prone": 1,
+	    "vorpal": 1,
+	    "absolute": 100,
+	    "offense": 2,
+	    "defense": 2
+        },
+        "items": [
+            { "name": "Astral Boots", "dropPercent": 20 }
+        ]
+    },
+    "Astral Beast": {
+        "respawn": 10800,
+        "availableScore": 15555,
+        "stats": {
+            "class": "Random",
+            "hp": 1000000,
+            "level": 200,
+            "str": 80000,
+            "con": 25000,
+            "dex": 27000,
+	    "int": 60000,
+	    "wis": 40000,
+            "agi": 30000,
+	    "luck": 2000,
+            "crit": 9,
+	    "aegis": 1,
+	    "prone": 1,
+	    "vorpal": 2,
+	    "absolute": 100,
+	    "offense": 3,
+	    "defense": 4,
+	    "damageReduction": 300,
+	    "dance": 2,
+	    "mindwipe": 1,
+	    "deadeye": 2,
+	    "fear": 10,
+	    "glowing": 1,
+	    "haste": 10,
+	    "lethal": 2,
+	    "parry": 2,
+	    "poison": 5,
+	    "venom": 5,
+	    "power": 1,
+	    "punish": 1,
+	    "shatter": 1,
+	    "silver": 1,
+	    "startle": 2,
+	    "sturdy": 1,
+	    "vampire": 1,
+	    "hpregen": 666,
+	    "holy": 1000	    
+        },
+        "items": [
+            { "name": "Astral Stabilizer", "dropPercent": 75 }
+        ]
+    },
     "Gryffyndor House Representative": {
         "respawn": 10800,
         "availableScore": 2400,

@@ -30,6 +30,7 @@
                 {
                  "gid":32,
                  "height":0,
+                 "id":1,
                  "name":"ToNorkos",
                  "properties":
                     {
@@ -48,6 +49,7 @@
                 {
                  "gid":15,
                  "height":0,
+                 "id":2,
                  "name":"Crystal Crab",
                  "properties":
                     {
@@ -63,10 +65,11 @@
                 {
                  "gid":15,
                  "height":0,
+                 "id":3,
                  "name":"Old Ring",
                  "properties":
                     {
-
+                     "flavorText":"This ring is missing its socketed gem."
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -78,6 +81,7 @@
                 {
                  "gid":42,
                  "height":0,
+                 "id":4,
                  "name":"ToWater-1",
                  "properties":
                     {
@@ -100,6 +104,7 @@
          "x":0,
          "y":0
         }],
+ "nextobjectid":5,
  "orientation":"orthogonal",
  "properties":
     {
