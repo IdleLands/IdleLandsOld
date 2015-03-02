@@ -103,7 +103,7 @@ class MaelesGuildHall extends GuildBase
         ]
       }
       {
-        startCoords: [18, 4]
+        startCoords: [18, 14]
         signpostLoc: [17, 17]
         tiles: [
           3, 3, 3, 0, 3, 3, 3,
