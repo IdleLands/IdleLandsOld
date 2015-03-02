@@ -144,8 +144,8 @@
                     {
                      "destx":"3",
                      "desty":"1",
-                     "map":"descend",
-                     "movementType":"Passage of Water"
+                     "map":"Passage of Water",
+                     "movementType":"descend"
                     },
                  "rotation":0,
                  "type":"Teleport",
