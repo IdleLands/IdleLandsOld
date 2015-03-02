@@ -209,7 +209,7 @@ class Guild
 
     @_setProperty building, property, value
 
-    Q {isSuccess: yes, code: 87, message: "Successfully set property \"#{property}\" for #{building} to \"#{value}\"!"}
+    Q {isSuccess: yes, code: 87, message: "Successfully set property \"#{property}\" for #{building} to \"#{value}\"!", guild: @buildSaveObject()}
 
   # It is intentional to return 0 if the building isn't built
   getBuildingLevel: (building) ->
@@ -245,7 +245,7 @@ class Guild
     @gold.sub cost
     @_upgrade building
 
-    Q {isSuccess: yes, code: 82, message: "Successfully upgraded #{building} to level #{nextLevel}!"}
+    Q {isSuccess: yes, code: 82, message: "Successfully upgraded #{building} to level #{nextLevel}!", guild: @buildSaveObject()}
 
   _construct: (building, slot, size) ->
     @buildingLevels[building] = 1 unless @buildingLevels[building]
@@ -279,7 +279,7 @@ class Guild
     @gold.sub base.costs.build[building.size]
     @_construct newBuilding, slot, building.size
 
-    Q {isSuccess: yes, code: 706, message: "Successfully built a #{newBuilding} in #{@name}'s #{@base} guild hall!"}
+    Q {isSuccess: yes, code: 706, message: "Successfully built a #{newBuilding} in #{@name}'s #{@base} guild hall!", guild: @buildSaveObject()}
 
   _moveToBase: (@base) ->
     @resetBuildings()
@@ -308,7 +308,7 @@ class Guild
     @gold.sub base.costs.moveIn
     @_moveToBase newBase
 
-    Q {isSuccess: yes, code: 701, message: "You've successfully moved your base to #{newBase}!"}
+    Q {isSuccess: yes, code: 701, message: "You've successfully moved your base to #{newBase}!", guild: @buildSaveObject()}
 
   notifyAllPossibleMembers: (message) ->
     _.each @members, (member) =>
