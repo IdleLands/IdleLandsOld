@@ -19,6 +19,8 @@ class FlipStatEvent extends Event
 
     extra =
       item: "<event.item.#{item.itemClass}>#{item.getName()}</event.item.#{item.itemClass}>"
+      ##TAG:EVENTVAR_SIMPLE: %stat | the stat switcheroo'd (only applies to flipStat events)
+      stat: stat
 
     start = val
     end = -val
