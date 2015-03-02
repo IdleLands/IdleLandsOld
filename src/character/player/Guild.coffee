@@ -255,7 +255,7 @@ class Guild
 
     if building is "Academy"
       @buildingGlobals[building] = {}
-      @buildingGlobals[building].maxBuffLevel = 1
+      @buildingGlobals[building].maxBuffLevel = 1 + Math.floor (@buildingLevels[building] / 10)
 
     @reconstructBuildings()
     @save()
