@@ -220,6 +220,8 @@ class Guild
     @buildingLevels[building]++
 
     if building is "Academy"
+      # TODO make a function to set this
+      @buildingGlobals = {} unless @buildingGlobals
       @buildingGlobals[building] = {} unless @buildingGlobals[building]
       @buildingGlobals[building].maxBuffLevel = 1 + Math.floor (@buildingLevels[building] / 10)
 
