@@ -56,6 +56,10 @@ class Academy extends GuildBuilding
         ret
     }
 
+  properties: [
+    { name: "AutoRenew", values: ["No", "Yes"]}
+  ]
+
   f =
     name: "Instructor"
     gid: 12
