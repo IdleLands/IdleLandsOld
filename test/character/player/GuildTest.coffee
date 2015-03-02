@@ -19,6 +19,7 @@ player =
 {
   identifier: "Oipo"
   gold: new RestrictedNumber 200000, 9999999999, 0
+  level: new RestrictedNumber 1, 999999, 9
   save: () ->
   getExtraDataForREST: (obj1, obj2) ->
     obj2
