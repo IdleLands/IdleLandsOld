@@ -51,9 +51,12 @@ for teleport in allTeleportsOnMaps
 
   [teleport.destx, teleport.desty, teleport.map] = [t.x, t.y, t.map] if (t = teleLocs[teleport.toLoc])
 
-  teleMap = maps[teleport.map]
-  teleName = JSON.stringify teleport
-  tileData = teleMap.getTile (parseInt teleport.destx), (parseInt teleport.desty)
+  try
+    teleMap = maps[teleport.map]
+    teleName = JSON.stringify teleport
+    tileData = teleMap.getTile (parseInt teleport.destx), (parseInt teleport.desty)
+  catch
+    throw new Error "Invalid teleport #{teleport.map}, #{teleName}, leads to #{teleport.destx},#{teleport.desty}"
 
   throw new Error "Teleport (#{teleName}) not in map bounds" if not inBounds teleport.destx, teleport.desty, teleMap.width, teleMap.height
   throw new Error "Teleport (#{teleName}) lands on a dense tile" if tileData.blocked
