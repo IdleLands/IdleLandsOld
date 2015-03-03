@@ -32,6 +32,8 @@ game.playerManager =
 {
   getPlayerById: (identifier) ->
     player
+  getPlayerByName: (name) ->
+    player
 }
 game.eventHandler =
 {
