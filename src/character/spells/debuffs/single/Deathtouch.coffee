@@ -22,7 +22,7 @@ class Deathtouch extends Spell
     `/**
      * This spell does a minor amount of damage, and leeches it back to the caster as HP.
      *
-     * @name poisontouch
+     * @name stuntouch
      * @requirement {class} Necromancer
      * @requirement {mp} 1500
      * @requirement {level} 35
