@@ -44,7 +44,7 @@ app.use "/logs", serveIndex __dirname + '/../../../logs', icons: yes
 
 if config.ravenURL
   raven = require "raven"
-  app.error raven.middleware.express config.ravenURL
+  app.use raven.middleware.express config.ravenURL
 
 ## errarz
 #app.use (err, req, res, next) ->
