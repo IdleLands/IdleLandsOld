@@ -178,7 +178,7 @@ class Pet extends Character
 
   actuallyFindItem: ->
     bonus = @getStatAtCurrentLevel 'itemFindBonus'
-    item = @petManager.game.equipmentGenerator.generateItem null, bonus
+    item = @petManager?.game?.equipmentGenerator?.generateItem null, bonus
 
     return if not item
     return if @tryToEquipToSelf item
