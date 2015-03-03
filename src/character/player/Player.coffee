@@ -900,7 +900,7 @@ class Player extends Character
     @_oldTitles = _.clone @titles
     @titles = []
 
-    achieved = @playerManager.game.achievementManager.getAllAchievedFor @
+    achieved = @playerManager.game.achievementManager?.getAllAchievedFor @
 
     # achievements
     stringCurrent = _.map @_oldAchievements, (achievement) -> achievement.name
