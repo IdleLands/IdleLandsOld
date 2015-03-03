@@ -204,7 +204,9 @@ class Guild
     @reconstructBuildings()
 
   setProperty: (identifier, building, property, value) ->
-    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+    me = @guildManager.game.playerManager.getPlayerById identifier
+    return Q {isSuccess: no, code: 61, message: "You're not an admin in that guild!"} unless @guildManager.checkAdmin me.name
+
     return Q {isSuccess: no, code: 80, message: "You don't have that building constructed!"} unless @hasBuilt building
 
     @_setProperty building, property, value
@@ -230,7 +232,8 @@ class Guild
     @reconstructBuildings()
 
   upgrade: (identifier, building) ->
-    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+    me = @guildManager.game.playerManager.getPlayerById identifier
+    return Q {isSuccess: no, code: 61, message: "You're not an admin in that guild!"} unless @guildManager.checkAdmin me.name
     return Q {isSuccess: no, code: 80, message: "You don't have that building constructed!"} unless @hasBuilt building
 
     #check cost
@@ -261,7 +264,8 @@ class Guild
     @save()
 
   construct: (identifier, newBuilding, slot) ->
-    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+    me = @guildManager.game.playerManager.getPlayerById identifier
+    return Q {isSuccess: no, code: 61, message: "You're not an admin in that guild!"} unless @guildManager.checkAdmin me.name
 
     try
       building = require "../../map/guild-buildings/#{newBuilding}"
@@ -296,7 +300,8 @@ class Guild
     @save()
 
   moveToBase: (identifier, newBase) ->
-    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+    me = @guildManager.game.playerManager.getPlayerById identifier
+    return Q {isSuccess: no, code: 61, message: "You're not an admin in that guild!"} unless @guildManager.checkAdmin me.name
     return Q {isSuccess: no, code: 702, message: "Your base is already #{newBase}!"} if @base is newBase
 
     try
