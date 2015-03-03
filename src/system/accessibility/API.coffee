@@ -265,6 +265,8 @@ class API
       login: (identifier, suppress) =>
         @logger?.debug "Player Command auth.login"
         @logger?.verbose "Player Command auth.login", {identifier, suppress}
+
+        return Q {isSuccess: no, code: 19199191, message: "The game is currently loading, please try again soon."} unless @gameInstance
         @gameInstance.loading.then =>
           @gameInstance.playerManager.addPlayer identifier, suppress, no
 
