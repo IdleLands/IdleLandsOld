@@ -8,10 +8,11 @@ class API
 
   @validateIdentifier: (identifier) ->
     defer = Q.defer()
-    player = @gameInstance.playerManager.getPlayerById identifier
+    @gameInstance.loading.then =>
+      player = @gameInstance.playerManager.getPlayerById identifier
 
-    defer.resolve {isSuccess: yes, code: 999999, player: player} if player #lol
-    defer.resolve {isSuccess: no, code: 10, message: "You aren't logged in!"}
+      defer.resolve {isSuccess: yes, code: 999999, player: player} if player #lol
+      defer.resolve {isSuccess: no, code: 10, message: "You aren't logged in!"}
 
     defer.promise
 
