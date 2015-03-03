@@ -264,6 +264,7 @@ class Guild
     @save()
 
   construct: (identifier, newBuilding, slot) ->
+    return Q {isSuccess: no, code: 80, message: "You already have that building constructed!"} if @hasBuilt newBuilding
     me = @guildManager.game.playerManager.getPlayerById identifier
     return Q {isSuccess: no, code: 61, message: "You're not an admin in that guild!"} unless @guildManager.checkAdmin me.name
 
