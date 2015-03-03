@@ -7,6 +7,9 @@ class API
   @logger: null
 
   @validateIdentifier: (identifier) ->
+
+    return Q {isSuccess: no, code: 19199191, message: "The game is currently loading, please try again soon."} unless @gameInstance
+
     defer = Q.defer()
     @gameInstance.loading.then =>
       player = @gameInstance.playerManager.getPlayerById identifier
