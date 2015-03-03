@@ -265,7 +265,8 @@ class API
       login: (identifier, suppress) =>
         @logger?.debug "Player Command auth.login"
         @logger?.verbose "Player Command auth.login", {identifier, suppress}
-        @gameInstance.playerManager.addPlayer identifier, suppress, no
+        @gameInstance.loading.then =>
+          @gameInstance.playerManager.addPlayer identifier, suppress, no
 
       validateCredentials: (identifier, password) =>
         @logger?.debug "Player Command auth.validateCredentials"
