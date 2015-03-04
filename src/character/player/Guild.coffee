@@ -12,7 +12,9 @@ Chance = require "chance"
 chance = new Chance Math.random
 
 requireDir = require "require-dir"
-buildings = _.keys requireDir "../../map/guild-buildings/"
+allBuildings = requireDir "../../map/guild-buildings/"
+buildings = _.reduce (_.keys allBuildings), ((prev, building) -> prev[building] = {size: allBuildings[building].size, desc: allBuildings[building].desc}; prev), {}
+
 allBases = requireDir "../../map/guild-bases/"
 bases = _.map (_.keys allBases), (base) -> name: base, costs: allBases[base].costs
 
@@ -29,6 +31,7 @@ class Guild
     @buildingLevels = {}
     @buildingLevelCosts = {}
     @buildingProps = {}
+    @buildingGlobals = {}
     @taxPercent = 0
     @initGold()
     @resetBuildings()
@@ -201,12 +204,14 @@ class Guild
     @reconstructBuildings()
 
   setProperty: (identifier, building, property, value) ->
-    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+    me = @guildManager.game.playerManager.getPlayerById identifier
+    return Q {isSuccess: no, code: 61, message: "You're not an admin in that guild!"} unless @guildManager.checkAdmin me.name
+
     return Q {isSuccess: no, code: 80, message: "You don't have that building constructed!"} unless @hasBuilt building
 
     @_setProperty building, property, value
 
-    Q {isSuccess: yes, code: 87, message: "Successfully set property \"#{property}\" for #{building} to \"#{value}\"!"}
+    Q {isSuccess: yes, code: 87, message: "Successfully set property \"#{property}\" for #{building} to \"#{value}\"!", guild: @buildSaveObject()}
 
   # It is intentional to return 0 if the building isn't built
   getBuildingLevel: (building) ->
@@ -215,12 +220,20 @@ class Guild
 
   _upgrade: (building) ->
     @buildingLevels[building]++
+
+    if building is "Academy"
+      # TODO make a function to set this
+      @buildingGlobals = {} unless @buildingGlobals
+      @buildingGlobals[building] = {} unless @buildingGlobals[building]
+      @buildingGlobals[building].maxBuffLevel = 1 + Math.floor (@buildingLevels[building] / 10)
+
     @save()
 
     @reconstructBuildings()
 
   upgrade: (identifier, building) ->
-    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+    me = @guildManager.game.playerManager.getPlayerById identifier
+    return Q {isSuccess: no, code: 61, message: "You're not an admin in that guild!"} unless @guildManager.checkAdmin me.name
     return Q {isSuccess: no, code: 80, message: "You don't have that building constructed!"} unless @hasBuilt building
 
     #check cost
@@ -237,16 +250,23 @@ class Guild
     @gold.sub cost
     @_upgrade building
 
-    Q {isSuccess: yes, code: 82, message: "Successfully upgraded #{building} to level #{nextLevel}!"}
+    Q {isSuccess: yes, code: 82, message: "Successfully upgraded #{building} to level #{nextLevel}!", guild: @buildSaveObject()}
 
   _construct: (building, slot, size) ->
     @buildingLevels[building] = 1 unless @buildingLevels[building]
     @currentlyBuilt[size][slot] = building
+
+    if building is "Academy"
+      @buildingGlobals[building] = {}
+      @buildingGlobals[building].maxBuffLevel = 1 + Math.floor (@buildingLevels[building] / 10)
+
     @reconstructBuildings()
     @save()
 
   construct: (identifier, newBuilding, slot) ->
-    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+    return Q {isSuccess: no, code: 80, message: "You already have that building constructed!"} if @hasBuilt newBuilding
+    me = @guildManager.game.playerManager.getPlayerById identifier
+    return Q {isSuccess: no, code: 61, message: "You're not an admin in that guild!"} unless @guildManager.checkAdmin me.name
 
     try
       building = require "../../map/guild-buildings/#{newBuilding}"
@@ -266,7 +286,7 @@ class Guild
     @gold.sub base.costs.build[building.size]
     @_construct newBuilding, slot, building.size
 
-    Q {isSuccess: yes, code: 706, message: "Successfully built a #{newBuilding} in #{@name}'s #{@base} guild hall!"}
+    Q {isSuccess: yes, code: 706, message: "Successfully built a #{newBuilding} in #{@name}'s #{@base} guild hall!", guild: @buildSaveObject()}
 
   _moveToBase: (@base) ->
     @resetBuildings()
@@ -281,7 +301,8 @@ class Guild
     @save()
 
   moveToBase: (identifier, newBase) ->
-    return Q {isSuccess: no, code: 50, message: "You aren't the leader!"} if @leader isnt identifier
+    me = @guildManager.game.playerManager.getPlayerById identifier
+    return Q {isSuccess: no, code: 61, message: "You're not an admin in that guild!"} unless @guildManager.checkAdmin me.name
     return Q {isSuccess: no, code: 702, message: "Your base is already #{newBase}!"} if @base is newBase
 
     try
@@ -295,7 +316,7 @@ class Guild
     @gold.sub base.costs.moveIn
     @_moveToBase newBase
 
-    Q {isSuccess: yes, code: 701, message: "You've successfully moved your base to #{newBase}!"}
+    Q {isSuccess: yes, code: 701, message: "You've successfully moved your base to #{newBase}!", guild: @buildSaveObject()}
 
   notifyAllPossibleMembers: (message) ->
     _.each @members, (member) =>
@@ -305,6 +326,10 @@ class Guild
 
   invitesLeft: ->
     @invitesAvailable = @cap() - (@members.length + @invites.length)
+
+  getStatEffects: ->
+    Academy = require "../../map/guild-buildings/Academy"
+    Academy.getStatEffects if @buildingLevels["Academy"] then @buildingLevels["Academy"] else 0
 
   avgLevel: ->
 

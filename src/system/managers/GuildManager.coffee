@@ -284,11 +284,17 @@ class GuildManager
 
     return Q {isSuccess: no, code: 59, message: "You aren't in a guild!"} unless player.guild
     return Q {isSuccess: no, code: 61, message: "You aren't a guild administrator!"} unless @checkAdmin player.name, player.guild
+
     typeString = "Guild#{type}"
 
     return Q {isSuccess: no, code: 150, message: "That is not a valid guild buff type!"} unless guildBuffs[typeString]
     return Q {isSuccess: no, code: 151, message: "That is not a valid tier!"} unless tier > 0
     guild = @guildHash[player.guild]
+
+    return Q {isSuccess: no, code: 78, message: "You need to build a guild academy first!"} unless guild.hasBuilt("Academy")
+
+    requiredLevel = tier * 10 + 1
+    return Q {isSuccess: no, code: 78, message: "You need to build a upgrade the academy to level #{requiredLevel} first!"} unless tier <= guild.buildingGlobals["Academy"]?.maxBuffLevel
 
     tempBuff = new guildBuffs[typeString] tier
     tierLevel = tempBuff.getTier(tier).level

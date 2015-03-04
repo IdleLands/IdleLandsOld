@@ -7,11 +7,15 @@ class API
   @logger: null
 
   @validateIdentifier: (identifier) ->
-    defer = Q.defer()
-    player = @gameInstance.playerManager.getPlayerById identifier
 
-    defer.resolve {isSuccess: yes, code: 999999, player: player} if player #lol
-    defer.resolve {isSuccess: no, code: 10, message: "You aren't logged in!"}
+    return Q {isSuccess: no, code: 19199191, message: "The game is currently loading, please try again soon."} unless @gameInstance
+
+    defer = Q.defer()
+    @gameInstance.loading.then =>
+      player = @gameInstance.playerManager.getPlayerById identifier
+
+      defer.resolve {isSuccess: yes, code: 999999, player: player} if player #lol
+      defer.resolve {isSuccess: no, code: 10, message: "You aren't logged in!"}
 
     defer.promise
 
@@ -261,7 +265,10 @@ class API
       login: (identifier, suppress) =>
         @logger?.debug "Player Command auth.login"
         @logger?.verbose "Player Command auth.login", {identifier, suppress}
-        @gameInstance.playerManager.addPlayer identifier, suppress, no
+
+        return Q {isSuccess: no, code: 19199191, message: "The game is currently loading, please try again soon."} unless @gameInstance
+        @gameInstance.loading.then =>
+          @gameInstance.playerManager.addPlayer identifier, suppress, no
 
       validateCredentials: (identifier, password) =>
         @logger?.debug "Player Command auth.validateCredentials"

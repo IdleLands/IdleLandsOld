@@ -88,7 +88,7 @@
     {
       "type": "party",
       "min": 1,
-      "max": 400
+      "max": 800
     },
     {
       "type": "battle",

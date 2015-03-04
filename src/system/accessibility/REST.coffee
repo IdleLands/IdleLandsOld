@@ -42,14 +42,18 @@ app.use "/img", express.static __dirname + '/../../../assets/img'
 app.use "/logs", express.static __dirname + '/../../../logs'
 app.use "/logs", serveIndex __dirname + '/../../../logs', icons: yes
 
-# errarz
-app.use (err, req, res, next) ->
-#  API.gameInstance.errorHandler.captureException err
-  console.error err.message, err.stack
-  res.status(500).send
-    err: err
-    message: err.message
-    stack: err.stack
+if config.ravenURL
+  raven = require "raven"
+  app.use raven.middleware.express config.ravenURL
+
+## errarz
+#app.use (err, req, res, next) ->
+##  API.gameInstance.errorHandler.captureException err
+#  console.error err.message, err.stack
+#  res.status(500).send
+#    err: err
+#    message: err.message
+#    stack: err.stack
 
 # spin it up
 http.createServer(app).listen port

@@ -43,6 +43,8 @@ class GMCommands
     item = new Equipment params
     item.itemClass = 'custom'
 
+    item.equippedBy = [player.name]
+
     player.forceIntoOverflow item
 
   arrangeBattle: (playerList) ->

@@ -10,7 +10,7 @@ Event = require "../Event"
  */`
 class FindItemEvent extends Event
   go: ->
-    item = @game.equipmentGenerator.generateItem null, @player.calc.luckBonus()
+    item = @game.equipmentGenerator?.generateItem null, @player.calc.luckBonus()
     return if not item
 
     @game.eventHandler.tryToEquipItem @event, @player, item
