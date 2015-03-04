@@ -9,7 +9,7 @@ GuildBuilding = require "../GuildBuilding"
  * @package Guild
  * @cost {level-up} level*5000
  * @property Name (Any string)
- * @property AttemptEnchant (Yes/No; whether or not to attempt unsafe enchantments)
+ * @property AttemptEnchant (Yes/No; whether or not to attempt unsafe enchantments. An enchantment is considered unsafe if the Enchantress level is not 20 levels over the learned enchantment level; this means that a +1 requires level 30 to be safe)
  * @size {sm}
  */`
 class Enchantress extends GuildBuilding
