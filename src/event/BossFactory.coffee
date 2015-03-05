@@ -31,9 +31,6 @@ class BossFactory
     baseObj = BossInformation.bosses[name]
     statObj = baseObj.stats
 
-    statObj.hp = statObj.hp ? 0
-    statObj.hp += statObj.level * 250
-
     statObj.name = name
 
     monster = @game.monsterGenerator.experimentalMonsterGeneration statObj, baseObj.score
@@ -44,6 +41,9 @@ class BossFactory
       baseItem.name = item.name
       baseItem.itemClass = setAllItemClasses
       monster.equip new Equipment baseItem
+    
+    monster.equipment[0].hp = monster.equipment[0].hp ? 0
+    monster.equipment[0].hp = monster.level.getValue() * 250
 
     monster.on "combat.party.lose", (winningParty) =>
       _.each winningParty, (member) =>
