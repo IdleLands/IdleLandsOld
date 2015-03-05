@@ -85,7 +85,7 @@ class ProvidenceEvent extends Event
       @player.rebuildPersonalityList()
       message = "#{message} Mindwipe!"
 
-    else if (chance.bool {likelihood: @probabilities.personalityMod})
+    else if (chance.bool {likelihood: @probabilities.personalityMod}) and personalityMod.length > 0
       @player.personalityStrings = personalityMod
       @player.rebuildPersonalityList()
       message = "#{message} Personality shift!"
