@@ -43,7 +43,7 @@ class BossFactory
       monster.equip new Equipment baseItem
     
     monster.equipment[0].hp = monster.equipment[0].hp ? 0
-    monster.equipment[0].hp = monster.level.getValue() * 250
+    monster.equipment[0].hp = monster.level.getValue() * 1000
 
     monster.on "combat.party.lose", (winningParty) =>
       _.each winningParty, (member) =>
