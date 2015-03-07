@@ -286,7 +286,7 @@ class ComponentDatabase
       return defer.resolve {isSuccess: no, code: 596, message: "That gift is not redeemable!"} unless doc.gift and doc.gift > 0
 
       player = @game.playerManager.playerHash[identifier]
-      player.gold.add doc.gift
+      player.addGold doc.gift
       defer.resolve {isSuccess: yes, code: 598, message: "Successfully claimed your gift of #{doc.gift} gold!"}
       @eventsDb.update {_id: ObjectID crierId}, {$push: {clicked: {player: identifier, id: giftId, click: new Date()}}}, ->
 
@@ -384,7 +384,7 @@ class ComponentDatabase
 
       return Q {isSuccess: no, code: 500, message: "You don't have enough gold for that town crier statement. It costs a total of #{cost} gold. We have to pay him somehow!"} if player.gold.getValue() < cost
 
-      player.gold.sub cost
+      player.takeGold cost
 
     content.submitterName = player.name
     content.submitter = identifier

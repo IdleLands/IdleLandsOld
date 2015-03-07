@@ -181,7 +181,7 @@ class API
         player = @gameInstance.playerManager.getPlayerByName playerName
         @logger?.debug "GM Command player.giveGold"
         @logger?.verbose "GM Command player.giveGold", {playerName, gold, player}
-        player.gold.add gold
+        player.addGold gold
 
     arrangeBattle: (names) =>
       @logger?.debug "GM Command arrangeBattle"

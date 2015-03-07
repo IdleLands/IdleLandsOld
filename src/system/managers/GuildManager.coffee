@@ -68,7 +68,7 @@ class GuildManager
       @guilds.push guildObject
       player.guild = name
       player.guildStatus = 2
-      player.gold.sub goldCost
+      player.takeGold goldCost
       player.save()
 
       guildObject.avgLevel()
@@ -336,7 +336,7 @@ class GuildManager
     gold = Math.round Math.min gold, guild.gold.maximum-guild.gold.getValue() #Prevent overdonation
 
     guild.addGold gold
-    player.gold.sub gold
+    player.takeGold gold
     guild.save()
 
     ##TAG:EVENT_PLAYER: gold.guildDonation | guild.name, gold | Emitted when a player willingly donates gold to their guild
