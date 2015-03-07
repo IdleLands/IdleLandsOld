@@ -74,7 +74,7 @@ class API
         @validateContentModerator identifier
         .then (res) =>
           actualRes = null
-          if res.isSuccess then actualRes = @gameInstance.componentDatabase.approveContent ids else actualRes = res
+          if res.isSuccess then actualRes = @gameInstance.componentDatabase.approveContent ids, identifier else actualRes = res
           @logger?.debug "GM Command custom.approve"
           @logger?.verbose "GM Command custom.approve", {res: actualRes}
           actualRes
