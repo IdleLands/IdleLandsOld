@@ -102,17 +102,11 @@ class PetManager
     loadProfession = (professionName) ->
       new (require "../../character/classes/#{professionName}")()
 
-    loadEquipment = (equipment, autoequip = no) ->
-      _.forEach equipment, (item) ->
-        item.__proto__ = Equipment.prototype
-        pet.addToEquippedBy item if autoequip
-
     _.forEach ['hp', 'mp', 'special', 'level', 'xp', 'gold'], (item) ->
       pet[item] = loadRN pet[item]
 
     pet.loadCalc()
-    pet.equipment = loadEquipment pet.equipment, yes
-    pet.inventory = loadEquipment pet.inventory
+    pet.loadEquipmentAndInventory()
     pet.special.name = ''
     pet.profession = loadProfession pet.professionName
 

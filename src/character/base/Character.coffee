@@ -5,6 +5,7 @@ _ = require "lodash"
 Q = require "q"
 Personality = require "./Personality"
 Constants = require "../../system/utilities/Constants"
+Equipment = require "../../item/Equipment"
 chance = new (require "chance")()
 
 class Character extends EventEmitter2
@@ -216,6 +217,11 @@ class Character extends EventEmitter2
       bonus++ while value > tiers[tiers.length-1] += postMaxTierDifference
 
     bonus
+
+  loadEquipmentAndInventory: ->
+    all = @equipment.concat (@overflow or []).concat (@inventory or [])
+    _.forEach all, (item) =>
+      item.__proto__ = Equipment.prototype
 
   gainXp: ->
   gainGold: ->

@@ -375,11 +375,6 @@ class PlayerManager
     loadProfession = (professionName) ->
       new (require "../../character/classes/#{professionName}")()
 
-    loadEquipment = (equipment, autoequip = no) ->
-      _.forEach equipment, (item) ->
-        item.__proto__ = Equipment.prototype
-        player.addToEquippedBy item if autoequip
-
     _.forEach ['hp', 'mp', 'special', 'level', 'xp', 'gold'], (item) ->
       player[item] = loadRN player[item]
 
@@ -411,8 +406,7 @@ class PlayerManager
     if not player.equipment
       player.generateBaseEquipment()
     else
-      player.equipment = loadEquipment player.equipment, yes
-      player.overflow = loadEquipment player.overflow
+      player.loadEquipmentAndInventory()
 
     player.special.name = ''
     if not player.professionName
