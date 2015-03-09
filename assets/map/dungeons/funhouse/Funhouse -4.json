@@ -274,44 +274,6 @@
                  "y":240
                 }, 
                 {
-                 "gid":32,
-                 "height":0,
-                 "id":24,
-                 "name":"ToFunhouse-5",
-                 "properties":
-                    {
-                     "destx":"2",
-                     "desty":"6",
-                     "map":"Funhouse -5",
-                     "movementType":"teleport"
-                    },
-                 "rotation":0,
-                 "type":"Teleport",
-                 "visible":true,
-                 "width":0,
-                 "x":192,
-                 "y":240
-                }, 
-                {
-                 "gid":32,
-                 "height":0,
-                 "id":25,
-                 "name":"ToFunhouse-5",
-                 "properties":
-                    {
-                     "destx":"2",
-                     "desty":"6",
-                     "map":"Funhouse -5",
-                     "movementType":"teleport"
-                    },
-                 "rotation":0,
-                 "type":"Teleport",
-                 "visible":true,
-                 "width":0,
-                 "x":32,
-                 "y":224
-                }, 
-                {
                  "gid":18,
                  "height":0,
                  "id":27,
@@ -412,6 +374,44 @@
                  "width":0,
                  "x":224,
                  "y":160
+                }, 
+                {
+                 "gid":32,
+                 "height":0,
+                 "id":34,
+                 "name":"ToFunhouse-2",
+                 "properties":
+                    {
+                     "destx":"11",
+                     "desty":"3",
+                     "map":"Funhouse -2",
+                     "movementType":"teleport"
+                    },
+                 "rotation":0,
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":32,
+                 "y":224
+                }, 
+                {
+                 "gid":32,
+                 "height":0,
+                 "id":35,
+                 "name":"ToFunhouse-2",
+                 "properties":
+                    {
+                     "destx":"11",
+                     "desty":"3",
+                     "map":"Funhouse -2",
+                     "movementType":"teleport"
+                    },
+                 "rotation":0,
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":192,
+                 "y":240
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -462,7 +462,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":34,
+ "nextobjectid":36,
  "orientation":"orthogonal",
  "properties":
     {

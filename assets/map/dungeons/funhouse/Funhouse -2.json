@@ -137,7 +137,7 @@
                  "name":"",
                  "properties":
                     {
-                     "flavorText":"A laughing skull reminds Funhouse attendees there is no turning back from here. "
+                     "flavorText":"A laughing skull reminds Funhouse attendees there is no turning back from here. Though, Norkos Council safety regulations have forced us to make it safer!"
                     },
                  "rotation":0,
                  "type":"Sign",
@@ -185,44 +185,6 @@
                  "y":96
                 }, 
                 {
-                 "gid":32,
-                 "height":0,
-                 "id":22,
-                 "name":"ToFunhouse-5",
-                 "properties":
-                    {
-                     "destx":"2",
-                     "desty":"6",
-                     "map":"Funhouse -5",
-                     "movementType":"teleport"
-                    },
-                 "rotation":0,
-                 "type":"Teleport",
-                 "visible":true,
-                 "width":0,
-                 "x":64,
-                 "y":80
-                }, 
-                {
-                 "gid":32,
-                 "height":0,
-                 "id":23,
-                 "name":"ToFunhouse-5",
-                 "properties":
-                    {
-                     "destx":"2",
-                     "desty":"6",
-                     "map":"Funhouse -5",
-                     "movementType":"teleport"
-                    },
-                 "rotation":0,
-                 "type":"Teleport",
-                 "visible":true,
-                 "width":0,
-                 "x":96,
-                 "y":96
-                }, 
-                {
                  "gid":1,
                  "height":0,
                  "id":25,
@@ -240,6 +202,44 @@
                  "width":0,
                  "x":16,
                  "y":128
+                }, 
+                {
+                 "gid":32,
+                 "height":0,
+                 "id":26,
+                 "name":"ToFunhouse-2",
+                 "properties":
+                    {
+                     "destx":"11",
+                     "desty":"3",
+                     "map":"Funhouse -2",
+                     "movementType":"teleport"
+                    },
+                 "rotation":0,
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":64,
+                 "y":80
+                }, 
+                {
+                 "gid":32,
+                 "height":0,
+                 "id":27,
+                 "name":"ToFunhouse-2",
+                 "properties":
+                    {
+                     "destx":"11",
+                     "desty":"3",
+                     "map":"Funhouse -2",
+                     "movementType":"teleport"
+                    },
+                 "rotation":0,
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":96,
+                 "y":96
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -275,7 +275,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":26,
+ "nextobjectid":28,
  "orientation":"orthogonal",
  "properties":
     {
