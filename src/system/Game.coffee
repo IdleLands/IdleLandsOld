@@ -7,6 +7,7 @@ EventHandler = require "./handlers/EventHandler"
 MonsterGenerator = require "./generators/MonsterGenerator"
 MessageCreator = require "./handlers/MessageCreator"
 ComponentDatabase = require "./database/ComponentDatabase"
+UsableGenerator = require "./generators/UsableGenerator"
 EquipmentGenerator = require "./generators/EquipmentGenerator"
 SandwichGenerator = require "./generators/SandwichGenerator"
 ShopGenerator = require "./generators/ShopGenerator"
@@ -88,6 +89,7 @@ class Game
       @spellManager = new SpellManager @
       @globalEventHandler = new GlobalEventHandler @
       @equipmentGenerator = new EquipmentGenerator @
+      @usableGenerator = new UsableGenerator @
       @monsterGenerator = new MonsterGenerator @
       @achievementManager = new AchievementManager @
       @sandwichGenerator = new SandwichGenerator @

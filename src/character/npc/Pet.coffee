@@ -103,16 +103,16 @@ class Pet extends Character
     itemsInSlot.length < PetData[@type].slots[type]
 
   tryToEquipToSelf: (item) ->
-    return if not @smartEquip
-    return if not PetData[@type].slots[item.type]
-    return if not @canUseItem item
-    return if not @canEquip item
+    return unless @smartEquip
+    return unless PetData[@type].slots[item.type]
+    return unless @canUseItem item
+    return unless @canEquip item
 
     itemsInSlot = @equippedItemsOfType item.type
     if itemsInSlot.length >= PetData[@type].slots[item.type]
       lowestScoreItem = _.min itemsInSlot, (item) => @calc.itemScore item
 
-      if lowestScoreItem.score() < item.score()
+      if (not _.isObject lowestScoreItem) or lowestScoreItem.score() < item.score()
         @equip item
         @equipment = _.without @equipment, lowestScoreItem
         @sellItem lowestScoreItem
@@ -165,7 +165,7 @@ class Pet extends Character
     @addToItemFindTimer findTime
 
   sellItem: (item, findLowest = @smartSell) ->
-    if findLowest
+    if findLowest and @inventory.length > 0
       lowestScoreItem = _.min @inventory, (item) -> item.score()
 
       if lowestScoreItem.score() < item?.score()

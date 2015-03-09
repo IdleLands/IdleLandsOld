@@ -203,6 +203,9 @@ class Character extends EventEmitter2
   levelUpXpCalc: (level) ->
     Math.floor 100 + (400 * Math.pow level, 1.71)
 
+  luckBonus: ->
+    @calcLuckBonusFromValue @self.calc.stat 'luck'
+
   calcLuckBonusFromValue: (value) ->
     tiers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 25, 35, 50, 65, 75, 85, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 450, 500]
 
@@ -219,7 +222,9 @@ class Character extends EventEmitter2
     bonus
 
   loadEquipmentAndInventory: ->
-    all = @equipment.concat (@overflow or []).concat (@inventory or [])
+    all = @equipment
+      .concat @overflow ? []
+      .concat @inventory ? []
     _.forEach all, (item) =>
       item.__proto__ = Equipment.prototype
 
@@ -720,7 +725,7 @@ class Character extends EventEmitter2
       itemScore: (item) ->
         if not item?.score and not item?._calcScore then @self.playerManager.game.errorHandler.captureError (new Error "Bad item for itemScore calculation"), extra: item
         baseValue = item?.score?() or item?._calcScore or 0
-        (Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue) + @self.itemPriority item
+        (Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue) + ((@self.itemPriority? item) ? 0)
 
       ##TAG:REDUCTION: totalItemScore | all item scores | none | Called when calculating the score of a party
       totalItemScore: ->

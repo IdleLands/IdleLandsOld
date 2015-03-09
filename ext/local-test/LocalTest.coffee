@@ -86,6 +86,8 @@ pid = (id) -> pm().getPlayerById id
 event = (player, event, ig) -> gm().event.single player, event, ig
 gevent = (event) -> gm().event.global event
 
+usable = (bonus) -> inst().usableGenerator.generateUsable null, bonus
+
 colorMap =
   "player.name":                colors.bold
   "event.partyName":            colors.bold
