@@ -20,7 +20,7 @@ class Mapceptional extends Achievement
 
     possibilities = [
       {mapName: "Norkos Secret -1", reward: "+20 CON", con: -> 20}
-      {mapName: "Norkos -11", reward: "+100 CON", con: -> 100}
+      {mapName: "Norkos Dungeon -11", reward: "+100 CON", con: -> 100}
     ]
 
     achieved = []
