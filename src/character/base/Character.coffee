@@ -715,7 +715,7 @@ class Character extends EventEmitter2
       itemScore: (item) ->
         if not item?.score and not item?._calcScore then @self.playerManager.game.errorHandler.captureError (new Error "Bad item for itemScore calculation"), extra: item
         baseValue = item?.score?() or item?._calcScore or 0
-        (Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue) + @self.itemPriority item
+        (Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue) + (@self.itemPriority? item or 0)
 
       ##TAG:REDUCTION: totalItemScore | all item scores | none | Called when calculating the score of a party
       totalItemScore: ->
