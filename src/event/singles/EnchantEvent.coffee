@@ -38,7 +38,7 @@ class EnchantEvent extends Event
 
   doNormalEnchant: (item) ->
 
-    return no if item.enchantLevel >= Constants.defaults.game.maxEnchantLevel
+    return no if item.enchantLevel >= Constants.defaults.game.maxEnchantLevel and not item.limitless
 
     [stat, boost] = @getStatForItem item
 
