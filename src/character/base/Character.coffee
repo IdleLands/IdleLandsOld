@@ -559,7 +559,8 @@ class Character extends EventEmitter2
       # */`
 
       #`/**
-      # * Sacred makes it so there is no chance of this item being hit by blessItem, flipStat, or forsakeItem.
+      # * Sacred makes it so there is no chance of this item being hit by blessItem, flipStat, or forsakeItem
+      # * (unless the item is also forsaken, in which case, that takes precedence. Evil rules Idliathlia!).
       # *
       # * @name sacred
       # * @stacks no
