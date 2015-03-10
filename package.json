@@ -57,7 +57,7 @@
     "watch": "^0.13.0",
     "webrepl": "^0.4.7",
     "winston": "^0.8.3",
-    "color-namer": "~0.3.0"
+    "color-namer": "~1.0.0"
   },
   "devDependencies": {
     "glob": "^4.3.5",
