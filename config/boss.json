@@ -1148,7 +1148,7 @@
         "availableScore": 15555,
         "stats": {
             "class": "Random",
-            "hp": 1000000,
+            "hp": 5000000,
             "level": 200,
             "str": 80000,
             "con": 25000,
