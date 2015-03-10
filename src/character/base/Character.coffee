@@ -539,8 +539,9 @@ class Character extends EventEmitter2
       vorpal:   -> 0 < @self.calc.stat 'vorpal'
 
       #`/**
-      # * Forsaken makes it so every blessItem, flipStat, or forsakeItem hits this item. In the event that
+      # * Forsaken makes it so every event hits this item. In the event that
       # * there are multiple forsaken items in your inventory, one will be chosen at random.
+      # * If your item is not limitless, enchant/tinker events will be swallowed into the void.
       # *
       # * @name forsaken
       # * @stacks no
