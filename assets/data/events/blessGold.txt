@@ -41,7 +41,7 @@ A time anomaly made a few bank statements non-exist! The bank credits %player %g
 %player finds the right end of a black hole! %She finds %gold gold.
 %player works a night guarding a VIP. %player is paid %gold gold. Good job.
 %player kills a caribou and crawls inside. %She finds %gold gold in it's stomach!
-%player starts eating moonrocks... a week later they find %gold gold...
+%player starts eating moonrocks... a week later %she finds %gold gold...
 %player yells insults at a passing god. $dict:deity$ thanks %himher with %gold gold.
 %player happens upon a dragon ride camp. %She spends two weeks learning to fly. Upon graduation, %player was awarded %gold gold for having top honours!
 %player logs onto %hisher computer and checks %hisher email. %She won several online lotteries gaining %gold gold!

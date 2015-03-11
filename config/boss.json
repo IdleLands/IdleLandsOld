@@ -449,6 +449,9 @@
         },
         "items": [
             { "name": "Lich Lord's Phylactery", "dropPercent": 80 }
+        ],
+        "collectibles": [
+            { "name": "Cursed Orb", "dropPercent": 75, "flavorText": "Every crack looks like it opens to a void."}
         ]
 		},
     "Venerable Dwarven Lord": {
@@ -817,6 +820,9 @@
         },
         "items": [
             { "name": "Flame Polished Gauntlets", "dropPercent": 75 }
+        ],
+        "collectibles": [
+            { "name": "Bottle of Ketchup", "dropPercent": 75, "flavorText": "Spot was always prepared for adventurers."}
         ]
     },
     "Little Yeti": {
@@ -975,7 +981,7 @@
 	    "gender": "female",
             "hp": 185000,
 	    "mp": 200000,
-            "level": 55,
+            "level": 100,
             "str": 6900,
             "dex": 4000,
 	    "con": 3000,
@@ -1142,7 +1148,7 @@
         "availableScore": 15555,
         "stats": {
             "class": "Random",
-            "hp": 1000000,
+            "hp": 5000000,
             "level": 200,
             "str": 80000,
             "con": 25000,
