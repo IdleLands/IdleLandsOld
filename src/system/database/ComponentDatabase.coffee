@@ -245,9 +245,9 @@ class ComponentDatabase
 
     message = "New #{types.join ", "}\n\nThanks to #{submitters.join ", "}"
 
-    repo.pull "origin", "master", {}
     repo.addSync ["."]
     repo.commitSync message
+    repo.pull "origin", "master", {}
 
     repo.push "origin", "master", {###username: config.githubUser, password: config.githubPassword###}, ->
 
