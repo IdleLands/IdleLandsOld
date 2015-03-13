@@ -361,6 +361,9 @@ class ComponentDatabase
     extra.xp = 5670 if _.contains testType, "xp"
     extra.gold = 10456 if _.contains testType, "gold"
     extra.item = (_.sample player.equipment).getName() if _.contains testType, "item"
+    extra.stat = _.sample ['str', 'con', 'int', 'wis', 'dex', 'agi', 'luck']
+    extra.partyName = 'Awesome Party Name'
+    extra.partyMembers = 'Thing One, Thing Two, and Thing Three'
 
     text = MessageCreator._replaceMessageColors MessageCreator.doStringReplace content.content, player, extra
 
