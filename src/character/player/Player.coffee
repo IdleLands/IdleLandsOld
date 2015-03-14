@@ -267,11 +267,11 @@ class Player extends Character
     newLoc = dest
 
     if not dest.map and not dest.toLoc
-      @playerManager.game.errorHandler.captureMessage "ERROR. No dest.map at #{@x},#{@y} in #{@map}"
+      @playerManager.game.errorHandler.captureException new Error "ERROR. No dest.map at #{@x},#{@y} in #{@map}"
       return
 
     if not dest.movementType
-      @playerManager.game.errorHandler.captureMessage "ERROR. No dest.movementType at #{@x},#{@y} in #{@map}"
+      @playerManager.game.errorHandler.captureException new Error "ERROR. No dest.movementType at #{@x},#{@y} in #{@map}"
       return
       
     dest.movementType = dest.movementType.toLowerCase()
