@@ -37,7 +37,7 @@ class Bonecraft extends Spell
     message = "%casterName cast %spellName at %targetName and revived %himher to %damage HP -- but on %casterName's side!"
     @doDamageTo player, -damage, message
 
-    player.party.playerLeave player, yes
+    player.party?.playerLeave player, yes
     @caster.party.recruit [player]
 
   constructor: (@game, @caster) ->
