@@ -21,7 +21,7 @@ class UsableGenerator extends Generator
       type: "utility"
 
       _usableProps:
-        color: colorNamer(chance.color({format: 'hex'}))[0].name
+        color: colorNamer(chance.color({format: 'hex'})).ntc[0].name
         type: _.sample UsableGenerator::adjectives
         size: @randomWeightedCharges()
 
