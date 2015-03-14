@@ -453,8 +453,14 @@ class Player extends Character
     [(@num2dir dir, @x, @y), dir]
 
   getTileAt: (x = @x, y = @y) ->
-    lookAtTile = @playerManager.game.world.maps[@map].getTile.bind @playerManager.game.world.maps[@map]
-    lookAtTile x,y
+    try
+      lookAtTile = @playerManager.game.world.maps[@map].getTile.bind @playerManager.game.world.maps[@map]
+      lookAtTile x,y
+    catch
+      @map = "Norkos"
+      @x = 10
+      @y = 10
+      @playerManager.game.world.maps[@map].getTile.bind @playerManager.game.world.maps[@map] @x, @y
 
   getRegion: ->
     regions[@getTileAt().region.split(' ').join('')]
