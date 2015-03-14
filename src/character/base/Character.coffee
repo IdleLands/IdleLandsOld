@@ -13,7 +13,7 @@ class Character extends EventEmitter2
 
     [@name, @identifier] = [options.name, options.identifier]
     @hp = new RestrictedNumber 0, 20, 20
-    @mp = new RestrictedNumber 0, 0, 0pl
+    @mp = new RestrictedNumber 0, 0, 0
     @special = new RestrictedNumber 0, 0, 0
     @level = new RestrictedNumber 0, 100, 0
     @equipment = []
