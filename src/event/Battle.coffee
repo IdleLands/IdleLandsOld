@@ -444,7 +444,7 @@ class Battle
     _.each players, (player) =>
       @game.eventHandler.broadcastEvent
         sendMessage: no
-        extra: {battleId: docs[0]._id, linkTitle: @battleCache.name}
+        extra: {battleId: docs?[0]._id, linkTitle: @battleCache.name}
         player: player
         message: ">>> BATTLE: #{@battleCache.name} has occurred involving #{@playerNames}. Check it out here: #{@link}"
         type: "combat"
