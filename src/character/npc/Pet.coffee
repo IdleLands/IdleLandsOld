@@ -109,7 +109,7 @@ class Pet extends Character
     return if not @canEquip item
 
     itemsInSlot = @equippedItemsOfType item.type
-    if itemsInSlot.length >= PetData[@type].slots[item.type]
+    if itemsInSlot.length >= PetData[@type].slots[item.type] and PetData[@type].slots[item.type] > 0
       lowestScoreItem = _.min itemsInSlot, (item) => @calc.itemScore item
 
       if lowestScoreItem.score() < item.score()
