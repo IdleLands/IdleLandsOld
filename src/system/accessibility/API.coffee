@@ -39,7 +39,7 @@ class API
         @gameInstance.playerManager.registerLoadAllPlayersHandler handler
     content:
       map: (mapName) =>
-        @gameInstance.world.maps[mapName].getMapData()
+        @gameInstance.world.maps[mapName]?.getMapData()
       battle: (battleId) =>
         @gameInstance.componentDatabase.retrieveBattle battleId
     events:
