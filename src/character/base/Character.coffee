@@ -715,7 +715,7 @@ class Character extends EventEmitter2
       ##TAG:REDUCTION: itemScore | item.score() | self, item, baseItemScore | Called when checking the score of a new-found item
       itemScore: (item) ->
         root = @self.playerManager ? @self.petManager
-        if not item?.score and not item?._calcScore then root.game.errorHandler.captureError (new Error "Bad item for itemScore calculation"), extra: item
+        if not item?.score and not item?._calcScore then root.game.errorHandler.captureError (new Error "Bad item for itemScore calculation"), extra: item: item
         baseValue = item?.score?() or item?._calcScore or 0
         (Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue) + (@self.itemPriority? item or 0)
 
