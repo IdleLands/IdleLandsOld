@@ -151,7 +151,7 @@ class Battle
     1 < aliveParties.length
 
   checkIfOpponentHasBattleEffect: (turntaker, effect) ->
-    0 < _.reduce (_.difference @turnOrder, turntaker.party.players), ((prev, player) -> prev+player.calc[effect]()), 0
+    0 < _.reduce (_.difference @turnOrder, turntaker.party?.players), ((prev, player) -> prev+player.calc[effect]()), 0
 
   beginTakingTurns: ->
     @logger?.info "battle.start"
