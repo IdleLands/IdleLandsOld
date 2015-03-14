@@ -460,7 +460,7 @@ class Player extends Character
       @map = "Norkos"
       @x = 10
       @y = 10
-      @playerManager.game.world.maps[@map].getTile.bind @playerManager.game.world.maps[@map] @x, @y
+      @getTileAt()
 
   getRegion: ->
     regions[@getTileAt().region.split(' ').join('')]
