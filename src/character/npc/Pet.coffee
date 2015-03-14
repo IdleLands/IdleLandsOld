@@ -120,7 +120,7 @@ class Pet extends Character
 
           return true
       catch e
-        @petManager.game.errorHandler.captureException e, extra: {slot: itemsInSlot, len: itemsInSlot.length, totalSlots: PetData[@type].slots[item.type], type: @type, itemtype: item.type }
+        @petManager.game.errorHandler.captureException e, extra: {lowest: lowestScoreItem, score: @calc.itemScore(lowestScoreItem), slot: itemsInSlot, len: itemsInSlot.length, totalSlots: PetData[@type].slots[item.type], type: @type, itemtype: item.type }
 
     else if itemsInSlot.length < PetData[@type].slots[item.type]
       @equip item
