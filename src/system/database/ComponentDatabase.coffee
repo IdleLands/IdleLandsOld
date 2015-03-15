@@ -354,10 +354,11 @@ class ComponentDatabase
   testContent: (identifier, content) ->
 
     player = @game.playerManager.getPlayerById identifier
+    return Q {isSuccess: no, code: 5123, message: "Invalid player."} unless player
 
     extra = {}
 
-    testType = content.type.toLowerCase()
+    testType = content.type?.toLowerCase()
     extra.xp = 5670 if _.contains testType, "xp"
     extra.gold = 10456 if _.contains testType, "gold"
     extra.item = (_.sample player.equipment).getName() if _.contains testType, "item"
