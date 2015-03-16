@@ -207,7 +207,7 @@ class PlayerManager
     defer = Q.defer()
 
     @checkPassword identifier, password
-    .then (res) =>
+    .then (res) ->
 
       return defer.resolve res unless res.isSuccess
 

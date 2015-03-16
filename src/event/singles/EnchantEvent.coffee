@@ -85,7 +85,7 @@ class EnchantEvent extends Event
     if @player.gold.getValue() < cost
       return "#{@event.remark} Unfortunately, %player lacks the funds to get a +#{nextLevel} enchantment!"
 
-    @player.gold.sub cost
+    @player.takeGold cost
 
     if chance.bool {likelihood: notBlowupChance}
       base = "#{@event.remark} Thankfully, %player managed to get a successful +#{++item.enchantLevel} enchantment for %hisher newly %item!"
