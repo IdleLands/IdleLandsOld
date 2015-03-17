@@ -226,7 +226,7 @@ class ComponentDatabase
 
   allValidTypes: -> @contentFolders.events.concat @contentFolders.ingredients.concat @contentFolders.items.concat @contentFolders.monsters.concat @contentFolders.npcs.concat @contentFolders.strings
 
-  commitAndPushAllFiles: (types, submitters) ->
+  commitAndPushAllFiles: (types, submitters, moderator) ->
     #if not config.githubUser or not config.githubPass
     #  @game.errorHandler.captureException new Error "No githubUser or githubPass specified in config.json"
     #  return
@@ -243,7 +243,7 @@ class ComponentDatabase
 
     repo = require("gitty") "#{__dirname}/../../../assets/custom"
 
-    message = "New #{types.join ", "}\n\nThanks to #{submitters.join ", "}"
+    message = "New #{types.join ", "}\n\nThanks to #{submitters.join ", "}\n\nModerated by #{moderator}"
 
     repo.addSync ["."]
     repo.commitSync message
@@ -324,7 +324,7 @@ class ComponentDatabase
 
     @eventsDb.insert parameters, ->
 
-  approveContent: (ids) ->
+  approveContent: (ids, identifier) ->
     oids = _.map ids, ObjectID
 
     defer = Q.defer()
@@ -344,7 +344,7 @@ class ComponentDatabase
         @writeNewContentToFile doc
         @game.playerManager.incrementPlayerSubmissions doc.submitter
 
-      @commitAndPushAllFiles (_.sortBy _.uniq _.pluck docs, "type"), (_.sortBy _.uniq _.pluck docs, "submitterName")
+      @commitAndPushAllFiles (_.sortBy _.uniq _.pluck docs, "type"), (_.sortBy _.uniq _.pluck docs, "submitterName"), identifier
 
       @submissionsDb.update {_id: {$in: oids}}, {$set: {unAccepted: no}}, {multi: yes}, (e) ->
         defer.resolve {isSuccess: yes, code: 503, message: "Successfully approved #{docs.length} new items."}
