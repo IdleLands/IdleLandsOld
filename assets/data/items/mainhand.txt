@@ -90,7 +90,7 @@
 "billhook" str=166 vorpal=1
 "tsurigi" str=172
 "stompin' boots" str=178
-"longbow" str=184
+"longerbow" str=184
 "zweihander" str=190
 "grayswandir" str=196
 "Vacuum Gun" str=200 power=1 offense=3
