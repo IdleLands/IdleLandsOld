@@ -1,4 +1,4 @@
-console.log "\n>>> BOSS ANALYSIS"
+console.log "travis_fold:start:boss_analysis"
 
 _ = require "lodash"
 _.str = require "underscore.string"
@@ -30,3 +30,5 @@ _.each levelKeys, (key) ->
   level = parseInt key
   header = _.str.pad "Level #{level}-#{level+RANGE_GRANULARITY-1}", 15
   console.log "#{header}:\t#{overallExist[key]}\t(#{perc overallExist[key], levelKeys.length}%)"
+
+console.log "travis_fold:end:boss_analysis"
