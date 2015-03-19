@@ -1,4 +1,6 @@
 
+console.log "travis_fold:start:verify_boss_treasure"
+
 _ = require "lodash"
 
 bosses = require "../../../config/boss.json"
@@ -30,3 +32,5 @@ for boss, bossData of bosses
   verifyExistence 'collectibles', no, no
 
 console.log "All boss treasures seem to be in order."
+
+console.log "travis_fold:end:verify_boss_treasure"

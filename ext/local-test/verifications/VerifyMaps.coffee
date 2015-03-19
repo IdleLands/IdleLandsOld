@@ -1,3 +1,5 @@
+console.log "travis_fold:start:verify_maps"
+
 Map = require "../../../src/map/Map"
 _ = require "lodash"
 fs = require "fs"
@@ -65,3 +67,4 @@ for teleport in allTeleportsOnMaps
   throw new Error "Teleport (#{teleName}) does not have a matching staircase" if (teleport.movementType in ['ascend', 'descend']) and tileData.object?.type isnt 'Teleport'
 
 console.log "All map data seems to be correct."
+console.log "travis_fold:end:verify_maps"
