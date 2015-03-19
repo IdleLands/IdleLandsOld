@@ -42,7 +42,7 @@ class MerchantEvent extends Event
     else if score > myScore and @game.eventHandler.tryToEquipItem affirmativeResponseEvent, @player, shop.item
       ##TAG:EVENT_EVENT: merchant | player, {item, gold, shopGold} | Emitted when a player buys an item from a shop
       @player.emit "event.merchant", @player, extra
-      @player.gold.sub shop.price
+      @player.takeGold shop.price
 
     else
       response = MessageCreator.doStringReplace "However, %player decides that %item is useless and leaves in a huff!", @player, extra

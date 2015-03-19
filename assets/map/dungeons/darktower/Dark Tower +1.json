@@ -51,7 +51,7 @@
                  "name":"Black Rose",
                  "properties":
                     {
-
+						"flavorText": "A small, black rose, which blooms only at night time in the moonlight of the evil that washes over this land."
                     },
                  "rotation":0,
                  "type":"Collectible",

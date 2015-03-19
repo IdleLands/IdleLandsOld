@@ -111,13 +111,17 @@ class Pet extends Character
     itemsInSlot = @equippedItemsOfType item.type
     if itemsInSlot.length >= PetData[@type].slots[item.type]
       lowestScoreItem = _.min itemsInSlot, (item) => @calc.itemScore item
+      lowestScoreItem = itemsInSlot[0] unless lowestScoreItem.score
 
-      if lowestScoreItem.score() < item.score()
-        @equip item
-        @equipment = _.without @equipment, lowestScoreItem
-        @sellItem lowestScoreItem
+      try
+        if lowestScoreItem.score() < item.score()
+          @equip item
+          @equipment = _.without @equipment, lowestScoreItem
+          @sellItem lowestScoreItem
 
-        return true
+          return true
+      catch e
+        @petManager.game.errorHandler.captureException e, extra: {lowest: lowestScoreItem, score: @calc.itemScore(lowestScoreItem), slot: itemsInSlot, len: itemsInSlot.length, totalSlots: PetData[@type].slots[item.type], type: @type, itemtype: item.type }
 
     else if itemsInSlot.length < PetData[@type].slots[item.type]
       @equip item

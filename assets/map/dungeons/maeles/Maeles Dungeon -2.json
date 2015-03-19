@@ -475,7 +475,7 @@
                  "name":"Broken Katana",
                  "properties":
                     {
-
+						"flavorText": "A spat between Fighter and Barbarian resulted in this sad mess."
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -491,7 +491,7 @@
                  "name":"Unpleasant Glass of Water",
                  "properties":
                     {
-
+						"flavorText": "You don't even have to taste it; it just looks unpleasant."
                     },
                  "rotation":0,
                  "type":"Collectible",

@@ -53,6 +53,15 @@ class Player extends Character
     @calc.itemFindRange()
     @guildTax = 0
 
+  takeGold: (gold) ->
+    @gold.sub gold
+
+    @gold.set 0 if _.isNaN @gold.getValue()
+
+  addGold: (gold) ->
+    @gold.add gold
+    @gold.set 0 if _.isNaN @gold.getValue()
+
   generateBaseEquipment: ->
 
     possibleItems =
@@ -110,7 +119,7 @@ class Player extends Character
     return Q {isSuccess: no, code: 651, message: "You've never even been there!"} if not (_.contains (_.keys @statistics['calculated regions visited']), newLoc.requiredRegionVisit)
     return Q {isSuccess: no, code: 652, message: "You don't have enough gold for that!"} if @gold.getValue() < newLoc.cost
 
-    @gold.sub newLoc.cost
+    @takeGold newLoc.cost
     message = "<player.name>#{@getName()}</player.name> took a one way trip on the Wind Express and got dropped off at <event.transfer.destination>#{newLoc.formalName}</event.transfer.destination>!"
 
     ##TAG:EVENT_EXPLORE: transfer.manualWarp | player, newMap | Emitted when a player warps somewhere manually
@@ -267,11 +276,11 @@ class Player extends Character
     newLoc = dest
 
     if not dest.map and not dest.toLoc
-      @playerManager.game.errorHandler.captureMessage "ERROR. No dest.map at #{@x},#{@y} in #{@map}"
+      @playerManager.game.errorHandler.captureException new Error "ERROR. No dest.map at #{@x},#{@y} in #{@map}"
       return
 
     if not dest.movementType
-      @playerManager.game.errorHandler.captureMessage "ERROR. No dest.movementType at #{@x},#{@y} in #{@map}"
+      @playerManager.game.errorHandler.captureException new Error "ERROR. No dest.movementType at #{@x},#{@y} in #{@map}"
       return
       
     dest.movementType = dest.movementType.toLowerCase()
@@ -453,8 +462,14 @@ class Player extends Character
     [(@num2dir dir, @x, @y), dir]
 
   getTileAt: (x = @x, y = @y) ->
-    lookAtTile = @playerManager.game.world.maps[@map].getTile.bind @playerManager.game.world.maps[@map]
-    lookAtTile x,y
+    try
+      lookAtTile = @playerManager.game.world.maps[@map].getTile.bind @playerManager.game.world.maps[@map]
+      lookAtTile x,y
+    catch
+      @map = "Norkos"
+      @x = 10
+      @y = 10
+      @getTileAt()
 
   getRegion: ->
     regions[@getTileAt().region.split(' ').join('')]
@@ -589,7 +604,7 @@ class Player extends Character
 
     resolved = Q @getExtraDataForREST {player: yes}, {isSuccess: yes, code: 125, message: "Successfully purchased #{@shop.slots[slot].item.name} for #{@shop.slots[slot].price} gold."}
 
-    @gold.sub @shop.slots[slot].price
+    @takeGold @shop.slots[slot].price
 
     ##TAG:EVENT_PLAYER: shop.buy | player, item, itemCost | Emitted when a player buys an item from the shop manually
     @emit "player.shop.buy", @, @shop.slots[slot].item, @shop.slots[slot].price
@@ -634,7 +649,7 @@ class Player extends Character
     return Q {isSuccess: no, code: 204, message: "You don't have enough gold to buy that pet! You need #{@foundPets[pet].cost -@gold.getValue()} more gold."} if @foundPets[pet].cost > @gold.getValue()
     return Q {isSuccess: no, code: 4, message: "You can't have dots in your pet name. Sorry!"} if -1 isnt name.indexOf "."
     
-    @gold.sub @foundPets[pet].cost
+    @takeGold @foundPets[pet].cost
 
     petManager = @playerManager.game.petManager
 
@@ -664,7 +679,7 @@ class Player extends Character
     return Q {isSuccess: no, code: 210, message: "That stat is already at max level."} if config.scale[stat].length <= curLevel+1 or not cost
     return Q {isSuccess: no, code: 211, message: "You don't have enough gold to upgrade your pet. You need #{cost-@gold.getValue()} more gold."} if @gold.getValue() < cost
 
-    @gold.sub cost
+    @takeGold cost
 
     pet.increaseStat stat
 
@@ -697,7 +712,7 @@ class Player extends Character
     return Q {isSuccess: no, code: 233, message: "Your pet has no gold."} if pet.gold.atMin()
 
     gold = pet.gold.getValue()
-    @gold.add gold
+    @addGold gold
     pet.gold.toMinimum()
 
     Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 232, message: "You took #{gold} gold from your pet."}
@@ -710,7 +725,7 @@ class Player extends Character
     gold = pet.goldToNextLevel()
     return Q {isSuccess: no, code: 214, message: "You don't have enough gold for that! You need #{gold-@gold.getValue()} more gold."} if @gold.lessThan gold
 
-    @gold.sub gold
+    @takeGold gold
     pet.feed()
 
     Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 215, message: "Your pet (#{pet.name}) was fed #{gold} gold and gained a level (#{pet.level.getValue()})."}
@@ -722,7 +737,7 @@ class Player extends Character
     petMoney = pet.gold.getValue()
     return Q {isSuccess: no, code: 216, message: "Your pet is penniless."} if not petMoney
 
-    @gold.add petMoney
+    @addGold petMoney
     pet.gold.toMinimum()
 
     Q @getExtraDataForREST {pet: yes}, {isSuccess: yes, code: 217, message: "You retrieved #{petMoney} gold from your pet (#{pet.name})!"}
@@ -842,7 +857,7 @@ class Player extends Character
       ##TAG:EVENT_PLAYER: gold.lose | player, goldLost | Emitted when a player loses gold
       @emit "player.gold.lose", @, gold
 
-    @gold.add gold
+    @addGold gold
 
   gainXp: (xp) ->
     if _.isNaN xp
