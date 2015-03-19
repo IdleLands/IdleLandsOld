@@ -376,7 +376,7 @@ class Player extends Character
     @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'explore'}
 
   handleCollectible: (collectible) ->
-    @collectibles = [] if not @collectibles
+    @collectibles = [] unless @collectibles
 
     collectibleName = collectible.name
     collectibleRarity = collectible.properties?.rarity or "basic"
@@ -390,6 +390,7 @@ class Player extends Character
       region: @mapRegion
       rarity: collectibleRarity
       description: collectible.properties?.flavorText
+      storyline: collectible.properties?.storyline
       foundAt: Date.now()
 
     message = "<player.name>#{@name}</player.name> stumbled across a rare, shiny, and collectible <event.item.#{collectibleRarity}>#{collectibleName}</event.item.#{collectibleRarity}> in #{@map} - #{@mapRegion}!"
