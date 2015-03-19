@@ -1071,7 +1071,7 @@
                  "name":"Mini Shuriken",
                  "properties":
                     {
-
+						"flavorText": "A small shuriken evidently left behind by a real ninja. Fighter collects trinkets like these."
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -1085,7 +1085,7 @@
                  "name":"Silver Lining",
                  "properties":
                     {
-
+						"flavorText": "Every black shroud has one."
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -1099,7 +1099,8 @@
                  "name":"Black Shroud",
                  "properties":
                     {
-                     "rarity":"pro"
+                     "rarity":"pro",
+					 "flavorText": "A small cloak that could disguise you easily in the night. It feels like it's missing something..."
                     },
                  "type":"Collectible",
                  "visible":true,
