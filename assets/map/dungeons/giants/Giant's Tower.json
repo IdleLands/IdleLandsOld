@@ -144,7 +144,7 @@
                  "name":"Giant Sized Flask",
                  "properties":
                     {
-
+						"flavorText": "A gigantic flask, fit for a dwarf. It is a popular object for the citizens of Frigri."
                     },
                  "type":"Collectible",
                  "visible":true,
