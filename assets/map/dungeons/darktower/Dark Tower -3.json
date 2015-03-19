@@ -51,7 +51,7 @@
                  "name":"Green Draygon Scale",
                  "properties":
                     {
-
+						"flavorText": "A small, hexagonal scale that resembles an emerald."
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -99,7 +99,7 @@
                  "name":"Undead Draygon Scale",
                  "properties":
                     {
-
+						"flavorText": "This scale feels very soft to the touch, and also has maggots visibly crawling all over it."
                     },
                  "rotation":0,
                  "type":"Collectible",
