@@ -94,7 +94,7 @@
                  "name":"Fishing Line",
                  "properties":
                     {
-
+						"flavorText": "A strand of fishing line, invisible in the right light. Mage was looking for this."
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -110,7 +110,7 @@
                  "name":"Bobber",
                  "properties":
                     {
-
+						"flavorText": "A small, orange bobber. It looks like it originates from Norkos, but floated to the Fisheries by chance."
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -126,7 +126,7 @@
                  "name":"Little Yeti",
                  "properties":
                     {
-
+						"flavorText": "A cute little yeti doll. A Maelian favorite!"
                     },
                  "rotation":0,
                  "type":"Boss",
