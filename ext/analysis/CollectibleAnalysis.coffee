@@ -14,4 +14,4 @@ _.each validCollectibles, (collectible) ->
   story = collectible.storyline or "none"
   console.log "#{(_.str.pad collectible.name, maxLeft)}\t(#{story}) #{collectible.flavorText}"
 
-console.log "travis_fold:end:boss_analysis"
+console.log "travis_fold:end:collectible_analysis"
