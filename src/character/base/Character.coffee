@@ -722,7 +722,7 @@ class Character extends EventEmitter2
       ##TAG:REDUCTION: totalItemScore | all item scores | none | Called when calculating the score of a party
       totalItemScore: ->
         root = @self.playerManager ? @self.petManager
-        _.reduce @self.equipment, ((prev, item) =>
+        _.reduce @self.equipment, ((prev, item) ->
           if not item?.score and not item?._calcScore then root.game.errorHandler.captureError (new Error "Bad item for totalItemScore calculation"), extra: item
           prev+(item?.score?() or item?._calcScore or 0)
         ), 0
