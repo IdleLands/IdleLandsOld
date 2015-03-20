@@ -31,7 +31,13 @@ allTeleportsOnMaps = []
 for mapName, mapData of maps
   allBossesOnMaps.push (_.map (_.filter mapData.map.layers[2].objects, (obj) -> obj.type in ["Boss", "BossParty"]), 'name')...
   allTreasureOnMaps.push (_.map (_.filter mapData.map.layers[2].objects, (obj) -> obj.type is "Treasure"), 'name')...
-  allTeleportsOnMaps.push (_.map (_.filter mapData.map.layers[2].objects, (obj) -> obj.type is "Teleport"), 'properties')...
+
+  teleports = (_.filter mapData.map.layers[2].objects, (obj) -> obj.type is "Teleport")
+  _.each teleports, (port) ->
+    port.origin = mapName
+    _.extend port, port.properties
+
+  allTeleportsOnMaps.push teleports...
 
 allBossesInParties = []
 for partyName, partyData of bossparties
@@ -51,17 +57,18 @@ for teleport in allTeleportsOnMaps
 
   [teleport.destx, teleport.desty, teleport.map] = [t.x, t.y, t.map] if (t = teleLocs[teleport.toLoc])
 
+  teleName = "#{teleport.name} - #{teleport.x/16},#{teleport.y/16} (on #{teleport.origin})"
+
   try
     teleMap = maps[teleport.map]
-    teleName = JSON.stringify teleport
     tileData = teleMap.getTile (parseInt teleport.destx), (parseInt teleport.desty)
   catch
-    throw new Error "Invalid teleport #{teleport.map}, #{teleName}, leads to #{teleport.destx},#{teleport.desty}"
+    throw new Error "Invalid teleport [#{teleName}] leads to #{teleport.map} - #{teleport.destx},#{teleport.desty} -- this map does not appear to exist."
 
-  throw new Error "Teleport (#{teleName}) not in map bounds" if not inBounds teleport.destx, teleport.desty, teleMap.width, teleMap.height
-  throw new Error "Teleport (#{teleName}) lands on a dense tile" if tileData.blocked
+  throw new Error "Teleport [#{teleName}] not in map bounds" if not inBounds teleport.destx, teleport.desty, teleMap.width, teleMap.height
+  throw new Error "Teleport [#{teleName}] lands on a dense tile" if tileData.blocked
 
-  throw new Error "Teleport (#{teleName}) does not have a valid teleport type" if not (teleport.movementType.toLowerCase() in ['teleport', 'ascend', 'descend', 'fall'])
-  throw new Error "Teleport (#{teleName}) does not have a matching staircase" if (teleport.movementType in ['ascend', 'descend']) and tileData.object?.type isnt 'Teleport'
+  throw new Error "Teleport [#{teleName}] does not have a valid teleport type" if not (teleport.movementType.toLowerCase() in ['teleport', 'ascend', 'descend', 'fall'])
+  throw new Error "Teleport [#{teleName}] does not have a matching staircase" if (teleport.movementType in ['ascend', 'descend']) and tileData.object?.type isnt 'Teleport'
 
 console.log "All map data seems to be correct."
