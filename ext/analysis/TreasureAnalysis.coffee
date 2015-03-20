@@ -1,4 +1,5 @@
 console.log "travis_fold:start:treasure_analysis"
+console.log "Treasure Analysis"
 
 _ = require "lodash"
 _.str = require "underscore.string"

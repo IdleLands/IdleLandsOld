@@ -1,4 +1,3 @@
-
 console.log "travis_fold:start:verify_collectibles"
 
 _ = require "lodash"

@@ -1,4 +1,5 @@
 console.log "travis_fold:start:boss_analysis"
+console.log "Boss Analysis"
 
 _ = require "lodash"
 _.str = require "underscore.string"
