@@ -17,4 +17,4 @@ for pet, petData of pets
     throw new Error "Incompatible array sizes for #{scaleVal} (#{pet})" if petData.scaleCost[scaleVal].length isnt scaleArr.length
 
 console.log "All pets seem to be declared correctly."
-console.log "travis_fold:start:verify_pets"
+console.log "travis_fold:end:verify_pets"

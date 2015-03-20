@@ -15,4 +15,4 @@ for i, tpParent of teleports
     throw new Error "Teleport (#{teleport}) does not have enough properties. Expected 4, has #{_.size tpData}" if 4 > _.size tpData
 
 console.log "All teleports seem to be valid."
-console.log "travis_fold:start:verify_teleports"
+console.log "travis_fold:end:verify_teleports"
