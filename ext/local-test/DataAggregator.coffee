@@ -43,12 +43,23 @@ pets = require "../../config/pets.json"
 
 collectibles = []
 requiredCollectibles = []
+collectibleObjs = []
+
 for mapName, mapData of maps
-  collectibles.push (_.map (_.filter mapData.map.layers[2].objects, (obj) -> obj.type is "Collectible"), 'name')...
+  allCollectibleObjects = (_.filter mapData.map.layers[2].objects, (obj) -> obj.type is "Collectible")
+  _.each allCollectibleObjects, (obj) ->
+    obj.origin = "#{mapName} (#{obj.x/16},#{obj.y/16})"
+    _.extend obj, obj.properties if obj.properties
+
+  collectibles.push (_.map allCollectibleObjects, 'name')...
+  collectibleObjs.push allCollectibleObjects...
   requiredCollectibles.push (_.map (_.filter mapData.map.layers[2].objects, (obj) -> obj.properties?.requireCollectible), (r) -> r.properties.requireCollectible)...
 
 for bossName, bossData of bosses
   collectibles.push (_.map bossData.collectibles, 'name')...
+  if bossData.collectibles
+    _.each bossData.collectibles, (collectible) -> collectible.origin = bossName
+    collectibleObjs.push bossData.collectibles...
 
 for petName, petData of pets
   requiredCollectibles.push (petData.requirements.collectibles)...
@@ -57,4 +68,4 @@ _.each spells, (spell) ->
   _.each spell.tiers, (tier) ->
     requiredCollectibles.push tier?.collectibles...
 
-module.exports = {maps, spells, collectibles, requiredCollectibles}
+module.exports = {maps, spells, collectibles, requiredCollectibles, collectibleObjs}
