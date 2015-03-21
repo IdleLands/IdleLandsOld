@@ -179,7 +179,8 @@
                  "name":"Volcanic Rock",
                  "properties":
                     {
-
+                      "flavorText": "A rock formed by the nearby volcanic activity. It wouldn't taste very good in a sandwich, but it looks cool anyway.",
+                      "storyline": "Memoir: SandwichArtist"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -193,7 +194,8 @@
                  "name":"Silver Draygon Scale",
                  "properties":
                     {
-
+                      "flavorText": "A shiny, silver scale. It's not made of real silver, but it could probably pass if the market necessatitated it.",
+                      "storyline": "Lore: Draygons"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -207,7 +209,8 @@
                  "name":"Gryffin Feather",
                  "properties":
                     {
-
+                      "flavorText": "A giant feather, with alternating black, white, and yellow barbs. These are commonly dropped upon the city of Vocalnus as the monster flies overhead.",
+                      "storyline": "Lore: Vocalnus"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -221,7 +224,8 @@
                  "name":"Ashen Bank Coin",
                  "properties":
                     {
-
+                      "flavorText": "A small coin covered in ash. You can barely make out the King of Frigri's face upon it. A little polish would do this coin well.",
+                      "storyline": "Lore: Vocalnus"
                     },
                  "type":"Collectible",
                  "visible":true,
