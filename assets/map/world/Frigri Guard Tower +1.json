@@ -99,7 +99,8 @@
                  "name":"Guard Tower Key",
                  "properties":
                     {
-
+                      "flavorText": "A large skeleton key entrusted to most of the Frigri Guard, to provide fast access to the tower. Someone must have left it behind, but why?",
+                      "storyline": "Lore: Frigri"
                     },
                  "rotation":0,
                  "type":"Collectible",
