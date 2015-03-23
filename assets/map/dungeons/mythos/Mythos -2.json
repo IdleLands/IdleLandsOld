@@ -123,7 +123,8 @@
                  "name":"Black Draygon Scale",
                  "properties":
                     {
-
+						"flavorText": "A jet black scale that, if lost in the darkness, would never be found.",
+						"storyline": "Lore: Draygons"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -137,7 +138,8 @@
                  "name":"Mysterious Obsidian Block",
                  "properties":
                     {
-
+						"flavorText": "A perfect cube of obsidian. Archer must have had some spare time on his hands.",
+						"storyline": "Memoir: Archer"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -151,7 +153,9 @@
                  "name":"Oddly Formed Granite",
                  "properties":
                     {
-                     "rarity":"pro"
+                     "rarity":"pro",
+					 "flavorText": "A small, scentless chunk of granite that appears to be a fossilized chunk of dragon stool.",
+					 "storyline": "Lore: Draygons"
                     },
                  "type":"Collectible",
                  "visible":true,

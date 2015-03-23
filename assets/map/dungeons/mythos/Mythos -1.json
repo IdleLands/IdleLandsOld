@@ -85,7 +85,8 @@
                  "name":"Chunk of Debris",
                  "properties":
                     {
-
+						"flavorText": "Debris that appears to be from a foundation of a building. Maybe there once was a city down here.",
+						"storyline": "Lore: Vocalnus"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -99,7 +100,8 @@
                  "name":"Scaly Feather",
                  "properties":
                     {
-
+						"flavorText": "A sharp but smooth feather from a mythical Roc, now extinct.",
+						"storyline": "Lore: Vocalnus"
                     },
                  "type":"Collectible",
                  "visible":true,
