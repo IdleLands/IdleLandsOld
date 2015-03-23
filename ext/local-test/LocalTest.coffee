@@ -7,7 +7,7 @@ _ = require "lodash"
 #### GAME CONSTANTS ####
 
 # change this if you want the console game to go faster
-DELAY_INTERVAL = 1000
+DELAY_INTERVAL = 1
 
 ########################
 
@@ -133,7 +133,6 @@ colorMap =
   "event.targetName":           colors.bold
   "event.achievement":          colors.bold
   "event.guildName":            colors.bold.underline
-  "event.stat":                 colors.bold
 
 ## API call functions ##
 loadIdle = ->
