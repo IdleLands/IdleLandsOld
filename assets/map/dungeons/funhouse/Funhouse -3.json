@@ -317,32 +317,13 @@
                 {
                  "gid":32,
                  "height":0,
-                 "id":35,
-                 "name":"ToFunhouse-5",
-                 "properties":
-                    {
-                     "destx":"2",
-                     "desty":"6",
-                     "map":"Funhouse -5",
-                     "movementType":"teleport"
-                    },
-                 "rotation":0,
-                 "type":"Teleport",
-                 "visible":true,
-                 "width":0,
-                 "x":16,
-                 "y":32
-                }, 
-                {
-                 "gid":32,
-                 "height":0,
                  "id":36,
-                 "name":"ToFunhouse-5",
+                 "name":"ToFunhouse-2",
                  "properties":
                     {
-                     "destx":"2",
-                     "desty":"6",
-                     "map":"Funhouse -5",
+                     "destx":"11",
+                     "desty":"3",
+                     "map":"Funhouse -2",
                      "movementType":"teleport"
                     },
                  "rotation":0,
@@ -389,6 +370,41 @@
                  "width":0,
                  "x":192,
                  "y":160
+                }, 
+                {
+                 "gid":32,
+                 "height":0,
+                 "id":39,
+                 "name":"ToFunhouse-2",
+                 "properties":
+                    {
+                     "destx":"11",
+                     "desty":"3",
+                     "map":"Funhouse -2",
+                     "movementType":"teleport"
+                    },
+                 "rotation":0,
+                 "type":"Teleport",
+                 "visible":true,
+                 "width":0,
+                 "x":16,
+                 "y":32
+                }, 
+                {
+                 "gid":51,
+                 "height":0,
+                 "id":40,
+                 "name":"",
+                 "properties":
+                    {
+                     "flavorText":"Appears to have died from starvation."
+                    },
+                 "rotation":0,
+                 "type":"Skeleton",
+                 "visible":true,
+                 "width":0,
+                 "x":112,
+                 "y":160
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -424,7 +440,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":39,
+ "nextobjectid":41,
  "orientation":"orthogonal",
  "properties":
     {

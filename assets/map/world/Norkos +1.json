@@ -68,7 +68,9 @@
                  "name":"Thief's Locket",
                  "properties":
                     {
-                     "rarity":"idle"
+                     "rarity":"pro",
+                      "flavorText": "A small, ornate gold locket that folds open to show two pictures: one of Rogue, and one of Norkos. The latter appears to be taken from above the town. How could that be possible?",
+                      "storyline": "Memoir: Rogue"
                     },
                  "type":"Collectible",
                  "visible":true,

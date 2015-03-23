@@ -39,7 +39,7 @@ class API
         @gameInstance.playerManager.registerLoadAllPlayersHandler handler
     content:
       map: (mapName) =>
-        @gameInstance.world.maps[mapName].getMapData()
+        @gameInstance.world.maps[mapName]?.getMapData()
       battle: (battleId) =>
         @gameInstance.componentDatabase.retrieveBattle battleId
     events:
@@ -74,7 +74,7 @@ class API
         @validateContentModerator identifier
         .then (res) =>
           actualRes = null
-          if res.isSuccess then actualRes = @gameInstance.componentDatabase.approveContent ids else actualRes = res
+          if res.isSuccess then actualRes = @gameInstance.componentDatabase.approveContent ids, identifier else actualRes = res
           @logger?.debug "GM Command custom.approve"
           @logger?.verbose "GM Command custom.approve", {res: actualRes}
           actualRes
@@ -181,7 +181,7 @@ class API
         player = @gameInstance.playerManager.getPlayerByName playerName
         @logger?.debug "GM Command player.giveGold"
         @logger?.verbose "GM Command player.giveGold", {playerName, gold, player}
-        player.gold.add gold
+        player.addGold gold
 
     arrangeBattle: (names) =>
       @logger?.debug "GM Command arrangeBattle"

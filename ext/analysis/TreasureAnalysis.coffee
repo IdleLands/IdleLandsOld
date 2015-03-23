@@ -1,4 +1,5 @@
-console.log "\n>>> TREASURE ANALYSIS"
+console.log "travis_fold:start:treasure_analysis"
+console.log "Treasure Analysis"
 
 _ = require "lodash"
 _.str = require "underscore.string"
@@ -53,4 +54,4 @@ _.each (_.keys sortedBySlot), (slot) ->
 
   console.log start
 
-console.log ""
+console.log "travis_fold:end:treasure_analysis"

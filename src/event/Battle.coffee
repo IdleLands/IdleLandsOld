@@ -151,7 +151,7 @@ class Battle
     1 < aliveParties.length
 
   checkIfOpponentHasBattleEffect: (turntaker, effect) ->
-    0 < _.reduce (_.difference @turnOrder, turntaker.party.players), ((prev, player) -> prev+player.calc[effect]()), 0
+    0 < _.reduce (_.difference @turnOrder, turntaker.party?.players), ((prev, player) -> prev+player.calc[effect]()), 0
 
   beginTakingTurns: ->
     @logger?.info "battle.start"
@@ -444,7 +444,7 @@ class Battle
     _.each players, (player) =>
       @game.eventHandler.broadcastEvent
         sendMessage: no
-        extra: {battleId: docs[0]._id, linkTitle: @battleCache.name}
+        extra: {battleId: docs?[0]._id, linkTitle: @battleCache.name}
         player: player
         message: ">>> BATTLE: #{@battleCache.name} has occurred involving #{@playerNames}. Check it out here: #{@link}"
         type: "combat"

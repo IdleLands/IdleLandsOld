@@ -5,12 +5,23 @@ API = require "./../accessibility/API"
 
 chance = new (require "chance")()
 
+requireDir = require "require-dir"
+
 getCD = -> API.gameInstance.componentDatabase
 
 class RandomDomainHandler
 
   ##TAG:EVENTVAR_DYNAMIC: $random:placeholder$ | A random piece of placeholder text
   placeholder = @placeholder = -> CustomHandler.dict [funct: 'placeholder']
+
+  ##TAG:EVENTVAR_DYNAMIC: $random:town$ | A random town name
+  @town = ->
+    _.sample _.filter API.gameInstance.world.uniqueRegions, (str) -> _.contains str, 'Town'
+
+  ##TAG:EVENTVAR_DYNAMIC: $random:class$ | A random class name
+  @class = ->
+    # can't be precalculated because the game throws errors, of course.
+    (_.sample _.keys requireDir "../../character/classes") or placeholder()
 
   ##TAG:EVENTVAR_DYNAMIC: $random:pet$ | A random pet name
   @pet = ->
@@ -85,7 +96,7 @@ class CustomHandler
   ##TAG:EVENTVAR_DYNAMIC: $dict:Conjunction$ | A random, uppercase conjunction
   ##TAG:EVENTVAR_DYNAMIC: $dict:Preposition$ | A random, uppercase preposition
 
-  ##TAG:EVENTVAR_DYNAMIC: $random:deity$ | A random deity and their flavor text
+  ##TAG:EVENTVAR_DYNAMIC: $dict:deity$ | A random deity and their flavor text
   @dict = (props) ->
     {funct} = props[0]
     realFunct = funct.toLowerCase()

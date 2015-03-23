@@ -51,7 +51,7 @@
                  "name":"Bejeweled Mask",
                  "properties":
                     {
-
+						"flavorText": "An ornate mask, encrusted with rubies and black diamonds."
                     },
                  "rotation":0,
                  "type":"Collectible",

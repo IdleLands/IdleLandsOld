@@ -108,7 +108,7 @@
                  "name":"Lava Cookie",
                  "properties":
                     {
-
+						"flavorText": "A rare delicacy, formed in the lava of the fire plains. Strangely, you can eat it."
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -123,7 +123,7 @@
                  "name":"Crystal of Fire",
                  "properties":
                     {
-
+						"flavorText": "A small, translucent crystal with a flickering flame carried inside of it. It is warm to the touch."
                     },
                  "rotation":0,
                  "type":"Collectible",

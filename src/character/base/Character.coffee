@@ -539,8 +539,9 @@ class Character extends EventEmitter2
       vorpal:   -> 0 < @self.calc.stat 'vorpal'
 
       #`/**
-      # * Forsaken makes it so every blessItem, flipStat, or forsakeItem hits this item. In the event that
+      # * Forsaken makes it so every event hits this item. In the event that
       # * there are multiple forsaken items in your inventory, one will be chosen at random.
+      # * If your item is not limitless, enchant/tinker events will be swallowed into the void.
       # *
       # * @name forsaken
       # * @stacks no
@@ -558,7 +559,8 @@ class Character extends EventEmitter2
       # */`
 
       #`/**
-      # * Sacred makes it so there is no chance of this item being hit by blessItem, flipStat, or forsakeItem.
+      # * Sacred makes it so there is no chance of this item being hit by blessItem, flipStat, or forsakeItem
+      # * (unless the item is also forsaken, in which case, that takes precedence. Evil rules Idliathlia!).
       # *
       # * @name sacred
       # * @stacks no
@@ -712,14 +714,16 @@ class Character extends EventEmitter2
 
       ##TAG:REDUCTION: itemScore | item.score() | self, item, baseItemScore | Called when checking the score of a new-found item
       itemScore: (item) ->
-        if not item?.score and not item?._calcScore then @self.playerManager.game.errorHandler.captureError (new Error "Bad item for itemScore calculation"), extra: item
+        root = @self.playerManager ? @self.petManager
+        if not item?.score and not item?._calcScore then root.game.errorHandler.captureError (new Error "Bad item for itemScore calculation"), extra: item: item
         baseValue = item?.score?() or item?._calcScore or 0
-        (Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue) + @self.itemPriority item
+        (Math.floor @self.personalityReduce 'itemScore', [@self, item, baseValue], baseValue) + (@self.itemPriority? item or 0)
 
       ##TAG:REDUCTION: totalItemScore | all item scores | none | Called when calculating the score of a party
       totalItemScore: ->
-        _.reduce @self.equipment, ((prev, item) =>
-          if not item?.score and not item?._calcScore then @self.playerManager.game.errorHandler.captureError (new Error "Bad item for totalItemScore calculation"), extra: item
+        root = @self.playerManager ? @self.petManager
+        _.reduce @self.equipment, ((prev, item) ->
+          if not item?.score and not item?._calcScore then root.game.errorHandler.captureError (new Error "Bad item for totalItemScore calculation"), extra: item
           prev+(item?.score?() or item?._calcScore or 0)
         ), 0
 

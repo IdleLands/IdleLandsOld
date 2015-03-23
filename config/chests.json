@@ -29,5 +29,25 @@
         "items": [
             "Basilisk Shield"
         ]
+    },
+    "Snowbeast Gear": {
+        "items": [
+            "Royal Coif"
+        ]
+    },
+    "Leviathan Gear": {
+        "items": [
+            "Royal Scaled Robe"
+        ]
+    },
+    "Spot's Treasure Hoard": {
+        "items": [
+            "Royal Dragonskin Boots"
+        ]
+    },
+    "Lich Lord's Gear": {
+        "items": [
+            "Royal Sword of the Fallen Hero"
+        ]
     }
 }

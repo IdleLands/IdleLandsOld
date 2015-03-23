@@ -366,7 +366,7 @@
                  "name":"Vial of Liquid Fate",
                  "properties":
                     {
-
+						"flavorText": "This swirly, smoky liquid looks like it would just jump out of the vial if you'd open it."
                     },
                  "rotation":0,
                  "type":"Collectible",

@@ -69,7 +69,8 @@
                  "name":"Bottle of Acid",
                  "properties":
                     {
-
+                      "flavorText": "It's strange that a bottle of acid doesn't just melt right through. It would be great to throw at enemies, or put on their sandwiches!",
+                      "storyline": "Memoir: SandwichArtist"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -85,7 +86,8 @@
                  "name":"Evil Pebble",
                  "properties":
                     {
-
+                      "flavorText": "This pebble just reeks of evil. It's very round, not shiny, and very evil. It would also be good to throw at people.",
+                      "storyline": "Memoir: Necromancer"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -715,7 +717,8 @@
                  "name":"Evil Haystack",
                  "properties":
                     {
-
+                      "flavorText": "A small haystack made entirely of evil. The individual threads of hay reek of darkness (and evil).",
+                      "storyline": "Memoir: Necromancer"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -731,7 +734,8 @@
                  "name":"Evil Bank Coin",
                  "properties":
                     {
-
+                      "flavorText": "A small golden coin, upon which is the King of Frigri with a moustache hastily drawn on it. It must be a form of currency in these parts.",
+                      "storyline": "Lore: Evil Norkos"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -747,7 +751,8 @@
                  "name":"Last Chance Die",
                  "properties":
                     {
-
+                      "flavorText": "A die that appears to have no face with six engraved on it. Let's hope your life doesn't depend on rolling a 6.",
+                      "storyline": "Lore: Evil Norkos"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -763,7 +768,8 @@
                  "name":"Forbidden Cleric's Text",
                  "properties":
                     {
-
+                      "flavorText": "A small tome, resembling Cleric's teachings book. Scratched hastily upon the cover is the word \"Forbidden\" but the overall contents of the book seem the same. There are occasional footnotes that read \"Evil!\"",
+                      "storyline": "Memoir: Necromancer"
                     },
                  "rotation":0,
                  "type":"Collectible",

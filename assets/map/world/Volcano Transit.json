@@ -86,7 +86,8 @@
                  "name":"Old Red Dragon Scale",
                  "properties":
                     {
-
+                      "flavorText": "An old, dusty red scale found in the dirt. It must have belonged to an ancient dragon that once made its home here.",
+                      "storyline": "Lore: Draygons"
                     },
                  "type":"Collectible",
                  "visible":true,

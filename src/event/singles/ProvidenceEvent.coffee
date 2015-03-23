@@ -38,6 +38,7 @@ class ProvidenceEvent extends Event
     gender: 80
     goldMod: 50
     classMod: 15
+    clearPersonality: 25
     personalityMod: 25
     clearFate: 20
     newFate: 75
@@ -79,7 +80,12 @@ class ProvidenceEvent extends Event
       @player.changeProfession classMod, yes
       message = "#{message} Changed class to #{classMod}!"
 
-    if (chance.bool {likelihood: @probabilities.personalityMod})
+    if (chance.bool {likelihood: @probabilities.clearPersonality})
+      @player.personalityStrings = []
+      @player.rebuildPersonalityList()
+      message = "#{message} Mindwipe!"
+
+    else if (chance.bool {likelihood: @probabilities.personalityMod}) and personalityMod.length > 0
       @player.personalityStrings = personalityMod
       @player.rebuildPersonalityList()
       message = "#{message} Personality shift!"

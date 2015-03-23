@@ -1,3 +1,4 @@
+console.log "travis_fold:start:verify_treasure_chests"
 
 _ = require "lodash"
 
@@ -14,3 +15,4 @@ for chest, chestData of chests
     throw new Error "Item (#{item}) is not in treasure.json" if not treasure[item]
 
 console.log "All chests seem to have vaild treasure."
+console.log "travis_fold:end:verify_treasure_chests"

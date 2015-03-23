@@ -10,7 +10,7 @@ class Map
   interactables: [1, 2, 12, 13, 14, 15, 18, 40, 41, 42, 43, 48, 51]
 
   constructor: (path, @game) ->
-    @map = require path
+    @map = _.cloneDeep require path
 
     @tileHeight = @map.tileheight
     @tileWidth = @map.tilewidth

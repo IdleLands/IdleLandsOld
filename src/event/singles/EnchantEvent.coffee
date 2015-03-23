@@ -38,14 +38,16 @@ class EnchantEvent extends Event
 
   doNormalEnchant: (item) ->
 
-    return no if item.enchantLevel >= Constants.defaults.game.maxEnchantLevel
+    return no if item.enchantLevel >= Constants.defaults.game.maxEnchantLevel and not item.limitless
 
     [stat, boost] = @getStatForItem item
+    
+    return no unless stat
 
     item[stat] = boost
 
     "#{@event.remark} [<event.enchant.stat>#{stat} = #{boost}</event.enchant.stat> | <event.enchant.boost>+#{item.enchantLevel} -> +#{++item.enchantLevel}</event.enchant.boost>]"
-
+    
   doGuildEnchant: (item) ->
 
     guild = @player.getGuild()
@@ -69,6 +71,12 @@ class EnchantEvent extends Event
     # you gotta opt in to potentially blow up items. I'm not that mean.
     shouldDoUnsafeEnchant = guild.buildingProps?.Enchantress?.AttemptEnchant is "Yes"
     notBlowupChance = if isUnsafe then 100 - (5 * (20 - enchantressLevel%20)) else 100
+    
+    [stat, boost] = @getStatForItem item
+    
+    return no unless stat
+    
+    item[stat] = boost
 
     if isUnsafe and not shouldDoUnsafeEnchant
       return "#{@event.remark} Unfortunately, enchanting to +#{nextLevel} was too unsafe to attempt!"
@@ -77,10 +85,12 @@ class EnchantEvent extends Event
     if @player.gold.getValue() < cost
       return "#{@event.remark} Unfortunately, %player lacks the funds to get a +#{nextLevel} enchantment!"
 
-    @player.gold.sub cost
+    @player.takeGold cost
 
     if chance.bool {likelihood: notBlowupChance}
-      return "#{@event.remark} Thankfully, %player managed to get a successful +#{++item.enchantLevel} enchantment for %hisher newly %item!"
+      base = "#{@event.remark} Thankfully, %player managed to get a successful +#{++item.enchantLevel} enchantment for %hisher newly %item!"
+      return "#{base} [<event.enchant.stat>#{stat} = #{boost}</event.enchant.stat> | <event.enchant.boost>+#{item.enchantLevel} -> +#{++item.enchantLevel}</event.enchant.boost>]"
+ 
 
     else
       blownItem = @getBlowupItem item, nextLevel

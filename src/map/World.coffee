@@ -5,6 +5,7 @@ fs = require "fs"
 class World
 
   maps: {}
+  uniqueRegions: []
 
   constructor: (@game) ->
     walk = (dir) ->
@@ -20,6 +21,9 @@ class World
       results
 
     _.each (walk "#{__dirname}/../../assets/map"), (mapObj) =>
-      @maps[mapObj.map] = new Map mapObj.path, @game
+      map = new Map mapObj.path, @game
+      @maps[mapObj.map] = map
+
+      @uniqueRegions.push (_.uniq _.compact map.regionMap)...
 
 module.exports = exports = World

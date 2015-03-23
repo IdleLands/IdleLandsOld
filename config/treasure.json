@@ -111,6 +111,41 @@
     "con": 80,
     "defense": 2,
     "glowing": 1
-
+  },
+  "Royal Coif": {
+    "type": "head",
+    "agi": 600,
+    "dex": 600,
+    "con": 250,
+    "deadeye": 2,
+    "royal": 2
+  },
+  "Royal Scaled Robe": {
+    "type": "body",
+    "int": 800,
+    "wis": 300,
+    "con": 100,
+    "defense": 2,
+    "royal": 2
+  },
+  "Royal Dragonskin Boots": {
+    "type": "feet",
+    "agi": 1000,
+    "dex": 1100,
+    "str": 400,
+    "hp": 500,
+    "defense": 1,
+    "royal": 2
+  },
+  "Royal Sword of the Fallen Hero": {
+    "type": "mainhand",
+    "str": 1500,
+    "dex": 500,
+    "int": 150,
+    "con": -50,
+    "luck": -25,
+    "offense": 2,
+    "vorpal": 1,
+    "royal": 2
   }
 }

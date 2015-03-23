@@ -64,7 +64,7 @@
                  "name":"Ancient Lute",
                  "properties":
                     {
-
+						"flavorText": "A blood-stained lute that appears to have been sitting here for ages. The wood is moldy, eww..."
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -78,7 +78,7 @@
                  "name":"Harp String",
                  "properties":
                     {
-
+						"flavorText": "\"And with this, we hang the poor souls out to dry...\""
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -92,7 +92,7 @@
                  "name":"Soaked Sitar",
                  "properties":
                     {
-
+						"flavorText": "This sitar appears to have been left hastily in the pool. It seems that Bard entertains guests sometimes, but is ashamed of doing so."
                     },
                  "type":"Collectible",
                  "visible":true,

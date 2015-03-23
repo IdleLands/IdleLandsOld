@@ -53,8 +53,8 @@ class Pet extends Character
 
   canEquip: (item) ->
     # are all slots filled?
-    itemsInSlot = (@equippedItemsOfType item.type).length
-    return no if itemsInSlot >= PetData[@type].slots[item.type]
+    # itemsInSlot = (@equippedItemsOfType item.type).length
+    # return no if itemsInSlot >= PetData[@type].slots[item.type]
 
     # if not, we just have to make sure it's within our current parameters for equipping
     item.score() < @calc.itemFindRange()
@@ -98,6 +98,10 @@ class Pet extends Character
         @increaseStat stat
         @gold.sub cost
 
+  hasOpenSlotsOfType: (type) ->
+    itemsInSlot = @equippedItemsOfType type
+    itemsInSlot.length < PetData[@type].slots[type]
+
   tryToEquipToSelf: (item) ->
     return if not @smartEquip
     return if not PetData[@type].slots[item.type]
@@ -107,13 +111,17 @@ class Pet extends Character
     itemsInSlot = @equippedItemsOfType item.type
     if itemsInSlot.length >= PetData[@type].slots[item.type]
       lowestScoreItem = _.min itemsInSlot, (item) => @calc.itemScore item
+      lowestScoreItem = itemsInSlot[0] unless lowestScoreItem.score
 
-      if lowestScoreItem.score() < item.score()
-        @equip item
-        @equipment = _.without @equipment, lowestScoreItem
-        @sellItem lowestScoreItem
+      try
+        if lowestScoreItem.score() < item.score()
+          @equip item
+          @equipment = _.without @equipment, lowestScoreItem
+          @sellItem lowestScoreItem
 
-        return true
+          return true
+      catch e
+        @petManager.game.errorHandler.captureException e, extra: {lowest: lowestScoreItem, score: @calc.itemScore(lowestScoreItem), slot: itemsInSlot, len: itemsInSlot.length, totalSlots: PetData[@type].slots[item.type], type: @type, itemtype: item.type }
 
     else if itemsInSlot.length < PetData[@type].slots[item.type]
       @equip item

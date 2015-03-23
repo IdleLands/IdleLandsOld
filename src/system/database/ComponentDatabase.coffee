@@ -226,7 +226,7 @@ class ComponentDatabase
 
   allValidTypes: -> @contentFolders.events.concat @contentFolders.ingredients.concat @contentFolders.items.concat @contentFolders.monsters.concat @contentFolders.npcs.concat @contentFolders.strings
 
-  commitAndPushAllFiles: (types, submitters) ->
+  commitAndPushAllFiles: (types, submitters, moderator) ->
     #if not config.githubUser or not config.githubPass
     #  @game.errorHandler.captureException new Error "No githubUser or githubPass specified in config.json"
     #  return
@@ -243,10 +243,11 @@ class ComponentDatabase
 
     repo = require("gitty") "#{__dirname}/../../../assets/custom"
 
-    message = "New #{types.join ", "}\n\nThanks to #{submitters.join ", "}"
+    message = "New #{types.join ", "}\n\nThanks to #{submitters.join ", "}\n\nModerated by #{moderator}"
 
     repo.addSync ["."]
     repo.commitSync message
+    repo.pull "origin", "master", {}
 
     repo.push "origin", "master", {###username: config.githubUser, password: config.githubPassword###}, ->
 
@@ -285,7 +286,7 @@ class ComponentDatabase
       return defer.resolve {isSuccess: no, code: 596, message: "That gift is not redeemable!"} unless doc.gift and doc.gift > 0
 
       player = @game.playerManager.playerHash[identifier]
-      player.gold.add doc.gift
+      player.addGold doc.gift
       defer.resolve {isSuccess: yes, code: 598, message: "Successfully claimed your gift of #{doc.gift} gold!"}
       @eventsDb.update {_id: ObjectID crierId}, {$push: {clicked: {player: identifier, id: giftId, click: new Date()}}}, ->
 
@@ -323,7 +324,7 @@ class ComponentDatabase
 
     @eventsDb.insert parameters, ->
 
-  approveContent: (ids) ->
+  approveContent: (ids, identifier) ->
     oids = _.map ids, ObjectID
 
     defer = Q.defer()
@@ -343,7 +344,7 @@ class ComponentDatabase
         @writeNewContentToFile doc
         @game.playerManager.incrementPlayerSubmissions doc.submitter
 
-      @commitAndPushAllFiles (_.sortBy _.uniq _.pluck docs, "type"), (_.sortBy _.uniq _.pluck docs, "submitterName")
+      @commitAndPushAllFiles (_.sortBy _.uniq _.pluck docs, "type"), (_.sortBy _.uniq _.pluck docs, "submitterName"), identifier
 
       @submissionsDb.update {_id: {$in: oids}}, {$set: {unAccepted: no}}, {multi: yes}, (e) ->
         defer.resolve {isSuccess: yes, code: 503, message: "Successfully approved #{docs.length} new items."}
@@ -353,13 +354,18 @@ class ComponentDatabase
   testContent: (identifier, content) ->
 
     player = @game.playerManager.getPlayerById identifier
+    return Q {isSuccess: no, code: 5123, message: "Invalid player."} unless player
 
     extra = {}
 
-    testType = content.type.toLowerCase()
+    testType = content.type?.toLowerCase()
     extra.xp = 5670 if _.contains testType, "xp"
     extra.gold = 10456 if _.contains testType, "gold"
+    extra.shopGold = 777 if testType is "merchant"
     extra.item = (_.sample player.equipment).getName() if _.contains testType, "item"
+    extra.stat = _.sample ['str', 'con', 'int', 'wis', 'dex', 'agi', 'luck']
+    extra.partyName = 'Awesome Party Name'
+    extra.partyMembers = 'Thing One, Thing Two, and Thing Three'
 
     text = MessageCreator._replaceMessageColors MessageCreator.doStringReplace content.content, player, extra
 
@@ -383,7 +389,7 @@ class ComponentDatabase
 
       return Q {isSuccess: no, code: 500, message: "You don't have enough gold for that town crier statement. It costs a total of #{cost} gold. We have to pay him somehow!"} if player.gold.getValue() < cost
 
-      player.gold.sub cost
+      player.takeGold cost
 
     content.submitterName = player.name
     content.submitter = identifier

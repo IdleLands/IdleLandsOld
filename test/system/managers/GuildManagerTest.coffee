@@ -26,6 +26,8 @@ player =
     @guild = null
     @guildStatus = null
     @gold = new RestrictedNumber 200000, 9999999999, 0
+  takeGold: (gold) ->
+    @gold.sub gold
 }
 game = GameStub.getGameStub()
 game.playerManager =
