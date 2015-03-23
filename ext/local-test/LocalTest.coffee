@@ -133,6 +133,7 @@ colorMap =
   "event.targetName":           colors.bold
   "event.achievement":          colors.bold
   "event.guildName":            colors.bold.underline
+  "event.stat":                 colors.bold
 
 ## API call functions ##
 loadIdle = ->
