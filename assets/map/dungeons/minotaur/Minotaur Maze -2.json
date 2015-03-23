@@ -503,7 +503,8 @@
                  "name":"Chewtoy",
                  "properties":
                     {
-
+						"flavorText": "A small chewtoy, commonly given to puppies, destroyed beyond repair. The squeaker toy still works, though.",
+						"storyline": "Era: Corruption"
                     },
                  "type":"Collectible",
                  "visible":true,

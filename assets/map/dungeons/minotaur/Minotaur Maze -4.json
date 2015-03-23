@@ -114,7 +114,8 @@
                  "name":"Poorly Drawn Map",
                  "properties":
                     {
-
+						"flavorText": "Even if you look at this map upside-down, you still have no idea what it attempts to portray.",
+						"storyline": "Era: Corruption"
                     },
                  "rotation":0,
                  "type":"Collectible",
