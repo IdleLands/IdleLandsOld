@@ -362,7 +362,8 @@
                  "name":"How Did You Even Get Out Here",
                  "properties":
                     {
-
+						"flavorText": "Bravo! You deserve a medal. Now quit hacking the game!",
+						"storyline": "Era: Future"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -376,7 +377,8 @@
                  "name":"Gauntlet",
                  "properties":
                     {
-
+						"flavorText": "A gauntlet in the Norkos Gauntlet. Someone must be a fan of dark humor.",
+						"storyline": "Lore: Norkos Dungeon"
                     },
                  "type":"Collectible",
                  "visible":true,

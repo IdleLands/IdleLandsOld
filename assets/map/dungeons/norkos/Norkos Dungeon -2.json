@@ -70,7 +70,8 @@
                  "name":"Strange Helm",
                  "properties":
                     {
-
+						"flavorText": "A helm that appears to be made by someone new to the practice. The style is not quite of Norkos, though.",
+						"storyline": "Lore: Norkos Dungeon"
                     },
                  "rotation":0,
                  "type":"Collectible",

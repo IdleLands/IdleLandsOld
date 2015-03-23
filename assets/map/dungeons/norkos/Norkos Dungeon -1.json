@@ -82,7 +82,8 @@
                  "name":"Goblish Cap",
                  "properties":
                     {
-
+						"flavorText": "A small metal saucer used by goblins to protect their noggins.",
+						"storyline": "Lore: Norkos Dungeon"
                     },
                  "type":"Collectible",
                  "visible":true,

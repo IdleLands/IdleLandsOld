@@ -82,7 +82,8 @@
                  "name":"Orcish Blade",
                  "properties":
                     {
-
+						"flavorText": "A crude blade of orcish design. It's very heavy.",
+						"storyline": "Lore: Norkos Dungeon"
                     },
                  "type":"Collectible",
                  "visible":true,

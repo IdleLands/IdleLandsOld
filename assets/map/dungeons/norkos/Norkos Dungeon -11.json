@@ -50,7 +50,9 @@
                  "name":"Sword in the Stones",
                  "properties":
                     {
-                     "rarity":"godly"
+                     "rarity":"godly",
+					 "flavorText": "A legendary sword, wrapped in vines. Thought to be lost to time, it waits for a gallant hero to retrieve it.",
+					 "storyline": "Lore: Norkos Dungeon"
                     },
                  "type":"Collectible",
                  "visible":true,

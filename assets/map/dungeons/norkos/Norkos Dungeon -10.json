@@ -314,7 +314,8 @@
                  "name":"Wet Warden's Water Droplet",
                  "properties":
                     {
-
+						"flavorText": "A small necklace that looks like a water droplet. The Wardens must have lost it while patrolling.",
+						"storyline": "Era: Corruption"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -363,7 +364,9 @@
                  "name":"Jester's Bell",
                  "properties":
                     {
-
+						"flavorText": "A resounding crystal bell that could attract all monsters across Norkos. It must have been sealed here.",
+						"storyline": "Memoir: Jester",
+						"rarity": "godly"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -379,7 +382,7 @@
                  "name":"",
                  "properties":
                     {
-                     "requireCollectible":"Forbidden Cleric's Text"
+						"requireCollectible":"Forbidden Cleric's Text"
                     },
                  "rotation":0,
                  "type":"",
@@ -395,7 +398,9 @@
                  "name":"Necronomicon",
                  "properties":
                     {
-                     "rarity":"Godly"
+						"flavorText": "A forbidden book, thought to be lost to time itself. It is filled with ancient demonology hieroglyphs and every manner of beast is noted here.",
+						"storyline": "Memoir: Necromancer",
+						"rarity":"godly"
                     },
                  "rotation":0,
                  "type":"Collectible",

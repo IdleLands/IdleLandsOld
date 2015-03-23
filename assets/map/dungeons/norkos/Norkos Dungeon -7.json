@@ -731,7 +731,8 @@
                  "name":"Smashed Mace",
                  "properties":
                     {
-
+						"flavorText": "Smasher must have gotten really angry.",
+						"storyline": "Era: Corruption"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -747,7 +748,8 @@
                  "name":"Sliced Longsword",
                  "properties":
                     {
-
+						"flavorText": "Someone must have made Slicer a brittle sword.",
+						"storyline": "Era: Corruption"
                     },
                  "rotation":0,
                  "type":"Collectible",

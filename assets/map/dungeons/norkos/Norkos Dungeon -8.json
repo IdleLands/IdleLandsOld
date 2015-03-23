@@ -394,7 +394,8 @@
                  "name":"Bucket of Lava",
                  "properties":
                     {
-
+						"flavorText": "A bucket made of obsidian filled to the brim with lava. It could be an effective retaliatory tactic if the thought of melting to death weren't so scary.",
+						"storyline": "Lore: Norkos Dungeon"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -442,7 +443,8 @@
                  "name":"Fragile Obsidian Key",
                  "properties":
                     {
-
+						"flavorText": "A brittle key made of obsidian glass. The teeth are faded and this key must not have many uses left before it shatters permanently.",
+						"storyline": "Lore: Norkos Dungeon"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -618,7 +620,8 @@
                  "name":"Serpent Headdress",
                  "properties":
                     {
-
+						"flavorText": "A vivid headdress made in the ancient times. It could fetch a fortune if any people from that era were still alive.",
+						"storyline": "Era: Corruption"
                     },
                  "rotation":0,
                  "type":"Collectible",

@@ -898,7 +898,8 @@
                  "name":"Lizard Scale",
                  "properties":
                     {
-
+						"flavorText": "A chameleon-like scale that seems to blend in with its surroundings. Normally these are kept to allow the lizard to hide better from danger.",
+						"storyline": "Era: Corruption"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -912,7 +913,8 @@
                  "name":"Swampy Water",
                  "properties":
                     {
-
+						"flavorText": "Someone must have tried very hard to create a natural ecosystem in this dungeon.",
+						"storyline": "Lore: Raburro"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -926,7 +928,8 @@
                  "name":"Unnatural Ice",
                  "properties":
                     {
-
+						"flavorText": "There's no possible way to have ice stay cold in a dungeon.",
+						"storyline": "Lore: Raburro"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -940,7 +943,8 @@
                  "name":"Jester's Jangles",
                  "properties":
                     {
-
+						"flavorText": "They still make noise, despite how unkind time was to them.",
+						"storyline": "Memoir: Jester"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -954,7 +958,8 @@
                  "name":"Weirdly Sized Bank Coin",
                  "properties":
                     {
-
+						"flavorText": "In a town of dwarves, this coin would look very strange.",
+						"storyline": "Lore: Raburro"
                     },
                  "type":"Collectible",
                  "visible":true,

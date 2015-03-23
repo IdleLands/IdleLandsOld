@@ -125,7 +125,8 @@
                  "name":"Sandy Glass",
                  "properties":
                     {
-
+						"flavorText": "Someone must have wanted a private beach and oasis.",
+						"storyline": "Lore: Raburro"
                     },
                  "rotation":0,
                  "type":"Collectible",

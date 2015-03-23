@@ -1230,7 +1230,8 @@
                  "name":"Waterlogged Log",
                  "properties":
                     {
-
+						"flavorText": "A log that probably fell from the floor above; that old boat may have finally sunk.",
+						"storyline": "Lore: Raburro"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -1244,7 +1245,8 @@
                  "name":"Old Doorframe",
                  "properties":
                     {
-
+						"flavorText": "It's surprising that this doorframe hasn't crumbled to dust yet with how fragile it feels.",
+						"storyline": "Lore: Raburro"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -1258,7 +1260,8 @@
                  "name":"Ancient Wood Chunk",
                  "properties":
                     {
-
+						"flavorText": "This chunk of wood feels out of place, not because it's in a dungeon, but because it's not native to Norkos.",
+						"storyline": "Lore: Raburro"
                     },
                  "type":"Collectible",
                  "visible":true,
