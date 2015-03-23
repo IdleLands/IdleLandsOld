@@ -201,6 +201,7 @@ class MessageCreator
       "event.targetName":           defaultReplaceFunction
       "event.achievement":          defaultReplaceFunction
       "event.guildName":            defaultReplaceFunction
+      "event.stat":                 defaultReplaceFunction
 
   @replaceMessageColors: (message) ->
     @_replaceMessageColors message, _.defaults (@colorMap or {}), defaultColorMap
