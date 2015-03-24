@@ -77,7 +77,8 @@
                  "name":"Mama Red Draygon Scale",
                  "properties":
                     {
-
+						"flavorText": "A giant, blood-red scale of a dragon. Strangely, you can see the feminity in the scale.",
+						"storyline": "Lore: Draygons"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -91,7 +92,8 @@
                  "name":"Silver Compass",
                  "properties":
                     {
-
+						"flavorText": "A compass made entirely of silver. No wonder the adventurer got lost here, you can't even see which way is north.",
+						"storyline": "Lore: Frigri"
                     },
                  "type":"Collectible",
                  "visible":true,
