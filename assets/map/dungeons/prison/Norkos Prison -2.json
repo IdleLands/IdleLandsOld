@@ -346,7 +346,8 @@
                  "name":"Rakshasha Skin",
                  "properties":
                     {
-
+						"flavorText": "The glowing skin of a rakshasha. For some reason, they've taken up residence in the Prison after it was abandoned.",
+						"storyline": "Lore: Norkos Prison"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -360,7 +361,8 @@
                  "name":"Rakshasha Cloak",
                  "properties":
                     {
-
+						"flavorText": "A cloak made of a rakshasha skin. It glows, but it's still dripping with the blood of the rakshasha, so it appears very creepy.",
+						"storyline": "Lore: Norkos Prison"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -374,7 +376,8 @@
                  "name":"Scimitar Shard",
                  "properties":
                     {
-
+						"flavorText": "A small shard of a once-proud scimitar. There must have been quite the struggle to cause this to break so badly.",
+						"storyline": "Memoir: Barbarian"
                     },
                  "type":"Collectible",
                  "visible":true,

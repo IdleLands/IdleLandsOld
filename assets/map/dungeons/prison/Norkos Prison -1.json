@@ -417,7 +417,8 @@
                  "name":"Broken Dagger Blade",
                  "properties":
                     {
-
+						"flavorText": "A small, castaway blade of a dagger. Someone may have been trying to escape their cell and used this as a projectile.",
+						"storyline": "Memoir: Rogue"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -431,7 +432,8 @@
                  "name":"Broken Dagger Hilt",
                  "properties":
                     {
-
+						"flavorText": "A hilt of a dagger, which appears to have been forcefully separated from the blade. It appears to have been fashioned into a makeshift lockpick.",
+						"storyline": "Memoir: Rogue"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -445,7 +447,8 @@
                  "name":"Shattered Shortsword",
                  "properties":
                     {
-
+						"flavorText": "Who knew that someone could apply so much destructive force to a poor, unsuspecting shortsword?",
+						"storyline": "Memoir: Barbarian"
                     },
                  "type":"Collectible",
                  "visible":true,
