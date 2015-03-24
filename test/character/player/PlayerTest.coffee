@@ -75,5 +75,5 @@ describe "Player", () ->
         expect(res.isSuccess).to.equal(yes)
         guildManager.guilds[0].buildingLevels["Academy"] = 10000
         #See #702
-        expect(player.calc.stat "str").to.be.within(originalVal*2 - 1, originalVal*2)
+        expect(player.calc.stat "str").to.be.within(originalVal*2 - 3, originalVal*2+3)
 
