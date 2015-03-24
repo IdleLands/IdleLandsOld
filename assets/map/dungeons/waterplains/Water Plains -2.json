@@ -53,7 +53,8 @@
                  "name":"Crystal Crab",
                  "properties":
                     {
-
+						"flavorText": "A very rare crab with a shell entirely made of crystal. Mage loves these miniature gold-making delicacies.",
+						"storyline": "Memoir: Mage"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -69,7 +70,8 @@
                  "name":"Old Ring",
                  "properties":
                     {
-                     "flavorText":"This ring is missing its socketed gem."
+                     "flavorText":"This ring is missing its socketed gem.",
+					 "storyline": "Lore: Water Plains"
                     },
                  "rotation":0,
                  "type":"Collectible",

@@ -51,7 +51,8 @@
                  "name":"Crystal of Water",
                  "properties":
                     {
-
+						"flavorText": "A crystal containing a single drop of water.",
+						"storyline": "Lore: Water Plains"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -66,7 +67,8 @@
                  "name":"Shimmering Shell",
                  "properties":
                     {
-
+						"flavorText": "An iridescent shell that appears to be rainbow-colored in the proper lighting. Very shiny, very valuable.",
+						"storyline": "Memoir: Archer"
                     },
                  "rotation":0,
                  "type":"Collectible",
