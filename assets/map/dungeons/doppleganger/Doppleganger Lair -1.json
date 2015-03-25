@@ -51,7 +51,8 @@
                  "name":"Bejeweled Mask",
                  "properties":
                     {
-						"flavorText": "An ornate mask, encrusted with rubies and black diamonds."
+						"flavorText": "An ornate mask, encrusted with rubies and black diamonds. Traditionally used to obscure your face by drawing attention to your wealth.",
+						"storyline": "Lore: Jester"
                     },
                  "rotation":0,
                  "type":"Collectible",
