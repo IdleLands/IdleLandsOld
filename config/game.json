@@ -23,7 +23,7 @@
             "priorityScale": 0.3
         },
         "api": {
-            "autoLogoutTime": 60000
+            "autoLogoutTime": 120000
         },
         "battle": {
           "suppress": 0,
