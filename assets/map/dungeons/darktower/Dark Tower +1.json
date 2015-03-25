@@ -51,7 +51,8 @@
                  "name":"Black Rose",
                  "properties":
                     {
-						"flavorText": "A small, black rose, which blooms only at night time in the moonlight of the evil that washes over this land."
+						"flavorText": "A small, black rose, which blooms only at night time in the moonlight of the evil that washes over this land.",
+						"storyline": "Lore: Dark Tower"
                     },
                  "rotation":0,
                  "type":"Collectible",

@@ -153,7 +153,8 @@
                  "name":"Guardian Sigil Ring",
                  "properties":
                     {
-						"flavorText": "This star-shaped sigil ring marks the carrier as a Guardian of the Dark Tower."
+						"flavorText": "This star-shaped sigil ring marks the carrier as a Guardian of the Dark Tower.",
+						"storyline": "Lore: Dark Tower"
                     },
                  "rotation":0,
                  "type":"Collectible",
