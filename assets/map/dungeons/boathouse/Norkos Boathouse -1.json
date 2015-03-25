@@ -50,7 +50,8 @@
                  "name":"Miniature Boat",
                  "properties":
                     {
-						"flavorText": "This boat looks like it could carry ants from one island to another. Perhaps there's something strange going on in this boathouse."
+						"flavorText": "This boat looks like it could carry ants from one island to another. Perhaps there's something strange going on in this boathouse.",
+						"storyline": "Lore: Norkos"
                     },
                  "type":"Collectible",
                  "visible":true,

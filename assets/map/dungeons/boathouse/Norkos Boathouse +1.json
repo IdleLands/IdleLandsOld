@@ -68,7 +68,8 @@
                  "name":"Ship In A Bottle",
                  "properties":
                     {
-						"flavorText": "A small ship made of ivory encased in a bottle crafted of the finest crystal. Any Pirate would be proud to have this."
+						"flavorText": "A small ship made of ivory encased in a bottle crafted of the finest crystal. Any Pirate would be proud to have this, yarr",
+						"storyline": "Memoir: Pirate"
                     },
                  "type":"Collectible",
                  "visible":true,
