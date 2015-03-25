@@ -136,7 +136,8 @@
                  "name":"Refreshing Spring Water",
                  "properties":
                     {
-						"flavorText": "Ahhhh, fresh spring water. A favorite of Dolphins. Mage has a secret stash of this in his dojo, but refuses to let anyone near it."
+						"flavorText": "Ahhhh, fresh spring water. A favorite of Dolphins. Mage has a secret stash of this in his dojo, but refuses to let anyone near it.",
+						"storyline": "Memoir: Mage"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -164,7 +165,8 @@
                  "name":"Jar of Shiny Rocks",
                  "properties":
                     {
-						"flavorText": "Shinies. Shinies! Jar of shinies! Wait, I found one of these in my sandwich once..."
+						"flavorText": "Shinies. Shinies! Jar of shinies! Wait, I found one of these in my sandwich once...",
+						"storyline": "Memoir: SandwichArtist"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -178,7 +180,8 @@
                  "name":"Funny Fungus",
                  "properties":
                     {
-						"flavorText": "A putrid-smelling but fabulous-tasting fungus. Strangely, it makes you feel like you're surrounded by trees."
+						"flavorText": "A putrid-smelling but fabulous-tasting fungus. Strangely, it makes you feel like you're surrounded by trees.",
+						"storyline": "Memoir: SandwichArtist"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -192,7 +195,8 @@
                  "name":"Crystal of Earth",
                  "properties":
                     {
-						"flavorText": "A crystal that appears to be preserving some chunks of dirt inside of it."
+						"flavorText": "A crystal that appears to be preserving some chunks of dirt inside of it.",
+						"storyline": "Lore: Earth Plains"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -206,7 +210,8 @@
                  "name":"Rockman Eye",
                  "properties":
                     {
-						"flavorText": "The eye of a rockman. Gooey to the touch, but you couldn't smash it if you tried."
+						"flavorText": "The eye of a rockman. Gooey to the touch, but you couldn't smash it if you tried.",
+						"storyline": "Lore: Homlet"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -220,7 +225,8 @@
                  "name":"Painted Pebble",
                  "properties":
                     {
-						"flavorText": "A pebble native to the artists of the Homlet Town. One of them must have gotten lost."
+						"flavorText": "A pebble native to the artists of the Homlet Town. One of them must have gotten lost.",
+						"storyline": "Lore: Homlet"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -234,7 +240,8 @@
                  "name":"Glowing Ooze",
                  "properties":
                     {
-						"flavorText": "A small glob of ooze that glows in the dark."
+						"flavorText": "A small glob of ooze that glows in the dark.",
+						"storyline": "Lore: Homlet"
                     },
                  "type":"Collectible",
                  "visible":true,

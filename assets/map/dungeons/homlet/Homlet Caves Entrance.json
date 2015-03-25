@@ -51,7 +51,8 @@
                  "name":"Decorative Plaque",
                  "properties":
                     {
-						"flavorText": "Engraved with \"Welcome to Homlet, beware of death.\" How ominous."
+						"flavorText": "Engraved with \"Welcome to Homlet, beware of death.\" How ominous.",
+						"storyline": "Lore: Homlet"
                     },
                  "rotation":0,
                  "type":"Collectible",
