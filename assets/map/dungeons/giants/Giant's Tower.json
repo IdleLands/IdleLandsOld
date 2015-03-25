@@ -144,7 +144,8 @@
                  "name":"Giant Sized Flask",
                  "properties":
                     {
-						"flavorText": "A gigantic flask, fit for a dwarf. It is a popular object for the citizens of Frigri."
+						"flavorText": "A gigantic flask, fit for a dwarf. It is a popular object for the citizens of Frigri, especially Bitomancer.",
+						"storyline": "Lore: Bitomancer"
                     },
                  "type":"Collectible",
                  "visible":true,
