@@ -1071,7 +1071,8 @@
                  "name":"Mini Shuriken",
                  "properties":
                     {
-						"flavorText": "A small shuriken evidently left behind by a real ninja. Fighter collects trinkets like these."
+						"flavorText": "A small shuriken evidently left behind by a real ninja. Fighter collects trinkets like these.",
+						"storyline": "Memoir: Fighter"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -1085,7 +1086,8 @@
                  "name":"Silver Lining",
                  "properties":
                     {
-						"flavorText": "Every black shroud has one."
+						"flavorText": "Every black shroud has one.",
+						"storyline": "Lore: Maeles Dungeon"
                     },
                  "type":"Collectible",
                  "visible":true,
@@ -1100,7 +1102,8 @@
                  "properties":
                     {
                      "rarity":"pro",
-					 "flavorText": "A small cloak that could disguise you easily in the night. It feels like it's missing something..."
+					 "flavorText": "A small cloak that could disguise you easily in the night. It feels like it's missing something...",
+					 "storyline": "Lore: Maeles Dungeon"
                     },
                  "type":"Collectible",
                  "visible":true,

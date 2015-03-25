@@ -433,7 +433,8 @@
                  "name":"Tattered Yellow Shirt",
                  "properties":
                     {
-						"flavorText": "A shirt native to Maeles. They won't reveal where they get the beautiful yellow thread."
+						"flavorText": "A shirt native to Maeles. They won't reveal where they get the beautiful yellow thread.",
+						"storyline": "Lore: Maeles"
                     },
                  "type":"Collectible",
                  "visible":true,

@@ -475,7 +475,8 @@
                  "name":"Broken Katana",
                  "properties":
                     {
-						"flavorText": "A spat between Fighter and Barbarian resulted in this sad mess."
+						"flavorText": "A spat between Fighter and Barbarian resulted in this sad mess.",
+						"storyline": "Memoir: Fighter"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -491,7 +492,8 @@
                  "name":"Unpleasant Glass of Water",
                  "properties":
                     {
-						"flavorText": "You don't even have to taste it; it just looks unpleasant."
+						"flavorText": "You don't even have to taste it; it just looks unpleasant.",
+						"storyline": "Lore: Maeles Dungeon"
                     },
                  "rotation":0,
                  "type":"Collectible",
