@@ -51,7 +51,8 @@
                  "name":"Vintage Wine Bottle",
                  "properties":
                     {
-						"flavorText": "Norkius Frigrus, the most exquisite wine in all of Norkos. This bottle must be hundreds of years old."
+						"flavorText": "Norkius Frigrus, the most exquisite wine in all of Norkos. This bottle must be hundreds of years old.",
+						"storyline": "Lore: Frigri"
                     },
                  "rotation":0,
                  "type":"Collectible",
