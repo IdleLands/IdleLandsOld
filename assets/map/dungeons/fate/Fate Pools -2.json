@@ -318,7 +318,8 @@
                  "name":"Strand of Fate",
                  "properties":
                     {
-						"flavorText": "A gossamer, iridescent strand of hair that was left behind by Ulrya, The Goddess of Time."
+						"flavorText": "A gossamer, iridescent strand of hair that was left behind by Ulrya, The Goddess of Time.",
+						"storyline": "Lore: Fate Pools"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -333,7 +334,8 @@
                  "name":"Pretty Cool Looking Dagger",
                  "properties":
                     {
-						"flavorText": "Who knew you'd find something so cool in a place so cruel?"
+						"flavorText": "Who knew you'd find something so cool in a place so cruel?",
+						"storyline": "Lore: Fate Pools"
                     },
                  "rotation":0,
                  "type":"Collectible",

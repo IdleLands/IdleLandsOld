@@ -366,7 +366,8 @@
                  "name":"Vial of Liquid Fate",
                  "properties":
                     {
-						"flavorText": "This swirly, smoky liquid looks like it would just jump out of the vial if you'd open it."
+						"flavorText": "This swirly, smoky liquid looks like it would just jump out of the vial if you'd open it. When you look inside, you see Frigri in ruins.",
+						"storyline": "Memoir: Bitomancer"
                     },
                  "rotation":0,
                  "type":"Collectible",
