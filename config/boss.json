@@ -226,7 +226,7 @@
             { "name": "Golden Vampire Gauntlets", "dropPercent": 80 }
         ],
         "collectibles": [
-            { "name": "Vampire Heart", "dropPercent": 95 }
+            { "name": "Vampire Heart", "dropPercent": 95, "storyline": "Era: Corruption", "flavorText": "The still-beating heart of a vampire. It reeks of darkness." }
         ]
     },
     "Cloud Giant": {
@@ -246,7 +246,7 @@
             { "name": "Halberd of the Giants", "dropPercent": 80 }
         ],
         "collectibles": [
-            { "name": "Crystal of Air", "dropPercent": 30 }
+            { "name": "Crystal of Air", "dropPercent": 30, "storyline": "Era: Corruption", "flavorText": "It's hard to tell, but there are pockets of air in this crystal." }
         ]
     },
     "Ghostly Pirate Captain": {
@@ -283,7 +283,7 @@
             { "name": "Fire Infused Dragon Tooth", "dropPercent": 75 }
         ],
         "collectibles": [
-            { "name": "Red Draygon Scale", "dropPercent": 50 }
+            { "name": "Red Draygon Scale", "dropPercent": 50, "storyline": "Lore: Draygons", "flavorText": "A gleaming ruby-like scale. It's warm to the touch." }
         ]
     },
     "Mama Red Draygon": {
@@ -451,7 +451,7 @@
             { "name": "Lich Lord's Phylactery", "dropPercent": 80 }
         ],
         "collectibles": [
-            { "name": "Cursed Orb", "dropPercent": 75, "flavorText": "Every crack looks like it opens to a void."}
+            { "name": "Cursed Orb", "dropPercent": 75, "flavorText": "Every crack looks like it opens to a void.", "storyline": "Era: Corruption"}
         ]
 		},
     "Venerable Dwarven Lord": {
@@ -822,7 +822,7 @@
             { "name": "Flame Polished Gauntlets", "dropPercent": 75 }
         ],
         "collectibles": [
-            { "name": "Bottle of Ketchup", "dropPercent": 75, "flavorText": "Spot was always prepared for adventurers."}
+            { "name": "Bottle of Ketchup", "dropPercent": 75, "flavorText": "Spot was always prepared for adventurers.", "storyline": "Lore: Draygons"}
         ]
     },
     "Little Yeti": {
@@ -861,7 +861,7 @@
             { "name": "Leviathan Claw", "dropPercent": 80 }
         ],
         "collectibles": [
-            { "name": "Leviathan Egg", "dropPercent": 45 }
+            { "name": "Leviathan Egg", "dropPercent": 45, "storyline": "Era: Corruption", "flavorText": "An ivory egg. It occasionally stirs with activity, though it's hard to discern why." }
         ]
     },
     "Snowbeast": {
@@ -882,7 +882,7 @@
 	    "startle": 1
         },
         "collectibles": [
-            { "name": "Snowbeast Skull", "dropPercent": 90, "flavorText": "What are you, the Bone Collector?" }
+            { "name": "Snowbeast Skull", "dropPercent": 90, "flavorText": "What are you, the Bone Collector?", "storyline": "Lore: Frigri" }
         ]
     },
     "Unspeakably Horrible Cave Creature": {
@@ -923,8 +923,8 @@
 	    "startle": 1
         },
         "collectibles": [
-            { "name": "Gorgon Snake", "dropPercent": 5 },
-	    { "name": "Basilisk Scale", "dropPercent": 95 }
+            { "name": "Gorgon Snake", "dropPercent": 5, "storyline": "Memoir: Necromancer", "flavorText": "The Necromancers of olde would oft use artifacts like this to summon powerful monsters." },
+	    { "name": "Basilisk Scale", "dropPercent": 95, "storyline": "Lore: Draygons", "flavorText": "This once jet black and red scale has now turned to stone." }
         ]
     },
     "Slicer": {
