@@ -362,7 +362,7 @@ class ComponentDatabase
     extra.xp = 5670 if _.contains testType, "xp"
     extra.gold = 10456 if _.contains testType, "gold"
     extra.shopGold = 777 if testType is "merchant"
-    extra.item = (_.sample player.equipment).getName() if _.contains testType, "item"
+    extra.item = (_.sample player.equipment).getName() if (_.contains testType, "item") or testType is "flipStat"
     extra.stat = _.sample ['str', 'con', 'int', 'wis', 'dex', 'agi', 'luck']
     extra.partyName = 'Awesome Party Name'
     extra.partyMembers = 'Thing One, Thing Two, and Thing Three'
