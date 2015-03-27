@@ -2222,7 +2222,9 @@
                  "name":"Jail Brick",
                  "properties":
                     {
-                     "rarity":"idle"
+                     "rarity":"idle",
+					 "flavorText": "A brick from the player jail. You can only get this if you're bad!",
+					 "storyline": "Lore: Norkos"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -2238,7 +2240,8 @@
                  "name":"Mini Norkian Tree",
                  "properties":
                     {
-
+						"flavorText": "A miniature orange tree that resembles those on the nearby Norkos islands.",
+						"storyline": "Lore: Norkos"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -2254,7 +2257,8 @@
                  "name":"Jar of Norkian Water",
                  "properties":
                     {
-
+						"flavorText": "A jar of water, fresh from the Norkos pool.",
+						"storyline": "Lore: Norkos"
                     },
                  "rotation":0,
                  "type":"Collectible",
@@ -2270,7 +2274,7 @@
                  "name":"Secret Wood Panel",
                  "properties":
                     {
-
+						"flavorText": "A panel of wood that can be removed to go to a secret place. Clearly that place is not so secret anymore if you're carrying it around."
                     },
                  "rotation":0,
                  "type":"Collectible",
