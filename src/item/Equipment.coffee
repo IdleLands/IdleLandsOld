@@ -75,6 +75,7 @@ class Equipment
     dance: 100
     aegis: 100
     prone: 100
+    proneChance: 50 # per point
     power: 100
     silver: 100
     deadeye: 100
@@ -88,9 +89,13 @@ class Equipment
     sturdy: 400
     lethal: 200
     shatter: 400
+    shatterChance: 200 # per point
     poison: 200
+    poisonChance: 100 # per point
     venom: 300
+    venomChance: 150 # per point
     vampire: 350
+    vampireChance: 175 # per point
     mindwipe: 5000
     startle: 250
     fear: 400

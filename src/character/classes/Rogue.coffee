@@ -46,6 +46,12 @@ class Rogue extends Class
     item.wis*0.8 -
     item.int*0.8
 
+  proneChance: -> 10
+  venomChance: -> 10
+  poisonChance: -> 10
+  shatterChance: -> 10
+  vampireChance: -> 10
+
   physicalAttackChance: -> -40
 
   minDamage: (player) ->
