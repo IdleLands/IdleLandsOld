@@ -30,6 +30,7 @@ class Teleport extends GuildBuilding
       type: "Teleport"
       properties:
         toLoc: "norkos"
+        movementType: "teleport"
 
     @tiles = [
       0,  0,  0,
