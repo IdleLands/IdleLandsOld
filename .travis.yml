@@ -3,6 +3,7 @@ node_js:
   - "0.12"
   - "0.11"
   - "0.10"
+  - "iojs"
 before_script:
   - npm install -g grunt-cli coffee-script
 services:
