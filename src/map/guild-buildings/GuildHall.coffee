@@ -7,7 +7,7 @@ GuildBuilding = require "../GuildBuilding"
  * @name GuildHall
  * @category Buildings
  * @package Guild
- * @cost {level-up} level*[2500+level/100]
+ * @cost {level-up} level*[2500+level/100] (if level >100 level*[3500+level/100])
  * @size {lg}
  */`
 class GuildHall extends GuildBuilding
