@@ -15,7 +15,7 @@ class FortuneTeller extends GuildBuilding
 
   @size = FortuneTeller::size = "sm"
   @desc = FortuneTeller::desc = "Upgrade this crystal ball user to get better providences!"
-  @levelupCost = FortuneTeller::levelupCost = (level) -> 55000+(20000*Math.floor level/100)
+  @levelupCost = FortuneTeller::levelupCost = (level) -> if level > 100 then 75000+(20000*Math.floor level/100) else 55000+(20000*Math.floor level/100) 
 
   properties: [
     { name: "Name", values: ""}
