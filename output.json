@@ -989,8 +989,8 @@
                     "_name": "IRC Commands",
                     "_children": [
                         {
-                            "lineNumber": 933,
-                            "endLineNumber": 941,
+                            "lineNumber": 934,
+                            "endLineNumber": 942,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1023,8 +1023,8 @@
                             }
                         },
                         {
-                            "lineNumber": 719,
-                            "endLineNumber": 727,
+                            "lineNumber": 720,
+                            "endLineNumber": 728,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1057,8 +1057,8 @@
                             }
                         },
                         {
-                            "lineNumber": 910,
-                            "endLineNumber": 918,
+                            "lineNumber": 911,
+                            "endLineNumber": 919,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1091,8 +1091,8 @@
                             }
                         },
                         {
-                            "lineNumber": 885,
-                            "endLineNumber": 894,
+                            "lineNumber": 886,
+                            "endLineNumber": 895,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1129,8 +1129,8 @@
                             }
                         },
                         {
-                            "lineNumber": 742,
-                            "endLineNumber": 753,
+                            "lineNumber": 743,
+                            "endLineNumber": 754,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1175,8 +1175,8 @@
                             }
                         },
                         {
-                            "lineNumber": 860,
-                            "endLineNumber": 869,
+                            "lineNumber": 861,
+                            "endLineNumber": 870,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1213,8 +1213,8 @@
                             }
                         },
                         {
-                            "lineNumber": 391,
-                            "endLineNumber": 399,
+                            "lineNumber": 392,
+                            "endLineNumber": 400,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -1244,8 +1244,8 @@
                             }
                         },
                         {
-                            "lineNumber": 365,
-                            "endLineNumber": 374,
+                            "lineNumber": 366,
+                            "endLineNumber": 375,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1281,8 +1281,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1206,
-                            "endLineNumber": 1215,
+                            "lineNumber": 1207,
+                            "endLineNumber": 1216,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1318,8 +1318,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1186,
-                            "endLineNumber": 1195,
+                            "lineNumber": 1187,
+                            "endLineNumber": 1196,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1355,8 +1355,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1128,
-                            "endLineNumber": 1136,
+                            "lineNumber": 1129,
+                            "endLineNumber": 1137,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -1387,8 +1387,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1147,
-                            "endLineNumber": 1156,
+                            "lineNumber": 1148,
+                            "endLineNumber": 1157,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1424,8 +1424,8 @@
                             }
                         },
                         {
-                            "lineNumber": 318,
-                            "endLineNumber": 326,
+                            "lineNumber": 319,
+                            "endLineNumber": 327,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -1455,8 +1455,8 @@
                             }
                         },
                         {
-                            "lineNumber": 603,
-                            "endLineNumber": 611,
+                            "lineNumber": 604,
+                            "endLineNumber": 612,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1489,8 +1489,8 @@
                             }
                         },
                         {
-                            "lineNumber": 331,
-                            "endLineNumber": 339,
+                            "lineNumber": 332,
+                            "endLineNumber": 340,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -1521,8 +1521,8 @@
                             }
                         },
                         {
-                            "lineNumber": 491,
-                            "endLineNumber": 500,
+                            "lineNumber": 492,
+                            "endLineNumber": 501,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1558,8 +1558,8 @@
                             }
                         },
                         {
-                            "lineNumber": 791,
-                            "endLineNumber": 799,
+                            "lineNumber": 792,
+                            "endLineNumber": 800,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1592,8 +1592,8 @@
                             }
                         },
                         {
-                            "lineNumber": 768,
-                            "endLineNumber": 776,
+                            "lineNumber": 769,
+                            "endLineNumber": 777,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1626,8 +1626,8 @@
                             }
                         },
                         {
-                            "lineNumber": 979,
-                            "endLineNumber": 987,
+                            "lineNumber": 980,
+                            "endLineNumber": 988,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1661,8 +1661,8 @@
                             }
                         },
                         {
-                            "lineNumber": 837,
-                            "endLineNumber": 845,
+                            "lineNumber": 838,
+                            "endLineNumber": 846,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1695,8 +1695,8 @@
                             }
                         },
                         {
-                            "lineNumber": 956,
-                            "endLineNumber": 964,
+                            "lineNumber": 957,
+                            "endLineNumber": 965,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1730,8 +1730,8 @@
                             }
                         },
                         {
-                            "lineNumber": 814,
-                            "endLineNumber": 822,
+                            "lineNumber": 815,
+                            "endLineNumber": 823,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1764,8 +1764,8 @@
                             }
                         },
                         {
-                            "lineNumber": 669,
-                            "endLineNumber": 679,
+                            "lineNumber": 670,
+                            "endLineNumber": 680,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1806,8 +1806,8 @@
                             }
                         },
                         {
-                            "lineNumber": 477,
-                            "endLineNumber": 486,
+                            "lineNumber": 478,
+                            "endLineNumber": 487,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1843,8 +1843,8 @@
                             }
                         },
                         {
-                            "lineNumber": 461,
-                            "endLineNumber": 470,
+                            "lineNumber": 462,
+                            "endLineNumber": 471,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1880,8 +1880,8 @@
                             }
                         },
                         {
-                            "lineNumber": 447,
-                            "endLineNumber": 456,
+                            "lineNumber": 448,
+                            "endLineNumber": 457,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1917,8 +1917,8 @@
                             }
                         },
                         {
-                            "lineNumber": 505,
-                            "endLineNumber": 514,
+                            "lineNumber": 506,
+                            "endLineNumber": 515,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -1955,8 +1955,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1074,
-                            "endLineNumber": 1099,
+                            "lineNumber": 1075,
+                            "endLineNumber": 1100,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2058,8 +2058,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1026,
-                            "endLineNumber": 1034,
+                            "lineNumber": 1027,
+                            "endLineNumber": 1035,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2092,8 +2092,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1049,
-                            "endLineNumber": 1059,
+                            "lineNumber": 1050,
+                            "endLineNumber": 1060,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2134,8 +2134,8 @@
                             }
                         },
                         {
-                            "lineNumber": 580,
-                            "endLineNumber": 589,
+                            "lineNumber": 581,
+                            "endLineNumber": 590,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2172,8 +2172,8 @@
                             }
                         },
                         {
-                            "lineNumber": 567,
-                            "endLineNumber": 576,
+                            "lineNumber": 568,
+                            "endLineNumber": 577,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2210,8 +2210,8 @@
                             }
                         },
                         {
-                            "lineNumber": 307,
-                            "endLineNumber": 314,
+                            "lineNumber": 308,
+                            "endLineNumber": 315,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -2238,8 +2238,8 @@
                             }
                         },
                         {
-                            "lineNumber": 344,
-                            "endLineNumber": 353,
+                            "lineNumber": 345,
+                            "endLineNumber": 354,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2275,8 +2275,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1002,
-                            "endLineNumber": 1011,
+                            "lineNumber": 1003,
+                            "endLineNumber": 1012,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2313,8 +2313,8 @@
                             }
                         },
                         {
-                            "lineNumber": 1166,
-                            "endLineNumber": 1175,
+                            "lineNumber": 1167,
+                            "endLineNumber": 1176,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2350,8 +2350,8 @@
                             }
                         },
                         {
-                            "lineNumber": 695,
-                            "endLineNumber": 703,
+                            "lineNumber": 696,
+                            "endLineNumber": 704,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2385,8 +2385,8 @@
                             }
                         },
                         {
-                            "lineNumber": 251,
-                            "endLineNumber": 259,
+                            "lineNumber": 252,
+                            "endLineNumber": 260,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -2416,8 +2416,8 @@
                             }
                         },
                         {
-                            "lineNumber": 269,
-                            "endLineNumber": 277,
+                            "lineNumber": 270,
+                            "endLineNumber": 278,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -2447,8 +2447,8 @@
                             }
                         },
                         {
-                            "lineNumber": 541,
-                            "endLineNumber": 550,
+                            "lineNumber": 542,
+                            "endLineNumber": 551,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2485,8 +2485,8 @@
                             }
                         },
                         {
-                            "lineNumber": 431,
-                            "endLineNumber": 440,
+                            "lineNumber": 432,
+                            "endLineNumber": 441,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2522,8 +2522,8 @@
                             }
                         },
                         {
-                            "lineNumber": 417,
-                            "endLineNumber": 426,
+                            "lineNumber": 418,
+                            "endLineNumber": 427,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2559,8 +2559,8 @@
                             }
                         },
                         {
-                            "lineNumber": 625,
-                            "endLineNumber": 633,
+                            "lineNumber": 626,
+                            "endLineNumber": 634,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2593,8 +2593,8 @@
                             }
                         },
                         {
-                            "lineNumber": 647,
-                            "endLineNumber": 655,
+                            "lineNumber": 648,
+                            "endLineNumber": 656,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "example": [
@@ -2627,8 +2627,8 @@
                             }
                         },
                         {
-                            "lineNumber": 404,
-                            "endLineNumber": 412,
+                            "lineNumber": 405,
+                            "endLineNumber": 413,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -2658,8 +2658,8 @@
                             }
                         },
                         {
-                            "lineNumber": 379,
-                            "endLineNumber": 387,
+                            "lineNumber": 380,
+                            "endLineNumber": 388,
                             "filePath": "ext/kurea/IdleLandsModule.coffee",
                             "fileName": "IdleLandsModule.coffee",
                             "syntax": [
@@ -4050,7 +4050,7 @@
                                     "name": "cost",
                                     "type": "level-up",
                                     "basicInfo": "15000",
-                                    "extendedInfo": "if level <= 100"
+                                    "extendedInfo": "if level >100 100000*[50000+[25000*level/100]]"
                                 }
                             ],
                             "property": [
@@ -4102,7 +4102,7 @@
                                 {
                                     "name": "property",
                                     "basicInfo": "AttemptEnchant",
-                                    "extendedInfo": "Yes/No; whether or not to attempt unsafe enchantments"
+                                    "extendedInfo": "Yes/No; whether or not to attempt unsafe enchantments. An enchantment is considered unsafe if the Enchantress level is not 20 levels over the learned enchantment level; this means that a +1 requires level 30 to be safe"
                                 }
                             ],
                             "desc": {
@@ -4208,7 +4208,8 @@
                                 {
                                     "name": "cost",
                                     "type": "level-up",
-                                    "basicInfo": "level*[2500+level/100]"
+                                    "basicInfo": "level*[2500+level/100]",
+                                    "extendedInfo": "if level >100 level*[3500+level/100]"
                                 }
                             ],
                             "desc": {
@@ -4452,8 +4453,8 @@
                     "_name": "Equipment Effects",
                     "_children": [
                         {
-                            "lineNumber": 244,
-                            "endLineNumber": 252,
+                            "lineNumber": 246,
+                            "endLineNumber": 254,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4482,8 +4483,8 @@
                             }
                         },
                         {
-                            "lineNumber": 255,
-                            "endLineNumber": 263,
+                            "lineNumber": 257,
+                            "endLineNumber": 265,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4511,8 +4512,8 @@
                             }
                         },
                         {
-                            "lineNumber": 266,
-                            "endLineNumber": 274,
+                            "lineNumber": 268,
+                            "endLineNumber": 276,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4541,8 +4542,8 @@
                             }
                         },
                         {
-                            "lineNumber": 649,
-                            "endLineNumber": 657,
+                            "lineNumber": 658,
+                            "endLineNumber": 666,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4571,8 +4572,8 @@
                             }
                         },
                         {
-                            "lineNumber": 277,
-                            "endLineNumber": 285,
+                            "lineNumber": 279,
+                            "endLineNumber": 287,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4600,8 +4601,8 @@
                             }
                         },
                         {
-                            "lineNumber": 288,
-                            "endLineNumber": 296,
+                            "lineNumber": 290,
+                            "endLineNumber": 298,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4630,8 +4631,8 @@
                             }
                         },
                         {
-                            "lineNumber": 299,
-                            "endLineNumber": 307,
+                            "lineNumber": 301,
+                            "endLineNumber": 309,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4659,8 +4660,8 @@
                             }
                         },
                         {
-                            "lineNumber": 310,
-                            "endLineNumber": 318,
+                            "lineNumber": 312,
+                            "endLineNumber": 320,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4689,8 +4690,8 @@
                             }
                         },
                         {
-                            "lineNumber": 321,
-                            "endLineNumber": 328,
+                            "lineNumber": 323,
+                            "endLineNumber": 330,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4715,8 +4716,8 @@
                             }
                         },
                         {
-                            "lineNumber": 331,
-                            "endLineNumber": 339,
+                            "lineNumber": 333,
+                            "endLineNumber": 341,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4744,13 +4745,13 @@
                             }
                         },
                         {
-                            "lineNumber": 540,
-                            "endLineNumber": 548,
+                            "lineNumber": 547,
+                            "endLineNumber": 556,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
                                 "name": "desc",
-                                "basicInfo": "Forsaken makes it so every blessItem, flipStat, or forsakeItem hits this item. In the event that there are multiple forsaken items in your inventory, one will be chosen at random."
+                                "basicInfo": "Forsaken makes it so every event hits this item. In the event that there are multiple forsaken items in your inventory, one will be chosen at random. If your item is not limitless, enchant/tinker events will be swallowed into the void."
                             },
                             "name": {
                                 "name": "name",
@@ -4770,8 +4771,8 @@
                             }
                         },
                         {
-                            "lineNumber": 342,
-                            "endLineNumber": 350,
+                            "lineNumber": 344,
+                            "endLineNumber": 352,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4800,8 +4801,8 @@
                             }
                         },
                         {
-                            "lineNumber": 353,
-                            "endLineNumber": 360,
+                            "lineNumber": 355,
+                            "endLineNumber": 362,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4827,8 +4828,8 @@
                             }
                         },
                         {
-                            "lineNumber": 363,
-                            "endLineNumber": 371,
+                            "lineNumber": 365,
+                            "endLineNumber": 373,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4856,8 +4857,8 @@
                             }
                         },
                         {
-                            "lineNumber": 550,
-                            "endLineNumber": 557,
+                            "lineNumber": 558,
+                            "endLineNumber": 565,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4882,8 +4883,8 @@
                             }
                         },
                         {
-                            "lineNumber": 374,
-                            "endLineNumber": 382,
+                            "lineNumber": 376,
+                            "endLineNumber": 384,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4911,8 +4912,8 @@
                             }
                         },
                         {
-                            "lineNumber": 440,
-                            "endLineNumber": 448,
+                            "lineNumber": 444,
+                            "endLineNumber": 452,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4941,8 +4942,8 @@
                             }
                         },
                         {
-                            "lineNumber": 385,
-                            "endLineNumber": 393,
+                            "lineNumber": 387,
+                            "endLineNumber": 395,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -4971,8 +4972,8 @@
                             }
                         },
                         {
-                            "lineNumber": 396,
-                            "endLineNumber": 404,
+                            "lineNumber": 398,
+                            "endLineNumber": 406,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -5000,8 +5001,8 @@
                             }
                         },
                         {
-                            "lineNumber": 407,
-                            "endLineNumber": 415,
+                            "lineNumber": 410,
+                            "endLineNumber": 418,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -5029,8 +5030,8 @@
                             }
                         },
                         {
-                            "lineNumber": 418,
-                            "endLineNumber": 426,
+                            "lineNumber": 421,
+                            "endLineNumber": 429,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -5058,8 +5059,8 @@
                             }
                         },
                         {
-                            "lineNumber": 429,
-                            "endLineNumber": 437,
+                            "lineNumber": 433,
+                            "endLineNumber": 441,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -5088,8 +5089,8 @@
                             }
                         },
                         {
-                            "lineNumber": 451,
-                            "endLineNumber": 459,
+                            "lineNumber": 455,
+                            "endLineNumber": 463,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -5118,13 +5119,14 @@
                             }
                         },
                         {
-                            "lineNumber": 559,
-                            "endLineNumber": 566,
+                            "lineNumber": 567,
+                            "endLineNumber": 575,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
                                 "name": "desc",
-                                "basicInfo": "Sacred makes it so there is no chance of this item being hit by blessItem, flipStat, or forsakeItem."
+                                "basicInfo": "Sacred makes it so there is no chance of this item being hit by blessItem, flipStat, or forsakeItem",
+                                "extendedInfo": "unless the item is also forsaken, in which case, that takes precedence. Evil rules Idliathlia!"
                             },
                             "name": {
                                 "name": "name",
@@ -5144,8 +5146,8 @@
                             }
                         },
                         {
-                            "lineNumber": 568,
-                            "endLineNumber": 575,
+                            "lineNumber": 577,
+                            "endLineNumber": 584,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -5170,8 +5172,8 @@
                             }
                         },
                         {
-                            "lineNumber": 462,
-                            "endLineNumber": 470,
+                            "lineNumber": 466,
+                            "endLineNumber": 474,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -5199,8 +5201,8 @@
                             }
                         },
                         {
-                            "lineNumber": 473,
-                            "endLineNumber": 481,
+                            "lineNumber": 478,
+                            "endLineNumber": 486,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -5228,8 +5230,8 @@
                             }
                         },
                         {
-                            "lineNumber": 484,
-                            "endLineNumber": 492,
+                            "lineNumber": 489,
+                            "endLineNumber": 497,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -5257,8 +5259,8 @@
                             }
                         },
                         {
-                            "lineNumber": 577,
-                            "endLineNumber": 584,
+                            "lineNumber": 586,
+                            "endLineNumber": 593,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -5284,8 +5286,8 @@
                             }
                         },
                         {
-                            "lineNumber": 495,
-                            "endLineNumber": 504,
+                            "lineNumber": 500,
+                            "endLineNumber": 509,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "requirement": [
@@ -5320,8 +5322,8 @@
                             }
                         },
                         {
-                            "lineNumber": 507,
-                            "endLineNumber": 515,
+                            "lineNumber": 512,
+                            "endLineNumber": 520,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -5350,8 +5352,8 @@
                             }
                         },
                         {
-                            "lineNumber": 518,
-                            "endLineNumber": 526,
+                            "lineNumber": 524,
+                            "endLineNumber": 532,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -5379,8 +5381,8 @@
                             }
                         },
                         {
-                            "lineNumber": 529,
-                            "endLineNumber": 537,
+                            "lineNumber": 536,
+                            "endLineNumber": 544,
                             "filePath": "src/character/base/Character.coffee",
                             "fileName": "Character.coffee",
                             "desc": {
@@ -6079,6 +6081,40 @@
                             "name": {
                                 "name": "name",
                                 "basicInfo": "Golden"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Achievements"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Player"
+                            }
+                        },
+                        {
+                            "lineNumber": 5,
+                            "endLineNumber": 13,
+                            "filePath": "src/character/achievements/Impossible.coffee",
+                            "fileName": "Impossible.coffee",
+                            "reward": [
+                                {
+                                    "name": "reward",
+                                    "basicInfo": "Bragging rights"
+                                }
+                            ],
+                            "prerequisite": [
+                                {
+                                    "name": "prerequisite",
+                                    "basicInfo": "Varies"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This achievement, in a perfect world, will never be earned. But, feel free to try!"
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "Impossible"
                             },
                             "category": {
                                 "name": "category",
@@ -14484,64 +14520,6 @@
                             }
                         },
                         {
-                            "lineNumber": 22,
-                            "endLineNumber": 35,
-                            "filePath": "src/character/spells/debuffs/single/Deathtouch.coffee",
-                            "fileName": "Deathtouch.coffee",
-                            "effect": [
-                                {
-                                    "name": "effect",
-                                    "basicInfo": "poison"
-                                },
-                                {
-                                    "name": "effect",
-                                    "basicInfo": "stun"
-                                }
-                            ],
-                            "requirement": [
-                                {
-                                    "name": "requirement",
-                                    "type": "class",
-                                    "basicInfo": "Necromancer"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "mp",
-                                    "basicInfo": "1500"
-                                },
-                                {
-                                    "name": "requirement",
-                                    "type": "level",
-                                    "basicInfo": "35"
-                                }
-                            ],
-                            "desc": {
-                                "name": "desc",
-                                "basicInfo": "This spell does a minor amount of damage, and leeches it back to the caster as HP."
-                            },
-                            "name": {
-                                "name": "name",
-                                "basicInfo": "poisontouch"
-                            },
-                            "element": {
-                                "name": "element",
-                                "basicInfo": "holy, debuff, physical"
-                            },
-                            "targets": {
-                                "name": "targets",
-                                "type": "enemy",
-                                "basicInfo": "1"
-                            },
-                            "category": {
-                                "name": "category",
-                                "basicInfo": "Necromancer"
-                            },
-                            "package": {
-                                "name": "package",
-                                "basicInfo": "Spells"
-                            }
-                        },
-                        {
                             "lineNumber": 8,
                             "endLineNumber": 21,
                             "filePath": "src/character/spells/debuffs/single/Siphon.coffee",
@@ -14587,6 +14565,64 @@
                             "maxDamage": {
                                 "name": "maxDamage",
                                 "basicInfo": "[wis/4]"
+                            },
+                            "category": {
+                                "name": "category",
+                                "basicInfo": "Necromancer"
+                            },
+                            "package": {
+                                "name": "package",
+                                "basicInfo": "Spells"
+                            }
+                        },
+                        {
+                            "lineNumber": 22,
+                            "endLineNumber": 35,
+                            "filePath": "src/character/spells/debuffs/single/Deathtouch.coffee",
+                            "fileName": "Deathtouch.coffee",
+                            "effect": [
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "poison"
+                                },
+                                {
+                                    "name": "effect",
+                                    "basicInfo": "stun"
+                                }
+                            ],
+                            "requirement": [
+                                {
+                                    "name": "requirement",
+                                    "type": "class",
+                                    "basicInfo": "Necromancer"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "mp",
+                                    "basicInfo": "1500"
+                                },
+                                {
+                                    "name": "requirement",
+                                    "type": "level",
+                                    "basicInfo": "35"
+                                }
+                            ],
+                            "desc": {
+                                "name": "desc",
+                                "basicInfo": "This spell does a minor amount of damage, and leeches it back to the caster as HP."
+                            },
+                            "name": {
+                                "name": "name",
+                                "basicInfo": "stuntouch"
+                            },
+                            "element": {
+                                "name": "element",
+                                "basicInfo": "holy, debuff, physical"
+                            },
+                            "targets": {
+                                "name": "targets",
+                                "type": "enemy",
+                                "basicInfo": "1"
                             },
                             "category": {
                                 "name": "category",
@@ -16219,12 +16255,12 @@
             ]
         }
     ],
-    "startTime": 1425243321719,
-    "endTime": 1425243321875,
+    "startTime": 1428240215726,
+    "endTime": 1428240216377,
     "git": {
-        "short": "e45c8fa",
-        "long": "e45c8fae5517614d2bbe0d65a61aedf8488d93ab",
+        "short": "630960a",
+        "long": "630960a9375614dd263d8c33c6ba7b420b6204f8",
         "branch": "master",
-        "tag": "0.5.0"
+        "tag": "0.10.0"
     }
 }
