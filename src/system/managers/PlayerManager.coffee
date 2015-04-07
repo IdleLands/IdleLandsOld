@@ -383,7 +383,7 @@ class PlayerManager
     _.forEach ['hp', 'mp', 'special', 'level', 'xp', 'gold'], (item) ->
       player[item] = loadRN player[item]
 
-    player.level.maximum = 200
+    player.level.maximum = 500
     player.partyName = ''
 
     player.__proto__ = Player.prototype
