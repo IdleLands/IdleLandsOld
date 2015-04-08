@@ -572,7 +572,7 @@ class Battle
 
     damage += attacker.calc.absolute()
 
-    darksideDamage = Math.round damage*(attacker.calc.darkside()*10/100)
+    darksideDamage = Math.round damage*(attacker.calc.darkside()*3/100)
     damage += darksideDamage if darksideDamage > 0
 
     damage -= defender.calc?.damageTaken attacker, damage, type, spell, damageType
