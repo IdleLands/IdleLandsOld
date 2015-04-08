@@ -393,7 +393,7 @@ class Player extends Character
       storyline: collectible.properties?.storyline
       foundAt: Date.now()
 
-    message = "<player.name>#{@name}</player.name> stumbled across a rare, shiny, and collectible <event.item.#{collectibleRarity}>#{collectibleName}</event.item.#{collectibleRarity}> in #{@map} - #{@mapRegion}!"
+    message = "<player.name>#{@getName()}</player.name> stumbled across a rare, shiny, and collectible <event.item.#{collectibleRarity}>#{collectibleName}</event.item.#{collectibleRarity}> in #{@map} - #{@mapRegion}!"
     @playerManager.game.eventHandler.broadcastEvent {message: message, player: @, type: 'event'}
 
   handleTreasure: (treasure) ->
