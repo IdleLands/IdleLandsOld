@@ -42,6 +42,7 @@ class BossFactory
       baseItem.itemClass = setAllItemClasses
       monster.equip new Equipment baseItem
     
+    monster.equipment[0].fleePercent = -1000;
     monster.equipment[0].hp = monster.equipment[0].hp ? 0
     monster.equipment[0].hp = monster.level.getValue() * 1000
 
