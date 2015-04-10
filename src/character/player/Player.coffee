@@ -883,7 +883,7 @@ class Player extends Character
   levelUp: (suppress = no) ->
     return if not @playerManager or @level.getValue() is @level.maximum
     @level.add 1
-    message = "<player.name>#{@name}</player.name> has attained level <player.level>#{@level.getValue()}</player.level>!"
+    message = "<player.name>#{@getName()}</player.name> has attained level <player.level>#{@level.getValue()}</player.level>!"
     @resetMaxXp()
     @xp.toMinimum()
     @recalculateStats()
