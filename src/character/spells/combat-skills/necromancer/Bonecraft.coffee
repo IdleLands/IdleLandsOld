@@ -28,11 +28,11 @@ class Bonecraft extends Spell
     @targetSomeEnemies includeDead: yes, includeLiving: no
 
   calcDamage: ->
-    super() + (25 * @spellPower)
+    super() + (0.25 * @spellPower)
 
   cast: (player) ->
     damage = @calcDamage()
-    damage = parseInt player.hp.maximum*damage*0.01
+    damage = parseInt player.hp.maximum*damage
     damage = 1 if damage < 1
     message = "%casterName cast %spellName at %targetName and revived %himher to %damage HP -- but on %casterName's side!"
     @doDamageTo player, -damage, message
