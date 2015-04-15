@@ -20,7 +20,8 @@ class LightsFromTheStars extends Spell
       * @category Bard
       * @package Spells
       */`
-    {name: "Lights from the Stars", spellPower: 1, cost: 300, class: "Bard", level: 10}    `/**
+    {name: "Lights from the Stars", spellPower: 1, cost: 300, class: "Bard", level: 10}
+    `/**
       * This spell buffs the int and wis of your allies.
       *
       * @name Celestial Birdsong
