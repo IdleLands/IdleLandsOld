@@ -37,8 +37,6 @@ class LightsFromTheStars extends Spell
     */`
     {name: "Celestial Birdsong", spellPower: 1, cost: 750, class: "MagicalMonster", level: 50, collectibles: ["Ancient Lute"]}
   ]
-    
-  ]
 
   calcDuration: -> super()+3
 
