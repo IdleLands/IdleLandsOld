@@ -3,7 +3,7 @@
 %player forced %partyMembers to join %hisher new party, "%partyName."
 %player, along with %partyMembers are going to have a gay old time in their new adventuring group, "%partyName!"
 Nobody expects "%partyName," with %player and other heroes like %partyMembers!
-Introducing "%partyName!" They don't need a catchphrase, because %player and %partyMembers are too $random:adjective$ for that!
+Introducing "%partyName!" They don't need a catchphrase, because %player and %partyMembers are too $dict:adjective$ for that!
 %player started a gang called "%partyName," and recruited %partyMembers.
 %partyMembers convinced a disgruntled %player to start a party with them, called "%partyName."
 A group of unknown figures suddenly appears from afar. Leading with %player, and right behind them %partyMembers, it's the ones known as: "%partyName!"
