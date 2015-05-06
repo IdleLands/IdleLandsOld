@@ -6,14 +6,14 @@ class Thunderstrike extends Spell
   @element = Thunderstrike::element = Spell::Element.thunder
   @tiers = Thunderstrike::tiers = [
     `/**
-      * This spell has a delayed effect on striking, but does more damage the longer it takes.
+      * This spell has a delayed effect on striking, and can hit up to 2 targets, but does more damage the longer it takes.
       *
       * @name thunderstrike
       * @requirement {class} Mage
       * @requirement {mp} 375
       * @requirement {level} 7
       * @element thunder
-      * @targets {enemy} 1
+      * @targets {enemy} 1-2
       * @minDamage [int*0.25*rounds]
       * @maxDamage [int*0.40*rounds-1]
       * @duration [1-3] rounds
@@ -21,9 +21,44 @@ class Thunderstrike extends Spell
       * @package Spells
     */`
     {name: "thunderstrike", spellPower: 1, cost: 375, class: "Mage", level: 7}
+    `/**
+      * This spell has a delayed effect on striking, and can hit up to 3 targets, but does more damage the longer it takes.
+      *
+      * @name thunderstorm
+      * @requirement {class} Mage
+      * @requirement {mp} 675
+      * @requirement {level} 27
+      * @element thunder
+      * @targets {enemy} 1-3
+      * @minDamage [int*0.25*rounds]
+      * @maxDamage [int*0.40*rounds-1]
+      * @duration [1-3] rounds
+      * @category Mage
+      * @package Spells
+    */`
+    {name: "thunderstorm", spellPower: 2, cost: 675, class: "Mage", level: 27}
+    `/**
+      * This spell has a delayed effect on striking, and can hit up to 4 targets, but does more damage the longer it takes.
+      *
+      * @name thundernado
+      * @requirement {class} Mage
+      * @requirement {mp} 925
+      * @requirement {level} 47
+      * @element thunder
+      * @targets {enemy} 1-4
+      * @minDamage [int*0.25*rounds]
+      * @maxDamage [int*0.40*rounds-1]
+      * @duration [1-3] rounds
+      * @category Mage
+      * @package Spells
+    */`
+    {name: "thunderstorm", spellPower: 3, cost: 925, class: "Mage", level: 47}
   ]
 
   calcDuration: -> super()+(@chance.integer min: 1, max: 3)
+
+  determineTargets: ->
+    @targetSomeEnemies size: @chance.integer({min: 1, max: (1 + @spellPower)}),
 
   calcDamage: (player) ->
     intDamage = (@caster.calc.stat 'int') * 0.25 * @baseTurns[player.name]
