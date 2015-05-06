@@ -36,7 +36,7 @@ class Thunderstrike extends Spell
       * @category Mage
       * @package Spells
     */`
-    {name: "thunderstorm", spellPower: 2, cost: 675, class: "Mage", level: 27}
+    {name: "thundernado", spellPower: 2, cost: 675, class: "Mage", level: 27}
     `/**
       * This spell has a delayed effect on striking, and can hit up to 4 targets, but does more damage the longer it takes.
       *
