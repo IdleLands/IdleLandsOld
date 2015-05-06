@@ -71,8 +71,6 @@ class Thunderstrike extends Spell
     return if player.hp.atMin()
     return if @suppressed
     doSpellCast: @cast
-    doSpellCast: @cast if @spellPower >= 2
-    doSpellCast: @cast if @spellPower >= 3
     damage = @calcDamage player
     message = "%targetName was struck by %casterName's %spellName for %damage HP damage!"
     @doDamageTo player, damage, message
