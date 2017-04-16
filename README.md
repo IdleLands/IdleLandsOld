@@ -1,5 +1,6 @@
 Idle Lands [![Build Status](https://travis-ci.org/IdleLands/IdleLands.svg?branch=master)](https://travis-ci.org/IdleLands/IdleLands)
 =========
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/IdleLands/IdleLands?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 An incremental game (read: idling) where you do nothing while your character fights to be the best in the realm. 
 
